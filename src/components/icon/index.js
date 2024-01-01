@@ -87,16 +87,16 @@ const Icon = ({ name, size, ...props }) => {
         Calender1: (
             <svg
                 {...props}
-                width={size ? size : "18"}
-                height={size ? size : "16"}
+                width={size ? size : "20"}
+                height={size ? size : "18"}
                 viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.6665 1.66699V4.16699" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M13.3335 1.66699V4.16699" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M2.9165 7.5752H17.0832" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M17.5 7.08366V14.167C17.5 16.667 16.25 18.3337 13.3333 18.3337H6.66667C3.75 18.3337 2.5 16.667 2.5 14.167V7.08366C2.5 4.58366 3.75 2.91699 6.66667 2.91699H13.3333C16.25 2.91699 17.5 4.58366 17.5 7.08366Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M9.99607 11.4167H10.0036" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M6.91209 11.4167H6.91957" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M6.91209 13.9167H6.91957" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M6.6665 1.66699V4.16699" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M13.3335 1.66699V4.16699" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M2.9165 7.5752H17.0832" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M17.5 7.08366V14.167C17.5 16.667 16.25 18.3337 13.3333 18.3337H6.66667C3.75 18.3337 2.5 16.667 2.5 14.167V7.08366C2.5 4.58366 3.75 2.91699 6.66667 2.91699H13.3333C16.25 2.91699 17.5 4.58366 17.5 7.08366Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9.99607 11.4167H10.0036" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M6.91209 11.4167H6.91957" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M6.91209 13.9167H6.91957" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         ),
         Calender2: (
@@ -216,8 +216,8 @@ const Icon = ({ name, size, ...props }) => {
         Edit: (
             <svg
                 {...props}
-                width={size ? size : "20"}
-                height={size ? size : "20"}
+                width={size ? size : "19"}
+                height={size ? size : "19"}
                 viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.3047 5.81991C16.281 4.8436 16.281 3.26069 15.3047 2.28438L14.7155 1.69512C13.7391 0.718813 12.1562 0.718813 11.1799 1.69512L1.69097 11.1841C1.34624 11.5288 1.10982 11.9668 1.01082 12.4442L0.341106 15.6735C0.219324 16.2607 0.739063 16.7805 1.32629 16.6587L4.55565 15.989C5.03302 15.89 5.47103 15.6536 5.81577 15.3089L15.3047 5.81991ZM14.1262 3.46289L13.5369 2.87363C13.2115 2.5482 12.6839 2.5482 12.3584 2.87363L11.4745 3.75755L13.2423 5.52531L14.1262 4.6414C14.4516 4.31596 14.4516 3.78833 14.1262 3.46289ZM12.0638 6.70382L10.296 4.93606L2.86948 12.3626C2.75457 12.4775 2.67577 12.6235 2.64277 12.7826L2.23082 14.769L4.21721 14.3571C4.37634 14.3241 4.52234 14.2453 4.63726 14.1303L12.0638 6.70382Z" fill="currentColor" />
             </svg>
@@ -292,9 +292,9 @@ const Icon = ({ name, size, ...props }) => {
                 width={size ? size : "16"}
                 height={size ? size : "16"}
                 viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6.66683V5.3335C4 3.12683 4.66667 1.3335 8 1.3335C11.3333 1.3335 12 3.12683 12 5.3335V6.66683" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M8.00001 12.3333C8.92048 12.3333 9.66668 11.5871 9.66668 10.6667C9.66668 9.74619 8.92048 9 8.00001 9C7.07954 9 6.33334 9.74619 6.33334 10.6667C6.33334 11.5871 7.07954 12.3333 8.00001 12.3333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M11.3333 14.6665H4.66668C2.00001 14.6665 1.33334 13.9998 1.33334 11.3332V9.99984C1.33334 7.33317 2.00001 6.6665 4.66668 6.6665H11.3333C14 6.6665 14.6667 7.33317 14.6667 9.99984V11.3332C14.6667 13.9998 14 14.6665 11.3333 14.6665Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4 6.66683V5.3335C4 3.12683 4.66667 1.3335 8 1.3335C11.3333 1.3335 12 3.12683 12 5.3335V6.66683" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M8.00001 12.3333C8.92048 12.3333 9.66668 11.5871 9.66668 10.6667C9.66668 9.74619 8.92048 9 8.00001 9C7.07954 9 6.33334 9.74619 6.33334 10.6667C6.33334 11.5871 7.07954 12.3333 8.00001 12.3333Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M11.3333 14.6665H4.66668C2.00001 14.6665 1.33334 13.9998 1.33334 11.3332V9.99984C1.33334 7.33317 2.00001 6.6665 4.66668 6.6665H11.3333C14 6.6665 14.6667 7.33317 14.6667 9.99984V11.3332C14.6667 13.9998 14 14.6665 11.3333 14.6665Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         ),
         Message: (
@@ -463,9 +463,8 @@ const Icon = ({ name, size, ...props }) => {
             <svg
                 {...props}
                 width={size ? size : "20"}
-                height={size ? size : "20"}
-                viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99996 0.166992C14.1083 0.166992 16.5256 3.59196 17.3765 5.19314C17.6475 5.70299 17.6475 6.29766 17.3765 6.80751C16.5256 8.40869 14.1083 11.8337 8.99996 11.8337C3.89164 11.8337 1.47436 8.40869 0.623389 6.80751C0.352425 6.29766 0.352425 5.70299 0.62339 5.19314C1.47436 3.59196 3.89164 0.166992 8.99996 0.166992ZM4.69692 3.06507C3.31336 3.98178 2.50548 5.20318 2.09512 5.97531C2.09054 5.98393 2.08865 5.98991 2.08783 5.9932C2.08699 5.99654 2.08683 6.00033 2.08683 6.00033C2.08683 6.00033 2.08699 6.00411 2.08783 6.00745C2.08865 6.01074 2.09054 6.01672 2.09512 6.02534C2.50548 6.79747 3.31336 8.01887 4.69692 8.93558C4.1257 8.09979 3.79163 7.08907 3.79163 6.00033C3.79163 4.91158 4.1257 3.90086 4.69692 3.06507ZM13.303 8.93557C14.6866 8.01887 15.4944 6.79747 15.9048 6.02534C15.9094 6.01672 15.9113 6.01074 15.9121 6.00745C15.9126 6.00529 15.913 6.00223 15.913 6.00223L15.9131 6.00033L15.9128 5.99666L15.9121 5.9932C15.9113 5.98991 15.9094 5.98393 15.9048 5.97531C15.4944 5.20318 14.6866 3.98179 13.303 3.06508C13.8742 3.90086 14.2083 4.91158 14.2083 6.00033C14.2083 7.08907 13.8742 8.09979 13.303 8.93557ZM5.4583 6.00033C5.4583 4.04432 7.04396 2.45866 8.99997 2.45866C10.956 2.45866 12.5416 4.04432 12.5416 6.00033C12.5416 7.95633 10.956 9.54199 8.99997 9.54199C7.04396 9.54199 5.4583 7.95633 5.4583 6.00033Z" fill="currentColor" />
+                height={size ? size : "20"} viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.50021 0.166748C14.6085 0.166748 17.0258 3.59172 17.8768 5.1929C18.1477 5.70275 18.1477 6.29742 17.8768 6.80727C17.0258 8.40845 14.6085 11.8334 9.50021 11.8334C4.39188 11.8334 1.9746 8.40844 1.12363 6.80727C0.852669 6.29742 0.852669 5.70274 1.12363 5.1929C1.9746 3.59172 4.39188 0.166748 9.50021 0.166748ZM5.19716 3.06483C3.81361 3.98153 3.00572 5.20294 2.59536 5.97507C2.59078 5.98369 2.58889 5.98967 2.58807 5.99295C2.58724 5.99629 2.58708 6.00008 2.58708 6.00008C2.58708 6.00008 2.58724 6.00387 2.58807 6.00721C2.58889 6.01049 2.59078 6.01647 2.59536 6.0251C3.00572 6.79723 3.81361 8.01863 5.19716 8.93534C4.62594 8.09955 4.29188 7.08883 4.29188 6.00008C4.29188 4.91133 4.62594 3.90061 5.19716 3.06483ZM13.8033 8.93533C15.1868 8.01862 15.9947 6.79722 16.405 6.0251C16.4096 6.01647 16.4115 6.01049 16.4123 6.00721C16.4129 6.00504 16.4133 6.00199 16.4133 6.00199L16.4133 6.00008L16.413 5.99641L16.4123 5.99295C16.4115 5.98967 16.4096 5.98369 16.405 5.97507C15.9947 5.20294 15.1868 3.98154 13.8033 3.06484C14.3745 3.90062 14.7085 4.91134 14.7085 6.00008C14.7085 7.08882 14.3745 8.09954 13.8033 8.93533ZM5.95854 6.00008C5.95854 4.04407 7.5442 2.45841 9.50021 2.45841C11.4562 2.45841 13.0419 4.04407 13.0419 6.00008C13.0419 7.95609 11.4562 9.54175 9.50021 9.54175C7.5442 9.54175 5.95854 7.95609 5.95854 6.00008Z" fill="currentColor" />
             </svg>
         ),
         Video: (
@@ -474,9 +473,9 @@ const Icon = ({ name, size, ...props }) => {
                 width={size ? size : "24"}
                 height={size ? size : "24"}
                 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.53 20.4201H6.21C3.05 20.4201 2 18.3201 2 16.2101V7.79008C2 4.63008 3.05 3.58008 6.21 3.58008H12.53C15.69 3.58008 16.74 4.63008 16.74 7.79008V16.2101C16.74 19.3701 15.68 20.4201 12.53 20.4201Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M19.52 17.0999L16.74 15.1499V8.83989L19.52 6.88989C20.88 5.93989 22 6.51989 22 8.18989V15.8099C22 17.4799 20.88 18.0599 19.52 17.0999Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M11.5 11C12.3284 11 13 10.3284 13 9.5C13 8.67157 12.3284 8 11.5 8C10.6716 8 10 8.67157 10 9.5C10 10.3284 10.6716 11 11.5 11Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12.53 20.4201H6.21C3.05 20.4201 2 18.3201 2 16.2101V7.79008C2 4.63008 3.05 3.58008 6.21 3.58008H12.53C15.69 3.58008 16.74 4.63008 16.74 7.79008V16.2101C16.74 19.3701 15.68 20.4201 12.53 20.4201Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M19.52 17.0999L16.74 15.1499V8.83989L19.52 6.88989C20.88 5.93989 22 6.51989 22 8.18989V15.8099C22 17.4799 20.88 18.0599 19.52 17.0999Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M11.5 11C12.3284 11 13 10.3284 13 9.5C13 8.67157 12.3284 8 11.5 8C10.6716 8 10 8.67157 10 9.5C10 10.3284 10.6716 11 11.5 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         ),
         Wallet: (

@@ -8,7 +8,7 @@ function StatsGroup({
  
 
     return (
-        <div className='flex justify-between items-center flex-wrap gap-x-1 pb-5'>
+        <div className='flex justify-between items-center flex-wrap gap-5 pb-5'>
             {data.map((value, index) => {
                 return (
                     <Stat key={value * 5} index={index} data={value} />

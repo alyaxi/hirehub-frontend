@@ -22,7 +22,7 @@ import {
   MainCandidates,
   EditCandidates,
   ViewCandidates,
-  ScheduleCandidates,
+  ScheduleCandidatesAdmin,
   NewPasswordPage,
   FourZeroFour,
   ViewProfile,
@@ -30,10 +30,17 @@ import {
   MainCandidatesEmployer,
   EditCandidatesEmployer,
   ViewCandidatesEmployer,
+  MainJobsEmployer,
+  EditJobsEmployer,
+  ViewJobsEmployer,
+  MainSubscriptionEmployer,
+  ChatEmployer,
+  NotificationEmployer,
+  ManageEmailEmployer,
+  MainQuestionnaireEmployer
 } from "./pages/index";
 import { AdminLayout, CandidateLayout, EmployerLayout } from "./components";
 import PrivateRoute from "./utilis/PrivateRoute";
-
 
 function App() {
 
@@ -65,7 +72,7 @@ function App() {
           {/* <Route path="manage-candidates" element={<MainCandidates />} /> */}
           <Route path="manage-candidates/edit/:id" element={<EditCandidates />} />
           <Route path="manage-candidates/view/:id" element={<ViewCandidates />} />
-          <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidates />} />
+          <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidatesAdmin />} />
 
           <Route path="employers-request" element={<PrivateRoute roles={['admin']}><MainEmployersRequest /></PrivateRoute>} />
           <Route path="employers-request/edit/:id" element={<PrivateRoute roles={['admin']}><EditEmployersRequest /></PrivateRoute>} />
@@ -77,19 +84,32 @@ function App() {
 
         </Route >
 
-          
+
         {/* // Employer Routes */}
         <Route path="employer/*" element={<PrivateRoute roles={['employer']}><EmployerLayout /></PrivateRoute>} >
           <Route path="dashboard" element={<PrivateRoute roles={['employer']}><EmployerDashboard /></PrivateRoute>} />
-          <Route path="manage-profile" element={<PrivateRoute roles={['employer']}><ManageProfile/></PrivateRoute>} />
+          <Route path="manage-profile" element={<PrivateRoute roles={['employer']}><ManageProfile /></PrivateRoute>} />
           <Route path="profile" element={<PrivateRoute roles={['employer']}><ViewProfile /></PrivateRoute>} />
           <Route path="change-password" element={<PrivateRoute roles={['employer']}><ChangePassword /></PrivateRoute>} />
 
           <Route path="manage-candidates" element={<MainCandidatesEmployer />} />
           <Route path="manage-candidates/edit/:id" element={<EditCandidatesEmployer />} />
           <Route path="manage-candidates/view/:id" element={<ViewCandidatesEmployer />} />
-          <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidates />} />
+          {/* <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidatesEmployer />} /> */}
 
+          <Route path="manage-jobs" element={<MainJobsEmployer />} />
+          <Route path="manage-jobs/edit/:id" element={<EditJobsEmployer />} />
+          <Route path="manage-jobs/view/:id" element={<ViewJobsEmployer />} />
+
+          <Route path="manage-subscription" element={<MainSubscriptionEmployer />} />
+
+          <Route path="chat" element={<ChatEmployer />} />
+
+          <Route path="notification" element={<NotificationEmployer />} />
+
+          <Route path="manage-email" element={<ManageEmailEmployer />} />
+
+          <Route path="manage-questionnaire" element={<MainQuestionnaireEmployer />} />
         </Route>
 
         {/* // Candidate Routes */}

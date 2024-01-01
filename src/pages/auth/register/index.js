@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthLayout, Core } from '../../../components';
 import image from '../../../assets/images/logo/logo.png';
@@ -7,7 +7,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { register } from '../../../Slices/Auth/authSlice';
 import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer  } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { redirectToDashboard } from '../../../utilis/RedirectionToDashboard';
@@ -39,7 +39,7 @@ const RegisterPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.auth.user);
-
+    // const [userType, setUserType] = useState('');
     useEffect(() => {
         // Check if the user is already authenticated
         if (user) {
@@ -56,12 +56,12 @@ const RegisterPage = () => {
                 password: values.password,
                 role: values.userType
             })).unwrap().then(res => {
-               console.log(res, "ressssponsee");
-        
-               const user = res.data.user;
-               redirectToDashboard(user?.role, navigate);;
+                console.log(res, "ressssponsee");
+
+                const user = res.data.user;
+                redirectToDashboard(user?.role, navigate);;
                 notificationService.success("Registration Successful");
-            
+
             }).catch(error => {
                 notificationService.error(error.message)
             })
@@ -70,7 +70,6 @@ const RegisterPage = () => {
             notificationService.error(error.message);
         }
     };
-
     return (
         <AuthLayout>
             <ToastContainer></ToastContainer>
@@ -81,14 +80,64 @@ const RegisterPage = () => {
             </h1>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                 {() => (
-                    <Form className='flex flex-col gap-y-9 max-w-[600px] mb-3'>
-                        <div className='py-5'>
+                    <Form className='flex flex-col max-w-[600px] mb-3'>
+                        {/* <div className='py-5'>
                             <Field type='radio' name='userType' value='candidate' />
                             Candidate
                             <Field type='radio' name='userType' value='employer' />
                             Employer
                             <ErrorMessage name='userType' component='div' className='text-red-500' />
+                        </div> */}
+                          <div className='py-5'>
+                            <div className='flex gap-x-1' role="group" aria-labelledby="my-radio-group">
+                                <label className='bg-purple-100 rounded-[5px] cursor-pointer px-4 py-3'>
+                                    <Field
+                                        type='radio'
+                                        name='userType'
+                                        value='candidate'
+                                        // checked={userType === 'candidate'}
+                                        // onChange={() => setUserType('candidate')}
+                                    />
+                                    <span className='pl-1'>Candidate</span>
+                                </label>
+                                <label className='bg-purple-100 rounded-[5px] cursor-pointer px-4 py-3'>
+                                    <Field
+                                        type='radio'
+                                        name='userType'
+                                        value='employer'
+                                        // checked={userType === 'employer'}
+                                        // onChange={() => setUserType('employer')}
+                                    />
+                                    <span className='pl-1'>Employer</span>
+                                </label>
+                            </div>
+                            <ErrorMessage name='userType' component='div' className='text-red-500' />
                         </div>
+                        {/* <div className='py-5'>
+                            <div className='flex gap-x-1' role="group" aria-labelledby="my-radio-group">
+                                <label className='bg-purple-100 rounded-[5px] px-4 py-3'>
+                                    <Field
+                                        type='radio'
+                                        name='userType'
+                                        value='candidate'
+                                        checked={userType === 'candidate'}
+                                        onChange={() => setUserType('candidate')}
+                                    />
+                                    <span className='pl-1'>Candidate</span>
+                                </label>
+                                <label className='bg-purple-100 rounded-[5px] px-4 py-3'>
+                                    <Field
+                                        type='radio'
+                                        name='userType'
+                                        value='employer'
+                                        checked={userType === 'employer'}
+                                        onChange={() => setUserType('employer')}
+                                    />
+                                    <span className='pl-1'>Employer</span>
+                                </label>
+                            </div>
+                            <ErrorMessage name='userType' component='div' className='text-red-500' />
+                        </div> */}
                         <div className='mb-3'>
                             <Field type='text' name='name'>
                                 {({ field }) => (
@@ -157,25 +206,27 @@ const RegisterPage = () => {
                                 )}
                             </Field>
                         </div>
-                        <div className='flex justify-between items-center pt-1'>
-                            <div className='flex justify-start items-center gap-x-1'>
-                                <Field type='checkbox' name='agreeTerms' />
-                                I agree to
-                                <a className='text-purple-1'>
-                                    <NavLink to='#'> privacy policy & terms</NavLink>
-                                </a>
-                                <ErrorMessage name='agreeTerms' component='div' className='text-red-500' />
+                        <div className='flex flex-col gap-y-5'>
+                            <div className='flex justify-between items-center pt-1'>
+                                <div className='flex justify-start items-center gap-x-1'>
+                                    <Field type='checkbox' name='agreeTerms' />
+                                    I agree to
+                                    <a className='text-purple-1'>
+                                        <NavLink to='#'> privacy policy & terms</NavLink>
+                                    </a>
+                                    <ErrorMessage name='agreeTerms' component='div' className='text-red-500' />
+                                </div>
                             </div>
+                            <Core.Button type='submit' className='text-[18px] leading-[20px] rounded-full py-[18px]'>
+                                Sign Up
+                            </Core.Button>
+                            <p className='text-gray-6 text-[18px] leading-[24px]'>
+                                Already have an account?
+                                <a className='text-purple-1 underline'>
+                                    <NavLink to='/'> Login</NavLink>
+                                </a>
+                            </p>
                         </div>
-                        <Core.Button type='submit' className='text-[18px] leading-[20px] rounded-full py-[18px]'>
-                            Sign Up
-                        </Core.Button>
-                        <p className='text-gray-6 text-[18px] leading-[24px]'>
-                            Already have an account?
-                            <a className='text-purple-1 underline'>
-                                <NavLink to='/'> Login</NavLink>
-                            </a>
-                        </p>
                     </Form>
                 )}
             </Formik>

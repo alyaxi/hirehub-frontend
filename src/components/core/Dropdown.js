@@ -1,20 +1,15 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment, } from 'react'
 import { Icons } from '..'
+import Icon from '../../components/icon'
 import avatar from "../../assets/images/avatars/8.png"
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../../Slices/Auth/authSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom';
-
 import { UserOutlined } from '@ant-design/icons';
 import React from 'react';
 import { Avatar, Badge, Space } from 'antd';
-
-
-
-
-
 
 export default function Dropdown() {
     const dispatch = useDispatch();
@@ -73,9 +68,9 @@ export default function Dropdown() {
                                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                         >
                                             {active ? (
-                                                <Icons.BsCardText className="mr-2 h-5 w-5 text-white" />
+                                                <Icon name="User" className="mr-2 h-5 w-5 text-white" />
                                             ) : (
-                                                <Icons.BsCardText className="mr-2 h-5 w-5 text-[purple]" />
+                                                <Icon name="User" className="mr-2 h-5 w-5 text-[purple]" />
                                             )}
                                             View Profile
                                         </button>
@@ -91,9 +86,9 @@ export default function Dropdown() {
                                             } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                     >
                                         {active ? (
-                                            <Icons.BsCardText className="mr-2 h-5 w-5 text-white" />
+                                            <Icon name="Lock1" className="mr-2 h-5 w-5 text-white" />
                                         ) : (
-                                            <Icons.BsCardText className="mr-2 h-5 w-5 text-[purple]" />
+                                            <Icon name="Lock1" className="mr-2 h-5 w-5 text-[purple]" />
                                         )}
                                         Change Password
                                     </button>
@@ -110,9 +105,9 @@ export default function Dropdown() {
                                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                 >
                                     {active ? (
-                                        <Icons.BsCardText className="mr-2 h-5 w-5 text-white" />
+                                        <Icon name="Logout" className="mr-2 h-5 w-5 text-white" />
                                     ) : (
-                                        <Icons.BsCardText className="mr-2 h-5 w-5 text-[purple]" />
+                                        <Icon name="Logout" className="mr-2 h-5 w-5 text-[purple]" />
                                     )}
                                     Logout
                                 </button>

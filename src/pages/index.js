@@ -28,10 +28,24 @@ import MainCandidates from "./admin/manage_candidates/main";
 import ViewCandidates from "./admin/manage_candidates/view";
 import EditCandidates from "./admin/manage_candidates/edit";
 import ViewProfile from "./admin/profile/view";
-import ScheduleCandidates from "./admin/manage_candidates/schedule";
+import ScheduleCandidatesAdmin from "./admin/manage_candidates/schedule";
 // ------------ Employer ------------
 import EmployerDashboard from "./employer/dashboard";
 import ManageProfile from "./employer/manage_profile";
+
+import MainJobsEmployer from "./employer/manage_jobs/main";
+import EditJobsEmployer from "./employer/manage_jobs/view";
+import ViewJobsEmployer from "./employer/manage_jobs/edit";
+
+import MainSubscriptionEmployer from "./employer/manage_subscription/main";
+
+import ChatEmployer from "./employer/chat/main";
+
+import NotificationEmployer from "./employer/notification/main";
+
+import ManageEmailEmployer from "./employer/manage_email/main";
+
+import MainQuestionnaireEmployer from "./employer/manage_questionnaire/main";
 // ------------ Candidate ------------
 import ManageProfileCandidate from "./candidate/manage_profile";
 import MainCandidatesEmployer from "./employer/manage_candidates/main";
@@ -68,13 +82,28 @@ export {
     MainCandidates,
     EditCandidates,
     ViewCandidates,
+    
     ViewProfile,
-    ScheduleCandidates,
 
+    ScheduleCandidatesAdmin,
     // ------------ Employer ------------
     EmployerDashboard,
+
     ManageProfile,
 
+    MainJobsEmployer,
+    EditJobsEmployer,
+    ViewJobsEmployer,
+
+    MainSubscriptionEmployer,
+
+    ChatEmployer,
+
+    NotificationEmployer,
+
+    ManageEmailEmployer,
+
+    MainQuestionnaireEmployer,
     // ------------ Candidate ------------
     ManageProfileCandidate,
     MainCandidatesEmployer,

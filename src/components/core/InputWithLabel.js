@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { Icons } from '..';
 
-function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue ,onBlur, error}) {
+function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error }) {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
@@ -71,6 +71,10 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Search By Name";
             case "SearchByTitle":
                 return "Search By Title";
+            case "SearchByJobStatus":
+                return "Search By Job Status";
+            case "SearchByJobTitle":
+                return "Search By Job Title";
             case "YourCompanysName":
                 return "Handmade";
             case "YourPhoneNumber":
@@ -159,7 +163,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     // onChange={(e) => setValue(e.target.value)} 
                     onChange={onChange}
                 />
-                
+
                 {/* <input type={name === "password" ? inputType : type(name)} value={value} onChange={onChange} className={`w-full text-[14px] font-regular leading-[20px] text-gray-700 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? 'py-[9px]' : 'py-[14px]'} ${className}`} id={name} name={name}
                     placeholder={placeholder(name)} autofocus /> */}
                 {(name === "password" || name === "newPassword" || name === "confirmPassword" || name === "oldPassword") &&

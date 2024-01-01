@@ -21,6 +21,9 @@ function TableB({
     setAppliedDate,
     setCandidateStage,
     setUserStatus,
+    SetJobStatus,
+    SetJobTitle,
+    SetExpirationDate,
 }) {
     const newColumn = columns.map((value, index) => {
         let columnSorter;
@@ -78,6 +81,9 @@ function TableB({
                 else if (value.dataIndex === "status") {
                     return <div className='w-full text-center'><Badge>{id.status}</Badge></div>;
                 }
+                else if (value.dataIndex === "jobStatus") {
+                    return <div className='w-full text-center'><Badge>{id.jobStatus}</Badge></div>;
+                }
                 else if (value.dataIndex === "accountStatus") {
                     return (
                         <div className='w-full text-center'>
@@ -89,36 +95,39 @@ function TableB({
                     return (
                         <Flex gap="small">
                             {actions.view &&
-                                <span className='cursor-pointer'
+                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
                                     onClick={() => onViewClick(id?.id)}>
                                     <Icon name="View" />
                                 </span>
                             }
                             {actions.edit &&
-                                <span className='cursor-pointer'
+                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
                                     onClick={() => onEditClick(id?.id)}>
                                     <Icon name="Edit" />
                                 </span>
                             }
                             {actions.delete &&
-                                <span className='cursor-pointer'
+                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
                                     onClick={() => onMessageClick(id?.id)}>
                                     <Icon name="Delete" />
                                 </span>
                             }
                             {actions.message &&
-                                <span className='cursor-pointer'
+                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
                                     onClick={() => onMessageClick(id?.id)}>
                                     <Icon name="Message" />
                                 </span>
                             }
                             {actions.date &&
-                                <span className='cursor-pointer'>
+                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'>
                                     <Icon name="Calender1" />
                                 </span>
                             }
                         </Flex>
                     )
+                }
+                else if (value.dataIndex === "positionTitle") {
+                    return <span className='whitespace-nowrap font-medium'>{val}</span>;
                 }
                 else {
                     return <span className='text-gray-6'>{val}</span>;
@@ -153,11 +162,11 @@ function TableB({
         'Hire',
     ];
     return (
-        <div className="flex flex-col bg-white rounded-[8px] overflow-hidden shadow-md">
+        <div className="flex flex-col bg-white rounded-[8px] overflow-hidden border shadow-md">
             <div className="-m-1.5 overflow-x-auto">
                 <div className="p-1.5 min-w-full inline-block align-middle">
                     <div className="overflow-hidden ">
-                        <div className="bg-white flex justify-between items-center py-3 px-5 ">
+                        <div className="bg-white flex justify-between items-center py-3 px-5">
                             <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>
                             <div className='flex justify-end items-center gap-1'>
                                 {filterBy?.map(value => {
@@ -178,6 +187,15 @@ function TableB({
                                         case 'SearchByEligibility':
                                             set = setEligibility;
                                             break;
+                                        case 'SearchByJobStatus':
+                                            set = SetJobStatus;
+                                            break;
+                                        case 'SearchByJobTitle':
+                                            set = SetJobTitle;
+                                            break;
+
+
+
                                         default:
                                             break;
                                     }
@@ -195,12 +213,24 @@ function TableB({
                                         case 'SearchByEligibility':
                                             inputWidth = 'w-[100px]';
                                             break;
+                                        case 'SearchByJobStatus':
+                                            inputWidth = 'w-[100px]';
+                                            break;
+
+                                        case 'SearchByJobTitle':
+                                            inputWidth = 'w-[100px]';
+                                            break;
                                         default:
                                             break;
                                     }
                                     if (value === "SearchByAppliedDate") {
                                         return (
                                             <InputWithLabel name={'calender'} setValue={setAppliedDate} sm />
+                                        )
+                                    }
+                                    if (value === "SearchByExpirationDate") {
+                                        return (
+                                            <InputWithLabel name={'calender'} setValue={SetExpirationDate} sm />
                                         )
                                     }
                                     if (value === "SearchByUserStatus") {
@@ -210,7 +240,7 @@ function TableB({
                                     }
                                     if (value === "SearchByCandidateStage") {
                                         return (
-                                            <Core.Dropdown2 options={CandidateStagedropdownOptions} setState={setCandidateStage} defaultTitle="Stage" />
+                                            <Core.Dropdown2 options={CandidateStagedropdownOptions} setState={setCandidateStage} defaultTitle="Stage" menuWidth={'w-[150px]'} />
                                         )
                                     }
                                     else {

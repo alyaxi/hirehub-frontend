@@ -1,6 +1,6 @@
 .auth-layout .img-wrapper img {
     width: 100%;
-    min-height: 100vh;
+    max-height: 100vh;
     height: 100%;
     object-fit: cover;
     user-select: none;
@@ -24,19 +24,24 @@
     background-color: rgba(137, 19, 225, 0.3);
 }
 
+.auth-layout .content-main-wrapper {
+    background-image: linear-gradient(45deg, #f8e6ff 20%, white 80%);
+}
+
 .auth-layout .content-wrapper {
     position: relative;
     display: flex;
     justify-content: center;
     align-content: center;
     width: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient(45deg, #f8e6ff 20%, white 80%);
+    max-height: 100vh;
+    overflow-y: scroll;
 }
 
 .auth-layout .content-wrapper .box {
     width: 100%;
     max-width: 764px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: start;

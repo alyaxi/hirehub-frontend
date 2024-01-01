@@ -10,7 +10,7 @@ function AuthLayout({ children }) {
                     <img src={image} />
                 </div>
             </Col>
-            <Col flex="auto">
+            <Col flex="auto" className="content-main-wrapper">
                 <div className="content-wrapper">
                     <div className="box">
                         {children}

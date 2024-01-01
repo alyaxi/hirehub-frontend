@@ -9,7 +9,7 @@ const breadcrumb = [
     { label: "Edit" },
 ];
 
-function ScheduleCandidates() {
+function ScheduleCandidatesAdmin() {
     const { tableData } = employersData;
 
     const dropdownOptions = [
@@ -25,10 +25,10 @@ function ScheduleCandidates() {
                 heading="Edit Employers"
                 breadcrumb={breadcrumb}
             />
-            ScheduleCandidates
-            <Core.CompanyProfile data={tableData} dropdownOptions={dropdownOptions} pageType="edit" />
+            ScheduleCandidatesAdmin
+            {/* <Core.CompanyProfile data={tableData} dropdownOptions={dropdownOptions} pageType="edit" /> */}
         </>
     );
 }
 
-export default ScheduleCandidates;
+export default ScheduleCandidatesAdmin;
