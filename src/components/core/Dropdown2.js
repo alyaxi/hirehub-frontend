@@ -2,19 +2,20 @@ import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { Icons } from '..';
 
-export default function Dropdown2({ options, setState, className, menuWidth, defaultTitle, selectedState,status }) {
-    // console.log({selectedState})
-    const [selectedOption, setSelectedOption] = useState(selectedState); // Set the default selected option
+export default function Dropdown2({ options, setState, className, menuWidth, defaultTitle, selectedState }) {
+    const [selectedOption, setSelectedOption] = useState(defaultTitle);
     const handleOptionClick = (value) => {
         setSelectedOption(value);
         setState(value);
     };
-   
+
+    let textColor = selectedOption === ('Status' || 'Job Status' || 'Stage') ? 'text-gray-400' : 'text-black-1';
+
     return (
         <Menu as="div" className={`relative inline-block text-left ${className}`} defaultValue={selectedOption}>
-            <Menu.Button className="inline-flex w-full justify-between gap-x-1.5 rounded-[8px] bg-white px-3 py-[10px] text-sm whitespace-nowrap font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                <span className='text-black-1 text-[14px] leading-[20px] capitalize font-medium'>{selectedOption}</span>
-                <Icons.GoChevronDown className="ml-1 h-5 w-5 text-gray-1 hover:text-violet-100" aria-hidden="true" />
+            <Menu.Button className={`inline-flex w-full justify-between items-center gap-x-1.5 rounded-[8px] bg-white px-3 py-[10px] text-sm whitespace-nowrap text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50`}>
+                <span className={`${textColor} text-[14px] leading-[20px] capitalize font-regular`}>{selectedOption}</span>
+                <Icons.GoChevronDown className="ml-1 h-4 w-4 text-gray-1" aria-hidden="true" />
             </Menu.Button>
             <Transition
                 as={Fragment}

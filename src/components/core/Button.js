@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from '../icon';
 
 function Button({ children, onClick, submit, type, color, icon, className, sm, isDisabled }) {
-    console.log("isDisabled",isDisabled)
+    // console.log("isDisabled",isDisabled)
     return (
         <button
             onClick={onClick}

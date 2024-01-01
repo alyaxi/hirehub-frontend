@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Core, Table } from '../../../../components';
 import avatar1 from "../../../../assets/images/avatars/2.png";
 import TableB from '../../../../components/table/TableB';
@@ -22,8 +22,8 @@ const actions = {
 function ApprovedEmployers() {
     const employersTableData = useSelector((state) => state?.admin?.employersDataTable);
     const navigate = useNavigate()
-
-
+    const [name, setName] = useState("");
+    const [jobTitle, setJobTitle] = useState("");
     const columns = [
         {
             title: 'Name',
@@ -75,6 +75,8 @@ function ApprovedEmployers() {
     const onMessageClick = (id) => {
         console.log("onMessageClick", id)
     };
+    console.log("name", name)
+    console.log("jobTitle", jobTitle)
     return (
         <>
             <Core.Breadcrumb
@@ -107,6 +109,8 @@ function ApprovedEmployers() {
                 data={filteredData}
                 actions={actions}
                 filterBy={["SearchByName", "SearchByTitle"]}
+                setName={setName}
+                setJobTitle={setJobTitle}
                 onViewClick={onViewClick}
                 onEditClick={onEditClick}
                 onMessageClick={onMessageClick}

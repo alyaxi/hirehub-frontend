@@ -157,6 +157,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     className={`w-full text-[14px] font-regular leading-[20px] text-gray-700 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? 'py-[9px]' : 'py-[14px]'} ${className}`}
                     id={name}
                     name={name}
+                    // value={value}
                     placeholder={placeholder(name)}
                     autofocus
                     onBlur={onBlur}

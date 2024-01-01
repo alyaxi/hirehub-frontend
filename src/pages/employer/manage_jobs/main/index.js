@@ -114,9 +114,9 @@ const breadcrumb = [
 
 function MainJobs() {
 
-    const [jobStatus, SetJobStatus] = useState("");
-    const [jobTitle, SetJobTitle] = useState("");
-    const [expirationDate, SetExpirationDate] = useState("");
+    const [jobStatus, setJobStatus] = useState("");
+    const [jobTitle, setJobTitle] = useState("");
+    const [expirationDate, setExpirationDate] = useState("");
     const navigate = useNavigate();
 
     const onViewClick = (id) => {
@@ -143,9 +143,10 @@ function MainJobs() {
                     "SearchByJobTitle",
                     "SearchByExpirationDate",
                 ]}
-                SetJobStatus={SetJobStatus}
-                SetJobTitle={SetJobTitle}
-                SetExpirationDate={SetExpirationDate}
+                setJobStatus={setJobStatus}
+                jobTitle={jobTitle}
+                setJobTitle={setJobTitle}
+                setExpirationDate={setExpirationDate}
                 actions={actions}
                 onViewClick={onViewClick}
                 onEditClick={onEditClick}
