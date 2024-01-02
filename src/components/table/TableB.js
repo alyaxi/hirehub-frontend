@@ -185,17 +185,10 @@ function TableB({
         setEligibility && setEligibility('');
         setExpirationDate && setExpirationDate('');
         console.log("resetFilters", resetFilters)
-        setResetTrigger((prev) => !prev); // Toggle the trigger to re-render
-        setResetTrigger2((prev) => !prev); // Toggle the trigger to re-render
-        setResetTrigger3((prev) => !prev); // Toggle the trigger to re-render
-
-        //         setName
-        // setTitle
-        // setEmployer
-        // setEligibility
-        // setJobTitle
+        setResetTrigger((prev) => !prev);
+        setResetTrigger2((prev) => !prev);
+        setResetTrigger3((prev) => !prev);
     };
-    // setJobStatus
     return (
         <div className="flex flex-col bg-white rounded-[8px] overflow-hidden border shadow-md">
             <div className="-m-1.5 overflow-x-auto">
