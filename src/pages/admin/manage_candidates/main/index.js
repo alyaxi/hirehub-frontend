@@ -203,6 +203,9 @@ function MainCandidates() {
     // console.log("candidateStage", candidateStage);
     // console.log("userStatus", userStatus);
 
+
+    console.log("AppliedAllJobs", AppliedAllJobs);
+
     return (
         <>
             <Breadcrumb

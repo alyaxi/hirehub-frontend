@@ -11,6 +11,8 @@ import EmployerLayout from "./layout/EmployerLayout";
 
 // ------------ Candidate ------------
 import CandidateLayout from "./layout/CandidateLayout";
+import CandidateProfile from "./profile_view/CandidateProfile";
+import UserProfile from "./profile_view/UserProfile";
 
 export * as Core from "./core";
 export * as Icons from "./icons";
@@ -26,8 +28,10 @@ export {
     Header,
     Sidebar,
     Table,
+    UserProfile,
     // ------------ Employer ------------
     EmployerLayout,
     // ------------ Candidate ------------
-    CandidateLayout
+    CandidateLayout,
+    CandidateProfile,
 }

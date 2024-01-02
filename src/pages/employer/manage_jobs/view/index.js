@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-import { Core, } from '../../../../components';
+import { Core, UserProfile, } from '../../../../components';
 // import employersData from '../../../../data/employersData.json';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
@@ -34,7 +34,7 @@ function ViewJobs() {
                 breadcrumb={breadcrumb}
             />
             {/* <Core.CompanyProfile data={tableData} dropdownOptions={dropdownOptions} pageType="view" /> */}
-            <Core.UserProfile data={extractedData} dropdownOptions={dropdownOptions} pageType="view" />
+            <UserProfile data={extractedData} dropdownOptions={dropdownOptions} pageType="view" />
         </>
     );
 }

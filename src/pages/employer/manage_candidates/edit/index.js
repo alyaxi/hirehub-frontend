@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-import { Core, } from '../../../../components';
+import { Core, UserProfile, } from '../../../../components';
 // import employersData from '../../../../data/employersData.json';
 import { useSelector,useDispatch } from 'react-redux';
 import { useNavigate , useParams} from "react-router-dom";
@@ -70,7 +70,7 @@ function EditCandidates() {
                 heading="Edit Candidates"
                 breadcrumb={breadcrumb}
             />
-            <Core.UserProfile handleNext={handleNext} status={status} setStatus={setStatus} data={extractedData} dropdownOptions={dropdownOptions} pageType="edit"  />
+            <UserProfile handleNext={handleNext} status={status} setStatus={setStatus} data={extractedData} dropdownOptions={dropdownOptions} pageType="edit"  />
         </>
     );
 }

@@ -15,8 +15,6 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
 
     const [resumePrivacy, setResumePrivacy] = useState('');
 
-
-
     useEffect(() => {
         const data = extractedData?.candidate?.resumePrivacySetting;
         if (data) {
@@ -43,12 +41,12 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
     const handlePrivacyChange = (e) => {
         setResumePrivacySetting(e.target.value);
     };
-    console.log("extractedData?.name", extractedData?.name)
+    // console.log("extractedData?.name", extractedData?.name)
 
     const firstLetter = extractedData?.name ? extractedData?.name.trim().charAt(0).toUpperCase() : '';
-    console.log("firstLetter", firstLetter)
+    // console.log("firstLetter", firstLetter)
     return (
-        <Core.Card className={`pt-[20px] pb-[45px] px-[30px]`}>
+        <Core.Card className={`border pt-[20px] pb-[45px] px-[30px]`}>
             <div className='flex justify-end gap-x-4'>
                 {!(accountType === "admin" && pageType === "edit") &&
                     <span className='text-gray-6 text-[14px] leading-[20px] py-1'>
@@ -138,116 +136,29 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                 </p> */}
 
                 <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
-                {/* Experience */}
-                <h6 className='text-[18px] leading-[28px] font-medium mb-2'>Experience</h6>
 
-                {extractedData?.candidate?.experience.map((value, index) => {
-                    return (
-                        <div key={index * 4} className='flex justify-between gap-x-3'>
-                            <div className='flex justify-center items-center w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
-                                <img src={logo1} alt="company logo" />
-                            </div>
-                            <div className='w-full'>
-                                <div className='w-full h-full flex justify-between items-end'>
-                                    <div>
-                                        <h6 className='text-[16px] leading-[20px] font-semibold'>{value.title}</h6>
-                                        <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value.company}</p>
-                                        {/* <p className='text-gray-6 text-[12px] leading-[20px]'>Nov 2015 - Present · 7 yrs 7 mos</p> */}
-                                        <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value.startDate, "present")}</p>
-                                        <p className='text-gray-6 text-[14px] leading-[20px] mt-4'>
-                                            {value.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })}
-                {/* <div className='flex justify-between gap-x-3'>
-                    <div className='flex justify-center items-center w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
-                        <img src={logo1} alt="company logo" />
-                    </div>
-                    <div className='w-full'>
-                        <div className='w-full h-full flex justify-between items-end'>
-                            <div>
-                                <h6 className='text-[16px] leading-[20px] font-semibold'>Art Director</h6>
-                                <p className='text-black-3 text-[12px] leading-[20px] font-medium'>Sochnik Design Thinking School</p>
-                                <p className='text-gray-6 text-[12px] leading-[20px]'>Nov 2015 - Present · 7 yrs 7 mos</p>
-                                <p className='text-gray-6 text-[14px] leading-[20px] mt-4'>
-                                    Over the last couple of years I've worked on 10+ projects across different fields among which are MVPs for start-ups, cosmetics & beauty industry, e-commerce, art & architecture, photography and others.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-                <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
-                {/* Education */}
-                <h6 className='text-[18px] leading-[28px] font-medium mb-2'>Education</h6>
-                {extractedData?.candidate?.education.map((value, index) => {
-                    return (
-                        <div key={index * 5} className='flex justify-between gap-x-3'>
-                            <div className='flex justify-center items-center w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
-                                <img src={logo2} alt="company logo" />
-                            </div>
-                            <div className='w-full'>
-                                <div className='w-full h-full flex justify-between items-end'>
-                                    <div>
-                                        <h6 className='text-[16px] leading-[20px] font-semibold'>{value.degree}</h6>
-                                        <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value.school}</p>
-                                        <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value.startDate, "present")}</p>
-                                        <p className='text-gray-6 text-[14px] leading-[20px] mt-4'>
-                                            {value?.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })}
-                <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
-                {/* Skill */}
-                <h6 className='text-[18px] leading-[28px] font-medium mb-2'>Skill</h6>
-                {/* <div className='flex justify-between gap-x-3'>
-                    <div className='flex justify-center items-center w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
-                        <img src={logo14} alt="company logo" />
-                    </div>
-                    <div className='w-full'>
-                        <div className='w-full h-full flex justify-between items-end'>
-                            <div>
-                                <h6 className='text-[16px] leading-[20px] font-semibold'>Kharkiv National University of Construction and Architecture</h6>
-                                <p className='text-black-3 text-[12px] leading-[20px] font-medium'>Master of Architecture (MArch), Architecture and Design of Urban Spaces</p>
-                                <p className='text-gray-6 text-[12px] leading-[20px]'>2009 - 2015</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-                <div className='flex justify-start gap-x-3 gap-y-2'>
-                    {extractedData?.candidate?.skills.map((value, index) => {
-                        return (
-                            <p key={index * 6} className='text-black-3 text-[14px] leading-[20px] bg-gray-4 rounded-full font-medium px-3 py-2'>{value.addNewSkills}</p>
-                        )
-                    })}
-                </div>
-                <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
-                {/* Language */}
-                <h6 className='text-[18px] leading-[28px] font-medium mb-2'>Language</h6>
-                {/* <div className='w-full mt-3'>
-                    <h6 className='text-[16px] leading-[20px] font-semibold'>English</h6>
-                    <p className='text-black-3 text-[12px] leading-[20px] font-medium'>Professional working proficiency</p>
-                </div>
-                <div className='w-full mt-2'>
-                    <h6 className='text-[16px] leading-[20px] font-semibold'>Русский</h6>
-                    <p className='text-black-3 text-[12px] leading-[20px]'>Native or bilingual proficiency</p>
-                </div> */}
+                <Core.Experience data={extractedData?.candidate?.experience} />
 
-                {extractedData?.candidate?.languages.map((value, index) => {
+                <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
+
+                <Core.Education data={extractedData?.candidate?.education} />
+
+                <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
+              
+                <Core.Skills data={extractedData?.candidate?.skills} />
+             
+                <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
+              
+                <Core.Languages data={extractedData?.candidate?.languages} />
+
+                {/* {extractedData?.candidate?.languages.map((value, index) => {
                     return (
                         <div key={index * 7} className={`w-full ${index === 0 ? 'mt-3' : 'mt-2'}`}>
                             <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.addNewLanguage}</h6>
                             <p className='text-black-3 text-[12px] leading-[20px]'>{value?.proficiency}</p>
                         </div>
                     )
-                })}
+                })} */}
 
 
                 <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
