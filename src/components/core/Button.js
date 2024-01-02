@@ -26,7 +26,7 @@ function Button({ children, onClick, submit, type, color, icon, className, sm, i
              `}
             type={submit && "submit"}
         >
-            <div className='flex justify-center items-center gap-x-1'>
+            <div className='flex justify-center items-center gap-x-1 whitespace-nowrap'>
                 {icon &&
                     <span className='mb-0.5'><Icon name={icon} size="12" /></span>
                 }

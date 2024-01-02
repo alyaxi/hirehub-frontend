@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { Icons } from '..';
+import Icon from '../../components/icon';
 
 function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error }) {
 
@@ -51,6 +52,9 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Phone Number";
             case "message":
                 return "Message";
+
+            case "SearchProduct":
+                return "Search Product";
             default:
                 return "Label";
         }
@@ -99,6 +103,9 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "0000-0000000";
             case "message":
                 return "Message";
+
+            case "SearchProduct":
+                return "Search Product ...";
             default:
                 return "";
         }
@@ -116,6 +123,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "SearchByTitle":
             case "SearchByEmployer":
             case "SearchByEligibility":
+            case "SearchProduct":
                 return "text";
             case "password":
             case "newPassword":
@@ -146,7 +154,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     </a>
                 }
             </div>
-            <div className="relative">
+            <div className={`relative ${name === "SearchProduct" && 'w-full'}`}>
                 {helperText &&
                     <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5'>
                         {helperText}
@@ -154,7 +162,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 }
                 <input
                     type={name === "password" || name === "newPassword" || name === "confirmPassword" || name === "oldPassword" ? inputType : type(name)}
-                    className={`w-full text-[14px] font-regular leading-[20px] text-gray-700 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? 'py-[9px]' : 'py-[14px]'} ${className}`}
+                    className={`w-full text-[14px] font-regular leading-[20px] text-gray-700 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? 'py-[9px]' : 'py-[14px]'} ${className} ${name === "SearchProduct" && "pl-10"}`}
                     id={name}
                     name={name}
                     // value={value}
@@ -164,7 +172,9 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     // onChange={(e) => setValue(e.target.value)} 
                     onChange={onChange}
                 />
-
+                <span className='absolute left-3 top-[10px] text-gray-6'>
+                    <Icon name="Search" />
+                </span>
                 {/* <input type={name === "password" ? inputType : type(name)} value={value} onChange={onChange} className={`w-full text-[14px] font-regular leading-[20px] text-gray-700 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? 'py-[9px]' : 'py-[14px]'} ${className}`} id={name} name={name}
                     placeholder={placeholder(name)} autofocus /> */}
                 {(name === "password" || name === "newPassword" || name === "confirmPassword" || name === "oldPassword") &&

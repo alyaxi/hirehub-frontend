@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Icon from '../icon';
-import { Button, InputWithLabel, Badge } from '../core';
 import { Avatar, Table, Flex } from 'antd';
 import '../../assets/css/table.css'
 import { Core } from '..';
@@ -29,6 +28,8 @@ function TableB({
     jobTitle,
     setJobTitle,
     setExpirationDate,
+    setProduct,
+    addQuestion,
 }) {
     const newColumn = columns.map((value, index) => {
         let columnSorter;
@@ -76,23 +77,23 @@ function TableB({
                 else if (value.dataIndex === "account") {
                     return (
                         <div className='w-full text-center'>
-                            <Badge>{id.account}</Badge>
+                            <Core.Badge>{id.account}</Core.Badge>
                         </div>
                     )
                 }
                 else if (value.dataIndex === "stage") {
-                    return <div className='w-full text-center'><Badge>{id.stage}</Badge></div>;
+                    return <div className='w-full text-center'><Core.Badge>{id.stage}</Core.Badge></div>;
                 }
                 else if (value.dataIndex === "status") {
-                    return <div className='w-full text-center'><Badge>{id.status}</Badge></div>;
+                    return <div className='w-full text-center'><Core.Badge>{id.status}</Core.Badge></div>;
                 }
                 else if (value.dataIndex === "jobStatus") {
-                    return <div className='w-full text-center'><Badge>{id.jobStatus}</Badge></div>;
+                    return <div className='w-full text-center'><Core.Badge>{id.jobStatus}</Core.Badge></div>;
                 }
                 else if (value.dataIndex === "accountStatus") {
                     return (
                         <div className='w-full text-center'>
-                            <Badge>{id.accountStatus}</Badge>
+                            <Core.Badge>{id.accountStatus}</Core.Badge>
                         </div>
                     )
                 }
@@ -177,14 +178,13 @@ function TableB({
     const [resetTrigger3, setResetTrigger3] = useState(false);
 
     const resetFilters = () => {
-        console.log("resetFilters", resetFilters)
         setJobTitle && setJobTitle('');
         setName && setName('');
         setTitle && setTitle('');
         setEmployer && setEmployer('');
         setEligibility && setEligibility('');
         setExpirationDate && setExpirationDate('');
-        console.log("resetFilters", resetFilters)
+        setProduct && setProduct('');
         setResetTrigger((prev) => !prev);
         setResetTrigger2((prev) => !prev);
         setResetTrigger3((prev) => !prev);
@@ -195,24 +195,11 @@ function TableB({
                 <div className="p-1.5 min-w-full inline-block align-middle">
                     <div className="overflow-hidden ">
                         <div className="bg-white flex justify-between items-center py-3 px-5">
-                            <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>
-                            <div className='flex justify-end items-center gap-1'>
+                            {!filterBy.includes("SearchByProduct") &&
+                                <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>
+                            }
+                            <div className='flex justify-end items-center gap-1 w-full'>
                                 {filterBy?.map(value => {
-                                    //   const stateValue = () => {
-                                    //     if (value === 'SearchByName') {
-                                    //         return name
-                                    //     }
-                                    //     if (value === 'SearchByTitle') {
-                                    //         return title
-                                    //     }
-                                    //     if (value === 'SearchByEmployer') {
-                                    //         return employer
-                                    //     } 
-                                    //     if (value === 'SearchByJobTitle') {
-                                    //         return jobTitle
-                                    //     }
-                                    //     return ""
-                                    // }
                                     const onInputChange = (e) => {
                                         if (value === 'SearchByName') {
                                             setName(e.target.value);
@@ -229,6 +216,9 @@ function TableB({
                                         if (value === 'SearchByJobTitle') {
                                             setJobTitle(e.target.value);
                                         }
+                                        if (value === 'SearchByProduct') {
+                                            setProduct(e.target.value);
+                                        }
                                     }
                                     const onDateChange = (e) => {
                                         if (value === 'SearchByExpirationDate') {
@@ -238,7 +228,6 @@ function TableB({
                                             setAppliedDate(e.target.value);
                                         }
                                     }
-
                                     let inputWidth = 'auto'
                                     switch (value) {
                                         case 'SearchByName':
@@ -264,12 +253,12 @@ function TableB({
                                     }
                                     if (value === "SearchByAppliedDate") {
                                         return (
-                                            <InputWithLabel  key={resetTrigger2 ? 'reset' : 'normal'} name={'calender'} setValue={setAppliedDate} onChange={onDateChange} sm />
+                                            <Core.InputWithLabel key={resetTrigger2 ? 'reset' : 'normal'} name={'calender'} setValue={setAppliedDate} onChange={onDateChange} sm />
                                         )
                                     }
                                     if (value === "SearchByExpirationDate") {
                                         return (
-                                            <InputWithLabel  key={resetTrigger3 ? 'reset' : 'normal'} name={'calender'} setValue={setExpirationDate} onChange={onDateChange} sm />
+                                            <Core.InputWithLabel key={resetTrigger3 ? 'reset' : 'normal'} name={'calender'} setValue={setExpirationDate} onChange={onDateChange} sm />
                                         )
                                     }
                                     if (value === "SearchByUserStatus") {
@@ -282,6 +271,15 @@ function TableB({
                                             <Core.Dropdown2 options={CandidateStagedropdownOptions} setState={setCandidateStage} defaultTitle="Stage" menuWidth={'w-[150px]'} />
                                         )
                                     }
+                                    if (value === "SearchByProduct") {
+                                        return (
+                                            <>
+                                           
+                                                <Core.SearchInput onInputChange={onInputChange} />
+                                                <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button>
+                                            </>
+                                        )
+                                    }
                                     if (value === "SearchByJobStatus") {
                                         return (
                                             <Core.Dropdown2 options={JobStatusDropdownOptions} setState={setJobStatus} defaultTitle="Job Status" menuWidth={'w-[150px]'} />
@@ -290,7 +288,7 @@ function TableB({
                                     else {
                                         // console.log("value", value)
                                         return (
-                                            <InputWithLabel
+                                            <Core.InputWithLabel
                                                 key={resetTrigger ? 'reset' : 'normal'} // Change the key to trigger re-render
                                                 name={value} onChange={onInputChange}
                                                 // value={stateValue}
@@ -298,10 +296,10 @@ function TableB({
                                         )
                                     }
                                 })}
-                                <div className='flex justify-end items-center gap-1'>
-                                    <Button sm type="narrow" >Search</Button>
-                                    <Button sm type="narrow" color="white" icon="Cross" onClick={resetFilters}>Reset</Button>
-                                </div>
+                                {filterBy && filterBy.length > 2 ? <div className='flex justify-end items-center gap-1'>
+                                    <Core.Button sm type="narrow" >Search</Core.Button>
+                                    <Core.Button sm type="narrow" color="white" icon="Cross" onClick={resetFilters}>Reset</Core.Button>
+                                </div> : null}
                             </div>
                         </div>
                         <div className="overflow-hidden">
