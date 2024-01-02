@@ -90,7 +90,9 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                                 status={status}
                                 setState={setStatus}
                                 options={dropdownOptions}
-                                className={"min-w-[160px]"} />
+                                className={"min-w-[160px]"}
+                                defaultTitle={extractedData?.status}
+                            />
                         </span>
                     </div>
                 }
