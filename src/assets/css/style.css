@@ -920,7 +920,7 @@ table i.bi:hover {
     outline: none;
 }
 
-.modal-summery #editor {
+.modal-summary #editor {
     height: 300px;
 }
 
@@ -1434,7 +1434,7 @@ table i.bi:hover {
 .additional-code {
     display: none;
   } */
-.additional-summery-text,
+.additional-summary-text,
 .additional-project-text {
     max-height: 0;
     overflow: hidden;

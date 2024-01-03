@@ -6,11 +6,18 @@ import logo1 from "../../../assets/images/company-logos/logo1.png";
 import logo2 from "../../../assets/images/company-logos/logo2.png";
 import video from "../../../assets/videos/1.mp4";
 import { calculateTimePeriod } from '../../../utilis/calculateTimePeriod';
-import { Avatar, Button, Progress } from 'antd';
-import { NavLink } from 'react-router-dom';
-import PopupModal from '../../../components/core/PopupModal';
+import { Avatar, Progress } from 'antd';
+// import PopupModal from '../../../components/core/PopupModal';
 
 function ManageProfileCandidate() {
+    const personalInformation = {
+        name: "John Francois22",
+        statusLine: "Design Lead | Author of the 'Design Manual' and the 'Ultimate Guide to Web Design' | Teaching 300,000+ Designers Worldwide",
+        phoneNo: "+1 215-538-6957",
+        email: "michaeljfuller@rhyta.com",
+        profileCompletion: "50",
+    }
+
     const experience = [
         {
             title: "Art Director",
@@ -30,6 +37,16 @@ function ManageProfileCandidate() {
     const skill = [
         {
             addNewSkills: "React Js",
+        }
+    ]
+    const summary = [
+        {
+            text: "Including a summary in your job application provides a brief overview of your qualifications, skills, and career goals, helping recruiters assess your fit for the position.",
+        }
+    ]
+    const projects = [
+        {
+            text: "Including a summary in your job application provides a brief overview of your qualifications, skills, and career goals, helping recruiters assess your fit for the position.",
         }
     ]
     const language = [
@@ -54,18 +71,15 @@ function ManageProfileCandidate() {
         setResumePrivacySetting(e.target.value);
     };
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
+    // const showModal = () => {
+    //     setIsModalOpen(true);
+    // };
     let name = 'John Francois'
     const firstLetter = name ? name.trim().charAt(0).toUpperCase() : '';
 
-
-
-
-
+ 
     const extractedData = {
 
     }
@@ -84,7 +98,9 @@ function ManageProfileCandidate() {
                 // pageType="edit" 
 
 
-
+                personalInformation={personalInformation}
+                summary={summary}
+                projects={projects}
                 experience={experience}
                 education={education}
                 skill={skill}
@@ -132,15 +148,15 @@ function ManageProfileCandidate() {
 
 
 
-                        <PopupModal isModalOpen={isModalOpen}
-                            setIsModalOpen={setIsModalOpen} />
+                        {/* <PopupModal isModalOpen={isModalOpen}
+                            setIsModalOpen={setIsModalOpen} /> */}
 
-                        {/* Summery */}
+                        {/* summary */}
                         <Core.Card className={"min-h-[140px] pb-8"}>
                             <div className='flex justify-between items-start'>
-                                <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Summery</h5>
+                                <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>summary</h5>
                                 <span className="flex justify-center items-center w-[35px] h-[35px] cursor-pointer bg-gray-7 rounded-full hover:bg-gray-11 active:bg-gray-12 transition-all"
-                                    onClick={showModal}
+                                    // onClick={showModal}
                                 >
                                     <span className='text-gray-6'><Icon name="PencilWithLine" /></span>
                                 </span>

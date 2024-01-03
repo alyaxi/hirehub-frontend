@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Core } from '..';
-import logo1 from "../../assets/images/company-logos/logo1.png";
-import logo2 from "../../assets/images/company-logos/logo2.png";
-import { useParams } from 'react-router-dom';
 import Icon from '../icon';
-import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { useLocation } from 'react-router-dom';
-import { Avatar, Badge } from 'antd';
+import { Avatar } from 'antd';
 
 function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedState, handleNext, setStatus, status }) {
     const location = useLocation();
@@ -112,7 +108,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                 </div>
             </div>
             <div className='w-full'>
-                <h6 className='text-[18px] leading-[28px] font-medium mb-2'>Summery</h6>
+                <h6 className='text-[18px] leading-[28px] font-medium mb-2'>Summary</h6>
                 <p className='text-gray-6 text-[14px] leading-[20px] font-medium mb-4'>
                     {extractedData?.candidate?.summary?.description}
                 </p>

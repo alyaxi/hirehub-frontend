@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '../icon';
 
-function Button({ children, onClick, submit, type, color, icon, className, sm, isDisabled }) {
+function Button({ children, onClick, submit, type, color, icon, className, sm, isDisabled,iconSize }) {
     // console.log("isDisabled",isDisabled)
     return (
         <button
@@ -28,7 +28,7 @@ function Button({ children, onClick, submit, type, color, icon, className, sm, i
         >
             <div className='flex justify-center items-center gap-x-1 whitespace-nowrap'>
                 {icon &&
-                    <span className='mb-0.5'><Icon name={icon} size="12" /></span>
+                    <span className='mb-0.5'><Icon name={icon} size={`${iconSize ? iconSize : '12'}`} /></span>
                 }
                 {children}
             </div>
