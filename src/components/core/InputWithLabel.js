@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Icons } from '..';
 import Icon from '../../components/icon';
 
-function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error }) {
+function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon }) {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
@@ -31,6 +31,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Employer";
             case "SearchByEligibility":
                 return "Eligibility";
+            case "projectUrl":
+                return "Project URL";
 
             case "fullName":
                 return "Full Name";
@@ -52,6 +54,9 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Phone Number";
             case "message":
                 return "Message";
+
+            case "zip":
+                return "Zip Code";
 
             case "SearchProduct":
                 return "Search Product";
@@ -104,6 +109,11 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "message":
                 return "Message";
 
+            case "zip":
+                return "123456";
+            case "projectUrl":
+                return "www.projectname.com";
+
             case "SearchProduct":
                 return "Search Product ...";
             default:
@@ -124,6 +134,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "SearchByEmployer":
             case "SearchByEligibility":
             case "SearchProduct":
+            case "zip":
+            case "projectUrl":
                 return "text";
             case "password":
             case "newPassword":
@@ -141,9 +153,10 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             <div className="flex justify-between items-center">
                 {label &&
                     <label for={name} className={`
-                    block text-[14px] font-medium text-gray-2 tracking-wide ${helperText ? 'mb-1.5' : 'mb-2'} capitalize
+                    flex justify-start text-[14px] font-medium text-gray-2 tracking-wide ${helperText ? 'mb-1' : 'mb-2'} capitalize
                     `}>
                         {_label(name)}{required && <span className='text-[red]'>*</span>}
+                        <span className='mt-[2px] ml-[3px]'> {icon && <Icon name={icon} />}</span>
                     </label>
                 }
                 {forgotPassword &&
@@ -156,7 +169,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             </div>
             <div className={`relative ${name === "SearchProduct" && 'w-full'}`}>
                 {helperText &&
-                    <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5'>
+                    <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5 '>
                         {helperText}
                     </p>
                 }

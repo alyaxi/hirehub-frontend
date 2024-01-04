@@ -9,6 +9,12 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange 
                 return "Your Company's Industry";
             case "numberofEmployees":
                 return "Number of Employees";
+            case "expectedSalary":
+                return "Expected Salary";
+            case "experience":
+                return "Experience"; 
+            case "careerLevel":
+                return "Career Level";
             default:
                 return "Label";
         }

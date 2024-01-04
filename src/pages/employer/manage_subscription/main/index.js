@@ -68,7 +68,7 @@ const candidates = [
         employer: "Citi Group",
         eligibility: "Yes",
         experience: "10 Years",
-        salary: "1000 ",
+        salary: "1000",
         stage: "Screening",
         status: "Attempted to Contact",
     },

@@ -1,12 +1,24 @@
-import React from 'react';
-import { Modal } from 'antd';
+import React, { useState } from 'react';
+import { Button, Modal } from 'antd';
+import Forms from '../forms';
+import Icon from '../icon';
+import { Core } from '..';
 
 function PopupModal({ setIsModalOpen,
     isModalOpen,
     type,
     action,
 }) {
-
+    const [personalInformationData, setPersonalInformationData] = useState({
+        avatar: "",
+        name: "",
+        dob: "",
+    })
+    const [projectsData, setProjectsData] = useState({
+        avatar: "",
+        name: "",
+        dob: "",
+    })
     const handleOk = () => {
         setIsModalOpen(false);
     };
@@ -14,9 +26,7 @@ function PopupModal({ setIsModalOpen,
     const handleCancel = () => {
         setIsModalOpen(false);
     };
-    console.log("type", type)
-    console.log("action", action)
-    let _action = action === "edit" ? "Edit" : "Add";
+    let _action = action === "edit" ? "" : "Add";
     let title = '';
     switch (type) {
         case 'experience':
@@ -50,11 +60,17 @@ function PopupModal({ setIsModalOpen,
             break;
     }
     let _title = _action + " " + title;
+
+    // console.log("personalInformationData", personalInformationData)
+    // console.log("projectsData", projectsData)
     return (
         <>
-            <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                type-    {type}
-                ACTION- {action}
+            <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
+                {/* type -    {type}
+                <br />
+                action - {action} */}
+                {type === "personalInformation" && <Forms.PersonalInformation handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}
+                {type === "projects" && <Forms.Projects handleCancel={handleCancel} action={action} setProjectsData={setProjectsData} />}
             </Modal>
         </>
     );

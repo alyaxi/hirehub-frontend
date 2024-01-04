@@ -18,6 +18,7 @@ export * as Core from "./core";
 export * as Icons from "./icons";
 export * as Icon from "./icon";
 export * as Employer from "./employer";
+export * as Forms from "./forms";
 
 export {
     // ------------ Admin ------------
