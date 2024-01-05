@@ -19,6 +19,34 @@ function PopupModal({ setIsModalOpen,
         name: "",
         dob: "",
     })
+    const [experiencesData, setExperiencesData] = useState({
+        title: "",
+        company: "",
+        industry: "",
+        directlyManageATeam: {
+            status: false,
+            noOfPeople: ''
+        },
+        salary: "",
+        location: "",
+        city: "",
+        startDate: "",
+        currentlyWorking: false,
+        description: '',
+    })
+    const [educationsData, setEducationsData] = useState({
+        school: "",
+        degree: "",
+        fieldOfStudy: "",
+        startDate: "",
+        endOrExpectedDate: "",
+        location: "",
+        grade: "",
+    })
+    const [skillsData, setSkillsData] = useState({
+        skill: "",
+        experience: "",
+    })
     const handleOk = () => {
         setIsModalOpen(false);
     };
@@ -29,17 +57,17 @@ function PopupModal({ setIsModalOpen,
     let _action = action === "edit" ? "" : "Add";
     let title = '';
     switch (type) {
-        case 'experience':
-            title = 'Experience';
+        case 'experiences':
+            title = 'Experiences';
             break;
-        case 'education':
-            title = 'Education';
+        case 'educations':
+            title = 'Educations';
             break;
-        case 'skill':
-            title = 'Skill';
+        case 'skills':
+            title = 'Skills';
             break;
-        case 'personalInformation':
-            title = 'Personal Information';
+        case 'personalInformations':
+            title = 'Personal Informations';
             break;
         case 'summary':
             title = 'Summary';
@@ -69,8 +97,11 @@ function PopupModal({ setIsModalOpen,
                 {/* type -    {type}
                 <br />
                 action - {action} */}
-                {type === "personalInformation" && <Forms.PersonalInformation handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}
+                {type === "personalInformations" && <Forms.PersonalInformation handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}
                 {type === "projects" && <Forms.Projects handleCancel={handleCancel} action={action} setProjectsData={setProjectsData} />}
+                {type === "experiences" && <Forms.Experiences handleCancel={handleCancel} action={action} setExperiencesData={setExperiencesData} />}
+                {type === "educations" && <Forms.Educations handleCancel={handleCancel} action={action} setEducationsData={setEducationsData} />}
+                {type === "skills" && <Forms.Skills handleCancel={handleCancel} action={action} setSkillsData={setSkillsData} />}
             </Modal>
         </>
     );

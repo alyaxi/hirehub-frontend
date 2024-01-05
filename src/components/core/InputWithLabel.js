@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Icons } from '..';
 import Icon from '../../components/icon';
 
-function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon }) {
+function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, maxlength }) {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
@@ -57,6 +57,16 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
 
             case "zip":
                 return "Zip Code";
+            case "title":
+                return "Title";
+            case "company":
+                return "Company";
+            case "organization":
+                return "Organization";
+            case "grade":
+                return "Grade";
+
+
 
             case "SearchProduct":
                 return "Search Product";
@@ -113,6 +123,18 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "123456";
             case "projectUrl":
                 return "www.projectname.com";
+            case "2ndNumber":
+                return "000";
+            case "3rdNumber":
+                return "000-0000";
+            case "title":
+                return "Enter Title";
+            case "company":
+                return "Enter Company Name";
+            case "organization":
+                return "Enter Organization Name";
+
+
 
             case "SearchProduct":
                 return "Search Product ...";
@@ -120,6 +142,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "";
         }
     }
+
     const type = (name) => {
         switch (name) {
             case "email":
@@ -136,6 +159,10 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "SearchProduct":
             case "zip":
             case "projectUrl":
+            case "2ndNumber":
+            case "3rdNumber":
+            case "title":
+            case "company":
                 return "text";
             case "password":
             case "newPassword":
@@ -148,6 +175,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "text";
         }
     }
+
     return (
         <>
             <div className="flex justify-between items-center">
@@ -184,6 +212,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     onBlur={onBlur}
                     // onChange={(e) => setValue(e.target.value)} 
                     onChange={onChange}
+                // maxlength={maxlength && maxlength}
                 />
                 {name === "SearchProduct" &&
                     <span className='absolute left-3 top-[10px] text-gray-6'>

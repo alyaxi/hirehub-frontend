@@ -10,7 +10,7 @@ function Skills({ data, buttons, card }) {
                  <Core.Card className={"border"}>
                     < div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Skills</h5>
-                        <Core.ProficienciesActions buttons={buttons} type="skill" />
+                        <Core.ProficienciesActions buttons={buttons} type="skills" />
                     </div >
                     <div className='flex justify-start gap-x-3 gap-y-2'>
                         {data?.map((value, index) => {

@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Core } from '..';
 
-function PersonalInformation({ action, handleCancel }) {
+function PersonalInformations({ action, handleCancel }) {
     const careerLevelOptions = [
         { name: "Entry Level", value: "entryLevel" },
         { name: "Mid-Level", value: "midLevel" },
         { name: "Senior", value: "senior" },
         { name: "Lead", value: "lead" },
-
     ];
     const experienceOptions = [
         { name: "6 months", value: "6months" },
@@ -61,13 +60,14 @@ function PersonalInformation({ action, handleCancel }) {
             {({ isSubmitting }) => (
                 <Form>
 
-                    avatar
+                    <Core.UploadAvatar />
 
                     <div className='mb-4'>
                         <Field name="name">
                             {({ field }) => (
                                 <Core.InputWithLabel
                                     {...field}
+                                    sm
                                     name="name"
                                     label="Name"
                                     placeholder="Enter your name"
@@ -81,6 +81,7 @@ function PersonalInformation({ action, handleCancel }) {
                             {({ field }) => (
                                 <Core.InputWithLabel
                                     {...field}
+                                    sm
                                     name="lastName"
                                     label="LastName"
                                     placeholder="Enter your last name"
@@ -94,6 +95,7 @@ function PersonalInformation({ action, handleCancel }) {
                             {({ field }) => (
                                 <Core.InputWithLabel
                                     {...field}
+                                    sm
                                     name="email"
                                     label="email"
                                     helperText={'Only provided to employers you apply or respond to'}
@@ -104,31 +106,54 @@ function PersonalInformation({ action, handleCancel }) {
                         </Field>
                     </div>
 
-                    {/* mobile
-                    dob
-                    gender
-
-                    (nationality, city, area)
-                   */}
-
-
 
                     <div className='mb-4'>
-                        <Core.SelectWithLabel
-                            name={"careerLevel"}
-                            label="Career Level"
-                            options={careerLevelOptions}
-                            onChange={(value) => handleChange("careerLevel", value)}
+
+                        <Core.MobileInputs
+                            // {...field}
+                            name="mobile"
+                            label="email"
+                            helperText={'Only provided to employers you apply or respond to'}
+                            icon="Lock1"
+                            required
                         />
+
                     </div>
 
+                    Date of Birth
+                    <br />
+                    Nationality
+                    <br />
+                    City
+                    <br />
+                    Area
+
+
+
+
                     <div className='mb-4'>
-                        <Core.SelectWithLabel
-                            name={"experience"}
-                            label="Experience"
-                            options={experienceOptions}
-                            onChange={(value) => handleChange("experience", value)}
-                        />
+                        <div className='flex gap-x-2'>
+                            <div className='w-full'>
+                                <Core.SelectWithLabel
+                                    name={"careerLevel"}
+                                    label="Career Level"
+                                    options={careerLevelOptions}
+                                    defaultOption="Choose any one"
+                                    onChange={(value) => handleChange("careerLevel", value)}
+                                    required
+                                />
+                            </div>
+                            <div className='w-full'>
+                                <Core.SelectWithLabel
+                                    name={"experience"}
+                                    label="Experience"
+                                    options={experienceOptions}
+                                    defaultOption="Choose any one"
+                                    onChange={(value) => handleChange("experience", value)}
+                                    required
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     <div className='mb-4'>
@@ -147,6 +172,7 @@ function PersonalInformation({ action, handleCancel }) {
                             {({ field }) => (
                                 <Core.InputWithLabel
                                     {...field}
+                                    sm
                                     name="zip"
                                     label="zip"
                                 />
@@ -170,9 +196,10 @@ function PersonalInformation({ action, handleCancel }) {
 
                     {/* </div> */}
                 </Form>
-            )}
-        </Formik>
+            )
+            }
+        </Formik >
     );
 }
 
-export default PersonalInformation;
+export default PersonalInformations;

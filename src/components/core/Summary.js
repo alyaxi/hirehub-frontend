@@ -11,7 +11,7 @@ function Summary({ data, buttons, card }) {
                     <Core.Card className={"border"}>
                         < div className='flex justify-between items-start' >
                             <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Summary</h5>
-                            <Core.ProficienciesActions buttons={buttons} type="summary" />
+                            <Core.ProficienciesActions buttons={buttons} type="summarys" />
                         </div>
                         <div className='flex justify-start items-end pt-3'>
                             {data?.map((value, index) => {

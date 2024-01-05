@@ -20,7 +20,7 @@ function PersonalInformation({ data, buttons, card }) {
                     <Core.Card className={"border"}>
                         < div className='flex justify-between items-start' >
                             <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>PersonalInformation</h5>
-                            <Core.ProficienciesActions buttons={buttons} type="personalInformation"/>
+                            <Core.ProficienciesActions buttons={buttons} type="personalInformations"/>
                         </div>
                         <div className='flex justify-start items-end pt-3'>
                             <div className='flex flex-col justify-center items-center w-[22%] pr-8'>

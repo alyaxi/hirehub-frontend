@@ -12,7 +12,7 @@ function Education({ data, buttons, card }) {
                  <Core.Card className={"border"}>
                     < div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Education</h5>
-                        <Core.ProficienciesActions buttons={buttons} type="education" />
+                        <Core.ProficienciesActions buttons={buttons} type="educations" />
                     </div >
                     <div className='flex justify-start items-end pt-3'>
                         {data?.map((value, index) => {

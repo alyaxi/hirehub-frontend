@@ -62,3 +62,19 @@ body {
 .ant-pagination .ant-pagination-options {
     display: none;
 }
+ 
+
+
+
+/* avatar */
+
+/* :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select > .ant-upload  */
+:where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select 
+{
+    width: 21px;
+    height: 21px;
+    border: none;
+}
+:where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm {
+    display: none;
+}

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function SelectWithLabel({ label, name, options, required, helperText, onChange }) {
+function SelectWithLabel({ label, name, options, required, helperText, onChange, defaultOption }) {
     const _label = (name) => {
         switch (name) {
             case "userType":
@@ -12,9 +12,25 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange 
             case "expectedSalary":
                 return "Expected Salary";
             case "experience":
-                return "Experience"; 
+                return "Experience";
             case "careerLevel":
                 return "Career Level";
+            case "industry":
+                return "Industry";
+            case "directlyManageTeam":
+                return "Did you directly manage a team?";
+            case "noOfPeople":
+                return <span>&nbsp;</span>;
+            case "salary":
+                return "Salary";
+            case "degree":
+                return "Degree";
+            case "fieldOfStudy":
+                return "Field Of Study";
+            case "grade":
+                return "Grade";
+                case "skillExperience":
+                    return "Experience with this Skill";
             default:
                 return "Label";
         }
@@ -31,7 +47,7 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange 
                 </p>
             }
             <select id={name} onChange={onChange} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]">
-                <option value="">Select an option...</option>
+                <option value="">{defaultOption ? defaultOption : 'Select an option...'}</option>
                 {options.map((value) =>
                     <option key={value * 1} value={value?.value}>{value?.name}</option>
                 )}

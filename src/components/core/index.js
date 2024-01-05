@@ -9,6 +9,7 @@ import Experience from "./Experience";
 import Education from "./Education";
 import InputWithLabel from "./InputWithLabel";
 import Languages from "./Languages";
+import MobileInputs from "./MobileInputs";
 import Preferences from "./Preferences";
 import PopupModal from "./PopupModal";
 import ProficienciesActions from "./ProficienciesActions";
@@ -22,6 +23,7 @@ import Summary from "./Summary";
 import Skills from "./Skills";
 import TextAreaWithLabel from "./TextAreaWithLabel";
 import UploadFile from "./UploadFile";
+import UploadAvatar from "./UploadAvatar";
 import ViewProfile from "./ViewProfile";
 import VideoPlayer from "./VideoPlayer";
 
@@ -37,6 +39,7 @@ export {
     Education,
     InputWithLabel,
     Languages,
+    MobileInputs,
     Preferences,
     PopupModal,
     ProficienciesActions,
@@ -50,6 +53,7 @@ export {
     Skills,
     TextAreaWithLabel,
     UploadFile,
+    UploadAvatar,
     ViewProfile,
     VideoPlayer,
 }
