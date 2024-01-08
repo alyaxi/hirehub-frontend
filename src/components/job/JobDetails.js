@@ -109,7 +109,7 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
                     </ul>
                 </div>
 
-                {/* <span className='block w-full border-gray-11 border-t-[1px] my-5'></span> */}
+                {/* <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span> */}
 
                 <h6 className='text-[16px] leading-[28px] font-semibold mb-2'>Job Description</h6>
                 {/* position */}
@@ -162,37 +162,37 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
 
                         <div className='w-[45%]'>
                             <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span>Information Technology</span>
+                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Information Technology</span>
                             </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
+                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
                         </div>
 
                         <div className='w-[45%]'>
                             <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span>Package</span>
+                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Package</span>
                             </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
+                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
                         </div>
 
                         <div className='w-[45%]'>
                             <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span>Total Positions</span>
+                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Total Positions</span>
                             </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
+                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
                         </div>
 
                         <div className='w-[45%]'>
                             <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span>Job Shift</span>
+                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Job Shift</span>
                             </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
+                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
                         </div>
 
                         <div className='w-[45%]'>
                             <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span>Job Typ e</span>
+                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Job Typ e</span>
                             </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
+                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
                         </div>
 
 

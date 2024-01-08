@@ -17,6 +17,21 @@ function ViewJob() {
         },
         postedDate: 'May 24, 2023',
         salaryRange: '$50k - $70K',
+        shortSummery: [
+            { title: "industry", value: "Information Technology" },
+            { title: "gender", value: "Gender " },
+            { title: "package", value: "$75,000 a year" },
+            { title: "minimumEducation", value: "Information" },
+            { title: "totalPositions", value: "02" },
+            { title: "careerLevel", value: "Information" },
+            { title: "jobShift", value: "First Shift (Day)" },
+            { title: "experience", value: "Information" },
+            { title: "jobType", value: "Full Time/Permanent" },
+            { title: "applyBefore", value: "Information" },
+            { title: "department", value: "UX/UI" },
+            { title: "postingDate", value: "Information" },
+            { title: "jobLocation", value: "Houston, TX 77060 " },
+        ]
     }
     console.log("data", data)
     return (
