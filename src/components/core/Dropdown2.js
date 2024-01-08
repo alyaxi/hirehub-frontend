@@ -13,7 +13,7 @@ export default function Dropdown2({ options, setState, className, menuWidth, def
 
     return (
         <Menu as="div" className={`relative inline-block text-left ${className}`} defaultValue={selectedOption}>
-            <Menu.Button className={`inline-flex w-full justify-between items-center gap-x-1.5 rounded-[8px] bg-white px-3 py-[10px] text-sm whitespace-nowrap text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50`}>
+            <Menu.Button className={`inline-flex w-full justify-between items-center gap-x-1.5 rounded-[8px] bg-white px-3 py-[9px] text-sm whitespace-nowrap text-gray-6 border border-gray-11`}>
                 <span className={`${textColor} text-[14px] leading-[20px] capitalize font-regular`}>{selectedOption}</span>
                 <Icons.GoChevronDown className="ml-1 h-4 w-4 text-gray-1" aria-hidden="true" />
             </Menu.Button>

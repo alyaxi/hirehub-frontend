@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-import { Core, JobDetails, UserProfile, } from '../../../../components';
+import { Core, UserProfile, } from '../../../../components';
 // import employersData from '../../../../data/employersData.json';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
-    { label: "Manage Candidates" },
+    { label: "Manage Candidates", link: "/admin/manage-candidates" },
     { label: "Edit" },
 ];
 
@@ -65,14 +65,13 @@ function EditJobs() {
 
     return (
         <>
-            EditJobs
+            EditJobs  admin
             <ToastContainer></ToastContainer>
             <Breadcrumb
                 heading="Edit Candidates"
                 breadcrumb={breadcrumb}
             />
-            {/* <UserProfile handleNext={handleNext} status={status} setStatus={setStatus} data={extractedData} dropdownOptions={dropdownOptions} pageType="edit" /> */}
-            <JobDetails handleNext={handleNext} data={extractedData} pageType="view" />
+            <UserProfile handleNext={handleNext} status={status} setStatus={setStatus} data={extractedData} dropdownOptions={dropdownOptions} pageType="edit" />
         </>
     );
 }

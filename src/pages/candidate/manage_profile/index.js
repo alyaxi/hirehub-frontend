@@ -111,7 +111,7 @@ function ManageProfileCandidate() {
                 <div className='w-auto'>
                     <div className='flex flex-col gap-y-3'>
                         {/* personal information */}
-                        <Core.Card className={"min-h-[230px] pb-8"}>
+                        <Core.Card className={"p-5 min-h-[230px] pb-8"}>
                             <div className='flex justify-between items-start'>
                                 <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Personal Information</h5>
                                 <span className="flex justify-center items-center w-[35px] h-[35px] cursor-pointer bg-gray-7 rounded-full hover:bg-gray-11 active:bg-gray-12 transition-all">
@@ -152,7 +152,7 @@ function ManageProfileCandidate() {
                             setIsModalOpen={setIsModalOpen} /> */}
 
                         {/* summary */}
-                        <Core.Card className={"min-h-[140px] pb-8"}>
+                        <Core.Card className={"p-5 min-h-[140px] pb-8"}>
                             <div className='flex justify-between items-start'>
                                 <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>summary</h5>
                                 <span className="flex justify-center items-center w-[35px] h-[35px] cursor-pointer bg-gray-7 rounded-full hover:bg-gray-11 active:bg-gray-12 transition-all"
@@ -168,7 +168,7 @@ function ManageProfileCandidate() {
                             </div>
                         </Core.Card>
                         {/* Projects */}
-                        <Core.Card className={"min-h-[140px] pb-8"}>
+                        <Core.Card className={"p-5 min-h-[140px] pb-8"}>
                             <div className='flex justify-between items-start'>
                                 <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Projects</h5>
                                 <span className="flex justify-center items-center w-[35px] h-[35px] cursor-pointer bg-gray-7 rounded-full hover:bg-gray-11 active:bg-gray-12 transition-all">
@@ -182,7 +182,7 @@ function ManageProfileCandidate() {
                             </div>
                         </Core.Card>
                         {/* Experience */}
-                        <Core.Card className={"min-h-[140px] pb-8"}>
+                        <Core.Card className={"p-5 min-h-[140px] pb-8"}>
                             <div className='flex justify-between items-start'>
                                 <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Experience</h5>
                                 <span className="flex justify-center items-center w-[35px] h-[35px] cursor-pointer bg-gray-7 rounded-full hover:bg-gray-11 active:bg-gray-12 transition-all">
@@ -214,7 +214,7 @@ function ManageProfileCandidate() {
                             </div>
                         </Core.Card>
                         {/* Education */}
-                        <Core.Card className={"min-h-[140px] pb-8"}>
+                        <Core.Card className={"p-5 min-h-[140px] pb-8"}>
                             <div className='flex justify-between items-start'>
                                 <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Education</h5>
                                 <span className="flex justify-center items-center w-[35px] h-[35px] cursor-pointer bg-gray-7 rounded-full hover:bg-gray-11 active:bg-gray-12 transition-all">
@@ -246,7 +246,7 @@ function ManageProfileCandidate() {
                             </div>
                         </Core.Card>
                         {/* Skill */}
-                        <Core.Card className={"min-h-[140px] pb-8"}>
+                        <Core.Card className={"p-5 min-h-[140px] pb-8"}>
                             <div className='flex justify-between items-start'>
                                 <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Skill</h5>
                                 <div className='flex gap-x-2'>
@@ -267,7 +267,7 @@ function ManageProfileCandidate() {
                             </div>
                         </Core.Card>
                         {/* Language */}
-                        <Core.Card className={"min-h-[140px] pb-8"}>
+                        <Core.Card className={"p-5 min-h-[140px] pb-8"}>
                             <div className='flex justify-between items-start'>
                                 <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Language</h5>
                                 <div className='flex gap-x-2'>
@@ -291,7 +291,7 @@ function ManageProfileCandidate() {
                             </div>
                         </Core.Card>
                         {/* Job Preferences */}
-                        <Core.Card className={"min-h-[140px] pb-8"}>
+                        <Core.Card className={"p-5 min-h-[140px] pb-8"}>
                             <div className='flex justify-between items-start'>
                                 <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Job Preferences</h5>
                                 <span className="flex justify-center items-center w-[35px] h-[35px] cursor-pointer bg-gray-7 rounded-full hover:bg-gray-11 active:bg-gray-12 transition-all">
@@ -363,7 +363,7 @@ function ManageProfileCandidate() {
                             </div>
                         </Core.Card>
                         {/* Resume Privacy Settings */}
-                        <Core.Card className={"min-h-[140px] pb-8"}>
+                        <Core.Card className={"p-5 min-h-[140px] pb-8"}>
                             <div className='flex justify-between items-start'>
                                 <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Resume Privacy Settings</h5>
                             </div>
@@ -403,7 +403,7 @@ function ManageProfileCandidate() {
                     </div>
                 </div>
                 <div className='flex flex-col gap-y-3 min-w-[310px]'>
-                    <Core.Card >
+                    <Core.Card  className={'p-5'}>
                         <div className='flex justify-between items-center pb-3'>
                             <div className='flex justify-start items-center gap-x-2'>
                                 <Icon name="Video" />
@@ -419,7 +419,7 @@ function ManageProfileCandidate() {
                         <span className='text-[18px]'><Icon name="Download" /></span>
                         <span className='leading-[19px]'>Download Resume</span>
                     </button>
-                    <Core.Card >
+                    <Core.Card  className={'p-5'}>
                         <h4 className='text-black-1 text-[18px] leading-[22px] font-medium mb-5'>Update your profile for better job recommendations</h4>
                         <h6 className='text-black-3 text-[14px] leading-[20px] font-medium -mb-[3px]'>Product Status</h6>
                         <Progress percent={50} status="active" className='m-0 ' />

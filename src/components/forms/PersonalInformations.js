@@ -106,8 +106,10 @@ function PersonalInformations({ action, handleCancel }) {
                         </Field>
                     </div>
 
+                    Mobile
+                    <br />
 
-                    <div className='mb-4'>
+                    {/* <div className='mb-4'>
 
                         <Core.MobileInputs
                             // {...field}
@@ -118,7 +120,7 @@ function PersonalInformations({ action, handleCancel }) {
                             required
                         />
 
-                    </div>
+                    </div> */}
 
                     Date of Birth
                     <br />

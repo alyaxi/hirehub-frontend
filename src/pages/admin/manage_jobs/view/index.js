@@ -2,15 +2,13 @@ import React from 'react';
 import { Breadcrumb, } from '../../../../components/core';
 import { JobDetails, } from '../../../../components';
 
-
 const breadcrumb = [
-    { label: "Dashboard", link: "/employer/dashboard" },
-    { label: "Manage Jobs", link: "/employer/manage-jobs" },
+    { label: "Dashboard", link: "/admin/dashboard" },
+    { label: "Manage Jobs" },
     { label: "Job Details" },
 ];
 
-function ViewJobs() {
-    // const { id } = useParams();
+function ViewJob() {
     const data = {
         name: "Product UX Designer(Retail)",
         company: {
@@ -32,4 +30,4 @@ function ViewJobs() {
     );
 }
 
-export default ViewJobs;
+export default ViewJob;

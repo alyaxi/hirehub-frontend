@@ -8,6 +8,7 @@ import Sidebar from "./layout/Sidebar";
 import Table from "./table/Table";
 // ------------ Employer ------------
 import EmployerLayout from "./layout/EmployerLayout";
+import JobDetails from "./job/JobDetails";
 
 // ------------ Candidate ------------
 import CandidateLayout from "./layout/CandidateLayout";
@@ -32,6 +33,7 @@ export {
     UserProfile,
     // ------------ Employer ------------
     EmployerLayout,
+    JobDetails,
     // ------------ Candidate ------------
     CandidateLayout,
     CandidateProfile,

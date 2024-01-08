@@ -39,7 +39,7 @@ function CandidateProfile({ data: extractedData, pageType, dropdownOptions, sele
                 </div>
             </div>
             <div className='flex flex-col gap-y-3 min-w-[310px]'>
-                <Core.Card >
+                <Core.Card  className={'p-5'}>
                     <div className='flex justify-between items-center pb-3'>
                         <div className='flex justify-start items-center gap-x-2'>
                             <Icon name="Video" />
@@ -58,7 +58,7 @@ function CandidateProfile({ data: extractedData, pageType, dropdownOptions, sele
                 <Core.Button icon="Download" iconSize={"24"}>
                     Download Resume
                 </Core.Button>
-                <Core.Card >
+                <Core.Card  className={'p-5'}>
                     <h4 className='text-black-1 text-[18px] leading-[22px] font-medium mb-5'>Update your profile for better job recommendations</h4>
                     <h6 className='text-black-3 text-[14px] leading-[20px] font-medium -mb-[3px]'>Product Status</h6>
                     <Progress percent={50} status="active" className='m-0 ' />

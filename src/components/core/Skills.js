@@ -7,7 +7,7 @@ function Skills({ data, buttons, card }) {
     return (
         <>
             {card ?
-                 <Core.Card className={"border"}>
+                 <Core.Card className={"p-5 border"}>
                     < div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Skills</h5>
                         <Core.ProficienciesActions buttons={buttons} type="skills" />

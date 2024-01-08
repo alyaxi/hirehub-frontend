@@ -8,7 +8,7 @@ function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, butto
     return (
         <>
             {card ?
-                <Core.Card className={"border"}>
+                <Core.Card className={"p-5 border"}>
                     < div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Resume Privacy Setting</h5>
                         <Core.ProficienciesActions buttons={buttons} type="resumePrivacySetting" />

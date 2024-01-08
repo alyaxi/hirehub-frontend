@@ -37,12 +37,17 @@ import {
   ChatEmployer,
   NotificationEmployer,
   ManageEmailEmployer,
-  MainQuestionnaireEmployer
+  MainQuestionnaireEmployer,
+  MainJobsAdmin,
+  EditJobsAdmin,
+  ViewJobsAdmin,
 } from "./pages/index";
 import { AdminLayout, CandidateLayout, EmployerLayout } from "./components";
 import PrivateRoute from "./utilis/PrivateRoute";
 
 function App() {
+
+  console.log(process.env.REACT_APP_API_BASE_URL, "envvvvvvvvvvvvvvv")
 
   return (
     <BrowserRouter>
@@ -68,12 +73,6 @@ function App() {
           <Route path="approved-employers/edit/:id" element={<PrivateRoute roles={['admin']}><EditApprovedEmployers /></PrivateRoute>} />
           <Route path="approved-employers/view/:id" element={<PrivateRoute roles={['admin']}><ViewApprovedEmployers /></PrivateRoute>} />
 
-          <Route path="manage-candidates" element={<PrivateRoute roles={['admin']}><MainCandidates /></PrivateRoute>} />
-          {/* <Route path="manage-candidates" element={<MainCandidates />} /> */}
-          <Route path="manage-candidates/edit/:id" element={<EditCandidates />} />
-          <Route path="manage-candidates/view/:id" element={<ViewCandidates />} />
-          <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidatesAdmin />} />
-
           <Route path="employers-request" element={<PrivateRoute roles={['admin']}><MainEmployersRequest /></PrivateRoute>} />
           <Route path="employers-request/edit/:id" element={<PrivateRoute roles={['admin']}><EditEmployersRequest /></PrivateRoute>} />
           <Route path="employers-request/view/:id" element={<PrivateRoute roles={['admin']}><ViewEmployersRequest /></PrivateRoute>} />
@@ -81,6 +80,17 @@ function App() {
           <Route path="rejected-employers" element={<PrivateRoute roles={['admin']}><MainRejectedEmployers /></PrivateRoute>} />
           <Route path="rejected-employers/edit/:id" element={<PrivateRoute roles={['admin']}><EditRejectedEmployers /></PrivateRoute>} />
           <Route path="rejected-employers/view/:id" element={<PrivateRoute roles={['admin']}><ViewRejectedEmployers /></PrivateRoute>} />
+
+          <Route path="manage-candidates" element={<PrivateRoute roles={['admin']}><MainCandidates /></PrivateRoute>} />
+          {/* <Route path="manage-candidates" element={<MainCandidates />} /> */}
+          <Route path="manage-candidates/edit/:id" element={<EditCandidates />} />
+          <Route path="manage-candidates/view/:id" element={<ViewCandidates />} />
+          <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidatesAdmin />} />
+
+          <Route path="manage-jobs" element={<MainJobsAdmin />} />
+          <Route path="manage-jobs/edit/:id" element={<EditJobsAdmin />} />
+          <Route path="manage-jobs/view/:id" element={<ViewJobsAdmin />} />
+
 
         </Route >
 
@@ -98,8 +108,8 @@ function App() {
           {/* <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidatesEmployer />} /> */}
 
           <Route path="manage-jobs" element={<MainJobsEmployer />} />
-          <Route path="manage-jobs/edit/:id" element={<EditJobsEmployer />} />
           <Route path="manage-jobs/view/:id" element={<ViewJobsEmployer />} />
+          <Route path="manage-jobs/edit/:id" element={<EditJobsEmployer />} />
 
           <Route path="manage-subscription" element={<MainSubscriptionEmployer />} />
 

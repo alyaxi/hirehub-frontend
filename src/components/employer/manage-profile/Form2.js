@@ -11,7 +11,7 @@ function Form2({ onNext }) {
     };
     console.log("onNext",onNext.data)
     return (
-        <Core.Card w840 boder>
+        <Core.Card className={'p-5'} w840 boder>
             <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5>
             <div className="mb-4">
                 <Core.SelectWithLabel

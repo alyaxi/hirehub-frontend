@@ -53,7 +53,7 @@ function ChangePasswordForm() {
     });
 
     return (
-        <Core.Card w840 border>
+        <Core.Card className={'p-5'} w840 border>
             <ToastContainer></ToastContainer>
             <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Change Password</h5>
             <form onSubmit={formik.handleSubmit}>

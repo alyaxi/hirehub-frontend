@@ -97,7 +97,7 @@ function PopupModal({ setIsModalOpen,
                 {/* type -    {type}
                 <br />
                 action - {action} */}
-                {type === "personalInformations" && <Forms.PersonalInformation handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}
+                {type === "personalInformations" && <Forms.PersonalInformations handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}
                 {type === "projects" && <Forms.Projects handleCancel={handleCancel} action={action} setProjectsData={setProjectsData} />}
                 {type === "experiences" && <Forms.Experiences handleCancel={handleCancel} action={action} setExperiencesData={setExperiencesData} />}
                 {type === "educations" && <Forms.Educations handleCancel={handleCancel} action={action} setEducationsData={setEducationsData} />}

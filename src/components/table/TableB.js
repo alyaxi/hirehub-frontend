@@ -30,6 +30,7 @@ function TableB({
     setExpirationDate,
     setProduct,
     addQuestion,
+    addButton
 }) {
     const newColumn = columns.map((value, index) => {
         let columnSorter;
@@ -97,6 +98,12 @@ function TableB({
                         </div>
                     )
                 }
+                else if (value.dataIndex === "positionTitle") {
+                    return <span className='whitespace-nowrap font-medium'>{val}</span>;
+                }
+                else if (value.dataIndex === "salary") {
+                    return <span>${val}</span>;
+                }
                 else if (value.dataIndex === "action") {
                     return (
                         <Flex gap="small">
@@ -131,9 +138,6 @@ function TableB({
                             }
                         </Flex>
                     )
-                }
-                else if (value.dataIndex === "positionTitle") {
-                    return <span className='whitespace-nowrap font-medium'>{val}</span>;
                 }
                 else {
                     return <span className='text-gray-6'>{val}</span>;
@@ -198,7 +202,7 @@ function TableB({
                             {!filterBy.includes("SearchByProduct") &&
                                 <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>
                             }
-                            <div className='flex justify-end items-center gap-1 w-full'>
+                            <div className={`flex ${addButton ? '' : 'justify-end'} items-center gap-1 w-full`}>
                                 {filterBy?.map(value => {
                                     const onInputChange = (e) => {
                                         if (value === 'SearchByName') {
@@ -274,7 +278,7 @@ function TableB({
                                     if (value === "SearchByProduct") {
                                         return (
                                             <>
-                                           
+
                                                 <Core.SearchInput onInputChange={onInputChange} />
                                                 <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button>
                                             </>
@@ -301,6 +305,9 @@ function TableB({
                                     <Core.Button sm type="narrow" color="white" icon="Cross" onClick={resetFilters}>Reset</Core.Button>
                                 </div> : null}
                             </div>
+                            {addButton &&
+                                <Core.Button sm type="narrow" onClick={addButton?.func} className={"ml-3"}>{addButton?.title}</Core.Button>
+                            }
                         </div>
                         <div className="overflow-hidden">
                             <Table

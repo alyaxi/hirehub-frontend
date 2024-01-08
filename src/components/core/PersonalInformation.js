@@ -17,10 +17,10 @@ function PersonalInformation({ data, buttons, card }) {
             {card ?
                 <>
                     <Core.PopupModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} editPersonalInformation />
-                    <Core.Card className={"border"}>
+                    <Core.Card className={"p-5 border"}>
                         < div className='flex justify-between items-start' >
-                            <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>PersonalInformation</h5>
-                            <Core.ProficienciesActions buttons={buttons} type="personalInformations"/>
+                            <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Personal Information</h5>
+                            <Core.ProficienciesActions buttons={buttons} type="personalInformations" />
                         </div>
                         <div className='flex justify-start items-end pt-3'>
                             <div className='flex flex-col justify-center items-center w-[22%] pr-8'>

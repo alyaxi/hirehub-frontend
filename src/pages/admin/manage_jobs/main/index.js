@@ -15,9 +15,9 @@ const columns = [
         dataIndex: 'positionTitle',
         sorter: true,
     }, {
-        title: 'Applicant Counts',
-        key: 'applicantCounts',
-        dataIndex: 'applicantCounts',
+        title: 'Employer',
+        key: 'employer',
+        dataIndex: 'employer',
     }, {
         title: 'No. Of Openings',
         key: 'noOfOpenings',
@@ -49,7 +49,7 @@ const jobs = [
     {
         id: "1",
         positionTitle: "UX/UI Designer",
-        applicantCounts: "200",
+        employer: "Marriott International",
         noOfOpenings: "01",
         expirationDate: "10/19/24",
         salary: "20,000",
@@ -58,7 +58,7 @@ const jobs = [
     {
         id: "2",
         positionTitle: "Assistant Project Manager",
-        applicantCounts: "200",
+        employer: "Procter & Gamble",
         noOfOpenings: "05",
         expirationDate: "10/19/24",
         salary: "1000 ",
@@ -67,7 +67,7 @@ const jobs = [
     {
         id: "3 ",
         positionTitle: "Senior Full stack developer - React js",
-        applicantCounts: "200",
+        employer: "CVS Corporation",
         noOfOpenings: "07",
         expirationDate: "10/19/24",
         salary: "12,000",
@@ -76,7 +76,7 @@ const jobs = [
     {
         id: "4",
         positionTitle: "Mobile Application Developer (Fresh)",
-        applicantCounts: "200",
+        employer: "Berkshire Hathaway",
         noOfOpenings: "03",
         expirationDate: "10/19/24",
         salary: "6500",
@@ -85,7 +85,7 @@ const jobs = [
     {
         id: "5",
         positionTitle: "Application Developers",
-        applicantCounts: "200",
+        employer: "American Express",
         noOfOpenings: "01",
         expirationDate: "10/19/24",
         salary: "20,000",
@@ -94,7 +94,7 @@ const jobs = [
     {
         id: "6",
         positionTitle: "Software Engineer",
-        applicantCounts: "200",
+        employer: "General Electric",
         noOfOpenings: "01",
         expirationDate: "10/19/24",
         salary: "1000 ",
@@ -104,7 +104,6 @@ const jobs = [
 ];
 const actions = {
     view: true,
-    edit: true,
 };
 
 const breadcrumb = [
@@ -120,13 +119,7 @@ function MainJobs() {
     const navigate = useNavigate();
 
     const onViewClick = (id) => {
-        navigate(`/employer/manage-jobs/view/${id}`);
-    };
-    const onEditClick = (id) => {
-        navigate(`/employer/manage-jobs/edit/${id}`);
-    };
-    const addButton = () => {
-        console.log("addButton");
+        navigate(`/admin/manage-jobs/view/${id}`);
     };
 
     console.log("jobStatus", jobStatus);
@@ -142,8 +135,8 @@ function MainJobs() {
                 data={jobs}
                 columns={columns}
                 filterBy={[
-                    "SearchByJobTitle",
                     "SearchByJobStatus",
+                    "SearchByJobTitle",
                     "SearchByExpirationDate",
                 ]}
                 setJobStatus={setJobStatus}
@@ -152,11 +145,6 @@ function MainJobs() {
                 setExpirationDate={setExpirationDate}
                 actions={actions}
                 onViewClick={onViewClick}
-                onEditClick={onEditClick}
-                addButton={{
-                    title: "Add Job",
-                    func: addButton,
-                }}
             />
         </>
     );

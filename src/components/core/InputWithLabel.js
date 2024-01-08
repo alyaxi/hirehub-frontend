@@ -93,7 +93,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "SearchByJobStatus":
                 return "Search By Job Status";
             case "SearchByJobTitle":
-                return "Search By Job Title";
+                // return "Search By Job Title";
+                return "Job Title";
             case "YourCompanysName":
                 return "Handmade";
             case "YourPhoneNumber":
@@ -203,7 +204,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 }
                 <input
                     type={name === "password" || name === "newPassword" || name === "confirmPassword" || name === "oldPassword" ? inputType : type(name)}
-                    className={`w-full text-[14px] font-regular leading-[20px] text-gray-700 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? 'py-[9px]' : 'py-[14px]'} ${className} ${name === "SearchProduct" && "pl-10"}`}
+                    className={`w-full text-[14px] font-regular leading-[20px] text-gray-6 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? (name === "calender" ? 'py-[8px]' : 'py-[9px]') : 'py-[14px]'} ${className} ${name === "SearchProduct" && "pl-10"}`}
                     id={name}
                     name={name}
                     // value={value}
