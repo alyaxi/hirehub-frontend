@@ -1,0 +1,287 @@
+{
+    "statsData": [
+      {
+        "title": "Approved Employers",
+        "count": "20",
+        "iconName": "People",
+        "link": "/admin/approved-employers"
+      },
+      {
+        "title": "Employer’s Request",
+        "count": "50",
+        "iconName": "Users",
+        "link": "/admin/employers-request"
+      },
+      {
+        "title": "Rejected Employers",
+        "count": "10",
+        "iconName": "ProfileDelete",
+        "link": "/admin/rejected-employers"
+      }
+    ],
+    "tableData": [
+        {
+            "id": "1",
+            "name": {
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToonwNT4zbwCyq-k-qAzXexPn6URz3gT4BxQ&usqp=CAU",
+                "name": "Handmade Pouch"
+            },
+            "payment": "paid",
+            "nextPayment": "10/19/25 5:45am",
+            "plans": "Silver Plan",
+            "account": "active",
+            "companyName": {
+               "img": "data:image/png;base64,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",
+               "name": "Tesla"
+           },
+           "email": "email@email.com",
+            "accountStatus": "approved",
+             "status": "Manufacturing  |  Cincinnati, Ohio  "   ,
+             "overview": [
+            "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers.",
+            "There is no single equation for success at P&G, because no two P&G people or careers are alike. Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+            "Here, we want you to get your career off to a fast start. That's why we don't have any rotational development programs or gradual ramping-up periods: you’ll be able—and encouraged—to dive right in from Day 1. Join us and help make life better through meaningful work that makes an impact from Day 1."
+        ],
+        "videos": [""],
+        "stats": [
+            { "title": "Status", "value": "Active" }
+        ]    
+        },
+        {
+            "id": "2",
+            "name": {
+                "img": "data:image/png;base64,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",
+                "name": "Handmade Pouch"
+            },
+            "payment": "unpaid",
+            "nextPayment": "10/19/25 5:45am",
+            "plans": "Browns Plan",
+            "account": "Deactive",
+             "companyName": {
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHSOv6n-3J8Z1Ucq3OgTkmY4D4dN0CKW-5Q&usqp=CAU",
+                "name": "Company"
+            },
+            "email": "email@email.com",
+            "accountStatus": "approved",
+             "status": "Manufacturing  |  Followers 7,611,760   |  Employees 85,464"   ,
+             "overview": [
+            "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers.",
+            "There is no single equation for success at P&G, because no two P&G people or careers are alike. Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+            "Here, we want you to get your career off to a fast start. That's why we don't have any rotational development programs or gradual ramping-up periods: you’ll be able—and encouraged—to dive right in from Day 1. Join us and help make life better through meaningful work that makes an impact from Day 1."
+        ],
+        "videos": [""],
+        "stats": [
+            { "title": "Company size", "value": "85,464 employees " },
+            { "title": "Followers", "value": "7,611,760 followers " },
+            { "title": "Status", "value": "Activated" },
+            { "title": "Hired candidate", "value": "23" },
+            { "title": "Published jobs count", "value": "78" },
+            { "title": "Language", "value": "English" },
+            { "title": "Website link", "value": "www.us.pg.com" }
+        ]    
+        },
+        {
+            "id": "3",
+            "name": {
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVxgtFjAjqizPQJt-9hzo8Q8e4MDJeLcLByQ&usqp=CAU",
+                "name": "Brand Crowd"
+            },
+            "payment": "paid",
+            "nextPayment": "10/19/25 5:45am",
+            "plans": "Platinum Plan",
+            "account": "hold",
+             "companyName": {
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI_ixRv22hndQ6G5E0FjBQ0ElKl_iaDht_WA&usqp=CAU",
+                "name": "Triangle"
+            },
+            "email": "email@email.com",
+            "accountStatus": "rejected",
+             "status": "Manufacturing  |  Cincinnati, Ohio  | Followers 7,611,760   |  Employees 85,464"   ,
+             "overview": [
+            "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers.",
+            "There is no single equation for success at P&G, because no two P&G people or careers are alike. Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+            "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers.",
+            "There is no single equation for success at P&G, because no two P&G people or careers are alike. Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+            "Here, we want you to get your career off to a fast start. That's why we don't have any rotational development programs or gradual ramping-up periods: you’ll be able—and encouraged—to dive right in from Day 1. Join us and help make life better through meaningful work that makes an impact from Day 1."
+        ],
+        "videos": [""],
+        "stats": [
+            { "title": "Company size", "value": "85,464 employees " },
+            { "title": "Followers", "value": "7,611,760 followers " },
+            { "title": "Status", "value": "Activated" },
+            { "title": "Hired candidate", "value": "23" },
+            { "title": "Published jobs count", "value": "78" },
+            { "title": "Language", "value": "English" },
+            { "title": "Website link", "value": "www.us.pg.com" }
+        ]    
+        },
+        {
+            "id": "4",
+            "name": {
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCT_KDXv57pbWpD0VnUKVm1FxG6i7MM-ZkO82fN5OHFvbez9dB55nk206kq1YIOYjvX50&usqp=CAU",
+                "name": "Handmade Pouch"
+            },
+            "payment": "paid",
+            "nextPayment": "10/19/25 5:45am",
+            "plans": "Silver Plan",
+            "account": "active",
+             "companyName": {
+                "img": "https://www.shutterstock.com/image-vector/abstract-vector-logo-260nw-529599505.jpg",
+                "name": "M Company"
+            },
+            "email": "email@email.com",
+            "accountStatus": "rejected",
+             "status": "  Cincinnati, Ohio  | Followers 7,611,760   |  Employees 85,464"   ,
+             "overview": [
+            "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers.",
+            "There is no single equation for success at P&G, because no two P&G people or careers are alike. Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+            "Here, we want you to get your career off to a fast start. That's why we don't have any rotational development programs or gradual ramping-up periods: you’ll be able—and encouraged—to dive right in from Day 1. Join us and help make life better through meaningful work that makes an impact from Day 1.",
+            "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers."
+        ],
+        "videos": [""],
+        "stats": [
+            { "title": "Company size", "value": "5,464 employees " },
+            { "title": "Followers", "value": "7,11,760 followers " },
+            { "title": "Status", "value": "Deactivated" },
+            { "title": "Hired candidate", "value": "13" },
+            { "title": "Published jobs count", "value": "48" },
+            { "title": "Language", "value": "Urdu" },
+            { "title": "Website link", "value": "www.abc.com" }
+        ]    
+        },
+        {
+            "id": "5",
+            "name": {
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuUlegXt64tz7DiUNjY63Xo5QLrvQCGbLGanNO13y11xnWpva144YTUahgrC0wD5Juk6U&usqp=CAU",
+                "name": "Handmade Pouch"
+            },
+            "payment": "unpaid",
+            "nextPayment": "10/19/25 5:45am",
+            "plans": "Browns Plan",
+            "account": "Deactive",
+             "companyName": {
+                "img": "https://static1.bigstockphoto.com/9/1/2/large2/219721819.jpg",
+                "name": "Awesome"
+            },
+            "email": "xyz@xyz.com",
+            "accountStatus": "pending",
+             "status": "Manufacturing  |  Cincinnati, Ohio  | Followers 7,611,760   |  Employees 85,464"   ,
+             "overview": [
+            "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers.",
+            "There is no single equation for success at P&G, because no two P&G people or careers are alike. Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+            "Here, we want you to get your career off to a fast start. That's why we don't have any rotational development programs or gradual ramping-up periods: you’ll be able—and encouraged—to dive right in from Day 1. Join us and help make life better through meaningful work that makes an impact from Day 1."
+        ],
+        "videos": [""],
+        "stats": [
+            { "title": "Company size", "value": "85,464 employees " },
+            { "title": "Followers", "value": "7,611,760 followers " },
+            { "title": "Status", "value": "Activated" },
+            { "title": "Hired candidate", "value": "23" },
+            { "title": "Published jobs count", "value": "78" },
+            { "title": "Language", "value": "English" },
+            { "title": "Website link", "value": "www.us.pg.com" }
+        ]    
+        },
+        {
+            "id": "6",
+            "name": {
+                "img": "https://i0.wp.com/wallpaperaccess.com/full/2492014.jpg",
+                "name": "Handmade Pouch"
+            },
+            "payment": "paid",
+            "nextPayment": "10/19/25 5:45am",
+            "plans": "Platinum Plan",
+            "account": "hold",
+             "companyName": {
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQjnwBn6W3NHS9drWqvHTLDWsMjWxfZuCSFw&usqp=CAU",
+                "name": "Slogan"
+            },
+            "email": "email@email.com",
+            "accountStatus": "rejected",
+             "status": "Manufacturing  |  Cincinnati, Ohio  | Followers 7,611,760   |  Employees 85,464"   ,
+             "overview": [
+            "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers.",
+            "There is no single equation for success at P&G, because no two P&G people or careers are alike. Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+            "Here, we want you to get your career off to a fast start. That's why we don't have any rotational development programs or gradual ramping-up periods: you’ll be able—and encouraged—to dive right in from Day 1. Join us and help make life better through meaningful work that makes an impact from Day 1."
+        ],
+        "videos": [""],
+        "stats": [
+            { "title": "Company size", "value": "85,464 employees " },
+            { "title": "Followers", "value": "7,611,760 followers " },
+            { "title": "Status", "value": "Activated" },
+            { "title": "Hired candidate", "value": "23" },
+            { "title": "Published jobs count", "value": "78" },
+            { "title": "Language", "value": "English" },
+            { "title": "Website link", "value": "www.us.pg.com" }
+        ]    
+        },
+        {
+            "id": "7",
+            "name": {
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToonwNT4zbwCyq-k-qAzXexPn6URz3gT4BxQ&usqp=CAU",
+                "name": "Handmade Pouch"
+            },
+            "payment": "paid",
+            "nextPayment": "10/19/25 5:45am",
+            "plans": "Silver Plan",
+            "account": "active",
+             "companyName": {
+                "img": "https://www.shutterstock.com/image-vector/letter-p-v-square-design-260nw-1704524062.jpg",
+                "name": "Square"
+            },
+            "email": "abc@abc.com",
+            "accountStatus": "pending",
+             "status": "Manufacturing  |  Cincinnati, Ohio  | Followers 7,611,760   |  Employees 85,464"   ,
+             "overview": [
+            "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers.",
+            "There is no single equation for success at P&G, because no two P&G people or careers are alike. Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+            "Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+            "Here, we want you to get your career off to a fast start. That's why we don't have any rotational development programs or gradual ramping-up periods: you’ll be able—and encouraged—to dive right in from Day 1. Join us and help make life better through meaningful work that makes an impact from Day 1."
+        ],
+        "videos": [""],
+        "stats": [
+            { "title": "Company size", "value": "85,464 employees " },
+            { "title": "Followers", "value": "7,611,760 followers " },
+            { "title": "Status", "value": "Activated" },
+            { "title": "Hired candidate", "value": "23" },
+            { "title": "Published jobs count", "value": "78" },
+            { "title": "Language", "value": "English" },
+            { "title": "Website link", "value": "www.us.pg.com" }
+        ]    
+        },
+        {
+            "id": "8",
+            "name": {
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToonwNT4zbwCyq-k-qAzXexPn6URz3gT4BxQ&usqp=CAU",
+                "name": "Handmade Pouch"
+            },
+            "payment": "paid",
+            "nextPayment": "10/19/25 5:45am",
+            "plans": "Silver Plan",
+            "account": "active",
+             "companyName": {
+                "img": "https://www.shutterstock.com/image-vector/letter-p-v-square-design-260nw-1704524062.jpg",
+                "name": "Square"
+            },
+            "email": "email@email.com",
+            "accountStatus": "approved",
+             "status": "Manufacturing  |  Cincinnati, Ohio  | Followers 7,611,760   |  Employees 85,464",
+             "overview": [
+                "The design, development, growth and success of these products—and many more—is thanks to the innovative and insightful minds of our people. From Day 1, you’ll help make everyday life easier for our 5 billion consumers.",
+                "There is no single equation for success at P&G, because no two P&G people or careers are alike. Just as we strive to deliver a superior consumer experience, we aim to deliver a superior employee value equation as well. With our large global footprint, there are many opportunities to work with P&G in multiple locations. We offer opportunities in approximately 70 countries and continually aim to attract, reward and advance the finest people in the world.",
+                "Here, we want you to get your career off to a fast start. That's why we don't have any rotational development programs or gradual ramping-up periods: you’ll be able—and encouraged—to dive right in from Day 1. Join us and help make life better through meaningful work that makes an impact from Day 1."
+            ],
+            "videos": [""],
+            "stats": [
+                { "title": "Company size", "value": "85,464 employees " },
+                { "title": "Followers", "value": "7,611,760 followers " },
+                { "title": "Status", "value": "Activated" },
+                { "title": "Hired candidate", "value": "23" },
+                { "title": "Published jobs count", "value": "78" },
+                { "title": "Language", "value": "English" },
+                { "title": "Website link", "value": "www.us.pg.com" }
+            ] 
+        }
+    ]
+  }
+  

@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components; 
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    /* background: rgb(241, 241, 241); */
+}
+
+.scrollbar:hover::-webkit-scrollbar-thumb {
+    /* background: #9c9afc; */
+    background: #9c9afc49;
+    border-radius: 100vh 0 0 100vh;
+}
+
+.scrollbar::-webkit-scrollbar {
+
+    width: 5px;
+    height: 5px;
+}
+
+.scrollbar:hover::-webkit-scrollbar {
+
+    width: 5px;
+    height: 5px;
+}
+
+.ant-pagination .ant-pagination-item a,
+.ant-pagination .ant-pagination-next .ant-pagination-item-link {
+    width: 32px;
+    height: 32px;
+    color: #8913FF;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+    color: #fff;
+}
+
+.ant-pagination .ant-pagination-item,
+.ant-pagination .ant-pagination-next,
+.ant-pagination .ant-pagination-prev {
+    background-color: #F3EFF6;
+    border: none;
+}
+
+.ant-pagination .ant-pagination-item-active {
+    background-color: #8913FF;
+}
+.ant-pagination .ant-pagination-options {
+    display: none;
+}
