@@ -1,91 +1,61 @@
-import React, { useState, useEffect } from 'react';
+// Form3.js
+import React, { useEffect, useState } from 'react';
 import { Core } from '..';
+import MultiSelectInput from '../core/MultiSelectInput';
 
-const minimumOptions = [
-    { name: "10", value: "10" },
-    { name: "20", value: "20" },
-    { name: "30", value: "30" },
-    { name: "50", value: "50" },
-    { name: "100", value: "100" },
-    { name: "200", value: "200" },
-];
-const maximumOptions = [
-    { name: "20", value: "20" },
-    { name: "30", value: "30" },
-    { name: "50", value: "50" },
-    { name: "100", value: "100" },
-    { name: "200", value: "200" },
-    { name: "300", value: "300" },
-];
-const rateOptions = [
-    { name: "USD/hour", value: "USD/hour" },
-    { name: "EUR/hour", value: "EUR/hour" },
-    { name: "GBP/hour", value: "GBP/hour" },
-    { name: "AUD/hour", value: "AUD/hour" },
-    { name: "CAD/hour", value: "CAD/hour" },
-    { name: "INR/hour", value: "INR/hour" },
-    { name: "JPY/hour", value: "JPY/hour" },
-    { name: "CNY/hour", value: "CNY/hour" },
-    { name: "CHF/hour", value: "CHF/hour" },
-    { name: "SEK/hour", value: "SEK/hour" },
+const options = [
+    { label: 'i14', value: 'i14' },
+    { label: 'i15', value: 'i15' },
+    { label: 'i16', value: 'i16' },
+    { label: 'i18', value: 'i18' },
 ];
 
-function Form3({ handleSalaryChange }) {
-    const [selectedMinimum, setSelectedMinimum] = useState("");
-    const [selectedMaximum, setSelectedMaximum] = useState("");
-    const [selectedRate, setSelectedRate] = useState("");
-
-    const handleChange = (name, value) => {
-        switch (name) {
-            case "minimum":
-                setSelectedMinimum(value);
-                break;
-            case "maximum":
-                setSelectedMaximum(value);
-                break;
-            case "rate":
-                setSelectedRate(value);
-                break;
-            default:
-                break;
-        }
-    };
+function Form3({
+    multiSelectHandle,
+    handlePosition,
+    handleResponsibilities,
+    handleQualification,
+    handleSkills,
+}) {
+    const [responsibilities, setResponsibilities] = useState('');
+    const [qualification, setQualification] = useState('');
+    const [skills, setSkills] = useState('');
 
     useEffect(() => {
-        if (selectedMinimum && selectedMaximum && selectedRate) {
-            handleSalaryChange(selectedMinimum, selectedMaximum, selectedRate);
-        }
-    }, [selectedMinimum, selectedMaximum, selectedRate]);
+        handleResponsibilities(responsibilities)
+    }, [responsibilities,]);
+
+    useEffect(() => {
+        handleQualification(qualification)
+    }, [qualification]);
+
+    useEffect(() => {
+        handleSkills(skills)
+    }, [skills]);
 
     return (
         <Core.Card className={'p-5'} w840 border>
-            <div className="flex justify-between items-end gap-x-3 mb-4">
-                <div className='w-full'>
-                    <Core.SelectWithLabel
-                        name={"minimum"}
-                        label
-                        options={minimumOptions}
-                        onChange={(e) => handleChange("minimum", e.target.value)}
-                    />
-                </div>
-                <span className='pb-2'>to</span>
-                <div className='w-full'>
-                    <Core.SelectWithLabel
-                        name={"maximum"}
-                        label
-                        options={maximumOptions}
-                        onChange={(e) => handleChange("maximum", e.target.value)}
-                    />
-                </div>
-                <span></span>
-                <div className='w-full'>
-                    <Core.SelectWithLabel
-                        name={"rate"}
-                        label
-                        options={rateOptions}
-                        onChange={(e) => handleChange("rate", e.target.value)}
-                    />
-                </div>
+            <div className="mb-4">
+                <MultiSelectInput name={'benefits'} label options={options} onChange={multiSelectHandle} />
+            </div>
+            <div className="mb-4">
+                <label className={`flex justify-start text-[16px] font-semibold text-gray-2 tracking-wide capitalize mb-2`}>
+                    Job Description:
+                </label>
+                <Core.TextAreaWithLabel
+                    name="position"
+                    label
+                    onChange={handlePosition}
+                />
+            </div>
+            <div className="mb-4">
+                <Core.TextEditorWithLabel name={'responsibilities'} label value={responsibilities} setValue={setResponsibilities} />
+            </div>
+            <div className="mb-4">
+                <Core.TextEditorWithLabel name={'qualification'} label value={qualification} setValue={setQualification} />
+            </div>
+            <div className="mb-4">
+                <Core.TextEditorWithLabel name={'skills'} label value={skills} setValue={setSkills} />
             </div>
         </Core.Card>
     );

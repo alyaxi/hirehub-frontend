@@ -22,6 +22,7 @@ import SearchInput from "./SearchInput";
 import Summary from "./Summary";
 import Skills from "./Skills";
 import TextAreaWithLabel from "./TextAreaWithLabel";
+import TextEditorWithLabel from "./TextEditorWithLabel";
 import UploadFile from "./UploadFile";
 import UploadAvatar from "./UploadAvatar";
 import ViewProfile from "./ViewProfile";
@@ -52,6 +53,7 @@ export {
     Summary,
     Skills,
     TextAreaWithLabel,
+    TextEditorWithLabel,
     UploadFile,
     UploadAvatar,
     ViewProfile,

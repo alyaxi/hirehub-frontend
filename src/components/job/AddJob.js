@@ -11,18 +11,23 @@ function AddJob() {
     const [job, setJob] = useState(
         {
             id: "",
-            positionTitle: "",
-            noOfOpenings: "",
+            aboutPosition: "",
+            benefits: "",
+            company: {},
             expirationDate: "",
+            jobStatus: "",
+            jobType: "",
+            noOfOpenings: "",
+            positionTitle: "",
             salary: {
                 minimum: "",
                 maximum: "",
                 rate: "",
             },
-            jobStatus: "",
-            jobType: "",
-            company: {},
             postedDate: "",
+            qualification: "",
+            responsibilities: "",
+            skills: "",
             salaryRange: "",
             shortSummery: [],
         }
@@ -65,7 +70,6 @@ function AddJob() {
     };
 
     const handleSalaryChange = (min, max, rate) => {
-        console.log("handleSalaryChange", handleSalaryChange)
         setJob(prevJob => ({
             ...prevJob,
             salary: {
@@ -74,6 +78,47 @@ function AddJob() {
                 rate: rate,
             },
         }));
+    };
+
+
+
+
+    const multiSelectHandle = (_benefits) => {
+        setJob(prevJob => ({
+            ...prevJob,
+            benefits: _benefits,
+        }));
+    };
+
+    const handlePosition = (_aboutPosition) => {
+        setJob(prevJob => ({
+            ...prevJob,
+            aboutPosition: _aboutPosition.target.value,
+        }));
+    };
+
+    const handleResponsibilities = (_responsibilities) => { 
+        // console.log("_responsibilities", _responsibilities)
+        setJob(prevJob => ({
+                ...prevJob,
+                responsibilities: _responsibilities,
+            }));
+    };
+
+    const handleQualification = (_qualification) => {
+        // console.log("_qualification", _qualification)
+        setJob(prevJob => ({
+                ...prevJob,
+                qualification: _qualification,
+            }));
+    };
+
+    const handleSkills = (_skills) => {
+        // console.log("_skills", _skills)
+        setJob(prevJob => ({
+                ...prevJob,
+                skills: _skills,
+            }));
     };
 
 
@@ -99,7 +144,11 @@ function AddJob() {
 
             {step === 3 &&
                 <Form3
-                //    handleSalaryChange={handleSalaryChange}
+                    multiSelectHandle={multiSelectHandle}
+                    handlePosition={handlePosition}
+                    handleResponsibilities={handleResponsibilities}
+                    handleQualification={handleQualification}
+                    handleSkills={handleSkills}
                 />
             }
 

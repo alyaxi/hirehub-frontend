@@ -264,7 +264,7 @@ function MobileInputs({ onChange, label, name, forgotPassword, required, helperT
             <div className="flex justify-between items-center">
                 {label &&
                     <label htmlFor={'mobile'} className={`
-                    flex justify-start text-[14px] font-medium text-gray-2 tracking-wide ${helperText ? 'mb-1' : 'mb-2'} capitalize
+                    flex justify-start text-[14px] font-medium text-gray-2 tracking-wide ${helperText ? 'mb-1' : 'mb-2'} font-semibold capitalize
                     `}>
                         Mobile{required && <span className='text-[red]'>*</span>}
                         <span className='mt-[2px] ml-[3px]'> {icon && <Icon name={icon} />}</span>

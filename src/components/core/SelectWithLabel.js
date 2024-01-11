@@ -47,8 +47,8 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
     return (
         <>
             {label && <label htmlFor={name} className={`
-                block text-[14px] font-medium text-gray-2 tracking-wide ${helperText ? 'mb-1.5' : 'mb-2'} capitalize`}>
-                {_label(name)}{required && <span className='text-[red]'>*</span>}
+                block text-[14px] text-gray-2 tracking-wide ${helperText ? 'mb-1.5' : 'mb-2'} font-semibold capitalize`}>
+                {_label(name)}: {required && <span className='text-[red]'>*</span>}
             </label>}
             {helperText &&
                 <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5'>

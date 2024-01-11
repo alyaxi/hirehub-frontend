@@ -9,6 +9,8 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
         switch (name) {
             case "companyDiscription":
                 return "Company Discription";
+                case "position":
+                    return "The Position";
 
             default:
                 return "Label";
@@ -19,6 +21,8 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
         switch (name) {
             case "companyDiscription":
                 return "Describe here";
+                case "position":
+                    return "Breif about The Position";
 
             default:
                 return "";
@@ -29,7 +33,7 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
             <div className="flex justify-between items-center">
                 {label &&
                     <label htmlFor={name} className={`
-                    block text-[14px] font-medium text-gray-2 tracking-wide ${helperText ? 'mb-1.5' : 'mb-2'} capitalize
+                    block text-[14px] text-gray-2 tracking-wide ${helperText ? 'mb-1.5' : 'mb-2'} font-semibold capitalize
                     `}>
                         {_label(name)}{required && <span className='text-[red]'>*</span>}
                     </label>
