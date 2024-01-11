@@ -1,4 +1,5 @@
 
+
 import { Icons } from '../../components';
 import Icon from '../icon';
 import logo from "../../assets/images/logo/logo.png"
@@ -8,13 +9,20 @@ import { logout } from '../../Slices/Auth/authSlice';
 
 const NavItem = ({ value, slug }) => {
     const pathParts = slug.split('/');
-    const _slug = pathParts[pathParts.length - 1];
+    // const _slug = pathParts[pathParts.length - 1];
+    // console.log("pathParts",pathParts)
+    // console.log("value.path",value.path)
 
+    // if (value?.path && pathParts.includes(value.path)) {
+    //     console.log(`${value.path} is included in pathParts`);
+    // }else {
+    //     console.log("no-----------------")
+    // }
     return (
         <li className='pb-2'>
             <NavLink
                 to={value?.path}
-                className={`flex justify-start items-center gap-x-2  ${value?.path === _slug ? "text-white bg-gradient-to-r from-purple-4 to-purple-3" : "text-gray-6"} hover:text-white text-[14px] hover:bg-gradient-to-r hover:from-purple-4 hover:to-purple-3 transition-all rounded-[8px] px-3 py-[10px]`}
+                className={`flex justify-start items-center gap-x-2  ${value?.path && pathParts.includes(value.path) ? "text-white bg-gradient-to-r from-purple-4 to-purple-3" : "text-gray-6"} hover:text-white text-[14px] hover:bg-gradient-to-r hover:from-purple-4 hover:to-purple-3 transition-all rounded-[8px] px-3 py-[10px]`}
             >
                 <span className='text-[18px]'>{value?.icon}</span>
                 <span className='leading-[19px]'>{value?.name}</span>
@@ -48,10 +56,9 @@ function Sidebar({ isSidebarOpen, toggleSidebar, menu }) {
                     </span>
                 </div>
                 <ul className="max-h-[610px] overflow-y-scroll scrollbar p-4">
-                    {menu && menu?.map((value) => {
-                        // console.log(value, "valueeeeeeeeeeeeeee")
+                    {menu && menu?.map((value, index) => {
                         return (
-                            <NavItem key={value * 2} value={value} slug={location?.pathname} />
+                            <NavItem key={value?.path + index} value={value} slug={location?.pathname} />
                         )
                     })}
                 </ul>

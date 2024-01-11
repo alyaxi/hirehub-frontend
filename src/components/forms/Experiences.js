@@ -181,7 +181,7 @@ function Experiences({ action, handleCancel }) {
                             <div className='w-full'>
                                 <Core.SelectWithLabel
                                     name={"noOfPeople"}
-                                    label="noOfPeople"
+                                    label
                                     options={noOfPeopleOptions}
                                     defaultOption="How many people"
                                     onChange={(value) => handleChange("noOfPeople", value)}

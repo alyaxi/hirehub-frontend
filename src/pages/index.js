@@ -29,6 +29,7 @@ import ViewCandidates from "./admin/manage_candidates/view";
 import EditCandidates from "./admin/manage_candidates/edit";
 
 import MainJobsAdmin from "./admin/manage_jobs/main";
+import AddJobsAdmin from "./admin/manage_jobs/add";
 import ViewJobsAdmin from "./admin/manage_jobs/view";
 import EditJobsAdmin from "./admin/manage_jobs/edit";
 
@@ -89,6 +90,7 @@ export {
     ViewCandidates,
 
     MainJobsAdmin,
+    AddJobsAdmin,
     EditJobsAdmin,
     ViewJobsAdmin,
 

@@ -60,7 +60,8 @@ function ChangePasswordForm() {
                 <div className="mb-4">
                     <Core.InputWithLabel
                         name="oldPassword"
-                        label="Old Password"
+                        // label="Old Password"
+                        label
                         value={formik.values.oldPassword}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -71,7 +72,8 @@ function ChangePasswordForm() {
                 <div className="mb-4">
                     <Core.InputWithLabel
                         name="newPassword"
-                        label="New Password"
+                        // label="New Password"
+                        label 
                         value={formik.values.newPassword}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -82,7 +84,8 @@ function ChangePasswordForm() {
                 <div className="mb-4">
                     <Core.InputWithLabel
                         name="confirmPassword"
-                        label="Confirm Password"
+                        // label="Confirm Password"
+                        label
                         value={formik.values.confirmPassword}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}

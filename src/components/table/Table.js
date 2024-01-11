@@ -106,7 +106,7 @@ function Table({
                                                     {/* <th scope="col" className="py-3 px-4 pe-0">
                                                     <div className="flex items-center h-5">
                                                         <input id=" hs-table-pagination-checkbox-all" type="checkbox" className="border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" />
-                                                        <label for="hs-table-pagination-checkbox-all" className="sr-only">Checkbox</label>
+                                                        <label htmlFor="hs-table-pagination-checkbox-all" className="sr-only">Checkbox</label>
                                                     </div>
                                                 </th> */}
                                                     <th scope="col" className="text-black-2 text-[13px] leading-[19px] font-semibold px-5 py-3">
@@ -124,7 +124,7 @@ function Table({
                                     {/* <td className="py-3 ps-4">
                                             <div className="flex items-center h-5">
                                                 <input id="hs-table-pagination-checkbox-1" type="checkbox" className="border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" />
-                                                <label for="hs-table-pagination-checkbox-1" className="sr-only">Checkbox</label>
+                                                <label htmlFor="hs-table-pagination-checkbox-1" className="sr-only">Checkbox</label>
                                             </div>
                                         </td> */}
                                     {data.map(row => (

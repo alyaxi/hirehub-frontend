@@ -69,7 +69,8 @@ function PersonalInformations({ action, handleCancel }) {
                                     {...field}
                                     sm
                                     name="name"
-                                    label="Name"
+                                    // label="Name"
+                                    label
                                     placeholder="Enter your name"
                                 />
                             )}
@@ -83,7 +84,8 @@ function PersonalInformations({ action, handleCancel }) {
                                     {...field}
                                     sm
                                     name="lastName"
-                                    label="LastName"
+                                    // label="LastName"
+                                    label
                                     placeholder="Enter your last name"
                                 />
                             )}
@@ -97,7 +99,8 @@ function PersonalInformations({ action, handleCancel }) {
                                     {...field}
                                     sm
                                     name="email"
-                                    label="email"
+                                    // label="email"
+                                    label
                                     helperText={'Only provided to employers you apply or respond to'}
                                     icon="Lock1"
                                     required
@@ -167,8 +170,6 @@ function PersonalInformations({ action, handleCancel }) {
                         />
                     </div>
 
-
-
                     <div className='mb-4'>
                         <Field name="zip">
                             {({ field }) => (
@@ -176,7 +177,8 @@ function PersonalInformations({ action, handleCancel }) {
                                     {...field}
                                     sm
                                     name="zip"
-                                    label="zip"
+                                    // label="zip"
+                                    label
                                 />
                             )}
                         </Field>

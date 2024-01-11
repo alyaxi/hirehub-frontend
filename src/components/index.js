@@ -9,7 +9,7 @@ import Table from "./table/Table";
 // ------------ Employer ------------
 import EmployerLayout from "./layout/EmployerLayout";
 import JobDetails from "./job/JobDetails";
-
+import AddJob from "./job/AddJob";
 // ------------ Candidate ------------
 import CandidateLayout from "./layout/CandidateLayout";
 import CandidateProfile from "./profile_view/CandidateProfile";
@@ -34,6 +34,7 @@ export {
     // ------------ Employer ------------
     EmployerLayout,
     JobDetails,
+    AddJob,
     // ------------ Candidate ------------
     CandidateLayout,
     CandidateProfile,

@@ -37,17 +37,17 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
     const handlePrivacyChange = (e) => {
         setResumePrivacySetting(e.target.value);
     };
-    // console.log("extractedData?.name", extractedData?.name)
+    // console.log("extractedData?.positionTitle", extractedData?.positionTitle)
 
-    const firstLetter = extractedData?.name ? extractedData?.name.trim().charAt(0).toUpperCase() : '';
+    const firstLetter = extractedData?.positionTitle ? extractedData?.positionTitle.trim().charAt(0).toUpperCase() : '';
     // console.log("firstLetter", firstLetter)
     return (
-        <Core.Card className={`border pb-[45px] p-0`}>
+        <Core.Card className={`border p-0`}>
             <div className='bg-gray-7 py-[25px] px-[30px]'>
                 <div className='flex justify-end gap-x-4'>
                     {pageType === "view" &&
                         <span className='text-gray-6 text-[16px] leading-[20px] capitalize font-semibold pl-1 py-1'>
-                            Job Status:<span className='text-purple-1'>{extractedData?.status}</span>
+                            Job Status:<span className='text-purple-4'> {extractedData?.jobStatus}</span>
                         </span>
                     }
                     {pageType === "edit" &&
@@ -57,27 +57,27 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
                             </span>
                             <span className="absolute right-3 top-8 ">
                                 <Core.Dropdown2
-                                    selectedState={extractedData?.status}
+                                    selectedState={extractedData?.jobStatus}
                                     status={status}
                                     setState={setStatus}
                                     options={dropdownOptions}
                                     className={"min-w-[160px]"}
-                                    defaultTitle={extractedData?.status}
+                                    defaultTitle={extractedData?.jobStatus}
                                 />
                             </span>
                         </div>
                     }
                 </div>
                 <div className='flex justify-between -mt-3'>
-                    <div className='relative w-[110px]'>
-                        <div className='absolute -top-3 flex justify-center items-center w-[90px] h-[90px] bg-gray-7 overflow-hidden'>
+                    <div className='relative w-[100px]'>
+                        <div className='absolute -top-3 flex justify-center items-center w-[80px] h-[80px] bg-gray-7 overflow-hidden'>
                             {/* <Avatar size={90} src={<img src={extractedData?.candidate?.personalInformation?.avatar} alt="avatar" />}>{firstLetter}</Avatar> */}
                             <Avatar size={80} className='rounded-[10px]' src={<img src={"https://img.freepik.com/free-vector/colorful-company-logo-template-with-tagline_23-2148802643.jpg"} alt="avatar" />}>{firstLetter}</Avatar>
                         </div>
                     </div>
                     <div className='w-full h-full flex justify-between pl-2'>
                         <div>
-                            <h6 className='text-[22px] leading-[2px] capitalize font-semibold mb-2'>{extractedData?.name}</h6>
+                            <h6 className='text-[22px] leading-[2px] capitalize font-semibold mb-2'>{extractedData?.positionTitle}</h6>
                             <a className='text-purple-4 text-[12px] leading-[22px] underline capitalize font-medium mb-2'>{extractedData?.company.title}</a>
                             <p className='text-gray-6 text-[12px] leading-[20px]'>{extractedData?.company.address}</p>
                             <div className='flex justify-start gap-x-6 text-gray-14 text-[12px] leading-[20px] py-1'><span className='flex justify-start items-center gap-x-1'><Icon name="Calender2" size={18} /> {extractedData?.postedDate}</span> <span className='flex justify-start items-center gap-x-1'><Icon name="Currency" /> {extractedData?.salaryRange}</span></div>
@@ -97,7 +97,7 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
 
                 {/* BENEFITS */}
                 <div className='pb-8'>
-                    <h6 className='text-[16px] leading-[28px] font-semibold mb-2'>Benefits</h6>
+                    <h6 className='text-[16px] leading-[22px] font-semibold'>Benefits</h6>
                     <ul className='flex justify-start flex-wrap gap-x-3 text-gray-6 list-disc pl-4 mt-4'>
                         <li className='w-[18%] text-[14px] leading-[18px] mb-3'>Disability insurance</li>
                         <li className='w-[18%] text-[14px] leading-[18px] mb-3'>Health insurance</li>
@@ -111,10 +111,10 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
 
                 {/* <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span> */}
 
-                <h6 className='text-[16px] leading-[28px] font-semibold mb-2'>Job Description</h6>
+                <h6 className='text-[16px] leading-[22px] font-semibold'>Job Description</h6>
                 {/* position */}
                 <div className="pb-4">
-                    <h6 className='text-[14px] leading-[28px] font-semibold mb-2'>The Position</h6>
+                    <h6 className='text-[14px] leading-[24px] font-semibold'>The Position</h6>
                     <p className='text-gray-6 text-[12px] leading-[18.5px]'>
                         The successful UI/UX Designer will work to deliver a complex enterprise-grade Desktop, Web, and Cloud solutions with local and offshore colleagues. As a designer, you're a true expert in your field and a strong advocate for the customer. You're formally trained in design and passionate about customer-centric innovation. You take pride in your work. You obsess over details and iterate on them until you've gotten it right. You see feedback as a good thing. You're a great storyteller who is at ease presenting and comfortable discussing your work with colleagues and stakeholders. You challenge old ways of thinking and put the customer at the center of everything you do. User-Centered Design methodologies are second nature to you.If this sounds like you and you're interested in transforming the legal technology industry, then we want to hear from you.
                     </p>
@@ -122,7 +122,7 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
 
                 {/* Responsibilities */}
                 <div className="pb-4">
-                    <h6 className='text-[14px] leading-[28px] font-semibold mb-2'>Responsibilities</h6>
+                    <h6 className='text-[14px] leading-[24px] font-semibold'>Responsibilities</h6>
                     <ul className='list-disc text-gray-6 pl-4'>
                         <li className='text-[12px] leading-[20px]'>Partner with Product Managers, engineers, researchers, and content strategist to oversee the user experience of a product from conception until launch and beyond.</li>
                         <li className='text-[12px] leading-[20px]'>Develop and design the Personas, User journey, Interaction patterns, Task Flows, process flows, wireframes, and mock-ups to effectively conceptualize and communicate high-level design strategies and detailed interaction models.</li>
@@ -137,7 +137,7 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
 
                 {/* Qualification */}
                 <div className="pb-4">
-                    <h6 className='text-[16px] leading-[28px] font-semibold mb-2'>Qualification</h6>
+                    <h6 className='text-[16px] leading-[22px] font-semibold'>Qualification</h6>
                     <ul className='list-disc text-gray-6 pl-4'>
                         <li className='text-[12px] leading-[20px]'>BS Computer Science or BS Software Engineering</li>
                         <li className='text-[12px] leading-[20px]'>Development Course</li>
@@ -146,7 +146,7 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
 
                 {/* Key Skills */}
                 <div className="pb-4">
-                    <h6 className='text-[16px] leading-[28px] font-semibold mb-2'>Key Skills</h6>
+                    <h6 className='text-[16px] leading-[22px] font-semibold'>Key Skills</h6>
                     <ul className='list-disc text-gray-6 pl-4'>
                         <li className='text-[12px] leading-[20px]'>React Js</li>
                         <li className='text-[12px] leading-[20px]'>Next Js</li>
@@ -157,46 +157,32 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
 
                 {/* Short Summery */}
                 <div className="pb-4">
-                    <h6 className='text-[16px] leading-[28px] font-semibold mb-2'>Short Summery</h6>
-                    <div className='flex justify-start flex-wrap gap-x-6'>
-
-                        <div className='w-[45%]'>
-                            <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Information Technology</span>
-                            </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
+                    <h6 className='text-[16px] leading-[22px] font-semibold'>Short Summery</h6>
+                    <div className='flex justify-between gap-x-6 pt-4'>
+                        <div className='flex justify-start flex-col w-full'>
+                            {extractedData?.shortSummery.slice(0, 7).map((value, index) => {
+                                return (
+                                    <div key={value.title + value?.value + index} className='w-full text-black-2'>
+                                        <div className='flex justify-between'>
+                                            <h6 className='text-[13px] capitalize font-semibold'>{value?.title}:</h6><span className='text-[13px] w-[50%]'>{value?.value}</span>
+                                        </div>
+                                        <span className='block w-full border-gray-7 border-t-[1px] my-2.5'></span>
+                                    </div>
+                                )
+                            })}
                         </div>
-
-                        <div className='w-[45%]'>
-                            <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Package</span>
-                            </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
+                        <div className='flex justify-start flex-col w-full'>
+                            {extractedData?.shortSummery.slice(7).map((value, index) => {
+                                return (
+                                    <div key={value.title + value?.value + index} className='w-full text-black-2'>
+                                        <div className='flex justify-between'>
+                                            <h6 className='text-[13px] capitalize font-semibold'>{value?.title}:</h6><span className='text-[13px] w-[50%]'>{value?.value}</span>
+                                        </div>
+                                        <span className='block w-full border-gray-7 border-t-[1px] my-2.5'></span>
+                                    </div>
+                                )
+                            })}
                         </div>
-
-                        <div className='w-[45%]'>
-                            <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Total Positions</span>
-                            </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
-                        </div>
-
-                        <div className='w-[45%]'>
-                            <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Job Shift</span>
-                            </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
-                        </div>
-
-                        <div className='w-[45%]'>
-                            <div className='flex justify-between'>
-                                <h6 className='text-[13px]'>Industry:</h6><span className='text-[13px]'>Job Typ e</span>
-                            </div>
-                            <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span>
-                        </div>
-
-
-
                     </div>
                 </div>
 

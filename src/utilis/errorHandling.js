@@ -29,7 +29,7 @@ export const handleApiError = (error) => {
   if (error.response) {
     const status = error.response.status;
     const { data } = error.response.data;
-    console.log(data, "weoeoeeoeoeo");
+    // console.log(data, "weoeoeeoeoeo");
     const errorMsg = data?.error || data;
     throw new Error(errorMsg);
   } else if (error.request) {

@@ -12,7 +12,7 @@ import { redirect } from "react-router-dom";
 export const login = createAsyncThunk('auth/login', async (credentials, { dispatch }) => {
     try {
         const user = await authService.login(credentials);
-        console.log({ user });
+        // console.log({ user });
         return user
     } catch (error) {
         // Handle login error

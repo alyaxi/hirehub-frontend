@@ -25,7 +25,7 @@ function EditJobs() {
     const [status, setStatus] = useState();
 
     const extractedData = AppliedJobCandidate?.find(item => item.id === id);
-    console.log(extractedData, "data frm comp")
+  //  console.log(extractedData, "data frm comp")
 
     const dropdownOptions = [
         'screening',
@@ -34,17 +34,17 @@ function EditJobs() {
         "selection"
     ];
     const handleNext = () => {
-        console.log(status, "statusssssssssssss")
+        // console.log(status, "statusssssssssssss")
         try {
             if (!status) return;
             console.log({ id })
             const statusCheck = status === "screening" || status === "new application" || status === "hire" || status === "selection"
                 ? { appicaionStage: status }
                 : { applicationStatus: status }
-            console.log({ statusCheck })
+            // console.log({ statusCheck })
 
             dispatch(changeAppliedJobStatusEmployer({ id, statusCheck })).unwrap().then(res => {
-                console.log("reSSSSSSSSS", res);
+                // console.log("reSSSSSSSSS", res);
                 if (res) {
                     notificationService.success(res?.data?.msg)
                 }

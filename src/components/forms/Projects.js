@@ -34,7 +34,8 @@ function Projects({ action, handleCancel }) {
                                 <Core.InputWithLabel
                                     {...field}
                                     name="name"
-                                    label="Name"
+                                    // label="Name"
+                                    label
                                     placeholder="Enter your name"
                                 />
                             )}
@@ -46,7 +47,8 @@ function Projects({ action, handleCancel }) {
                                 <Core.InputWithLabel
                                     {...field}
                                     name="projectUrl"
-                                    label="Project URL"
+                                    // label="Project URL"
+                                    label
                                 />
                             )}
                         </Field>

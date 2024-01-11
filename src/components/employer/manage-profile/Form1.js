@@ -41,7 +41,8 @@ function Form1({ onNext }) {
             <div className="mb-4">
                 <Core.InputWithLabel
                     name={"YourCompanysName"}
-                    label="Company Name"
+                    // label="Company Name"
+                    label
                     onChange={(value) => handleChange("companyName", value)}
                 />
             </div>
@@ -74,7 +75,8 @@ function Form1({ onNext }) {
             <div className="mb-4">
                 <Core.InputWithLabel
                     name={"YourPhoneNumber"}
-                    label="Your Phone Number"
+                    // label="Your Phone Number"
+                    label
                     helperText="We will use this number to text you important notifications"
                     onChange={(value) => handleChange("phoneNo", value)}
                 />

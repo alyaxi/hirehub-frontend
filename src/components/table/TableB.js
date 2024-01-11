@@ -3,6 +3,7 @@ import Icon from '../icon';
 import { Avatar, Table, Flex } from 'antd';
 import '../../assets/css/table.css'
 import { Core } from '..';
+// import { v4 as uuidv4 } from 'uuid';
 
 function TableB({
     columns,
@@ -35,19 +36,16 @@ function TableB({
     const newColumn = columns.map((value, index) => {
         let columnSorter;
         if (value.sorter === true) {
-            // If sorter is true, implement a custom sorter function based on data type
             columnSorter = (a, b) => {
                 if (typeof a.name === 'string' && typeof b.name === 'string') {
                     return a.name.localeCompare(b.name);
                 } else if (typeof a.name === 'number' && typeof b.name === 'number') {
                     return a.name - b.name;
                 } else {
-                    // Handle other data types if needed
-                    return 0; // No sorting
+                    return 0;
                 }
             };
         } else if (value.sorter === false) {
-            // If sorter is explicitly false, don't define a sorter function
             columnSorter = undefined;
         }
         return {
@@ -56,57 +54,57 @@ function TableB({
                 const firstLetter = val?.name ? val.name.trim().charAt(0).toUpperCase() : '';
                 if (value.dataIndex === "name" || value.dataIndex === "employerName" || value.dataIndex === "companyName") {
                     return (
-                        <>
+                        <React.Fragment key={`render-${value.dataIndex}-${index}`}>
                             {val?.img ?
-                                <div className='flex justify-start items-center gap-x-2 min-w-[140px]'>
+                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px]`}>
                                     <img className="inline-block h-[30px] w-[30px] rounded-full" src={val?.img} alt="profile image" />
                                     <Avatar src={val?.img}>{firstLetter}</Avatar>
                                     <span className='whitespace-nowrap font-semibold'>{val?.name}</span>
                                 </div> :
                                 <span>{val}</span>
                             }
-                        </>
+                        </React.Fragment>
                     )
                 }
                 else if (value.dataIndex === "payment") {
                     return (
-                        <div className='capitalize'>
+                        <div className='capitalize' key={`render-${value.dataIndex}-${index}`}>
                             {val}
                         </div>
                     )
                 }
                 else if (value.dataIndex === "account") {
                     return (
-                        <div className='w-full text-center'>
+                        <div className='w-full text-center' key={`render-${value.dataIndex}-${index}`}>
                             <Core.Badge>{id.account}</Core.Badge>
                         </div>
                     )
                 }
                 else if (value.dataIndex === "stage") {
-                    return <div className='w-full text-center'><Core.Badge>{id.stage}</Core.Badge></div>;
+                    return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'><Core.Badge>{id.stage}</Core.Badge></div>;
                 }
                 else if (value.dataIndex === "status") {
-                    return <div className='w-full text-center'><Core.Badge>{id.status}</Core.Badge></div>;
+                    return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'><Core.Badge>{id.status}</Core.Badge></div>;
                 }
                 else if (value.dataIndex === "jobStatus") {
-                    return <div className='w-full text-center'><Core.Badge>{id.jobStatus}</Core.Badge></div>;
+                    return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'><Core.Badge>{id.jobStatus}</Core.Badge></div>;
                 }
                 else if (value.dataIndex === "accountStatus") {
                     return (
-                        <div className='w-full text-center'>
+                        <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'>
                             <Core.Badge>{id.accountStatus}</Core.Badge>
                         </div>
                     )
                 }
                 else if (value.dataIndex === "positionTitle") {
-                    return <span className='whitespace-nowrap font-medium'>{val}</span>;
+                    return <span key={`render-${value.dataIndex}-${index}`} className='whitespace-nowrap font-medium'>{val}</span>;
                 }
                 else if (value.dataIndex === "salary") {
-                    return <span>${val}</span>;
+                    return <span key={`render-${value.dataIndex}-${index}`}>${val}</span>;
                 }
                 else if (value.dataIndex === "action") {
                     return (
-                        <Flex gap="small">
+                        <Flex gap="small" key={`render-${value.dataIndex}-${index}`}>
                             {actions.view &&
                                 <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
                                     onClick={() => onViewClick(id?.id)}>
@@ -140,7 +138,7 @@ function TableB({
                     )
                 }
                 else {
-                    return <span className='text-gray-6'>{val}</span>;
+                    return <span className='text-gray-6' key={`render-${value.dataIndex}-${index}`}>{val}</span>;
                 }
             },
             sorter: columnSorter,
@@ -148,10 +146,7 @@ function TableB({
     });
 
     const handleTableChange = (pagination, filters, sorter) => {
-        // Handle pagination change here
-        // Update the data displayed based on the new page number or other changes
-        // You might want to update your data source or fetch new data here
-        console.log(pagination); // Use pagination object to get current, pageSize, total, etc.
+        console.log(pagination);
     };
     const UserStatusdropdownOptions = [
         'new',
@@ -176,7 +171,6 @@ function TableB({
         'Closed',
         'Republished',
     ];
-    // Inside TableB component
     const [resetTrigger, setResetTrigger] = useState(false);
     const [resetTrigger2, setResetTrigger2] = useState(false);
     const [resetTrigger3, setResetTrigger3] = useState(false);
@@ -198,12 +192,12 @@ function TableB({
             <div className="-m-1.5 overflow-x-auto">
                 <div className="p-1.5 min-w-full inline-block align-middle">
                     <div className="overflow-hidden ">
-                        <div className="bg-white flex justify-between items-center py-3 px-5">
+                        <div className="bg-white flex justify-between items-center gap-x-2 py-3 px-5">
                             {!filterBy.includes("SearchByProduct") &&
                                 <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>
                             }
                             <div className={`flex ${addButton ? '' : 'justify-end'} items-center gap-1 w-full`}>
-                                {filterBy?.map(value => {
+                                {filterBy?.map((value, index) => {
                                     const onInputChange = (e) => {
                                         if (value === 'SearchByName') {
                                             setName(e.target.value);
@@ -255,47 +249,47 @@ function TableB({
                                         default:
                                             break;
                                     }
+
+
+
                                     if (value === "SearchByAppliedDate") {
                                         return (
-                                            <Core.InputWithLabel key={resetTrigger2 ? 'reset' : 'normal'} name={'calender'} setValue={setAppliedDate} onChange={onDateChange} sm />
+                                            <Core.InputWithLabel key={resetTrigger2 ? ('reset' + value) : ('normal' + value)} name={'calender'} setValue={setAppliedDate} onChange={onDateChange} sm />
                                         )
                                     }
                                     if (value === "SearchByExpirationDate") {
                                         return (
-                                            <Core.InputWithLabel key={resetTrigger3 ? 'reset' : 'normal'} name={'calender'} setValue={setExpirationDate} onChange={onDateChange} sm />
+                                            <Core.InputWithLabel key={resetTrigger3 ? ('reset' + value) : ('normal' + value)} name={'calender'} setValue={setExpirationDate} onChange={onDateChange} sm />
                                         )
                                     }
                                     if (value === "SearchByUserStatus") {
                                         return (
-                                            <Core.Dropdown2 options={UserStatusdropdownOptions} setState={setUserStatus} defaultTitle="Status" menuWidth={'w-[190px]'} />
+                                            <Core.Dropdown2 key={`userStatus-${index}`} options={UserStatusdropdownOptions} setState={setUserStatus} defaultTitle="Status" menuWidth={'w-[190px]'} />
                                         )
                                     }
                                     if (value === "SearchByCandidateStage") {
                                         return (
-                                            <Core.Dropdown2 options={CandidateStagedropdownOptions} setState={setCandidateStage} defaultTitle="Stage" menuWidth={'w-[150px]'} />
+                                            <Core.Dropdown2 key={`candidateStage-${index}`} options={CandidateStagedropdownOptions} setState={setCandidateStage} defaultTitle="Stage" menuWidth={'w-[150px]'} />
                                         )
                                     }
                                     if (value === "SearchByProduct") {
                                         return (
-                                            <>
-
+                                            <div key={`searchProduct-${index}`}>
                                                 <Core.SearchInput onInputChange={onInputChange} />
                                                 <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button>
-                                            </>
+                                            </div>
                                         )
                                     }
                                     if (value === "SearchByJobStatus") {
                                         return (
-                                            <Core.Dropdown2 options={JobStatusDropdownOptions} setState={setJobStatus} defaultTitle="Job Status" menuWidth={'w-[150px]'} />
+                                            <Core.Dropdown2 key={`jobStatus-${index}`} options={JobStatusDropdownOptions} setState={setJobStatus} defaultTitle="Job Status" menuWidth={'w-[150px]'} />
                                         )
                                     }
                                     else {
-                                        // console.log("value", value)
                                         return (
                                             <Core.InputWithLabel
-                                                key={resetTrigger ? 'reset' : 'normal'} // Change the key to trigger re-render
+                                                key={resetTrigger ? ('reset' + value) : ('normal' + value)}
                                                 name={value} onChange={onInputChange}
-                                                // value={stateValue}
                                                 sm className={inputWidth} />
                                         )
                                     }
@@ -312,36 +306,14 @@ function TableB({
                         <div className="overflow-hidden">
                             <Table
                                 columns={newColumn}
-                                dataSource={data}
-                                pagination={{ pageSize: 10 }} // Set your desired page size
-                                onChange={handleTableChange} // Handle pagination change
+                                // dataSource={data}
+                                dataSource={data.map(_data => ({ ..._data, key: _data.id }))}
+                                pagination={{ pageSize: 10 }}
+                                onChange={handleTableChange}
                             />
                         </div>
-                        <div className="flex justify-between items-center border-t py-5 px-4">
-                            {/* <span className='text-gray-6 text-[14px] leading-[20px] font-semibold'>
-                                Showing 1-10 from 100
-                            </span> */}
-                            {/* <Pagination defaultCurrent={6} total={500} /> */}
-                            {/* itemBg={"#000"} itemInputBg={"#fcfcfc"} itemLinkBg={"#f6cf6c"} itemSize="100" */}
-                            {/* <nav className="flex items-center space-x-1">
-                                <button type="button" className="w-[32px] h-[32px] flex items-center gap-x-2 text-sm rounded-[8px] text-purple-4 bg-purple-7 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 p-2.5 ">
-                                    <span aria-hidden="true">
-                                        <Icon name="ChevronLeft" size="10" />
-                                    </span>
-                                    <span className="sr-only">Previous</span>
-                                </button>
-                                <button type="button" className="w-[32px] h-[32px] flex justify-center items-center text-purple-4 text-[14px] leading-[20px] font-semibold bg-purple-7 py-2.5 rounded-[8px] disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10" aria-current="page">1</button>
-                                <button type="button" className="w-[32px] h-[32px] flex justify-center items-center text-purple-4 text-[14px] leading-[20px] font-semibold bg-purple-7 py-2.5 rounded-[8px] disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">2</button>
-                                <button type="button" className="w-[32px] h-[32px] flex justify-center items-center text-purple-4 text-[14px] leading-[20px] font-semibold bg-purple-7 py-2.5 rounded-[8px] disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">3</button>
-                                <button type="button" className="w-[32px] h-[32px] flex items-center gap-x-2 text-purple-4 text-[14px] leading-[20px] font-semibold bg-purple-7 rounded-[8px] disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 p-2.5 ">
-                                    <span className="sr-only">Next</span>
-                                    <span aria-hidden="true">
-                                        <Icon name="ChevronRight" size="10" />
-
-                                    </span>
-                                </button>
-                            </nav> */}
-                        </div>
+                        {/* <div className="flex justify-between items-center border-t py-5 px-4"> 
+                        </div> */}
                     </div>
                 </div>
             </div>

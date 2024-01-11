@@ -22,7 +22,7 @@ function UploadFile({ label, name, required, helperText, accept, onChange }) {
         <>
             <div className="flex justify-between items-center">
                 {label &&
-                    <label for={name} className={`
+                    <label htmlFor={name} className={`
                     block text-[14px] font-medium text-gray-2 tracking-wide ${helperText ? 'mb-1.5' : 'mb-2'} capitalize
                     `}>
                         {_label(name)}{required && <span className='text-[red]'>*</span>}

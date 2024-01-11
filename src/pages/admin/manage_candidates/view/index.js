@@ -17,7 +17,7 @@ function ViewCandidates() {
     const  AppliedAllJobs  = useSelector((state) => state?.manageCandidateAdmin?.jobs);
     const { id } = useParams();
     const extractedData = AppliedAllJobs?.find(item => item.candidate.userId === id);
-    console.log(extractedData, "data frm comp")
+    // console.log(extractedData, "data frm comp")
     const dropdownOptions = [
         "activate",
         "inactive",

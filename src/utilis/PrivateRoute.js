@@ -9,11 +9,11 @@ import { redirectToDashboard } from "./RedirectionToDashboard";
 const PrivateRoute = ({ children, roles }) => {
     const isAuthenticated = useSelector((state) => state?.auth?.isAuthenticated);
     const user = useSelector((state) => state?.auth?.user);
-    console.log({user, isAuthenticated});
+    // console.log({user, isAuthenticated});
     const navigate = useNavigate();
     const role = user?.role || user?.Role
 
-    console.log(role, "roleeeeemann")
+    // console.log(role, "roleeeeemann")
 
    
 

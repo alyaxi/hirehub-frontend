@@ -12,9 +12,9 @@ import ManageCandidateAdmin from '../../services/Admin/ManageCandidateAdmin';
 export const getAllAppliedJob = createAsyncThunk('admin/get-applied-jobs-by-all', async (_) => {
 
     try {
-        console.log("getemployererrrbyidddd consolee")
+        // console.log("getemployererrrbyidddd consolee")
         const data = await ManageCandidateAdmin.getAppliedAllJobs()
-        console.log(data, "dataaaaa")
+        // console.log(data, "dataaaaa")
         return data
     } catch (error) {
         // Handle login error

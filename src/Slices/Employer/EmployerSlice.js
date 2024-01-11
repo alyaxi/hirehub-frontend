@@ -10,9 +10,9 @@ import { handleApiError } from '../../utilis/errorHandling';
 export const getEmployerById = createAsyncThunk('employer/get-detail-by-id', async (_) => {
 
     try {
-        console.log("getemployererrrbyidddd consolee")
+        // console.log("getemployererrrbyidddd consolee")
         const data = await employerServices.getEmployerDetailById()
-        console.log(data, "dataaaaa")
+        // console.log(data, "dataaaaa")
         return data
     } catch (error) {
         // Handle login error
@@ -24,11 +24,11 @@ export const getEmployerById = createAsyncThunk('employer/get-detail-by-id', asy
 export const UpdateEmployerById = createAsyncThunk('employer/update-detail-by-id', async (formDataToSend) => {
 
     try {
-        console.log("updateEmployererrrbyidddd consolee", formDataToSend)
+        // console.log("updateEmployererrrbyidddd consolee", formDataToSend)
       
         
         const data = await employerServices.UpdateEmployerDetailById(formDataToSend)
-        console.log(data, "dataaaaa")
+        // console.log(data, "dataaaaa")
         return data
     } catch (error) {
         // Handle login error

@@ -29,15 +29,24 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
                 return "Field Of Study";
             case "grade":
                 return "Grade";
-                case "skillExperience":
-                    return "Experience with this Skill";
+            case "skillExperience":
+                return "Experience with this Skill";
+            case "noOfPeopleToHire":
+                return "How many people do you want to hire for this opening?";
+            case "minimum":
+                return "Minimum";
+            case "maximum":
+                return "Maximum";
+            case "rate":
+                return "Rate";
+
             default:
                 return "Label";
         }
     }
     return (
         <>
-            {label && <label for={name} className={`
+            {label && <label htmlFor={name} className={`
                 block text-[14px] font-medium text-gray-2 tracking-wide ${helperText ? 'mb-1.5' : 'mb-2'} capitalize`}>
                 {_label(name)}{required && <span className='text-[red]'>*</span>}
             </label>}
@@ -46,10 +55,10 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
                     {helperText}
                 </p>
             }
-            <select id={name} onChange={onChange} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]">
+            <select id={name} onChange={onChange} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]">
                 <option value="">{defaultOption ? defaultOption : 'Select an option...'}</option>
-                {options.map((value) =>
-                    <option key={value * 1} value={value?.value}>{value?.name}</option>
+                {options.map((value, index) =>
+                    <option key={value?.name + index} value={value?.value}>{value?.name}</option>
                 )}
             </select>
         </>

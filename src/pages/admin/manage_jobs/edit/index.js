@@ -25,7 +25,7 @@ function EditJobs() {
     const [status, setStatus] = useState();
 
     const extractedData = AppliedJobCandidate?.find(item => item.id === id);
-    console.log(extractedData, "data frm comp")
+    // console.log(extractedData, "data frm comp")
 
     const dropdownOptions = [
         'screening',
