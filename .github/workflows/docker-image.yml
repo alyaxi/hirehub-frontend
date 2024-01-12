@@ -25,7 +25,7 @@ jobs:
       run: npm run build
 
     - name: Deploy to Digital Ocean
-      uses: appleboy/ssh-action@v0.5.0
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HIREHUB_SSH_HOST_IP }}
         username: ${{ secrets.HIREHUB_SSH_USER }}
