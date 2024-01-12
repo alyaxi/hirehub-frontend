@@ -1,4 +1,4 @@
-name: Node.js CI/CD to Digital Ocean
+name: Frontend CI/CD
 
 on:
   push:
@@ -6,30 +6,28 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 19
 
-      - name: Install dependencies
-        run: npm install
+    - name: Install dependencies
+      run: npm install
 
-      - name: Deploy to Digital Ocean
-        uses: appleboy/ssh-action@master #master
-        with:
-          host: ${{secrets.HIREHUB_SSH_HOST_IP}} # IP address of the server you wish to ssh into
-          key: ${{secrets.HIREHUB_SSH_KEY}} # Private or public key of the server
-          username: ${{ secrets.HIREHUB_SSH_USER }} # User of the server you want to ssh into
+    - name: Deploy to Digital Ocean
+      uses: appleboy/ssh-action@master #master
+      with:
+        host: ${{secrets.HIREHUB_SSH_HOST_IP}} # IP address of the server you wish to ssh into
+        key: ${{secrets.HIREHUB_SSH_KEY}} # Private or public key of the server
+        username: ${{ secrets.HIREHUB_SSH_USER }} # User of the server you want to ssh into
 
-          script: |
-            cd /var/www/   
-            mkdir -p test 
-            cd test 
-            echo 'Deployment successful to Digital Ocean'
+        script: |
+          cd /var/www/docker-hirehub
+          docker-compose -f compose.yml up -d --build
