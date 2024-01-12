@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-import { Core, UserProfile, } from '../../../../components';
+import {  UserProfile, } from '../../../../components';
 // import employersData from '../../../../data/employersData.json';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";

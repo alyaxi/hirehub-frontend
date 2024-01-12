@@ -3,7 +3,7 @@ import { Icon } from '..';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-function TextEditorWithLabel({ label, helperText, name, required, icon, value, setValue }) {
+function TextEditorWithLabel({ label, helperText, name, required, icon, value, setValue, style }) {
 
     const _label = (name) => {
         switch (name) {
@@ -34,7 +34,9 @@ function TextEditorWithLabel({ label, helperText, name, required, icon, value, s
                     {helperText}
                 </p>
             }
-            <ReactQuill theme="snow" value={value} onChange={setValue} />
+            <div className='h-[340px]'>
+                <ReactQuill theme="snow" style={style} value={value} onChange={setValue} />
+            </div>
         </>
     )
 }

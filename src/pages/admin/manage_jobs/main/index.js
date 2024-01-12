@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Stat } from '../../../../components/core';
+import { Breadcrumb } from '../../../../components/core';
 import TableB from '../../../../components/table/TableB';
 import { useNavigate } from "react-router-dom"
 

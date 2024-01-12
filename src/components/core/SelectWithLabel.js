@@ -39,6 +39,8 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
                 return "Maximum";
             case "rate":
                 return "Rate";
+            case "department":
+                return "Department";
 
             default:
                 return "Label";

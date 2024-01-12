@@ -4,7 +4,9 @@ import { ToastContainer } from 'react-toastify';
 import Form1 from './Form1';
 import Form2 from './Form2';
 import Form3 from './Form3';
-import { convertDateFormat } from '../../utilis/convertDateStamp';
+import Form4 from './Form4';
+
+// import { convertDateFormat } from '../../utilis/convertDateStamp';
 
 function AddJob() {
     const [step, setStep] = useState(1);
@@ -29,7 +31,10 @@ function AddJob() {
             responsibilities: "",
             skills: "",
             salaryRange: "",
-            shortSummery: [],
+            shortSummery: [
+                { title: "", value: "" },
+                { title: "", value: "" },
+            ],
         }
     );
 
@@ -48,6 +53,8 @@ function AddJob() {
     const handleFinish = () => {
         console.log("job", job)
     };
+
+    // form1 functions start
     const handleJobTypeChange = (_jobType) => {
         setJob(prevJob => ({
             ...prevJob,
@@ -68,7 +75,9 @@ function AddJob() {
             expirationDate: expiryDate,
         }));
     };
+    // form1 functions end
 
+    // form2 functions start
     const handleSalaryChange = (min, max, rate) => {
         setJob(prevJob => ({
             ...prevJob,
@@ -79,48 +88,48 @@ function AddJob() {
             },
         }));
     };
+    // form2 functions end
 
-
-
-
+    // form3 functions start
     const multiSelectHandle = (_benefits) => {
         setJob(prevJob => ({
             ...prevJob,
             benefits: _benefits,
         }));
     };
-
-    const handlePosition = (_aboutPosition) => {
+    const handleJobUpdate = (name, value) => {
         setJob(prevJob => ({
             ...prevJob,
-            aboutPosition: _aboutPosition.target.value,
+            [name]: value,
         }));
     };
+    // form3 functions end
 
-    const handleResponsibilities = (_responsibilities) => { 
-        // console.log("_responsibilities", _responsibilities)
-        setJob(prevJob => ({
+    // form4 functions start
+    const handleShortSummeryChange = (title, value) => {
+        const existingIndex = job.shortSummery.findIndex(
+            (summary) => summary.title === title
+        );
+        if (existingIndex !== -1) {
+            setJob((prevJob) => ({
                 ...prevJob,
-                responsibilities: _responsibilities,
+                shortSummery: prevJob.shortSummery.map((summary, index) =>
+                    index === existingIndex
+                        ? { ...summary, value: value }
+                        : summary
+                ),
             }));
-    };
-
-    const handleQualification = (_qualification) => {
-        // console.log("_qualification", _qualification)
-        setJob(prevJob => ({
+        } else {
+            setJob((prevJob) => ({
                 ...prevJob,
-                qualification: _qualification,
+                shortSummery: [
+                    ...prevJob.shortSummery,
+                    { title: title, value: value },
+                ],
             }));
+        }
     };
-
-    const handleSkills = (_skills) => {
-        // console.log("_skills", _skills)
-        setJob(prevJob => ({
-                ...prevJob,
-                skills: _skills,
-            }));
-    };
-
+    // form4 functions end
 
     console.log("job", job)
 
@@ -134,31 +143,31 @@ function AddJob() {
                     handleNoOfPeopleToHireChange={handleNoOfPeopleToHireChange}
                     handleExpiryDateChange={handleExpiryDateChange}
                 />
-
             }
             {step === 2 &&
                 <Form2
                     handleSalaryChange={handleSalaryChange}
                 />
             }
-
             {step === 3 &&
                 <Form3
                     multiSelectHandle={multiSelectHandle}
-                    handlePosition={handlePosition}
-                    handleResponsibilities={handleResponsibilities}
-                    handleQualification={handleQualification}
-                    handleSkills={handleSkills}
+                    // handlePosition={handlePosition}
+                    // handleResponsibilities={handleResponsibilities}
+                    // handleQualification={handleQualification}
+                    // handleSkills={handleSkills}
+                    handleJobUpdate={handleJobUpdate}
                 />
             }
-
             {step === 4 &&
-                <>
-                    form 4
-                    {/* <Employer.ManageProfile.Form2 onNext={GetInput} /> */}
-                </>
+                <Form4
+                    // handleIndustryOptionsChange={handleIndustryOptionsChange}
+                    // handleDepartmentChange={handleDepartmentChange}
+                    // handleCareerLevelChange={handleCareerLevelChange}
+                    // handleExperienceChange={handleExperienceChange}
+                    handleShortSummeryChange={handleShortSummeryChange}
+                />
             }
-
             <div className="mt-5 flex justify-start items-center gap-x-2">
                 {step !== 1 &&
                     <Core.Button

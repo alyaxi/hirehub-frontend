@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Breadcrumb, } from '../../../../components/core';
 import { AddJob } from '../../../../components';
 

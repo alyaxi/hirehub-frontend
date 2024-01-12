@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { NavLink } from "react-router-dom";
-import { Icons } from '..';
-
+import React from 'react';
+// import { NavLink } from "react-router-dom";
+// import { Icons } from '..';
 
 function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
 
@@ -22,7 +21,7 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
             case "companyDiscription":
                 return "Describe here";
                 case "position":
-                    return "Breif about The Position";
+                    return "Brief about The Position";
 
             default:
                 return "";
@@ -45,7 +44,7 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
                         {helperText}
                     </p>
                 }
-                <textarea onChange={onChange} rows={5} cols={5} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 bg-gray-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]" id={name} name={name}
+                <textarea onChange={onChange} rows={7} cols={5} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 bg-gray-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]" id={name} name={name}
                     placeholder={placeholder(name)} autoFocus />
             </div>
         </>

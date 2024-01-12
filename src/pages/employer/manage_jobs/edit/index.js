@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-import { Core, JobDetails, UserProfile, } from '../../../../components';
+import { JobDetails, } from '../../../../components';
 // import employersData from '../../../../data/employersData.json';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
 import { changeAppliedJobStatusEmployer } from '../../../../Slices/Employer/ManageCandidate';
 import notificationService from '../../../../utilis/notification';
 import { ToastContainer } from 'react-toastify';
-
-
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
@@ -23,16 +21,11 @@ function EditJobs() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [status, setStatus] = useState();
+     console.log(setStatus, setStatus)
 
     const extractedData = AppliedJobCandidate?.find(item => item.id === id);
-  //  console.log(extractedData, "data frm comp")
-
-    const dropdownOptions = [
-        'screening',
-        'new application',
-        'hire',
-        "selection"
-    ];
+    //  console.log(extractedData, "data frm comp")
+ 
     const handleNext = () => {
         // console.log(status, "statusssssssssssss")
         try {
@@ -71,8 +64,7 @@ function EditJobs() {
                 heading="Edit Candidates"
                 breadcrumb={breadcrumb}
             />
-            {/* <UserProfile handleNext={handleNext} status={status} setStatus={setStatus} data={extractedData} dropdownOptions={dropdownOptions} pageType="edit" /> */}
-            <JobDetails handleNext={handleNext} data={extractedData} pageType="view" />
+             <JobDetails handleNext={handleNext} data={extractedData} pageType="view" />
         </>
     );
 }

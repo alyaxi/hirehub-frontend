@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Icon from '../icon';
 import { Button, InputWithLabel, Badge } from '../core';
 import { Avatar, Pagination } from 'antd';

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-import { Table } from '../../../../components';
-import companyLogo1 from "../../../../assets/images/company-logos/5.png";
-import companyLogo2 from "../../../../assets/images/company-logos/4.png";
-import companyLogo3 from "../../../../assets/images/company-logos/7.png";
+// import { Table } from '../../../../components';
+// import companyLogo1 from "../../../../assets/images/company-logos/5.png";
+// import companyLogo2 from "../../../../assets/images/company-logos/4.png";
+// import companyLogo3 from "../../../../assets/images/company-logos/7.png";
 import TableB from '../../../../components/table/TableB';
 import employersData from '../../../../data/employersData.json';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import {useNavigate} from "react-router-dom"
 
 

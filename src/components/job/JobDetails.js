@@ -6,8 +6,8 @@ import { Avatar } from 'antd';
 
 function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedState, handleNext, setStatus, status }) {
     const location = useLocation();
-    const parts = location?.pathname.split('/');
-    const accountType = parts[1];
+    // const parts = location?.pathname.split('/');
+    // const accountType = parts[1];
 
     const [resumePrivacy, setResumePrivacy] = useState('');
 
@@ -18,25 +18,28 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
         }
     }, [extractedData]);
 
+    console.log("resumePrivacy", resumePrivacy);
+
     // console.log("starttttt useeffect after", status);
 
     const [eligibilityStatus, setEligibilityStatus] = useState(
         extractedData?.eligibility === 'Yes' ? 'checked' : 'unchecked'
     );
+    console.log("eligibilityStatus", eligibilityStatus);
     useEffect(() => {
         // Update eligibilityStatus state whenever extractedData changes
         setEligibilityStatus(
             extractedData?.eligibility === 'Yes' ? 'checked' : 'unchecked'
         );
     }, [extractedData]);
-    const handleCheckboxChange = (event) => {
-        const newValue = event.target.checked ? 'checked' : 'unchecked';
-        setEligibilityStatus(newValue);
-    };
-    const [resumePrivacySetting, setResumePrivacySetting] = useState('Public');
-    const handlePrivacyChange = (e) => {
-        setResumePrivacySetting(e.target.value);
-    };
+    // const handleCheckboxChange = (event) => {
+    //     const newValue = event.target.checked ? 'checked' : 'unchecked';
+    //     setEligibilityStatus(newValue);
+    // };
+    // const [resumePrivacySetting, setResumePrivacySetting] = useState('Public');
+    // const handlePrivacyChange = (e) => {
+    //     setResumePrivacySetting(e.target.value);
+    // };
     // console.log("extractedData?.positionTitle", extractedData?.positionTitle)
 
     const firstLetter = extractedData?.positionTitle ? extractedData?.positionTitle.trim().charAt(0).toUpperCase() : '';

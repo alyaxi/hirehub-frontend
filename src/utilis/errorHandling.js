@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import notificationService from './notification';
 
 export const RedirectToLogin = (err) => {
@@ -27,7 +27,7 @@ export const handleApiError = (error) => {
   }
 
   if (error.response) {
-    const status = error.response.status;
+    // const status = error.response.status;
     const { data } = error.response.data;
     // console.log(data, "weoeoeeoeoeo");
     const errorMsg = data?.error || data;
