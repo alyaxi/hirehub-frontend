@@ -104,7 +104,7 @@ function LoginPage() {
                                             name={field.name}
                                             value={field.value}
                                             onChange={field.onChange}
-                                            label='Password'
+                                            label
                                             className='py-5'
                                             bgGray
                                         />

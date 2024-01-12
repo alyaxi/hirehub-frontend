@@ -177,7 +177,7 @@ const RegisterPage = () => {
                                 {({ field }) => (
                                     <>
                                         <Core.InputWithLabel
-                                            label='Password'
+                                            label
                                             name={field.name}
                                             value={field.value}
                                             onChange={field.onChange}

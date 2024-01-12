@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Core } from '..';
+import { Divider, Radio } from 'antd';
 
 const minimumOptions = [
     { name: "10", value: "10" },
@@ -59,32 +60,43 @@ function Form2({ handleSalaryChange }) {
 
     return (
         <Core.Card className={'p-5'} w840 border>
-            <div className="flex justify-between items-end gap-x-3 mb-4">
-                <div className='w-full'>
-                    <Core.SelectWithLabel
-                        name={"minimum"}
-                        label
-                        options={minimumOptions}
-                        onChange={(e) => handleChange("minimum", e.target.value)}
-                    />
-                </div>
-                <span className='pb-2'>to</span>
-                <div className='w-full'>
-                    <Core.SelectWithLabel
-                        name={"maximum"}
-                        label
-                        options={maximumOptions}
-                        onChange={(e) => handleChange("maximum", e.target.value)}
-                    />
-                </div>
-                <span></span>
-                <div className='w-full'>
-                    <Core.SelectWithLabel
-                        name={"rate"}
-                        label
-                        options={rateOptions}
-                        onChange={(e) => handleChange("rate", e.target.value)}
-                    />
+            <div className="flex justify-between items-end w-full gap-x-3 mb-4">
+                <div className='flex justify-between w-full'>
+
+                    <div className='fle x flex-col gap-y-5 w-[75%]'>
+                        {/* <div className='w-full'>
+                            <Core.SelectWithLabel
+                                name={"maximum"}
+                                label
+                                options={maximumOptions}
+                                onChange={(e) => handleChange("maximum", e.target.value)}
+                            />
+                        </div>
+                        <div className='w-full'>
+                            <Core.SelectWithLabel
+                                name={"maximum"}
+                                label
+                                options={maximumOptions}
+                                onChange={(e) => handleChange("maximum", e.target.value)}
+                            />
+                        </div> */}
+                        <Radio.Group className="w-full"  >
+                            <div className="flex flex-col gap-y-3 w-full">
+                                <Radio value={"Full Time"} className='w-[20%]'>Full Time</Radio>
+                                <Radio value={'Part Time'} className='w-[20%]'>Part Time</Radio> 
+                            </div>
+                        </Radio.Group>
+                    </div>
+                    <Divider type="vertical" className='h-[100px] max-h-[100px] self-center mx-[20px]' />
+                    <div className='flex flex-col justify-center w-[25%]'>
+                        <Core.SelectWithLabel
+                            name={"rate"}
+                            label
+                            options={rateOptions}
+                            onChange={(e) => handleChange("rate", e.target.value)}
+                        />
+                    </div>
+
                 </div>
             </div>
         </Core.Card>

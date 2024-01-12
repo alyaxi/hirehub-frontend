@@ -1,108 +1,81 @@
 // Form4.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Core } from '..';
+import MultiSelectInput from '../core/MultiSelectInput';
 
-const industryOptions = [
-    { name: "Information Technology", value: "Information Technology" },
-    { name: "Recruitment / Employment Firms", value: "Recruitment / Employment Firms" },
-    { name: "Education/Training", value: "Education/Training" },
-    { name: "Services", value: "Services" },
-    { name: "Health & Fitness", value: "Health & Fitness" },
-    { name: "E-Commerce / E-Business", value: "E-Commerce / E-Business" },
-    { name: "Media/Communications", value: "Media/Communications" },
-    { name: "N.G.O./Social Services", value: "N.G.O./Social Services" },
-    { name: "Healthcare / Hospital / Medical", value: "Healthcare / Hospital / Medical" },
-    { name: "Banking/Financial Services", value: "Banking/Financial Services" },
-    { name: "Advertising / PR", value: "Advertising / PR" },
-    { name: "Manufacturing", value: "Manufacturing" },
-    { name: "Publishing/Printing", value: "Publishing/Printing" },
-    { name: "Travel/Tourism/Transportation", value: "Travel/Tourism/Transportation" },
-    { name: "Retail", value: "Retail" },
-    { name: "Engineering", value: "Engineering" },
-    { name: "AutoMobile", value: "AutoMobile" },
-    { name: "Consultants", value: "Consultants" },
-    { name: "Packaging", value: "Packaging" },
-];
-const departmentOptions = [
-    { name: "Graphics Designers", value: "Graphics Designers" },
-    { name: "Design", value: "Design" },
-    { name: "Web/App Development", value: "Web/App Development" },
-    { name: "Sales", value: "Sales" },
-    { name: "Marketing", value: "Marketing" },
-    { name: "Content Writing", value: "Content Writing" },
-    { name: "HR", value: "HR" },
-    { name: "Administration", value: "Administration" },
-];
-const careerLevelOptions = [
-    { name: "Experienced Professional", value: "Experienced Professional" },
-    { name: "Entry Level", value: "Entry Level" },
-    { name: "Mid Level", value: "Mid Level" },
-    { name: "Senior Level", value: "Senior Level" },
-    { name: "Intern/Student", value: "Intern/Student" },
-];
-const experienceOptions = [
-    { name: "Fresh", value: "0" },
-    { name: "6 Months", value: "0.5" },
-    { name: "1 Year", value: "1" },
-    { name: "2 Years", value: "2" },
-    { name: "3 Years", value: "3" },
-    { name: "4 Years", value: "4" },
-    { name: "5 Years", value: "5" },
-    { name: "6 Years", value: "6" },
-    { name: "7 Years", value: "7" },
-    { name: "8 Years", value: "8" },
-    { name: "9 Years", value: "9" },
-    { name: "10+ Years", value: "over 10" },
+const options = [
+    { label: 'Flexible Work Hours', value: 'Flexible Work Hours' },
+    { label: 'Remote Work Opportunities', value: 'Remote Work Opportunities' },
+    { label: 'Health Insurance', value: 'Health Insurance' },
+    { label: 'Dental Insurance', value: 'Dental Insurance' },
+    { label: 'Vision Insurance', value: 'Vision Insurance' },
+    { label: '401(k) Retirement Plan', value: '401(k) Retirement Plan' },
+    { label: 'Paid Time Off (PTO)', value: 'Paid Time Off (PTO)' },
+    { label: 'Paid Holidays', value: 'Paid Holidays' },
+    { label: 'Flexible Spending Account (FSA)', value: 'Flexible Spending Account (FSA)' },
+    { label: 'Life Insurance', value: 'Life Insurance' },
+    { label: 'Employee Assistance Program (EAP)', value: 'Employee Assistance Program (EAP)' },
+    { label: 'Professional Development Opportunities', value: 'Professional Development Opportunities' },
+    { label: 'Tuition Reimbursement', value: 'Tuition Reimbursement' },
+    { label: 'Stock Options or Equity', value: 'Stock Options or Equity' },
+    { label: 'Gym Memberships', value: 'Gym Memberships' },
+    { label: 'Casual Dress Code', value: 'Casual Dress Code' },
+    { label: 'Company Events and Activities', value: 'Company Events and Activities' },
+    { label: 'On-site Fitness Facilities', value: 'On-site Fitness Facilities' },
+    { label: 'Employee Recognition Programs', value: 'Employee Recognition Programs' },
+    { label: 'Maternity and Paternity Leave', value: 'Maternity and Paternity Leave' },
+    { label: 'Sick Leave', value: 'Sick Leave' },
+    { label: 'Commuter Benefits', value: 'Commuter Benefits' },
 ];
 
 function Form4({
-    // handleIndustryOptionsChange,
-    // handleDepartmentChange,
-    // handleCareerLevelChange,
-    // handleExperienceChange,
-    handleShortSummeryChange,
+    multiSelectHandle,
+    // handlePosition,
+    // handleResponsibilities,
+    // handleQualification,
+    // handleSkills,
+     handleJobUpdate,
+    //  handleRadioChange
 }) {
+    const [responsibilities, setResponsibilities] = useState('');
+    const [qualification, setQualification] = useState('');
+    const [skills, setSkills] = useState('');
+
+    useEffect(() => {
+        handleJobUpdate('responsibilities', responsibilities)
+    }, [responsibilities,]);
+
+    useEffect(() => {
+        handleJobUpdate('qualification', qualification)
+    }, [qualification]);
+
+    useEffect(() => {
+        handleJobUpdate('skills', skills)
+    }, [skills]);
+
     return (
         <Core.Card className={'p-5'} w840 border>
             <div className="mb-4">
-                <Core.SelectWithLabel
-                    name={"industry"}
+                <label className={`flex justify-start text-[16px] font-semibold text-gray-2 tracking-wide capitalize mb-2`}>
+                    Job Description:
+                </label>
+                <Core.TextAreaWithLabel
+                    name="position"
                     label
-                    options={industryOptions}
-                    required
-                    onChange={(e) => handleShortSummeryChange('industry', e.target.value)}
-
+                    onChange={(e) => handleJobUpdate('aboutPosition', e.target.value)}
                 />
             </div>
             <div className="mb-4">
-                <Core.SelectWithLabel
-                    name={"department"}
-                    label
-                    options={departmentOptions}
-                    required
-                    onChange={(e) => handleShortSummeryChange('department', e.target.value)}
-
-                />
+                <Core.TextEditorWithLabel name={'responsibilities'} label style={{ height: "84%" }} value={responsibilities} setValue={setResponsibilities} />
             </div>
             <div className="mb-4">
-                <Core.SelectWithLabel
-                    name={"careerLevel"}
-                    label
-                    options={careerLevelOptions}
-                    required
-                    onChange={(e) => handleShortSummeryChange('careerLevel', e.target.value)}
-
-                />
+                <Core.TextEditorWithLabel name={'qualification'} label style={{ height: "84%" }} value={qualification} setValue={setQualification} />
             </div>
             <div className="mb-4">
-                <Core.SelectWithLabel
-                    name={"experience"}
-                    label
-                    options={experienceOptions}
-                    required
-                    onChange={(e) => handleShortSummeryChange('experience', e.target.value)}
-
-                />
+                <Core.TextEditorWithLabel name={'skills'} label style={{ height: "84%" }} value={skills} setValue={setSkills} />
+            </div>
+            <div className="mb-4">
+                <MultiSelectInput name={'benefits'} label options={options} onChange={multiSelectHandle} />
             </div>
         </Core.Card>
     );

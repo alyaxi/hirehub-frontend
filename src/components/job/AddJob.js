@@ -5,6 +5,7 @@ import Form1 from './Form1';
 import Form2 from './Form2';
 import Form3 from './Form3';
 import Form4 from './Form4';
+import { convertDateFormat } from '../../utilis/convertDateStamp';
 
 // import { convertDateFormat } from '../../utilis/convertDateStamp';
 
@@ -19,18 +20,36 @@ function AddJob() {
             expirationDate: "",
             jobStatus: "",
             jobType: "",
+            jobShift: "",
+            jobLocation: "",
             noOfOpenings: "",
             positionTitle: "",
             salary: {
+                // type: "single",
+                type: "",
                 minimum: "",
                 maximum: "",
                 rate: "",
             },
+
+
+            // salary: {
+            //     type: "single",
+            //     value: "60000",
+            //     rate: "",
+            // },
+            // or
+            // salary: {
+            //     type: "range",
+            //     minimum: "",
+            //     maximum: "",
+            //     rate: "",
+            // },
+
             postedDate: "",
             qualification: "",
             responsibilities: "",
             skills: "",
-            salaryRange: "",
             shortSummery: [
                 { title: "", value: "" },
                 { title: "", value: "" },
@@ -51,11 +70,26 @@ function AddJob() {
     };
 
     const handleFinish = () => {
-        console.log("job", job)
+        let currentDate = new Date();
+
+    // Pass the current date to the conversion function
+    let formattedCurrentDate = convertDateFormat(currentDate);
+
+    console.log("Formatted Current Date:", formattedCurrentDate);
+    };
+
+
+
+
+    const handleInput = (name, value) => {
+        setJob(prevJob => ({
+            ...prevJob,
+            [name]: value,
+        }));
     };
 
     // form1 functions start
-    const handleJobTypeChange = (_jobType) => {
+    const handleRadioChange = (_jobType) => {
         setJob(prevJob => ({
             ...prevJob,
             jobType: _jobType,
@@ -139,7 +173,7 @@ function AddJob() {
             {/* content */}
             {step === 1 &&
                 <Form1
-                    handleJobTypeChange={handleJobTypeChange}
+                    handleRadioChange={handleRadioChange}
                     handleNoOfPeopleToHireChange={handleNoOfPeopleToHireChange}
                     handleExpiryDateChange={handleExpiryDateChange}
                 />
@@ -151,21 +185,23 @@ function AddJob() {
             }
             {step === 3 &&
                 <Form3
+                    // handleIndustryOptionsChange={handleIndustryOptionsChange}
+                    // handleDepartmentChange={handleDepartmentChange}
+                    // handleCareerLevelChange={handleCareerLevelChange}
+                    // handleExperienceChange={handleExperienceChange}
+                    handleShortSummeryChange={handleShortSummeryChange}
+                    handleInput={handleInput}
+                    handleRadioChange={handleRadioChange}
+                />
+            }
+            {step === 4 &&
+                <Form4
                     multiSelectHandle={multiSelectHandle}
                     // handlePosition={handlePosition}
                     // handleResponsibilities={handleResponsibilities}
                     // handleQualification={handleQualification}
                     // handleSkills={handleSkills}
                     handleJobUpdate={handleJobUpdate}
-                />
-            }
-            {step === 4 &&
-                <Form4
-                    // handleIndustryOptionsChange={handleIndustryOptionsChange}
-                    // handleDepartmentChange={handleDepartmentChange}
-                    // handleCareerLevelChange={handleCareerLevelChange}
-                    // handleExperienceChange={handleExperienceChange}
-                    handleShortSummeryChange={handleShortSummeryChange}
                 />
             }
             <div className="mt-5 flex justify-start items-center gap-x-2">

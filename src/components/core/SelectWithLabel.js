@@ -41,6 +41,8 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
                 return "Rate";
             case "department":
                 return "Department";
+            case "jobShift":
+                return "Job Shift";
 
             default:
                 return "Label";
