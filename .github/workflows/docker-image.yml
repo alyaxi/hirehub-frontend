@@ -1,0 +1,36 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 19
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build
+
+    - name: Deploy to Digital Ocean
+      uses: appleboy/ssh-action@v0.5.0
+      with:
+        host: ${{ secrets.HIREHUB_SSH_HOST_IP }}
+        username: ${{ secrets.HIREHUB_SSH_USER }}
+        password: ${{ secrets.HIREHUB_SSH_KEY }}
+        port: 22
+        script: |
+          cd /var/www/docker-hirehub/
+          docker-compose -f compose.yml up -d --build
