@@ -1,0 +1,9 @@
+FROM node as production-build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build:production
+
+FROM nginx
+COPY --from=production-build /app/build /usr/share/nginx/html
