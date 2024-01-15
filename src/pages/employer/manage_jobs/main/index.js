@@ -126,7 +126,7 @@ function MainJobs() {
         navigate(`/employer/manage-jobs/edit/${id}`);
     };
     const addButton = () => {
-        console.log("addButton");
+        navigate(`/admin/manage-jobs/add`); 
     };
 
     console.log("jobStatus", jobStatus);

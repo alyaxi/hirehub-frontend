@@ -7,8 +7,6 @@ import Form3 from './Form3';
 import Form4 from './Form4';
 import { convertDateFormat } from '../../utilis/convertDateStamp';
 
-// import { convertDateFormat } from '../../utilis/convertDateStamp';
-
 function AddJob() {
     const [step, setStep] = useState(1);
     const [job, setJob] = useState(
@@ -18,42 +16,20 @@ function AddJob() {
             benefits: "",
             company: {},
             expirationDate: "",
-            jobStatus: "",
-            jobType: "",
-            jobShift: "",
+            jobStatus: "deactive",
             jobLocation: "",
             noOfOpenings: "",
             positionTitle: "",
             salary: {
-                // type: "single",
                 type: "",
-                minimum: "",
-                maximum: "",
+                value: "",
                 rate: "",
             },
-
-
-            // salary: {
-            //     type: "single",
-            //     value: "60000",
-            //     rate: "",
-            // },
-            // or
-            // salary: {
-            //     type: "range",
-            //     minimum: "",
-            //     maximum: "",
-            //     rate: "",
-            // },
-
             postedDate: "",
             qualification: "",
             responsibilities: "",
             skills: "",
-            shortSummery: [
-                { title: "", value: "" },
-                { title: "", value: "" },
-            ],
+            shortSummery: [],
         }
     );
 
@@ -71,15 +47,16 @@ function AddJob() {
 
     const handleFinish = () => {
         let currentDate = new Date();
-
-    // Pass the current date to the conversion function
-    let formattedCurrentDate = convertDateFormat(currentDate);
-
-    console.log("Formatted Current Date:", formattedCurrentDate);
+        let formattedCurrentDate = convertDateFormat(currentDate);
+        const updatedJob = {
+            ...job,
+            postedDate: formattedCurrentDate,
+        };
+        console.log("final data", updatedJob);
+        setJob(updatedJob);
     };
 
-
-
+    console.log("job", job);
 
     const handleInput = (name, value) => {
         setJob(prevJob => ({
@@ -89,10 +66,10 @@ function AddJob() {
     };
 
     // form1 functions start
-    const handleRadioChange = (_jobType) => {
+    const handleRadioChange = (name, value) => {
         setJob(prevJob => ({
             ...prevJob,
-            jobType: _jobType,
+            [name]: value,
         }));
     };
 
@@ -112,12 +89,12 @@ function AddJob() {
     // form1 functions end
 
     // form2 functions start
-    const handleSalaryChange = (min, max, rate) => {
+    const handleSalaryChange = (type, value, rate) => {
         setJob(prevJob => ({
             ...prevJob,
             salary: {
-                minimum: min,
-                maximum: max,
+                type: type,
+                value: value,
                 rate: rate,
             },
         }));
@@ -165,14 +142,12 @@ function AddJob() {
     };
     // form4 functions end
 
-    console.log("job", job)
-
     return (
         <div data-hs-stepper>
             <ToastContainer></ToastContainer>
-            {/* content */}
             {step === 1 &&
                 <Form1
+                    handleShortSummeryChange={handleShortSummeryChange}
                     handleRadioChange={handleRadioChange}
                     handleNoOfPeopleToHireChange={handleNoOfPeopleToHireChange}
                     handleExpiryDateChange={handleExpiryDateChange}
@@ -181,14 +156,11 @@ function AddJob() {
             {step === 2 &&
                 <Form2
                     handleSalaryChange={handleSalaryChange}
+                    handleInput={handleInput}
                 />
             }
             {step === 3 &&
                 <Form3
-                    // handleIndustryOptionsChange={handleIndustryOptionsChange}
-                    // handleDepartmentChange={handleDepartmentChange}
-                    // handleCareerLevelChange={handleCareerLevelChange}
-                    // handleExperienceChange={handleExperienceChange}
                     handleShortSummeryChange={handleShortSummeryChange}
                     handleInput={handleInput}
                     handleRadioChange={handleRadioChange}
@@ -197,10 +169,6 @@ function AddJob() {
             {step === 4 &&
                 <Form4
                     multiSelectHandle={multiSelectHandle}
-                    // handlePosition={handlePosition}
-                    // handleResponsibilities={handleResponsibilities}
-                    // handleQualification={handleQualification}
-                    // handleSkills={handleSkills}
                     handleJobUpdate={handleJobUpdate}
                 />
             }
@@ -213,13 +181,11 @@ function AddJob() {
                 }
                 {step !== 4 &&
                     <Core.Button
-                        // isDisabled={!isAnyEmpty}
                         onClick={handleNext}
                         type="narrow">Save and Continue</Core.Button>
                 }
                 {step === 4 &&
                     <Core.Button
-                        // isDisabled={!isAnyEmpty}
                         onClick={handleFinish}
                         type="narrow">Save</Core.Button>
                 }

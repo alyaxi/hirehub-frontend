@@ -13,7 +13,7 @@ const noOfPeopleToHireOptions = [
     { name: "Over 200", value: "Over 200" },
 ];
 function Form1({
-    handleRadioChange,
+    handleShortSummeryChange,
     handleNoOfPeopleToHireChange,
     handleExpiryDateChange
 }) {
@@ -23,7 +23,7 @@ function Form1({
                 <label className={` flex justify-start text-[14px] text-gray-2 tracking-wide  mb-2 font-semibold capitalize`}>
                     What type of job is it?
                 </label>
-                <Radio.Group className="w-full" onChange={(e) => handleRadioChange('jobType',e.target.value)}>
+                <Radio.Group className="w-full" onChange={(e) => handleShortSummeryChange('jobType',e.target.value)}>
                     <div className="flex flex-wrap gap-y-3 w-full max-w-[570px]">
                         <Radio value={"Full Time"} className='w-[20%]'>Full Time</Radio>
                         <Radio value={'Part Time'} className='w-[20%]'>Part Time</Radio>
@@ -42,7 +42,6 @@ function Form1({
                     options={noOfPeopleToHireOptions}
                     required
                     onChange={(e) => handleNoOfPeopleToHireChange(e.target.value)}
-
                 />
             </div>
             <div className="mb-4">

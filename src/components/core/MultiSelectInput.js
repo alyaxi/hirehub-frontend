@@ -2,7 +2,7 @@ import React from 'react';
 import { Select } from 'antd';
 import Icon from '../icon';
 
-const MultiSelectInput = ({ label, helperText, name, required, icon,options,onChange }) => {
+const MultiSelectInput = ({ label, helperText, name, required, icon, options, onChange }) => {
     const _label = (name) => {
         switch (name) {
             case "benefits":
@@ -11,6 +11,7 @@ const MultiSelectInput = ({ label, helperText, name, required, icon,options,onCh
                 return "Label";
         }
     }
+
     return (
         <>
             {label &&
@@ -30,13 +31,13 @@ const MultiSelectInput = ({ label, helperText, name, required, icon,options,onCh
                 id={name}
                 mode="multiple"
                 allowClear
+                placeholder="Please select"
+                onChange={onChange}
+                options={options}
+                size="large"
                 style={{
                     width: '100%',
                 }}
-                placeholder="Please select"
-                defaultValue={['a10', 'c12']}
-                onChange={onChange}
-                options={options}
             />
         </>
     )

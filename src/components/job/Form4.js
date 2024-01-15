@@ -30,12 +30,7 @@ const options = [
 
 function Form4({
     multiSelectHandle,
-    // handlePosition,
-    // handleResponsibilities,
-    // handleQualification,
-    // handleSkills,
-     handleJobUpdate,
-    //  handleRadioChange
+    handleJobUpdate,
 }) {
     const [responsibilities, setResponsibilities] = useState('');
     const [qualification, setQualification] = useState('');

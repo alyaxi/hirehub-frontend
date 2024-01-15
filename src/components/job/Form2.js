@@ -2,21 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Core } from '..';
 import { Divider, Radio } from 'antd';
 
-const minimumOptions = [
-    { name: "10", value: "10" },
-    { name: "20", value: "20" },
-    { name: "30", value: "30" },
-    { name: "50", value: "50" },
-    { name: "100", value: "100" },
-    { name: "200", value: "200" },
-];
-const maximumOptions = [
-    { name: "20", value: "20" },
-    { name: "30", value: "30" },
-    { name: "50", value: "50" },
-    { name: "100", value: "100" },
-    { name: "200", value: "200" },
-    { name: "300", value: "300" },
+const salaryOptions = [
+    { name: "$1000 - $1500", value: "$1000 - $1500" },
+    { name: "$1500 - $2000", value: "$1500 - $2000" },
+    { name: "$2000 - $2500", value: "$2000 - $2500" },
+    { name: "$3000 - $3500", value: "$3000 - $3500" },
+    { name: "$3500 - $4000", value: "$3500 - $4000" },
+    { name: "$4000 - $4500", value: "$4000 - $4500" },
+    { name: "$5000 - $5000", value: "$5000 - $5000" },
 ];
 const rateOptions = [
     { name: "USD/hour", value: "USD/hour" },
@@ -31,61 +24,63 @@ const rateOptions = [
     { name: "SEK/hour", value: "SEK/hour" },
 ];
 
-function Form2({ handleSalaryChange }) {
-    const [selectedMinimum, setSelectedMinimum] = useState("");
-    const [selectedMaximum, setSelectedMaximum] = useState("");
-    const [selectedRate, setSelectedRate] = useState("");
+function Form2({ handleSalaryChange, handleInput }) {
+    const [rate, setRate] = useState('');
+    const [salary, setSalary] = useState('');
+    const [employmentType, setEmploymentType] = useState(false);
 
-    const handleChange = (name, value) => {
-        switch (name) {
-            case "minimum":
-                setSelectedMinimum(value);
-                break;
-            case "maximum":
-                setSelectedMaximum(value);
-                break;
-            case "rate":
-                setSelectedRate(value);
-                break;
-            default:
-                break;
-        }
+    const handleEmploymentTypeChange = (e) => {
+        setEmploymentType(!employmentType);
+    };
+
+    const handleRate = ( value) => {
+        setRate(value);
+    };
+
+    const handleSalary = ( value) => {
+        setSalary(value);
     };
 
     useEffect(() => {
-        if (selectedMinimum && selectedMaximum && selectedRate) {
-            handleSalaryChange(selectedMinimum, selectedMaximum, selectedRate);
-        }
-    }, [selectedMinimum, selectedMaximum, selectedRate]);
+        const handleSalaryFinal = () => {
+            let _employmentType = employmentType ? 'single' : "range";
+            handleSalaryChange(_employmentType, salary, rate)
+        };
+
+        handleSalaryFinal();
+    }, [employmentType, salary, rate]);
 
     return (
         <Core.Card className={'p-5'} w840 border>
             <div className="flex justify-between items-end w-full gap-x-3 mb-4">
                 <div className='flex justify-between w-full'>
 
-                    <div className='fle x flex-col gap-y-5 w-[75%]'>
-                        {/* <div className='w-full'>
-                            <Core.SelectWithLabel
-                                name={"maximum"}
-                                label
-                                options={maximumOptions}
-                                onChange={(e) => handleChange("maximum", e.target.value)}
-                            />
-                        </div>
-                        <div className='w-full'>
-                            <Core.SelectWithLabel
-                                name={"maximum"}
-                                label
-                                options={maximumOptions}
-                                onChange={(e) => handleChange("maximum", e.target.value)}
-                            />
-                        </div> */}
-                        <Radio.Group className="w-full"  >
-                            <div className="flex flex-col gap-y-3 w-full">
-                                <Radio value={"Full Time"} className='w-[20%]'>Full Time</Radio>
-                                <Radio value={'Part Time'} className='w-[20%]'>Part Time</Radio> 
+                    <div className='flex gap-y-5 w-[75%]'>
+                        <Radio.Group onChange={handleEmploymentTypeChange} value={employmentType} className="pr-3">
+                            <div className="flex flex-col justify-around h-[100%] gap-y-3">
+                                <Radio value={false}></Radio>
+                                <Radio value={true}></Radio>
                             </div>
                         </Radio.Group>
+                        <div className='flex flex-col gap-y-3 w-full'>
+                            <div className={`${employmentType && "disable-me"}`}>
+                                <Core.SelectWithLabel
+                                    name={"salary"}
+                                    label
+                                    options={salaryOptions}
+                                    onChange={(e) => handleSalary("salary", e.target.value)}
+                                />
+                            </div>
+                            <div className={`${!employmentType && "disable-me"}`}>
+                                <Core.InputWithLabel
+                                    name={"salary"}
+                                    label
+                                    bgGray
+                                    sm
+                                    onChange={(e) => handleSalary(e.target.value)}
+                                />
+                            </div>
+                        </div>
                     </div>
                     <Divider type="vertical" className='h-[100px] max-h-[100px] self-center mx-[20px]' />
                     <div className='flex flex-col justify-center w-[25%]'>
@@ -93,7 +88,7 @@ function Form2({ handleSalaryChange }) {
                             name={"rate"}
                             label
                             options={rateOptions}
-                            onChange={(e) => handleChange("rate", e.target.value)}
+                            onChange={(e) => handleRate(e.target.value)}
                         />
                     </div>
 

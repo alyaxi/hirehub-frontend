@@ -66,12 +66,18 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Grade";
             case "jobLocation":
                 return "Job Location";
-
+            case "package":
+                return "Package";
 
             case "SearchProduct":
                 return "Search Product";
             case "expiryDate":
                 return "Job Expiry Date";
+            case "salary":
+                return "Salary";
+            case "positionTitle":
+                return "Position Title";
+
             default:
                 return "Label";
         }
@@ -138,6 +144,12 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Enter Organization Name";
             case "jobLocation":
                 return "Street# 1, Area abc, City, Country.";
+            case "package":
+                return "2000";
+            case "salary":
+                return "Salary";
+            case "positionTitle":
+                return "Position Title";
 
             case "SearchProduct":
                 return "Search Product ...";
@@ -168,6 +180,9 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "company":
             case "organization":
             case "jobLocation":
+            case "package":
+            case "salary":
+            case "positionTitle":
                 return "text";
             case "password":
             case "newPassword":

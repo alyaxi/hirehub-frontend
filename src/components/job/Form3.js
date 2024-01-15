@@ -56,6 +56,13 @@ const experienceOptions = [
     { name: "10+ Years", value: "over 10" },
 ];
 
+const minimumEducationOptions = [
+    { name: "High School Diploma", value: "High School Diploma" },
+    { name: "Associate's Degree", value: "Associate's Degree" },
+    { name: "Bachelor's Degree", value: "Bachelor's Degree" },
+    { name: "Master's Degree", value: "Master's Degree" },
+    { name: "Doctorate/Ph.D.", value: "Doctorate/Ph.D." },
+];
 const jobShiftOptions = [
     { name: "First Shift (Day)", value: "First Shift (Day)" },
     { name: "Second Shift (Afternoon)", value: "Second Shift (Afternoon)" },
@@ -65,16 +72,20 @@ const jobShiftOptions = [
 ];
 
 function Form3({
-    // handleIndustryOptionsChange,
-    // handleDepartmentChange,
-    // handleCareerLevelChange,
-    // handleExperienceChange,
     handleShortSummeryChange,
     handleInput,
-    handleRadioChange,
 }) {
     return (
-        <Core.Card className={'p-5'} w840 border>
+        <Core.Card className={'p-5'} w840 border>            
+            <div className="mb-4">
+                <Core.InputWithLabel
+                    name={"positionTitle"}
+                    label
+                    bgGray
+                    sm
+                    onChange={(e) => handleInput('positionTitle', e.target.value)}
+                />
+            </div>
             <div className="mb-4">
                 <Core.SelectWithLabel
                     name={"industry"}
@@ -110,6 +121,16 @@ function Form3({
 
                 />
             </div>
+
+            <div className="mb-4">
+                <Core.SelectWithLabel
+                    name={"minimumEducation"}
+                    label
+                    options={minimumEducationOptions}
+                    onChange={(e) => handleShortSummeryChange('minimumEducation', e.target.value)}
+
+                />
+            </div>
             <div className="mb-4">
                 <Core.SelectWithLabel
                     name={"jobShift"}
@@ -127,10 +148,15 @@ function Form3({
                     onChange={(e) => handleInput('jobLocation', e.target.value)}
                 />
             </div>
-
-
-
-
+            {/* <div className="mb-4">
+                <Core.InputWithLabel
+                    name={"package"}
+                    label
+                    bgGray
+                    sm
+                    onChange={(e) => handleInput('salary', e.target.value)}
+                />
+            </div> */}
 
 
 
@@ -138,15 +164,15 @@ function Form3({
                 <label className={` flex justify-start text-[14px] text-gray-2 tracking-wide  mb-2 font-semibold capitalize`}>
                     Gender:
                 </label>
-                <Radio.Group className="w-full" onChange={(e) => handleRadioChange('jobType',e.target.value)}>
+                <Radio.Group className="w-full" onChange={(e) => handleShortSummeryChange('gender', e.target.value)}>
                     <div className="flex flex-wrap gap-y-3 w-full max-w-[570px]">
                         <Radio value={"Male"}>Male</Radio>
                         <Radio value={'Female'}>Female</Radio>
-                        <Radio value={'No Preference'}>No Preference</Radio> 
+                        <Radio value={'No Preference'}>No Preference</Radio>
                     </div>
                 </Radio.Group>
             </div>
-            
+
         </Core.Card>
     );
 }

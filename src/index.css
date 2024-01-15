@@ -1,5 +1,5 @@
 @tailwind base;
-@tailwind components; 
+@tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
 
@@ -59,22 +59,47 @@ body {
 .ant-pagination .ant-pagination-item-active {
     background-color: #8913FF;
 }
+
 .ant-pagination .ant-pagination-options {
     display: none;
 }
- 
+
 
 
 
 /* avatar */
 
 /* :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select > .ant-upload  */
-:where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select 
-{
+:where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select {
     width: 21px;
     height: 21px;
     border: none;
 }
+
 :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm {
     display: none;
+}
+
+.disable-me {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.disable-me:before {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    width: calc(100% + 20px);
+    height: calc(100% + 10px);
+    border-radius: 10px;
+    background-color: rgba(168, 168, 168, 0.623);
+    opacity: .3;
+    margin: -5px -10px;
+}
+
+.disable-me input,
+.disable-me select,
+.disable-me label {
+    opacity: .5;
 }
