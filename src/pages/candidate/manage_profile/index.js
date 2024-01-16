@@ -4,7 +4,7 @@ import Icon from '../../../components/icon';
 import avatar1 from '../../../assets/images/avatars/3.png';
 import logo1 from "../../../assets/images/company-logos/logo1.png";
 import logo2 from "../../../assets/images/company-logos/logo2.png";
-import video from "../../../assets/videos/1.mp4";
+// import video from "../../../assets/videos";
 import { calculateTimePeriod } from '../../../utilis/calculateTimePeriod';
 import { Avatar, Button, Progress } from 'antd';
 import { NavLink } from 'react-router-dom';
@@ -369,7 +369,7 @@ function ManageProfileCandidate() {
                         </div>
                         <Icon name="Options" />
                     </div>
-                    <Core.VideoPlayer src={video} className="max-h-[150px] rounded-[10px] overflow-hidden" />
+                    <Core.VideoPlayer src={""} className="max-h-[150px] rounded-[10px] overflow-hidden" /> 
                 </Core.Card>
                 <button
                     className={`flex justify-center items-center gap-x-2 w-full text-white bg-gradient-to-r from-purple-4 to-purple-3  hover:text-white text-[14px] hover:bg-gradient-to-r hover:from-purple-4 hover:to-purple-3 transition-all rounded-[8px] px-3 py-[10px]`}
