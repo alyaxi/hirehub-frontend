@@ -49,7 +49,7 @@ import PrivateRoute from "./utilis/PrivateRoute";
 
 function App() {
 
-  // console.log(process.env.REACT_APP_API_BASE_URL, "envvvvvvvvvvvvvvv")
+  console.log(process.env.REACT_APP_API_BASE_URL, "envvvvvvvvvvvvvvv")
 
   return (
     <BrowserRouter>

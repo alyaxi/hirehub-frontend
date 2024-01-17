@@ -60,9 +60,6 @@ module.exports = {
         
         "red-2": "#F04438",
         "red-3": "#FEEDEC",
-
-        "ggg-1" : "#BDC50C",
-        "ggg-2" : "#F3F3F3",
         
       },
     },

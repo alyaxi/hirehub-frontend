@@ -42,7 +42,6 @@ function EditCandidates() {
                 setTimeout(() => {
                     navigate("/admin/manage-candidates")
                 }, 3000)
-
             }).catch(err => {
                 console.error(`Error Fetching Data ${err}`);
                 notificationService.error(err)

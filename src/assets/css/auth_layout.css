@@ -36,17 +36,19 @@
     width: 100%;
     max-height: 100vh;
     overflow-y: scroll;
+    /* min-height: 100vh;
+    background-image: linear-gradient(45deg, #f8e6ff 20%, white 80%); */
 }
 
 .auth-layout .content-wrapper .box {
     width: 100%;
     max-width: 764px;
     height: 100%;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: start;
     padding-top: 12%;
     padding-bottom: 12%;
     padding-left: 50px;
-    padding-right: 50px;
+    padding-right: 50px; */
 }

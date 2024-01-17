@@ -1,0 +1,45 @@
+name: Node.js CI/CD to Digital Ocean
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+      branches: 
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy to Digital Ocean
+        uses: appleboy/ssh-action@master #master
+        with:
+          host: ${{secrets.HIREHUB_SSH_HOST_IP}} # IP address of the server you wish to ssh into
+          key: ${{secrets.HIREHUB_SSH_KEY}} # Private or public key of the server
+          username: ${{ secrets.HIREHUB_SSH_USER }} # User of the server you want to ssh into
+          if: success() # Only run if previous steps were successful
+          continue-on-error: true # Continue even if this step fails
+
+
+ 
+          script: |
+            cd /var/www/docker-hirehub/frontend && git pull origin main
+            echo "Finished git pull"
+            cd /var/www/docker-hirehub
+            echo "Starting docker-compose"
+            docker-compose -f compose.yml -f compose-prod.yml up frontend -d --build > deployment.log 2>&1
+            echo "Finished docker-compose"

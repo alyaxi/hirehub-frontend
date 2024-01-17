@@ -11,9 +11,9 @@ import ManageCandidate from '../../services/Employer/ManageCandidate';
 export const getAppliedJobByCandidate = createAsyncThunk('employer/get-applied-jobs-by-candidate', async (_) => {
 
     try {
-        // console.log("getemployererrrbyidddd consolee")
+        console.log("getemployererrrbyidddd consolee")
         const data = await ManageCandidate.getAppliedJobByCandidate()
-        // console.log(data, "dataaaaa")
+        console.log(data, "dataaaaa")
         return data
     } catch (error) {
         // Handle login error
@@ -67,14 +67,14 @@ const manageCandidate = createSlice({
             const appliedJobs1 = payload?.data?.appliedJobs
             const newAppliedJobs = []
             for (let i = 0; i < appliedJobs1?.length; i++) {
-                // console.log("start consoleee")
+                console.log("start consoleee")
                 const jobs = appliedJobs1[i];
                 const jobTitle = jobs?.Job[0]?.position
                 const salary = jobs?.Job[0]?.salary
                 const experience = jobs?.Job[0]?.experience;
                 const name = jobs.user[0].name
                 const candidate = jobs.candidate[0]
-                // console.log(jobs,"start consoleee")
+                console.log(jobs,"start consoleee")
             
 
 
@@ -94,7 +94,7 @@ const manageCandidate = createSlice({
 
                 });
 
-                // console.log({ newAppliedJobs });
+                console.log({ newAppliedJobs });
                 state.jobs = newAppliedJobs
             }
 

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@headlessui/react": "^1.7.17",
     "@reduxjs/toolkit": "^2.0.1",
     "@testing-library/jest-dom": "^5.17.0",
@@ -32,6 +33,10 @@
     "start:production": "cross-env ENV_FILE=.env.production react-scripts start",
     "build:local": "cross-env ENV_FILE=.env.local react-scripts build",
     "build:production": "cross-env ENV_FILE=.env.production react-scripts build",
+    "start:local": "cross-env NODE_ENV=.env.local react-scripts start",
+    "start:production": "cross-env NODE_ENV=.env.production react-scripts start",
+    "build:local": "cross-env NODE_ENV=.env.local react-scripts build",
+    "build:production": "cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

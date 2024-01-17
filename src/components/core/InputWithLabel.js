@@ -157,7 +157,6 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "";
         }
     }
-
     const type = (name) => {
         switch (name) {
             case "email":
@@ -196,7 +195,6 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "text";
         }
     }
-
     return (
         <>
             <div className="flex justify-between items-center">
