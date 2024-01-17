@@ -31,6 +31,7 @@ import {
   EditCandidatesEmployer,
   ViewCandidatesEmployer,
   MainJobsEmployer,
+  AddJobsEmployer,
   EditJobsEmployer,
   ViewJobsEmployer,
   MainSubscriptionEmployer,
@@ -110,8 +111,9 @@ function App() {
           {/* <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidatesEmployer />} /> */}
 
           <Route path="manage-jobs" element={<MainJobsEmployer />} />
-          <Route path="manage-jobs/view/:id" element={<ViewJobsEmployer />} />
+          <Route path="manage-jobs/add" element={<AddJobsEmployer />} />
           <Route path="manage-jobs/edit/:id" element={<EditJobsEmployer />} />
+          <Route path="manage-jobs/view/:id" element={<ViewJobsEmployer />} />
 
           <Route path="manage-subscription" element={<MainSubscriptionEmployer />} />
 

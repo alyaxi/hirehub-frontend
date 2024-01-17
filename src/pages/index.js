@@ -40,6 +40,7 @@ import EmployerDashboard from "./employer/dashboard";
 import ManageProfile from "./employer/manage_profile";
 
 import MainJobsEmployer from "./employer/manage_jobs/main";
+import AddJobsEmployer from "./employer/manage_jobs/add";
 import ViewJobsEmployer from "./employer/manage_jobs/view";
 import EditJobsEmployer from "./employer/manage_jobs/edit";
 
@@ -103,6 +104,7 @@ export {
     ManageProfile,
 
     MainJobsEmployer,
+    AddJobsEmployer,
     EditJobsEmployer,
     ViewJobsEmployer,
 

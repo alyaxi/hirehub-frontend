@@ -12,24 +12,32 @@ function AddJob() {
     const [job, setJob] = useState(
         {
             id: "",
-            aboutPosition: "",
-            benefits: "",
-            company: {},
+            jobType: "",
+            noOfOpenings: "",
             expirationDate: "",
             jobStatus: "deactive",
+            postedDate: "",
+            company: {},
             jobLocation: "",
-            noOfOpenings: "",
-            positionTitle: "",
             salary: {
                 type: "",
                 value: "",
                 rate: "",
             },
-            postedDate: "",
+            aboutPosition: "",
+            benefits: "",
             qualification: "",
             responsibilities: "",
             skills: "",
-            shortSummery: [],
+            // shortSummery: [],
+
+            industry: "",
+            jobShift: "",
+            department: "",
+            gender: "",
+            minimumEducation: "",
+            careerLevel: "",
+            experience: "",
         }
     );
 
@@ -117,29 +125,29 @@ function AddJob() {
     // form3 functions end
 
     // form4 functions start
-    const handleShortSummeryChange = (title, value) => {
-        const existingIndex = job.shortSummery.findIndex(
-            (summary) => summary.title === title
-        );
-        if (existingIndex !== -1) {
-            setJob((prevJob) => ({
-                ...prevJob,
-                shortSummery: prevJob.shortSummery.map((summary, index) =>
-                    index === existingIndex
-                        ? { ...summary, value: value }
-                        : summary
-                ),
-            }));
-        } else {
-            setJob((prevJob) => ({
-                ...prevJob,
-                shortSummery: [
-                    ...prevJob.shortSummery,
-                    { title: title, value: value },
-                ],
-            }));
-        }
-    };
+    // const handleShortSummeryChange = (title, value) => {
+    //     const existingIndex = job.shortSummery.findIndex(
+    //         (summary) => summary.title === title
+    //     );
+    //     if (existingIndex !== -1) {
+    //         setJob((prevJob) => ({
+    //             ...prevJob,
+    //             shortSummery: prevJob.shortSummery.map((summary, index) =>
+    //                 index === existingIndex
+    //                     ? { ...summary, value: value }
+    //                     : summary
+    //             ),
+    //         }));
+    //     } else {
+    //         setJob((prevJob) => ({
+    //             ...prevJob,
+    //             shortSummery: [
+    //                 ...prevJob.shortSummery,
+    //                 { title: title, value: value },
+    //             ],
+    //         }));
+    //     }
+    // };
     // form4 functions end
 
     return (
@@ -147,10 +155,11 @@ function AddJob() {
             <ToastContainer></ToastContainer>
             {step === 1 &&
                 <Form1
-                    handleShortSummeryChange={handleShortSummeryChange}
+                    // handleShortSummeryChange={handleShortSummeryChange}
                     handleRadioChange={handleRadioChange}
                     handleNoOfPeopleToHireChange={handleNoOfPeopleToHireChange}
                     handleExpiryDateChange={handleExpiryDateChange}
+                    handleInput={handleInput}
                 />
             }
             {step === 2 &&
@@ -161,7 +170,7 @@ function AddJob() {
             }
             {step === 3 &&
                 <Form3
-                    handleShortSummeryChange={handleShortSummeryChange}
+                    // handleShortSummeryChange={handleShortSummeryChange}
                     handleInput={handleInput}
                     handleRadioChange={handleRadioChange}
                 />

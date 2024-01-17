@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Core } from '..';
 import Icon from '../icon';
-import { useLocation } from 'react-router-dom';
 import { Avatar } from 'antd';
 
-function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedState, handleNext, setStatus, status }) {
-    const location = useLocation();
-    // const parts = location?.pathname.split('/');
-    // const accountType = parts[1];
-
+function JobDetails({ data: extractedData, pageType, selectedState, handleNext, setStatus, status }) {
+    const dropdownOptions = [
+        "Open",
+        "Closed",
+        "Published",
+        "Reublished",
+    ]
     const [resumePrivacy, setResumePrivacy] = useState('');
 
     useEffect(() => {
@@ -81,9 +82,9 @@ function JobDetails({ data: extractedData, pageType, dropdownOptions, selectedSt
                     <div className='w-full h-full flex justify-between pl-2'>
                         <div>
                             <h6 className='text-[22px] leading-[2px] capitalize font-semibold mb-2'>{extractedData?.positionTitle}</h6>
-                            <a className='text-purple-4 text-[12px] leading-[22px] underline capitalize font-medium mb-2'>{extractedData?.company.title}</a>
-                            <p className='text-gray-6 text-[12px] leading-[20px]'>{extractedData?.company.address}</p>
-                            <div className='flex justify-start gap-x-6 text-gray-14 text-[12px] leading-[20px] py-1'><span className='flex justify-start items-center gap-x-1'><Icon name="Calender2" size={18} /> {extractedData?.postedDate}</span> <span className='flex justify-start items-center gap-x-1'><Icon name="Currency" /> {extractedData?.salaryRange}</span></div>
+                            <a className='text-purple-4 text-[12px] leading-[22px] underline capitalize font-medium mb-2'>{extractedData?.employer.title}</a>
+                            <p className='text-gray-6 text-[12px] leading-[20px]'>{extractedData?.employer.address}</p>
+                            <div className='flex justify-start gap-x-6 text-gray-14 text-[12px] leading-[20px] py-1'><span className='flex justify-start items-center gap-x-1'><Icon name="Calender2" size={18} /> {extractedData?.postedDate}</span> <span className='flex justify-start items-center gap-x-1'><Icon name="Currency" />${extractedData?.salary}</span></div>
                             <div className='flex justify-start gap-x-2 pt-3'><h6 className='text-black-2 text-[12px] leading-[20px]'>Share this job:</h6>
                                 <div className='flex justify-start items-center gap-x-6'>
                                     <Icon name="Whatsapp" />

@@ -137,6 +137,13 @@ function TableB({
                         </Flex>
                     )
                 }
+                else if (value.dataIndex === "employer") {
+                    return (
+                        <span key={`render-${value.dataIndex}-${index}`}>
+                            {val?.title}
+                        </span>
+                    )
+                }
                 else {
                     return <span className='text-gray-6' key={`render-${value.dataIndex}-${index}`}>{val}</span>;
                 }
@@ -187,6 +194,7 @@ function TableB({
         setResetTrigger2((prev) => !prev);
         setResetTrigger3((prev) => !prev);
     };
+    console.log("data",data)
     return (
         <div className="flex flex-col bg-white rounded-[8px] overflow-hidden border shadow-md">
             <div className="-m-1.5 overflow-x-auto">

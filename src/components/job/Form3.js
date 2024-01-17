@@ -72,7 +72,7 @@ const jobShiftOptions = [
 ];
 
 function Form3({
-    handleShortSummeryChange,
+    // handleShortSummeryChange,
     handleInput,
 }) {
     return (
@@ -91,7 +91,7 @@ function Form3({
                     name={"industry"}
                     label
                     options={industryOptions}
-                    onChange={(e) => handleShortSummeryChange('industry', e.target.value)}
+                    onChange={(e) => handleInput('industry', e.target.value)}
                 />
             </div>
             <div className="mb-4">
@@ -99,7 +99,7 @@ function Form3({
                     name={"department"}
                     label
                     options={departmentOptions}
-                    onChange={(e) => handleShortSummeryChange('department', e.target.value)}
+                    onChange={(e) => handleInput('department', e.target.value)}
 
                 />
             </div>
@@ -108,7 +108,7 @@ function Form3({
                     name={"careerLevel"}
                     label
                     options={careerLevelOptions}
-                    onChange={(e) => handleShortSummeryChange('careerLevel', e.target.value)}
+                    onChange={(e) => handleInput('careerLevel', e.target.value)}
 
                 />
             </div>
@@ -117,7 +117,7 @@ function Form3({
                     name={"experience"}
                     label
                     options={experienceOptions}
-                    onChange={(e) => handleShortSummeryChange('experience', e.target.value)}
+                    onChange={(e) => handleInput('experience', e.target.value)}
 
                 />
             </div>
@@ -127,7 +127,7 @@ function Form3({
                     name={"minimumEducation"}
                     label
                     options={minimumEducationOptions}
-                    onChange={(e) => handleShortSummeryChange('minimumEducation', e.target.value)}
+                    onChange={(e) => handleInput('minimumEducation', e.target.value)}
 
                 />
             </div>
@@ -136,7 +136,7 @@ function Form3({
                     name={"jobShift"}
                     label
                     options={jobShiftOptions}
-                    onChange={(e) => handleShortSummeryChange('jobShift', e.target.value)}
+                    onChange={(e) => handleInput('jobShift', e.target.value)}
                 />
             </div>
             <div className="mb-4">
@@ -164,7 +164,7 @@ function Form3({
                 <label className={` flex justify-start text-[14px] text-gray-2 tracking-wide  mb-2 font-semibold capitalize`}>
                     Gender:
                 </label>
-                <Radio.Group className="w-full" onChange={(e) => handleShortSummeryChange('gender', e.target.value)}>
+                <Radio.Group className="w-full" onChange={(e) => handleInput('gender', e.target.value)}>
                     <div className="flex flex-wrap gap-y-3 w-full max-w-[570px]">
                         <Radio value={"Male"}>Male</Radio>
                         <Radio value={'Female'}>Female</Radio>
