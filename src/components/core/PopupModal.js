@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
 import Forms from '../forms';
-import Icon from '../icon';
-import { Core } from '..';
-
 function PopupModal({ setIsModalOpen,
     isModalOpen,
     type,
@@ -47,6 +44,14 @@ function PopupModal({ setIsModalOpen,
         skill: "",
         experience: "",
     })
+    const [languagesData, setLanguagesData] = useState({
+        languages: "",
+        languageProficiency: "",
+    })
+    const [summeryData, setSummeryData] = useState({
+    })
+    const [jobPreferenceData, setJobPreferenceData] = useState({
+    })
     const handleOk = () => {
         setIsModalOpen(false);
     };
@@ -54,14 +59,14 @@ function PopupModal({ setIsModalOpen,
     const handleCancel = () => {
         setIsModalOpen(false);
     };
-    let _action = action === "edit" ? "" : "Add";
+    let _action = action === "edit" ? "Edit" : "Add";
     let title = '';
     switch (type) {
-        case 'experiences':
-            title = 'Experiences';
+        case 'experience':
+            title = 'Experience';
             break;
-        case 'educations':
-            title = 'Educations';
+        case 'education':
+            title = 'Education';
             break;
         case 'skills':
             title = 'Skills';
@@ -69,8 +74,8 @@ function PopupModal({ setIsModalOpen,
         case 'personalInformations':
             title = 'Personal Informations';
             break;
-        case 'summary':
-            title = 'Summary';
+        case 'summery':
+            title = 'Summery';
             break;
         case 'projects':
             title = 'Projects';
@@ -88,22 +93,26 @@ function PopupModal({ setIsModalOpen,
             break;
     }
     let _title = _action + " " + title;
-
-    // console.log("personalInformationData", personalInformationData)
-    // console.log("projectsData", projectsData)
+    console.log("type", type)
+    console.log("action", action)
     return (
-        <>
-            <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
-                {/* type -    {type}
-                <br />
-                action - {action} */}
-                {type === "personalInformations" && <Forms.PersonalInformations handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}
-                {type === "projects" && <Forms.Projects handleCancel={handleCancel} action={action} setProjectsData={setProjectsData} />}
-                {type === "experiences" && <Forms.Experiences handleCancel={handleCancel} action={action} setExperiencesData={setExperiencesData} />}
-                {type === "educations" && <Forms.Educations handleCancel={handleCancel} action={action} setEducationsData={setEducationsData} />}
-                {type === "skills" && <Forms.Skills handleCancel={handleCancel} action={action} setSkillsData={setSkillsData} />}
-            </Modal>
-        </>
+        <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
+            {type === "personalInformations" && <Forms.PersonalInformations handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}
+            {type === "summery" && <Forms.Summery handleCancel={handleCancel} action={action} setSummeryData={setSummeryData} />}
+            {type === "projects" && <Forms.Projects handleCancel={handleCancel} action={action} setProjectsData={setProjectsData} />}
+            {type === "experience" && <Forms.Experiences handleCancel={handleCancel} action={action} setExperiencesData={setExperiencesData} />}
+            {type === "education" && <Forms.Educations handleCancel={handleCancel} action={action} setEducationsData={setEducationsData} />}
+
+
+            {(type === "skills" && action !== "edit") && <Forms.Skills handleCancel={handleCancel} action={action} setSkillsData={setSkillsData} />}
+            {(type === "skills" && action === "edit") && <Forms.SkillsEdit handleCancel={handleCancel} action={'edit'} setSkillsData={setSkillsData} />}
+
+            {(type === "language" && action !== "edit") && <Forms.Languages handleCancel={handleCancel} action={action} setSkillsData={setSkillsData} />}
+            {(type === "language" && action === "edit") && <Forms.LanguagesEdit handleCancel={handleCancel} action={'edit'} setSkillsData={setSkillsData} />}
+
+            {(type === "jobPreference" && action === "edit") && <Forms.JobPreference handleCancel={handleCancel} action={'edit'} setJobPreferenceData={setJobPreferenceData} />}
+
+        </Modal>
     );
 };
 

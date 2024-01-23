@@ -14,9 +14,16 @@ function Button({ children, onClick, submit, type, color, icon, className, sm, i
                 rounded-[8px] 
                 ${!color && 'bg-gradient-to-r from-purple-2 to-purple-3 '}
                 ${!color && 'border border-purple-3'}
+                
                 ${color === "white" && 'bg-white'}
                 ${color === "white" && 'text-gray-8'}
                 ${color === "white" && 'border border-gray-8'}
+
+                ${color === "red" && 'text-white'}
+                ${color === "red" && 'bg-red-500'}
+                ${color === "red" && 'text-gray-8'}
+                ${color === "red" && 'border border-red-500'}
+
                 hover:translate-y-[-1px] transition-all
                 ${sm ? 'py-[9px]' : 'py-[10px]'}                
                  px-5

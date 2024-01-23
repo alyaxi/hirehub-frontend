@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Formik, Form, Field } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Country, State, City } from 'country-state-city';
 import { Core } from '..';
 
 function Experiences({ action, handleCancel }) {
@@ -95,24 +96,109 @@ function Experiences({ action, handleCancel }) {
         { name: "$3500 - $4000", value: "3500-4000" },
         { name: "$4000 - $4500", value: "4000-4500" },
         { name: "Over $4500", value: "over4500" },
+    ];   
+
+    const monthsOptions = [
+        { name: 'January', value: '01' },
+        { name: 'February', value: '02' },
+        { name: 'March', value: '03' },
+        { name: 'April', value: '04' },
+        { name: 'May', value: '05' },
+        { name: 'June', value: '06' },
+        { name: 'July', value: '07' },
+        { name: 'August', value: '08' },
+        { name: 'September', value: '09' },
+        { name: 'October', value: '10' },
+        { name: 'November', value: '11' },
+        { name: 'December', value: '12' },
     ];
-    const [data, setData] = useState({
-        name: '',
-        lastName: '',
-        // Add other fields here
-    });
+    const [data] = useState({});
+    const [selectedCountry, setSelectedCountry] = useState('');
+    const [selectedCity, setSelectedCity] = useState('');
+    const [countries, setCountries] = useState([]);
+    const [cities, setCities] = useState([]);
+    const [description, setDescription] = useState('');
+
+    const currentYear = new Date().getFullYear();
+    const startYear = 1901;
+    const endYear = currentYear - 5;
+    const yearOptions = [];
+    for (let year = startYear; year <= endYear; year++) {
+        yearOptions.push({ name: year.toString(), value: year.toString() });
+    }
+    const [selectedStartMonth, setSelectedStartMonth] = useState('');
+    const [selectedEndMonth, setSelectedEndMonth] = useState('');
+    const [startDate, setStartDate] = useState();
+
+    useEffect(() => {
+        const allCountries = Country.getAllCountries();
+        setCountries(allCountries);
+    }, []);
+
+    const handleCountryChange = (event) => {
+        const countryValue = event.target.value;
+        setSelectedCountry(countryValue);
+
+        const countryCities = City.getCitiesOfCountry(countryValue);
+        setCities(countryCities);
+
+        setSelectedCity('');
+    };
+
+    const handleCityChange = (event) => {
+        const cityValue = event.target.value;
+        setSelectedCity(cityValue);
+    };
+
+    const handleDateChange = (type, name, event) => {
+        const value = event.target.value;
+
+        const setMonth = (selectedMonth) => {
+            if (type === "startDate") {
+                setSelectedStartMonth(selectedMonth);
+            }
+        };
+
+        const setYear = (selectedYear) => {
+            const selectedMonth = (type === "startDate") ? selectedStartMonth : selectedEndMonth;
+
+            if (selectedMonth !== "" && selectedYear !== "") {
+                const selectedDate = selectedMonth + '/' + selectedYear;
+
+                if (type === "startDate") {
+                    setStartDate(selectedDate);
+                }
+            }
+        };
+
+        if (name === "month") {
+            setMonth(value);
+        }
+
+        if (name === "year") {
+            setYear(value);
+        }
+
+        if (type === "startDate" && selectedStartMonth !== "" && name === "year") {
+            let _startDate = selectedStartMonth + '/' + value;
+            setStartDate(_startDate)
+        }
+    };
 
     const handleSubmit = (values, actions) => {
-        // Handle form submission here using the `values` object
-        console.log(values);
-        // actions.setSubmitting(false); // Reset the submit state
+        console.log('title', values?.title);
+        console.log('company', values?.company);
+        console.log('industry', values?.industry);
+        console.log('directlyManageTeam', values?.directlyManageTeam);
+        console.log('noOfPeople', values?.noOfPeople);
+        console.log('salary', values?.salary);
+        console.log('selectedCountry', selectedCountry);
+        console.log('selectedCity', selectedCity);
+        console.log('startDate', startDate);
+        console.log('agreeTerms', values?.agreeTerms);
+        console.log('description', description);
     };
-    const handleChange = (name, event) => {
-        const value = event.target.value;
-        console.log("value", value)
 
-    };
-    console.log("data", data)
     return (
         <Formik
             initialValues={data}
@@ -122,7 +208,7 @@ function Experiences({ action, handleCancel }) {
             {({ isSubmitting }) => (
                 <Form>
 
-                    indicates required
+                    <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>indicates required</span>
 
                     <div className='mb-4'>
                         <Field name="title">
@@ -155,63 +241,170 @@ function Experiences({ action, handleCancel }) {
                     </div>
 
                     <div className='mb-4'>
-                        <Core.SelectWithLabel
-                            name={"industry"}
-                            label="Industry"
-                            options={industryOptions}
-                            defaultOption="Choose any one"
-                            onChange={(value) => handleChange("industry", value)}
-                            required
-                        />
+                        <Field name="industry">
+                            {({ field }) => (
+                                <Core.SelectWithLabel
+                                    {...field}
+                                    name={"industry"}
+                                    label="Industry"
+                                    options={industryOptions}
+                                    defaultOption="Choose any one"
+                                    // onChange={(value) => handleChange("industry", value)}
+                                    required
+                                />
+                            )}
+                        </Field>
                     </div>
 
 
                     <div className='mb-4'>
                         <div className='flex gap-x-2'>
                             <div className='w-full'>
-                                <Core.SelectWithLabel
-                                    name={"directlyManageTeam"}
-                                    label="Did you directly manage a team?"
-                                    options={directlyManageTeamOptions}
-                                    defaultOption="Choose any one"
-                                    onChange={(value) => handleChange("directlyManageTeam", value)}
-                                    required
-                                />
+                                <Field name="directlyManageTeam">
+                                    {({ field }) => (
+                                        <Core.SelectWithLabel
+                                            {...field}
+                                            name={"directlyManageTeam"}
+                                            label="Did you directly manage a team?"
+                                            options={directlyManageTeamOptions}
+                                            defaultOption="Choose any one"
+                                            // onChange={(value) => handleChange("directlyManageTeam", value)}
+                                            required
+                                        />
+                                    )}
+                                </Field>
                             </div>
                             <div className='w-full'>
-                                <Core.SelectWithLabel
-                                    name={"noOfPeople"}
-                                    label
-                                    options={noOfPeopleOptions}
-                                    defaultOption="How many people"
-                                    onChange={(value) => handleChange("noOfPeople", value)}
-                                />
+                                <Field name="noOfPeople">
+                                    {({ field }) => (
+                                        <Core.SelectWithLabel
+                                            {...field}
+                                            name={"noOfPeople"}
+                                            label
+                                            options={noOfPeopleOptions}
+                                            defaultOption="How many people"
+                                        // onChange={(value) => handleChange("noOfPeople", value)}
+                                        />
+                                    )}
+                                </Field>
                             </div>
                         </div>
                     </div>
 
                     <div className='mb-4'>
-                        <Core.SelectWithLabel
-                            name={"salary"}
-                            label={"Salary"}
-                            options={salaryOptions}
-                            defaultOption="Select Salary Range"
-                            onChange={(value) => handleChange("salary", value)}
-                            required
-                        />
+                        <Field name="salary">
+                            {({ field }) => (
+                                <Core.SelectWithLabel
+                                    {...field}
+                                    name={"salary"}
+                                    label={"Salary"}
+                                    options={salaryOptions}
+                                    defaultOption="Select Salary Range"
+                                    // onChange={(value) => handleChange("salary", value)}
+                                    required
+                                />
+                            )}
+                        </Field>
                     </div>
-                    location
-                    <br />
-                    city
-                    <br />
-                    start date
-                    <br />
-                    currently working here
-                    <br />
-                    description
 
-                    {action === "edit" &&
-                        <div className='flex justify-start gap-x-3 pt-6 mt-8 border-t-[1px]'>
+
+
+
+
+                    <div className='mb-4'>
+                        <div className='flex justify-between gap-x-2'>
+                            <div className='w-[50%]'>
+                                {/* Country */}
+                                <label className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}>
+                                    Nationality <span className='text-[red]'>*</span>
+                                </label>
+                                <select
+                                    name="nationality"
+                                    onChange={handleCountryChange} value={selectedCountry}
+                                    className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+                                >
+                                    <option value="">Select</option>
+                                    {countries.map((country) => (
+                                        <option key={country.isoCode} value={country.isoCode}>
+                                            {country.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className='w-[50%]'>
+                                {/* City */}
+                                <label className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}>
+                                    City
+                                </label>
+                                <select
+                                    name="city"
+                                    onChange={handleCityChange} value={selectedCity}
+                                    className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+                                >
+                                    <option value="">Select City</option>
+                                    {cities.map((city) => (
+                                        <option key={city.name} value={city.name}>
+                                            {city.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div className='w-full mb-4'>
+                        <div className='flex gap-x-2'>
+                            <div className='w-[50%]'>
+                                <label className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}>
+                                    Start <span className='text-[red]'>*</span>
+                                </label>
+                                <div className='flex gap-x-2'>
+                                    <div className='w-[50%]'>
+                                        <Core.SelectWithLabel
+                                            name={"month"}
+                                            sm
+                                            options={monthsOptions}
+                                            defaultOption="Month"
+                                            onChange={(value) => handleDateChange("startDate", "month", value)}
+                                            required
+                                        />
+                                    </div>
+                                    <div className='w-[50%]'>
+                                        <Core.SelectWithLabel
+                                            name={"year"}
+                                            sm
+                                            options={yearOptions}
+                                            defaultOption="Year"
+                                            onChange={(value) => handleDateChange("startDate", "year", value)}
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className='flex justify-between items-center pt-1 mb-2'>
+                        <div className='flex justify-start items-center gap-x-1'>
+                            <Field type='checkbox' name='agreeTerms' />
+                            Currently in process
+                            <ErrorMessage name='inProcess' component='div' className='text-red-500' />
+                        </div>
+                    </div>
+                    
+
+                    <div className='mb-4'>
+                        <Core.TextEditorWithLabel name={'description'} label height={"h-[200px]"} style={{ height: "84%" }} value={description} setValue={setDescription} />
+                    </div>
+                    
+
+
+
+                    <div className='flex justify-between  pt-6 mt-8 border-t-[1px]'>
+                        <div className='flex justify-start gap-x-3 '>
                             <Core.Button
                                 // onClick={handleNext}
                                 type="narrow" submit>Save</Core.Button>
@@ -219,7 +412,12 @@ function Experiences({ action, handleCancel }) {
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                    }
+                        {action === "edit" &&
+                            <Core.Button
+                                // onClick={handleBack} 
+                                type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
+                        }
+                    </div>
 
 
                     {/* </div> */}

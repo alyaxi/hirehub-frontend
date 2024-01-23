@@ -69,8 +69,9 @@ body {
 
 /* avatar */
 
-/* :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select > .ant-upload  */
-:where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select {
+/* :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select > .ant-upload { */
+/* :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select { */
+    :where(.css-dev-only-do-not-override-dkbvqv).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select {
     width: 21px;
     height: 21px;
     border: none;
@@ -79,6 +80,13 @@ body {
 :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm {
     display: none;
 }
+
+/* .upload-avatar-wrapper .ant-upload, .upload-avatar-wrapper .ant-upload-select {
+    width: 21px;
+    height: 21px;
+} */
+
+
 
 .disable-me {
     position: relative;
@@ -103,3 +111,12 @@ body {
 .disable-me label {
     opacity: .5;
 }
+.ant-upload-wrapper .ant-upload-list.ant-upload-list-text {
+    display: none;
+}
+/* .ant-upload-wrapper .ant-upload-list.ant-upload-list-text .ant-upload-list-item-container {
+    display: none;
+}
+.ant-upload-wrapper .ant-upload-list.ant-upload-list-text .ant-upload-list-item-container:last-child {
+    display: block !important;
+} */

@@ -2,11 +2,19 @@ import React from 'react';
 import { Select } from 'antd';
 import Icon from '../icon';
 
-const MultiSelectInput = ({ label, helperText, name, required, icon, options, onChange }) => {
+const MultiSelectInput = ({ label, helperText, name, required, icon, options, onChange, mode }) => {
     const _label = (name) => {
         switch (name) {
             case "benefits":
                 return "Benefits";
+            case "skills":
+                return "Skills";
+            case "languages":
+                return "Add a new language";
+            case "desiredJobTitle":
+                return "Desired Job Title";
+            case "willingToLocations":
+                return "Enter up to 3 locations you'd be willing to relocate to...";
             default:
                 return "Label";
         }
@@ -29,7 +37,7 @@ const MultiSelectInput = ({ label, helperText, name, required, icon, options, on
             }
             <Select
                 id={name}
-                mode="multiple"
+                mode={mode ? mode : "multiple"}
                 allowClear
                 placeholder="Please select"
                 onChange={onChange}

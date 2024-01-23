@@ -3,54 +3,33 @@ import { Formik, Form, Field } from 'formik';
 import { Core } from '..';
 import MultiSelectInput from '../core/MultiSelectInput';
 
-function Skills({ action, handleCancel }) {
+function Languages({ action, handleCancel }) {
     const options = [
-        { label: 'HTML&CSS', value: 'HTML&CSS' },
-        { label: 'Bootstrap', value: 'Bootstrap' },
-        { label: 'Illustrator', value: 'Illustrator' },
-        { label: 'Photoshop', value: 'Photoshop' },
-        { label: 'JavaScript', value: 'JavaScript' },
-        { label: 'React.js', value: 'React.js' },
-        { label: 'Node.js', value: 'Node.js' },
-        { label: 'Python', value: 'Python' },
-        { label: 'Java', value: 'Java' },
-        { label: 'HTML', value: 'HTML' },
-        { label: 'CSS', value: 'CSS' },
-        { label: 'SQL', value: 'SQL' },
-        { label: 'Angular', value: 'Angular' },
-        { label: 'Vue.js', value: 'Vue.js' },
-        { label: 'TypeScript', value: 'TypeScript' },
-        { label: 'Git', value: 'Git' },
-        { label: 'Docker', value: 'Docker' },
-        { label: 'AWS', value: 'AWS' },
-        { label: 'Redux', value: 'Redux' },
-    ];
-    const skillExperienceOptions = [
-        { name: "6 months", value: "6months" },
-        { name: "1 year", value: "1year" },
-        { name: "2 years", value: "2years" },
-        { name: "3 years", value: "3years" },
-        { name: "4 years", value: "4years" },
-        { name: "5 years", value: "5years" },
-        { name: "6 years", value: "6years" },
-        { name: "7 years", value: "7years" },
-        { name: "8 years", value: "8years" },
-        { name: "9 years", value: "9years" },
-        { name: "10 years", value: "10years" },
-        { name: "Over 10 years", value: "Over10" },
-    ];
-
+        { label: 'English', value: 'English' },
+        { label: 'Spanish', value: 'Spanish' },
+        { label: 'French', value: 'French' },
+        { label: 'German', value: 'German' },
+        { label: 'Chinese', value: 'Chinese' },
+      ];
+      
+      const languageProficiencyOptions = [
+        { name: 'Basic', value: 'basic' },
+        { name: 'Intermediate', value: 'intermediate' },
+        { name: 'Advanced', value: 'advanced' },
+        { name: 'Fluent', value: 'fluent' },
+      ];
+    
     const [data] = useState({
-        skills: '',
-        skillExperience: '',
+        languages: '',
+        languageProficiency: '',
     });
 
     const handleSubmit = (values, actions) => {
         console.log(values);
     };
 
-    const multiSelectHandle = (skills, setFieldValue) => {
-        setFieldValue('skills', skills);
+    const multiSelectHandle = (languages, setFieldValue) => {
+        setFieldValue('languages', languages);
     };
 
     console.log("data", data)
@@ -64,27 +43,27 @@ function Skills({ action, handleCancel }) {
                 <Form>
                     <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>indicates required</span>
                     <div className="mb-4">
-                        <Field name="skills">
+                        <Field name="languages">
                             {({ field }) => (
                                 <MultiSelectInput
                                     {...field}
                                     mode={"single"}
-                                    name={'skills'}
+                                    name={'languages'}
                                     label
                                     options={options}
-                                    onChange={(selectedSkills) => multiSelectHandle(selectedSkills, setFieldValue)}
+                                    onChange={(selectedLanguages) => multiSelectHandle(selectedLanguages, setFieldValue)}
                                 />
                             )}
                         </Field>
                     </div>
                     <div className='mb-4'>
-                        <Field name="skillExperience">
+                        <Field name="languageProficiency">
                             {({ field }) => (
                                 <Core.SelectWithLabel
                                     {...field}
-                                    name={"skillExperience"}
-                                    label="skillExperience"
-                                    options={skillExperienceOptions}
+                                    name={"languageProficiency"}
+                                    label="languageProficiency"
+                                    options={languageProficiencyOptions}
                                     defaultOption="Choose any one"
                                 />
                             )}
@@ -116,4 +95,4 @@ function Skills({ action, handleCancel }) {
     );
 }
 
-export default Skills;
+export default Languages;

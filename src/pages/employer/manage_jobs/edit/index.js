@@ -241,6 +241,7 @@ function EditJob() {
     const id = parts[parts.length - 1];
     const data = modifiedJobs.find(job => job.id === id);
     const [status, setStatus] = useState();
+    console.log("status",status)
     return (
         <>
             <Breadcrumb

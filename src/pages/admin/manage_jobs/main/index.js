@@ -312,10 +312,10 @@ function MainJobs() {
                 setExpirationDate={setExpirationDate}
                 actions={actions}
                 onViewClick={onViewClick}
-                addButton={{
-                    title: "Add Job",
-                    func: addButton,
-                }}
+                // addButton={{
+                //     title: "Add Job",
+                //     func: addButton,
+                // }}
             />
         </>
     );

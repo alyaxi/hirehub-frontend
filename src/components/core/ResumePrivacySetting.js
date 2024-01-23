@@ -3,8 +3,7 @@ import { Core } from "..";
 
 function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, buttons, card }) {
 
-
-    console.log("resumePrivacySetting", resumePrivacySetting)
+    // console.log("resumePrivacySetting", resumePrivacySetting)
     return (
         <>
             {card ?
