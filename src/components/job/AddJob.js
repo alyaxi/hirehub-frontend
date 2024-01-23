@@ -6,16 +6,19 @@ import Form2 from './Form2';
 import Form3 from './Form3';
 import Form4 from './Form4';
 import { convertDateFormat } from '../../utilis/convertDateStamp';
+import { AddjobsEmployer } from '../../Slices/Employer/JobSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function AddJob() {
     const [step, setStep] = useState(1);
+    const dispatch = useDispatch()
     const [job, setJob] = useState(
         {
             id: "",
             jobType: "",
             noOfOpenings: "",
             expirationDate: "",
-            jobStatus: "deactive",
             postedDate: "",
             company: {},
             jobLocation: "",
@@ -30,7 +33,6 @@ function AddJob() {
             responsibilities: "",
             skills: "",
             // shortSummery: [],
-
             industry: "",
             jobShift: "",
             department: "",
@@ -61,6 +63,7 @@ function AddJob() {
             postedDate: formattedCurrentDate,
         };
         console.log("final data", updatedJob);
+        dispatch(AddjobsEmployer(updatedJob))
         setJob(updatedJob);
     };
 
