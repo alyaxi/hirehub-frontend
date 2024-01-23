@@ -30,11 +30,11 @@ function CandidateProfile({ data: extractedData, pageType, dropdownOptions, sele
                     <Core.PersonalInformation data={personalInformation} buttons={['edit']} card />
                     <Core.Summary data={summary} buttons={['edit']} card />
                     <Core.Projects data={projects} buttons={['add']} card />
-                    <Core.Experience data={experience} buttons={['add', 'edit']} card />
-                    <Core.Education data={education} buttons={['add', 'edit']} card />
+                    <Core.Experience data={experience} buttons={['add']} card />
+                    <Core.Education data={education} buttons={['add']} card />
                     <Core.Skills data={skill} buttons={['add', 'edit']} card />
                     <Core.Languages data={language} buttons={['add', 'edit']} card />
-                    <Core.Preferences data={jobPreference} buttons={['add', 'edit']} card />
+                    <Core.Preferences data={jobPreference} buttons={['edit']} card />
                     <Core.ResumePrivacySetting resumePrivacySetting={resumePrivacySetting} card handlePrivacyChange={handlePrivacyChange} />
                 </div>
             </div>

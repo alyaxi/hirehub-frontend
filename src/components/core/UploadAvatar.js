@@ -4,24 +4,22 @@ import { Upload } from 'antd';
 import Icon from '../icon';
 import DefaultAvatar from "../../assets/images/avatars/default-avatar.svg"
 
-const UploadAvatar = () => {
-    // const [fileList, setFileList] = useState([]);
+const UploadAvatar = ({setState}) => {
     const [fileList, setFileList] = useState([  
     {
         uid: '-1',
         name: 'yyy.png',
         status: 'done',
-        // url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
         url: DefaultAvatar,
-        // thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
         thumbUrl: DefaultAvatar,
       },
-]);
-const onChange = ({ fileList: newFileList }) => {
+    ]);
+    const onChange = ({ fileList: newFileList }) => {
         if (newFileList.length > 1) {
-            newFileList.shift(); // Remove additional files if more than one is selected
+            newFileList.shift();
         }
         setFileList(newFileList);
+        setState(newFileList);
     };
 
     const onPreview = async (file) => {
@@ -40,7 +38,7 @@ const onChange = ({ fileList: newFileList }) => {
     };
     console.log("fileList", fileList)
     return (
-       <div className='min-h-[112px]'>
+       <div className='min-h-[112px] upload-avatar-wrapper'>
          <Upload
             action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
             listType="picture-circle"

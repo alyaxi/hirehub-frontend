@@ -45,6 +45,16 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
                 return "Job Shift";
             case "minimumEducation":
                 return "Minimum Education";
+            case "languageProficiency":
+                return "Proficiency with this language";
+            case "desiredSalary":
+                return "Desired Salary (PKR)";
+            case "gender":
+                return "Gender";
+            case "nationality":
+                return "Nationality";
+            case "associated":
+                return "Associated";
 
             default:
                 return "Label";

@@ -5,21 +5,23 @@ import { Core } from "..";
 
 function Education({ data, buttons, card }) {
 
-    
     return (
         <>
             {card ?
-                 <Core.Card className={"p-5 border"}>
+                <Core.Card className={"p-5 border"}>
                     < div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Education</h5>
-                        <Core.ProficienciesActions buttons={buttons} type="educations" />
+                        <Core.ProficienciesActions buttons={buttons} type="education" />
                     </div >
-                    <div className='flex justify-start items-end pt-3'>
+                    <div className='flex justify-start items-start flex-col gap-y-10 pt-3'>
                         {data?.map((value, index) => {
                             return (
-                                <div key={index * 4} className='flex justify-between gap-x-3'>
+                                <div key={index * 4} className='relative flex justify-between gap-x-3 w-full'>
+                                    <div className='absolute top-0 right-0 z-[200] flex justify-end' >
+                                        <Core.ProficienciesActions buttons={['edit']} type={'education'} />
+                                    </div>
                                     <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
-                                        <Avatar shape="square" size={60} src={logo2}>!</Avatar>
+                                        <Avatar shape="square" size={60} src={value?.logo}>!</Avatar>
                                     </div>
                                     <div className='w-full'>
                                         <div className='w-full h-full flex justify-between items-end'>
@@ -49,7 +51,7 @@ function Education({ data, buttons, card }) {
                             return (
                                 <div key={index * 4} className='flex justify-between gap-x-3'>
                                     <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
-                                        <Avatar shape="square" size={60} src={logo2}>!</Avatar>
+                                        <Avatar shape="square" size={60} src={value?.logo}>!</Avatar>
                                     </div>
                                     <div className='w-full'>
                                         <div className='w-full h-full flex justify-between items-end'>

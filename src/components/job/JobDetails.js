@@ -19,14 +19,14 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
         }
     }, [extractedData]);
 
-    console.log("resumePrivacy", resumePrivacy);
+    // console.log("resumePrivacy", resumePrivacy);
 
     // console.log("starttttt useeffect after", status);
 
     const [eligibilityStatus, setEligibilityStatus] = useState(
         extractedData?.eligibility === 'Yes' ? 'checked' : 'unchecked'
     );
-    console.log("eligibilityStatus", eligibilityStatus);
+    // console.log("eligibilityStatus", eligibilityStatus);
     useEffect(() => {
         // Update eligibilityStatus state whenever extractedData changes
         setEligibilityStatus(

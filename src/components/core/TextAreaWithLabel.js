@@ -8,9 +8,10 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
         switch (name) {
             case "companyDiscription":
                 return "Company Discription";
-                case "position":
-                    return "The Position";
-
+            case "position":
+                return "The Position";
+            case "summery":
+                return "Summery";
             default:
                 return "Label";
         }
@@ -20,8 +21,10 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
         switch (name) {
             case "companyDiscription":
                 return "Describe here";
-                case "position":
-                    return "Brief about The Position";
+            case "position":
+                return "Brief about The Position";
+            case "summery":
+                return "Type summery about yourself...";
 
             default:
                 return "";
