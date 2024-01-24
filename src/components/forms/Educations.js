@@ -2,17 +2,65 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Country } from 'country-state-city';
 import { Core } from '..';
+import logo2 from "../../assets/images/company-logos/logo1.png";
+import logo3 from "../../assets/images/company-logos/logo3.png";
 
-function Educations({ action, handleCancel }) {
+const educations = [
+    {
+        id: "1",
+        degree: "MPhil Economics",
+        school: "Koc University",
+        // startDate: "Nov 2015 - Present · 7 yrs 7 mos",
+        description: "Over the last couple of years I've worked on 10+ projects across different fields among which are MVPs for start-ups, cosmetics & beauty industry, e-commerce, art & architecture, photography and others.",
+        logo: logo2,
+        fieldOfStudy: "Computer Science",
+        grade: "A+",
+        startDate: "02/2010",
+        endDate: "06/2012",
+    },
+    {
+        id: "2",
+        degree: "BS Computer Science ",
+        school: "Oxford University",
+        // startDate: "Nov 2018 - Present · 3 yrs 9 mos",
+        description: "Cosmetics & beauty industry, e-commerce, art & architecture, photography and others.",
+        logo: logo3,
+        fieldOfStudy: "Engineering",
+        grade: "A",
+        startDate: "01/1903",
+        endDate: "08/1905",
+    },
+    // {
+    // id: "3",
+    //     degree: "BS Hons ",
+    //     school: "Adamjee University",
+    //     startDate: "Nov 2018 - Present · 5 yrs",
+    //     description: "Projects across different fields among which are MVPs for start-ups, cosmetics & beauty industry, e-commerce, art & architecture, photography and others.",
+    //     logo: logo4,
+    //      fieldOfStudy: "Engineering",
+    //      grade: "A",
+    //      startDate: "01/1903",
+    //      endDate: "08/1905",
+    // }
+]
+
+function Educations({ action, handleCancel, id }) {
+    console.log("id", id)
+
+    const educationToEdit = id ? educations?.find(education => education?.id === id) : undefined;
+
+    console.log("educationToEdit", educationToEdit)
+
     const degreeOptions = [
-        { name: "BSCS", value: "bscs" },
-        { name: "BSSE", value: "bsse" },
-        { name: "B Com.", value: "bcom" },
-        { name: "BS", value: "bs" },
-        { name: "Masters", value: "masters" },
-        { name: "MPhill", value: "mphill" },
-        { name: "Ph. D", value: "phd" },
+        { name: "BSCS", value: "BSCS" },
+        { name: "BSSE", value: "BSSE" },
+        { name: "B Com.", value: "B Com." },
+        { name: "BS", value: "BS" },
+        { name: "Masters", value: "Masters" },
+        { name: "MPhill", value: "MPhill" },
+        { name: "Ph. D", value: "Ph. D" },
     ];
+
     const fieldOfStudyOptions = [
         { name: "Computer Science", value: "Computer Science" },
         { name: "Engineering", value: "Engineering" },
@@ -23,6 +71,7 @@ function Educations({ action, handleCancel }) {
         { name: "Economics", value: "Economics" },
         { name: "Political Science", value: "Political Science" },
     ];
+
     const gradeOptions = [
         { name: "A", value: "A" },
         { name: "B", value: "B" },
@@ -54,11 +103,41 @@ function Educations({ action, handleCancel }) {
         { name: 'November', value: '11' },
         { name: 'December', value: '12' },
     ];
-    const [data] = useState({});
-    const [selectedStartMonth, setSelectedStartMonth] = useState('');
-    const [selectedEndMonth, setSelectedEndMonth] = useState('');
+    console.log("educationToEdit", educationToEdit)
+    const [data] = useState({
+        organization: educationToEdit?.school ? educationToEdit?.school : "",
+        degree: educationToEdit?.degree ? educationToEdit?.degree : "",
+        fieldOfStudy: educationToEdit?.fieldOfStudy ? educationToEdit?.fieldOfStudy : "",
+        grade: educationToEdit?.grade ? educationToEdit?.grade : "",
+    });
+    console.log("data", data)
+
+
+
+    const startMonth = educationToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
+    const _startMonth = startMonth ? startMonth[1] : null;
+
+    const endMonth = educationToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
+    const _endMonth = endMonth ? endMonth[1] : null;
+
+    const _startYear = educationToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
+    const __startYear = _startYear ? _startYear[2] : null;
+
+    const _endYear = educationToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
+    const __endYear = _endYear ? _endYear[2] : null;
+
+    console.log("__startYear", __startYear)
+    console.log("__endYear", __endYear)
+
+    const [selectedStartMonth, setSelectedStartMonth] = useState(_startMonth);
+    const [selectedEndMonth, setSelectedEndMonth] = useState(_endMonth);
+    const [selectedStartYear, setSelectedStartYear] = useState(__startYear);
+    const [selectedEndYear, setSelectedEndYear] = useState(__endYear);
+
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState('');
+
+
     const [selectedCountry, setSelectedCountry] = useState('');
     const [countries, setCountries] = useState([]);
 
@@ -87,9 +166,11 @@ function Educations({ action, handleCancel }) {
 
                 if (type === "startDate") {
                     setStartDate(selectedDate);
+                    setSelectedStartYear(selectedDate)
                 }
                 if (type === "endDate") {
                     setEndDate(selectedDate);
+                    setSelectedEndYear(selectedDate)
                 }
             }
         };
@@ -134,7 +215,9 @@ function Educations({ action, handleCancel }) {
         >
             {({ isSubmitting }) => (
                 <Form>
+
                     <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>indicates required</span>
+
                     <div className='mb-4'>
                         <Field name="organization">
                             {({ field }) => (
@@ -145,11 +228,11 @@ function Educations({ action, handleCancel }) {
                                     label
                                     placeholder="Enter Organization Name"
                                     required
+                                    edit
                                 />
                             )}
                         </Field>
                     </div>
-
 
                     <div className='mb-4'>
                         <Field name="degree">
@@ -161,6 +244,7 @@ function Educations({ action, handleCancel }) {
                                     options={degreeOptions}
                                     defaultOption="Choose any one"
                                 // onChange={(value) => handleChange("degree", value)}
+                                // value={field.value}
                                 />
                             )}
                         </Field>
@@ -176,6 +260,7 @@ function Educations({ action, handleCancel }) {
                                     options={fieldOfStudyOptions}
                                     defaultOption="Field Of Study"
                                 // onChange={(value) => handleChange("fieldOfStudy", value)}
+                                // value={field.value}
                                 />
                             )}
                         </Field>
@@ -196,6 +281,7 @@ function Educations({ action, handleCancel }) {
                                             defaultOption="Month"
                                             onChange={(value) => handleDateChange("startDate", "month", value)}
                                             required
+                                            value={selectedStartMonth}
                                         />
                                     </div>
                                     <div className='w-[50%]'>
@@ -206,6 +292,7 @@ function Educations({ action, handleCancel }) {
                                             defaultOption="Year"
                                             onChange={(value) => handleDateChange("startDate", "year", value)}
                                             required
+                                            value={selectedStartYear}
                                         />
                                     </div>
                                 </div>
@@ -223,6 +310,7 @@ function Educations({ action, handleCancel }) {
                                             defaultOption="Month"
                                             onChange={(value) => handleDateChange("endDate", "month", value)}
                                             required
+                                            value={selectedEndMonth}
                                         />
                                     </div>
                                     <div className='w-[50%]'>
@@ -233,6 +321,7 @@ function Educations({ action, handleCancel }) {
                                             defaultOption="Year"
                                             onChange={(value) => handleDateChange("endDate", "year", value)}
                                             required
+                                            value={selectedEndYear}
                                         />
                                     </div>
                                 </div>
@@ -269,6 +358,7 @@ function Educations({ action, handleCancel }) {
                                     options={gradeOptions}
                                     defaultOption="Select Your Grade"
                                 // onChange={(value) => handleChange("grade", value)}
+                                // value={field.value}
                                 />
                             )}
                         </Field>

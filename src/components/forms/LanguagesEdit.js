@@ -1,121 +1,138 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Formik, Field, Form } from 'formik';
+import { useState } from 'react';
 import { Core } from '..';
-import Icon from '../icon';
+import MultiSelectInput from '../core/MultiSelectInput';
 
-function LanguagesEdit({ action, handleCancel }) {
-    const languageProficiencyOptions = [
-        { name: 'Basic', value: 'basic' },
-        { name: 'Intermediate', value: 'intermediate' },
-        { name: 'Advanced', value: 'advanced' },
-        { name: 'Fluent', value: 'fluent' },
-      ];
-    const [languages, setLanguages] = useState([
+const languagesOptions = [
+    { label: 'English', value: 'English' },
+    { label: 'Spanish', value: 'Spanish' },
+    { label: 'French', value: 'French' },
+    { label: 'German', value: 'German' },
+    { label: 'Chinese', value: 'Chinese' },
+  ];
+
+const languageProficiencyOptions = [
+    { name: 'Basic', value: 'Basic' },
+    { name: 'Intermediate', value: 'Intermediate' },
+    { name: 'Advanced', value: 'Advanced' },
+    { name: 'Fluent', value: 'Fluent' }, ,
+];
+
+const LanguagesEdit = ({ handleCancel }) => {
+    const [languages] = useState([
         {
             id: 1,
-            text: 'English',
+            title: 'English',
+            proficiency: 'Basic',
         },
         {
             id: 2,
-            text: 'Spanish',
+            title: 'Spanish',
+            proficiency: 'Intermediate',
         },
         {
             id: 3,
-            text: 'French',
+            title: 'French',
+            proficiency: 'Advanced',
         },
         {
             id: 4,
-            text: 'German',
+            title: 'German',
+            proficiency: 'Advanced',
         },
-        {
-            id: 5,
-            text: 'Chinese',
-        }
     ]);
 
-    const [data, setData] = useState({
-        languages: languages.reduce((acc, language) => {
-            acc[language.id] = language.text;
-            return acc;
-        }, {}),
-        languageExperience: '',
-    });
-
-    const handleChange = (id, value) => {
-        setData((prevData) => {
-            const updatedLanguages = {
-                ...prevData.languages,
-                [id]: value,
-            };
-            if (value.trim() === '') {
-                delete updatedLanguages[id];
-            }
-            return {
-                ...prevData,
-                languages: updatedLanguages,
-            };
-        });
+    const initialValues = {
+        languages: languages.map(language => ({ id: language.id, title: language.title, proficiency: language.proficiency }))
     };
 
-    const deleteItem = (id) => {
-        const updatedLanguages = languages.filter(language => language.id !== id);
-        setLanguages(updatedLanguages);
-        setData(prevData => {
-            const { [id]: removedLanguage, ...newLanguages } = prevData.languages;
-            return {
-                ...prevData,
-                languages: newLanguages,
+    const multiSelectHandle = (type, selectedItems, setFieldValue, id) => {
+        const languageIndex = languages.findIndex(language => language.id === id);
+
+        if (languageIndex !== -1) {
+            const updatedlanguages = [...languages];
+            updatedlanguages[languageIndex] = {
+                ...updatedlanguages[languageIndex],
+                title: selectedItems,
             };
-        });
+            setFieldValue(type, updatedlanguages);
+        }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const nonEmptyLanguages = Object.entries(data.languages)
-            .filter(([id, value]) => value.trim() !== '')
-            .map(([id, value]) => ({ id: parseInt(id), text: value }));
-        console.log({ languages: nonEmptyLanguages, languageExperience: data.languageExperience });
+    const handleSubmit = (values, { setSubmitting }) => {
+        console.log("submit",values.languages);
+        setSubmitting(false);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <div className='flex flex-col justify-start gap-y-3'>
-                    {languages.map(language => (
-                        <div className='flex items-center gap-x-2'>
-                            <input
-                                type={'text'}
-                                className={`w-full text-[14px] font-regular leading-[20px] text-gray-6 bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[9px] `}
-                                key={language.id}
-                                name={`languages.${language.id}`}
-                                value={data.languages[language.id] || ''}
-                                onChange={(e) => handleChange(language.id, e.target.value)}
-                                sm
-                                label
-                                placeholder={`Enter ${language.text}`}
-                                autoFocus
-                            />
-                            <div className='min-w-[135px]'>
-                                <Core.SelectWithLabel
-                                    name={"experience"}
-                                    sm
-                                    options={languageProficiencyOptions}
-                                    defaultOption="Experience"
-                                // onChange={(value) => handleDateChange("startDate", "month", value)}
-                                />
+        <Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+        >
+            {({ values, isSubmitting, setFieldValue }) => (
+                <Form>
+                    {values.languages.map((language, index) => (
+                        <div key={index}>
+                            <div className='mb-2'>
+                                <label
+                                    name={`languages.${index}.title`}
+                                    className={` flex justify-start text-[14px] font-medium text-gray-2 tracking-wide mb-2 font-semibold capitalize`}
+                                >
+                                    Language:
+                                </label>
+                                <Field name={`languages.${index}.title`}>
+                                    {({ field }) => (
+                                        <MultiSelectInput
+                                            {...field}
+                                            mode={"single"}
+                                            name={`languages.${index}.title`}
+                                            options={languagesOptions}
+                                            onChange={(selectedItems) => multiSelectHandle("languages", selectedItems, setFieldValue, language?.id)}
+                                            value={field.value}
+                                            defaultValue={field.value}
+                                        />
+                                    )}
+                                </Field>
                             </div>
-                            <span onClick={() => deleteItem(language.id)}><Icon name="Cross" size={12} className="text-black-3 cursor-pointer hover:text-red-500" /></span>
+                            <div className='mb-2'>
+                                <label
+                                    name={`languages.${index}.title`}
+                                    className={` flex justify-start text-[14px] font-medium text-gray-2 tracking-wide mb-2 font-semibold capitalize`}
+                                >
+                                    Proficiency:
+                                </label>
+                                <Field name={`languages.${index}.proficiency`}>
+                                    {({ field }) => (
+                                        <Core.SelectWithLabel
+                                            {...field}
+                                            name={`languages.${index}.proficiency`}
+                                            options={languageProficiencyOptions}
+                                            value={field.value}
+                                        />
+                                    )}
+                                </Field>
+                            </div>
                         </div>
                     ))}
-                </div>
-                <div className='flex justify-between  pt-6 mt-8 border-t-[1px]'>
-                    <div className='flex justify-start gap-x-3 '>
-                        <Core.Button type="narrow" submit>Save</Core.Button>
-                        <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+
+                    <div className='flex justify-between  pt-6 mt-8 border-t-[1px]'>
+                        <div className='flex justify-start gap-x-3 '>
+                            <Core.Button
+                                // onClick={handleNext}
+                                disabled={isSubmitting}
+                                type="narrow" submit
+                            >Save</Core.Button>
+                            <Core.Button
+                                // onClick={handleBack} 
+                                type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </form>
+
+                </Form>
+            )}
+        </Formik>
     );
-}
+};
 
 export default LanguagesEdit;

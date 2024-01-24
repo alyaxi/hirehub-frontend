@@ -16,7 +16,7 @@ function PersonalInformation({ data, buttons, card }) {
         <>
             {card ?
                 <>
-                    <Core.PopupModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} editPersonalInformation />
+                    {/* <Core.PopupModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} editPersonalInformation /> */}
                     <Core.Card className={"p-5 border"}>
                         < div className='flex justify-between items-start' >
                             <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Personal Information</h5>

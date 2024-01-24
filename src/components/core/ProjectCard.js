@@ -1,16 +1,16 @@
 import React from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
+import { Card } from 'antd';
 import { NavLink } from 'react-router-dom';
-import Icon from '../icon';
 import { Core } from '..';
 
 const { Meta } = Card;
+
 function ProjectCard({ data }) {
     return (
-        <div> 
+        <div>
             <div className='flex justify-end mb-[-45px] right-[10px] relative z-[200]' >
-                <Core.ProficienciesActions buttons={['edit']} type={'projects'} />
+                <Core.ProficienciesActions buttons={['edit']} type={'projects'} id={data?.id} />
             </div>
 
             <NavLink to={data?.link}>

@@ -2,38 +2,73 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Country, State, City } from 'country-state-city';
 import { Core } from '..';
+import logo3 from "../../assets/images/company-logos/logo3.png";
+import logo5 from "../../assets/images/company-logos/logo1.png";
 
-function Experiences({ action, handleCancel }) {
+const experiences = [
+    {
+        id: "1",
+        title: "Art Director",
+        company: "Techigon Software House",
+        // startDate: "Nov 2022 - Present · 4 yrs 7 mos",
+        description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making.",
+        logo: logo3,
+        industry: "UI/UX Designer",
+        directlyManageTeam: "No",
+        noOfPeople: "90",
+        salary: "$1000 - $1500",
+        startDate: "02/2010",
+
+        currentlyInProcess: true,
+    },
+    {
+        id: "2",
+        title: "Graphics Designer",
+        company: "ITHUB Software House",
+        // startDate: "Nov 2010 - Present · 7 yrs 1 mos",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+        logo: logo5,
+        industry: "Graphics Designer",
+        directlyManageTeam: "Yes",
+        noOfPeople: "30",
+        salary: "$2500 - $3000",
+        startDate: "06/2018",
+        currentlyInProcess: false,
+    },
+]
+
+function Experiences({ action, handleCancel, id }) {
+
+    const experienceToEdit = id ? experiences?.find(experience => experience?.id === id) : undefined;
+
+    // console.log("experienceToEdit", experienceToEdit)
+
     const industryOptions = [
-        { name: "Information Technology", value: "IT" },
-        { name: "Software Engineer", value: "SE" },
-        { name: "Search Engine Optimization", value: "SEO" },
-        { name: "Lead Software Engineer", value: "LSE" },
-        { name: "Graphics Designer", value: "GD" },
-        { name: "Web Developer", value: "WD" },
-        { name: "Front End Developer", value: "FED" },
-        { name: "Full Stack Developer", value: "FSD" },
-        { name: "MERN Stack Developer", value: "MERN" },
-        { name: "Backend Developer", value: "BD" },
-        { name: "DevOps Engineer", value: "DOE" },
-        { name: "UI/UX Designer", value: "UIUX" },
-        { name: "Mobile App Developer", value: "MAD" },
-        { name: "Data Scientist", value: "DS" },
-        { name: "Machine Learning Engineer", value: "MLE" },
-        { name: "Cybersecurity Analyst", value: "CSA" },
-        { name: "Cloud Engineer", value: "CE" },
-        { name: "Network Administrator", value: "NA" },
+        { name: "Information Technology", value: "Information Technology" },
+        { name: "Software Engineer", value: "Software Engineer" },
+        { name: "Search Engine Optimization", value: "Search Engine Optimization" },
+        { name: "Lead Software Engineer", value: "Lead Software Engineer" },
+        { name: "Graphics Designer", value: "Graphics Designer" },
+        { name: "Web Developer", value: "Web Developer" },
+        { name: "Front End Developer", value: "Front End Developer" },
+        { name: "Full Stack Developer", value: "Full Stack Developer" },
+        { name: "MERN Stack Developer", value: "MERN Stack Developer" },
+        { name: "Backend Developer", value: "Backend Developer" },
+        { name: "DevOps Engineer", value: "DevOps Engineer" },
+        { name: "UI/UX Designer", value: "UI/UX Designer" },
+        { name: "Mobile App Developer", value: "Mobile App Developer" },
+        { name: "Data Scientist", value: "Data Scientist" },
+        { name: "Machine Learning Engineer", value: "Machine Learning Engineer" },
+        { name: "Cybersecurity Analyst", value: "Cybersecurity Analyst" },
+        { name: "Cloud Engineer", value: "Cloud Engineer" },
+        { name: "Network Administrator", value: "Network Administrator" },
     ];
-    const careerLevelOptions = [
-        { name: "Entry Level", value: "entryLevel" },
-        { name: "Mid-Level", value: "midLevel" },
-        { name: "Senior", value: "senior" },
-        { name: "Lead", value: "lead" },
-    ];
+
     const directlyManageTeamOptions = [
-        { name: "Yes", value: "yes" },
-        { name: "No", value: "no" },
+        { name: "Yes", value: "Yes" },
+        { name: "No", value: "No" },
     ];
+
     const noOfPeopleOptions = [
         { name: "10", value: "10" },
         { name: "20", value: "20" },
@@ -87,16 +122,17 @@ function Experiences({ action, handleCancel }) {
         { name: "500", value: "500" },
         { name: "Over 500", value: "over500" },
     ];
+
     const salaryOptions = [
-        { name: "$1000 - $1500", value: "1000-1500" },
-        { name: "$1500 - $2000", value: "1500-2000" },
-        { name: "$2000 - $2500", value: "2000-2500" },
-        { name: "$2500 - $3000", value: "2500-3000" },
-        { name: "$3000 - $3500", value: "3000-3500" },
-        { name: "$3500 - $4000", value: "3500-4000" },
-        { name: "$4000 - $4500", value: "4000-4500" },
-        { name: "Over $4500", value: "over4500" },
-    ];   
+        { name: "$1000 - $1500", value: "$1000 - $1500" },
+        { name: "$1500 - $2000", value: "$1500 - $2000" },
+        { name: "$2000 - $2500", value: "$2000 - $2500" },
+        { name: "$2500 - $3000", value: "$2500 - $3000" },
+        { name: "$3000 - $3500", value: "$3000 - $3500" },
+        { name: "$3500 - $4000", value: "$3500 - $4000" },
+        { name: "$4000 - $4500", value: "$4000 - $4500" },
+        { name: "Over $4500", value: "Over $4500" },
+    ];
 
     const monthsOptions = [
         { name: 'January', value: '01' },
@@ -112,12 +148,24 @@ function Experiences({ action, handleCancel }) {
         { name: 'November', value: '11' },
         { name: 'December', value: '12' },
     ];
-    const [data] = useState({});
+    // console.log("experienceToEdit", experienceToEdit)
+    const [data] = useState({
+        title: experienceToEdit?.title ? experienceToEdit?.title : "",
+        company: experienceToEdit?.company ? experienceToEdit?.company : "",
+        industry: experienceToEdit?.industry ? experienceToEdit?.industry : "",
+        directlyManageTeam: experienceToEdit?.directlyManageTeam ? experienceToEdit?.directlyManageTeam : "",
+        noOfPeople: experienceToEdit?.noOfPeople ? experienceToEdit?.noOfPeople : "",
+        salary: experienceToEdit?.salary ? experienceToEdit?.salary : "",
+        agreeTerms: experienceToEdit?.agreeTerms ? experienceToEdit?.agreeTerms : "",
+        currentlyInProcess: experienceToEdit?.currentlyInProcess ? experienceToEdit?.currentlyInProcess : false,
+    });
+    // console.log("data", data)
+
     const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
     const [countries, setCountries] = useState([]);
     const [cities, setCities] = useState([]);
-    const [description, setDescription] = useState('');
+    const [description, setDescription] = useState(experienceToEdit?.description ? experienceToEdit?.description : "");
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
@@ -126,8 +174,15 @@ function Experiences({ action, handleCancel }) {
     for (let year = startYear; year <= endYear; year++) {
         yearOptions.push({ name: year.toString(), value: year.toString() });
     }
-    const [selectedStartMonth, setSelectedStartMonth] = useState('');
-    const [selectedEndMonth, setSelectedEndMonth] = useState('');
+
+    const startMonth = experienceToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
+    const _startMonth = startMonth ? startMonth[1] : null;
+
+    const _startYear = experienceToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
+    const __startYear = _startYear ? _startYear[2] : null;
+
+    const [selectedStartMonth, setSelectedStartMonth] = useState(_startMonth);
+    const [selectedStartYear, setSelectedStartYear] = useState(__startYear);
     const [startDate, setStartDate] = useState();
 
     useEffect(() => {
@@ -160,12 +215,13 @@ function Experiences({ action, handleCancel }) {
         };
 
         const setYear = (selectedYear) => {
-            const selectedMonth = (type === "startDate") ? selectedStartMonth : selectedEndMonth;
+            const selectedMonth = selectedStartMonth;
 
             if (selectedMonth !== "" && selectedYear !== "") {
                 const selectedDate = selectedMonth + '/' + selectedYear;
 
                 if (type === "startDate") {
+                    setSelectedStartYear(selectedYear)
                     setStartDate(selectedDate);
                 }
             }
@@ -220,6 +276,7 @@ function Experiences({ action, handleCancel }) {
                                     label
                                     placeholder="Enter title here"
                                     required
+                                    edit
                                 />
                             )}
                         </Field>
@@ -235,25 +292,41 @@ function Experiences({ action, handleCancel }) {
                                     label
                                     placeholder="Enter your Company Name"
                                     required
+                                    edit
                                 />
                             )}
                         </Field>
                     </div>
 
                     <div className='mb-4'>
-                        <Field name="industry">
+                        {/* <Field name="industry">
                             {({ field }) => (
                                 <Core.SelectWithLabel
                                     {...field}
                                     name={"industry"}
-                                    label="Industry"
+                                    label
+                                    options={industryOptions}
+                                    defaultOption="Choose any one" 
+                                    required
+                                />
+                            )}
+                        </Field> */}
+
+                        <Field name="industry">
+                            {({ field }) => (
+                                <Core.SelectWithLabel
+                                    {...field}
+                                    name="industry"
+                                    label
                                     options={industryOptions}
                                     defaultOption="Choose any one"
-                                    // onChange={(value) => handleChange("industry", value)}
+                                    value={field.value}
                                     required
                                 />
                             )}
                         </Field>
+
+
                     </div>
 
 
@@ -265,11 +338,12 @@ function Experiences({ action, handleCancel }) {
                                         <Core.SelectWithLabel
                                             {...field}
                                             name={"directlyManageTeam"}
-                                            label="Did you directly manage a team?"
+                                            label
                                             options={directlyManageTeamOptions}
                                             defaultOption="Choose any one"
                                             // onChange={(value) => handleChange("directlyManageTeam", value)}
                                             required
+                                            value={field.value}
                                         />
                                     )}
                                 </Field>
@@ -283,7 +357,8 @@ function Experiences({ action, handleCancel }) {
                                             label
                                             options={noOfPeopleOptions}
                                             defaultOption="How many people"
-                                        // onChange={(value) => handleChange("noOfPeople", value)}
+                                            // onChange={(value) => handleChange("noOfPeople", value)}
+                                            value={field.value}
                                         />
                                     )}
                                 </Field>
@@ -297,7 +372,7 @@ function Experiences({ action, handleCancel }) {
                                 <Core.SelectWithLabel
                                     {...field}
                                     name={"salary"}
-                                    label={"Salary"}
+                                    label
                                     options={salaryOptions}
                                     defaultOption="Select Salary Range"
                                     // onChange={(value) => handleChange("salary", value)}
@@ -306,10 +381,6 @@ function Experiences({ action, handleCancel }) {
                             )}
                         </Field>
                     </div>
-
-
-
-
 
                     <div className='mb-4'>
                         <div className='flex justify-between gap-x-2'>
@@ -369,6 +440,7 @@ function Experiences({ action, handleCancel }) {
                                             defaultOption="Month"
                                             onChange={(value) => handleDateChange("startDate", "month", value)}
                                             required
+                                            value={selectedStartMonth}
                                         />
                                     </div>
                                     <div className='w-[50%]'>
@@ -379,6 +451,7 @@ function Experiences({ action, handleCancel }) {
                                             defaultOption="Year"
                                             onChange={(value) => handleDateChange("startDate", "year", value)}
                                             required
+                                            value={selectedStartYear}
                                         />
                                     </div>
                                 </div>
@@ -389,17 +462,17 @@ function Experiences({ action, handleCancel }) {
 
                     <div className='flex justify-between items-center pt-1 mb-2'>
                         <div className='flex justify-start items-center gap-x-1'>
-                            <Field type='checkbox' name='agreeTerms' />
+                            <Field type='checkbox' name='currentlyInProcess' />
                             Currently in process
                             <ErrorMessage name='inProcess' component='div' className='text-red-500' />
                         </div>
                     </div>
-                    
+
 
                     <div className='mb-4'>
                         <Core.TextEditorWithLabel name={'description'} label height={"h-[200px]"} style={{ height: "84%" }} value={description} setValue={setDescription} />
                     </div>
-                    
+
 
 
 

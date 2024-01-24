@@ -13,15 +13,27 @@ import logo5 from "../../../assets/images/company-logos/logo4.png";
 
 function ManageProfileCandidate() {
     const personalInformation = {
-        name: "John Francois22",
+        name: "John",
+        lastName: "Francois22",
         statusLine: "Design Lead | Author of the 'Design Manual' and the 'Ultimate Guide to Web Design' | Teaching 300,000+ Designers Worldwide",
         phoneNo: "+1 215-538-6957",
         email: "michaeljfuller@rhyta.com",
         profileCompletion: "50",
+        zipCode: "000000",
+        expectedSalary: '2000-2500',
+        careerLevel: 'midLevel',
+        experience: '6years',
+        country: 'Andorra',
+        state: 'Canillo',
+        city: 'El Tarter',
+        dob: '02/03/1904',
+        gender: 'Male',
+        phoneNo: "+17193651632",
     }
 
     const experience = [
         {
+            id: "1",
             title: "Art Director",
             company: "Techigon Software House",
             startDate: "Nov 2022 - Present · 4 yrs 7 mos",
@@ -29,6 +41,7 @@ function ManageProfileCandidate() {
             logo: logo3,
         },
         {
+            id: "2",
             title: "Graphics Designer",
             company: "ITHUB Software House",
             startDate: "Nov 2010 - Present · 7 yrs 1 mos",
@@ -45,6 +58,7 @@ function ManageProfileCandidate() {
     ]
     const education = [
         {
+            id: "1",
             degree: "MPhil Economics",
             school: "Koc University",
             startDate: "Nov 2015 - Present · 7 yrs 7 mos",
@@ -52,6 +66,7 @@ function ManageProfileCandidate() {
             logo: logo2,
         },
         {
+            id: "2",
             degree: "BS Computer Science ",
             school: "Oxford University",
             startDate: "Nov 2018 - Present · 3 yrs 9 mos",
@@ -59,6 +74,7 @@ function ManageProfileCandidate() {
             logo: logo3,
         },
         // {
+        // id: "3",
         //     degree: "BS Hons ",
         //     school: "Adamjee University",
         //     startDate: "Nov 2018 - Present · 5 yrs",
@@ -80,33 +96,38 @@ function ManageProfileCandidate() {
             proficiency: '2 years',
         }
     ]
-    const summary = [
+    const summery = [
         {
-            text: "Including a summary in your job application provides a brief overview of your qualifications, skills, and career goals, helping recruiters assess your fit for the position.",
+            text: "Including a summery in your job application provides a brief overview of your qualifications, skills, and career goals, helping recruiters assess your fit for the position.",
         },
     ]
     const projects = [
         {
+            id: "1",
             title: "Project 1",
             link: "https://www.shutterstock.com/image-vector/website-template-design-vector-illustration-260nw-1059153563.jpg",
             img: projectImg1,
         },
         {
+            id: "2",
             title: "Project 2",
             link: "https://www.shutterstock.com/image-vector/web-design-template-vector-illustration-260nw-1362343523.jpg",
             img: projectImg2,
         },
         {
+            id: "3",
             title: "Project 3",
             link: "https://previews.123rf.com/images/darkovujic/darkovujic1809/darkovujic180900011/110267002-landing-page-template-of-web-design-modern-flat-design-concept-of-web-page-design-for-website-and.jpg",
             img: projectImg3,
         },
         // {
+        // id: "4",
         //     title: "Project 4",
         //     link: "https://mir-s3-cdn-cf.behance.net/projects/404/469b22176695451.64c95edd2a9e7.jpg",
         //     img: projectImg4,
         // },
         // {
+        // id: "5",
         //     title: "Project 5",
         //     link: "https://i.pinimg.com/736x/f6/52/22/f65222d817856ce6d0ae8bebcd998168.jpg",
         //     img: projectImg5,
@@ -138,15 +159,18 @@ function ManageProfileCandidate() {
         onlyNearMeonlyNearMe: "",
     }
     const [resumePrivacySetting, setResumePrivacySetting] = useState('Public');
+
     const handlePrivacyChange = (e) => {
         setResumePrivacySetting(e.target.value);
     };
+
     let name = 'John Francois'
     const firstLetter = name ? name.trim().charAt(0).toUpperCase() : '';
 
     const extractedData = {
 
     }
+
     const handleNext = () => {
         console.log("handleNext")
     }
@@ -154,9 +178,8 @@ function ManageProfileCandidate() {
     return (
         <CandidateProfile
             handleNext={handleNext}
-            data={extractedData}
             personalInformation={personalInformation}
-            summary={summary}
+            summery={summery}
             projects={projects}
             experience={experience}
             education={education}

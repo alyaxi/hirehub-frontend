@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Core } from "..";
 import Icon from "../icon";
 
-function ProficienciesActions({ buttons, type }) {
+function ProficienciesActions({ buttons, type, id }) {
     const [action, setAction] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
@@ -11,7 +11,7 @@ function ProficienciesActions({ buttons, type }) {
     // console.log("ProficienciesActions - type", type)
     return (
         <>
-            <Core.PopupModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} type={type} action={action} />
+            <Core.PopupModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} type={type} action={action} id={id} />
             {
                 buttons?.length &&
                 <div className="flex justify-center gap-x-2">
