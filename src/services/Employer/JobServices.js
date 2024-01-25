@@ -24,6 +24,16 @@ const jobServices = {
             throw error;
         }
     },
+    async StatusChange(id,status) {
+        try {
+            const response = await api.post(`/update-jobs-by-employer/${id}`, {jobStatus:status});
+            if (response && response.data && response.status === 200) {
+                return response.data;
+            }
+        } catch (error) {
+            throw error;
+        }
+    },
 };
 
 

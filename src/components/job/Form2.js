@@ -68,7 +68,7 @@ function Form2({ handleSalaryChange, handleInput }) {
                                     name={"salary"}
                                     label
                                     options={salaryOptions}
-                                    onChange={(e) => handleSalary("salary", e.target.value)}
+                                    onChange={(e) => handleSalary(e.target.value)}
                                 />
                             </div>
                             <div className={`${!employmentType && "disable-me"}`}>

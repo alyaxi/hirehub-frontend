@@ -14,8 +14,8 @@ const columns = [
         sorter: true,
     }, {
         title: 'Applicant Counts',
-        key: 'applicantCounts',
-        dataIndex: 'applicantCounts',
+        key: 'applicationCount',
+        dataIndex: 'applicationCount',
     }, {
         title: 'No. Of Openings',
         key: 'noOfOpenings',
@@ -99,7 +99,7 @@ function MainJobs() {
                 breadcrumb={breadcrumb}
             />
             <TableB
-                data={[{}]}
+                data={jobs}
                 columns={columns}
                 filterBy={[
                     "SearchByJobTitle",

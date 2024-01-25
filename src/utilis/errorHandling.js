@@ -3,10 +3,10 @@ import { ToastContainer } from 'react-toastify';
 import notificationService from './notification';
 
 export const RedirectToLogin = (err) => {
-  const navigate = useNavigate();
 
   localStorage.removeItem("user");
-  navigate("/");
+  window.history.go("/")
+  
   notificationService.error(err);
 
 
@@ -17,9 +17,9 @@ export const RedirectToLogin = (err) => {
 export const handleApiError = (error) => {
 
   console.log(error, "error");
-  if (error.response && error.response.status === 401) {
+  if (error.response && error.response.status == 401) {
     // Redirect to login page on unauthorized response
-    return RedirectToLogin("Session Expired")
+    return RedirectToLogin("jwt expired")
     
   } else if (error.message === "Network Error") {
     
@@ -37,6 +37,6 @@ export const handleApiError = (error) => {
     throw new Error('No response from the server');
   } else {
     // Something happened in setting up the request that triggered an Error
-    throw new Error(`Request Error: ${error.message}`);
+    throw new Error(`Request Error: ${error}`);
   }
 };

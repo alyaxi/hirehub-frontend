@@ -23,17 +23,33 @@ export const GetjobsEmployer = createAsyncThunk('employer/get-jobs-by-employer',
 });
 
 
-export const AddjobsEmployer = createAsyncThunk('employer/add-jobs-by-employer', async (data) => {
+export const AddjobsEmployer = createAsyncThunk('employer/add-jobs-by-employer', async (addJob) => {
 
     try {
-        console.log("add job employer", data)
-        const data = await jobServices(data)
+        console.log("add job employer", addJob)
+        const data = await jobServices.addJobs(addJob)
         console.log(data, "dataaaaa")
         return data
     } catch (error) {
         // Handle login error
         console.log(error);
         handleApiError(error)
+    }
+});
+
+
+export const ChangeStatusJob = createAsyncThunk('employer/update-jobs-by-employer/', async ({id,status}) => {
+
+    try {
+        console.log("add job employer", status, id)
+        const data = await jobServices.StatusChange(id, status)
+        console.log(data, "dataaaaa")
+        return data
+    } catch (error) {
+        // Handle login error
+        console.log(error);
+        handleApiError(error)
+        throw error
     }
 });
 
@@ -64,45 +80,60 @@ const JobsEmployer = createSlice({
 
         builder.addCase(GetjobsEmployer.fulfilled, (state, { payload }) => {
             console.log(payload.data.jobs, "payloadd from getJobs employer")
-            // const jobsdata = payload.data.jobs.map((i, job) => {
-            //     return {
-            //         id: job.id,
-            //         positionTitle: job.position,
-            //         noOfOpenings: job.noOfOpening,
-            //         expirationDate: convertDateFormat(job.expirationDate),
-            //         salary: job.salary.salary,
-            //         jobStatus: job.jobStatus,
-            //         employer: {
-            //             title: job[i].employerId.companyName,
-            //             address: "abc"
-            //         },
-            //         postedDate: job.postedDate,
-            //         applicantCounts: job.applicationCount,
-            //         shortSummery: [
-            //             { title: "industry", value: job.companyIndustry },
-            //             { title: "gender", value: job.gender },
-            //             { title: "package", value: job.salary.value + ' ' + job.salary.rate },
-            //             { title: "minimum Education", value: job.minimumEducation },
-            //             { title: "total Positions", value: job.noOfOpenings },
-            //             { title: "career Level", value: job.careerLevel },
-            //             { title: "job Shift", value: job.jobShift },
-            //             { title: "experience", value: job.experience },
-            //             { title: "job Type", value: job.jobType },
-            //             { title: "apply Before", value: job.expirationDate },
-            //             { title: "department", value: job.department },
-            //             { title: "posting Date", value: job.postedDate },
-            //             { title: "job Location", value: job.jobLocation },
-            //         ],
-            //     };
-            // });
 
+            const modifiedJobs = payload?.data?.jobs.map((job) => {
+                console.log(job, "jobssssssssss")
+                return {
+                    id: job._id,
+                    positionTitle: job.positionTitle,
+                    applicationCount: job.applicationCount,
+                    noOfOpenings: job.noOfOpenings,
+                    expirationDate: job.expirationDate,
+                    salary: job.salary.value,
+                    jobStatus: job.jobStatus,
+                    employer: {
+                        title: job.employerId[0].companyName,
+                        address: job.jobLocation,
+                    },
+                    postedDate: job.postedDate,
+                    qualification: job.qualification,
+                    responsibilities:job.qualification,
+                    skills: job.skills,
+                    benefits: job.benefits,
+                    aboutPosition: job.aboutPosition,
+                    shortSummery: [
+                        { title: "industry", value: job.industry },
+                        { title: "gender", value: job.gender },
+                        { title: "package", value: job.salary.value + ' ' + job.salary.rate },
+                        { title: "minimum Education", value: job.minimumEducation },
+                        { title: "total Positions", value: job.noOfOpenings },
+                        { title: "career Level", value: job.careerLevel },
+                        { title: "job Shift", value: job.jobShift },
+                        { title: "experience", value: job.experience },
+                        { title: "job Type", value: job.jobType },
+                        { title: "apply Before", value: convertDateFormat(job.expirationDate) },
+                        { title: "department", value: job.department },
+                        { title: "posting Date", value: job.postedDate },
+                        { title: "job Location", value: job.jobLocation },
+                    ],
+                };
+            });
+            console.log(modifiedJobs, "modified jobsss")
+            state.jobs = modifiedJobs
+            state.reload =false
 
 
 
 
         })
         builder.addCase(AddjobsEmployer.fulfilled, (state, { payload }) => {
+            // Add the new job to existing jobs array
 
+        })
+        builder.addCase(ChangeStatusJob.fulfilled, (state, { payload }) => {
+            state.reload = true
+
+            
         })
 
 
