@@ -35,6 +35,8 @@ import EditJobsAdmin from "./admin/manage_jobs/edit";
 
 import ViewProfile from "./admin/profile/view";
 import ScheduleCandidatesAdmin from "./admin/manage_candidates/schedule";
+import ManageFAQsAdmin from "./admin/manage_faqs";
+import ManageTermAndConditionAdmin from "./admin/term_and_condition";
 // ------------ Employer ------------
 import EmployerDashboard from "./employer/dashboard";
 import ManageProfile from "./employer/manage_profile";
@@ -99,6 +101,8 @@ export {
     ViewProfile,
 
     ScheduleCandidatesAdmin,
+    ManageFAQsAdmin,
+    ManageTermAndConditionAdmin,
     // ------------ Employer ------------
     EmployerDashboard,
 
