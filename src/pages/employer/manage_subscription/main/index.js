@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Table } from '../../../../components';
-import { Breadcrumb, StatsGroup } from '../../../../components/core';
+// import { Table } from '../../../../components';
+import { Breadcrumb } from '../../../../components/core';
 import avatar1 from "../../../../assets/images/avatars/2.png";
-import TableB from '../../../../components/table/TableB';
+// import TableB from '../../../../components/table/TableB';
 import { useNavigate } from "react-router-dom"
 import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 import { useDispatch, useSelector } from 'react-redux';

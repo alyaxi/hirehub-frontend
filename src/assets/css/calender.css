@@ -1,0 +1,309 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  /* FFF4F1   FFFBFA */
+
+  /* .calender div {
+    border: 3px solid red;
+    background-color: blue;
+} */
+
+  .calender .rbc-day-bg.rbc-today {
+      /* border: 3px solid red; */
+      /* background-color: blue; */
+      background-image: linear-gradient(to bottom, #FFF4F1, #FFFBFA);
+  }
+
+  /* background-image: linear-gradient(to bottom, #ECFAFB, #F8FDFD); */
+  /* background-image: linear-gradient(to bottom, #EFF1FD, #F5F6FE); */
+
+  .calender .rbc-row-content .rbc-row .rbc-row-segment .rbc-event {
+      font-family: 'Poppins', sans-serif;
+      background-color: transparent;
+      font-weight: 600;
+
+      /* border: none;
+      box-sizing: border-box;
+      box-shadow: none;
+      margin: 0;
+      padding: 2px 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left; */
+  }
+
+  /* .calender .rbc-row-content .rbc-row .rbc-row-segment .rbc-event  .rbc-event-content:nth-child(1) {
+    
+  } */
+
+  .rbc-row:nth-child(2) .rbc-row-segment .rbc-event .rbc-event-content {
+      color: #15A2AE;
+      font-family: 'Poppins', sans-serif;
+      font-size: 8px;
+  }
+
+  .rbc-row:nth-child(2) .rbc-row-segment .rbc-event .rbc-event-content:before {
+      content: '';
+      display: inline-block;
+      width: 5.61px;
+      height: 5.61px;
+      background-color: #15A2AE;
+      border-radius: 50%;
+      margin-right: 2px;
+  }
+
+  .rbc-row .rbc-row-segment .rbc-event .rbc-event-content {
+      color: #000000aa;
+      font-family: 'Poppins', sans-serif;
+      font-size: 8px;
+  }
+
+  .rbc-row .rbc-row-segment .rbc-event .rbc-event-content:before {
+      content: '';
+      display: inline-block;
+      width: 5.61px;
+      height: 5.61px;
+      background-color: #000000aa;
+      border-radius: 50%;
+      margin-right: 2px;
+  }
+
+
+  .rbc-row:nth-child(3) .rbc-row-segment .rbc-event .rbc-event-content {
+      color: #FF8B68;
+      font-family: 'Poppins', sans-serif;
+      font-size: 8px;
+  }
+
+  .rbc-row:nth-child(3) .rbc-row-segment .rbc-event .rbc-event-content:before {
+      content: '';
+      display: inline-block;
+      width: 5.61px;
+      height: 5.61px;
+      background-color: #FF8B68;
+      border-radius: 50%;
+      margin-right: 2px;
+  }
+
+  /* rbc-month-row */
+  /* rbc-row-content */
+  /* .rbc-row */
+  /* .rbc-month-row:nth-child(1) {
+    background-color: red;
+  }
+  .rbc-month-row:nth-child(2) {
+    background-color: blue;
+  }
+  .rbc-month-row:nth-child(3) {
+    background-color: green;
+  }
+  .rbc-month-row:nth-child(4) {
+    background-color: orange;
+  }
+  .rbc-month-row:nth-child(5) {
+    background-color: greenyellow;
+  }
+  .rbc-month-row:nth-child(6) {
+    background-color: orangered;
+  }
+   */
+
+  .rbc-row:nth-child(4) .rbc-row-segment .rbc-event .rbc-event-content {
+      color: #666FBE;
+      font-family: 'Poppins', sans-serif;
+      font-size: 8px;
+  }
+
+  .rbc-row:nth-child(4) .rbc-row-segment .rbc-event .rbc-event-content:before {
+      content: '';
+      display: inline-block;
+      width: 5.61px;
+      height: 5.61px;
+      background-color: #666FBE;
+      border-radius: 50%;
+      margin-right: 2px;
+  }
+
+  /* .rbc-day-bg + .rbc-day-bg {
+    border-color: #DADCE0;
+} */
+
+  .calender .rbc-button-link {
+      font-size: 12px;
+  }
+
+  .calender .rbc-btn-group:nth-child(1) button:nth-child(1) {
+      font-size: 14px;
+      line-height: 20px;
+      border-radius: 50px !important;
+      border: none;
+      color: #8913FF;
+      background-color: transparent;
+  }
+
+  .calender .rbc-btn-group:nth-child(1) button:nth-child(2) {
+      position: relative;
+      width: 30px;
+      overflow: hidden;
+      color: transparent;
+      border: none;
+      margin-left: 20px;
+  }
+
+  .calender .rbc-btn-group:nth-child(1) button:nth-child(2):after {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 8px 0 8px;
+      border-color: #8913FF transparent transparent transparent;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .calender .rbc-btn-group:nth-child(1) button:nth-child(3) {
+      position: relative;
+      width: 30px;
+      overflow: hidden;
+      color: transparent;
+      border: none;
+  }
+
+  .calender .rbc-btn-group:nth-child(1) button:nth-child(3):after {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 8px 0 8px;
+      border-color: #8913FF transparent transparent transparent;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
+  }
+
+  .calender .rbc-btn-group:nth-child(3) {
+      display: flex;
+      column-gap: 5px;
+      border-radius: 50px;
+      /* border: 1px solid #ddd; */
+      padding: 5px;
+  }
+
+
+  .calender .rbc-btn-group:nth-child(3) button {
+      font-size: 14px;
+      line-height: 20px;
+      border-radius: 50px !important;
+      border: none;
+      color: #8913FF;
+      background-color: #f7f0ff;
+  }
+
+  .calender .rbc-btn-group:nth-child(3) button:nth-child(4) {
+      background-color: transparent;
+  }
+
+  .calender .rbc-btn-group:nth-child(3) button.rbc-active {
+      background-image: linear-gradient(to bottom, #8913FF, #7312F7);
+      color: #fff;
+      box-shadow: none;
+  }
+
+  .calender .rbc-btn-group:nth-child(3) button:hover {
+      background-image: linear-gradient(to bottom, #8913FF, #7312F7);
+      color: #fff;
+  }
+
+  table.rbc-agenda-table tbody tr:nth-child(1) td.rbc-agenda-event-cell {
+      font-family: 'Poppins', sans-serif;
+      color: #15A2AE;
+      font-weight: 600;
+  }
+
+  table.rbc-agenda-table tbody tr:nth-child(1) td.rbc-agenda-event-cell:before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: #15A2AE;
+      border-radius: 50%;
+      margin-right: 5px;
+  }
+
+  table.rbc-agenda-table tbody tr:nth-child(2) td.rbc-agenda-event-cell {
+      font-family: 'Poppins', sans-serif;
+      color: #FF8B68;
+      font-weight: 600;
+  }
+
+  table.rbc-agenda-table tbody tr:nth-child(2) td.rbc-agenda-event-cell:before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: #FF8B68;
+      border-radius: 50%;
+      margin-right: 5px;
+  }
+
+  table.rbc-agenda-table tbody tr:nth-child(3) td.rbc-agenda-event-cell {
+      font-family: 'Poppins', sans-serif;
+      color: #666FBE;
+      font-weight: 600;
+  }
+
+  table.rbc-agenda-table tbody tr:nth-child(3) td.rbc-agenda-event-cell:before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: #666FBE;
+      border-radius: 50%;
+      margin-right: 5px;
+  }
+
+
+  .rbc-row:nth-child(2) .rbc-row-segment .rbc-event .rbc-event-content:before {
+      position: absolute;
+      content: '';
+      width: 81px;
+      height: 122px;
+      background-image: linear-gradient(to bottom, #ECFAFB, #F8FDFD);
+      z-index: -1;
+      border-radius: 0;
+      margin-left: -5px;
+      margin-top: -26px;
+  }
+
+
+
+  /* 
+color: #15A2AE;
+font-family: 'Poppins', sans-serif;
+font-size: 8px;
+color: #FF8B68;
+font-family: 'Poppins', sans-serif;
+font-size: 8px;
+color: #666FBE;
+font-family: 'Poppins', sans-serif;
+font-size: 8px; */
+
+  /* .rbc-row.rbc-month-header {
+      border-left: 3px solid blue;
+    border-color: red !important;
+  } */
+
+  .rbc-row.rbc-month-header .rbc-header {
+      border-left: none;
+      border-right: none;
+      border-top: none;
+  }
+
+  .rbc-month-view {
+      /* border-top: none; */
+      border: none;
+  }

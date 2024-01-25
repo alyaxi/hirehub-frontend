@@ -31,8 +31,8 @@ const menu = [
     },
     {
         icon: <Icon name="Calender2" />,
-        path: "scheduling",
-        name: "Scheduling",
+        path: "calender",
+        name: "Calender",
     },
      
 ]
