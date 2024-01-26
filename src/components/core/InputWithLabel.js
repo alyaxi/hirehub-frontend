@@ -80,7 +80,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Salary";
             case "positionTitle":
                 return "Position Title";
-
+            case "sendTo":
+                return "Send To";
 
 
             case "skills1title":
@@ -162,6 +163,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Salary";
             case "positionTitle":
                 return "Position Title";
+            case "sendTo":
+                return "Select Reciept";
 
             case "SearchProduct":
                 return "Search Product ...";
@@ -196,6 +199,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "package":
             case "salary":
             case "positionTitle":
+            case "sendTo":
                 return "text";
             case "password":
             case "newPassword":

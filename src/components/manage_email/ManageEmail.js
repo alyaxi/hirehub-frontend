@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
 import Inbox from './Inbox';
+import PersonalizedEmail from './PersonalizedEmail';
+import ScheduledEmails from './ScheduledEmails';
 
 const items = [
     {
@@ -28,16 +30,16 @@ function ManageEmail({
     };
     return (
         <>
-            <Tabs defaultActiveKey="1" onChange={onChange} className='flex justify-center items-center w-full text-gray-6 text-[13px]'>
+            <Tabs defaultActiveKey="1" onChange={onChange} className='fle x justify-ce nter items-cent er w-full text-gray-6 text-[13px]'>
 
                 <TabPane tab={'INBOX'} key={1}>
                     <Inbox />
                 </TabPane>
                 <TabPane tab={'PERSONALIZED EMAILS'} key={2}>
-                    PERSONALIZED EMAILS
+                    <PersonalizedEmail />
                 </TabPane>
                 <TabPane tab={'EDULED EMAILS'} key={3}>
-                    EDULED EMAILS
+                    <ScheduledEmails />
                 </TabPane>
 
                 {/* {items.map(item => (

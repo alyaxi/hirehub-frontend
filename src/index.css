@@ -64,6 +64,11 @@ body {
     display: none;
 }
 
+.ant-tabs-nav-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 ul.menu-list:before {

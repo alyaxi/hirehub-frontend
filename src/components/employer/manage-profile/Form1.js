@@ -43,6 +43,7 @@ function Form1({ onNext }) {
                     name={"YourCompanysName"}
                     // label="Company Name"
                     label
+                    sm
                     onChange={(value) => handleChange("companyName", value)}
                 />
             </div>
