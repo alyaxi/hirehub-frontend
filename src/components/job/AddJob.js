@@ -6,16 +6,23 @@ import Form2 from './Form2';
 import Form3 from './Form3';
 import Form4 from './Form4';
 import { convertDateFormat } from '../../utilis/convertDateStamp';
+import { AddjobsEmployer } from '../../Slices/Employer/JobSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import notificationService from '../../utilis/notification';
+import { redirect, useNavigate  } from 'react-router-dom';
+
+
 
 function AddJob() {
     const [step, setStep] = useState(1);
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [job, setJob] = useState(
         {
             id: "",
             jobType: "",
             noOfOpenings: "",
             expirationDate: "",
-            jobStatus: "deactive",
             postedDate: "",
             company: {},
             jobLocation: "",
@@ -30,7 +37,6 @@ function AddJob() {
             responsibilities: "",
             skills: "",
             // shortSummery: [],
-
             industry: "",
             jobShift: "",
             department: "",
@@ -61,6 +67,17 @@ function AddJob() {
             postedDate: formattedCurrentDate,
         };
         console.log("final data", updatedJob);
+        dispatch(AddjobsEmployer(updatedJob)).unwrap().then(({data}) => {
+            if (!data.error) {
+                notificationService.success("Job successfully Posted")
+            }
+            setTimeout(() => {
+                navigate("/employer/manage-jobs")
+            }, 2000)
+        }).catch(err => {
+            console.log(err.message)
+            notificationService.error(err.message)
+        })
         setJob(updatedJob);
     };
 

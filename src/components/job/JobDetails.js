@@ -3,12 +3,11 @@ import { Core } from '..';
 import Icon from '../icon';
 import { Avatar } from 'antd';
 
-function JobDetails({ data: extractedData, pageType, selectedState, handleNext, setStatus, status }) {
+function JobDetails({data: extractedData, pageType, selectedState, handleNext, setStatus, status }) {
     const dropdownOptions = [
         "Open",
         "Closed",
-        "Published",
-        "Reublished",
+        "Republished",
     ]
     const [resumePrivacy, setResumePrivacy] = useState('');
 
@@ -103,13 +102,10 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                 <div className='pb-8'>
                     <h6 className='text-[16px] leading-[22px] font-semibold'>Benefits</h6>
                     <ul className='flex justify-start flex-wrap gap-x-3 text-gray-6 list-disc pl-4 mt-4'>
-                        <li className='w-[18%] text-[14px] leading-[18px] mb-3'>Disability insurance</li>
-                        <li className='w-[18%] text-[14px] leading-[18px] mb-3'>Health insurance</li>
-                        <li className='w-[18%] text-[14px] leading-[18px] mb-3'>Life insurance</li>
-                        <li className='w-[18%] text-[14px] leading-[18px] mb-3'>Paid time off</li>
-                        <li className='w-[18%] text-[14px] leading-[18px] mb-3'>Parental leave</li>
-                        <li className='w-[18%] text-[14px] leading-[18px] mb-3'>Flexible spending account</li>
-                        <li className='w-[18%] text-[14px] leading-[18px] mb-3'>Retirement plan</li>
+                    {extractedData && extractedData?.benefits?.map(benefits => (
+                         <li className='w-[18%] text-[14px] leading-[18px] mb-3'>{benefits}</li>
+                    ))}
+                       
                     </ul>
                 </div>
 
@@ -120,43 +116,26 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                 <div className="pb-4">
                     <h6 className='text-[14px] leading-[24px] font-semibold'>The Position</h6>
                     <p className='text-gray-6 text-[12px] leading-[18.5px]'>
-                        The successful UI/UX Designer will work to deliver a complex enterprise-grade Desktop, Web, and Cloud solutions with local and offshore colleagues. As a designer, you're a true expert in your field and a strong advocate for the customer. You're formally trained in design and passionate about customer-centric innovation. You take pride in your work. You obsess over details and iterate on them until you've gotten it right. You see feedback as a good thing. You're a great storyteller who is at ease presenting and comfortable discussing your work with colleagues and stakeholders. You challenge old ways of thinking and put the customer at the center of everything you do. User-Centered Design methodologies are second nature to you.If this sounds like you and you're interested in transforming the legal technology industry, then we want to hear from you.
+                        {extractedData?.aboutPosition}
                     </p>
                 </div>
 
                 {/* Responsibilities */}
                 <div className="pb-4">
                     <h6 className='text-[14px] leading-[24px] font-semibold'>Responsibilities</h6>
-                    <ul className='list-disc text-gray-6 pl-4'>
-                        <li className='text-[12px] leading-[20px]'>Partner with Product Managers, engineers, researchers, and content strategist to oversee the user experience of a product from conception until launch and beyond.</li>
-                        <li className='text-[12px] leading-[20px]'>Develop and design the Personas, User journey, Interaction patterns, Task Flows, process flows, wireframes, and mock-ups to effectively conceptualize and communicate high-level design strategies and detailed interaction models.</li>
-                        <li className='text-[12px] leading-[20px]'>Manage projects autonomously and serve as a design expert with a cross-functional team.</li>
-                        <li className='text-[12px] leading-[20px]'>Using techniques like storyboards and sketching to communicate interactive design concepts to stakeholders.</li>
-                        <li className='text-[12px] leading-[20px]'>Applying a user-centered approach to requirements and inter dependencies – to develop engaging interfaces.</li>
-                        <li className='text-[12px] leading-[20px]'>Conduct design experiments and validation exercises like A/B testing, usability testing etc and effectively use quantitative and qualitative data to drive decisions and measure success.</li>
-                        <li className='text-[12px] leading-[20px]'>Analyze customer data through funnel and examine high traffic screens to determine why certain journeys perform better</li>
-                        <li className='text-[12px] leading-[20px]'>Create surveys for research through various media platforms to gather feedback on user’s ease of use and satisfaction interfacing on company websites and products</li>
-                    </ul>
+                <div dangerouslySetInnerHTML={{ __html: extractedData?.responsibilities }}></div>
                 </div>
 
                 {/* Qualification */}
                 <div className="pb-4">
                     <h6 className='text-[16px] leading-[22px] font-semibold'>Qualification</h6>
-                    <ul className='list-disc text-gray-6 pl-4'>
-                        <li className='text-[12px] leading-[20px]'>BS Computer Science or BS Software Engineering</li>
-                        <li className='text-[12px] leading-[20px]'>Development Course</li>
-                    </ul>
+                    <div dangerouslySetInnerHTML={{ __html: extractedData?.qualification }}></div>
                 </div>
 
                 {/* Key Skills */}
                 <div className="pb-4">
                     <h6 className='text-[16px] leading-[22px] font-semibold'>Key Skills</h6>
-                    <ul className='list-disc text-gray-6 pl-4'>
-                        <li className='text-[12px] leading-[20px]'>React Js</li>
-                        <li className='text-[12px] leading-[20px]'>Next Js</li>
-                        <li className='text-[12px] leading-[20px]'>Nest Js</li>
-                        <li className='text-[12px] leading-[20px]'>Node Js</li>
-                    </ul>
+                    <div dangerouslySetInnerHTML={{ __html: extractedData?.skills }}></div>
                 </div>
 
                 {/* Short Summery */}

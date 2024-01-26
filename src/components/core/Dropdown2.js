@@ -28,7 +28,7 @@ export default function Dropdown2({ options, setState, className, menuWidth, def
             >
                 <Menu.Items defaultValue={selectedState} className={`absolute z-[2] right-0 mt-2 min-w-full ${menuWidth} origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none`}>
                     <div className="px-1 py-1">
-                        {options.map((value, index) => (
+                        {options?.map((value, index) => (
                             <Menu.Item key={index * 7}>
                                 {({ active }) => (
                                     <button
