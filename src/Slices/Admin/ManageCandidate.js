@@ -14,7 +14,7 @@ export const getAllAppliedJob = createAsyncThunk('admin/get-applied-jobs-by-all'
     try {
         // console.log("getemployererrrbyidddd consolee")
         const data = await ManageCandidateAdmin.getAppliedAllJobs()
-        // console.log(data, "dataaaaa")
+        console.log(data, "dataaaaa")
         return data
     } catch (error) {
         // Handle login error
@@ -66,20 +66,22 @@ const manageCandidateAdmin = createSlice({
     extraReducers: (builder) => {
 
         builder.addCase(getAllAppliedJob.fulfilled, (state, { payload }) => {
-            console.log(payload, "payloadd from view employer by admin");
             const alljobs = payload?.data?.getAllappliedJobs;
-            console.log(alljobs, "alljobsssss");
+            console.log(alljobs, "payloadd from view employer by admin");
             const newJobCandidates = []
-            for (let i = 0; i < alljobs.length; i++) {
+
+            for (let i = 0; i < alljobs?.length; i++) {
                 
+                
+                console.log(i, "alljobsssss", alljobs.length);
                 const newAllJob = alljobs[i]
-                const candidate = newAllJob.candidate[0]
-                const name = newAllJob.user[0].name
-                const email = newAllJob.user[0].email
-                const JobTitle = newAllJob.Job[0].position
-                const employerName = newAllJob.employer[0].companyName
-                const experience = newAllJob.Job[0].experience
-                const salary = newAllJob.Job[0].salary  
+                const candidate = newAllJob?.candidate[0]
+                const name = newAllJob?.user[0]?.name
+                const email = newAllJob?.user[0]?.email
+                const JobTitle = newAllJob?.Job[0]?.position
+                const employerName = newAllJob?.employer[0]?.companyName
+                const experience = newAllJob?.Job[0]?.experience
+                const salary = newAllJob?.Job[0]?.salary  
 
 
                 newJobCandidates.push({

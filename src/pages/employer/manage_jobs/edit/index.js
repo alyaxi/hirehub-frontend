@@ -35,12 +35,13 @@ function EditJob() {
 
             dispatch(ChangeStatusJob({ id, status })).unwrap().then(res => {
                 console.log("reSSSSSSSSS", res);
-                if (res) {
-                    notificationService.success(res?.data?.msg)
+                if (res.data) {
+                    notificationService?.success(res?.data?.msg)
+                    setTimeout(() => {
+                        navigate("/employer/manage-jobs")
+                    }, 2000)
                 }
-                setTimeout(() => {
-                    navigate("/employer/manage-jobs")
-                }, 2000)
+               
 
             }).catch(err => {
 

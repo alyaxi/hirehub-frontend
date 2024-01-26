@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Breadcrumb } from '../../../../components/core';
 import TableB from '../../../../components/table/TableB';
 import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import { GetjobsAdmin } from '../../../../Slices/Admin/AdminJobs';
 
 const columns = [
     {
@@ -281,6 +283,24 @@ function MainJobs() {
     const [jobTitle, setJobTitle] = useState("");
     const [expirationDate, setExpirationDate] = useState("");
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const jobs = useSelector((state) => state?.AdminJob?.jobs);
+
+    console.log(jobs, "adminjobssssssssss")
+
+
+
+    useEffect(() => {
+        try {
+            dispatch(GetjobsAdmin()).unwrap().then(res => {
+                console.log("Successfully fetched data", res);
+            }).catch(err => {
+                console.error(`Error Fetching Data ${err}`);
+            });
+        } catch (error) {
+            console.error(`Error in useEffect of Dashboard ${error}`)
+        }
+    }, [])
 
     const onViewClick = (id) => {
         navigate(`/admin/manage-jobs/view/${id}`);
@@ -299,7 +319,7 @@ function MainJobs() {
                 breadcrumb={breadcrumb}
             />
             <TableB
-                data={modifiedJobs}
+                data={jobs}
                 columns={columns}
                 filterBy={[
                     "SearchByJobTitle",
