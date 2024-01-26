@@ -18,7 +18,7 @@ function Education({ data, buttons, card }) {
                             return (
                                 <div key={index * 4} className='relative flex justify-between gap-x-3 w-full'>
                                     <div className='absolute top-0 right-0 z-[200] flex justify-end' >
-                                        <Core.ProficienciesActions buttons={['edit']} type={'education'} />
+                                        <Core.ProficienciesActions buttons={['edit']} type={'education'} id={value?.id} />
                                     </div>
                                     <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
                                         <Avatar shape="square" size={60} src={value?.logo}>!</Avatar>

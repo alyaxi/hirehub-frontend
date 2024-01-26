@@ -57,6 +57,10 @@ module.exports = {
         "light-green-1": "#79BC9D",
         "light-green-2": "#C3E9D8",
         "light-green-3": "#E3FAEF",
+
+        "pink-1": "#ec4899",
+        "pink-2": "#f9a8d4",
+        "pink-3": "#fce7f3", 
         
         "red-2": "#F04438",
         "red-3": "#FEEDEC",

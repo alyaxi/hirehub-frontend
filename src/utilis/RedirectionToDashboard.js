@@ -3,7 +3,6 @@
 export const redirectToDashboard = (role, navigate) => {
   console.log("startttttttttttttttt", role);
  
-
   switch (role) {
     case 'admin':
       navigate('/admin/dashboard');

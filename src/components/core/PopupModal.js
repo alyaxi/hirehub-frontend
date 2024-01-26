@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
 import Forms from '../forms';
+
 function PopupModal({ setIsModalOpen,
     isModalOpen,
     type,
     action,
+    id
 }) {
+
     const [personalInformationData, setPersonalInformationData] = useState({
         avatar: "",
         name: "",
@@ -55,7 +58,6 @@ function PopupModal({ setIsModalOpen,
     const handleOk = () => {
         setIsModalOpen(false);
     };
-
     const handleCancel = () => {
         setIsModalOpen(false);
     };
@@ -93,16 +95,16 @@ function PopupModal({ setIsModalOpen,
             break;
     }
     let _title = _action + " " + title;
-    console.log("type", type)
-    console.log("action", action)
+    // console.log("type", type)
+    // console.log("action", action)
+    // console.log("personalInformationData", personalInformationData)
     return (
         <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
             {type === "personalInformations" && <Forms.PersonalInformations handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}
             {type === "summery" && <Forms.Summery handleCancel={handleCancel} action={action} setSummeryData={setSummeryData} />}
-            {type === "projects" && <Forms.Projects handleCancel={handleCancel} action={action} setProjectsData={setProjectsData} />}
-            {type === "experience" && <Forms.Experiences handleCancel={handleCancel} action={action} setExperiencesData={setExperiencesData} />}
-            {type === "education" && <Forms.Educations handleCancel={handleCancel} action={action} setEducationsData={setEducationsData} />}
-
+            {type === "projects" && <Forms.Projects handleCancel={handleCancel} action={action} setProjectsData={setProjectsData} id={id ? id : undefined} />}
+            {type === "experience" && <Forms.Experiences handleCancel={handleCancel} action={action} setExperiencesData={setExperiencesData} id={id ? id : undefined} />}
+            {type === "education" && <Forms.Educations handleCancel={handleCancel} action={action} setEducationsData={setEducationsData} id={id ? id : undefined} />}
 
             {(type === "skills" && action !== "edit") && <Forms.Skills handleCancel={handleCancel} action={action} setSkillsData={setSkillsData} />}
             {(type === "skills" && action === "edit") && <Forms.SkillsEdit handleCancel={handleCancel} action={'edit'} setSkillsData={setSkillsData} />}

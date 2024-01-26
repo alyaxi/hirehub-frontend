@@ -44,7 +44,7 @@ function DragImg({ state, setState }) {
     return (
         <>
             <label className={`flex justify-start text-[14px] font-medium text-gray-2 tracking-wide mb-2 font-semibold capitalize`}>Upload Image</label>
-            {(imageUrl === "" && (state === undefined || state === null)) ?
+            {(imageUrl === "" && (state === undefined || state === null|| state === '')) ?
                 <Dragger {...props}>
                     <p className="ant-upload-drag-icon mt-4">
                         <InboxOutlined />

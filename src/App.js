@@ -27,6 +27,7 @@ import {
   FourZeroFour,
   ViewProfile,
   ManageProfileCandidate,
+  CalenderCandidate,
   MainCandidatesEmployer,
   EditCandidatesEmployer,
   ViewCandidatesEmployer,
@@ -43,6 +44,8 @@ import {
   AddJobsAdmin,
   EditJobsAdmin,
   ViewJobsAdmin,
+  ManageFAQsAdmin,
+  ManageTermAndConditionAdmin,
 } from "./pages/index";
 import { AdminLayout, CandidateLayout, EmployerLayout } from "./components";
 import PrivateRoute from "./utilis/PrivateRoute";
@@ -94,6 +97,8 @@ function App() {
           <Route path="manage-jobs/edit/:id" element={<EditJobsAdmin />} />
           <Route path="manage-jobs/view/:id" element={<ViewJobsAdmin />} />
 
+          <Route path="manage-faqs" element={<ManageFAQsAdmin />} />
+          <Route path="manage-terms-and-conditions" element={<ManageTermAndConditionAdmin />} />
 
         </Route >
 
@@ -129,6 +134,7 @@ function App() {
         {/* // Candidate Routes */}
         <Route path="candidate/*" element={<PrivateRoute roles={['candidate']}><CandidateLayout /></PrivateRoute>} >
           <Route path="manage-profile" element={<PrivateRoute roles={['candidate']}><ManageProfileCandidate /></PrivateRoute>} />
+          <Route path="calender" element={<PrivateRoute roles={['candidate']}><CalenderCandidate /></PrivateRoute>} />
         </Route>
 
         <Route path="*"

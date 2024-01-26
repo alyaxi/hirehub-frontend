@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import Icon from '../icon';
-import { Avatar, Table, Flex } from 'antd';
+import { Avatar, Table, Flex, Button } from 'antd';
 import '../../assets/css/table.css'
 import { Core } from '..';
 // import { v4 as uuidv4 } from 'uuid';
 
 function TableB({
+    border,
     columns,
     data,
     filterBy,
     actions,
     onViewClick,
     onEditClick,
+    onStageClick,
     onDeleteClick,
     onMessageClick,
     name,
@@ -89,6 +91,17 @@ function TableB({
                 else if (value.dataIndex === "jobStatus") {
                     return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'><Core.Badge>{id.jobStatus}</Core.Badge></div>;
                 }
+                else if (value.dataIndex === "process") {
+                    return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'>
+                        <Button
+                            onClick={onStageClick && onStageClick}
+                        >
+                            Proceed to Next
+                        </Button>
+
+                    </div>;
+                }
+
                 else if (value.dataIndex === "accountStatus") {
                     return (
                         <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'>
@@ -194,15 +207,15 @@ function TableB({
         setResetTrigger2((prev) => !prev);
         setResetTrigger3((prev) => !prev);
     };
-    console.log("data",data)
+    console.log("data", data)
     return (
-        <div className="flex flex-col bg-white rounded-[8px] overflow-hidden border shadow-md">
+        <div className={`flex flex-col bg-white rounded-[8px] overflow-hidden ${border === 'none' ? 'border-0' : 'border shadow-md'}`}>
             <div className="-m-1.5 overflow-x-auto">
                 <div className="p-1.5 min-w-full inline-block align-middle">
                     <div className="overflow-hidden ">
                         <div className="bg-white flex justify-between items-center gap-x-2 py-3 px-5">
                             {!filterBy.includes("SearchByProduct") &&
-                                <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>
+                                <span className='text-black-2 text-[18px] leading-[28px] font-medium'>   Filters   </span>
                             }
                             <div className={`flex ${addButton ? '' : 'justify-end'} items-center gap-1 w-full`}>
                                 {filterBy?.map((value, index) => {

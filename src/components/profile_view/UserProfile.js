@@ -3,6 +3,7 @@ import { Core } from '..';
 import Icon from '../icon';
 import { useLocation } from 'react-router-dom';
 import { Avatar } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedState, handleNext, setStatus, status }) {
     const location = useLocation();
@@ -41,6 +42,11 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
 
     const firstLetter = extractedData?.name ? extractedData?.name.trim().charAt(0).toUpperCase() : '';
     // console.log("firstLetter", firstLetter)
+
+    const navigate = useNavigate();
+    const handleCancel = () => {
+        navigate(-1);
+    };
     return (
         <Core.Card className={`border pt-[20px] pb-[45px] px-[30px]`}>
             <div className='flex justify-end gap-x-4'>
@@ -76,7 +82,8 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                 {pageType === "edit" &&
                     <div className='relative flex flex-col justify-end gap-x-3'>
                         <span className='text-gray-6 text-[16px] leading-[20px] capitalize font-semibold pl-1 py-1'>
-                            Candidates Status:
+                            {/* Candidates Status: */}
+                            Candidates Stage:
                         </span>
                         <span className="absolute right-3 top-8 ">
                             <Core.Dropdown2
@@ -85,7 +92,8 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                                 setState={setStatus}
                                 options={dropdownOptions}
                                 className={"min-w-[160px]"}
-                                defaultTitle={extractedData?.status}
+                                // defaultTitle={extractedData?.status}
+                                defaultTitle={extractedData?.stage}
                             />
                         </span>
                     </div>
@@ -264,7 +272,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                             type="narrow">Save Chagnes</Core.Button>
                         <Core.Button
                             // onClick={handleBack} 
-                            type="narrow" color="white">Cancel</Core.Button>
+                            type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                     </div>
                 }
             </div>

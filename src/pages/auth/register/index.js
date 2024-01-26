@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthLayout, Core } from '../../../components';
 import image from '../../../assets/images/logo/logo.png';
-import { Checkbox, Radio } from 'antd';
+import { Spin } from 'antd';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { register } from '../../../Slices/Auth/authSlice';
@@ -79,7 +79,7 @@ const RegisterPage = () => {
                 Sign up to Continue
             </h1>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                {() => (
+                {({ isSubmitting }) => (
                     <Form className='flex flex-col max-w-[600px] mb-3'>
                         {/* <div className='py-5'>
                             <Field type='radio' name='userType' value='candidate' />
@@ -88,15 +88,15 @@ const RegisterPage = () => {
                             Employer
                             <ErrorMessage name='userType' component='div' className='text-red-500' />
                         </div> */}
-                          <div className='py-5'>
+                        <div className='py-5'>
                             <div className='flex gap-x-1' role="group" aria-labelledby="my-radio-group">
                                 <label className='bg-purple-100 rounded-[5px] cursor-pointer px-4 py-3'>
                                     <Field
                                         type='radio'
                                         name='userType'
                                         value='candidate'
-                                        // checked={userType === 'candidate'}
-                                        // onChange={() => setUserType('candidate')}
+                                    // checked={userType === 'candidate'}
+                                    // onChange={() => setUserType('candidate')}
                                     />
                                     <span className='pl-1'>Candidate</span>
                                 </label>
@@ -105,8 +105,8 @@ const RegisterPage = () => {
                                         type='radio'
                                         name='userType'
                                         value='employer'
-                                        // checked={userType === 'employer'}
-                                        // onChange={() => setUserType('employer')}
+                                    // checked={userType === 'employer'}
+                                    // onChange={() => setUserType('employer')}
                                     />
                                     <span className='pl-1'>Employer</span>
                                 </label>
@@ -217,9 +217,20 @@ const RegisterPage = () => {
                                     <ErrorMessage name='agreeTerms' component='div' className='text-red-500' />
                                 </div>
                             </div>
-                            <Core.Button type='submit' className='text-[18px] leading-[20px] rounded-full py-[18px]'>
-                                Sign Up
-                            </Core.Button>
+                            {isSubmitting ?
+                                <div
+                                    className=' flex justify-center items-center w-full bg-white border text-[18px] leading-[20px] rounded-full py-[18px]'
+                                >
+                                    <Spin />
+                                </div>
+                                :
+                                <Core.Button
+                                    type='submit'
+                                    className='text-[18px] leading-[20px] rounded-full py-[18px]'
+                                >
+                                    Sign Up
+                                </Core.Button>
+                            }
                             <p className='text-gray-6 text-[18px] leading-[24px]'>
                                 Already have an account?
                                 <a className='text-purple-1 underline'>

@@ -25,7 +25,7 @@ function Projects({ data, buttons, card }) {
                 <>
                     <div className='flex justify-between items-start'>
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Projects</h5>
-                        <Core.ProficienciesActions buttons={buttons} />
+                        <Core.ProficienciesActions buttons={buttons} id={data.id} />
                     </div>
                     <div className='flex justify-start items-end pt-3'>
                         <p className='text-gray-6 text-[14px] leading-[20px]'>

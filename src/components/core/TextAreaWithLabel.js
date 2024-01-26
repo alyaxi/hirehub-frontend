@@ -1,9 +1,7 @@
 import React from 'react';
-// import { NavLink } from "react-router-dom";
-// import { Icons } from '..';
 
-function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
-
+function TextAreaWithLabel({ label, name, required, helperText, onChange,value }) {
+    
     const _label = (name) => {
         switch (name) {
             case "companyDiscription":
@@ -30,6 +28,7 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
                 return "";
         }
     }
+
     return (
         <>
             <div className="flex justify-between items-center">
@@ -47,8 +46,16 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange }) {
                         {helperText}
                     </p>
                 }
-                <textarea onChange={onChange} rows={7} cols={5} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 bg-gray-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]" id={name} name={name}
-                    placeholder={placeholder(name)} autoFocus />
+                <textarea onChange={onChange}
+                    className="w-full text-[14px] font-regular leading-[20px] text-gray-700 bg-gray-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+                    rows={7}
+                    cols={5}
+                    id={name}
+                    defaultValue = {value}
+                    name={name}
+                    placeholder={placeholder(name)}
+                    autoFocus
+                />
             </div>
         </>
     )

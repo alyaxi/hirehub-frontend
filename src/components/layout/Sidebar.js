@@ -54,7 +54,7 @@ function Sidebar({ isSidebarOpen, toggleSidebar, menu }) {
                         <Icons.GoChevronLeft />
                     </span>
                 </div>
-                <ul className="max-h-[610px] overflow-y-scroll scrollbar p-4">
+                <ul className="menu-list relative max-h-[610px ] max-h-[720px] overflow-y-scroll scrollbar p-4">
                     {menu && menu?.map((value, index) => {
                         return (
                             <NavItem key={value?.path + index} value={value} slug={location?.pathname} />

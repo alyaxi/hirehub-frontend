@@ -11,6 +11,7 @@ import Education from "./Education";
 import InputWithLabel from "./InputWithLabel";
 import Languages from "./Languages";
 import MobileInputs from "./MobileInputs";
+import MyCalender from "./my_calender/MyCalender";
 import Preferences from "./Preferences";
 import PopupModal from "./PopupModal";
 import ProficienciesActions from "./ProficienciesActions";
@@ -44,6 +45,7 @@ export {
     InputWithLabel,
     Languages,
     MobileInputs,
+    MyCalender,
     Preferences,
     PopupModal,
     ProficienciesActions,

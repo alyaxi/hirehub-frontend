@@ -2,7 +2,7 @@ import React from 'react';
 import { Select } from 'antd';
 import Icon from '../icon';
 
-const MultiSelectInput = ({ label, helperText, name, required, icon, options, onChange, mode }) => {
+const MultiSelectInput = ({ label, helperText, name, required, icon, options, onChange, mode, defaultValue }) => {
     const _label = (name) => {
         switch (name) {
             case "benefits":
@@ -46,6 +46,7 @@ const MultiSelectInput = ({ label, helperText, name, required, icon, options, on
                 style={{
                     width: '100%',
                 }}
+                defaultValue={defaultValue && defaultValue}
             />
         </>
     )

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Breadcrumb, StatsGroup } from '../../../../components/core';
+import React, { useState } from 'react';
+import { Breadcrumb } from '../../../../components/core';
 import TableB from '../../../../components/table/TableB';
 import { useNavigate } from "react-router-dom"
-import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
-import { useDispatch, useSelector } from 'react-redux';
+// import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
+// import { useDispatch, useSelector } from 'react-redux';
 
 const actions = {
     edit: true,

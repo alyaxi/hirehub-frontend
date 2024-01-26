@@ -5,13 +5,13 @@ import { useLocation } from 'react-router-dom';
 import { Progress } from 'antd';
 import video from "../../assets/videos/1.mp4";
 
-function CandidateProfile({ data: extractedData, pageType, dropdownOptions, selectedState, handleNext, setStatus, status,
+function CandidateProfile({pageType, dropdownOptions, selectedState, handleNext, setStatus, status,
     experience,
     education,
     skill,
     language,
     jobPreference,
-    summary,
+    summery,
     personalInformation,
     projects,
 }) {
@@ -28,7 +28,7 @@ function CandidateProfile({ data: extractedData, pageType, dropdownOptions, sele
             <div className='w-auto'>
                 <div className='flex flex-col gap-y-3 pb-[50px]'>
                     <Core.PersonalInformation data={personalInformation} buttons={['edit']} card />
-                    <Core.Summary data={summary} buttons={['edit']} card />
+                    <Core.Summary data={summery} buttons={['edit']} card />
                     <Core.Projects data={projects} buttons={['add']} card />
                     <Core.Experience data={experience} buttons={['add']} card />
                     <Core.Education data={education} buttons={['add']} card />
@@ -68,7 +68,7 @@ function CandidateProfile({ data: extractedData, pageType, dropdownOptions, sele
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-green-5'><Icon name="Tick" /></span><span>Personal Info</span></li>
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-green-5'><Icon name="Tick" /></span><span>Education</span></li>
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-green-5'><Icon name="Tick" /></span><span>Profile Picture</span></li>
-                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-gray-11'><Icon name="Tick" /></span><span>Professional Summary</span></li>
+                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-gray-11'><Icon name="Tick" /></span><span>Professional Summery</span></li>
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-gray-11'><Icon name="Tick" /></span><span>Skills</span></li>
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-gray-11'><Icon name="Tick" /></span><span>Projects</span></li>
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-gray-11'><Icon name="Tick" /></span><span>Languages</span></li>

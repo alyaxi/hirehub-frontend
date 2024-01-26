@@ -24,7 +24,7 @@ export const getAllAppliedJob = createAsyncThunk('admin/get-applied-jobs-by-all'
 });
 
 
-export const changeAppliedJobStatusAdmin = createAsyncThunk('admin/change-status-applied-jobs-by-all', async ({id, statusCheck}) => {
+export const changeAppliedJobStatusAdmin = createAsyncThunk('admin/change-status-applied-jobs-by-all', async ({ id, statusCheck }) => {
 
     try {
         console.log("change status job sliceeeee", id, statusCheck)
@@ -81,15 +81,15 @@ const manageCandidateAdmin = createSlice({
                 const JobTitle = newAllJob?.Job[0]?.position
                 const employerName = newAllJob?.employer[0]?.companyName
                 const experience = newAllJob?.Job[0]?.experience
-                const salary = newAllJob?.Job[0]?.salary  
+                const salary = newAllJob?.Job[0]?.salary
 
 
                 newJobCandidates.push({
-                    id: newAllJob.candidateId,
-                    status: newAllJob.applicationStatus,
-                    stage: newAllJob.appicaionStage,
-                    employerId: newAllJob.employerId,
-                    jobId: newAllJob.jobId,
+                    id: newAllJob?.candidateId,
+                    status: newAllJob?.applicationStatus,
+                    stage: newAllJob?.appicaionStage,
+                    employerId: newAllJob?.employerId,
+                    jobId: newAllJob?.jobId,
                     candidate,
                     name,
                     email,
@@ -101,17 +101,17 @@ const manageCandidateAdmin = createSlice({
 
                 })
 
-                console.log({newJobCandidates})
+                console.log({ newJobCandidates })
             }
             state.jobs = newJobCandidates
 
         })
-        builder.addCase(changeAppliedJobStatusAdmin.fulfilled, (state, {payload}) => {
-           state.reload =true
+        builder.addCase(changeAppliedJobStatusAdmin.fulfilled, (state, { payload }) => {
+            state.reload = true
         })
     }
-    
-    
+
+
 });
 
 export const { setUser } = manageCandidateAdmin.actions;

@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { Icons } from '..';
 import Icon from '../../components/icon';
 
-function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, maxlength }) {
-
+function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, maxlength, edit }) {
+    console.log("value", value)
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
 
@@ -50,11 +50,14 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "SSN";
             case "phoneNumber":
                 return "Mobile Number";
+            case "mobile":
+            case "phoneNo":
+                return "Mobile";
             case "phoneNumber":
                 return "Phone Number";
             case "message":
                 return "Message";
-            case "zip":
+            case "zipCode":
                 return "Zip Code";
             case "title":
                 return "Title";
@@ -77,6 +80,15 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Salary";
             case "positionTitle":
                 return "Position Title";
+            case "sendTo":
+                return "Send To";
+
+
+            case "skills1title":
+            case "skills2title":
+            case "skills3title":
+            case "skills4title":
+                return "Title";
 
             default:
                 return "Label";
@@ -114,7 +126,6 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "SearchByEligibility":
                 return "Eligibility";
 
-
             case "fullName":
                 return "Full Name";
             case "lastName":
@@ -122,6 +133,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "ssn":
                 return "AAA-GG-SSSS";
             case "phoneNumber":
+            case "mobile":
+            case "phoneNo":
                 return "0000-0000000";
             case "phoneNumber":
                 return "0000-0000000";
@@ -150,6 +163,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Salary";
             case "positionTitle":
                 return "Position Title";
+            case "sendTo":
+                return "Select Reciept";
 
             case "SearchProduct":
                 return "Search Product ...";
@@ -166,6 +181,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "lastName":
             case "message":
             case "phoneNumber":
+            case "phoneNo":
+            case "mobile":
             case "SearchByName":
             case "SearchByTitle":
             case "SearchByEmployer":
@@ -182,6 +199,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "package":
             case "salary":
             case "positionTitle":
+            case "sendTo":
                 return "text";
             case "password":
             case "newPassword":
@@ -195,6 +213,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "text";
         }
     }
+
     return (
         <>
             <div className="flex justify-between items-center">
@@ -225,7 +244,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     className={`w-full text-[14px] font-regular leading-[20px] text-gray-6 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? (name === "calender" ? 'py-[8px]' : 'py-[9px]') : 'py-[14px]'} ${className} ${name === "SearchProduct" && "pl-10"}`}
                     id={name}
                     name={name}
-                    // value={value}
+                    value={edit && value}
                     placeholder={placeholder(name)}
                     autoFocus
                     onBlur={onBlur}

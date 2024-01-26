@@ -46,8 +46,8 @@ const menu = [
     },
     {
         icon: <Icon name="Keyboard" />,
-        path: "manage-faq",
-        name: "Manage FAQ",
+        path: "manage-faqs",
+        name: "Manage FAQs",
     },
     {
         icon: <Icon name="Envelope" />,

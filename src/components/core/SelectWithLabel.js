@@ -1,6 +1,7 @@
 import React from 'react';
 
-function SelectWithLabel({ label, name, options, required, helperText, onChange, defaultOption }) {
+function SelectWithLabel({ label, name, options, required, helperText, onChange, defaultOption, value }) {
+
     const _label = (name) => {
         switch (name) {
             case "userType":
@@ -56,6 +57,13 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
             case "associated":
                 return "Associated";
 
+            case "skills1proficiency":
+            case "skills2proficiency":
+            case "skills3proficiency":
+            case "skills4proficiency":
+                return "Proficiency";
+
+
             default:
                 return "Label";
         }
@@ -71,7 +79,7 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
                     {helperText}
                 </p>
             }
-            <select id={name} onChange={onChange} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]">
+            <select id={name} onChange={onChange} value={value} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]">
                 <option value="">{defaultOption ? defaultOption : 'Select an option...'}</option>
                 {options.map((value, index) =>
                     <option key={value?.name + index} value={value?.value}>{value?.name}</option>

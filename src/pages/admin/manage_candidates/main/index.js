@@ -161,7 +161,7 @@ function MainCandidates() {
     const navigate = useNavigate();
     const  AppliedAllJobs  = useSelector((state) => state?.manageCandidateAdmin?.jobs);
 
-    console.log({AppliedAllJobs})
+    console.log("AppliedAllJobs",AppliedAllJobs)
 
 
 

@@ -104,6 +104,7 @@ function MainCandidates() {
     console.log("appliedDate", appliedDate);
     console.log("candidateStage", candidateStage);
     console.log("userStatus", userStatus);
+    console.log("AppliedJobCandidate", AppliedJobCandidate);
 
     return (
         <>
