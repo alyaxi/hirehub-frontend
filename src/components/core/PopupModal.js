@@ -58,7 +58,6 @@ function PopupModal({ setIsModalOpen,
     const handleOk = () => {
         setIsModalOpen(false);
     };
-
     const handleCancel = () => {
         setIsModalOpen(false);
     };

@@ -20,6 +20,18 @@ function Stat({
         case 3:
             bgColor = "bg-light-green-3";
             break;
+        case 4:
+            bgColor = "bg-pink-3";
+            break;
+        case 5:
+            bgColor = "bg-orange-3";
+            break;
+        case 6:
+            bgColor = "bg-blue-3";
+            break;
+        case 7:
+            bgColor = "bg-yellow-3";
+            break;
         default:
             bgColor = "bg-gray-3";
             break;
@@ -38,6 +50,18 @@ function Stat({
             break;
         case 3:
             circleColor = "bg-light-green-2";
+            break;
+        case 4:
+            circleColor = "bg-pink-2";
+            break;
+        case 5:
+            circleColor = "bg-orange-2";
+            break;
+        case 6:
+            circleColor = "bg-blue-2";
+            break;
+        case 7:
+            circleColor = "bg-yellow-2";
             break;
         default:
             circleColor = "bg-gray-2";
@@ -58,6 +82,19 @@ function Stat({
         case 3:
             iconColor = "text-light-green-1";
             break;
+        case 4:
+            iconColor = "text-pink-1";
+            break;
+        case 5:
+            iconColor = "text-orange-1";
+            break;
+        case 6:
+            iconColor = "text-blue-1";
+            break;
+        case 7:
+            iconColor = "text-yellow-1";
+            break;
+
         default:
             iconColor = "text-gray-1";
             break;

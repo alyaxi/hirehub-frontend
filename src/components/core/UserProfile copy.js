@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Core } from '..';
 import imgUrgentlyRequired from "../../assets/images/urgently-required.png";
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 
 
 function UserProfile({ data, pageType, dropdownOptions }) {

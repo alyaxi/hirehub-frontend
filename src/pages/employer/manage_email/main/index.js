@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'; 
-import { Breadcrumb,   } from '../../../../components/core'; 
- 
+import React, { useEffect, useState } from 'react';
+import { Breadcrumb, } from '../../../../components/core';
+import ManageEmail from '../../../../components/manage_email/ManageEmail';
+
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
     { label: "Manage Email" },
@@ -13,6 +14,7 @@ function ManageEmailEmployer() {
                 heading="Manage Email"
                 breadcrumb={breadcrumb}
             />
+            <ManageEmail />
         </>
     );
 }

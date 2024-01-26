@@ -66,6 +66,17 @@ body {
 
 
 
+ul.menu-list:before {
+    /* box-shadow: 0 4px 25px 8px rgba(0,0,0,.15); */
+    box-shadow: 0 4px 25px 8px rgba(0,0,0,.08);
+    content: "";
+    height: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    z-index: 0;
+}
+
 
 /* avatar */
 
@@ -120,3 +131,66 @@ body {
 .ant-upload-wrapper .ant-upload-list.ant-upload-list-text .ant-upload-list-item-container:last-child {
     display: block !important;
 } */
+
+.responsibilities-container ul {
+    list-style-type: disc; /* or any other list style you prefer */
+    padding-left: 20px;    /* adjust as needed */
+  }
+  
+  .responsibilities-container li {
+    margin-bottom: 5px;    /* adjust as needed */
+  }
+
+  .responsibilities-container  .ql-align-justify {
+    text-align: justify;
+  }
+  
+  /* Example styles for different elements */
+  .responsibilities-container p {
+    margin-bottom: 10px;
+  }
+  
+  .responsibilities-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .responsibilities-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .responsibilities-container  h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .responsibilities-container strong {
+    font-weight: bold;
+  }
+  
+  .responsibilities-container  em {
+    font-style: italic;
+  }
+  
+  .responsibilities-container  u {
+    text-decoration: underline;
+  }
+  
+  .responsibilities-container ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+  }
+  
+  .responsibilities-container ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .responsibilities-container li {
+    margin-bottom: 5px;
+  }
+  
+
+
+  

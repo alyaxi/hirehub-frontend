@@ -7,6 +7,7 @@ import Icon from '../icon';
 import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { useLocation } from 'react-router-dom';
 import { Avatar, Badge } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedState, handleNext, setStatus, status }) {
     const location = useLocation();
@@ -14,8 +15,6 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
     const accountType = parts[1];
 
     const [resumePrivacy, setResumePrivacy] = useState('');
-
-
 
     useEffect(() => {
         const data = extractedData?.candidate?.resumePrivacySetting;
@@ -47,6 +46,12 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
 
     const firstLetter = extractedData?.name ? extractedData?.name.trim().charAt(0).toUpperCase() : '';
     console.log("firstLetter", firstLetter)
+
+    const navigate = useNavigate();
+    const handleCancel = () => {
+        navigate(-1);
+    };
+
     return (
         <Core.Card className={`pt-[20px] pb-[45px] px-[30px]`}>
             <div className='flex justify-end gap-x-4'>
@@ -355,7 +360,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                             type="narrow">Save Chagnes</Core.Button>
                         <Core.Button
                             // onClick={handleBack} 
-                            type="narrow" color="white">Cancel</Core.Button>
+                            type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                     </div>
                 }
             </div>

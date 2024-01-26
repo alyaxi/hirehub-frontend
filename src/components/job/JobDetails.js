@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Core } from '..';
 import Icon from '../icon';
 import { Avatar } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 function JobDetails({data: extractedData, pageType, selectedState, handleNext, setStatus, status }) {
     const dropdownOptions = [
@@ -43,9 +44,14 @@ function JobDetails({data: extractedData, pageType, selectedState, handleNext, s
     // console.log("extractedData?.positionTitle", extractedData?.positionTitle)
 
     const firstLetter = extractedData?.positionTitle ? extractedData?.positionTitle.trim().charAt(0).toUpperCase() : '';
-    // console.log("firstLetter", firstLetter)
+    console.log("extractedData", extractedData)
+
+    const navigate = useNavigate();
+    const handleCancel = () => {
+        navigate(-1);
+    };
     return (
-        <Core.Card className={`border p-0`}>
+        <Core.Card className={`border p-0`} p={'0'} >
             <div className='bg-gray-7 py-[25px] px-[30px]'>
                 <div className='flex justify-end gap-x-4'>
                     {pageType === "view" &&
@@ -82,8 +88,8 @@ function JobDetails({data: extractedData, pageType, selectedState, handleNext, s
                         <div>
                             <h6 className='text-[22px] leading-[2px] capitalize font-semibold mb-2'>{extractedData?.positionTitle}</h6>
                             <a className='text-purple-4 text-[12px] leading-[22px] underline capitalize font-medium mb-2'>{extractedData?.employer.title}</a>
-                            <p className='text-gray-6 text-[12px] leading-[20px]'>{extractedData?.employer.address}</p>
-                            <div className='flex justify-start gap-x-6 text-gray-14 text-[12px] leading-[20px] py-1'><span className='flex justify-start items-center gap-x-1'><Icon name="Calender2" size={18} /> {extractedData?.postedDate}</span> <span className='flex justify-start items-center gap-x-1'><Icon name="Currency" />${extractedData?.salary}</span></div>
+                            <p className='text-gray-6 text-[12px] leading-[20px]'><span>{extractedData?.employer?.jobMode}Remote &nbsp;&nbsp;</span>{extractedData?.employer.address}</p>
+                            <div className='flex justify-start gap-x-6 text-gray-14 text-[12px] leading-[20px] py-1'><span className='flex justify-start items-center gap-x-1'><Icon name="Calender2" size={18} /> {extractedData?.postedDate}</span> <span className='flex justify-start items-center gap-x-1'><Icon name="Currency" />{extractedData?.salary}</span></div>
                             <div className='flex justify-start gap-x-2 pt-3'><h6 className='text-black-2 text-[12px] leading-[20px]'>Share this job:</h6>
                                 <div className='flex justify-start items-center gap-x-6'>
                                     <Icon name="Whatsapp" />
@@ -121,19 +127,19 @@ function JobDetails({data: extractedData, pageType, selectedState, handleNext, s
                 </div>
 
                 {/* Responsibilities */}
-                <div className="pb-4">
+                <div className="responsibilities-container pb-4">
                     <h6 className='text-[14px] leading-[24px] font-semibold'>Responsibilities</h6>
                 <div dangerouslySetInnerHTML={{ __html: extractedData?.responsibilities }}></div>
                 </div>
 
                 {/* Qualification */}
-                <div className="pb-4">
+                <div className="responsibilities-container pb-4">
                     <h6 className='text-[16px] leading-[22px] font-semibold'>Qualification</h6>
                     <div dangerouslySetInnerHTML={{ __html: extractedData?.qualification }}></div>
                 </div>
 
                 {/* Key Skills */}
-                <div className="pb-4">
+                <div className="responsibilities-container pb-4">
                     <h6 className='text-[16px] leading-[22px] font-semibold'>Key Skills</h6>
                     <div dangerouslySetInnerHTML={{ __html: extractedData?.skills }}></div>
                 </div>
@@ -176,7 +182,7 @@ function JobDetails({data: extractedData, pageType, selectedState, handleNext, s
                             type="narrow">Save Chagnes</Core.Button>
                         <Core.Button
                             // onClick={handleBack} 
-                            type="narrow" color="white">Cancel</Core.Button>
+                            type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                     </div>
                 }
             </div>
