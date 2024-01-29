@@ -3,27 +3,35 @@ import { Country, State, City } from 'country-state-city';
 import { Formik, Form, Field } from 'formik';
 import { Core } from '..';
 import Icon from '../icon';
+import {  useSelector } from 'react-redux';
 
-const personalInformationDataSavedOnDb = {
-    name: "John",
-    lastName: "Francois22",
-    statusLine: "Design Lead | Author of the 'Design Manual' and the 'Ultimate Guide to Web Design' | Teaching 300,000+ Designers Worldwide",
-    phoneNo: "+1 215-538-6957",
-    email: "michaeljfuller@rhyta.com",
-    profileCompletion: "50",
-    zipCode: "000000",
-    expectedSalary: '2000-2500',
-    careerLevel: 'midLevel',
-    experience: '6years',
-    country: 'Andorra',
-    state: 'Canillo',
-    city: 'El Tarter',
-    dob: '02/03/1904',
-    gender: 'Male',
-    phoneNo: "+17193651632",
-}
+
+// const personalInformationDataSavedOnDb = {
+//     name: "John",
+//     lastName: "Francois22",
+//     statusLine: "Design Lead | Author of the 'Design Manual' and the 'Ultimate Guide to Web Design' | Teaching 300,000+ Designers Worldwide",
+//     phoneNo: "+1 215-538-6957",
+//     email: "michaeljfuller@rhyta.com",
+//     profileCompletion: "50",
+//     zipCode: "000000",
+//     expectedSalary: '2000-2500',
+//     careerLevel: 'midLevel',
+//     experience: '6years',
+//     country: 'Andorra',
+//     state: 'Canillo',
+//     city: 'El Tarter',
+//     dob: '02/03/1904',
+//     gender: 'Male',
+//     phoneNo: "+17193651632",
+// }
 
 function PersonalInformations({ action, handleCancel, setPersonalInformationData }) {
+    const candidate = useSelector((state) => state?.Candidate?.candidate);
+    const personalInformationDataSavedOnDb = candidate.personalInformation
+    const user = candidate?.userId
+    const lastName = user?.name.split(" ")[1]
+    const firstName = user?.name.split(" ")[0]
+
     const careerLevelOptions = [
         { name: "Entry Level", value: "entryLevel" },
         { name: "Mid-Level", value: "midLevel" },
@@ -104,9 +112,9 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
     });
 
     const [data] = useState({
-        name: personalInformationDataSavedOnDb.name,
-        lastName: personalInformationDataSavedOnDb.lastName,
-        email: personalInformationDataSavedOnDb.email,
+        name: firstName,
+        lastName: lastName,
+        email: user?.email,
         zipCode: personalInformationDataSavedOnDb.zipCode,
         expectedSalary: personalInformationDataSavedOnDb.expectedSalary,
         careerLevel: personalInformationDataSavedOnDb.careerLevel,
@@ -260,10 +268,10 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
                                     sm
                                     name="name"
                                     label
-                                    required
                                     bgGray
                                     placeholder="Enter your name"
                                     edit
+                                    disabled
                                 />
                             )}
                         </Field>
@@ -279,6 +287,7 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
                                     bgGray
                                     placeholder="Enter your last name"
                                     edit
+                                    disabled
                                 />
                             )}
                         </Field>
@@ -292,11 +301,11 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
                                     sm
                                     name="email"
                                     label
-                                    required
                                     bgGray
                                     helperText={'Only provided to employers you apply or respond to'}
                                     icon="Lock1"
                                     edit
+                                    disabled
                                 />
                             )}
                         </Field>

@@ -4,13 +4,14 @@ import { Core } from "..";
 import avatar1 from '../../assets/images/avatars/3.png';
 import Icon from "../icon";
 
-function PersonalInformation({ data, buttons, card }) {
+function PersonalInformation({ data, user, buttons, card }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
         setIsModalOpen(true);
     };
+    console.log(user, "userrrrrrrrrrrrr")
 
-    const firstLetter = data?.name ? data?.name.trim().charAt(0).toUpperCase() : '';
+    const firstLetter = user?.name ? user?.name.trim().charAt(0).toUpperCase() : '';
     // console.log(" PersonalInformation data",data)
     return (
         <>
@@ -33,14 +34,14 @@ function PersonalInformation({ data, buttons, card }) {
                                 </div>
                             </div>
                             <div className='w-[80%]'>
-                                <h6 className='text-[22px] leading-[20px] font-semibold mb-3'>{data?.name}</h6>
+                                <h6 className='text-[22px] leading-[20px] font-semibold mb-3'>{user?.name.toUpperCase()}</h6>
                                 <p className='text-gray-6 text-[14px] leading-[20px]'>{data?.statusLine}</p>
                                 <p className='flex justify-start gap-x-6 text-gray-6 text-[14px] leading-[20px] mt-5'>
                                     <span className='flex justify-start gap-x-1'>
                                         {data?.phoneNo} <span className='opacity-75'><Icon name="Lock1" /></span>
                                     </span>
                                     <span className='flex justify-start gap-x-1'>
-                                        {data?.email} <span className='opacity-75'><Icon name="Lock1" /></span>
+                                        {user?.email} <span className='opacity-75'><Icon name="Lock1" /></span>
                                     </span>
                                 </p>
                             </div>

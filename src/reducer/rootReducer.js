@@ -6,6 +6,7 @@ import ManageCandidateEmployer from '../Slices/Employer/ManageCandidate';
 import ManageCandidateAdmin from '../Slices/Admin/ManageCandidate';
 import JobSlice from '../Slices/Employer/JobSlice';
 import AdminJobs from '../Slices/Admin/AdminJobs';
+import CandidateSlice from '../Slices/Candidates/CandidateSlice';
 
 
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   manageCandidate: ManageCandidateEmployer,
   manageCandidateAdmin:ManageCandidateAdmin,
   jobSlice: JobSlice,
-  AdminJob: AdminJobs
+  AdminJob: AdminJobs,
+  Candidate: CandidateSlice,
  
 });
 

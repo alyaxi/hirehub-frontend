@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Icons } from '..';
 import Icon from '../../components/icon';
 
-function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, maxlength, edit }) {
+function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, maxlength, edit, disabled }) {
     console.log("value", value)
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
@@ -240,6 +240,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     </p>
                 }
                 <input
+                    disabled={disabled}
                     type={name === "password" || name === "newPassword" || name === "confirmPassword" || name === "oldPassword" ? inputType : type(name)}
                     className={`w-full text-[14px] font-regular leading-[20px] text-gray-6 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? (name === "calender" ? 'py-[8px]' : 'py-[9px]') : 'py-[14px]'} ${className} ${name === "SearchProduct" && "pl-10"}`}
                     id={name}

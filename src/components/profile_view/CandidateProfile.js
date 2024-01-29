@@ -14,6 +14,7 @@ function CandidateProfile({pageType, dropdownOptions, selectedState, handleNext,
     summery,
     personalInformation,
     projects,
+    user
 }) {
     const location = useLocation();
     // const parts = location?.pathname.split('/');
@@ -27,7 +28,7 @@ function CandidateProfile({pageType, dropdownOptions, selectedState, handleNext,
         <div className='flex justify-between gap-x-6 w-full'>
             <div className='w-auto'>
                 <div className='flex flex-col gap-y-3 pb-[50px]'>
-                    <Core.PersonalInformation data={personalInformation} buttons={['edit']} card />
+                    <Core.PersonalInformation data={personalInformation} user={user} buttons={['edit']} card />
                     <Core.Summary data={summery} buttons={['edit']} card />
                     <Core.Projects data={projects} buttons={['add']} card />
                     <Core.Experience data={experience} buttons={['add']} card />
