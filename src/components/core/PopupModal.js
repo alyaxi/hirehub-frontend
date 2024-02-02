@@ -10,16 +10,115 @@ function PopupModal({ setIsModalOpen,
     id
 }) {
 
-    const [personalInformationData, setPersonalInformationData] = useState({
-        avatar: "",
-        name: "",
-        dob: "",
+    // const [candidateProfileData2, setCandidateProfileData2] = useState({
+    //     personalInformationData: {
+    // profilePicture: "",
+    //         careerLevel: "",
+    //         city: "",
+    //         country: "",
+    //         dob: "",
+    //         experience: "",
+    //         gender: "",
+    //         phoneNo: "",
+    //         profileCompletion: "",
+    //         state: "",
+    //         statusLine: "",
+    //         zipCode: "",
+    //     },
+    //     summeryData: '',
+    //     projectsData: [
+    //         {
+    //             id: "1",
+    //             associated: "",
+    //             currentlyInProcess: true,
+    //             name: "",
+    //             projectUrl: "",
+    //             description: "",
+    //             projectImage: "",
+    //             startDate: "",
+    //             endDate: "",
+    //         },
+
+    //     ],
+    //     experiencesData: [
+    //         {
+    //             id: "1",
+    //             title: '',
+    //             company: '',
+    //             industry: '',
+    //             directlyManageTeam: '',
+    //             noOfPeople: '',
+    //             salary: '',
+    //             selectedCountry: '',
+    //             selectedCity: '',
+    //             startDate: '',
+    //             agreeTerms: '',
+    //             description: '',
+    //         },
+    //     ],
+    //     educationsData: [
+    //         {
+    //             id: "1",
+    //             organization: '',
+    //             degree: '',
+    //             fieldOfStudy: '',
+    //             startDate: '',
+    //             endDate: '',
+    //             selectedCountry: '',
+    //             grade: '',
+
+    //         }
+    //     ],
+    //     skillsData: [
+    //         { id: '1', title: 'Express.js', experience: '6 years' }
+    //     ],
+    //     languagesData: [
+    //         { id: 1, title: 'English', proficiency: 'Basic' }
+    //     ],
+    //     jobPreferenceData: {
+    //         desiredJobTitle: ['abc', 'xyz'],
+    //         desiredSalary: "$1000 - $1500",
+    //         relocation: {
+    //             anywhere: false,
+    //             onlyNearMe: {
+    //                 locations: ['london']
+    //             }
+    //         },
+    //         relocationPreference: "onlyNearMe",
+    //         skills: ['Angular Js'],
+    //     },
+    // })
+
+
+    const [candidateProfileData, setCandidateProfileData] = useState({
+        experiencesData: [
+            {
+                id: "1",
+                title: '',
+                company: '',
+                industry: '',
+                directlyManageTeam: '',
+                noOfPeople: '',
+                salary: '',
+                selectedCountry: '',
+                selectedCity: '',
+                startDate: '',
+                agreeTerms: '',
+                description: '',
+            },
+        ],
     })
-    const [projectsData, setProjectsData] = useState({
-        avatar: "",
-        name: "",
-        dob: "",
-    })
+
+    // const [personalInformationData, setPersonalInformationData] = useState({
+    //     avatar: "",
+    //     name: "",
+    //     dob: "",
+    // })
+    // const [projectsData, setProjectsData] = useState({
+    //     avatar: "",
+    //     name: "",
+    //     dob: "",
+    // })
     const [experiencesData, setExperiencesData] = useState({
         title: "",
         company: "",
@@ -35,35 +134,39 @@ function PopupModal({ setIsModalOpen,
         currentlyWorking: false,
         description: '',
     })
-    const [educationsData, setEducationsData] = useState({
-        school: "",
-        degree: "",
-        fieldOfStudy: "",
-        startDate: "",
-        endOrExpectedDate: "",
-        location: "",
-        grade: "",
-    })
-    const [skillsData, setSkillsData] = useState({
-        skill: "",
-        experience: "",
-    })
-    const [languagesData, setLanguagesData] = useState({
-        languages: "",
-        languageProficiency: "",
-    })
-    const [summeryData, setSummeryData] = useState({
-    })
-    const [jobPreferenceData, setJobPreferenceData] = useState({
-    })
+    // const [educationsData, setEducationsData] = useState({
+    //     school: "",
+    //     degree: "",
+    //     fieldOfStudy: "",
+    //     startDate: "",
+    //     endOrExpectedDate: "",
+    //     location: "",
+    //     grade: "",
+    // })
+    // const [skillsData, setSkillsData] = useState({
+    //     skill: "",
+    //     experience: "",
+    // })
+    // const [languagesData, setLanguagesData] = useState({
+    //     languages: "",
+    //     languageProficiency: "",
+    // })
+    // const [summeryData, setSummeryData] = useState({
+    // })
+    // const [jobPreferenceData, setJobPreferenceData] = useState({
+    // })
+
     const handleOk = () => {
         setIsModalOpen(false);
     };
+
     const handleCancel = () => {
         setIsModalOpen(false);
     };
+
     let _action = action === "edit" ? "Edit" : "Add";
     let title = '';
+
     switch (type) {
         case 'experience':
             title = 'Experience';
@@ -96,24 +199,90 @@ function PopupModal({ setIsModalOpen,
             break;
     }
     let _title = _action + " " + title;
-    // console.log("type", type)
-    // console.log("action", action)
-    console.log("personalInformationData", experiencesData)
+
+    // console.log("candidateProfileData", candidateProfileData)
+
     return (
         <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
-            {type === "personalInformations" && <Forms.PersonalInformations handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}
-            {type === "summery" && <Forms.Summery handleCancel={handleCancel} action={action} setSummeryData={setSummeryData} />}
-            {type === "projects" && <Forms.Projects handleCancel={handleCancel} action={action} setProjectsData={setProjectsData} id={id ? id : undefined} />}
-            {type === "experience" && <Forms.Experiences handleCancel={handleCancel} action={action} setExperiencesData={setExperiencesData} id={id ? id : undefined} />}
-            {type === "education" && <Forms.Educations handleCancel={handleCancel} action={action} setEducationsData={setEducationsData} id={id ? id : undefined} />}
 
-            {(type === "skills" && action !== "edit") && <Forms.Skills handleCancel={handleCancel} action={action} setSkillsData={setSkillsData} />}
-            {(type === "skills" && action === "edit") && <Forms.SkillsEdit handleCancel={handleCancel} action={'edit'} setSkillsData={setSkillsData} />}
+            {type === "personalInformations" && <Forms.PersonalInformations
+                handleCancel={handleCancel}
+                action={action}
+                setCandidateProfileData={setCandidateProfileData}
+            />}
 
-            {(type === "language" && action !== "edit") && <Forms.Languages handleCancel={handleCancel} action={action} setSkillsData={setSkillsData} />}
-            {(type === "language" && action === "edit") && <Forms.LanguagesEdit handleCancel={handleCancel} action={'edit'} setSkillsData={setSkillsData} />}
+            {type === "summery" &&
+                <Forms.Summery
+                    handleCancel={handleCancel}
+                    action={action}
+                    setCandidateProfileData={setCandidateProfileData}
+                />}
 
-            {(type === "jobPreference" && action === "edit") && <Forms.JobPreference handleCancel={handleCancel} action={'edit'} setJobPreferenceData={setJobPreferenceData} />}
+            {type === "projects" &&
+                <Forms.Projects
+                    handleCancel={handleCancel}
+                    action={action}
+                    setCandidateProfileData={setCandidateProfileData}
+                    id={id ? id : undefined}
+                />}
+
+            {type === "experience" &&
+                <Forms.Experiences
+                    handleCancel={handleCancel}
+                    action={action}
+                    candidateProfileData={candidateProfileData}
+                    setCandidateProfileData={setCandidateProfileData}
+                    id={action === "edit" ? id : null}
+                />}
+
+            {type === "education" &&
+                <Forms.Educations
+                    handleCancel={handleCancel}
+                    action={action}
+                    // setEducationsData={setEducationsData}
+                    id={id ? id : undefined}
+                />}
+
+
+
+            {(type === "skills" && action !== "edit") &&
+                <Forms.Skills
+                    handleCancel={handleCancel}
+                    action={action}
+                // setSkillsData={setSkillsData}
+                />}
+
+            {(type === "skills" && action === "edit") &&
+                <Forms.SkillsEdit
+                    handleCancel={handleCancel}
+                    action={'edit'}
+                // setSkillsData={setSkillsData}
+                />}
+
+
+
+            {(type === "language" && action !== "edit") &&
+                <Forms.Languages
+                    handleCancel={handleCancel}
+                    action={action}
+                // setSkillsData={setSkillsData}
+                />}
+
+            {(type === "language" && action === "edit") &&
+                <Forms.LanguagesEdit
+                    handleCancel={handleCancel}
+                    action={'edit'}
+                // setSkillsData={setSkillsData}
+                />}
+
+
+
+            {(type === "jobPreference" && action === "edit") &&
+                <Forms.JobPreference
+                    handleCancel={handleCancel}
+                    action={'edit'}
+                // setJobPreferenceData={setJobPreferenceData} 
+                />}
 
         </Modal>
     );

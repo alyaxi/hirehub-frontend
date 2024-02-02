@@ -3,35 +3,17 @@ import { Country, State, City } from 'country-state-city';
 import { Formik, Form, Field } from 'formik';
 import { Core } from '..';
 import Icon from '../icon';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-
-// const personalInformationDataSavedOnDb = {
-//     name: "John",
-//     lastName: "Francois22",
-//     statusLine: "Design Lead | Author of the 'Design Manual' and the 'Ultimate Guide to Web Design' | Teaching 300,000+ Designers Worldwide",
-//     phoneNo: "+1 215-538-6957",
-//     email: "michaeljfuller@rhyta.com",
-//     profileCompletion: "50",
-//     zipCode: "000000",
-//     expectedSalary: '2000-2500',
-//     careerLevel: 'midLevel',
-//     experience: '6years',
-//     country: 'Andorra',
-//     state: 'Canillo',
-//     city: 'El Tarter',
-//     dob: '02/03/1904',
-//     gender: 'Male',
-//     phoneNo: "+17193651632",
-// }
-
-function PersonalInformations({ action, handleCancel, setPersonalInformationData }) {
+function PersonalInformations({ action, handleCancel,
+    setPersonalInformationData,
+    setCandidateProfileData,
+}) {
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const personalInformationDataSavedOnDb = candidate.personalInformation
     const user = candidate?.userId
     const lastName = user?.name.split(" ")[1]
     const firstName = user?.name.split(" ")[0]
-    console.log(personalInformationDataSavedOnDb, "canidate information")
 
     const careerLevelOptions = [
         { name: "Entry Level", value: "entryLevel" },
@@ -39,6 +21,7 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
         { name: "Senior", value: "senior" },
         { name: "Lead", value: "lead" },
     ];
+
     const experienceOptions = [
         { name: "6 months", value: "6months" },
         { name: "1 year", value: "1year" },
@@ -53,6 +36,7 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
         { name: "10 years", value: "10years" },
         { name: "Over 10 years", value: "Over10" },
     ];
+    
     const expectedSalaryOptions = [
         { name: "$1000 - $1500", value: "1000-1500" },
         { name: "$1500 - $2000", value: "1500-2000" },
@@ -62,20 +46,6 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
         { name: "$3500 - $4000", value: "3500-4000" },
         { name: "$4000 - $4500", value: "4000-4500" },
         { name: "Over $4500", value: "Over4500" },
-    ];
-
-    const mobileCodeOptions = [
-        { name: "Choose any one", value: "" },
-        { name: "United States", value: "+1" },
-        { name: "India", value: "+91" },
-        { name: "United Kingdom", value: "+44" },
-        { name: "China", value: "+86" },
-        { name: "Brazil", value: "+55" },
-        { name: "Russia", value: "+7" },
-        { name: "Germany", value: "+49" },
-        { name: "Japan", value: "+81" },
-        { name: "Australia", value: "+61" },
-        { name: "South Africa", value: "+27" },
     ];
 
     const genderOptions = [
@@ -116,22 +86,19 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
         name: firstName,
         lastName: lastName,
         email: user?.email,
-        zipCode: personalInformationDataSavedOnDb.zipCode, 
+        zipCode: personalInformationDataSavedOnDb.zipCode,
         expectedSalary: personalInformationDataSavedOnDb.expectedSalary,
         careerLevel: personalInformationDataSavedOnDb.careerLevel,
         experience: personalInformationDataSavedOnDb.experience,
         gender: personalInformationDataSavedOnDb.gender,
-        phoneNo:personalInformationDataSavedOnDb.phoneNo,
+        phoneNo: personalInformationDataSavedOnDb.phoneNo,
         country: personalInformationDataSavedOnDb.country,
         state: personalInformationDataSavedOnDb.state,
         city: personalInformationDataSavedOnDb.city,
 
     });
-    // const [selectedCountry, setSelectedCountry] = useState(personalInformationDataSavedOnDb.country);
     const [selectedCountry, setSelectedCountry] = useState('');
-    // const [selectedState, setSelectedState] = useState(personalInformationDataSavedOnDb.state);
     const [selectedState, setSelectedState] = useState('');
-    // const [selectedCity, setSelectedCity] = useState(personalInformationDataSavedOnDb.city);
     const [selectedCity, setSelectedCity] = useState('');
     const [countries, setCountries] = useState([]);
     const [states, setStates] = useState([]);
@@ -151,27 +118,6 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
     const [selectedYear, setSelectedYear] = useState(_year);
     const [dob, setDob] = useState();
     const [profilePicture, setProfilePictrue] = useState('');
-
-    const [selectedCode, setSelectedCode] = useState('Choose');
-
-    const handleCodeChange = (event) => {
-        const selectedValue = event.target.value;
-        setSelectedCode(selectedValue);
-    };
-
-    const handleMobileNo = (e, setFieldValue) => {
-        console.log("numbers", e.target.value)
-        setFieldValue('phoneNo', selectedCode + e.target.value);
-        // if (type === "desiredJobTitle") {
-        // }
-        // if (type === "willingToLocations") {
-        //     setFieldValue('relocation', {
-        //         ...values.relocation,
-        //         locations: selectedItems
-        //     });
-        // }
-
-    };
 
     useEffect(() => {
         const allCountries = Country.getAllCountries();
@@ -221,21 +167,21 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
         }
     };
 
-    const handleSubmit = (values, actions) => {
-        console.log("profilePicture", profilePicture);
-        console.log("name", values.name);
-        console.log("lastName", values.lastName);
-        console.log("email", values.email);
-        console.log("phoneNo", values.phoneNo);
-        console.log("dob", dob)
-        console.log("gender", values.gender);
-        console.log("country", selectedCountry)
-        console.log("state", selectedState)
-        console.log("city", selectedCity)
-        console.log("careerLevel", values.careerLevel);
-        console.log("experience", values.experience);
-        console.log("expectedSalary", values.expectedSalary);
-        console.log("zip", values.zip);
+    const handleSubmit = (values) => {
+        // console.log("profilePicture", profilePicture);
+        // console.log("name", values.name);
+        // console.log("lastName", values.lastName);
+        // console.log("email", values.email);
+        // console.log("phoneNo", values.phoneNo);
+        // console.log("dob", dob)
+        // console.log("gender", values.gender);
+        // console.log("country", selectedCountry)
+        // console.log("state", selectedState)
+        // console.log("city", selectedCity)
+        // console.log("careerLevel", values.careerLevel);
+        // console.log("experience", values.experience);
+        // console.log("expectedSalary", values.expectedSalary);
+        // console.log("zip", values.zip);
         let _personalInformationData = {
             profilePicture: profilePicture,
             phoneNo: values.phoneNo,
@@ -249,8 +195,11 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
             expectedSalary: values.expectedSalary,
             zipCode: values.zip,
         }
-        setPersonalInformationData(_personalInformationData)
-        console.log(_personalInformationData, "perfirmation")
+        // setPersonalInformationData(_personalInformationData)
+        setCandidateProfileData(prevData => ({
+            ...prevData,
+            personalInformationData: _personalInformationData,
+        }));
     };
 
     return (
@@ -332,48 +281,6 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
                             )}
                         </Field>
                     </div>
-
-
-                    {/* <div className='mb-4'>
-                        <label className={`flex justify-start text-[14px] font-medium text-gray-2 tracking-wide mb-1 font-semibold capitalize`}>
-                            Mobile <span className='text-[red]'>*</span>
-                            <span className='mt-[2px] ml-[3px]'> <Icon name={'Lock1'} /></span>
-                        </label>
-                        <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5 '>
-                            Only provided to employers you apply or respond to
-                        </p>
-                        <div className='flex gap-x-2'>
-                            <div className='relative w-[25%]'>
-                                <select
-                                    onChange={handleCodeChange}
-                                    value={selectedCode}
-                                    className="w-full text-[14px] font-regular leading-[20px] text-transparent font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]">
-                                    <option value="" className='text-black-1'>{'-'}</option>
-                                    {mobileCodeOptions.map((value, index) => (
-                                        <option key={value?.name + index} value={value?.value} className='text-black-1' >
-                                            {value?.name}
-                                        </option>
-                                    ))}
-                                </select>
-                                {selectedCode && <span className='absolute left-0 top-0 flex justify-start items-center w-[40%] h-[37px] text-[14px] leading-[16px] font-semibold rounded-md bg-gray-3 m-[1%] pl-3'>{`${selectedCode}`}</span>}
-                            </div>
-                            <div className='w-[75%]'>
-                                <Field name="mobileNumbers">
-                                    {({ field }) => (
-                                        <Core.InputWithLabel
-                                            {...field}
-                                            sm
-                                            name="mobileNumbers"
-                                            required
-                                            bgGray
-                                            icon="Lock1"
-                                            onChange={(e) => handleMobileNo(e, setFieldValue)}
-                                        />
-                                    )}
-                                </Field>
-                            </div>
-                        </div>
-                    </div> */}
 
                     <div className='w-full mb-4'>
                         <div className='flex gap-x-2'>
@@ -534,7 +441,6 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
                                             label
                                             options={experienceOptions}
                                             defaultOption="Choose any one"
-                                            // onChange={(value) => handleChange("experience", value)}
                                             required
                                             value={field.value}
                                         />

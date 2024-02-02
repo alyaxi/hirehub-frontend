@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Breadcrumb } from '../../../../components/core';
 import TableB from '../../../../components/table/TableB';
 import { useNavigate } from "react-router-dom"
+import AddQuestionnaire from '../../../../components/questionaire/AddQuestionaire';
 // import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 // import { useDispatch, useSelector } from 'react-redux';
 
@@ -73,49 +74,24 @@ const questionnaire = [
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
     { label: "Manage Questionnaire" },
+    { label: "Add" },
 ];
 
-function MainQuestionnaireEmployer() {
+function AddQuestionnaireEmployer() {
     const [product, setProduct] = useState("");
-
-    const navigate = useNavigate();
-
-    const onViewClick = (id) => {
-        navigate(`/employer/manage-candidates/view/${id}`);
-    };
-    const onEditClick = (id) => {
-        navigate(`/employer/manage-candidates/edit/${id}`);
-    };
-    const onDeleteClick = (id) => {
-        console.log("to be deleted ", id);
-    };
-    const addQuestion = () => {
-        navigate(`/employer/manage-questionnaire/add`);
-    };
+ 
 
     console.log("product", product);
 
     return (
         <>
             <Breadcrumb
-                heading="Manage Questionnaire"
+                heading="Add Questionnaire"
                 breadcrumb={breadcrumb}
             />
-            <TableB
-                data={questionnaire}
-                columns={columns}
-                filterBy={[
-                    "SearchByProduct",
-                ]}
-                setProduct={setProduct}
-                actions={actions}
-                onViewClick={onViewClick}
-                onEditClick={onEditClick}
-                onDeleteClick={onDeleteClick}
-                addQuestion={addQuestion}
-            />
+            <AddQuestionnaire />
         </>
     );
 }
 
-export default MainQuestionnaireEmployer;
+export default AddQuestionnaireEmployer;

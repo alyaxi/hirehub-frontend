@@ -92,7 +92,6 @@ function JobPreference({ action, handleCancel }) {
         relocationPreference: jobPreferenceInDb?.relocationPreference ? jobPreferenceInDb?.relocationPreference : (jobPreferenceInDb?.relocation.anywhere === true ? true : jobPreferenceInDb?.relocation.anywhere === false ? false : null),
     });
 
-
     const [isRelocating, setIsRelocating] = useState((data.relocation.anywhere === true || data.relocation.anywhere === false) ? true : false);
 
     const multiSelectHandle = (type, selectedItems, setFieldValue, values) => {
@@ -114,6 +113,7 @@ function JobPreference({ action, handleCancel }) {
     const handleSubmit = (values, actions) => {
         console.log("formik values", values);
     };
+
     return (
         <Formik
             initialValues={data}

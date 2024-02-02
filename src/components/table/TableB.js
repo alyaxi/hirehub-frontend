@@ -271,8 +271,6 @@ function TableB({
                                             break;
                                     }
 
-
-
                                     if (value === "SearchByAppliedDate") {
                                         return (
                                             <Core.InputWithLabel key={resetTrigger2 ? ('reset' + value) : ('normal' + value)} name={'calender'} setValue={setAppliedDate} onChange={onDateChange} sm />
@@ -295,7 +293,7 @@ function TableB({
                                     }
                                     if (value === "SearchByProduct") {
                                         return (
-                                            <div key={`searchProduct-${index}`}>
+                                            <div key={`searchProduct-${index}`} className='flex justify-start items-center w-full'>
                                                 <Core.SearchInput onInputChange={onInputChange} />
                                                 <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button>
                                             </div>
@@ -320,9 +318,11 @@ function TableB({
                                     <Core.Button sm type="narrow" color="white" icon="Cross" onClick={resetFilters}>Reset</Core.Button>
                                 </div> : null}
                             </div>
-                            {addButton &&
-                                <Core.Button sm type="narrow" onClick={addButton?.func} className={"ml-3"}>{addButton?.title}</Core.Button>
-                            }
+                            {/* <div> */}
+                                {addButton &&
+                                    <Core.Button sm type="narrow" onClick={addButton?.func} className={"ml-3"}>{addButton?.title}</Core.Button>
+                                }
+                            {/* </div> */}
                         </div>
                         <div className="overflow-hidden">
                             <Table

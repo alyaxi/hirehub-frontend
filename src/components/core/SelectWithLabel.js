@@ -63,7 +63,6 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
             case "skills4proficiency":
                 return "Proficiency";
 
-
             default:
                 return "Label";
         }

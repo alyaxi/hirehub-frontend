@@ -6,13 +6,17 @@ const summery = {
     text: "Including a summery in your job application provides a brief overview of your qualifications, skills, and career goals, helping recruiters assess your fit for the position.",
 }
 
-function Summery({ action, handleCancel, setSummeryData }) {
+function Summery({ action, handleCancel,
+    setCandidateProfileData
+}) {
 
     const [data] = useState({ summery: summery.text });
 
     const handleSubmit = (values) => {
-        console.log('data', values);
-        setSummeryData(values)
+        setCandidateProfileData(prevData => ({
+            ...prevData,
+            summeryData: values,
+        }));
     };
 
     return (
@@ -45,11 +49,10 @@ function Summery({ action, handleCancel, setSummeryData }) {
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
                     }
-                    
+
                 </Form>
-            )
-            }
-        </Formik >
+            )}
+        </Formik>
     );
 }
 

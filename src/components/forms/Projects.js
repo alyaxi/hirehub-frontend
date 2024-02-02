@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
 import DragImg from '../core/DragImg';
-import { NavLink } from 'react-router-dom';
 import projectImg1 from '../../assets/images/projects/project1.png'
 import projectImg2 from '../../assets/images/projects/project2.png'
 import projectImg3 from '../../assets/images/projects/project3.png'
@@ -55,7 +54,7 @@ const projects = [
     // },
 ]
 
-function Projects({ action, handleCancel, id, setProjectsData }) {
+function Projects({ action, handleCancel, id, setCandidateProfileData }) {
     console.log(id, "idddddddd")
     const projectToEdit = id ? projects?.find(project => project?.id === id) : undefined;
 
@@ -88,30 +87,32 @@ function Projects({ action, handleCancel, id, setProjectsData }) {
         { name: 'December', value: '12' },
     ];
     const [data] = useState({
-        projectUrl:"",
-        name: "",
-        associated: "",
-        currentlyInProcess: false,
+        id: projectToEdit?.id ? projectToEdit?.id : "",
+        projectImg: projectToEdit?.projectImg ? projectToEdit?.projectImg : "",
+        projectUrl: projectToEdit?.link ? projectToEdit?.link : "",
+        name: projectToEdit?.title ? projectToEdit?.title : "",
+        associated: projectToEdit?.associated ? projectToEdit?.associated : "",
+        currentlyInProcess: projectToEdit?.currentlyInProcess ? projectToEdit?.currentlyInProcess : false,
     });
     const [description, setDescription] = useState("");
     const [projectImage, setProjectImage] = useState('');
 
-    // const startMonth = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
-    // const _startMonth = startMonth ? startMonth[1] : null;
+    const startMonth = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
+    const _startMonth = startMonth ? startMonth[1] : null;
 
-    // const endMonth = projectToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
-    // const _endMonth = endMonth ? endMonth[1] : null;
+    const endMonth = projectToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
+    const _endMonth = endMonth ? endMonth[1] : null;
 
-    // const _startYear = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
-    // const __startYear = _startYear ? _startYear[2] : null;
+    const _startYear = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
+    const __startYear = _startYear ? _startYear[2] : null;
 
-    // const _endYear = projectToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
-    // const __endYear = _endYear ? _endYear[2] : null;
+    const _endYear = projectToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
+    const __endYear = _endYear ? _endYear[2] : null;
 
-    const [selectedStartMonth, setSelectedStartMonth] = useState();
-    const [selectedEndMonth, setSelectedEndMonth] = useState();
-    const [selectedStartYear, setSelectedStartYear] = useState();
-    const [selectedEndYear, setSelectedEndYear] = useState();
+    const [selectedStartMonth, setSelectedStartMonth] = useState(_startMonth);
+    const [selectedEndMonth, setSelectedEndMonth] = useState(_endMonth);
+    const [selectedStartYear, setSelectedStartYear] = useState(__startYear);
+    const [selectedEndYear, setSelectedEndYear] = useState(__endYear);
 
 
     const [startDate, setStartDate] = useState();
@@ -164,14 +165,21 @@ function Projects({ action, handleCancel, id, setProjectsData }) {
         }
     };
 
-    const handleSubmit = (values, actions) => {
-        console.log({values});
-        setProjectsData({...values, description, projectImage,startDate, endDate})
-        console.log('description', description);
-        console.log('projectImage', projectImage);
-        console.log("startDate", startDate)
-        console.log("endDate", endDate)
-        // setProjectsData(values)
+    const handleSubmit = (values) => {
+        let _projectsData = {
+            projectImage: projectImage,
+            name: values?.name,
+            projectUrl: values?.projectUrl,
+            startDate: startDate,
+            endDate: endDate,
+            currentlyInProcess: values?.currentlyInProcess,
+            associated: values?.associated,
+            description: description,
+        }
+        setCandidateProfileData(prevData => ({
+            ...prevData,
+            projectsData: _projectsData,
+        }));
     };
 
     return (

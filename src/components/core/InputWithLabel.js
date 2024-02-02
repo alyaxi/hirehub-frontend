@@ -4,7 +4,6 @@ import { Icons } from '..';
 import Icon from '../../components/icon';
 
 function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, maxlength, edit, disabled }) {
-    console.log("value", value)
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
 

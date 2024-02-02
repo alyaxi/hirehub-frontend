@@ -50,7 +50,7 @@ function Form1({ onNext }) {
             <div className="mb-4">
                 <Core.SelectWithLabel
                     name={"numberofEmployees"}
-                    label="Number of Employees"
+                    label
                     options={numberOfEmployeesOptions}
                     onChange={(value) => handleChange("noOfEmployes", value)}
                 />

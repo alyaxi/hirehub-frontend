@@ -46,20 +46,34 @@ function CandidateProfile() {
 
         }
 
-
     }, [])
+
+    // final functio
+    // const handleUpdateCandidateProfile = () => {
+    //     console.log("handleUpdateCandidateProfile")
+    // }; 
+
+    // console.log("personalInformation", personalInformation)
+    // console.log("experience", experience)
+    // console.log("education", education)
+    // console.log("skill", skill)
+    // console.log("summery", summery)
+    console.log("projects", projects)
+    // console.log("language", language)
+    // console.log("jobPreference", jobPreference)
+
 
     return (
         <div className='flex justify-between gap-x-6 w-full'>
             <div className='w-auto'>
                 <div className='flex flex-col gap-y-3 pb-[50px]'>
                     <Core.PersonalInformation data={personalInformation} user={user} card />
-                    <Core.Summary data={summery}  card />
+                    <Core.Summary data={summery} card />
                     <Core.Projects data={projects} card />
                     <Core.Experience data={experience} card />
                     <Core.Education data={education} card />
-                    <Core.Skills data={skill}  card />
-                    <Core.Languages data={language}card />
+                    <Core.Skills data={skill} card />
+                    <Core.Languages data={language} card />
                     <Core.Preferences data={jobPreference} card />
                     <Core.ResumePrivacySetting resumePrivacySetting={resumePrivacySetting} card handlePrivacyChange={handlePrivacyChange} />
                 </div>

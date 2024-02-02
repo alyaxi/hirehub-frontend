@@ -40,6 +40,7 @@ import {
   NotificationEmployer,
   ManageEmailEmployer,
   MainQuestionnaireEmployer,
+  AddQuestionnaireEmployer,
   MainJobsAdmin,
   AddJobsAdmin,
   EditJobsAdmin,
@@ -129,6 +130,7 @@ function App() {
           <Route path="manage-email" element={<ManageEmailEmployer />} />
 
           <Route path="manage-questionnaire" element={<MainQuestionnaireEmployer />} />
+          <Route path="manage-questionnaire/add" element={<AddQuestionnaireEmployer />} />
         </Route>
 
         {/* // Candidate Routes */}

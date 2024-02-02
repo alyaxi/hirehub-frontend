@@ -38,7 +38,7 @@ function ManageEmail({
                 <TabPane tab={'PERSONALIZED EMAILS'} key={2}>
                     <PersonalizedEmail />
                 </TabPane>
-                <TabPane tab={'EDULED EMAILS'} key={3}>
+                <TabPane tab={'SCEDULED EMAILS'} key={3}>
                     <ScheduledEmails />
                 </TabPane>
 
