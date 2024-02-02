@@ -3,36 +3,47 @@ import { Formik, Form, Field } from 'formik';
 import { Core } from '..';
 import MultiSelectInput from '../core/MultiSelectInput';
 
-function Languages({ action, handleCancel }) {
-    const options = [
-        { label: 'English', value: 'English' },
-        { label: 'Spanish', value: 'Spanish' },
-        { label: 'French', value: 'French' },
-        { label: 'German', value: 'German' },
-        { label: 'Chinese', value: 'Chinese' },
-      ];
-      
-      const languageProficiencyOptions = [
-        { name: 'Basic', value: 'basic' },
-        { name: 'Intermediate', value: 'intermediate' },
-        { name: 'Advanced', value: 'advanced' },
-        { name: 'Fluent', value: 'fluent' },
-      ];
-    
+const options = [
+    { label: 'English', value: 'English' },
+    { label: 'Spanish', value: 'Spanish' },
+    { label: 'French', value: 'French' },
+    { label: 'German', value: 'German' },
+    { label: 'Chinese', value: 'Chinese' },
+];
+
+const languageProficiencyOptions = [
+    { name: 'Basic', value: 'basic' },
+    { name: 'Intermediate', value: 'intermediate' },
+    { name: 'Advanced', value: 'advanced' },
+    { name: 'Fluent', value: 'fluent' },
+];
+
+function Languages({ action, handleCancel, setCandidateProfileData, handleSenddata }) {
+
     const [data] = useState({
-        languages: '',
-        languageProficiency: '',
+        // _id: "",
+        title: '',
+        proficiency: '',
+        isDeleted: false,
     });
 
     const handleSubmit = (values, actions) => {
-        console.log(values);
+        let _languagesData = {
+            title: values?.title,
+            proficiency: values?.proficiency,
+            isDeleted: false,
+        }
+        setCandidateProfileData(prevData => ({
+            ...prevData,
+            languagesData: _languagesData,
+        }));
+        handleSenddata()
     };
 
-    const multiSelectHandle = (languages, setFieldValue) => {
-        setFieldValue('languages', languages);
+    const multiSelectHandle = (title, setFieldValue) => {
+        setFieldValue('title', title);
     };
 
-    console.log("data", data)
     return (
         <Formik
             initialValues={data}
@@ -57,12 +68,12 @@ function Languages({ action, handleCancel }) {
                         </Field>
                     </div>
                     <div className='mb-4'>
-                        <Field name="languageProficiency">
+                        <Field name="proficiency">
                             {({ field }) => (
                                 <Core.SelectWithLabel
                                     {...field}
-                                    name={"languageProficiency"}
-                                    label="languageProficiency"
+                                    name={"proficiency"}
+                                    label 
                                     options={languageProficiencyOptions}
                                     defaultOption="Choose any one"
                                 />

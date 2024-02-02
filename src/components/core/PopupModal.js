@@ -9,7 +9,8 @@ function PopupModal({ setIsModalOpen,
     action,
     id
 }) {
-
+    console.log("type", type)
+    console.log("action", action)
     // const [candidateProfileData2, setCandidateProfileData2] = useState({
     //     personalInformationData: {
     // profilePicture: "",
@@ -91,22 +92,7 @@ function PopupModal({ setIsModalOpen,
 
 
     const [candidateProfileData, setCandidateProfileData] = useState({
-        experiencesData: [
-            {
-                id: "1",
-                title: '',
-                company: '',
-                industry: '',
-                directlyManageTeam: '',
-                noOfPeople: '',
-                salary: '',
-                selectedCountry: '',
-                selectedCity: '',
-                startDate: '',
-                agreeTerms: '',
-                description: '',
-            },
-        ],
+
     })
 
     // const [personalInformationData, setPersonalInformationData] = useState({
@@ -119,21 +105,21 @@ function PopupModal({ setIsModalOpen,
     //     name: "",
     //     dob: "",
     // })
-    const [experiencesData, setExperiencesData] = useState({
-        title: "",
-        company: "",
-        industry: "",
-        directlyManageATeam: {
-            status: false,
-            noOfPeople: ''
-        },
-        salary: "",
-        location: "",
-        city: "",
-        startDate: "",
-        currentlyWorking: false,
-        description: '',
-    })
+    // const [experiencesData, setExperiencesData] = useState({
+    //     title: "",
+    //     company: "",
+    //     industry: "",
+    //     directlyManageATeam: {
+    //         status: false,
+    //         noOfPeople: ''
+    //     },
+    //     salary: "",
+    //     location: "",
+    //     city: "",
+    //     startDate: "",
+    //     currentlyWorking: false,
+    //     description: '',
+    // })
     // const [educationsData, setEducationsData] = useState({
     //     school: "",
     //     degree: "",
@@ -168,25 +154,25 @@ function PopupModal({ setIsModalOpen,
     let title = '';
 
     switch (type) {
-        case 'experience':
+        case 'experiencesData':
             title = 'Experience';
             break;
-        case 'education':
+        case 'educationsData':
             title = 'Education';
             break;
-        case 'skills':
+        case 'skillsData':
             title = 'Skills';
             break;
-        case 'personalInformations':
+        case 'personalInformationData':
             title = 'Personal Informations';
             break;
         case 'summery':
             title = 'Summery';
             break;
-        case 'projects':
+        case 'projectsData':
             title = 'Projects';
             break;
-        case 'language':
+        case 'languagesData':
             title = 'Language';
             break;
         case 'jobPreference':
@@ -200,12 +186,21 @@ function PopupModal({ setIsModalOpen,
     }
     let _title = _action + " " + title;
 
-    // console.log("candidateProfileData", candidateProfileData)
+    console.log(candidateProfileData, "candidateProfileData")
+
+    const handleSenddata = () => {
+        if (action == "edit") {
+            console.log("edit")
+        }
+        if (action == "add") {
+            console.log("add")
+        }
+    }
 
     return (
         <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
 
-            {type === "personalInformations" && <Forms.PersonalInformations
+            {type === "personalInformationData" && <Forms.PersonalInformations
                 handleCancel={handleCancel}
                 action={action}
                 setCandidateProfileData={setCandidateProfileData}
@@ -218,61 +213,65 @@ function PopupModal({ setIsModalOpen,
                     setCandidateProfileData={setCandidateProfileData}
                 />}
 
-            {type === "projects" &&
+            {type === "projectsData" &&
                 <Forms.Projects
                     handleCancel={handleCancel}
                     action={action}
-                    setCandidateProfileData={setCandidateProfileData}
-                    id={id ? id : undefined}
-                />}
-
-            {type === "experience" &&
-                <Forms.Experiences
-                    handleCancel={handleCancel}
-                    action={action}
-                    candidateProfileData={candidateProfileData}
+                    handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
                     id={action === "edit" ? id : null}
                 />}
 
-            {type === "education" &&
+            {type === "experiencesData" &&
+                <Forms.Experiences
+                    handleCancel={handleCancel}
+                    action={action}
+                    handleSenddata={handleSenddata}
+                    setCandidateProfileData={setCandidateProfileData}
+                    id={action === "edit" ? id : null}
+                />}
+
+            {type === "educationsData" &&
                 <Forms.Educations
                     handleCancel={handleCancel}
                     action={action}
-                    // setEducationsData={setEducationsData}
-                    id={id ? id : undefined}
+                    handleSenddata={handleSenddata}
+                    setCandidateProfileData={setCandidateProfileData}
+                    id={action === "edit" ? id : null}
                 />}
 
 
 
-            {(type === "skills" && action !== "edit") &&
+            {(type === "skillsData" && action !== "edit") &&
                 <Forms.Skills
                     handleCancel={handleCancel}
                     action={action}
-                // setSkillsData={setSkillsData}
+                    setCandidateProfileData={setCandidateProfileData}
                 />}
 
-            {(type === "skills" && action === "edit") &&
+            {(type === "skillsData" && action === "edit") &&
                 <Forms.SkillsEdit
                     handleCancel={handleCancel}
                     action={'edit'}
-                // setSkillsData={setSkillsData}
+                    handleSenddata={handleSenddata}
+                    setCandidateProfileData={setCandidateProfileData}
                 />}
 
 
 
-            {(type === "language" && action !== "edit") &&
+            {(type === "languagesData" && action !== "edit") &&
                 <Forms.Languages
                     handleCancel={handleCancel}
                     action={action}
-                // setSkillsData={setSkillsData}
+                    setCandidateProfileData={setCandidateProfileData}
                 />}
 
-            {(type === "language" && action === "edit") &&
+            {(type === "languagesData" && action === "edit") &&
                 <Forms.LanguagesEdit
                     handleCancel={handleCancel}
                     action={'edit'}
-                // setSkillsData={setSkillsData}
+                    handleSenddata={handleSenddata}
+                    setCandidateProfileData={setCandidateProfileData}
                 />}
 
 
@@ -281,7 +280,8 @@ function PopupModal({ setIsModalOpen,
                 <Forms.JobPreference
                     handleCancel={handleCancel}
                     action={'edit'}
-                // setJobPreferenceData={setJobPreferenceData} 
+                    handleSenddata={handleSenddata}
+                    setCandidateProfileData={setCandidateProfileData}
                 />}
 
         </Modal>

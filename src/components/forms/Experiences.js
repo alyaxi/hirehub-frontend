@@ -6,39 +6,6 @@ import logo3 from "../../assets/images/company-logos/logo3.png";
 import logo5 from "../../assets/images/company-logos/logo1.png";
 import { useSelector } from 'react-redux';
 
-const experiences = [
-    {
-        id: "1",
-        title: "Art Director",
-        company: "Techigon Software House",
-        // startDate: "Nov 2022 - Present · 4 yrs 7 mos",
-        description: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making.",
-        logo: logo3,
-        industry: "UI/UX Designer",
-        directlyManageTeam: "No",
-        noOfPeople: "90",
-        salary: "$1000 - $1500",
-        startDate: "02/2010",
-
-        currentlyInProcess: true,
-    },
-    {
-        id: "2",
-        title: "Graphics Designer",
-        company: "ITHUB Software House",
-        // startDate: "Nov 2010 - Present · 7 yrs 1 mos",
-        description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
-        logo: logo5,
-        industry: "Graphics Designer",
-        directlyManageTeam: "Yes",
-        noOfPeople: "30",
-        salary: "$2500 - $3000",
-        startDate: "06/2018",
-        currentlyInProcess: false,
-    },
-]
-
-
 const industryOptions = [
     { name: "Accounting", value: "Accounting" },
     { name: "Administration", value: "Administration" },
@@ -161,23 +128,32 @@ const monthsOptions = [
     { name: 'December', value: '12' },
 ];
 
-function Experiences({ action, handleCancel, id, candidateProfileData, setCandidateProfileData }) {
+function Experiences({ action, handleCancel, id, setCandidateProfileData, handleSenddata }) {
 
-    const experienceToEdit = id ? experiences?.find(experience => experience?.id === id) : undefined;
+    const candidate = useSelector((state) => state?.Candidate?.candidate);
+    const experiences = candidate.experiencesData;
+
+    const experienceToEdit = experiences?.find(experience => experience?._id === id);
 
     const [data] = useState({
-        title: experienceToEdit?.title ? experienceToEdit?.title : "",
+        _id: experienceToEdit?._id ? experienceToEdit?._id : "",
+        agreeTerms: experienceToEdit?.agreeTerms ? experienceToEdit?.agreeTerms : "",
         company: experienceToEdit?.company ? experienceToEdit?.company : "",
-        industry: experienceToEdit?.industry ? experienceToEdit?.industry : "",
+        description: experienceToEdit?.description ? experienceToEdit?.description : "",
         directlyManageTeam: experienceToEdit?.directlyManageTeam ? experienceToEdit?.directlyManageTeam : "",
+        industry: experienceToEdit?.industry ? experienceToEdit?.industry : "",
         noOfPeople: experienceToEdit?.noOfPeople ? experienceToEdit?.noOfPeople : "",
         salary: experienceToEdit?.salary ? experienceToEdit?.salary : "",
-        agreeTerms: experienceToEdit?.agreeTerms ? experienceToEdit?.agreeTerms : "",
+        selectedCity: experienceToEdit?.selectedCity ? experienceToEdit?.selectedCity : "",
+        selectedCountry: experienceToEdit?.selectedCountry ? experienceToEdit?.selectedCountry : "",
+        startDate: experienceToEdit?.startDate ? experienceToEdit?.startDate : "",
+        title: experienceToEdit?.title ? experienceToEdit?.title : "",
         currentlyInProcess: experienceToEdit?.currentlyInProcess ? experienceToEdit?.currentlyInProcess : false,
     });
+    console.log("data", data)
 
-    const [selectedCountry, setSelectedCountry] = useState('');
-    const [selectedCity, setSelectedCity] = useState('');
+    const [selectedCountry, setSelectedCountry] = useState(experienceToEdit?.selectedCountry ? experienceToEdit?.selectedCountry : "");
+    const [selectedCity, setSelectedCity] = useState(experienceToEdit?.selectedCity ? experienceToEdit?.selectedCity : "");
     const [countries, setCountries] = useState([]);
     const [cities, setCities] = useState([]);
     const [description, setDescription] = useState(experienceToEdit?.description ? experienceToEdit?.description : "");
@@ -259,7 +235,7 @@ function Experiences({ action, handleCancel, id, candidateProfileData, setCandid
     const handleSubmit = (values) => {
         let _id = id ? id : "generate new id"
         let _experiencesData = {
-            id: _id,
+            _id: _id,
             title: values?.title,
             company: values?.company,
             industry: values?.industry,
@@ -271,31 +247,13 @@ function Experiences({ action, handleCancel, id, candidateProfileData, setCandid
             startDate: startDate,
             agreeTerms: values?.agreeTerms,
             description: description,
-        };
-
-        const indexToUpdate = candidateProfileData.experiencesData.findIndex(
-            (experience) => experience.id === _id
-        );
-
-        setCandidateProfileData((prevData) => {
-            if (indexToUpdate !== -1) {
-                // update existing
-                const updatedExperiencesData = [...prevData.experiencesData];
-                updatedExperiencesData[indexToUpdate] = _experiencesData;
-                return {
-                    ...prevData,
-                    experiencesData: updatedExperiencesData,
-                };
-            } else {
-                // Add a new element
-                return {
-                    ...prevData,
-                    experiencesData: [...prevData.experiencesData, _experiencesData],
-                };
-            }
-        });
+        }; 
+        setCandidateProfileData(prevData => ({
+            ...prevData,
+            experiencesData: _experiencesData,
+        }));
+        handleSenddata()
     };
-
     return (
         <Formik
             initialValues={data}

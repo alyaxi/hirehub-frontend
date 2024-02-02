@@ -7,7 +7,7 @@ import Icon from '../icon';
 const { Dragger } = Upload;
 
 function DragImg({ state, setState }) {
-    const [imageUrl, setImageUrl] = useState('');
+    const [imageUrl, setImageUrl] = useState(state);
 
     const props = {
         name: 'file',
@@ -57,7 +57,7 @@ function DragImg({ state, setState }) {
                 :
                 <>
                     {imageUrl && (
-                        <div className='relative flex justify-between items-center py-2'>
+                        <div className='relative flex justify-between items-center min-h-[150px] py-2'>
                             <img src={imageUrl} alt="Uploaded" className='w-full max-w-[100%] h-[100%] max-h-[220px] rounded-lg object-cover' />
                             <span onClick={deleteFile} className='absolute right-3 top-5 bg-white text-[red] cursor-pointer rounded-full shadow-md p-2'>
                                 <Icon name="Delete" />

@@ -1,68 +1,92 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
 import DragImg from '../core/DragImg';
 import projectImg1 from '../../assets/images/projects/project1.png'
 import projectImg2 from '../../assets/images/projects/project2.png'
 import projectImg3 from '../../assets/images/projects/project3.png'
+import { getCandidate } from '../../Slices/Candidates/CandidateSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const projects = [
-    {
-        id: "1",
-        title: "Project 1",
-        link: "https://www.shutterstock.com/image-vector/website-template-design-vector-illustration-260nw-1059153563.jpg",
-        img: projectImg1,
-        associated: "option 1",
-        description: "<p>description text is here...</p>",
-        startDate: "02/2010",
-        endDate: "06/2012",
-        currentlyInProcess: true,
-    },
-    {
-        id: "2",
-        title: "Project 2",
-        link: "https://www.shutterstock.com/image-vector/web-design-template-vector-illustration-260nw-1362343523.jpg",
-        img: projectImg2,
-        associated: "option 2",
-        description: "<p>description text is here second one is here.</p>",
-        startDate: "01/1903",
-        endDate: "08/1905",
-        currentlyInProcess: false,
-    },
-    {
-        id: "3",
-        title: "Project 3",
-        link: "https://previews.123rf.com/images/darkovujic/darkovujic1809/darkovujic180900011/110267002-landing-page-template-of-web-design-modern-flat-design-concept-of-web-page-design-for-website-and.jpg",
-        img: projectImg3,
-        associated: "option 3",
-        description: "<p>description text is here second one is here. You may call someone.</p>",
-        startDate: "10/1920",
-        endDate: "07/2005",
-        currentlyInProcess: true,
-    },
-    // {
-    // id: "4",
-    //     title: "Project 4",
-    //     link: "https://mir-s3-cdn-cf.behance.net/projects/404/469b22176695451.64c95edd2a9e7.jpg",
-    //     img: projectImg4,
-    // },
-    // {
-    // id: "5",
-    //     title: "Project 5",
-    //     link: "https://i.pinimg.com/736x/f6/52/22/f65222d817856ce6d0ae8bebcd998168.jpg",
-    //     img: projectImg5,
-    // },
-]
 
-function Projects({ action, handleCancel, id, setCandidateProfileData }) {
-    console.log(id, "idddddddd")
-    const projectToEdit = id ? projects?.find(project => project?.id === id) : undefined;
 
-    const associatedOptions = [
-        { name: "option 1", value: "option 1" },
-        { name: "option 2", value: "option 2" },
-        { name: "option 3", value: "option 3" },
-    ];
+
+
+
+// const projects = [
+//     {
+//         _id: "4",
+//         name: "Project 1",
+//         projectUrl: "https://www.shutterstock.com/image-vector/website-template-design-vector-illustration-260nw-1059153563.jpg",
+//         projectImage: projectImg1,
+//         associated: "option 1",
+//         description: "<p>description text is here...</p>",
+//         startDate: "02/2010",
+//         endDate: "06/2012",
+//         currentlyInProcess: true,
+//     },
+//     {
+//         _id: "65bd1316ff6289ae1c722e31",
+//         name: "Project 2",
+//         projectUrl: "https://www.shutterstock.com/image-vector/web-design-template-vector-illustration-260nw-1362343523.jpg",
+//         projectImage: projectImg2,
+//         associated: "option 2",
+//         description: "<p>description text is here second one is here.</p>",
+//         startDate: "01/1903",
+//         endDate: "08/1905",
+//         currentlyInProcess: false,
+//     },
+//     {
+//         _id: "3",
+//         name: "Project 3",
+//         projectUrl: "https://previews.123rf.com/images/darkovujic/darkovujic1809/darkovujic180900011/110267002-landing-page-template-of-web-design-modern-flat-design-concept-of-web-page-design-for-website-and.jpg",
+//         projectImage: projectImg3,
+//         associated: "option 3",
+//         description: "<p>description text is here second one is here. You may call someone.</p>",
+//         startDate: "10/1920",
+//         endDate: "07/2005",
+//         currentlyInProcess: true,
+//     },
+//     // {
+//     // id: "4",
+//     //     title: "Project 4",
+//     //     link: "https://mir-s3-cdn-cf.behance.net/projects/404/469b22176695451.64c95edd2a9e7.jpg",
+//     //     img: projectImg4,
+//     // },
+//     // {
+//     // id: "5",
+//     //     title: "Project 5",
+//     //     link: "https://i.pinimg.com/736x/f6/52/22/f65222d817856ce6d0ae8bebcd998168.jpg",
+//     //     img: projectImg5,
+//     // },
+// ]
+
+const associatedOptions = [
+    { name: "Project Association", value: "Project Association" },
+    { name: "option 2", value: "option 2" },
+    { name: "option 3", value: "option 3" },
+];
+
+const monthsOptions = [
+    { name: 'January', value: '01' },
+    { name: 'February', value: '02' },
+    { name: 'March', value: '03' },
+    { name: 'April', value: '04' },
+    { name: 'May', value: '05' },
+    { name: 'June', value: '06' },
+    { name: 'July', value: '07' },
+    { name: 'August', value: '08' },
+    { name: 'September', value: '09' },
+    { name: 'October', value: '10' },
+    { name: 'November', value: '11' },
+    { name: 'December', value: '12' },
+];
+
+function Projects({ action, handleCancel, id, setCandidateProfileData , handleSenddata}) {
+
+    const candidate = useSelector((state) => state?.Candidate?.candidate);
+    const projects = candidate.projectsData;
+    const projectToEdit = projects?.find(project => project?._id === id);
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
@@ -72,30 +96,20 @@ function Projects({ action, handleCancel, id, setCandidateProfileData }) {
         yearOptions.push({ name: year.toString(), value: year.toString() });
     }
 
-    const monthsOptions = [
-        { name: 'January', value: '01' },
-        { name: 'February', value: '02' },
-        { name: 'March', value: '03' },
-        { name: 'April', value: '04' },
-        { name: 'May', value: '05' },
-        { name: 'June', value: '06' },
-        { name: 'July', value: '07' },
-        { name: 'August', value: '08' },
-        { name: 'September', value: '09' },
-        { name: 'October', value: '10' },
-        { name: 'November', value: '11' },
-        { name: 'December', value: '12' },
-    ];
     const [data] = useState({
-        id: projectToEdit?.id ? projectToEdit?.id : "",
-        projectImg: projectToEdit?.projectImg ? projectToEdit?.projectImg : "",
-        projectUrl: projectToEdit?.link ? projectToEdit?.link : "",
-        name: projectToEdit?.title ? projectToEdit?.title : "",
+        _id: projectToEdit?._id ? projectToEdit?._id : "",
+        projectImage: projectToEdit?.projectImage ? projectToEdit?.projectImage : "",
+        projectUrl: projectToEdit?.projectUrl ? projectToEdit?.projectUrl : "",
+        name: projectToEdit?.name ? projectToEdit?.name : "",
         associated: projectToEdit?.associated ? projectToEdit?.associated : "",
         currentlyInProcess: projectToEdit?.currentlyInProcess ? projectToEdit?.currentlyInProcess : false,
+        description: projectToEdit?.description ? projectToEdit?.description : '',
+        startDate: projectToEdit?.startDate ? projectToEdit?.startDate : '',
+        endDate: projectToEdit?.endDate ? projectToEdit?.endDate : '',
     });
-    const [description, setDescription] = useState("");
-    const [projectImage, setProjectImage] = useState('');
+
+    const [description, setDescription] = useState(projectToEdit?.description ? projectToEdit?.description : '');
+    const [projectImage, setProjectImage] = useState(projectToEdit?.projectImage ? projectToEdit?.projectImage : '');
 
     const startMonth = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
     const _startMonth = startMonth ? startMonth[1] : null;
@@ -113,7 +127,6 @@ function Projects({ action, handleCancel, id, setCandidateProfileData }) {
     const [selectedEndMonth, setSelectedEndMonth] = useState(_endMonth);
     const [selectedStartYear, setSelectedStartYear] = useState(__startYear);
     const [selectedEndYear, setSelectedEndYear] = useState(__endYear);
-
 
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState('');
@@ -180,6 +193,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData }) {
             ...prevData,
             projectsData: _projectsData,
         }));
+        handleSenddata()
     };
 
     return (
@@ -187,6 +201,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData }) {
             initialValues={data}
             // validationSchema={validationSchema}
             onSubmit={handleSubmit}
+            
         >
             {({ isSubmitting }) => (
                 <Form>
@@ -201,7 +216,6 @@ function Projects({ action, handleCancel, id, setCandidateProfileData }) {
                                 <Core.InputWithLabel
                                     {...field}
                                     name="name"
-                                    // label="Name"
                                     sm
                                     label
                                     placeholder="Enter your name"
@@ -217,7 +231,6 @@ function Projects({ action, handleCancel, id, setCandidateProfileData }) {
                                 <Core.InputWithLabel
                                     {...field}
                                     name="projectUrl"
-                                    // label="Project URL"
                                     sm
                                     label
                                     edit

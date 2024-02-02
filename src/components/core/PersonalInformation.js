@@ -6,7 +6,7 @@ import Icon from "../icon";
 
 function PersonalInformation({ data, user, card }) {
 
-    console.log(user, "userrrrrrrrrrrrr")
+    // console.log(user, "userrrrrrrrrrrrr")
 
     const firstLetter = user?.name ? user?.name.trim().charAt(0).toUpperCase() : '';
  
@@ -18,7 +18,7 @@ function PersonalInformation({ data, user, card }) {
                     <Core.Card className={"p-5 border"}>
                         < div className='flex justify-between items-start' >
                             <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Personal Information</h5>
-                            <Core.ProficienciesActions buttons={['edit']} type="personalInformations" />
+                            <Core.ProficienciesActions buttons={['edit']} type="personalInformationData" />
                         </div>
                         <div className='flex justify-start items-end pt-3'>
                             <div className='flex flex-col justify-center items-center w-[22%] pr-8'>

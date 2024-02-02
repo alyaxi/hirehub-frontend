@@ -11,14 +11,14 @@ function Education({ data, buttons, card }) {
                 <Core.Card className={"p-5 border"}>
                     < div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Education</h5>
-                        <Core.ProficienciesActions buttons={['add']} type="education" />
+                        <Core.ProficienciesActions buttons={['add']} type="educationsData" />
                     </div >
                     <div className='flex justify-start items-start flex-col gap-y-10 pt-3'>
                         {data?.map((value, index) => {
                             return (
                                 <div key={index * 4} className='relative flex justify-between gap-x-3 w-full'>
                                     <div className='absolute top-0 right-0 z-[200] flex justify-end' >
-                                        <Core.ProficienciesActions buttons={['edit']} type={'education'} id={value?.id} />
+                                        <Core.ProficienciesActions buttons={['edit']} type={'educationsData'} id={value?._id} />
                                     </div>
                                     <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
                                         <Avatar shape="square" size={60} src={value?.logo}>!</Avatar>
@@ -44,7 +44,7 @@ function Education({ data, buttons, card }) {
                 <>
                     <div className='flex justify-between items-start'>
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Education</h5>
-                        <Core.ProficienciesActions buttons={['add']} type="education" />
+                        <Core.ProficienciesActions buttons={['add']} type="educationsData" />
                     </div>
                     <div className='flex justify-start items-end pt-3'>
                         {data?.map((value, index) => {

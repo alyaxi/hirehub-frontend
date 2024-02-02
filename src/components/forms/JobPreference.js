@@ -3,94 +3,83 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
 import { Radio } from 'antd/es';
 import MultiSelectInput from '../core/MultiSelectInput';
+import { useSelector } from 'react-redux';
 
-const jobPreferenceInDb = {
-    desiredJobTitle: ["abc", 'xyz'],
-    relocation: {
-        anywhere: false,
-        onlyNearMe: { locations: ['london'] }
-    },
-    desiredSalary: "$1000 - $1500",
-    skills: ["Angular Js"],
-    relocationPreference: "onlyNearMe",
-}
+const desiredJobTitleOptions = [
+    { label: 'UX/UI Designer', value: 'UX/UI Designer' },
+    { label: 'UX/UI Head', value: 'UX/UI Head' },
+    { label: 'Creative Head', value: 'Creative Head' },
+    { label: 'Design Head', value: 'Design Head' },
+    { label: 'Software Engineer', value: 'Software Engineer' },
+    { label: 'Data Scientist', value: 'Data Scientist' },
+    { label: 'Product Manager', value: 'Product Manager' },
+    { label: 'Marketing Specialist', value: 'Marketing Specialist' },
+    { label: 'Financial Analyst', value: 'Financial Analyst' },
+    { label: 'Human Resources Manager', value: 'Human Resources Manager' },
+    { label: 'Sales Representative', value: 'Sales Representative' },
+    { label: 'Customer Support Specialist', value: 'Customer Support Specialist' },
+    { label: 'Graphic Designer', value: 'Graphic Designer' },
+    { label: 'Content Writer', value: 'Content Writer' },
+];
 
-function JobPreference({ action, handleCancel }) {
+const desiredSalaryOptions = [
+    { name: "$1000 - $1500", value: "$1000 - $1500" },
+    { name: "$1500 - $2000", value: "$1500 - $2000" },
+    { name: "$2000 - $2500", value: "$2000 - $2500" },
+    { name: "$2500 - $3000", value: "$2500 - $3000" },
+    { name: "$3000 - $3500", value: "$3000 - $3500" },
+    { name: "$3500 - $4000", value: "$3500 - $4000" },
+    { name: "$4000 - $4500", value: "$4000 - $4500" },
+    { name: "60000", value: "60000" },
+    { name: "Over $4500", value: "Over $4500" },
+];
 
-    const desiredJobTitleOptions = [
-        { label: 'UX/UI Designer', value: 'UX/UI Designer' },
-        { label: 'UX/UI Head', value: 'UX/UI Head' },
-        { label: 'Creative Head', value: 'Creative Head' },
-        { label: 'Design Head', value: 'Design Head' },
-        { label: 'Software Engineer', value: 'Software Engineer' },
-        { label: 'Data Scientist', value: 'Data Scientist' },
-        { label: 'Product Manager', value: 'Product Manager' },
-        { label: 'Marketing Specialist', value: 'Marketing Specialist' },
-        { label: 'Financial Analyst', value: 'Financial Analyst' },
-        { label: 'Human Resources Manager', value: 'Human Resources Manager' },
-        { label: 'Sales Representative', value: 'Sales Representative' },
-        { label: 'Customer Support Specialist', value: 'Customer Support Specialist' },
-        { label: 'Graphic Designer', value: 'Graphic Designer' },
-        { label: 'Content Writer', value: 'Content Writer' },
-    ];
+const skillsOptions = [
+    { label: 'HTML&CSS', value: 'HTML&CSS' },
+    { label: 'Bootstrap', value: 'Bootstrap' },
+    { label: 'Illustrator', value: 'Illustrator' },
+    { label: 'Photoshop', value: 'Photoshop' },
+    { label: 'JavaScript', value: 'JavaScript' },
+    { label: 'React.js', value: 'React.js' },
+    { label: 'Node.js', value: 'Node.js' },
+    { label: 'Python', value: 'Python' },
+    { label: 'Java', value: 'Java' },
+    { label: 'HTML', value: 'HTML' },
+    { label: 'CSS', value: 'CSS' },
+    { label: 'SQL', value: 'SQL' },
+    { label: 'Angular', value: 'Angular' },
+    { label: 'Vue.js', value: 'Vue.js' },
+    { label: 'TypeScript', value: 'TypeScript' },
+    { label: 'Git', value: 'Git' },
+    { label: 'Docker', value: 'Docker' },
+    { label: 'AWS', value: 'AWS' },
+    { label: 'Redux', value: 'Redux' },
+];
 
-    const desiredSalaryOptions = [
-        { name: "$1000 - $1500", value: "$1000 - $1500" },
-        { name: "$1500 - $2000", value: "$1500 - $2000" },
-        { name: "$2000 - $2500", value: "$2000 - $2500" },
-        { name: "$2500 - $3000", value: "$2500 - $3000" },
-        { name: "$3000 - $3500", value: "$3000 - $3500" },
-        { name: "$3500 - $4000", value: "$3500 - $4000" },
-        { name: "$4000 - $4500", value: "$4000 - $4500" },
-        { name: "Over $4500", value: "Over $4500" },
-    ];
+const locationsOptions = [
+    { name: "New York", value: "New York" },
+    { name: "Los Angeles", value: "Los Angeles" },
+    { name: "Chicago", value: "Chicago" },
+    { name: "London", value: "London" },
+    { name: "Dubai", value: "Dubai" },
+    { name: "Singapore", value: "Singapore" },
+    { name: "Kuwait", value: "Kuwait" },
+];
 
-    const skillsOptions = [
-        { label: 'HTML&CSS', value: 'HTML&CSS' },
-        { label: 'Bootstrap', value: 'Bootstrap' },
-        { label: 'Illustrator', value: 'Illustrator' },
-        { label: 'Photoshop', value: 'Photoshop' },
-        { label: 'JavaScript', value: 'JavaScript' },
-        { label: 'React.js', value: 'React.js' },
-        { label: 'Node.js', value: 'Node.js' },
-        { label: 'Python', value: 'Python' },
-        { label: 'Java', value: 'Java' },
-        { label: 'HTML', value: 'HTML' },
-        { label: 'CSS', value: 'CSS' },
-        { label: 'SQL', value: 'SQL' },
-        { label: 'Angular', value: 'Angular' },
-        { label: 'Vue.js', value: 'Vue.js' },
-        { label: 'TypeScript', value: 'TypeScript' },
-        { label: 'Git', value: 'Git' },
-        { label: 'Docker', value: 'Docker' },
-        { label: 'AWS', value: 'AWS' },
-        { label: 'Redux', value: 'Redux' },
-    ];
+function JobPreference({ action, handleCancel, setCandidateProfileData, handleSenddata }) {
 
-    const locationsOptions = [
-        { name: "New York", value: "New York" },
-        { name: "Los Angeles", value: "Los Angeles" },
-        { name: "Chicago", value: "Chicago" },
-        { name: "London", value: "London" },
-        { name: "Dubai", value: "Dubai" },
-        { name: "Singapore", value: "Singapore" },
-        { name: "Kuwait", value: "Kuwait" },
-    ];
+    const candidate = useSelector((state) => state?.Candidate?.candidate);
+    const jp = candidate.jobPreference;
+    console.log("jp", jp)
 
-    // const [data] = useState({
-    //     desiredJobTitle: jobPreferenceInDb?.desiredJobTitle ? jobPreferenceInDb?.desiredJobTitle : [],
-    //     relocation: jobPreferenceInDb?.relocation ? jobPreferenceInDb?.relocation : {},
-    //     desiredSalary: jobPreferenceInDb?.desiredSalary ? jobPreferenceInDb?.desiredSalary : null,
-    //     skills: jobPreferenceInDb?.skills ? jobPreferenceInDb?.skills : [],
-    //     relocationPreference: jobPreferenceInDb?.relocationPreference ? jobPreferenceInDb?.relocationPreference : (jobPreferenceInDb?.relocation.anywhere === true ? true : jobPreferenceInDb?.relocation.anywhere === false ? false : null),
-    // });
     const [data] = useState({
-        desiredJobTitle: jobPreferenceInDb?.desiredJobTitle ? jobPreferenceInDb?.desiredJobTitle : [],
-        relocation: jobPreferenceInDb?.relocation ? jobPreferenceInDb?.relocation : {},
-        desiredSalary: jobPreferenceInDb?.desiredSalary ? jobPreferenceInDb?.desiredSalary : null,
-        skills: jobPreferenceInDb?.skills ? jobPreferenceInDb?.skills : [], // Set initial values here
-        relocationPreference: jobPreferenceInDb?.relocationPreference ? jobPreferenceInDb?.relocationPreference : (jobPreferenceInDb?.relocation.anywhere === true ? true : jobPreferenceInDb?.relocation.anywhere === false ? false : null),
-    });
+        desiredJobTitle: jp?.desiredJobTitle ? jp?.desiredJobTitle : [],
+        desiredSalary: jp?.desiredSalary ? jp?.desiredSalary : null,
+        isDeleted: jp?.isDeleted ? jp?.isDeleted : false,
+        onlyNearMe: jp?.onlyNearMe ? jp?.onlyNearMe : '',
+        relocation: jp?.relocation ? jp?.relocation : {},
+        skills: jp?.skills ? jp?.skills : [],
+     });
 
     const [isRelocating, setIsRelocating] = useState((data.relocation.anywhere === true || data.relocation.anywhere === false) ? true : false);
 
@@ -110,8 +99,20 @@ function JobPreference({ action, handleCancel }) {
         }
     };
 
-    const handleSubmit = (values, actions) => {
-        console.log("formik values", values);
+    const handleSubmit = (values) => {
+        let _jobPreferenceData = {
+            desiredJobTitle: values?.desiredJobTitle,
+            desiredSalary: values?.desiredSalary,
+            isDeleted: values?.isDeleted,
+            onlyNearMe: values?.onlyNearMe,
+            relocation: values?.relocation,
+            skills: values?.skills,
+        };
+        setCandidateProfileData(prevData => ({
+            ...prevData,
+            jobPreferenceData: _jobPreferenceData,
+        }));
+        handleSenddata()
     };
 
     return (

@@ -7,8 +7,7 @@ function ProficienciesActions({ buttons, type, id }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
         setIsModalOpen(true);
-    };
-    // console.log("ProficienciesActions - type", type)
+    }; 
     return (
         <>
             <Core.PopupModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} type={type} action={action} id={id} />

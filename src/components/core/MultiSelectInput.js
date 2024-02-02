@@ -9,8 +9,14 @@ const MultiSelectInput = ({ label, helperText, name, required, icon, options, on
                 return "Benefits";
             case "skills":
                 return "Skills";
+            case "title":
+                return "Title";
             case "languages":
-                return "Add a new language";
+            case "language":
+                // return "Add a new language";
+                return "Language";
+            case "proficiency":
+                return "Proficiency";
             case "desiredJobTitle":
                 return "Desired Job Title";
             case "willingToLocations":

@@ -3,6 +3,7 @@ import { Formik, Field, Form } from 'formik';
 import { useState } from 'react';
 import { Core } from '..';
 import MultiSelectInput from '../core/MultiSelectInput';
+import { useSelector } from 'react-redux';
 
 const languagesOptions = [
     { label: 'English', value: 'English' },
@@ -10,7 +11,7 @@ const languagesOptions = [
     { label: 'French', value: 'French' },
     { label: 'German', value: 'German' },
     { label: 'Chinese', value: 'Chinese' },
-  ];
+];
 
 const languageProficiencyOptions = [
     { name: 'Basic', value: 'Basic' },
@@ -19,29 +20,12 @@ const languageProficiencyOptions = [
     { name: 'Fluent', value: 'Fluent' }, ,
 ];
 
-const LanguagesEdit = ({ handleCancel }) => {
-    const [languages] = useState([
-        {
-            id: 1,
-            title: 'English',
-            proficiency: 'Basic',
-        },
-        {
-            id: 2,
-            title: 'Spanish',
-            proficiency: 'Intermediate',
-        },
-        {
-            id: 3,
-            title: 'French',
-            proficiency: 'Advanced',
-        },
-        {
-            id: 4,
-            title: 'German',
-            proficiency: 'Advanced',
-        },
-    ]);
+const LanguagesEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }) => {
+   
+
+    const candidate = useSelector((state) => state?.Candidate?.candidate);
+    const languages = candidate.languagesData;
+    console.log("languages", languages)
 
     const initialValues = {
         languages: languages.map(language => ({ id: language.id, title: language.title, proficiency: language.proficiency }))
@@ -61,7 +45,21 @@ const LanguagesEdit = ({ handleCancel }) => {
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
-        console.log("submit",values.languages);
+        console.log("values", values)
+        const _languagesData = values?.languages?.map(language => ({
+            id: language?._id,
+            title: language?.title,
+            proficiency: language?.proficiency,
+        }));
+
+        console.log("_languagesData", _languagesData);
+
+        setCandidateProfileData(prevData => ({
+            ...prevData,
+            languagesData: _languagesData,
+        }));
+
+        handleSenddata()
         setSubmitting(false);
     };
 

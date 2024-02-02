@@ -6,7 +6,6 @@ import Icon from '../icon';
 import { useSelector } from 'react-redux';
 
 function PersonalInformations({ action, handleCancel,
-    setPersonalInformationData,
     setCandidateProfileData,
 }) {
     const candidate = useSelector((state) => state?.Candidate?.candidate);

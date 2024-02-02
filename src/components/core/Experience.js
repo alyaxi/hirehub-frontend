@@ -12,14 +12,14 @@ function Experience({ data, buttons, card }) {
                     <Core.Card className={"p-5 border"}>
                         <div className='flex justify-between items-start'>
                             <h5 className={`text-black-1 text-[18px] leading-[28px] font-semibold ${card && "mb-2"}`}>Experience</h5>
-                            <Core.ProficienciesActions buttons={['add']} type={'experience'} />
+                            <Core.ProficienciesActions buttons={['add']} type={'experiencesData'} />
                         </div>
                         <div className='flex justify-start items-start flex-col gap-y-10 pt-3'>
                             {data?.map((value, index) => {
                                 return (
                                     <div key={index * 4} className='relative flex justify-between gap-x-3 w-full'>
                                         <div className='absolute top-0 right-0 z-[200] flex justify-end' >
-                                            <Core.ProficienciesActions buttons={['edit']} type={'experience'} id={value?.id} />
+                                            <Core.ProficienciesActions buttons={['edit']} type={'experiencesData'} id={value?._id} />
                                         </div>
                                         <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
                                             <Avatar shape="square" size={60} src={value?.logo}>!</Avatar>

@@ -14,9 +14,8 @@ function Summary({ data, buttons, card }) {
                             <Core.ProficienciesActions buttons={['edit']} type="summery" />
                         </div>
                         <div className='flex justify-start items-end pt-3'>
-                            summery....
-                            {/* {data?.map((value, index) =><p key={index * 6} className='text-gray-6 text-[14px] leading-[20px]'>{value.text}</p>)} */}
-                            {/* <p className='text-gray-6 text-[14px] leading-[20px]'>{data.text}</p> */}
+                        <p className='text-gray-6 text-[14px] leading-[20px]'>{data?.text}</p>
+                            {/* {data && data?.map((value, index) =><p key={index * 6} className='text-gray-6 text-[14px] leading-[20px]'>{value.text}</p>)} */}
                         </div>
                     </Core.Card>
                 </>

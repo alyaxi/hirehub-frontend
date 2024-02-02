@@ -4,7 +4,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 function TextEditorWithLabel({ label, helperText, name, required, icon, value, setValue, style, height }) {
-
+console.log('value des',value)
     const _label = (name) => {
         switch (name) {
             case "responsibilities":

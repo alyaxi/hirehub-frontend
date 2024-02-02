@@ -3,6 +3,7 @@ import { Formik, Field, Form } from 'formik';
 import { useState } from 'react';
 import { Core } from '..';
 import MultiSelectInput from '../core/MultiSelectInput';
+import { useSelector } from 'react-redux';
 
 const skillsOptions = [
     { label: 'HTML&CSS', value: 'HTML&CSS' },
@@ -25,6 +26,7 @@ const skillsOptions = [
     { label: 'AWS', value: 'AWS' },
     { label: 'Redux', value: 'Redux' },
 ];
+
 const skillExperienceOptions = [
     { name: "6 months", value: "6 months" },
     { name: "1 year", value: "1 year" },
@@ -40,24 +42,11 @@ const skillExperienceOptions = [
     { name: "Over 10 years", value: "Over 10 years" },
 ];
 
-const SkillsEdit = ({ handleCancel }) => {
-    const [skills] = useState([
-        {
-            id: "1",
-            title: "Express.js",
-            experience: '6 years',
-        },
-        {
-            id: "2",
-            title: "Next.js",
-            experience: '4 years',
-        },
-        {
-            id: "3",
-            title: "Node.js",
-            experience: '2 years',
-        }
-    ]);
+const SkillsEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }) => {
+
+    const candidate = useSelector((state) => state?.Candidate?.candidate);
+    const skills = candidate.skillsData;
+    console.log("skills", skills)
 
     const initialValues = {
         skills: skills.map(skill => ({ id: skill.id, title: skill.title, experience: skill.experience }))
@@ -77,7 +66,20 @@ const SkillsEdit = ({ handleCancel }) => {
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
-        console.log("submit",values.skills);
+        const _skillsData = values?.skills?.map(skill => ({
+            id: skill?._id,
+            title: skill?.title,
+            experience: skill?.experience,
+        }));
+
+        console.log("_skillsData", _skillsData);
+
+        setCandidateProfileData(prevData => ({
+            ...prevData,
+            skillsData: _skillsData,
+        }));
+
+        handleSenddata()
         setSubmitting(false);
     };
 

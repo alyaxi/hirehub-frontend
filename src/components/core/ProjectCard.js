@@ -1,19 +1,19 @@
 import React from 'react';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Card } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { Core } from '..';
 
 const { Meta } = Card;
 
-function ProjectCard({ data }) {
+function ProjectCard({ data }) { 
+
+    console.log("ProjectCard data",data)
     return (
         <div>
             <div className='flex justify-end mb-[-45px] right-[10px] relative z-[200]' >
-                <Core.ProficienciesActions buttons={['edit']} type={'projects'} id={data?.id} />
+                <Core.ProficienciesActions buttons={['edit']} type={'projects'} id={data?._id} />
             </div>
-
-            <NavLink to={data?.link}>
+            <NavLink to={data?.projectUrl}>
                 <Card
                     size="small"
                     style={{
@@ -22,20 +22,13 @@ function ProjectCard({ data }) {
                     cover={
                         <img
                             alt="example"
-                            // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                            src={data?.img}
+                            src={data?.projectImage}
                         />
                     }
-                // actions={[
-                //     <SettingOutlined key="setting" />,
-                //     <EditOutlined key="edit" />,
-                //     <EllipsisOutlined key="ellipsis" />,
-                // ]}
                 >
                     <Meta
-                        // avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
-                        title={data?.title}
-                        description={data?.link}
+                        title={data?.name}
+                        description={data?.projectUrl}
                     />
                 </Card>
             </NavLink>
