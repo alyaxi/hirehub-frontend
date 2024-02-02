@@ -13,14 +13,14 @@ function CandidateProfile() {
 
     console.log(candidate, "ManageProfileCandidate")
 
-    const personalInformation = candidate.personalInformation
-    const experience = candidate.experience
-    const education = candidate.education
-    const skill = candidate.skills
+    const personalInformation = candidate.personalInformationData
+    const experience = candidate.experiencesData
+    const education = candidate.educationsData
+    const skill = candidate.skillsData;
     const summery = candidate.summery;
-    const projects = candidate.projects
-    const language = candidate.language
-    const jobPreference = candidate.jobPreference
+    const projects = candidate.projectsData;
+    const language = candidate.languagesData;
+    const jobPreference = candidate.jobPreference;
     const user = candidate.userId
 
     const [resumePrivacySetting, setResumePrivacySetting] = useState(1);
