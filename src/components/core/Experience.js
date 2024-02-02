@@ -4,6 +4,7 @@ import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
 
 function Experience({ data, buttons, card }) {
+    console.log(data, "productionnnn")
     return (
         <>
             {card ?
@@ -11,7 +12,7 @@ function Experience({ data, buttons, card }) {
                     <Core.Card className={"p-5 border"}>
                         <div className='flex justify-between items-start'>
                             <h5 className={`text-black-1 text-[18px] leading-[28px] font-semibold ${card && "mb-2"}`}>Experience</h5>
-                            <Core.ProficienciesActions buttons={buttons} type={'experience'} />
+                            <Core.ProficienciesActions buttons={['add']} type={'experience'} />
                         </div>
                         <div className='flex justify-start items-start flex-col gap-y-10 pt-3'>
                             {data?.map((value, index) => {
@@ -45,7 +46,7 @@ function Experience({ data, buttons, card }) {
                 <>
                     <div className='flex justify-between items-start'>
                         <h5 className={`text-black-1 text-[18px] leading-[28px] font-semibold ${card && "mb-2"}`}>Experience</h5>
-                        <Core.ProficienciesActions buttons={buttons} />
+                        <Core.ProficienciesActions buttons={['add']} />
                     </div>
                     <div className='flex justify-start items-end pt-3'>
                         {data?.map((value, index) => {

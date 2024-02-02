@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
 import Forms from '../forms';
+import Summary from './Summary';
 
 function PopupModal({ setIsModalOpen,
     isModalOpen,
@@ -97,7 +98,7 @@ function PopupModal({ setIsModalOpen,
     let _title = _action + " " + title;
     // console.log("type", type)
     // console.log("action", action)
-    // console.log("personalInformationData", personalInformationData)
+    console.log("personalInformationData", experiencesData)
     return (
         <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
             {type === "personalInformations" && <Forms.PersonalInformations handleCancel={handleCancel} action={action} setPersonalInformationData={setPersonalInformationData} />}

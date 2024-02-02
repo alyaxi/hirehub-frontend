@@ -12,7 +12,7 @@ function Preferences({ data, buttons, card }) {
                  <Core.Card className={"p-5 border"}>
                     <div className='flex justify-between items-start'>
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Job Preferences</h5>
-                        <Core.ProficienciesActions buttons={buttons} type="jobPreference" />
+                        <Core.ProficienciesActions buttons={['edit']} type="jobPreference" />
                     </div>
 
                     <p className='text-gray-6 text-[14px] leading-[25px]'>
@@ -88,7 +88,7 @@ function Preferences({ data, buttons, card }) {
                         {
                             buttons?.length &&
                             <div className="flex justify-center gap-x-2">
-                                <Core.ProficienciesActions buttons={buttons} />
+                                <Core.ProficienciesActions buttons={['edit']} />
                             </div>
                         }
                     </div>

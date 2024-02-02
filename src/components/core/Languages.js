@@ -8,7 +8,7 @@ function Languages({ data, buttons, card }) {
                 <Core.Card className={"p-5 border"}>
                     <div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Languages</h5>
-                        <Core.ProficienciesActions buttons={buttons} type="language" />
+                        <Core.ProficienciesActions buttons={['add', 'edit']} type="language" />
                     </div>
                     <div className='flex flex-col justify-start gap-x-3 gap-y-2'>
                         {data?.map((value, index) => {
@@ -25,7 +25,7 @@ function Languages({ data, buttons, card }) {
                 <>
                     <div className='flex justify-between items-start'>
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Languages</h5>
-                        <Core.ProficienciesActions buttons={buttons} />
+                        <Core.ProficienciesActions buttons={['add', 'edit']} />
                     </div>
                     <div className='flex justify-start items-end pt-3'>
                         {data?.map((value, index) => {

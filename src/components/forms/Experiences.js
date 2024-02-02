@@ -4,6 +4,7 @@ import { Country, State, City } from 'country-state-city';
 import { Core } from '..';
 import logo3 from "../../assets/images/company-logos/logo3.png";
 import logo5 from "../../assets/images/company-logos/logo1.png";
+import {  useSelector } from 'react-redux';
 
 const experiences = [
     {
@@ -37,9 +38,10 @@ const experiences = [
     },
 ]
 
-function Experiences({ action, handleCancel, id }) {
+function Experiences({ action, handleCancel, id, setExperiencesData }) {
+    const candidate = useSelector((state) => state?.Candidate?.candidate);
 
-    const experienceToEdit = id ? experiences?.find(experience => experience?.id === id) : undefined;
+    const experienceToEdit = []
 
     // console.log("experienceToEdit", experienceToEdit)
 

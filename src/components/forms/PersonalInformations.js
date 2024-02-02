@@ -31,6 +31,7 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
     const user = candidate?.userId
     const lastName = user?.name.split(" ")[1]
     const firstName = user?.name.split(" ")[0]
+    console.log(personalInformationDataSavedOnDb, "canidate information")
 
     const careerLevelOptions = [
         { name: "Entry Level", value: "entryLevel" },
@@ -115,11 +116,16 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
         name: firstName,
         lastName: lastName,
         email: user?.email,
-        zipCode: personalInformationDataSavedOnDb.zipCode,
+        zipCode: personalInformationDataSavedOnDb.zipCode, 
         expectedSalary: personalInformationDataSavedOnDb.expectedSalary,
         careerLevel: personalInformationDataSavedOnDb.careerLevel,
         experience: personalInformationDataSavedOnDb.experience,
         gender: personalInformationDataSavedOnDb.gender,
+        phoneNo:personalInformationDataSavedOnDb.phoneNo,
+        country: personalInformationDataSavedOnDb.country,
+        state: personalInformationDataSavedOnDb.state,
+        city: personalInformationDataSavedOnDb.city,
+
     });
     // const [selectedCountry, setSelectedCountry] = useState(personalInformationDataSavedOnDb.country);
     const [selectedCountry, setSelectedCountry] = useState('');
@@ -232,21 +238,19 @@ function PersonalInformations({ action, handleCancel, setPersonalInformationData
         console.log("zip", values.zip);
         let _personalInformationData = {
             profilePicture: profilePicture,
-            name: values.name,
-            lastName: values.lastName,
-            email: values.email,
             phoneNo: values.phoneNo,
             dob: dob,
             gender: values.gender,
-            selectedCountry: selectedCountry,
-            selectedState: selectedState,
-            selectedCity: selectedCity,
+            country: selectedCountry,
+            state: selectedState,
+            city: selectedCity,
             careerLevel: values.careerLevel,
             experience: values.experience,
             expectedSalary: values.expectedSalary,
-            zip: values.zip,
+            zipCode: values.zip,
         }
         setPersonalInformationData(_personalInformationData)
+        console.log(_personalInformationData, "perfirmation")
     };
 
     return (

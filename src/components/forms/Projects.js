@@ -55,7 +55,8 @@ const projects = [
     // },
 ]
 
-function Projects({ action, handleCancel, id }) {
+function Projects({ action, handleCancel, id, setProjectsData }) {
+    console.log(id, "idddddddd")
     const projectToEdit = id ? projects?.find(project => project?.id === id) : undefined;
 
     const associatedOptions = [
@@ -87,32 +88,30 @@ function Projects({ action, handleCancel, id }) {
         { name: 'December', value: '12' },
     ];
     const [data] = useState({
-        id: projectToEdit?.id ? projectToEdit?.id : "",
-        img: projectToEdit?.img ? projectToEdit?.img : "",
-        projectUrl: projectToEdit?.link ? projectToEdit?.link : "",
-        name: projectToEdit?.title ? projectToEdit?.title : "",
-        associated: projectToEdit?.associated ? projectToEdit?.associated : "",
-        currentlyInProcess: projectToEdit?.currentlyInProcess ? projectToEdit?.currentlyInProcess : false,
+        projectUrl:"",
+        name: "",
+        associated: "",
+        currentlyInProcess: false,
     });
-    const [description, setDescription] = useState(projectToEdit?.description ? projectToEdit?.description : "");
+    const [description, setDescription] = useState("");
     const [projectImage, setProjectImage] = useState('');
 
-    const startMonth = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
-    const _startMonth = startMonth ? startMonth[1] : null;
+    // const startMonth = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
+    // const _startMonth = startMonth ? startMonth[1] : null;
 
-    const endMonth = projectToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
-    const _endMonth = endMonth ? endMonth[1] : null;
+    // const endMonth = projectToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
+    // const _endMonth = endMonth ? endMonth[1] : null;
 
-    const _startYear = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
-    const __startYear = _startYear ? _startYear[2] : null;
+    // const _startYear = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
+    // const __startYear = _startYear ? _startYear[2] : null;
 
-    const _endYear = projectToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
-    const __endYear = _endYear ? _endYear[2] : null;
+    // const _endYear = projectToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
+    // const __endYear = _endYear ? _endYear[2] : null;
 
-    const [selectedStartMonth, setSelectedStartMonth] = useState(_startMonth);
-    const [selectedEndMonth, setSelectedEndMonth] = useState(_endMonth);
-    const [selectedStartYear, setSelectedStartYear] = useState(__startYear);
-    const [selectedEndYear, setSelectedEndYear] = useState(__endYear);
+    const [selectedStartMonth, setSelectedStartMonth] = useState();
+    const [selectedEndMonth, setSelectedEndMonth] = useState();
+    const [selectedStartYear, setSelectedStartYear] = useState();
+    const [selectedEndYear, setSelectedEndYear] = useState();
 
 
     const [startDate, setStartDate] = useState();
@@ -166,11 +165,13 @@ function Projects({ action, handleCancel, id }) {
     };
 
     const handleSubmit = (values, actions) => {
-        console.log(values);
+        console.log({values});
+        setProjectsData({...values, description, projectImage,startDate, endDate})
         console.log('description', description);
         console.log('projectImage', projectImage);
         console.log("startDate", startDate)
         console.log("endDate", endDate)
+        // setProjectsData(values)
     };
 
     return (
