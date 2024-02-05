@@ -1,9 +1,9 @@
 import React from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-import { Core, UserProfile, } from '../../../../components';
+import { UserProfile, } from '../../../../components';
 // import employersData from '../../../../data/employersData.json';
 import { useSelector } from 'react-redux';
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 const breadcrumb = [
@@ -14,9 +14,9 @@ const breadcrumb = [
 
 function ViewCandidates() {
     // const { tableData } = employersData;
-    const  AppliedAllJobs  = useSelector((state) => state?.manageCandidateAdmin?.jobs);
+    const AppliedAllJobs = useSelector((state) => state?.manageCandidateAdmin?.jobs);
     const { id } = useParams();
-    const extractedData = AppliedAllJobs?.find(item => item.candidate.userId === id);
+    const extractedData = AppliedAllJobs?.find(item => item?.candidate?.userId === id);
     // console.log(extractedData, "data frm comp")
     const dropdownOptions = [
         "activate",

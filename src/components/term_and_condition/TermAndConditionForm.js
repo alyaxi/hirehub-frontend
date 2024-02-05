@@ -1,7 +1,6 @@
 // TermAndConditionForm.js
 import React, { useState } from 'react';
-import { Core } from '..';
-import { Radio } from 'antd';
+import { Core } from '..'; 
 
 function TermAndConditionForm({
     // handleShortSummeryChange,

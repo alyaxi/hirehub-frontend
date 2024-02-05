@@ -6,15 +6,15 @@ import Icon from '../icon';
 import { useSelector } from 'react-redux';
 
 function PersonalInformations({ action, handleCancel,
-    setCandidateProfileData,handleSenddata
+    setCandidateProfileData, handleSenddata
 }) {
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const personalInformationDataSavedOnDb = candidate?.personalInformationData
-    
+
     const user = candidate?.userId
     const lastName = user?.name.split(" ")[1]
     const firstName = user?.name.split(" ")[0]
-console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
+    console.log("personalInformationDataSavedOnDb", personalInformationDataSavedOnDb)
     const careerLevelOptions = [
         { name: "Entry Level", value: "entryLevel" },
         { name: "Mid-Level", value: "midLevel" },
@@ -36,7 +36,7 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
         { name: "10 years", value: "10years" },
         { name: "Over 10 years", value: "Over10" },
     ];
-    
+
     const expectedSalaryOptions = [
         { name: "$1000 - $1500", value: "1000-1500" },
         { name: "$1500 - $2000", value: "1500-2000" },
@@ -93,6 +93,7 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
         experience: personalInformationDataSavedOnDb?.experience,
         gender: personalInformationDataSavedOnDb?.gender,
         phoneNo: personalInformationDataSavedOnDb?.phoneNo,
+        statusLine: personalInformationDataSavedOnDb?.statusLine,
         country: personalInformationDataSavedOnDb?.country,
         state: personalInformationDataSavedOnDb?.state,
         city: personalInformationDataSavedOnDb?.city,
@@ -186,6 +187,7 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
         let _personalInformationData = {
             profilePicture: profilePicture || "",
             phoneNo: values.phoneNo || "",
+            statusLine: values.statusLine || "",
             dob: dob || "",
             gender: values.gender || "",
             country: selectedCountry || "",
@@ -196,6 +198,7 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
             expectedSalary: values.expectedSalary || "",
             zipCode: values.zipCode || "",
         }
+        console.log("_personalInformationData.statusLine", _personalInformationData.statusLine)
         // setPersonalInformationData(_personalInformationData)
         setCandidateProfileData(prevData => ({
             ...prevData,
@@ -283,6 +286,18 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
                             )}
                         </Field>
                     </div>
+
+                    <Field name="statusLine">
+                        {({ field }) => (
+                            <Core.TextAreaWithLabel
+                                name="statusLine"
+                                label
+                                {...field}
+                                value={field.value}
+                                maxlength="180"
+                            />
+                        )}
+                    </Field>
 
                     <div className='w-full mb-4'>
                         <div className='flex gap-x-2'>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { CandidateProfile, Core, } from '../../../components';
+import React from 'react';
+import { Core, } from '../../../components';
 
 const MyEventsList = [
   {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
 import Inbox from './Inbox';

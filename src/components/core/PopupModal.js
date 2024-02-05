@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
 import Forms from '../forms';
-import Summary from './Summary';
 import { UpdateCanidateData} from '../../Slices/Candidates/CandidateSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function PopupModal({ setIsModalOpen,
     isModalOpen,
@@ -11,10 +10,7 @@ function PopupModal({ setIsModalOpen,
     action,
     id
 }) {
-    const dispatch = useDispatch()
-    console.log("type", type)
-    console.log("action", action)
-    console.log("id", id)
+    const dispatch = useDispatch() 
     // const [candidateProfileData2, setCandidateProfileData2] = useState({
     //     personalInformationData: {
     // profilePicture: "",

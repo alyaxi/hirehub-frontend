@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Breadcrumb } from '../../../../components/core';
-import TableB from '../../../../components/table/TableB';
-import { useNavigate } from "react-router-dom"
 import AddQuestionnaire from '../../../../components/questionaire/AddQuestionaire';
 // import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 // import { useDispatch, useSelector } from 'react-redux';
@@ -78,10 +76,6 @@ const breadcrumb = [
 ];
 
 function AddQuestionnaireEmployer() {
-    const [product, setProduct] = useState("");
- 
-
-    console.log("product", product);
 
     return (
         <>

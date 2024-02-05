@@ -48,7 +48,7 @@ function CandidateProfile() {
         <div className='flex justify-between gap-x-6 w-full'>
             <div className='w-auto'>
                 <div className='flex flex-col gap-y-3 pb-[50px]'>
-                    <Core.PersonalInformation data={personalInformation} user={user} card />
+                    <Core.PersonalInformation data={personalInformation} user={user}   />
                     <Core.Summary data={summery} card />
                     <Core.Projects data={projects} card />
                     <Core.Experience data={experience} card />

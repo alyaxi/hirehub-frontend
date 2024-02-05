@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Stat from './Stat';
 
-function StatsGroup({
- data
-}) {
+function StatsGroup({ data }) {
 
     return (
         <div className='flex justify-between items-center flex-wrap gap-5 pb-5'>
