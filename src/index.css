@@ -4,82 +4,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
 
 * {
-    padding: 0;
-    margin: 0;
-    font-family: 'Inter', sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .scrollbar::-webkit-scrollbar-track {
-    border-radius: 100vh;
-    /* background: rgb(241, 241, 241); */
+  border-radius: 100vh;
+  /* background: rgb(241, 241, 241); */
 }
 
 .scrollbar:hover::-webkit-scrollbar-thumb {
-    /* background: #9c9afc; */
-    background: #9c9afc49;
-    border-radius: 100vh 0 0 100vh;
+  /* background: #9c9afc; */
+  background: #9c9afc49;
+  border-radius: 100vh 0 0 100vh;
 }
 
 .scrollbar::-webkit-scrollbar {
 
-    width: 5px;
-    height: 5px;
+  width: 5px;
+  height: 5px;
 }
 
 .scrollbar:hover::-webkit-scrollbar {
 
-    width: 5px;
-    height: 5px;
+  width: 5px;
+  height: 5px;
 }
 
 .ant-pagination .ant-pagination-item a,
 .ant-pagination .ant-pagination-next .ant-pagination-item-link {
-    width: 32px;
-    height: 32px;
-    color: #8913FF;
-    font-size: 14px;
-    font-weight: 600;
+  width: 32px;
+  height: 32px;
+  color: #8913FF;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .ant-pagination .ant-pagination-item-active a {
-    color: #fff;
+  color: #fff;
 }
 
 .ant-pagination .ant-pagination-item,
 .ant-pagination .ant-pagination-next,
 .ant-pagination .ant-pagination-prev {
-    background-color: #F3EFF6;
-    border: none;
+  background-color: #F3EFF6;
+  border: none;
 }
 
 .ant-pagination .ant-pagination-item-active {
-    background-color: #8913FF;
+  background-color: #8913FF;
 }
 
 .ant-pagination .ant-pagination-options {
-    display: none;
+  display: none;
 }
 
 .ant-tabs-nav-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
 ul.menu-list:before {
-    /* box-shadow: 0 4px 25px 8px rgba(0,0,0,.15); */
-    box-shadow: 0 4px 25px 8px rgba(0,0,0,.08);
-    content: "";
-    height: 0px;
-    position: absolute;
-    bottom: 0;
-    width: 90%;
-    z-index: 0;
+  /* box-shadow: 0 4px 25px 8px rgba(0,0,0,.15); */
+  box-shadow: 0 4px 25px 8px rgba(0, 0, 0, .08);
+  content: "";
+  height: 0px;
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  z-index: 0;
 }
 
 
@@ -87,14 +87,14 @@ ul.menu-list:before {
 
 /* :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select > .ant-upload { */
 /* :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select { */
-    :where(.css-dev-only-do-not-override-dkbvqv).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select {
-    width: 21px;
-    height: 21px;
-    border: none;
+:where(.css-dev-only-do-not-override-dkbvqv).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select {
+  width: 21px;
+  height: 21px;
+  border: none;
 }
 
 :where(.css-dev-only-do-not-override-nllxry).ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action.ant-btn-sm {
-    display: none;
+  display: none;
 }
 
 /* .upload-avatar-wrapper .ant-upload, .upload-avatar-wrapper .ant-upload-select {
@@ -105,31 +105,33 @@ ul.menu-list:before {
 
 
 .disable-me {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .disable-me:before {
-    content: "";
-    position: absolute;
-    z-index: 10;
-    width: calc(100% + 20px);
-    height: calc(100% + 10px);
-    border-radius: 10px;
-    background-color: rgba(168, 168, 168, 0.623);
-    opacity: .3;
-    margin: -5px -10px;
+  content: "";
+  position: absolute;
+  z-index: 10;
+  width: calc(100% + 20px);
+  height: calc(100% + 10px);
+  border-radius: 10px;
+  background-color: rgba(168, 168, 168, 0.623);
+  opacity: .3;
+  margin: -5px -10px;
 }
 
 .disable-me input,
 .disable-me select,
 .disable-me label {
-    opacity: .5;
+  opacity: .5;
 }
+
 .ant-upload-wrapper .ant-upload-list.ant-upload-list-text {
-    display: none;
+  display: none;
 }
+
 /* .ant-upload-wrapper .ant-upload-list.ant-upload-list-text .ant-upload-list-item-container {
     display: none;
 }
@@ -138,64 +140,70 @@ ul.menu-list:before {
 } */
 
 .responsibilities-container ul {
-    list-style-type: disc; /* or any other list style you prefer */
-    padding-left: 20px;    /* adjust as needed */
-  }
-  
-  .responsibilities-container li {
-    margin-bottom: 5px;    /* adjust as needed */
-  }
+  list-style-type: disc;
+  /* or any other list style you prefer */
+  padding-left: 20px;
+  /* adjust as needed */
+}
 
-  .responsibilities-container  .ql-align-justify {
-    text-align: justify;
-  }
-  
-  /* Example styles for different elements */
-  .responsibilities-container p {
-    margin-bottom: 10px;
-  }
-  
-  .responsibilities-container h1 {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .responsibilities-container h2 {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .responsibilities-container  h3 {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .responsibilities-container strong {
-    font-weight: bold;
-  }
-  
-  .responsibilities-container  em {
-    font-style: italic;
-  }
-  
-  .responsibilities-container  u {
-    text-decoration: underline;
-  }
-  
-  .responsibilities-container ol {
-    list-style-type: decimal;
-    margin-left: 20px;
-  }
-  
-  .responsibilities-container ul {
-    list-style-type: disc;
-    margin-left: 20px;
-  }
-  
-  .responsibilities-container li {
-    margin-bottom: 5px;
-  }
-  
+.responsibilities-container li {
+  margin-bottom: 5px;
+  /* adjust as needed */
+}
 
+.responsibilities-container .ql-align-justify {
+  text-align: justify;
+}
 
-  
+/* Example styles for different elements */
+.responsibilities-container p {
+  margin-bottom: 10px;
+}
+
+.responsibilities-container h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.responsibilities-container h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.responsibilities-container h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.responsibilities-container strong {
+  font-weight: bold;
+}
+
+.responsibilities-container em {
+  font-style: italic;
+}
+
+.responsibilities-container u {
+  text-decoration: underline;
+}
+
+.responsibilities-container ol {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+
+.responsibilities-container ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.responsibilities-container li {
+  margin-bottom: 5px;
+}
+
+span.email-first-view {
+  max-width: 800px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

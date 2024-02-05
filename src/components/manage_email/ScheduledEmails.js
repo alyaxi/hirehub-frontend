@@ -19,36 +19,54 @@ const columns = [
 const savedTemplate = [
     {
         id: "1",
-        emailTitle: "Job Interview Invitation",
+        emailTitle: {
+            subject: "Congratulations! prototypes without code",
+            text: `<p>Dear, Candidate,</p><p><br></p><p>Office on saturday 5th jan for interview.</p><p><br></p><ol><li class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. </li><li class="ql-align-justify">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </li><li class="ql-align-justify">when an unknown printer took a galley of type and scrambled</li><li class="ql-align-justify">it to make a type specimen book. It has survived not only five</li><li class="ql-align-justify">centuries, but also the leap into electronic typesetting, remaining essentially </li><li class="ql-align-justify">unchanged. It was popularised</li></ol><p class="ql-align-justify"><br></p><p class="ql-align-justify"><span style="color: rgb(0, 0, 0);">It is a long established fact that a </span><strong style="color: rgb(0, 0, 0);">reader will</strong><span style="color: rgb(0, 0, 0);"> be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here</span></p>`,
+        },
         process: 'proceedToNext'
     },
     {
         id: "2",
-        emailTitle: "Onboarding Information",
+        emailTitle: {
+            subject: "Congratulations! prototypes without code",
+            text: `<p>Dear, Candidate,</p><p><br></p><p>Office on saturday 5th jan for interview.</p><p><br></p><ol><li class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. </li><li class="ql-align-justify">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </li><li class="ql-align-justify">when an unknown printer took a galley of type and scrambled</li><li class="ql-align-justify">it to make a type specimen book. It has survived not only five</li><li class="ql-align-justify">centuries, but also the leap into electronic typesetting, remaining essentially </li><li class="ql-align-justify">unchanged. It was popularised</li></ol><p class="ql-align-justify"><br></p><p class="ql-align-justify"><span style="color: rgb(0, 0, 0);">It is a long established fact that a </span><strong style="color: rgb(0, 0, 0);">reader will</strong><span style="color: rgb(0, 0, 0);"> be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here</span></p>`,
+        },
         process: 'proceedToNext'
 
     },
     {
         id: "3 ",
-        emailTitle: "Assessment/Testing Instructions",
+        emailTitle: {
+            subject: "Congratulations! prototypes without code",
+            text: `<p>Dear, Candidate,</p><p><br></p><p>Office on saturday 5th jan for interview.</p><p><br></p><ol><li class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. </li><li class="ql-align-justify">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </li><li class="ql-align-justify">when an unknown printer took a galley of type and scrambled</li><li class="ql-align-justify">it to make a type specimen book. It has survived not only five</li><li class="ql-align-justify">centuries, but also the leap into electronic typesetting, remaining essentially </li><li class="ql-align-justify">unchanged. It was popularised</li></ol><p class="ql-align-justify"><br></p><p class="ql-align-justify"><span style="color: rgb(0, 0, 0);">It is a long established fact that a </span><strong style="color: rgb(0, 0, 0);">reader will</strong><span style="color: rgb(0, 0, 0);"> be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here</span></p>`,
+        },
         process: 'proceedToNext'
 
     },
     {
         id: "4",
-        emailTitle: "Job Offer",
+        emailTitle: {
+            subject: "Congratulations! prototypes without code",
+            text: `<p>Dear, Candidate,</p><p><br></p><p>Office on saturday 5th jan for interview.</p><p><br></p><ol><li class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. </li><li class="ql-align-justify">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </li><li class="ql-align-justify">when an unknown printer took a galley of type and scrambled</li><li class="ql-align-justify">it to make a type specimen book. It has survived not only five</li><li class="ql-align-justify">centuries, but also the leap into electronic typesetting, remaining essentially </li><li class="ql-align-justify">unchanged. It was popularised</li></ol><p class="ql-align-justify"><br></p><p class="ql-align-justify"><span style="color: rgb(0, 0, 0);">It is a long established fact that a </span><strong style="color: rgb(0, 0, 0);">reader will</strong><span style="color: rgb(0, 0, 0);"> be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here</span></p>`,
+        },
         process: 'proceedToNext'
 
     },
     {
         id: "5",
-        emailTitle: "Your Application has been viewed",
+        emailTitle: {
+            subject: "Congratulations! prototypes without code",
+            text: `<p>Dear, Candidate,</p><p><br></p><p>Office on saturday 5th jan for interview.</p><p><br></p><ol><li class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. </li><li class="ql-align-justify">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </li><li class="ql-align-justify">when an unknown printer took a galley of type and scrambled</li><li class="ql-align-justify">it to make a type specimen book. It has survived not only five</li><li class="ql-align-justify">centuries, but also the leap into electronic typesetting, remaining essentially </li><li class="ql-align-justify">unchanged. It was popularised</li></ol><p class="ql-align-justify"><br></p><p class="ql-align-justify"><span style="color: rgb(0, 0, 0);">It is a long established fact that a </span><strong style="color: rgb(0, 0, 0);">reader will</strong><span style="color: rgb(0, 0, 0);"> be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here</span></p>`,
+        },
         process: 'proceedToNext'
 
     },
     {
         id: "6",
-        emailTitle: "Job Interview Invitation",
+        emailTitle: {
+            subject: "Congratulations! prototypes without code",
+            text: `<p>Dear, Candidate,</p><p><br></p><p>Office on saturday 5th jan for interview.</p><p><br></p><ol><li class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. </li><li class="ql-align-justify">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </li><li class="ql-align-justify">when an unknown printer took a galley of type and scrambled</li><li class="ql-align-justify">it to make a type specimen book. It has survived not only five</li><li class="ql-align-justify">centuries, but also the leap into electronic typesetting, remaining essentially </li><li class="ql-align-justify">unchanged. It was popularised</li></ol><p class="ql-align-justify"><br></p><p class="ql-align-justify"><span style="color: rgb(0, 0, 0);">It is a long established fact that a </span><strong style="color: rgb(0, 0, 0);">reader will</strong><span style="color: rgb(0, 0, 0);"> be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here</span></p>`,
+        },
         process: 'proceedToNext'
 
     },
@@ -66,7 +84,7 @@ function ScheduledEmails({
         setProceedToNext(!proceedToNext)
     };
     return (
-        <Core.Card className={'p-5'}>
+        <div className={'p-5'}>
 
             {proceedToNext ?
                 <>
@@ -131,7 +149,7 @@ function ScheduledEmails({
                 </>
             }
 
-        </Core.Card>
+        </div>
     );
 }
 
