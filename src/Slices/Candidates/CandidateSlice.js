@@ -20,7 +20,7 @@ export const getCandidate = createAsyncThunk('candidate/get-candidate', async (_
     }
 });
 
-export const UpdateEmployerById = createAsyncThunk('candidate/update-candidate', async (formDataToSend) => {
+export const UpdateCanidateData = createAsyncThunk('candidate/update-candidate', async (formDataToSend) => {
 
     try {
         // console.log("updateEmployererrrbyidddd consolee", formDataToSend)
@@ -67,7 +67,7 @@ const CandidateSlice = createSlice({
 
 
         })
-        builder.addCase(UpdateEmployerById.fulfilled, (state, { payload }) => {
+        builder.addCase(UpdateCanidateData.fulfilled, (state, { payload }) => {
             state.reload = true
             console.log(payload, "payloadd from candidate updtate");
             state.candidate = payload?.data?.employer

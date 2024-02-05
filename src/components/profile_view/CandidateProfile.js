@@ -13,15 +13,15 @@ function CandidateProfile() {
 
     // console.log(candidate, "ManageProfileCandidate")
 
-    const personalInformation = candidate.personalInformationData
-    const experience = candidate.experiencesData
-    const education = candidate.educationsData
-    const skill = candidate.skillsData;
-    const summery = candidate.summery;
-    const projects = candidate.projectsData;
-    const language = candidate.languagesData;
-    const jobPreference = candidate.jobPreference;
-    const user = candidate.userId
+    const personalInformation = candidate?.personalInformationData
+    const experience = candidate?.experiencesData
+    const education = candidate?.educationsData
+    const skill = candidate?.skillsData;
+    const summery = candidate?.summery;
+    const projects = candidate?.projectsData;
+    const language = candidate?.languagesData;
+    const jobPreference = candidate?.jobPreference;
+    const user = candidate?.userId
 
     const [resumePrivacySetting, setResumePrivacySetting] = useState(1);
 
@@ -102,7 +102,7 @@ function CandidateProfile() {
                     <h4 className='text-black-1 text-[18px] leading-[22px] font-medium mb-5'>Update your profile for better job recommendations</h4>
                     <h6 className='text-black-3 text-[14px] leading-[20px] font-medium -mb-[3px]'>Product Status</h6>
                     <Progress percent={50} status="active" className='m-0 ' />
-                    <span className='block text-black-3 text-[10px] leading-[12px] opacity-75'>Profile 50% Complete</span>
+                    <span className='block text-black-3 text-[10px] leading-[12px] opacity-75'>Profile {personalInformation?.profileCompletion}% Complete</span>
                     <ul className='flex flex-col gap-y-2 mt-5'>
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-green-5'><Icon name="Tick" /></span><span>Work History</span></li>
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-green-5'><Icon name="Tick" /></span><span>Personal Info</span></li>
