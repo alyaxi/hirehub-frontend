@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Modal } from 'antd';
 import Forms from '../forms';
 import Summary from './Summary';
+import { UpdateCanidateData} from '../../Slices/Candidates/CandidateSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 function PopupModal({ setIsModalOpen,
     isModalOpen,
@@ -9,6 +11,7 @@ function PopupModal({ setIsModalOpen,
     action,
     id
 }) {
+    const dispatch = useDispatch()
     console.log("type", type)
     console.log("action", action)
     // const [candidateProfileData2, setCandidateProfileData2] = useState({
@@ -91,9 +94,7 @@ function PopupModal({ setIsModalOpen,
     // })
 
 
-    const [candidateProfileData, setCandidateProfileData] = useState({
-
-    })
+    const [candidateProfileData, setCandidateProfileData] = useState({})
 
     // const [personalInformationData, setPersonalInformationData] = useState({
     //     avatar: "",
@@ -150,6 +151,10 @@ function PopupModal({ setIsModalOpen,
         setIsModalOpen(false);
     };
 
+    
+      
+      
+
     let _action = action === "edit" ? "Edit" : "Add";
     let title = '';
 
@@ -187,14 +192,37 @@ function PopupModal({ setIsModalOpen,
     let _title = _action + " " + title;
 
     console.log(candidateProfileData, "candidateProfileData")
+    
+    const convertDataToFormData = (data) => {
+        const formData = new FormData();
+      
+        for (const key in data.ProfileInformationData) {
+          if (data.ProfileInformationData.hasOwnProperty(key)) {
+            const value = data.ProfileInformationData[key];
+            formData.append(key, value);
+          }
+        }
+      
+        return formData;
+      };
+      
+      
 
     const handleSenddata = () => {
-        if (action == "edit") {
-            console.log("edit")
-        }
-        if (action == "add") {
-            console.log("add")
-        }
+       try {
+        console.log("runingggg")
+        const formData = convertDataToFormData(candidateProfileData);
+        console.log("editttttttt")
+        dispatch(UpdateCanidateData(candidateProfileData)).unwrap().then(x => {console.log(x, "Ressss")}).catch(err => console.log(err, "errorr"))
+       } catch (error) {
+        console.log(error, "catch error")
+       }
+        
+        // if (action == "edit") {
+        // }
+        // if (action == "add") {
+        //     console.log("add")
+        // }
     }
 
     return (
@@ -204,6 +232,7 @@ function PopupModal({ setIsModalOpen,
                 handleCancel={handleCancel}
                 action={action}
                 setCandidateProfileData={setCandidateProfileData}
+                handleSenddata={handleSenddata}
             />}
 
             {type === "summery" &&
@@ -211,6 +240,8 @@ function PopupModal({ setIsModalOpen,
                     handleCancel={handleCancel}
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
+                    handleSenddata={handleSenddata}
+
                 />}
 
             {type === "projectsData" &&
@@ -247,6 +278,8 @@ function PopupModal({ setIsModalOpen,
                     handleCancel={handleCancel}
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
+                    handleSenddata={handleSenddata}
+
                 />}
 
             {(type === "skillsData" && action === "edit") &&
@@ -255,6 +288,7 @@ function PopupModal({ setIsModalOpen,
                     action={'edit'}
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
+                   
                 />}
 
 
@@ -264,6 +298,8 @@ function PopupModal({ setIsModalOpen,
                     handleCancel={handleCancel}
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
+                    handleSenddata={handleSenddata}
+
                 />}
 
             {(type === "languagesData" && action === "edit") &&

@@ -6,10 +6,11 @@ import Icon from '../icon';
 import { useSelector } from 'react-redux';
 
 function PersonalInformations({ action, handleCancel,
-    setCandidateProfileData,
+    setCandidateProfileData,handleSenddata
 }) {
     const candidate = useSelector((state) => state?.Candidate?.candidate);
-    const personalInformationDataSavedOnDb = candidate.personalInformation
+    const personalInformationDataSavedOnDb = candidate?.personalInformationData
+    
     const user = candidate?.userId
     const lastName = user?.name.split(" ")[1]
     const firstName = user?.name.split(" ")[0]
@@ -82,6 +83,7 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
     });
 
     const [data] = useState({
+        profilePicture: personalInformationDataSavedOnDb?.zipCode,
         name: firstName,
         lastName: lastName,
         email: user?.email,
@@ -182,23 +184,24 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
         // console.log("expectedSalary", values.expectedSalary);
         // console.log("zip", values.zip);
         let _personalInformationData = {
-            profilePicture: profilePicture,
-            phoneNo: values.phoneNo,
-            dob: dob,
-            gender: values.gender,
-            country: selectedCountry,
-            state: selectedState,
-            city: selectedCity,
-            careerLevel: values.careerLevel,
-            experience: values.experience,
-            expectedSalary: values.expectedSalary,
-            zipCode: values.zip,
+            profilePicture: profilePicture || "",
+            phoneNo: values.phoneNo || "",
+            dob: dob || "",
+            gender: values.gender || "",
+            country: selectedCountry || "",
+            state: selectedState || "",
+            city: selectedCity || "",
+            careerLevel: values.careerLevel || "",
+            experience: values.experience || "",
+            expectedSalary: values.expectedSalary || "",
+            zipCode: values.zipCode || "",
         }
         // setPersonalInformationData(_personalInformationData)
         setCandidateProfileData(prevData => ({
             ...prevData,
             personalInformationData: _personalInformationData,
         }));
+        handleSenddata()
     };
 
     return (

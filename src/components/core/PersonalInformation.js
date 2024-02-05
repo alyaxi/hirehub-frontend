@@ -23,10 +23,10 @@ function PersonalInformation({ data, user, card }) {
                         <div className='flex justify-start items-end pt-3'>
                             <div className='flex flex-col justify-center items-center w-[22%] pr-8'>
                                 <span className='text-gray-6 text-[18px] font-semibold pl-2'>
-                                    {data?.profileCompletion}%
+                                    {data?.profileCompletion}
                                 </span>
                                 <div className="relative rounded-full overflow-hidd en w-[120px] h-[120px] px-[0.30rem] pt-[0.25rem] pb-[0.30rem]">
-                                    <Avatar size={112} src={avatar1} className="relative z-[1] w-full h-full object-cove r overflow-hidden rounded-full">{firstLetter}</Avatar>
+                                    <Avatar size={112} src={data?.profilePicture} className="relative z-[1] w-full h-full object-cove r overflow-hidden rounded-full">{firstLetter}</Avatar>
                                     <div className="absolute top-0 right-0 -z-1 w-[50%] h-[100%] rounded-tl-[5px] rounded-tr-[100px] rounded-bl-[5px] rounded-br-[100px] bg-green-5 border-[7px] border-green-5"></div>
                                 </div>
                             </div>

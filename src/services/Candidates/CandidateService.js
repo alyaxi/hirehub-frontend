@@ -18,10 +18,10 @@ const CandidateService = {
     },
     async UpdateCandidateData(formDataToSend) {
         try {
-            console.log("updated from servie candidate", formDataToSend);
-            for (var pair of formDataToSend.entries()) {
-                console.log(pair[0]+ ', ' + pair[1]); 
-            }
+            // console.log("updated from servie candidate", formDataToSend);
+            // for (var pair of formDataToSend.entries()) {
+            //     console.log(pair[0]+ ', ' + pair[1], "forrrrrrrrrrrm dta"); 
+            // }
             const response = await api.post('/update-candidate', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
