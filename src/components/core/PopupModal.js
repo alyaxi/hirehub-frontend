@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from 'antd';
 import Forms from '../forms';
 import Summary from './Summary';
-import { UpdateCanidateData} from '../../Slices/Candidates/CandidateSlice';
+import { UpdateCanidateData } from '../../Slices/Candidates/CandidateSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 function PopupModal({ setIsModalOpen,
@@ -151,9 +151,9 @@ function PopupModal({ setIsModalOpen,
         setIsModalOpen(false);
     };
 
-    
-      
-      
+
+
+
 
     let _action = action === "edit" ? "Edit" : "Add";
     let title = '';
@@ -192,32 +192,38 @@ function PopupModal({ setIsModalOpen,
     let _title = _action + " " + title;
 
     console.log(candidateProfileData, "candidateProfileData")
-    
-    const convertDataToFormData = (data) => {
+
+    const cleanAndAppendToFormData = (data) => {
         const formData = new FormData();
-      
-        for (const key in data.ProfileInformationData) {
-          if (data.ProfileInformationData.hasOwnProperty(key)) {
-            const value = data.ProfileInformationData[key];
-            formData.append(key, value);
-          }
+
+        for (const key in data.personalInformationData) {
+
+            const value = data.personalInformationData[key];
+
+            // Check for undefined and non-empty strings
+            if (value !== undefined && value !== '') {
+                formData.append(`personalInformationData[${key}]`, value);
+            }
+
         }
-      
+
         return formData;
-      };
-      
-      
+    };
+
+
+
+
 
     const handleSenddata = () => {
-       try {
-        console.log("runingggg")
-        const formData = convertDataToFormData(candidateProfileData);
-        console.log("editttttttt")
-        dispatch(UpdateCanidateData(candidateProfileData)).unwrap().then(x => {console.log(x, "Ressss")}).catch(err => console.log(err, "errorr"))
-       } catch (error) {
-        console.log(error, "catch error")
-       }
-        
+        try {
+            console.log("runingggg")
+            const formData = cleanAndAppendToFormData(candidateProfileData);
+            console.log("editttttttt")
+            dispatch(UpdateCanidateData(formData)).unwrap().then(x => { console.log(x, "Ressss") }).catch(err => console.log(err, "errorr"))
+        } catch (error) {
+            console.log(error, "catch error")
+        }
+
         // if (action == "edit") {
         // }
         // if (action == "add") {
@@ -288,7 +294,7 @@ function PopupModal({ setIsModalOpen,
                     action={'edit'}
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
-                   
+
                 />}
 
 

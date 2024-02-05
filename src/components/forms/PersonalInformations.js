@@ -12,8 +12,8 @@ function PersonalInformations({ action, handleCancel,
     const personalInformationDataSavedOnDb = candidate?.personalInformationData
     
     const user = candidate?.userId
-    const lastName = user?.name.split(" ")[1]
-    const firstName = user?.name.split(" ")[0]
+    const lastName = user?.name?.split(" ")[1]
+    const firstName = user?.name?.split(" ")[0]
 console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
     const careerLevelOptions = [
         { name: "Entry Level", value: "entryLevel" },
@@ -119,6 +119,7 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
     const [selectedYear, setSelectedYear] = useState(_year);
     const [dob, setDob] = useState();
     const [profilePicture, setProfilePictrue] = useState('');
+    console.log(personalInformationDataSavedOnDb.country, "countryyyyyyyy")
 
     useEffect(() => {
         const allCountries = Country.getAllCountries();
@@ -196,6 +197,7 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
             expectedSalary: values.expectedSalary || "",
             zipCode: values.zipCode || "",
         }
+        
         // setPersonalInformationData(_personalInformationData)
         setCandidateProfileData(prevData => ({
             ...prevData,
@@ -354,17 +356,18 @@ console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
                     <div className='mb-4'>
                         {/* Country */}
                         <label className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}>
-                            Nationality <span className='text-[red]'>*</span>
+                            Country <span className='text-[red]'>*</span>
                         </label>
                         <select
                             name="nationality"
                             onChange={handleCountryChange}
+                            defaultValue={personalInformationDataSavedOnDb?.country}
                             value={selectedCountry}
                             className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
                             <option value="">Select</option>
                             {countries.map((country) => (
-                                <option key={country.isoCode} value={country.isoCode}>
+                                <option key={country.isoCode} value={country.isoCode} defaultValue={personalInformationDataSavedOnDb?.country}>
                                     {country.name}
                                 </option>
                             ))}

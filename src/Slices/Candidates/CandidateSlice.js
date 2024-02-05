@@ -70,7 +70,7 @@ const CandidateSlice = createSlice({
         builder.addCase(UpdateCanidateData.fulfilled, (state, { payload }) => {
             state.reload = true
             console.log(payload, "payloadd from candidate updtate");
-            state.candidate = payload?.data?.employer
+            // state.candidate = payload?.data?.candidate
         })
 
 

@@ -31,7 +31,7 @@ function PersonalInformation({ data, user, card }) {
                                 </div>
                             </div>
                             <div className='w-[80%]'>
-                                <h6 className='text-[22px] leading-[20px] font-semibold mb-3'>{user?.name.toUpperCase()}</h6>
+                                <h6 className='text-[22px] leading-[20px] font-semibold mb-3'>{user?.name?.toUpperCase()}</h6>
                                 <p className='text-gray-6 text-[14px] leading-[20px]'>{data?.statusLine}</p>
                                 <p className='flex justify-start gap-x-6 text-gray-6 text-[14px] leading-[20px] mt-5'>
                                     <span className='flex justify-start gap-x-1'>
