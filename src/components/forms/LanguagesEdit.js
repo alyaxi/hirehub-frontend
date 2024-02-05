@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useState } from 'react';
@@ -28,7 +29,7 @@ const LanguagesEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }
     console.log("languages", languages)
 
     const initialValues = {
-        languages: languages.map(language => ({ id: language.id, title: language.title, proficiency: language.proficiency }))
+        languages: languages?.map(language => ({ id: language.id, title: language.title, proficiency: language.proficiency }))
     };
 
     const multiSelectHandle = (type, selectedItems, setFieldValue, id) => {
@@ -70,7 +71,7 @@ const LanguagesEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }
         >
             {({ values, isSubmitting, setFieldValue }) => (
                 <Form>
-                    {values.languages.map((language, index) => (
+                    {values.languages?.map((language, index) => (
                         <div key={index}>
                             <div className='mb-2'>
                                 <label

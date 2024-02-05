@@ -49,7 +49,7 @@ const SkillsEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }) =
     console.log("skills", skills)
 
     const initialValues = {
-        skills: skills.map(skill => ({ id: skill.id, title: skill.title, experience: skill.experience }))
+        skills: skills?.map(skill => ({ id: skill.id, title: skill.title, experience: skill.experience }))
     };
 
     const multiSelectHandle = (type, selectedItems, setFieldValue, id) => {
@@ -91,7 +91,7 @@ const SkillsEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }) =
             {({ values, isSubmitting, setFieldValue }) => {
                 return (
                     <Form>
-                        {values.skills.map((skill, index) => {
+                        {values?.skills?.map((skill, index) => {
                             return (
 
                                 <div key={index}>

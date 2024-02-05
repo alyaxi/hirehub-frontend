@@ -11,17 +11,17 @@ function CandidateProfile() {
     const dispatch = useDispatch();
     const candidate = useSelector((state) => state?.Candidate?.candidate);
 
-    // console.log(candidate, "ManageProfileCandidate")
+    console.log(candidate?.skillsData, "candidate?.skillsData")
 
-    const personalInformation = candidate.personalInformationData
-    const experience = candidate.experiencesData
-    const education = candidate.educationsData
-    const skill = candidate.skillsData;
-    const summery = candidate.summery;
-    const projects = candidate.projectsData;
-    const language = candidate.languagesData;
-    const jobPreference = candidate.jobPreference;
-    const user = candidate.userId
+    const personalInformation = candidate?.personalInformationData
+    const experience = candidate?.experiencesData
+    const education = candidate?.educationsData
+    const skill = candidate?.skillsData;
+    const summery = candidate?.summery;
+    const projects = candidate?.projectsData;
+    const language = candidate?.languagesData;
+    const jobPreference = candidate?.jobPreference;
+    const user = candidate?.userId
 
     const [resumePrivacySetting, setResumePrivacySetting] = useState(1);
 

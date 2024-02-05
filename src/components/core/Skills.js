@@ -1,9 +1,7 @@
 import { Core } from "..";
 
-function Skills({ data, buttons, card }) {
-
-
-    // console.log(" skills data",data)
+function Skills({ data, card }) {
+    console.log(" skills data", data)
     return (
         <>
             {card ?
@@ -11,8 +9,7 @@ function Skills({ data, buttons, card }) {
                     < div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Skills</h5>
                         <Core.ProficienciesActions buttons={['add', 'edit']} type="skillsData" />
-                    </div >
-
+                    </div>
                     <div className='flex flex-col justify-start gap-x-3 gap-y-2'>
                         {data?.map((value, index) => {
                             return (

@@ -13,7 +13,7 @@ function PersonalInformations({ action, handleCancel,
     const user = candidate?.userId
     const lastName = user?.name.split(" ")[1]
     const firstName = user?.name.split(" ")[0]
-
+console.log("personalInformationDataSavedOnDb",personalInformationDataSavedOnDb)
     const careerLevelOptions = [
         { name: "Entry Level", value: "entryLevel" },
         { name: "Mid-Level", value: "midLevel" },
@@ -85,15 +85,15 @@ function PersonalInformations({ action, handleCancel,
         name: firstName,
         lastName: lastName,
         email: user?.email,
-        zipCode: personalInformationDataSavedOnDb.zipCode,
-        expectedSalary: personalInformationDataSavedOnDb.expectedSalary,
-        careerLevel: personalInformationDataSavedOnDb.careerLevel,
-        experience: personalInformationDataSavedOnDb.experience,
-        gender: personalInformationDataSavedOnDb.gender,
-        phoneNo: personalInformationDataSavedOnDb.phoneNo,
-        country: personalInformationDataSavedOnDb.country,
-        state: personalInformationDataSavedOnDb.state,
-        city: personalInformationDataSavedOnDb.city,
+        zipCode: personalInformationDataSavedOnDb?.zipCode,
+        expectedSalary: personalInformationDataSavedOnDb?.expectedSalary,
+        careerLevel: personalInformationDataSavedOnDb?.careerLevel,
+        experience: personalInformationDataSavedOnDb?.experience,
+        gender: personalInformationDataSavedOnDb?.gender,
+        phoneNo: personalInformationDataSavedOnDb?.phoneNo,
+        country: personalInformationDataSavedOnDb?.country,
+        state: personalInformationDataSavedOnDb?.state,
+        city: personalInformationDataSavedOnDb?.city,
 
     });
     const [selectedCountry, setSelectedCountry] = useState('');
@@ -103,13 +103,13 @@ function PersonalInformations({ action, handleCancel,
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
 
-    const day = personalInformationDataSavedOnDb.dob.match(/^(\d+)\//);
+    const day = personalInformationDataSavedOnDb?.dob.match(/^(\d+)\//);
     const _day = day ? day[1] : null;
 
-    const month = personalInformationDataSavedOnDb.dob.match(/\/(\d+)\//);
+    const month = personalInformationDataSavedOnDb?.dob.match(/\/(\d+)\//);
     const _month = month ? month[1] : null;
 
-    const year = personalInformationDataSavedOnDb.dob.match(/\/(\d+)$/);
+    const year = personalInformationDataSavedOnDb?.dob.match(/\/(\d+)$/);
     const _year = year ? year[1] : null;
 
     const [selectedDay, setSelectedDay] = useState(_day);
