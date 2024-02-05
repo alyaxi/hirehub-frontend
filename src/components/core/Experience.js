@@ -1,5 +1,4 @@
 import { Avatar } from "antd";
-import logo1 from "../../assets/images/company-logos/logo1.png";
 import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
 

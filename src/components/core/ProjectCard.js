@@ -11,7 +11,7 @@ function ProjectCard({ data }) {
     return (
         <div>
             <div className='flex justify-end mb-[-45px] right-[10px] relative z-[200]' >
-                <Core.ProficienciesActions buttons={['edit']} type={'projects'} id={data?._id} />
+                <Core.ProficienciesActions buttons={['edit']} type={'projectsData'} id={data?._id} />
             </div>
             <NavLink to={data?.projectUrl}>
                 <Card

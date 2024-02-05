@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Breadcrumb, } from '../../../../components/core';
 import ManageEmail from '../../../../components/manage_email/ManageEmail';
 

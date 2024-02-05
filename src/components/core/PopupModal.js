@@ -14,6 +14,7 @@ function PopupModal({ setIsModalOpen,
     const dispatch = useDispatch()
     console.log("type", type)
     console.log("action", action)
+    console.log("id", id)
     // const [candidateProfileData2, setCandidateProfileData2] = useState({
     //     personalInformationData: {
     // profilePicture: "",

@@ -1,5 +1,4 @@
 import React from 'react';
-import Icon from '../icon';
 
 function Card({ children, w840, className, border, p }) {
     return (

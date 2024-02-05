@@ -8,133 +8,133 @@ import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCand
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const columns = [
-    {
-        title: 'Name',
-        key: 'name',
-        dataIndex: 'name',
-        sorter: true,
-    }, {
-        title: 'Job Title',
-        key: 'jobTitle',
-        dataIndex: 'jobTitle',
-    }, {
-        title: 'Experience',
-        key: 'experience',
-        dataIndex: 'experience',
-    }, {
-        title: 'Salary',
-        key: 'salary',
-        dataIndex: 'salary',
-    }, {
-        title: 'Stage',
-        key: 'stage',
-        dataIndex: 'stage',
-        sorter: true
-    },
-    // }, {
-    //     title: 'Status',
-    //     key: 'status',
-    //     dataIndex: 'status',
-    // }, {
-    {
-        title: 'Action',
-        key: 'action',
-        dataIndex: 'action',
-    },
-];
-const candidates = [
-    {
-        id: "1",
-        name: {
-            img: avatar1,
-            name: "Handmade Pouch",
-        },
-        jobTitle: "Software Engineer",
-        employer: "Tesla",
-        eligibility: "Yes",
-        experience: "3.6 years",
-        salary: "20,000",
-        stage: "New Application",
-        status: "New",
-    },
-    {
-        id: "2",
-        name: {
-            img: avatar1,
-            name: "Handmade Pouch",
-        },
-        jobTitle: "Software Engineer",
-        employer: "Citi Group",
-        eligibility: "Yes",
-        experience: "10 Years",
-        salary: "1000",
-        stage: "Screening",
-        status: "Attempted to Contact",
-    },
-    {
-        id: "3 ",
-        name: {
-            img: avatar1,
-            name: "Handmade Pouch",
-        },
-        jobTitle: "Software Engineer",
-        employer: "Amazon",
-        eligibility: "No",
-        experience: "7 Years",
-        salary: "12,000",
-        stage: "Job Offer",
-        status: "Qualified",
-    },
-    {
-        id: "4",
-        name: {
-            img: avatar1,
-            name: "Handmade Pouch",
-        },
-        jobTitle: "Software Engineer",
-        employer: "The Home Depot",
-        eligibility: "No",
-        experience: "6 years",
-        salary: "6500",
-        stage: "Hire",
-        status: "Not Interested",
-    },
-    {
-        id: "5",
-        name: {
-            img: avatar1,
-            name: "Handmade Pouch",
-        },
-        jobTitle: "Software Engineer",
-        employer: "Tesla",
-        eligibility: "No",
-        experience: "3.6 years",
-        salary: "20,000",
-        stage: "New Application",
-        status: "New",
-    },
-    {
-        id: "6",
-        name: {
-            img: avatar1,
-            name: "Handmade Pouch",
-        },
-        jobTitle: "Software Engineer",
-        employer: "Wells Fargo",
-        eligibility: "No",
-        experience: "10 Years",
-        salary: "1000 ",
-        stage: "Screening",
-        status: "Attempted to Contact",
-    },
+// const columns = [
+//     {
+//         title: 'Name',
+//         key: 'name',
+//         dataIndex: 'name',
+//         sorter: true,
+//     }, {
+//         title: 'Job Title',
+//         key: 'jobTitle',
+//         dataIndex: 'jobTitle',
+//     }, {
+//         title: 'Experience',
+//         key: 'experience',
+//         dataIndex: 'experience',
+//     }, {
+//         title: 'Salary',
+//         key: 'salary',
+//         dataIndex: 'salary',
+//     }, {
+//         title: 'Stage',
+//         key: 'stage',
+//         dataIndex: 'stage',
+//         sorter: true
+//     },
+//     // }, {
+//     //     title: 'Status',
+//     //     key: 'status',
+//     //     dataIndex: 'status',
+//     // }, {
+//     {
+//         title: 'Action',
+//         key: 'action',
+//         dataIndex: 'action',
+//     },
+// ];
+// const candidates = [
+//     {
+//         id: "1",
+//         name: {
+//             img: avatar1,
+//             name: "Handmade Pouch",
+//         },
+//         jobTitle: "Software Engineer",
+//         employer: "Tesla",
+//         eligibility: "Yes",
+//         experience: "3.6 years",
+//         salary: "20,000",
+//         stage: "New Application",
+//         status: "New",
+//     },
+//     {
+//         id: "2",
+//         name: {
+//             img: avatar1,
+//             name: "Handmade Pouch",
+//         },
+//         jobTitle: "Software Engineer",
+//         employer: "Citi Group",
+//         eligibility: "Yes",
+//         experience: "10 Years",
+//         salary: "1000",
+//         stage: "Screening",
+//         status: "Attempted to Contact",
+//     },
+//     {
+//         id: "3 ",
+//         name: {
+//             img: avatar1,
+//             name: "Handmade Pouch",
+//         },
+//         jobTitle: "Software Engineer",
+//         employer: "Amazon",
+//         eligibility: "No",
+//         experience: "7 Years",
+//         salary: "12,000",
+//         stage: "Job Offer",
+//         status: "Qualified",
+//     },
+//     {
+//         id: "4",
+//         name: {
+//             img: avatar1,
+//             name: "Handmade Pouch",
+//         },
+//         jobTitle: "Software Engineer",
+//         employer: "The Home Depot",
+//         eligibility: "No",
+//         experience: "6 years",
+//         salary: "6500",
+//         stage: "Hire",
+//         status: "Not Interested",
+//     },
+//     {
+//         id: "5",
+//         name: {
+//             img: avatar1,
+//             name: "Handmade Pouch",
+//         },
+//         jobTitle: "Software Engineer",
+//         employer: "Tesla",
+//         eligibility: "No",
+//         experience: "3.6 years",
+//         salary: "20,000",
+//         stage: "New Application",
+//         status: "New",
+//     },
+//     {
+//         id: "6",
+//         name: {
+//             img: avatar1,
+//             name: "Handmade Pouch",
+//         },
+//         jobTitle: "Software Engineer",
+//         employer: "Wells Fargo",
+//         eligibility: "No",
+//         experience: "10 Years",
+//         salary: "1000 ",
+//         stage: "Screening",
+//         status: "Attempted to Contact",
+//     },
 
-];
-const actions = {
-    view: true,
-    edit: true,
-    date: true,
-};
+// ];
+// const actions = {
+//     view: true,
+//     edit: true,
+//     date: true,
+// };
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
@@ -142,16 +142,16 @@ const breadcrumb = [
 ];
 
 function MainSubscriptionEmployer() {
-    const [name, setName] = useState("");
-    const [title, setTitle] = useState("");
-    const [employer, setEmployer] = useState("");
-    const [eligibility, setEligibility] = useState("");
-    const [appliedDate, setAppliedDate] = useState("");
-    const [candidateStage, setCandidateStage] = useState("");
-    const [userStatus, setUserStatus] = useState("");
+    // const [name, setName] = useState("");
+    // const [title, setTitle] = useState("");
+    // const [employer, setEmployer] = useState("");
+    // const [eligibility, setEligibility] = useState("");
+    // const [appliedDate, setAppliedDate] = useState("");
+    // const [candidateStage, setCandidateStage] = useState("");
+    // const [userStatus, setUserStatus] = useState("");
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
+    // const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
 
     // console.log({ AppliedJobCandidate })
 
@@ -174,16 +174,16 @@ function MainSubscriptionEmployer() {
 
     }, [])
 
-    const onViewClick = (id) => {
-        navigate(`/employer/manage-candidates/view/${id}`);
-    };
-    const onEditClick = (id) => {
-        navigate(`/employer/manage-candidates/edit/${id}`);
-    };
-    const onMessageClick = (id) => {
-        navigate(`/employer/manage-candidates/schedule/${id}`);
+    // const onViewClick = (id) => {
+    //     navigate(`/employer/manage-candidates/view/${id}`);
+    // };
+    // const onEditClick = (id) => {
+    //     navigate(`/employer/manage-candidates/edit/${id}`);
+    // };
+    // const onMessageClick = (id) => {
+    //     navigate(`/employer/manage-candidates/schedule/${id}`);
 
-    };
+    // };
 
     // console.log("name", name);
     // console.log("title", title);
