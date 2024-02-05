@@ -42,19 +42,24 @@ function LoginPage() {
         });
     };
 
-    const handleSubmit = (values) => {
+    const handleSubmit = (values, { setSubmitting }) => {
         try {
             dispatch(login(values))
                 .unwrap()
                 .then((res) => {
                     const user = res.data;
                     redirectToDashboard(user?.Role, navigate);
-
                 })
-                .catch((err) => toast.error(err.message));
+                .catch((err) => {
+                    toast.error(err.message);
+                })
+                .finally(() => {
+                    setSubmitting(false);
+                });
         } catch (error) {
             console.error(error);
             toast.error(error.message);
+            setSubmitting(false);
         }
     };
 
@@ -125,9 +130,7 @@ function LoginPage() {
                             </div>
                         </div>
                         {isSubmitting ?
-                            <div
-                                className=' flex justify-center items-center w-full bg-white border text-[18px] leading-[20px] rounded-full py-[18px]'
-                            >
+                            <div className=' flex justify-center items-center w-full bg-white border text-[18px] leading-[20px] rounded-full py-[18px]'>
                                 <Spin />
                             </div>
                             :
