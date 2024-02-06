@@ -192,14 +192,30 @@ function PopupModal({ setIsModalOpen,
     const cleanAndAppendToFormData = (data) => {
         const formData = new FormData();
 
-        for (const key in data.personalInformationData) {
 
-            const value = data.personalInformationData[key];
+        
+        console.log("block 0")
+        if (data?.personalInformationData) {
+            console.log("block 1")
+            for (const key in data.personalInformationData) {
+                const value = data.personalInformationData[key];
+                if (value !== undefined && value !== '') {
+                    formData.append(`personalInformationData[${key}]`, value);
+                }
+            }
+        }
+        else if (data?.summery) {
+            console.log("block 2")
+            for (const key in data.summery) {
+                if (data.summery.hasOwnProperty(key)) {
+                    formData.append(`summery[${key}]`, data.summery[key]);
+                }
+
+            }
+
+
 
             // Check for undefined and non-empty strings
-            if (value !== undefined && value !== '') {
-                formData.append(`personalInformationData[${key}]`, value);
-            }
 
         }
 

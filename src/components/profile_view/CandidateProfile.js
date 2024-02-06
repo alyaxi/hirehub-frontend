@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 function CandidateProfile() {
     const dispatch = useDispatch();
     const candidate = useSelector((state) => state?.Candidate?.candidate);
+    const reload = useSelector((state) => state?.Candidate?.reload);
 
     const personalInformation = candidate?.personalInformationData
     const experience = candidate?.experiencesData
@@ -42,7 +43,7 @@ function CandidateProfile() {
 
         }
 
-    }, []) 
+    }, [reload]) 
 
     return (
         <div className='flex justify-between gap-x-6 w-full'>

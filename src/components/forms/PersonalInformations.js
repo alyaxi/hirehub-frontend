@@ -15,8 +15,7 @@ function PersonalInformations({ action, handleCancel,
     const user = candidate?.userId
     const lastName = user?.name.split(" ")[1]
     const firstName = user?.name.split(" ")[0]
-    // console.log("personalInformationDataSavedOnDb", personalInformationDataSavedOnDb)
-
+    console.log("personalInformationDataSavedOnDb", personalInformationDataSavedOnDb)
     const careerLevelOptions = [
         { name: "Entry Level", value: "entryLevel" },
         { name: "Mid-Level", value: "midLevel" },
@@ -194,7 +193,6 @@ function PersonalInformations({ action, handleCancel,
             expectedSalary: values.expectedSalary || "",
             zipCode: values.zipCode || "",
         }
-
         // setPersonalInformationData(_personalInformationData)
         setCandidateProfileData(prevData => ({
             ...prevData,
