@@ -4,7 +4,7 @@ import { Upload } from 'antd';
 import Icon from '../icon';
 import DefaultAvatar from "../../assets/images/avatars/default-avatar.svg"
 
-const UploadAvatar = ({setState}) => {
+const UploadAvatar = ({setState}) => { 
     const [fileList, setFileList] = useState([  
     {
         uid: '-1',
@@ -13,14 +13,14 @@ const UploadAvatar = ({setState}) => {
         url: DefaultAvatar,
         thumbUrl: DefaultAvatar,
       },
-    ]);
+    ]); 
     const onChange = ({ fileList: newFileList }) => {
         if (newFileList.length > 1) {
             newFileList.shift();
         }
         setFileList(newFileList);
         setState(newFileList);
-    };
+    }; 
 
     const onPreview = async (file) => {
         let src = file.url;
@@ -35,8 +35,7 @@ const UploadAvatar = ({setState}) => {
         image.src = src;
         const imgWindow = window.open(src);
         imgWindow?.document.write(image.outerHTML);
-    };
-    console.log("fileList", fileList)
+    };  
     return (
        <div className='min-h-[112px] upload-avatar-wrapper'>
          <Upload

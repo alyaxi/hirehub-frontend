@@ -4,9 +4,10 @@ import { Formik, Form, Field } from 'formik';
 import { Core } from '..';
 import Icon from '../icon';
 import { useSelector } from 'react-redux';
+import { Spin } from 'antd';
 
 function PersonalInformations({ action, handleCancel,
-    setCandidateProfileData, handleSenddata
+    setCandidateProfileData, handleSenddata, candidateProfileData, savingForm
 }) {
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const personalInformationDataSavedOnDb = candidate?.personalInformationData
@@ -14,7 +15,8 @@ function PersonalInformations({ action, handleCancel,
     const user = candidate?.userId
     const lastName = user?.name.split(" ")[1]
     const firstName = user?.name.split(" ")[0]
-    console.log("personalInformationDataSavedOnDb", personalInformationDataSavedOnDb)
+    // console.log("personalInformationDataSavedOnDb", personalInformationDataSavedOnDb)
+
     const careerLevelOptions = [
         { name: "Entry Level", value: "entryLevel" },
         { name: "Mid-Level", value: "midLevel" },
@@ -118,8 +120,9 @@ function PersonalInformations({ action, handleCancel,
     const [selectedDay, setSelectedDay] = useState(_day);
     const [selectedMonth, setSelectedMonth] = useState(_month);
     const [selectedYear, setSelectedYear] = useState(_year);
-    const [dob, setDob] = useState();
+    const [dob, setDob] = useState(personalInformationDataSavedOnDb?.dob ? personalInformationDataSavedOnDb?.dob : "");
     const [profilePicture, setProfilePictrue] = useState('');
+    console.log(personalInformationDataSavedOnDb.country, "countryyyyyyyy")
 
     useEffect(() => {
         const allCountries = Country.getAllCountries();
@@ -162,28 +165,21 @@ function PersonalInformations({ action, handleCancel,
         }
         if (name === "year") {
             setSelectedYear(value)
-            if (selectedDay !== "" && selectedMonth !== "" && value !== "") {
-                let _dob = selectedDay + '/' + selectedMonth + '/' + value
-                setDob(_dob)
-            }
         }
     };
 
-    const handleSubmit = (values) => {
-        // console.log("profilePicture", profilePicture);
-        // console.log("name", values.name);
-        // console.log("lastName", values.lastName);
-        // console.log("email", values.email);
-        // console.log("phoneNo", values.phoneNo);
-        // console.log("dob", dob)
-        // console.log("gender", values.gender);
-        // console.log("country", selectedCountry)
-        // console.log("state", selectedState)
-        // console.log("city", selectedCity)
-        // console.log("careerLevel", values.careerLevel);
-        // console.log("experience", values.experience);
-        // console.log("expectedSalary", values.expectedSalary);
-        // console.log("zip", values.zip);
+    const updateDob = () => {
+        if (selectedDay !== "" && selectedMonth !== "" && selectedYear !== "") {
+            let _dob = selectedDay + '/' + selectedMonth + '/' + selectedYear
+            setDob(_dob)
+        }
+    };
+
+    useEffect(() => {
+        updateDob();
+    }, [selectedDay, selectedMonth, selectedYear]);
+
+    const handleSubmit = (values, { isSubmitting }) => { 
         let _personalInformationData = {
             profilePicture: profilePicture || "",
             phoneNo: values.phoneNo || "",
@@ -198,7 +194,7 @@ function PersonalInformations({ action, handleCancel,
             expectedSalary: values.expectedSalary || "",
             zipCode: values.zipCode || "",
         }
-        console.log("_personalInformationData.statusLine", _personalInformationData.statusLine)
+
         // setPersonalInformationData(_personalInformationData)
         setCandidateProfileData(prevData => ({
             ...prevData,
@@ -206,6 +202,10 @@ function PersonalInformations({ action, handleCancel,
         }));
         handleSenddata()
     };
+
+    useEffect(() => {
+        handleSenddata();
+    }, [candidateProfileData]);
 
     return (
         <Formik
@@ -369,17 +369,18 @@ function PersonalInformations({ action, handleCancel,
                     <div className='mb-4'>
                         {/* Country */}
                         <label className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}>
-                            Nationality <span className='text-[red]'>*</span>
+                            Country <span className='text-[red]'>*</span>
                         </label>
                         <select
                             name="nationality"
                             onChange={handleCountryChange}
+                            defaultValue={personalInformationDataSavedOnDb?.country}
                             value={selectedCountry}
                             className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
                             <option value="">Select</option>
                             {countries.map((country) => (
-                                <option key={country.isoCode} value={country.isoCode}>
+                                <option key={country.isoCode} value={country.isoCode} defaultValue={personalInformationDataSavedOnDb?.country}>
                                     {country.name}
                                 </option>
                             ))}
@@ -497,12 +498,14 @@ function PersonalInformations({ action, handleCancel,
 
                     {action === "edit" &&
                         <div className='flex justify-start gap-x-3 pt-6 mt-8 border-t-[1px]'>
-                            <Core.Button
-                                // onClick={handleNext}
-                                type="narrow" submit>Save</Core.Button>
-                            <Core.Button
-                                // onClick={handleBack} 
-                                type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+
+                            {savingForm ?
+                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                    <Spin />
+                                </div>
+                                : <Core.Button type="narrow" submit>Save</Core.Button>}
+
+                            <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
                     }
                 </Form>
