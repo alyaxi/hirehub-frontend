@@ -112,6 +112,16 @@ function TableB({
                 else if (value.dataIndex === "positionTitle") {
                     return <span key={`render-${value.dataIndex}-${index}`} className='whitespace-nowrap font-medium'>{val}</span>;
                 }
+                else if (value.dataIndex === "emailTitle") {
+                    // const htmlText = val?.text
+                    // const tempElement = document.createElement('div');
+                    // tempElement.innerHTML = htmlText;
+                    // const textContent = tempElement.textContent || tempElement.innerText;
+                    // const initialText = textContent.slice(0, 140);
+                    return <span key={`render-${value.dataIndex}-${index}`} className='whitespace-nowrap font-medium'>
+                        {val?.subject}
+                    </span>;
+                }
                 else if (value.dataIndex === "salary") {
                     return <span key={`render-${value.dataIndex}-${index}`}>${val}</span>;
                 }
@@ -214,8 +224,14 @@ function TableB({
                 <div className="p-1.5 min-w-full inline-block align-middle">
                     <div className="overflow-hidden ">
                         <div className="bg-white flex justify-between items-center gap-x-2 py-3 px-5">
-                            {!filterBy.includes("SearchByProduct") &&
-                                <span className='text-black-2 text-[18px] leading-[28px] font-medium'>   Filters   </span>
+
+                            {filterBy.length ?
+                                <>
+                                    {!filterBy.includes("SearchByProduct") &&
+                                        <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>}
+                                </>
+                                :
+                                null
                             }
                             <div className={`flex ${addButton ? '' : 'justify-end'} items-center gap-1 w-full`}>
                                 {filterBy?.map((value, index) => {
@@ -319,9 +335,9 @@ function TableB({
                                 </div> : null}
                             </div>
                             {/* <div> */}
-                                {addButton &&
-                                    <Core.Button sm type="narrow" onClick={addButton?.func} className={"ml-3"}>{addButton?.title}</Core.Button>
-                                }
+                            {addButton &&
+                                <Core.Button sm type="narrow" onClick={addButton?.func} className={"ml-3"}>{addButton?.title}</Core.Button>
+                            }
                             {/* </div> */}
                         </div>
                         <div className="overflow-hidden">

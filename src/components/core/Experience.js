@@ -1,5 +1,4 @@
 import { Avatar } from "antd";
-import logo1 from "../../assets/images/company-logos/logo1.png";
 import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
 
@@ -27,11 +26,11 @@ function Experience({ data, buttons, card }) {
                                         <div className='w-full'>
                                             <div className='w-full h-full flex justify-between items-end'>
                                                 <div>
-                                                    <h6 className='text-[16px] leading-[20px] font-semibold'>{value.title}</h6>
-                                                    <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value.company}</p>
-                                                    <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value.startDate, "present")}</p>
+                                                    <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
+                                                    <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.company}</p>
+                                                    <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
                                                     <p className='text-gray-6 text-[14px] leading-[20px] mt-4'>
-                                                        {value.description}
+                                                        {value?.description}
                                                     </p>
                                                 </div>
                                             </div>
@@ -58,11 +57,11 @@ function Experience({ data, buttons, card }) {
                                     <div className='w-full'>
                                         <div className='w-full h-full flex justify-between items-end'>
                                             <div>
-                                                <h6 className='text-[16px] leading-[20px] font-semibold'>{value.title}</h6>
-                                                <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value.company}</p>
-                                                <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value.startDate, "present")}</p>
+                                                <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
+                                                <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.company}</p>
+                                                <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
                                                 <p className='text-gray-6 text-[14px] leading-[20px] mt-4'>
-                                                    {value.description}
+                                                    {value?.description}
                                                 </p>
                                             </div>
                                         </div>

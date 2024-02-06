@@ -1,10 +1,8 @@
 // FaqForm.js
 import React, { useState } from 'react';
 import { Core } from '..';
-import { Radio } from 'antd';
 
 function FaqForm({
-    // handleShortSummeryChange,
     handleInput,
 }) {
     const [faq, setFaq] = useState('');

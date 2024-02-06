@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
 import DragImg from '../core/DragImg';
-import projectImg1 from '../../assets/images/projects/project1.png'
-import projectImg2 from '../../assets/images/projects/project2.png'
-import projectImg3 from '../../assets/images/projects/project3.png'
-import { getCandidate } from '../../Slices/Candidates/CandidateSlice';
-import { useDispatch, useSelector } from 'react-redux';
-
-
-
-
-
+import { useSelector } from 'react-redux';
 
 // const projects = [
 //     {
@@ -82,7 +73,7 @@ const monthsOptions = [
     { name: 'December', value: '12' },
 ];
 
-function Projects({ action, handleCancel, id, setCandidateProfileData , handleSenddata}) {
+function Projects({ action, handleCancel, id, setCandidateProfileData, handleSenddata }) {
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const projects = candidate.projectsData;
@@ -201,7 +192,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData , handleSe
             initialValues={data}
             // validationSchema={validationSchema}
             onSubmit={handleSubmit}
-            
+
         >
             {({ isSubmitting }) => (
                 <Form>

@@ -14,7 +14,7 @@ function Summary({ data, buttons, card }) {
                             <Core.ProficienciesActions buttons={['edit']} type="summery" />
                         </div>
                         <div className='flex justify-start items-end pt-3'>
-                        <p className='text-gray-6 text-[14px] leading-[20px]'>{data?.text}</p>
+                            <p className='text-gray-6 text-[14px] leading-[20px]'>{data?.text}</p>
                             {/* {data && data?.map((value, index) =><p key={index * 6} className='text-gray-6 text-[14px] leading-[20px]'>{value.text}</p>)} */}
                         </div>
                     </Core.Card>
@@ -27,7 +27,7 @@ function Summary({ data, buttons, card }) {
                     </div>
                     <div className='flex justify-start items-end pt-3'>
                         <p className='text-gray-6 text-[14px] leading-[20px]'>
-                            Including a summary in your job application provides a brief overview of your qualifications, skills, and career goals, helping recruiters assess your fit for the position.
+                            {data?.text}
                         </p>
                     </div>
                 </>

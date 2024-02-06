@@ -23,11 +23,13 @@ function AddQuestionnaire({
         <Core.Card className={'p-5'} border>
 
             <div className="mb-4">
-                <Core.SelectWithLabel
-                    name={"position"}
-                    options={positionOptions}
-                    onChange={(value) => handleChange("noOfEmployes", value)}
-                />
+                <div className="max-w-[500px]">
+                    <Core.SelectWithLabel
+                        name={"position"}
+                        options={positionOptions}
+                        onChange={(value) => handleChange("noOfEmployes", value)}
+                    />
+                </div>
             </div>
 
             <div className='mb-4'>

@@ -1,7 +1,4 @@
-
-import logo2 from "../../assets/images/company-logos/logo2.png";
 import { Core } from "..";
-import Icon from "../icon";
 
 function Preferences({ data, buttons, card }) {
 

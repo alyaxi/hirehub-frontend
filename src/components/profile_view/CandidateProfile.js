@@ -6,12 +6,9 @@ import video from "../../assets/videos/1.mp4";
 import { getCandidate } from '../../Slices/Candidates/CandidateSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 function CandidateProfile() {
     const dispatch = useDispatch();
     const candidate = useSelector((state) => state?.Candidate?.candidate);
-
-    console.log(candidate?.skillsData, "candidate?.skillsData")
 
     const personalInformation = candidate?.personalInformationData
     const experience = candidate?.experiencesData
@@ -29,7 +26,6 @@ function CandidateProfile() {
         setResumePrivacySetting(e.target.value);
     };
 
-
     useEffect(() => {
         try {
 
@@ -46,28 +42,13 @@ function CandidateProfile() {
 
         }
 
-    }, [])
-
-    // final functio
-    // const handleUpdateCandidateProfile = () => {
-    //     console.log("handleUpdateCandidateProfile")
-    // }; 
-
-    // console.log("personalInformation", personalInformation)
-    // console.log("experience", experience)
-    // console.log("education", education)
-    // console.log("skill", skill)
-    // console.log("summery", summery)
-    console.log("projects", projects)
-    // console.log("language", language)
-    // console.log("jobPreference", jobPreference)
-
+    }, []) 
 
     return (
         <div className='flex justify-between gap-x-6 w-full'>
             <div className='w-auto'>
                 <div className='flex flex-col gap-y-3 pb-[50px]'>
-                    <Core.PersonalInformation data={personalInformation} user={user} card />
+                    <Core.PersonalInformation data={personalInformation} user={user}   />
                     <Core.Summary data={summery} card />
                     <Core.Projects data={projects} card />
                     <Core.Experience data={experience} card />
@@ -89,12 +70,6 @@ function CandidateProfile() {
                     </div>
                     <Core.VideoPlayer src={video} className="max-h-[150px] rounded-[10px] overflow-hidden" />
                 </Core.Card>
-                {/* <button
-                    className={`flex justify-center items-center gap-x-2 w-full text-white bg-gradient-to-r from-purple-4 to-purple-3  hover:text-white text-[14px] hover:bg-gradient-to-r hover:from-purple-4 hover:to-purple-3 transition-all rounded-[8px] px-3 py-[10px]`}
-                >
-                    <span className='text-[18px]'><Icon name="Download" /></span>
-                    <span className='leading-[19px]'>Download Resume</span>
-                </button> */}
                 <Core.Button icon="Download" iconSize={"24"}>
                     Download Resume
                 </Core.Button>

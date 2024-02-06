@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Country, State, City } from 'country-state-city';
+import { Country, City } from 'country-state-city';
 import { Core } from '..';
-import logo3 from "../../assets/images/company-logos/logo3.png";
-import logo5 from "../../assets/images/company-logos/logo1.png";
 import { useSelector } from 'react-redux';
 
 const industryOptions = [
@@ -247,7 +245,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
             startDate: startDate,
             agreeTerms: values?.agreeTerms,
             description: description,
-        }; 
+        };
         setCandidateProfileData(prevData => ({
             ...prevData,
             experiencesData: _experiencesData,
