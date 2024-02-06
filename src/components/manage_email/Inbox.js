@@ -104,8 +104,6 @@ function Inbox({ }) {
         setToggleEmailView(!toggleEmailView);
     };
 
-    // console.log("selectedEmail", selectedEmail)
-    // console.log("toggleEmailView", toggleEmailView)
     return (
         <>
             {toggleEmailView ? (

@@ -4,9 +4,10 @@ import { Formik, Form, Field } from 'formik';
 import { Core } from '..';
 import Icon from '../icon';
 import { useSelector } from 'react-redux';
+import { Spin } from 'antd';
 
 function PersonalInformations({ action, handleCancel,
-    setCandidateProfileData, handleSenddata
+    setCandidateProfileData, handleSenddata, candidateProfileData, savingForm
 }) {
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const personalInformationDataSavedOnDb = candidate?.personalInformationData
@@ -118,7 +119,7 @@ function PersonalInformations({ action, handleCancel,
     const [selectedDay, setSelectedDay] = useState(_day);
     const [selectedMonth, setSelectedMonth] = useState(_month);
     const [selectedYear, setSelectedYear] = useState(_year);
-    const [dob, setDob] = useState();
+    const [dob, setDob] = useState(personalInformationDataSavedOnDb?.dob ? personalInformationDataSavedOnDb?.dob : "");
     const [profilePicture, setProfilePictrue] = useState('');
     console.log(personalInformationDataSavedOnDb.country, "countryyyyyyyy")
 
@@ -163,28 +164,21 @@ function PersonalInformations({ action, handleCancel,
         }
         if (name === "year") {
             setSelectedYear(value)
-            if (selectedDay !== "" && selectedMonth !== "" && value !== "") {
-                let _dob = selectedDay + '/' + selectedMonth + '/' + value
-                setDob(_dob)
-            }
         }
     };
 
-    const handleSubmit = (values) => {
-        // console.log("profilePicture", profilePicture);
-        // console.log("name", values.name);
-        // console.log("lastName", values.lastName);
-        // console.log("email", values.email);
-        // console.log("phoneNo", values.phoneNo);
-        // console.log("dob", dob)
-        // console.log("gender", values.gender);
-        // console.log("country", selectedCountry)
-        // console.log("state", selectedState)
-        // console.log("city", selectedCity)
-        // console.log("careerLevel", values.careerLevel);
-        // console.log("experience", values.experience);
-        // console.log("expectedSalary", values.expectedSalary);
-        // console.log("zip", values.zip);
+    const updateDob = () => {
+        if (selectedDay !== "" && selectedMonth !== "" && selectedYear !== "") {
+            let _dob = selectedDay + '/' + selectedMonth + '/' + selectedYear
+            setDob(_dob)
+        }
+    };
+
+    useEffect(() => {
+        updateDob();
+    }, [selectedDay, selectedMonth, selectedYear]);
+
+    const handleSubmit = (values, { isSubmitting }) => { 
         let _personalInformationData = {
             profilePicture: profilePicture || "",
             phoneNo: values.phoneNo || "",
@@ -207,6 +201,10 @@ function PersonalInformations({ action, handleCancel,
         }));
         handleSenddata()
     };
+
+    useEffect(() => {
+        handleSenddata();
+    }, [candidateProfileData]);
 
     return (
         <Formik
@@ -499,12 +497,14 @@ function PersonalInformations({ action, handleCancel,
 
                     {action === "edit" &&
                         <div className='flex justify-start gap-x-3 pt-6 mt-8 border-t-[1px]'>
-                            <Core.Button
-                                // onClick={handleNext}
-                                type="narrow" submit>Save</Core.Button>
-                            <Core.Button
-                                // onClick={handleBack} 
-                                type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+
+                            {savingForm ?
+                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                    <Spin />
+                                </div>
+                                : <Core.Button type="narrow" submit>Save</Core.Button>}
+
+                            <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
                     }
                 </Form>

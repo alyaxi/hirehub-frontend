@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from 'antd';
 import Forms from '../forms';
 import { UpdateCanidateData } from '../../Slices/Candidates/CandidateSlice';
+// import Summary from './Summary';
 import { useDispatch } from 'react-redux';
 
 function PopupModal({ setIsModalOpen,
@@ -188,8 +189,6 @@ function PopupModal({ setIsModalOpen,
     }
     let _title = _action + " " + title;
 
-    console.log(candidateProfileData, "candidateProfileData")
-
     const cleanAndAppendToFormData = (data) => {
         const formData = new FormData();
 
@@ -226,22 +225,25 @@ function PopupModal({ setIsModalOpen,
 
 
 
+    const [savingForm, setSavingForm] = useState(false);
 
     const handleSenddata = () => {
+
         try {
             console.log("runingggg")
             const formData = cleanAndAppendToFormData(candidateProfileData);
             console.log("editttttttt")
-            dispatch(UpdateCanidateData(formData)).unwrap().then(x => { console.log(x, "Ressss") }).catch(err => console.log(err, "errorr"))
+            setSavingForm(true);
+            dispatch(UpdateCanidateData(formData))
+                .unwrap()
+                .then(x => { console.log(x, "Ressss") })
+                .catch(err => console.log(err, "errorr"))
+                .finally(() => {
+                    setSavingForm(false);
+                });
         } catch (error) {
             console.log(error, "catch error")
         }
-
-        // if (action == "edit") {
-        // }
-        // if (action == "add") {
-        //     console.log("add")
-        // }
     }
 
     return (
@@ -252,6 +254,8 @@ function PopupModal({ setIsModalOpen,
                 action={action}
                 setCandidateProfileData={setCandidateProfileData}
                 handleSenddata={handleSenddata}
+                candidateProfileData={candidateProfileData}
+                savingForm={savingForm}
             />}
 
             {type === "summery" &&
