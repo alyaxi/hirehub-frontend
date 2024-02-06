@@ -7,16 +7,18 @@ const summery = {
 }
 
 function Summery({ action, handleCancel,
-    setCandidateProfileData
+    setCandidateProfileData, handleSenddata
 }) {
 
     const [data] = useState({ summery: summery.text });
 
     const handleSubmit = (values) => {
+        console.log(values, "valuesssss")
         setCandidateProfileData(prevData => ({
             ...prevData,
-            summeryData: values,
+            summery: {text: values.summery,}
         }));
+        handleSenddata()
     };
 
     return (

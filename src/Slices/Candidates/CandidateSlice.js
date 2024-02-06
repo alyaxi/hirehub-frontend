@@ -64,6 +64,7 @@ const CandidateSlice = createSlice({
         builder.addCase(getCandidate.fulfilled, (state, { payload }) => {
             console.log(payload, "payloadd from view candidate");
             state.candidate = payload?.data?.candidate
+            state.reload = false
 
 
         })
