@@ -12,8 +12,10 @@ import InputWithLabel from "./InputWithLabel";
 import Languages from "./Languages";
 import MobileInputs from "./MobileInputs";
 import MyCalender from "./my_calender/MyCalender";
+import MyCalenderSm from "./my_calender/MyCalenderSm";
 import Preferences from "./Preferences";
 import PopupModal from "./PopupModal";
+import PopupModalCalender from "./PopupModalCalender";
 import ProficienciesActions from "./ProficienciesActions";
 import Projects from "./Projects";
 import PersonalInformation from "./PersonalInformation";
@@ -46,8 +48,10 @@ export {
     Languages,
     MobileInputs,
     MyCalender,
+    MyCalenderSm,
     Preferences,
     PopupModal,
+    PopupModalCalender,
     ProficienciesActions,
     Projects,
     PersonalInformation,

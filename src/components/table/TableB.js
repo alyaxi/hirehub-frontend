@@ -94,7 +94,7 @@ function TableB({
                 else if (value.dataIndex === "process") {
                     return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'>
                         <Button
-                            onClick={onStageClick && onStageClick}
+                            onClick={() => onStageClick && onStageClick(id?._id)}
                         >
                             Proceed to Next
                         </Button>
