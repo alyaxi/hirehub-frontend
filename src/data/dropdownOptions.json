@@ -1,0 +1,149 @@
+{
+    "salaryOptions": [
+        {
+            "title": "3333$1000 - $1500",
+            "count": "",
+            "iconName": "",
+            "link": ""
+        },
+        {
+            "title": "$1500 - $2000",
+            "count": "",
+            "iconName": "",
+            "link": ""
+        },
+        {
+            "title": "$2000 - $2500",
+            "count": "",
+            "iconName": "",
+            "link": ""
+        },
+        {
+            "title": "$2500 - $3000",
+            "count": "",
+            "iconName": "",
+            "link": ""
+        },
+        {
+            "title": "$3000 - $3500",
+            "count": "",
+            "iconName": "",
+            "link": ""
+        },
+        {
+            "title": "$3500 - $4000",
+            "count": "",
+            "iconName": "",
+            "link": ""
+        },
+        {
+            "title": "$4000 - $4500",
+            "count": "",
+            "iconName": "",
+            "link": ""
+        },
+        {
+            "title": "Over $4500",
+            "count": "",
+            "iconName": "",
+            "link": ""
+        }
+    ],
+    "salaryOptions_String": [
+        "$1000 - $1500",
+        "$1500 - $2000",
+        "$2000 - $2500",
+        "$2500 - $3000",
+        "$3000 - $3500",
+        "$3500 - $4000",
+        "$4000 - $4500",
+        " Over $4500"
+    ],
+    "experienceOptions_String": [
+        "6 months",
+        "1 year",
+        "2 years",
+        "3 years",
+        "4 years",
+        "5 years",
+        "6 years",
+        "7 years",
+        "8 years",
+        "9 years",
+        "10 years",
+        "Over 10 years"
+    ],
+    "jobShift_String": [
+        "First Shift (Day)",
+        "Second Shift (Afternoon)",
+        "Work from Home",
+        "Third Shift (Night)",
+        "Rotating"
+    ],
+    "skillsOptions_String": [
+        "HTML&CSS",
+        "Bootstrap",
+        "Illustrator",
+        "Photoshop",
+        "JavaScript",
+        "React.js",
+        "Node.js",
+        "Python",
+        "Java",
+        "HTML",
+        "CSS",
+        "SQL",
+        "Angular",
+        "Vue.js",
+        "TypeScript",
+        "Git",
+        "Docker",
+        "AWS",
+        "Redux"
+    ],
+    "industryOptions_String": [
+        "Accounting",
+        "Administration",
+        "Aerospace and Defense",
+        "Agriculture",
+        "Architecture",
+        "Art and Design",
+        "Automotive",
+        "Cleaning & Maintenance",
+        "Customer Service",
+        "Construction and Real Estate",
+        "Consulting",
+        "Education and Training",
+        "Energy and Utilities",
+        "Engineering",
+        "Environmental Services",
+        "Fashion and Apparel",
+        "Finance and Banking",
+        "Food",
+        "Government and Public",
+        "Healthcare and Medical",
+        "Hospitality and Tourism",
+        "Human Resources",
+        "Information Technology (IT)",
+        "Legal",
+        "Manufacturing Retail",
+        "Marketing and Advertising",
+        "Media and Entertainment",
+        "Non-Profit and Social Services",
+        "Pharmaceuticals and Biotechnology",
+        "Sales",
+        "Sports and Recreation",
+        "Telecommunications",
+        "Transportation and Logistics",
+        "Other"
+    ],
+    "funtionalAreaOptions_String": [
+        "IT",
+        "Software",
+        "Networking"
+    ],
+    "companyOptions_String": [
+        "ABC",
+        "XYZ"
+    ]
+}

@@ -28,6 +28,7 @@ import {
   ViewProfile,
   ManageProfileCandidate,
   CalenderCandidate,
+  MainJobsCandidate,
   MainCandidatesEmployer,
   EditCandidatesEmployer,
   ViewCandidatesEmployer,
@@ -46,6 +47,7 @@ import {
   EditJobsAdmin,
   ViewJobsAdmin,
   ManageFAQsAdmin,
+  EmailTemplatesAdmin,
   ManageTermAndConditionAdmin,
 } from "./pages/index";
 import { AdminLayout, CandidateLayout, EmployerLayout } from "./components";
@@ -62,14 +64,12 @@ function App() {
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         <Route path="new-password/:token" element={<NewPasswordPage />} />
         <Route path="register" element={<RegisterPage />} />
-        {/* <Route path="404" element={<FourZeroFour />} /> */}
 
-        {/* // Admin Routes */}
+        {/* Admin Routes */}
         <Route path="admin/*" element={<PrivateRoute roles={['admin']}><AdminLayout /></PrivateRoute>} >
 
           <Route path="dashboard" element={<PrivateRoute roles={['admin']}><AdminDashboard /></PrivateRoute>} />
           <Route path="change-password" element={<PrivateRoute roles={['admin']}><ChangePassword /></PrivateRoute>} />
-          {/* <Route path="profile" element={<PrivateRoute roles={['admin']}><ViewProfile /></PrivateRoute>} /> */}
 
           <Route path="manage-employers" element={<PrivateRoute roles={['admin']}><ManageEmployers /></PrivateRoute>} />
           <Route path="manage-employers/view/:id" element={<PrivateRoute roles={['admin']}><ViewEmployers /></PrivateRoute>} />
@@ -98,13 +98,14 @@ function App() {
           <Route path="manage-jobs/edit/:id" element={<EditJobsAdmin />} />
           <Route path="manage-jobs/view/:id" element={<ViewJobsAdmin />} />
 
-          <Route path="manage-faqs" element={<ManageFAQsAdmin />} />
           <Route path="manage-terms-and-conditions" element={<ManageTermAndConditionAdmin />} />
+          <Route path="manage-faqs" element={<ManageFAQsAdmin />} />
+          <Route path="email-templates" element={<EmailTemplatesAdmin />} />
 
         </Route >
 
 
-        {/* // Employer Routes */}
+        {/* Employer Routes */}
         <Route path="employer/*" element={<PrivateRoute roles={['employer']}><EmployerLayout /></PrivateRoute>} >
           <Route path="dashboard" element={<PrivateRoute roles={['employer']}><EmployerDashboard /></PrivateRoute>} />
           <Route path="manage-profile" element={<PrivateRoute roles={['employer']}><ManageProfile /></PrivateRoute>} />
@@ -114,7 +115,6 @@ function App() {
           <Route path="manage-candidates" element={<MainCandidatesEmployer />} />
           <Route path="manage-candidates/edit/:id" element={<EditCandidatesEmployer />} />
           <Route path="manage-candidates/view/:id" element={<ViewCandidatesEmployer />} />
-          {/* <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidatesEmployer />} /> */}
 
           <Route path="manage-jobs" element={<MainJobsEmployer />} />
           <Route path="manage-jobs/add" element={<AddJobsEmployer />} />
@@ -122,21 +122,21 @@ function App() {
           <Route path="manage-jobs/view/:id" element={<ViewJobsEmployer />} />
 
           <Route path="manage-subscription" element={<MainSubscriptionEmployer />} />
-
           <Route path="chat" element={<ChatEmployer />} />
-
           <Route path="notification" element={<NotificationEmployer />} />
-
           <Route path="manage-email" element={<ManageEmailEmployer />} />
 
           <Route path="manage-questionnaire" element={<MainQuestionnaireEmployer />} />
           <Route path="manage-questionnaire/add" element={<AddQuestionnaireEmployer />} />
         </Route>
 
-        {/* // Candidate Routes */}
+        {/* Candidate Routes */}
         <Route path="candidate/*" element={<PrivateRoute roles={['candidate']}><CandidateLayout /></PrivateRoute>} >
+
           <Route path="manage-profile" element={<PrivateRoute roles={['candidate']}><ManageProfileCandidate /></PrivateRoute>} />
           <Route path="calender" element={<PrivateRoute roles={['candidate']}><CalenderCandidate /></PrivateRoute>} />
+          <Route path="jobs" element={<PrivateRoute roles={['candidate']}><MainJobsCandidate /></PrivateRoute>} />
+
         </Route>
 
         <Route path="*"

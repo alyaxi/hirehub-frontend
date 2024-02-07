@@ -32,6 +32,7 @@ function TableB({
     setJobTitle,
     setExpirationDate,
     setProduct,
+    setEmailProcess,
     addQuestion,
     addButton
 }) {
@@ -142,7 +143,7 @@ function TableB({
                             }
                             {actions.delete &&
                                 <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
-                                    onClick={() => onMessageClick(id?.id)}>
+                                    onClick={() => onDeleteClick(id?.id)}>
                                     <Icon name="Delete" />
                                 </span>
                             }
@@ -227,7 +228,7 @@ function TableB({
 
                             {filterBy.length ?
                                 <>
-                                    {!filterBy.includes("SearchByProduct") &&
+                                    {(!filterBy.includes("SearchByProduct")||!filterBy.includes("SearchByEmailProcess")) &&
                                         <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>}
                                 </>
                                 :
@@ -253,6 +254,9 @@ function TableB({
                                         }
                                         if (value === 'SearchByProduct') {
                                             setProduct(e.target.value);
+                                        }                                        
+                                        if (value === 'SearchByEmailProcess') {
+                                            setEmailProcess(e.target.value);
                                         }
                                     }
                                     const onDateChange = (e) => {
@@ -312,6 +316,14 @@ function TableB({
                                             <div key={`searchProduct-${index}`} className='flex justify-start items-center w-full'>
                                                 <Core.SearchInput onInputChange={onInputChange} />
                                                 <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button>
+                                            </div>
+                                        )
+                                    }
+                                    if (value === "SearchByEmailProcess") {
+                                        return (
+                                            <div key={`SearchByEmailProcess-${index}`} className='flex justify-start items-center w-full'>
+                                                <Core.SearchInput onInputChange={onInputChange} />
+                                                {/* <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button> */}
                                             </div>
                                         )
                                     }

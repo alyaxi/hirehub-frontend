@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Icons } from '..';
 import Icon from '../../components/icon';
 
-function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, maxlength, edit, disabled }) {
+function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, iconic, maxlength, edit, disabled }) {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
 
@@ -81,6 +81,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Position Title";
             case "sendTo":
                 return "Send To";
+            case "SearchByLocation":
+                return "Location";
 
 
             case "skills1title":
@@ -167,6 +169,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
 
             case "SearchProduct":
                 return "Search Product ...";
+            case "SearchByLocation":
+                return "Location";
             default:
                 return "";
         }
@@ -232,7 +236,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     </a>
                 }
             </div>
-            <div className={`relative ${name === "SearchProduct" && 'w-full'}`}>
+            <div className={`relative ${(name === "SearchProduct" || name === "SearchByJobTitle" || name === "SearchByLocation") && 'w-full'}`}>
                 {helperText &&
                     <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5 '>
                         {helperText}
@@ -241,7 +245,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 <input
                     disabled={disabled}
                     type={name === "password" || name === "newPassword" || name === "confirmPassword" || name === "oldPassword" ? inputType : type(name)}
-                    className={`w-full text-[14px] font-regular leading-[20px] text-gray-6 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? (name === "calender" ? 'py-[8px]' : 'py-[9px]') : 'py-[14px]'} ${className} ${name === "SearchProduct" && "pl-10"}`}
+                    className={`w-full text-[14px] font-regular leading-[20px] text-gray-6 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? (name === "calender" ? 'py-[8px]' : 'py-[9px]') : 'py-[14px]'} ${className} ${(name === "SearchProduct" || (name === "SearchByJobTitle" && iconic) || (name === "SearchByLocation" && iconic)) && "pl-10"}`}
                     id={name}
                     name={name}
                     value={edit && value}
@@ -253,6 +257,16 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 // maxlength={maxlength && maxlength}
                 />
                 {name === "SearchProduct" &&
+                    <span className='absolute left-3 top-[10px] text-gray-6'>
+                        <Icon name="Search" />
+                    </span>
+                }
+                {(name === "SearchByLocation" && iconic) &&
+                    <span className='absolute left-3 top-[10px] text-gray-6'>
+                        <Icon name="Location" />
+                    </span>
+                }
+                {(name === "SearchByJobTitle" && iconic) &&
                     <span className='absolute left-3 top-[10px] text-gray-6'>
                         <Icon name="Search" />
                     </span>

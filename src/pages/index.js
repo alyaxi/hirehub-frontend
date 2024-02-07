@@ -36,6 +36,7 @@ import EditJobsAdmin from "./admin/manage_jobs/edit";
 import ViewProfile from "./admin/profile/view";
 import ScheduleCandidatesAdmin from "./admin/manage_candidates/schedule";
 import ManageFAQsAdmin from "./admin/manage_faqs";
+import EmailTemplatesAdmin from "./admin/email_templates/main";
 import ManageTermAndConditionAdmin from "./admin/term_and_condition";
 // ------------ Employer ------------
 import EmployerDashboard from "./employer/dashboard";
@@ -59,6 +60,7 @@ import AddQuestionnaireEmployer from "./employer/manage_questionnaire/add";
 // ------------ Candidate ------------
 import ManageProfileCandidate from "./candidate/manage_profile";
 import CalenderCandidate from "./candidate/calender";
+import MainJobsCandidate from "./candidate/jobs/main";
 import MainCandidatesEmployer from "./employer/manage_candidates/main";
 import ViewCandidatesEmployer from "./employer/manage_candidates/view";
 import EditCandidatesEmployer from "./employer/manage_candidates/edit";
@@ -103,6 +105,7 @@ export {
 
     ScheduleCandidatesAdmin,
     ManageFAQsAdmin,
+    EmailTemplatesAdmin,
     ManageTermAndConditionAdmin,
     // ------------ Employer ------------
     EmployerDashboard,
@@ -127,6 +130,7 @@ export {
     // ------------ Candidate ------------
     ManageProfileCandidate,
     CalenderCandidate,
+    MainJobsCandidate,
     MainCandidatesEmployer,
     ViewCandidatesEmployer,
     EditCandidatesEmployer
