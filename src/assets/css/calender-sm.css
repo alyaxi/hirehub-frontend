@@ -3,6 +3,7 @@
   .calender-sm .react-calendar__navigation {
       display: flex;
       justify-content: space-between;
+      column-gap: 15px;
   }
 
   .calender-sm .react-calendar__navigation__label__labelText {
@@ -16,7 +17,7 @@
       position: relative;
       width: 24px;
       color: white;
-      margin-right: 6px;
+      /* margin-right: 6px; */
   }
 
   .calender-sm .react-calendar__navigation__prev2-button:before {
@@ -74,7 +75,7 @@
       position: relative;
       width: 24px;
       color: white;
-      margin-left: 6px;
+      /* margin-left: 6px; */
   }
 
   .calender-sm .react-calendar__navigation__next2-button:before {
@@ -125,7 +126,7 @@
   .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day {
       padding-top: 2px;
       padding-bottom: 2px;
-      margin: 0 5px;
+      /* margin: 0 5px; */
   }
 
   .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day abbr {
@@ -156,5 +157,59 @@
   }
 
   .calender-sm .react-calendar__month-view__weekdays {
-      padding: 7px 0 5px 0;
+      padding: 14px 0 5px 0;
+  }
+
+  .calender-sm .react-calendar__tile--now abbr {
+      background-color: #8913FF;
+      /* Change background color to yellow */
+      color: #fff;
+      /* Change text color to dark gray */
+  }
+
+  .calender-sm .react-calendar__month-view__weekdays__weekday.react-calendar__month-view__weekdays__weekday--current abbr {
+      color: #8913FF;
+      font-weight: 700;
+  }
+
+
+  /* Apply styles to Saturdays */
+  .calender-sm .react-calendar__month-view__week:last-child .react-calendar__month-view__days__day:nth-child(6),
+  .calender-sm .react-calendar__month-view__week:last-child .react-calendar__month-view__days__day:nth-child(7) {
+      color: #8913FF;
+      /* Your styles for Saturdays */
+      background-color: #8913FF;
+  }
+
+  /* Apply styles to Sundays */
+  .calender-sm .react-calendar__month-view__week:not(:last-child) .react-calendar__month-view__days__day:nth-child(1),
+  .calender-sm .react-calendar__month-view__week:last-child .react-calendar__month-view__days__day:nth-child(1) {
+      color: #8913FF;
+      /* Your styles for Sundays */
+      background-color: #8913FF;
+  }
+
+
+
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(6),
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(7),
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(13),
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(14),
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(20),
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(21),
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(27),
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(28),
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(34),
+  .calender-sm .react-calendar__month-view__days .react-calendar__month-view__days__day:nth-child(35) {
+      color: #8913FF;
+
+  }
+
+
+
+  .calender-sm .react-calendar__year-view__months__month {
+      padding: 13.5px 0;
+  }
+  .calender-sm .react-calendar__year-view__months__month abbr {
+    font-size: 16px;
   }

@@ -1,22 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Calendar from 'react-calendar';
-
-import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
+import { Core } from '../..';
+import Icon from '../../icon';
 // import '../../../assets/css/calender-sm.css'
 
-// const localizer = momentLocalizer(moment);
+function MyCalenderSm({ selectedDate, setSelectedDate, selectedTime, setSelectedTime }) {
 
-// type ValuePiece = Date | null;
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
 
-// type Value = ValuePiece | [ValuePiece, ValuePiece];
-
-function MyCalenderSm({ events }) {
-    const [value, onChange] = useState(new Date());
     return (
         <div className='calender calender-sm mt-[25px]'>
-            <Calendar onChange={onChange} value={value} />
+            <Calendar onChange={handleDateChange} value={selectedDate} />
+            {selectedDate &&
+                <>
+                    <div className='flex justify-between items-center w-full border-t-[1px] py-3 mt-2'>
+                        {!selectedTime ?
+                            <Core.MyTimePicker setTime={setSelectedTime} />
+                            :
+                            <>
+                                <div className='flex justify-start items-center gap-x-3 text-purple-2 font-[500] lowercase leading-[31px]'>
+                                    <Icon name="Clock" size={18} />
+                                    {selectedTime}
+                                </div>
+                                <span onClick={() => setSelectedTime(null)} className='text-purple-2 cursor-pointer'>
+                                    <Icon name="Cross" size={10} />
+                                </span>
+                            </>
+                        }
+                    </div>
+                </>
+            }
         </div>
     )
 }

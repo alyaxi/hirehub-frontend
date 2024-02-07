@@ -12,7 +12,8 @@ import InputWithLabel from "./InputWithLabel";
 import Languages from "./Languages";
 import MobileInputs from "./MobileInputs";
 import MyCalender from "./my_calender/MyCalender";
-import MyCalenderSm from "./my_calender/MyCalenderSm";
+import MyCalenderSm from "./my_calender/MyCalenderSm"
+import MyTimePicker from "./time_picker/MyTimePicker";
 import Preferences from "./Preferences";
 import PopupModal from "./PopupModal";
 import PopupModalCalender from "./PopupModalCalender";
@@ -49,6 +50,7 @@ export {
     MobileInputs,
     MyCalender,
     MyCalenderSm,
+    MyTimePicker,
     Preferences,
     PopupModal,
     PopupModalCalender,

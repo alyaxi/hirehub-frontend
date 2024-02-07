@@ -125,6 +125,26 @@ const Icon = ({ name, size, ...props }) => {
                 <path d="M10.8747 9.99361C11.2001 10.319 11.2001 10.8467 10.8747 11.1721C10.5492 11.4975 10.0216 11.4975 9.69615 11.1721L5.7021 7.17812L1.70816 11.1721C1.38273 11.4976 0.855089 11.4976 0.529649 11.1721C0.204209 10.8467 0.204204 10.3191 0.529639 9.99362L4.52357 5.99962L0.52948 2.00559C0.20404 1.68015 0.204041 1.15252 0.529481 0.827084C0.85492 0.50165 1.38256 0.501649 1.708 0.827083L5.70208 4.8211L9.696 0.827098C10.0214 0.501658 10.5491 0.501655 10.8745 0.827089C11.2 1.15252 11.2 1.68016 10.8745 2.0056L6.8806 5.9996L10.8747 9.99361Z" fill="currentColor" />
             </svg>
         ),
+        Clock: (
+            <svg
+                {...props}
+                width={size ? size : "18"}
+                height={size ? size : "18"}
+                viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 7.5C14 9.45 13.1388 11.1887 11.79 12.375C10.6363 13.3825 9.14125 14 7.5 14C3.90875 14 1 11.0913 1 7.5C1 5.4525 1.9425 3.61626 3.4375 2.43001C4.55875 1.53626 5.9725 1 7.5 1C11.0913 1 14 3.90875 14 7.5Z" stroke="url(#paint0_linear_2264_71537)" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.90625 5.46875V7.90625L5.875 9.125" stroke="url(#paint1_linear_2264_71537)" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <defs>
+                    <linearGradient id="paint0_linear_2264_71537" x1="1" y1="7.5" x2="14" y2="7.5" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.109423" stop-color="#8913FF" />
+                        <stop offset="1" stop-color="#7312F7" />
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_2264_71537" x1="5.875" y1="7.29688" x2="7.90625" y2="7.29688" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.109423" stop-color="#8913FF" />
+                        <stop offset="1" stop-color="#7312F7" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        ),
         ChevronLeft: (
             <svg
                 {...props}

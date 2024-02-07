@@ -207,3 +207,9 @@ span.email-first-view {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+div :where(.css-dev-only-do-not-override-dkbvqv).ant-btn-primary {
+  color: #fff;
+  background: #1677ff;
+  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+}
