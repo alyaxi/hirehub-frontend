@@ -49,11 +49,11 @@ export const addProject = createAsyncThunk('candidate/add-project', async (formD
     }
 });
 
-export const addExperience = createAsyncThunk('candidate/add-experience', async ({experiencesData}) => {
+export const addExperience = createAsyncThunk('candidate/add-experience', async (experiencesData) => {
 
     try {
         console.log(experiencesData, "dataaaaa")
-        const data = await CandidateService.addExperience(experiencesData)
+        const data = await CandidateService.addExperienceService(experiencesData)
         return data
     } catch (error) {
         // Handle login error

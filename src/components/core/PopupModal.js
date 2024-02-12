@@ -117,7 +117,7 @@ function PopupModal({ setIsModalOpen,
         const formData = new FormData();
 
 
-        const flattenObject = (obj, parentKey = '') => {
+        const flattenObject = (obj, parentKey = '') => { 
             for (const key in obj) {
                 if (obj.hasOwnProperty(key)) {
                     const value = obj[key];

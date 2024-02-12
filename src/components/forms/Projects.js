@@ -190,11 +190,11 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
         >
             {({ isSubmitting }) => (
                 <Form>
-a
+
                     <div className='mb-4'>
                         <DragImg state={projectImage}   />
                     </div>
-b
+
                     <div className='mb-4'>
                         <Field name="name">
                             {({ field }) => (

@@ -249,11 +249,12 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
             agreeTerms: values?.agreeTerms,
             description: description,
         };
+        console.log("_experiencesData",_experiencesData)
         setCandidateProfileData(prevData => ({
             ...prevData,
             experiencesData: _experiencesData,
         }));
-        handleSenddata()
+        // handleSenddata()
     };
     return (
         <Formik
