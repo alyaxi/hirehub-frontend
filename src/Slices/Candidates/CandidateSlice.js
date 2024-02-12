@@ -62,6 +62,45 @@ export const addExperience = createAsyncThunk('candidate/add-experience', async 
     }
 });
 
+export const addSkills = createAsyncThunk('candidate/add-skills', async ({experiencesData}) => {
+
+    try {
+        console.log(experiencesData, "dataaaaa")
+        const data = await CandidateService.addExperience(experiencesData)
+        return data
+    } catch (error) {
+        // Handle login error
+        console.log(error);
+        handleApiError(error)
+    }
+});
+
+export const addEducation = createAsyncThunk('candidate/add-education', async ({experiencesData}) => {
+
+    try {
+        console.log(experiencesData, "dataaaaa")
+        const data = await CandidateService.addExperience(experiencesData)
+        return data
+    } catch (error) {
+        // Handle login error
+        console.log(error);
+        handleApiError(error)
+    }
+});
+
+export const addLanguage = createAsyncThunk('candidate/add-language', async ({experiencesData}) => {
+
+    try {
+        console.log(experiencesData, "dataaaaa")
+        const data = await CandidateService.addExperience(experiencesData)
+        return data
+    } catch (error) {
+        // Handle login error
+        console.log(error);
+        handleApiError(error)
+    }
+});
+
 
 
 
@@ -105,6 +144,21 @@ const CandidateSlice = createSlice({
             // state.candidate = payload?.data?.candidate
         })
         builder.addCase(addExperience.fulfilled, (state, { payload }) => {
+            state.reload = true
+            console.log(payload, "payloadd from candidate add experience");
+            // state.candidate = payload?.data?.candidate
+        })
+        builder.addCase(addEducation.fulfilled, (state, { payload }) => {
+            state.reload = true
+            console.log(payload, "payloadd from candidate add experience");
+            // state.candidate = payload?.data?.candidate
+        })
+        builder.addCase(addSkills.fulfilled, (state, { payload }) => {
+            state.reload = true
+            console.log(payload, "payloadd from candidate add experience");
+            // state.candidate = payload?.data?.candidate
+        })
+        builder.addCase(addLanguage.fulfilled, (state, { payload }) => {
             state.reload = true
             console.log(payload, "payloadd from candidate add experience");
             // state.candidate = payload?.data?.candidate
