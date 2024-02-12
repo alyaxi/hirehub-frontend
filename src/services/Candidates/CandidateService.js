@@ -51,15 +51,54 @@ const CandidateService = {
             throw error;
         }
     },
-    async addExperience({formDataToSend}) {
+    async addExperienceService({formDataToSend}) {
         try {
 
             console.log(formDataToSend)
-            // const response = await api.post('/add-experience', formDataToSend);
-            // if (response && response.data && response.status === 200) {
-            //     // console.log("starttttttttttt");
-            //     return response.data;
-            // }
+            const response = await api.post('/add-experience', formDataToSend);
+            if (response && response.data && response.status === 200) {
+                // console.log("starttttttttttt");
+                return response.data;
+            }
+        } catch (error) {
+            throw error;
+        }
+    },
+    async addEducationService({formDataToSend}) {
+        try {
+
+            console.log(formDataToSend)
+            const response = await api.post('/add-education', formDataToSend);
+            if (response && response.data && response.status === 200) {
+                // console.log("starttttttttttt");
+                return response.data;
+            }
+        } catch (error) {
+            throw error;
+        }
+    },
+    async addSkillsService({formDataToSend}) {
+        try {
+
+            console.log(formDataToSend)
+            const response = await api.post('/add-skills', formDataToSend);
+            if (response && response.data && response.status === 200) {
+                // console.log("starttttttttttt");
+                return response.data;
+            }
+        } catch (error) {
+            throw error;
+        }
+    },
+    async addLanguageService({formDataToSend}) {
+        try {
+
+            console.log(formDataToSend)
+            const response = await api.post('/add-language', formDataToSend);
+            if (response && response.data && response.status === 200) {
+                // console.log("starttttttttttt");
+                return response.data;
+            }
         } catch (error) {
             throw error;
         }
