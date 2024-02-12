@@ -27,7 +27,33 @@ export const UpdateCanidateData = createAsyncThunk('candidate/update-candidate',
       
         
         const data = await CandidateService.UpdateCandidateData(formDataToSend)
+        console.log(data, "dataaaaa")
+        return data
+    } catch (error) {
+        // Handle login error
+        console.log(error);
+        handleApiError(error)
+    }
+});
+
+export const addProject = createAsyncThunk('candidate/add-project', async (formDataToSend) => {
+
+    try {
+        const data = await CandidateService.addprojectService(formDataToSend)
         // console.log(data, "dataaaaa")
+        return data
+    } catch (error) {
+        // Handle login error
+        console.log(error);
+        handleApiError(error)
+    }
+});
+
+export const addExperience = createAsyncThunk('candidate/add-experience', async ({experiencesData}) => {
+
+    try {
+        console.log(experiencesData, "dataaaaa")
+        const data = await CandidateService.addExperience(experiencesData)
         return data
     } catch (error) {
         // Handle login error
@@ -71,6 +97,16 @@ const CandidateSlice = createSlice({
         builder.addCase(UpdateCanidateData.fulfilled, (state, { payload }) => {
             state.reload = true
             console.log(payload, "payloadd from candidate updtate");
+            // state.candidate = payload?.data?.candidate
+        })
+        builder.addCase(addProject.fulfilled, (state, { payload }) => {
+            state.reload = true
+            console.log(payload, "payloadd from candidate add project");
+            // state.candidate = payload?.data?.candidate
+        })
+        builder.addCase(addExperience.fulfilled, (state, { payload }) => {
+            state.reload = true
+            console.log(payload, "payloadd from candidate add experience");
             // state.candidate = payload?.data?.candidate
         })
 

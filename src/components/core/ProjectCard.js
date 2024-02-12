@@ -5,13 +5,13 @@ import { Core } from '..';
 
 const { Meta } = Card;
 
-function ProjectCard({ data }) { 
+function ProjectCard({ data,index }) { 
 
     console.log("ProjectCard data",data)
     return (
         <div>
             <div className='flex justify-end mb-[-45px] right-[10px] relative z-[200]' >
-                <Core.ProficienciesActions buttons={['edit']} type={'projectsData'} id={data?._id} />
+                <Core.ProficienciesActions buttons={['edit']} type={'projectsData'} id={data?._id} index={index} />
             </div>
             <NavLink to={data?.projectUrl}>
                 <Card

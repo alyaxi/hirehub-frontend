@@ -17,7 +17,7 @@ function Projects({ data, buttons, card, setProjectsData }) {
                             {data?.map((value, index) => {
                                 // console.log(value, "valueeeeeeee")
                                 return (
-                                    <ProjectCard key={index * 6} data={value} />
+                                    <ProjectCard key={index * 6} data={value} index={index} />
                                 )
                             })}
                         </div>

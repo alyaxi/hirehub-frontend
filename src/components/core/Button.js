@@ -31,7 +31,8 @@ function Button({ children, onClick, submit, type, color, icon, className, sm, i
 
                 ${isDisabled && "opacity-50"}
              `}
-            type={submit && "submit"}
+            type={submit === "submit"}
+            // type={submit && "submit"}
         >
             <div className='flex justify-center items-center gap-x-1 whitespace-nowrap'>
                 {icon &&
