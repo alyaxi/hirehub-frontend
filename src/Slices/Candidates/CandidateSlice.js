@@ -23,16 +23,17 @@ export const getCandidate = createAsyncThunk('candidate/get-candidate', async (_
 export const UpdateCanidateData = createAsyncThunk('candidate/update-candidate', async (formDataToSend) => {
 
     try {
-        // console.log("updateEmployererrrbyidddd consolee", formDataToSend)
-      
-        
+        console.log("updateEmployererrrbyidddd consolee", formDataToSend)
+
+
         const data = await CandidateService.UpdateCandidateData(formDataToSend)
-        console.log(data, "dataaaaa")
+        console.log("UpdateCandidateData dataaaaa", data)
         return data
     } catch (error) {
         // Handle login error
         console.log(error);
         handleApiError(error)
+        
     }
 });
 
@@ -54,6 +55,22 @@ export const addExperience = createAsyncThunk('candidate/add-experience', async 
     try {
         console.log(experiencesData, "dataaaaa")
         const data = await CandidateService.addExperienceService(experiencesData)
+
+        console.log('addExperienceService data', data)
+
+        return data
+    } catch (error) {
+        // Handle login error
+        console.log(error);
+        handleApiError(error)
+    }
+});
+export const addSkills = createAsyncThunk('candidate/add-skills', async (skillsData) => {
+
+    try {
+        // console.log(skillsData, "dataaaaa")
+        const data = await CandidateService.addSkillsService(skillsData)
+        // console.log('addSkillsService data', data)
         return data
     } catch (error) {
         // Handle login error
@@ -62,11 +79,12 @@ export const addExperience = createAsyncThunk('candidate/add-experience', async 
     }
 });
 
-export const addSkills = createAsyncThunk('candidate/add-skills', async ({experiencesData}) => {
+export const addEducation = createAsyncThunk('candidate/add-education', async (educationsData) => {
 
     try {
-        console.log(experiencesData, "dataaaaa")
-        const data = await CandidateService.addExperience(experiencesData)
+        // console.log(educationsData, "dataaaaa")
+        const data = await CandidateService.addEducationService(educationsData)
+        // console.log('addEductaionService data', data)
         return data
     } catch (error) {
         // Handle login error
@@ -75,24 +93,12 @@ export const addSkills = createAsyncThunk('candidate/add-skills', async ({experi
     }
 });
 
-export const addEducation = createAsyncThunk('candidate/add-education', async ({experiencesData}) => {
+export const addLanguage = createAsyncThunk('candidate/add-language', async (languagesData) => {
 
     try {
-        console.log(experiencesData, "dataaaaa")
-        const data = await CandidateService.addExperience(experiencesData)
-        return data
-    } catch (error) {
-        // Handle login error
-        console.log(error);
-        handleApiError(error)
-    }
-});
-
-export const addLanguage = createAsyncThunk('candidate/add-language', async ({experiencesData}) => {
-
-    try {
-        console.log(experiencesData, "dataaaaa")
-        const data = await CandidateService.addExperience(experiencesData)
+        console.log(languagesData, "dataaaaa")
+        const data = await CandidateService.addLanguageService(languagesData)
+        console.log('addSkillsService data', data)
         return data
     } catch (error) {
         // Handle login error

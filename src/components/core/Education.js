@@ -3,7 +3,7 @@ import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
 
 function Education({ data, buttons, card }) {
-
+// console.log("data",data)
     return (
         <>
             {card ?
@@ -26,7 +26,7 @@ function Education({ data, buttons, card }) {
                                         <div className='w-full h-full flex justify-between items-end'>
                                             <div>
                                                 <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.degree}</h6>
-                                                <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.school}</p>
+                                                <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.organization}</p>
                                                 <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
                                                 <p className='text-gray-6 text-[14px] leading-[20px] mt-4'>
                                                     {value?.description}
@@ -56,7 +56,7 @@ function Education({ data, buttons, card }) {
                                         <div className='w-full h-full flex justify-between items-end'>
                                             <div>
                                                 <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.degree}</h6>
-                                                <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.school}</p>
+                                                <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.organization}</p>
                                                 <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
                                                 <p className='text-gray-6 text-[14px] leading-[20px] mt-4'>
                                                     {value?.description}

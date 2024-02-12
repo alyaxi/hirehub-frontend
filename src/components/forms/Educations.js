@@ -53,14 +53,14 @@ const monthsOptions = [
 ];
 
 function Educations({ action, handleCancel, id, setCandidateProfileData, handleSenddata, savingForm }) {
-    console.log("id", id)
+    // console.log("id", id)
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const educations = candidate.educationsData;
 
     const educationToEdit = educations?.find(education => education?._id === id);
 
-    console.log("educationToEdit", educationToEdit)
+    // console.log("educationToEdit", educationToEdit)
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
@@ -70,7 +70,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
         yearOptions.push({ name: year.toString(), value: year.toString() });
     }
 
-    console.log("educationToEdit", educationToEdit)
+    // console.log("educationToEdit", educationToEdit)
 
     //     degree
     // endDate
@@ -94,7 +94,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
         selectedCountry: educationToEdit?.selectedCountry ? educationToEdit?.selectedCountry : "",
         startDate: educationToEdit?.startDate ? educationToEdit?.startDate : "",
     });
-    console.log("data", data)
+    // console.log("data", data)
 
     const startMonth = educationToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
     const _startMonth = startMonth ? startMonth[1] : null;
@@ -108,8 +108,8 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
     const _endYear = educationToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
     const __endYear = _endYear ? _endYear[2] : null;
 
-    console.log("__startYear", __startYear)
-    console.log("__endYear", __endYear)
+    // console.log("__startYear", __startYear)
+    // console.log("__endYear", __endYear)
 
     const [selectedStartMonth, setSelectedStartMonth] = useState(_startMonth);
     const [selectedEndMonth, setSelectedEndMonth] = useState(_endMonth);
@@ -167,11 +167,11 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
 
         if (type === "startDate" && selectedStartMonth !== "" && name === "year") {
             let _startDate = selectedStartMonth + '/' + value;
-            setStartDate(_startDate)
+            setStartDate("01/"+_startDate)
         }
         if (type === "endDate" && selectedStartMonth !== "" && name === "year") {
             let _endDate = selectedStartMonth + '/' + value;
-            setEndDate(_endDate)
+            setEndDate("01/"+_endDate)
         }
     };
 
@@ -188,9 +188,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
         // console.log('endDate', endDate);
         // console.log('selectedCountry', selectedCountry);
         // console.log('grade', values.grade);
-        let _id = id ? id : "generate new id"
         let _educationsData = {
-            _id: _id,
             degree: values.degree,
             endDate: endDate,
             fieldOfStudy: values.fieldOfStudy,
@@ -200,11 +198,12 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
             selectedCountry: selectedCountry,
             startDate: startDate,
         };
+        console.log("_educationsData",_educationsData)
         setCandidateProfileData(prevData => ({
             ...prevData,
             educationsData: _educationsData,
         }));
-        handleSenddata()
+        // handleSenddata()
     };
     return (
         <Formik
@@ -374,11 +373,11 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                        {action === "edit" &&
+                        {/* {action === "edit" &&
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
-                        }
+                        } */}
                     </div>
 
                     {/* </div> */}

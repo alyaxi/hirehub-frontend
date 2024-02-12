@@ -214,7 +214,8 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
 
                 if (type === "startDate") {
                     setSelectedStartYear(selectedYear)
-                    setStartDate(selectedDate);
+                    setStartDate("01/"+selectedDate);
+                    // console.log("yyyyyy a",selectedDate)
                 }
             }
         };
@@ -229,14 +230,13 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
 
         if (type === "startDate" && selectedStartMonth !== "" && name === "year") {
             let _startDate = selectedStartMonth + '/' + value;
-            setStartDate(_startDate)
+            // console.log("yyyyyy b",_startDate)
+            setStartDate("01/"+_startDate)
         }
     };
 
     const handleSubmit = (values) => {
-        let _id = id ? id : "generate new id"
         let _experiencesData = {
-            _id: _id,
             title: values?.title,
             company: values?.company,
             industry: values?.industry,
@@ -466,11 +466,11 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                        {action === "edit" &&
+                        {/* {action === "edit" &&
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
-                        }
+                        } */}
                     </div>
 
                 </Form>

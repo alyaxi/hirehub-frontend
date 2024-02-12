@@ -65,7 +65,7 @@ function MainCandidates() {
     const dispatch = useDispatch()
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
 
-    // console.log({ AppliedJobCandidate })
+    console.log('AppliedJobCandidate',AppliedJobCandidate)
 
     useEffect(() => {
         try {

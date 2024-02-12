@@ -1,4 +1,8 @@
 export function calculateTimePeriod(startDate, endDate) {
+
+    // console.log('startDate',startDate)
+    // console.log('endDate',endDate)
+
     const startDateObject = new Date(startDate);
     let endDateObject;
 
@@ -26,6 +30,7 @@ export function calculateTimePeriod(startDate, endDate) {
     }
 
     result += ` · ${yearsDiff} yrs ${monthsDiff} mos`;
+    // console.log('result',result)
 
     return result;
 }

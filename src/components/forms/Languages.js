@@ -38,7 +38,7 @@ function Languages({ action, handleCancel, setCandidateProfileData, handleSendda
             ...prevData,
             languagesData: _languagesData,
         }));
-        handleSenddata()
+        // handleSenddata()
     };
 
     const multiSelectHandle = (title, setFieldValue) => {
@@ -93,11 +93,11 @@ function Languages({ action, handleCancel, setCandidateProfileData, handleSendda
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                        {action === "edit" &&
+                        {/* {action === "edit" &&
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
-                        }
+                        } */}
                     </div>
 
 

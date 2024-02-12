@@ -17,6 +17,7 @@ const CandidateService = {
         }
     },
     async UpdateCandidateData(formDataToSend) {
+        console.log("UpdateCandidateData formDataToSend", formDataToSend)
         try {
             // console.log("updated from servie candidate", formDataToSend);
             // for (var pair of formDataToSend.entries()) {
@@ -28,7 +29,7 @@ const CandidateService = {
                 },
             });
             if (response && response.data && response.status === 200) {
-                // console.log("starttttttttttt");
+                console.log("starttttttttttt", response.data);
                 return response.data;
             }
         } catch (error) {
@@ -51,10 +52,10 @@ const CandidateService = {
             throw error;
         }
     },
-    async addExperienceService({formDataToSend}) {
+    async addExperienceService(formDataToSend) {
         try {
 
-            console.log(formDataToSend)
+            console.log({ formDataToSend })
             const response = await api.post('/add-experience', formDataToSend);
             if (response && response.data && response.status === 200) {
                 // console.log("starttttttttttt");
@@ -64,23 +65,24 @@ const CandidateService = {
             throw error;
         }
     },
-    async addEducationService({formDataToSend}) {
+    async addEducationService(formDataToSend) {
         try {
 
-            console.log(formDataToSend)
+            console.log("educationnnnnnnnnnnnnnnn", formDataToSend)
             const response = await api.post('/add-education', formDataToSend);
             if (response && response.data && response.status === 200) {
-                // console.log("starttttttttttt");
+                console.log("response", response);
+                console.log("response.data", response.data);
                 return response.data;
             }
         } catch (error) {
             throw error;
         }
     },
-    async addSkillsService({formDataToSend}) {
+    async addSkillsService(formDataToSend) {
         try {
-
-            console.log(formDataToSend)
+            // console.log(formDataToSend)
+            // console.log("skillllllll", formDataToSend)
             const response = await api.post('/add-skills', formDataToSend);
             if (response && response.data && response.status === 200) {
                 // console.log("starttttttttttt");
@@ -90,10 +92,10 @@ const CandidateService = {
             throw error;
         }
     },
-    async addLanguageService({formDataToSend}) {
+    async addLanguageService(formDataToSend) {
         try {
-
             console.log(formDataToSend)
+            console.log("languageeeeee", formDataToSend)
             const response = await api.post('/add-language', formDataToSend);
             if (response && response.data && response.status === 200) {
                 // console.log("starttttttttttt");

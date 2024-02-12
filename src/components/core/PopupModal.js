@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Modal } from 'antd';
 import Forms from '../forms';
-import { UpdateCanidateData, addExperience, addProject } from '../../Slices/Candidates/CandidateSlice';
+import { UpdateCanidateData, addExperience, addEducation, addProject, addSkills, addLanguage } from '../../Slices/Candidates/CandidateSlice';
 // import Summary from './Summary';
 import { useDispatch } from 'react-redux';
 
@@ -116,8 +116,12 @@ function PopupModal({ setIsModalOpen,
 
         const formData = new FormData();
 
+        if(state?.jobPreferenceData){
+            return state?.jobPreferenceData
+        }
 
-        const flattenObject = (obj, parentKey = '') => { 
+
+        const flattenObject = (obj, parentKey = '') => {
             for (const key in obj) {
                 if (obj.hasOwnProperty(key)) {
                     const value = obj[key];
@@ -143,7 +147,7 @@ function PopupModal({ setIsModalOpen,
         formData.append("profilePicture", state?.personalInformationData?.profilePicture)
         if (state && state?.projectsData && state?.projectsData.length) {
             // formData.append("projectImage", state?.projectsData[0]?.projectImage)
-            formData.append("projectImageFile", state?.projectsData[index]?.projectImageFile)
+            formData.append("projectImageFile", state?.projectsData[6].projectImageFile)
         }
 
         return formData
@@ -151,7 +155,7 @@ function PopupModal({ setIsModalOpen,
 
 
 
-    console.log({ action })
+    // console.log({ action })
 
     const [savingForm, setSavingForm] = useState(false);
 
@@ -159,9 +163,7 @@ function PopupModal({ setIsModalOpen,
         console.log("handleSenddata candidateProfileData", candidateProfileData)
         // const candidateProfileData = val;
         const formdata = convertStateToFormData(candidateProfileData);
-        console.log("formdata", formdata)
         // console.log({ val })
-
 
         // console.log({ candidateProfileData })
 
@@ -191,10 +193,46 @@ function PopupModal({ setIsModalOpen,
                         });
                 }
                 if (type === "experiencesData") {
-                    // setSavingForm(true);
                     console.log(type, "typeeeee")
                     console.log({ candidateProfileData })
                     dispatch(addExperience(candidateProfileData))
+                        .unwrap()
+                        .then(x => { console.log(x, "Ressss") })
+                        .catch(err => console.log(err, "errorr"))
+                        .finally(() => {
+                            setSavingForm(false);
+                            setIsModalOpen(false);
+                        });
+                }
+
+                if (type === "educationsData") {
+                    console.log(type, "typeeeee")
+                    console.log({ candidateProfileData })
+                    dispatch(addEducation(candidateProfileData))
+                        .unwrap()
+                        .then(x => { console.log(x, "Ressss") })
+                        .catch(err => console.log(err, "errorr"))
+                        .finally(() => {
+                            setSavingForm(false);
+                            setIsModalOpen(false);
+                        });
+                }
+                if (type === "skillsData") {
+                    console.log(type, "typeeeee")
+                    console.log({ candidateProfileData })
+                    dispatch(addSkills(candidateProfileData))
+                        .unwrap()
+                        .then(x => { console.log(x, "Ressss") })
+                        .catch(err => console.log(err, "errorr"))
+                        .finally(() => {
+                            setSavingForm(false);
+                            setIsModalOpen(false);
+                        });
+                }
+                if (type === "languagesData") {
+                    console.log(type, "typeeeee")
+                    console.log({ candidateProfileData })
+                    dispatch(addLanguage(candidateProfileData))
                         .unwrap()
                         .then(x => { console.log(x, "Ressss") })
                         .catch(err => console.log(err, "errorr"))

@@ -112,7 +112,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
             ...prevData,
             jobPreferenceData: _jobPreferenceData,
         }));
-        handleSenddata()
+        // handleSenddata()
     };
 
     return (

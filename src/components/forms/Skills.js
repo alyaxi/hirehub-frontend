@@ -61,7 +61,7 @@ function Skills({ action, handleCancel, setCandidateProfileData, handleSenddata,
             ...prevData,
             skillsData: _skillsData,
         }));
-        handleSenddata()
+        // handleSenddata()
     };
 
     const multiSelectHandle = (title, setFieldValue) => {
@@ -116,11 +116,11 @@ function Skills({ action, handleCancel, setCandidateProfileData, handleSenddata,
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                        {action === "edit" &&
+                        {/* {action === "edit" &&
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
-                        }
+                        } */}
                     </div>
 
 

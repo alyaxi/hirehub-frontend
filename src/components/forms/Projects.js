@@ -168,18 +168,21 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
             })
         }
 
-
+        setCandidateProfileData({
+            projectsData: projectData,
+        })
         // projectData.push(_projectsData1)
 
         // console.log({ projectData })
-        console.log('projectData',projectData)
+        console.log('projectData', projectData)
 
-        handleSenddata({
-            projectsData: projectData,
+        // handleSenddata({
+        //     projectsData: projectData,
 
 
-        })
+        // })
     };
+    console.log('projectImage', projectImage)
 
     return (
         <Formik
@@ -192,7 +195,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                 <Form>
 
                     <div className='mb-4'>
-                        <DragImg state={projectImage}   />
+                        <DragImg state={projectImage} setState={setProjectImage}  />
                     </div>
 
                     <div className='mb-4'>
@@ -325,11 +328,11 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                        {action === "edit" &&
+                        {/* {action === "edit" &&
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
-                        }
+                        } */}
                     </div>
 
                 </Form>

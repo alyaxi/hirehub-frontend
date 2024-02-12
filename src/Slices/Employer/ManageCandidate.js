@@ -63,8 +63,8 @@ const manageCandidate = createSlice({
     extraReducers: (builder) => {
 
         builder.addCase(getAppliedJobByCandidate.fulfilled, (state, { payload }) => {
-            console.log(payload, "payloadd from view employer by admin");
             const appliedJobs1 = payload?.data?.appliedJobs
+            console.log(appliedJobs1, "payloadd from view employer by admin");
             const newAppliedJobs = []
             for (let i = 0; i < appliedJobs1?.length; i++) {
                 console.log("start consoleee")
@@ -72,9 +72,9 @@ const manageCandidate = createSlice({
                 const jobTitle = jobs?.Job[0]?.position
                 const salary = jobs?.Job[0]?.salary
                 const experience = jobs?.Job[0]?.experience;
-                const name = jobs.user[0].name
-                const candidate = jobs.candidate[0]
-                console.log(jobs,"start consoleee")
+                const name = jobs?.user[0]?.name
+                const candidate = jobs?.candidate[0]
+           
             
 
 
