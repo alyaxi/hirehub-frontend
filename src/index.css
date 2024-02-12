@@ -157,6 +157,8 @@ ul.menu-list:before {
 
 /* Example styles for different elements */
 .responsibilities-container p {
+  font-size: 12px;
+  line-height: 24px;
   margin-bottom: 10px;
 }
 
@@ -192,13 +194,17 @@ ul.menu-list:before {
   margin-left: 20px;
 }
 
-.responsibilities-container ul {
+.responsibilities-container ul,
+.responsibilities-container ol
+ {
+  font-size: 12px;
+  line-height: 16px;
   list-style-type: disc;
-  margin-left: 20px;
+  margin-left: 16px;
 }
 
 .responsibilities-container li {
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 
 span.email-first-view {

@@ -4,14 +4,11 @@ import { JobDetails, } from '../../../../components';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
     { label: "Manage Jobs" },
     { label: "Job Details" },
 ];
-
-
 
 function ViewJobs() {
     const location = useLocation();
@@ -19,7 +16,7 @@ function ViewJobs() {
     const id = parts[parts.length - 1];
     const jobs = useSelector((state) => state?.jobSlice.jobs);
     const data = jobs.find(job => job.id === id);
-
+    // console.log("data",data)
     return (
         <>
             <Breadcrumb

@@ -49,6 +49,10 @@ function Summery({ action, handleCancel,
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+
+                                
+                            {/* <Core.Button >Cancel</Core.Button>
+                            <button>cancel</button> */}
                         </div>
                     }
 

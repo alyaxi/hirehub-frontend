@@ -1,17 +1,28 @@
 import React from 'react';
 import Icon from '../icon';
 
-function Button({ children, onClick, submit, type, color, icon, className, sm, isDisabled,iconSize }) {
+function Button({ children, onClick, submit, type, color, icon, className, sm, xs, isDisabled, iconSize }) {
     // console.log("isDisabled",isDisabled)
     return (
         <button
             onClick={onClick}
             disabled={isDisabled ? true : false}
             className={`
-            ${type === "narrow" ? "" : 'w-full'}
-            text-[14px] leading-[20px] tracking-[0.5px] font-semibold
+                ${type === "narrow" && "w-[unset]"}
+                
+                ${xs && 'w-[auto]'}                
+                ${!xs && 'w-full'}                
+                
+
+                ${xs && 'text-[13px]'}                
+                ${!xs && 'text-[14px]'}     
+                leading-[20px] tracking-[0.5px] font-semibold
+
                 ${!color && 'text-white'}
-                rounded-[8px] 
+                 
+                ${xs && 'rounded-[6px]'}    
+                ${!xs && 'rounded-[8px]'}    
+
                 ${!color && 'bg-gradient-to-r from-purple-2 to-purple-3 '}
                 ${!color && 'border border-purple-3'}
                 
@@ -25,8 +36,12 @@ function Button({ children, onClick, submit, type, color, icon, className, sm, i
                 ${color === "red" && 'border border-red-500'}
 
                 hover:translate-y-[-1px] transition-all
-                ${sm ? 'py-[9px]' : 'py-[10px]'}                
-                 px-5
+
+                ${sm ? 'py-[9px]' : 'py-[10px]'}  
+
+                ${xs && 'py-[4px] px-[20px] '}                
+                ${!xs && 'px-5'}      
+
                 ${className}
 
                 ${isDisabled && "opacity-50"}

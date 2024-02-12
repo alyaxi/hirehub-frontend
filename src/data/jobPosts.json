@@ -1,0 +1,25 @@
+// {
+//     "jobPosts": [
+//         {
+//             "title": "Product UX Designer(Retail)",
+//             "companyName": "Chewy",
+//             "jobType": "Hybrid",
+//             "address": "Plantation, FL",
+//             "text": "Over the last couple of years I've worked on 10+ projects across different fields among which are MVPs for start-ups, cosmetics & beauty industry, e-commerce, art & architecture, photography and others.",
+//             "postDate": "May 24, 2023",
+//             "salary": "50K - 70K",
+//         },
+//         {
+//             "title": "Employer’s Request",
+//             "count": "50",
+//             "iconName": "Users",
+//             "link": "/admin/employers-request"
+//         },
+//         {
+//             "title": "Rejected Employers",
+//             "count": "10",
+//             "iconName": "ProfileDelete",
+//             "link": "/admin/rejected-employers"
+//         }
+//     ]
+// }

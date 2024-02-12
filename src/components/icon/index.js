@@ -131,8 +131,8 @@ const Icon = ({ name, size, ...props }) => {
                 width={size ? size : "18"}
                 height={size ? size : "18"}
                 viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 7.5C14 9.45 13.1388 11.1887 11.79 12.375C10.6363 13.3825 9.14125 14 7.5 14C3.90875 14 1 11.0913 1 7.5C1 5.4525 1.9425 3.61626 3.4375 2.43001C4.55875 1.53626 5.9725 1 7.5 1C11.0913 1 14 3.90875 14 7.5Z" stroke="url(#paint0_linear_2264_71537)" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7.90625 5.46875V7.90625L5.875 9.125" stroke="url(#paint1_linear_2264_71537)" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14 7.5C14 9.45 13.1388 11.1887 11.79 12.375C10.6363 13.3825 9.14125 14 7.5 14C3.90875 14 1 11.0913 1 7.5C1 5.4525 1.9425 3.61626 3.4375 2.43001C4.55875 1.53626 5.9725 1 7.5 1C11.0913 1 14 3.90875 14 7.5Z" stroke="url(#paint0_linear_2264_71537)" strokeWidth="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.90625 5.46875V7.90625L5.875 9.125" stroke="url(#paint1_linear_2264_71537)" strokeWidth="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                 <defs>
                     <linearGradient id="paint0_linear_2264_71537" x1="1" y1="7.5" x2="14" y2="7.5" gradientUnits="userSpaceOnUse">
                         <stop offset="0.109423" stop-color="#8913FF" />
@@ -350,8 +350,8 @@ const Icon = ({ name, size, ...props }) => {
                 width={size ? size : "20"}
                 height={size ? size : "20"}
                 viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10.0004 11.1917C11.4363 11.1917 12.6004 10.0276 12.6004 8.5917C12.6004 7.15576 11.4363 5.9917 10.0004 5.9917C8.56445 5.9917 7.40039 7.15576 7.40039 8.5917C7.40039 10.0276 8.56445 11.1917 10.0004 11.1917Z" stroke="#667085" stroke-width="1.5" />
-                <path d="M3.01675 7.07508C4.65842 -0.141583 15.3501 -0.13325 16.9834 7.08342C17.9418 11.3167 15.3084 14.9001 13.0001 17.1168C11.3251 18.7334 8.67508 18.7334 6.99175 17.1168C4.69175 14.9001 2.05842 11.3084 3.01675 7.07508Z" stroke="#667085" stroke-width="1.5" />
+                <path d="M10.0004 11.1917C11.4363 11.1917 12.6004 10.0276 12.6004 8.5917C12.6004 7.15576 11.4363 5.9917 10.0004 5.9917C8.56445 5.9917 7.40039 7.15576 7.40039 8.5917C7.40039 10.0276 8.56445 11.1917 10.0004 11.1917Z" stroke="#667085" strokeWidth="1.5" />
+                <path d="M3.01675 7.07508C4.65842 -0.141583 15.3501 -0.13325 16.9834 7.08342C17.9418 11.3167 15.3084 14.9001 13.0001 17.1168C11.3251 18.7334 8.67508 18.7334 6.99175 17.1168C4.69175 14.9001 2.05842 11.3084 3.01675 7.07508Z" stroke="#667085" strokeWidth="1.5" />
             </svg>
         ),
         LinkedIn: (
