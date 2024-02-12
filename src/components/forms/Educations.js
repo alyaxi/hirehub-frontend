@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import { Country } from 'country-state-city';
 import { Core } from '..';
 import { useSelector } from 'react-redux';
+import { Spin } from 'antd';
 
 const degreeOptions = [
     { name: "Bachelor's in Computer Science", value: "Bachelor's in Computer Science" },
@@ -51,7 +52,7 @@ const monthsOptions = [
     { name: 'December', value: '12' },
 ];
 
-function Educations({ action, handleCancel, id, setCandidateProfileData, handleSenddata }) {
+function Educations({ action, handleCancel, id, setCandidateProfileData, handleSenddata, savingForm }) {
     console.log("id", id)
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
@@ -364,9 +365,11 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
 
                     <div className='flex justify-between  pt-6 mt-8 border-t-[1px]'>
                         <div className='flex justify-start gap-x-3 '>
-                            <Core.Button
-                                // onClick={handleNext}
-                                type="narrow" submit>Save</Core.Button>
+                            {savingForm ?
+                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                    <Spin />
+                                </div>
+                                : <Core.Button type="narrow" submit>Save</Core.Button>}
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>

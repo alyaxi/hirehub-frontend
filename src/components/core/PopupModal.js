@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from 'antd';
 import Forms from '../forms';
 import { UpdateCanidateData } from '../../Slices/Candidates/CandidateSlice';
@@ -12,134 +12,10 @@ function PopupModal({ setIsModalOpen,
     id
 }) {
     const dispatch = useDispatch()
-    // const [candidateProfileData2, setCandidateProfileData2] = useState({
-    //     personalInformationData: {
-    // profilePicture: "",
-    //         careerLevel: "",
-    //         city: "",
-    //         country: "",
-    //         dob: "",
-    //         experience: "",
-    //         gender: "",
-    //         phoneNo: "",
-    //         profileCompletion: "",
-    //         state: "",
-    //         statusLine: "",
-    //         zipCode: "",
-    //     },
-    //     summeryData: '',
-    //     projectsData: [
-    //         {
-    //             id: "1",
-    //             associated: "",
-    //             currentlyInProcess: true,
-    //             name: "",
-    //             projectUrl: "",
-    //             description: "",
-    //             projectImage: "",
-    //             startDate: "",
-    //             endDate: "",
-    //         },
-
-    //     ],
-    //     experiencesData: [
-    //         {
-    //             id: "1",
-    //             title: '',
-    //             company: '',
-    //             industry: '',
-    //             directlyManageTeam: '',
-    //             noOfPeople: '',
-    //             salary: '',
-    //             selectedCountry: '',
-    //             selectedCity: '',
-    //             startDate: '',
-    //             agreeTerms: '',
-    //             description: '',
-    //         },
-    //     ],
-    //     educationsData: [
-    //         {
-    //             id: "1",
-    //             organization: '',
-    //             degree: '',
-    //             fieldOfStudy: '',
-    //             startDate: '',
-    //             endDate: '',
-    //             selectedCountry: '',
-    //             grade: '',
-
-    //         }
-    //     ],
-    //     skillsData: [
-    //         { id: '1', title: 'Express.js', experience: '6 years' }
-    //     ],
-    //     languagesData: [
-    //         { id: 1, title: 'English', proficiency: 'Basic' }
-    //     ],
-    //     jobPreferenceData: {
-    //         desiredJobTitle: ['abc', 'xyz'],
-    //         desiredSalary: "$1000 - $1500",
-    //         relocation: {
-    //             anywhere: false,
-    //             onlyNearMe: {
-    //                 locations: ['london']
-    //             }
-    //         },
-    //         relocationPreference: "onlyNearMe",
-    //         skills: ['Angular Js'],
-    //     },
-    // })
 
 
     const [candidateProfileData, setCandidateProfileData] = useState({})
 
-    // const [personalInformationData, setPersonalInformationData] = useState({
-    //     avatar: "",
-    //     name: "",
-    //     dob: "",
-    // })
-    // const [projectsData, setProjectsData] = useState({
-    //     avatar: "",
-    //     name: "",
-    //     dob: "",
-    // })
-    // const [experiencesData, setExperiencesData] = useState({
-    //     title: "",
-    //     company: "",
-    //     industry: "",
-    //     directlyManageATeam: {
-    //         status: false,
-    //         noOfPeople: ''
-    //     },
-    //     salary: "",
-    //     location: "",
-    //     city: "",
-    //     startDate: "",
-    //     currentlyWorking: false,
-    //     description: '',
-    // })
-    // const [educationsData, setEducationsData] = useState({
-    //     school: "",
-    //     degree: "",
-    //     fieldOfStudy: "",
-    //     startDate: "",
-    //     endOrExpectedDate: "",
-    //     location: "",
-    //     grade: "",
-    // })
-    // const [skillsData, setSkillsData] = useState({
-    //     skill: "",
-    //     experience: "",
-    // })
-    // const [languagesData, setLanguagesData] = useState({
-    //     languages: "",
-    //     languageProficiency: "",
-    // })
-    // const [summeryData, setSummeryData] = useState({
-    // })
-    // const [jobPreferenceData, setJobPreferenceData] = useState({
-    // })
 
     const handleOk = () => {
         setIsModalOpen(false);
@@ -193,7 +69,7 @@ function PopupModal({ setIsModalOpen,
         const formData = new FormData();
 
 
-        
+
         console.log("block 0")
         if (data?.personalInformationData) {
             console.log("block 1")
@@ -224,15 +100,15 @@ function PopupModal({ setIsModalOpen,
 
 
 
-
     const [savingForm, setSavingForm] = useState(false);
 
     const handleSenddata = () => {
-
+        console.log("candidateProfileData", candidateProfileData)
         try {
-            console.log("runingggg")
+            // console.log("runingggg")
             const formData = cleanAndAppendToFormData(candidateProfileData);
-            console.log("editttttttt")
+            // console.log("editttttttt")
+            console.log("formData", formData)
             setSavingForm(true);
             dispatch(UpdateCanidateData(formData))
                 .unwrap()
@@ -240,11 +116,16 @@ function PopupModal({ setIsModalOpen,
                 .catch(err => console.log(err, "errorr"))
                 .finally(() => {
                     setSavingForm(false);
+                    setIsModalOpen(false);
                 });
         } catch (error) {
             console.log(error, "catch error")
         }
     }
+
+    useEffect(() => {
+        handleSenddata();
+    }, [candidateProfileData]);
 
     return (
         <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
@@ -264,7 +145,7 @@ function PopupModal({ setIsModalOpen,
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
                     handleSenddata={handleSenddata}
-
+                    savingForm={savingForm}
                 />}
 
             {type === "projectsData" &&
@@ -274,6 +155,7 @@ function PopupModal({ setIsModalOpen,
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
                     id={action === "edit" ? id : null}
+                    savingForm={savingForm}
                 />}
 
             {type === "experiencesData" &&
@@ -283,6 +165,7 @@ function PopupModal({ setIsModalOpen,
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
                     id={action === "edit" ? id : null}
+                    savingForm={savingForm}
                 />}
 
             {type === "educationsData" &&
@@ -292,6 +175,7 @@ function PopupModal({ setIsModalOpen,
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
                     id={action === "edit" ? id : null}
+                    savingForm={savingForm}
                 />}
 
 
@@ -302,7 +186,7 @@ function PopupModal({ setIsModalOpen,
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
                     handleSenddata={handleSenddata}
-
+                    savingForm={savingForm}
                 />}
 
             {(type === "skillsData" && action === "edit") &&
@@ -311,7 +195,7 @@ function PopupModal({ setIsModalOpen,
                     action={'edit'}
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
-
+                    savingForm={savingForm}
                 />}
 
 
@@ -322,7 +206,7 @@ function PopupModal({ setIsModalOpen,
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
                     handleSenddata={handleSenddata}
-
+                    savingForm={savingForm}
                 />}
 
             {(type === "languagesData" && action === "edit") &&
@@ -331,6 +215,7 @@ function PopupModal({ setIsModalOpen,
                     action={'edit'}
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
+                    savingForm={savingForm}
                 />}
 
 
@@ -341,6 +226,7 @@ function PopupModal({ setIsModalOpen,
                     action={'edit'}
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
+                    savingForm={savingForm}
                 />}
 
         </Modal>

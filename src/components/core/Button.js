@@ -10,8 +10,7 @@ function Button({ children, onClick, submit, type, color, icon, className, sm, x
             className={`
                 ${type === "narrow" && "w-[unset]"}
                 
-                ${xs && 'w-[auto]'}                
-                ${!xs && 'w-full'}                
+                ${xs && 'w-[auto]'}             
                 
 
                 ${xs && 'text-[13px]'}                

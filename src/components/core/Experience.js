@@ -3,7 +3,7 @@ import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
 
 function Experience({ data, buttons, card }) {
-    console.log(data, "productionnnn")
+    // console.log(data, "productionnnn")
     return (
         <>
             {card ?

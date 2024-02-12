@@ -1,7 +1,7 @@
 import { Core } from "..";
 
 function Skills({ data, card }) {
-    console.log(" skills data", data)
+    // console.log(" skills data", data)
     return (
         <>
             {card ?

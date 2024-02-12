@@ -23,18 +23,19 @@ const _skill = [
 function SkillsEdit({ action, handleCancel }) {
 
     const skillExperienceOptions = [
-        { name: "6 months", value: "6months" },
-        { name: "1 year", value: "1year" },
-        { name: "2 years", value: "2years" },
-        { name: "3 years", value: "3years" },
-        { name: "4 years", value: "4years" },
-        { name: "5 years", value: "5years" },
-        { name: "6 years", value: "6years" },
-        { name: "7 years", value: "7years" },
-        { name: "8 years", value: "8years" },
-        { name: "9 years", value: "9years" },
-        { name: "10 years", value: "10years" },
-        { name: "Over 10 years", value: "Over10" },
+    { name: "Fresh", value: "0" },
+    { name: "6 months", value: "6 months" },
+        { name: "1 year", value: "1 year" },
+        { name: "2 years", value: "2 years" },
+        { name: "3 years", value: "3 years" },
+        { name: "4 years", value: "4 years" },
+        { name: "5 years", value: "5 years" },
+        { name: "6 years", value: "6 years" },
+        { name: "7 years", value: "7 years" },
+        { name: "8 years", value: "8 years" },
+        { name: "9 years", value: "9 years" },
+        { name: "10 years", value: "10 years" },
+        { name: "Over 10 years", value: "Over 10 years" },
     ];
 
 

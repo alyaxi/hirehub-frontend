@@ -6,7 +6,7 @@ import api from "../../api/api";
 const CandidateService = {
     async getCandidateData() {
         try {
-            console.log("starttt from servie candidate");
+            // console.log("starttt from servie candidate");
             const response = await api.get('/get-candidate');
             if (response && response.data && response.status === 200) {
                 // console.log("starttttttttttt");

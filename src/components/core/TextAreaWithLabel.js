@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TextAreaWithLabel({ label, name, required, helperText, onChange, value, maxlength }) {
+function TextAreaWithLabel({ label, name, required, helperText, onChange, value, maxLength }) {
 
     const _label = (name) => {
         switch (name) {
@@ -55,7 +55,7 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
                     rows={7}
                     cols={5}
                     id={name}
-                    maxlength={maxlength ? maxlength : "5000"}
+                    maxLength={maxLength ? maxLength : "5000"}
                     defaultValue={value}
                     name={name}
                     placeholder={placeholder(name)}

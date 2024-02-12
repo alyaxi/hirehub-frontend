@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Country, City } from 'country-state-city';
 import { Core } from '..';
 import { useSelector } from 'react-redux';
+import { Spin } from 'antd';
 
 const industryOptions = [
     { name: "Accounting", value: "Accounting" },
@@ -101,14 +102,16 @@ const noOfPeopleOptions = [
 ];
 
 const salaryOptions = [
-    { name: "$1000 - $1500", value: "$1000 - $1500" },
-    { name: "$1500 - $2000", value: "$1500 - $2000" },
-    { name: "$2000 - $2500", value: "$2000 - $2500" },
-    { name: "$2500 - $3000", value: "$2500 - $3000" },
-    { name: "$3000 - $3500", value: "$3000 - $3500" },
-    { name: "$3500 - $4000", value: "$3500 - $4000" },
-    { name: "$4000 - $4500", value: "$4000 - $4500" },
-    { name: "Over $4500", value: "Over $4500" },
+    { name: "$1000", value: "$1000" },
+    { name: "$1500", value: "$1500" },
+    { name: "$2000", value: "$2000" },
+    { name: "$2500", value: "$2500" },
+    { name: "$3000", value: "$3000" },
+    { name: "$3500", value: "$3500" },
+    { name: "$4000", value: "$4000" },
+    { name: "$80000", value: "$80000" },
+    { name: "$80,000", value: "$80,000" },
+    { name: "Over $8000", value: "Over $8000" },
 ];
 
 const monthsOptions = [
@@ -126,7 +129,7 @@ const monthsOptions = [
     { name: 'December', value: '12' },
 ];
 
-function Experiences({ action, handleCancel, id, setCandidateProfileData, handleSenddata }) {
+function Experiences({ action, handleCancel, id, setCandidateProfileData, handleSenddata, savingForm }) {
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const experiences = candidate.experiencesData;
@@ -453,9 +456,11 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
 
                     <div className='flex justify-between  pt-6 mt-8 border-t-[1px]'>
                         <div className='flex justify-start gap-x-3 '>
-                            <Core.Button
-                                // onClick={handleNext}
-                                type="narrow" submit>Save</Core.Button>
+                            {savingForm ?
+                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                    <Spin />
+                                </div>
+                                : <Core.Button type="narrow" submit>Save</Core.Button>}
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>

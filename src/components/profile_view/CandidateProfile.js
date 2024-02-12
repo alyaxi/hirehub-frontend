@@ -28,6 +28,7 @@ function CandidateProfile() {
     };
 
     useEffect(() => {
+        // console.log("reload..")
         try {
 
             dispatch(getCandidate()).unwrap().then(res => {

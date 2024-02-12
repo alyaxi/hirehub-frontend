@@ -28,6 +28,7 @@ const skillsOptions = [
 ];
 
 const skillExperienceOptions = [
+    { name: "Fresh", value: "0" },
     { name: "6 months", value: "6 months" },
     { name: "1 year", value: "1 year" },
     { name: "2 years", value: "2 years" },
@@ -79,8 +80,8 @@ const SkillsEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }) =
             skillsData: _skillsData,
         }));
 
-        handleSenddata()
-        setSubmitting(false);
+        // handleSenddata()
+        // setSubmitting(false);
     };
 
     return (

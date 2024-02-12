@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
-import { Radio } from 'antd/es';
+import { Radio, Spin } from 'antd/es';
 import MultiSelectInput from '../core/MultiSelectInput';
 import { useSelector } from 'react-redux';
 
@@ -66,7 +66,7 @@ const locationsOptions = [
     { name: "Kuwait", value: "Kuwait" },
 ];
 
-function JobPreference({ action, handleCancel, setCandidateProfileData, handleSenddata }) {
+function JobPreference({ action, handleCancel, setCandidateProfileData, handleSenddata, savingForm }) {
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const jp = candidate.jobPreference;
@@ -79,7 +79,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
         onlyNearMe: jp?.onlyNearMe ? jp?.onlyNearMe : '',
         relocation: jp?.relocation ? jp?.relocation : {},
         skills: jp?.skills ? jp?.skills : [],
-     });
+    });
 
     const [isRelocating, setIsRelocating] = useState((data.relocation.anywhere === true || data.relocation.anywhere === false) ? true : false);
 
@@ -245,9 +245,11 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
 
                         {action === "edit" &&
                             <div className='flex justify-start gap-x-3 pt-6 mt-8 border-t-[1px]'>
-                                <Core.Button
-                                    // onClick={handleNext}
-                                    type="narrow" submit>Save</Core.Button>
+                                {savingForm ?
+                                    <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                        <Spin />
+                                    </div>
+                                    : <Core.Button type="narrow" submit>Save</Core.Button>}
                                 <Core.Button
                                     // onClick={handleBack} 
                                     type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>

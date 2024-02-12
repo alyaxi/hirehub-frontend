@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Core } from '..';
 import MultiSelectInput from '../core/MultiSelectInput';
+import { Spin } from 'antd';
 
 const options = [
     { label: 'English', value: 'English' },
@@ -12,13 +13,13 @@ const options = [
 ];
 
 const languageProficiencyOptions = [
-    { name: 'Basic', value: 'basic' },
-    { name: 'Intermediate', value: 'intermediate' },
-    { name: 'Advanced', value: 'advanced' },
-    { name: 'Fluent', value: 'fluent' },
+    { name: 'Basic', value: 'Basic' },
+    { name: 'Intermediate', value: 'Intermediate' },
+    { name: 'Advanced', value: 'Advanced' },
+    { name: 'Fluent', value: 'Fluent' },
 ];
 
-function Languages({ action, handleCancel, setCandidateProfileData, handleSenddata }) {
+function Languages({ action, handleCancel, setCandidateProfileData, handleSenddata, savingForm }) {
 
     const [data] = useState({
         // _id: "",
@@ -73,7 +74,7 @@ function Languages({ action, handleCancel, setCandidateProfileData, handleSendda
                                 <Core.SelectWithLabel
                                     {...field}
                                     name={"proficiency"}
-                                    label 
+                                    label
                                     options={languageProficiencyOptions}
                                     defaultOption="Choose any one"
                                 />
@@ -83,9 +84,11 @@ function Languages({ action, handleCancel, setCandidateProfileData, handleSendda
 
                     <div className='flex justify-between  pt-6 mt-8 border-t-[1px]'>
                         <div className='flex justify-start gap-x-3 '>
-                            <Core.Button
-                                // onClick={handleNext}
-                                type="narrow" submit>Save</Core.Button>
+                            {savingForm ?
+                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                    <Spin />
+                                </div>
+                                : <Core.Button type="narrow" submit>Save</Core.Button>}
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>

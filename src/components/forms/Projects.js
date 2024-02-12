@@ -3,54 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
 import DragImg from '../core/DragImg';
 import { useSelector } from 'react-redux';
+import { Spin } from 'antd';
 
-// const projects = [
-//     {
-//         _id: "4",
-//         name: "Project 1",
-//         projectUrl: "https://www.shutterstock.com/image-vector/website-template-design-vector-illustration-260nw-1059153563.jpg",
-//         projectImage: projectImg1,
-//         associated: "option 1",
-//         description: "<p>description text is here...</p>",
-//         startDate: "02/2010",
-//         endDate: "06/2012",
-//         currentlyInProcess: true,
-//     },
-//     {
-//         _id: "65bd1316ff6289ae1c722e31",
-//         name: "Project 2",
-//         projectUrl: "https://www.shutterstock.com/image-vector/web-design-template-vector-illustration-260nw-1362343523.jpg",
-//         projectImage: projectImg2,
-//         associated: "option 2",
-//         description: "<p>description text is here second one is here.</p>",
-//         startDate: "01/1903",
-//         endDate: "08/1905",
-//         currentlyInProcess: false,
-//     },
-//     {
-//         _id: "3",
-//         name: "Project 3",
-//         projectUrl: "https://previews.123rf.com/images/darkovujic/darkovujic1809/darkovujic180900011/110267002-landing-page-template-of-web-design-modern-flat-design-concept-of-web-page-design-for-website-and.jpg",
-//         projectImage: projectImg3,
-//         associated: "option 3",
-//         description: "<p>description text is here second one is here. You may call someone.</p>",
-//         startDate: "10/1920",
-//         endDate: "07/2005",
-//         currentlyInProcess: true,
-//     },
-//     // {
-//     // id: "4",
-//     //     title: "Project 4",
-//     //     link: "https://mir-s3-cdn-cf.behance.net/projects/404/469b22176695451.64c95edd2a9e7.jpg",
-//     //     img: projectImg4,
-//     // },
-//     // {
-//     // id: "5",
-//     //     title: "Project 5",
-//     //     link: "https://i.pinimg.com/736x/f6/52/22/f65222d817856ce6d0ae8bebcd998168.jpg",
-//     //     img: projectImg5,
-//     // },
-// ]
 
 const associatedOptions = [
     { name: "Project Association", value: "Project Association" },
@@ -73,11 +27,13 @@ const monthsOptions = [
     { name: 'December', value: '12' },
 ];
 
-function Projects({ action, handleCancel, id, setCandidateProfileData, handleSenddata }) {
+function Projects({ action, handleCancel, id, setCandidateProfileData, handleSenddata, savingForm }) {
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const projects = candidate.projectsData;
     const projectToEdit = projects?.find(project => project?._id === id);
+
+    console.log("projectToEdit", projectToEdit)
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
@@ -180,11 +136,12 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
             associated: values?.associated,
             description: description,
         }
+        console.log("_projectsData", _projectsData)
         setCandidateProfileData(prevData => ({
             ...prevData,
             projectsData: _projectsData,
         }));
-        handleSenddata()
+        // handleSenddata()
     };
 
     return (
@@ -322,9 +279,11 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
 
                     <div className='flex justify-between pt-6 mt-8 border-t-[1px]'>
                         <div className='flex justify-start gap-x-3 '>
-                            <Core.Button
-                                // onClick={handleNext}
-                                type="narrow" submit>Save</Core.Button>
+                            {savingForm ?
+                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                    <Spin />
+                                </div>
+                                : <Core.Button type="narrow" submit>Save</Core.Button>}
                             <Core.Button
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>

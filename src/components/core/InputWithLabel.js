@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Icons } from '..';
 import Icon from '../../components/icon';
 
-function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, iconic, maxlength, edit, disabled }) {
+function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, iconic, maxLength, edit, disabled }) {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
 
@@ -254,7 +254,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     onBlur={onBlur}
                     // onChange={(e) => setValue(e.target.value)} 
                     onChange={onChange}
-                // maxlength={maxlength && maxlength}
+                    maxLength={maxLength && maxLength}
                 />
                 {name === "SearchProduct" &&
                     <span className='absolute left-3 top-[10px] text-gray-6'>

@@ -287,12 +287,12 @@ function MobileInputs({ onChange, label, name, forgotPassword, required, helperT
                     />
                     <Core.InputWithLabel
                         name="2ndNumber"
-                        maxlength={3}
+                        maxLength={3}
                     // required
                     />
                     <Core.InputWithLabel
                         name="3rdNumber"
-                        maxlength={7}
+                        maxLength={7}
                     // required
                     /> 
                 </div>

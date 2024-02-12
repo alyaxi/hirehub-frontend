@@ -7,7 +7,7 @@ const { Meta } = Card;
 
 function ProjectCard({ data }) { 
 
-    console.log("ProjectCard data",data)
+    // console.log("ProjectCard data",data)
     return (
         <div>
             <div className='flex justify-end mb-[-45px] right-[10px] relative z-[200]' >
