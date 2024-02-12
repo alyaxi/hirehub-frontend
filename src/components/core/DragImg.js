@@ -20,7 +20,7 @@ function DragImg({ state, setState }) {
             // }
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);
-                setState(info.file);
+                // setState(info.file);
 
                 const reader = new FileReader();
                 reader.onload = (e) => {

@@ -134,7 +134,7 @@ function LoginPage() {
                                 <Spin />
                             </div>
                             :
-                            <Core.Button type='submit' className='text-[18px] leading-[20px] rounded-full py-[18px]'>
+                            <Core.Button submit className='text-[18px] leading-[20px] rounded-full py-[18px]'>
                                 Sign in
                             </Core.Button>
                         }

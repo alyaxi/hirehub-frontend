@@ -6,9 +6,7 @@ import Icon from '../icon';
 import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
 
-function PersonalInformations({ action, handleCancel,
-    handleSenddata, savingForm
-}) {
+function PersonalInformations({ action, handleCancel, setCandidateProfileData, handleSenddata, savingForm }) {
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const personalInformationDataSavedOnDb = candidate?.personalInformationData
 
@@ -158,6 +156,7 @@ function PersonalInformations({ action, handleCancel,
 
     const handleDateChange = (name, event) => {
         const value = event.target.value;
+        console.log("handleDateChange", name, " - ", value)
         if (name === "day") {
             setSelectedDay(value)
         }
@@ -181,6 +180,7 @@ function PersonalInformations({ action, handleCancel,
     }, [selectedDay, selectedMonth, selectedYear]);
 
     console.log(profilePicture, "ppppppppppp")
+    console.log('dob', dob)
 
     const handleSubmit = (values, { isSubmitting }) => {
         let _personalInformationData = {
@@ -197,7 +197,7 @@ function PersonalInformations({ action, handleCancel,
             expectedSalary: values.expectedSalary || "",
             zipCode: values.zipCode || "",
         }
-        // console.log("_personalInformationData.statusLine", _personalInformationData.statusLine)
+        console.log("_personalInformationData", _personalInformationData)
         setCandidateProfileData(prevData => ({
             ...prevData,
             personalInformationData: _personalInformationData,
@@ -516,4 +516,5 @@ function PersonalInformations({ action, handleCancel,
     );
 }
 
-export default PersonalInformations;
+// export default PersonalInformations;
+export default React.memo(PersonalInformations);

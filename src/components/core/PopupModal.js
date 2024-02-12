@@ -15,6 +15,7 @@ function PopupModal({ setIsModalOpen,
     const dispatch = useDispatch()
 
 
+    const [candidateProfileData, setCandidateProfileData] = useState();
 
 
     const handleOk = () => {
@@ -155,12 +156,14 @@ function PopupModal({ setIsModalOpen,
     const [savingForm, setSavingForm] = useState(false);
 
     const handleSenddata = (val, file) => {
-        const candidateProfileData = val;
+        console.log("handleSenddata candidateProfileData", candidateProfileData)
+        // const candidateProfileData = val;
         const formdata = convertStateToFormData(candidateProfileData);
-        console.log({ val })
+        console.log("formdata", formdata)
+        // console.log({ val })
 
 
-        console.log({ candidateProfileData })
+        // console.log({ candidateProfileData })
 
         try {
             if (action == "edit") {
@@ -172,6 +175,7 @@ function PopupModal({ setIsModalOpen,
                     .catch(err => console.log(err, "errorr"))
                     .finally(() => {
                         setSavingForm(false);
+                        setIsModalOpen(false);
                     });
             } else if (action === "add") {
                 setSavingForm(true);
@@ -183,6 +187,7 @@ function PopupModal({ setIsModalOpen,
                         .catch(err => console.log(err, "errorr"))
                         .finally(() => {
                             setSavingForm(false);
+                            setIsModalOpen(false);
                         });
                 }
                 if (type === "experiencesData") {
@@ -195,6 +200,7 @@ function PopupModal({ setIsModalOpen,
                         .catch(err => console.log(err, "errorr"))
                         .finally(() => {
                             setSavingForm(false);
+                            setIsModalOpen(false);
                         });
                 }
             }
@@ -211,17 +217,20 @@ function PopupModal({ setIsModalOpen,
     return (
         <Modal title={_title} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
 
-            {type === "personalInformationData" && <Forms.PersonalInformations
-                handleCancel={handleCancel}
-                action={action}
-                handleSenddata={handleSenddata}
-                savingForm={savingForm}
-            />}
+            {type === "personalInformationData" &&
+                <Forms.PersonalInformations
+                    handleCancel={handleCancel}
+                    action={action}
+                    setCandidateProfileData={setCandidateProfileData}
+                    handleSenddata={handleSenddata}
+                    savingForm={savingForm}
+                />}
 
             {type === "summery" &&
                 <Forms.Summery
                     handleCancel={handleCancel}
                     action={action}
+                    setCandidateProfileData={setCandidateProfileData}
                     handleSenddata={handleSenddata}
                     savingForm={savingForm}
                 />}
@@ -231,6 +240,7 @@ function PopupModal({ setIsModalOpen,
                     handleCancel={handleCancel}
                     action={action}
                     handleSenddata={handleSenddata}
+                    setCandidateProfileData={setCandidateProfileData}
                     id={action === "edit" ? id : null}
                     savingForm={savingForm}
                     index={index}
@@ -241,7 +251,7 @@ function PopupModal({ setIsModalOpen,
                     handleCancel={handleCancel}
                     action={action}
                     handleSenddata={handleSenddata}
-                    // setCandidateProfileData={setCandidateProfileData}
+                    setCandidateProfileData={setCandidateProfileData}
                     id={action === "edit" ? id : null}
                     savingForm={savingForm}
                 />}
@@ -251,7 +261,7 @@ function PopupModal({ setIsModalOpen,
                     handleCancel={handleCancel}
                     action={action}
                     handleSenddata={handleSenddata}
-                    // setCandidateProfileData={setCandidateProfileData}
+                    setCandidateProfileData={setCandidateProfileData}
                     id={action === "edit" ? id : null}
                     savingForm={savingForm}
                 />}
@@ -262,7 +272,7 @@ function PopupModal({ setIsModalOpen,
                 <Forms.Skills
                     handleCancel={handleCancel}
                     action={action}
-                    // setCandidateProfileData={setCandidateProfileData}
+                    setCandidateProfileData={setCandidateProfileData}
                     handleSenddata={handleSenddata}
                     savingForm={savingForm}
                 />}
@@ -274,7 +284,6 @@ function PopupModal({ setIsModalOpen,
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
                     savingForm={savingForm}
-                // setCandidateProfileData={setCandidateProfileData}
 
                 />}
 
@@ -284,7 +293,7 @@ function PopupModal({ setIsModalOpen,
                 <Forms.Languages
                     handleCancel={handleCancel}
                     action={action}
-                    // setCandidateProfileData={setCandidateProfileData}
+                    setCandidateProfileData={setCandidateProfileData}
                     handleSenddata={handleSenddata}
                     savingForm={savingForm}
                 />}
@@ -296,7 +305,6 @@ function PopupModal({ setIsModalOpen,
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
                     savingForm={savingForm}
-                // setCandidateProfileData={setCandidateProfileData}
                 />}
 
 
@@ -308,7 +316,6 @@ function PopupModal({ setIsModalOpen,
                     handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
                     savingForm={savingForm}
-                // setCandidateProfileData={setCandidateProfileData}
                 />}
 
         </Modal>

@@ -171,7 +171,9 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
 
         // projectData.push(_projectsData1)
 
-        console.log({ projectData })
+        // console.log({ projectData })
+        console.log('projectData',projectData)
+
         handleSenddata({
             projectsData: projectData,
 
@@ -188,11 +190,11 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
         >
             {({ isSubmitting }) => (
                 <Form>
-
+a
                     <div className='mb-4'>
-                        <DragImg state={projectImage} setState={setProjectImage} />
+                        <DragImg state={projectImage}   />
                     </div>
-
+b
                     <div className='mb-4'>
                         <Field name="name">
                             {({ field }) => (
