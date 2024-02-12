@@ -27,8 +27,9 @@ const monthsOptions = [
     { name: 'December', value: '12' },
 ];
 
-function Projects({ action, handleCancel, id, setCandidateProfileData, handleSenddata, savingForm }) {
+function Projects({ action, handleCancel, id, setCandidateProfileData, handleSenddata, index, savingForm }) {
 
+    console.log("index", index)
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const projects = candidate.projectsData;
     const projectToEdit = projects?.find(project => project?._id === id);
@@ -124,10 +125,11 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
             setEndDate(_endDate)
         }
     };
-
+    const imgUrl = `http://localhost:4000/${projectImage?.originFileObj?.name}`
     const handleSubmit = (values) => {
         let _projectsData = {
-            projectImage: projectImage,
+            projectImage: imgUrl,
+            projectImageFile: projectImage?.originFileObj,
             name: values?.name,
             projectUrl: values?.projectUrl,
             startDate: startDate,
@@ -136,12 +138,45 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
             associated: values?.associated,
             description: description,
         }
-        console.log("_projectsData", _projectsData)
-        setCandidateProfileData(prevData => ({
-            ...prevData,
-            projectsData: _projectsData,
-        }));
-        // handleSenddata()
+
+        // let _projectsData1 = {
+        //     projectImage: imgUrl,
+        //     projectImageFile: projectImage?.originFileObj,
+        //     name: values?.name,
+        //     projectUrl: values?.projectUrl,
+        //     startDate: startDate,
+        //     endDate: endDate,
+        //     currentlyInProcess: values?.currentlyInProcess,
+        //     associated: values?.associated,
+        //     description: description,
+        // }
+
+
+        // let projectData = [...projects]
+        let projectData;
+        if (action === "add") {
+            projectData = [...projects, _projectsData]
+        }
+        else {
+            projectData = projects.map((pro, i) => {
+
+                if (pro._id === id) {
+                    return _projectsData
+                } else {
+                    return pro
+                }
+            })
+        }
+
+
+        // projectData.push(_projectsData1)
+
+        console.log({ projectData })
+        handleSenddata({
+            projectsData: projectData,
+
+
+        })
     };
 
     return (

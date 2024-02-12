@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
 
 function Summery({ action, handleCancel,
-    setCandidateProfileData, handleSenddata,savingForm
+    setCandidateProfileData, handleSenddata, savingForm
 }) {
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const summeryDataSavedOnDb = candidate?.summery
@@ -15,12 +15,16 @@ function Summery({ action, handleCancel,
     });
 
     const handleSubmit = (values) => {
-        // console.log(values, "valuesssss")
+        console.log(values, "valuesssss")
         setCandidateProfileData(prevData => ({
             ...prevData,
             summery: { text: values.summery, }
         }));
-        // handleSenddata()
+        // setCandidateProfileData(prevData => ({
+        //     ...prevData,
+
+        // }));
+        // handleSenddata( {summery: {text: values.summery,}})
     };
 
     return (

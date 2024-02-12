@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
 
 function PersonalInformations({ action, handleCancel,
-    setCandidateProfileData, handleSenddata, candidateProfileData, savingForm
+    handleSenddata, savingForm
 }) {
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const personalInformationDataSavedOnDb = candidate?.personalInformationData
@@ -24,8 +24,8 @@ function PersonalInformations({ action, handleCancel,
     ];
 
     const experienceOptions = [
-    { name: "Fresh", value: "0" },
-    { name: "6 months", value: "6 months" },
+        { name: "Fresh", value: "0" },
+        { name: "6 months", value: "6 months" },
         { name: "1 year", value: "1 year" },
         { name: "2 years", value: "2 years" },
         { name: "3 years", value: "3 years" },
@@ -86,7 +86,7 @@ function PersonalInformations({ action, handleCancel,
     });
 
     const [data] = useState({
-        profilePicture: personalInformationDataSavedOnDb?.zipCode,
+        profilePicture: personalInformationDataSavedOnDb?.profilePicture,
         name: firstName,
         lastName: lastName,
         email: user?.email,
@@ -109,13 +109,13 @@ function PersonalInformations({ action, handleCancel,
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
 
-    const day = personalInformationDataSavedOnDb?.dob.match(/^(\d+)\//);
+    const day = personalInformationDataSavedOnDb?.dob?.match(/^(\d+)\//);
     const _day = day ? day[1] : null;
 
-    const month = personalInformationDataSavedOnDb?.dob.match(/\/(\d+)\//);
+    const month = personalInformationDataSavedOnDb?.dob?.match(/\/(\d+)\//);
     const _month = month ? month[1] : null;
 
-    const year = personalInformationDataSavedOnDb?.dob.match(/\/(\d+)$/);
+    const year = personalInformationDataSavedOnDb?.dob?.match(/\/(\d+)$/);
     const _year = year ? year[1] : null;
 
     const [selectedDay, setSelectedDay] = useState(_day);
@@ -123,7 +123,7 @@ function PersonalInformations({ action, handleCancel,
     const [selectedYear, setSelectedYear] = useState(_year);
     const [dob, setDob] = useState(personalInformationDataSavedOnDb?.dob ? personalInformationDataSavedOnDb?.dob : "");
     const [profilePicture, setProfilePictrue] = useState('');
-    // console.log(personalInformationDataSavedOnDb.country, "countryyyyyyyy")
+    console.log(personalInformationDataSavedOnDb?.country, "countryyyyyyyy")
 
     useEffect(() => {
         const allCountries = Country.getAllCountries();
@@ -180,9 +180,11 @@ function PersonalInformations({ action, handleCancel,
         updateDob();
     }, [selectedDay, selectedMonth, selectedYear]);
 
+    console.log(profilePicture, "ppppppppppp")
+
     const handleSubmit = (values, { isSubmitting }) => {
         let _personalInformationData = {
-            profilePicture: profilePicture || "",
+            profilePicture: profilePicture[0]?.originFileObj,
             phoneNo: values.phoneNo || "",
             statusLine: values.statusLine || "",
             dob: dob || "",
@@ -195,18 +197,17 @@ function PersonalInformations({ action, handleCancel,
             expectedSalary: values.expectedSalary || "",
             zipCode: values.zipCode || "",
         }
-        // setPersonalInformationData(_personalInformationData)
-        console.log("handleSubmit _personalInformationData", _personalInformationData)
+        // console.log("_personalInformationData.statusLine", _personalInformationData.statusLine)
         setCandidateProfileData(prevData => ({
             ...prevData,
             personalInformationData: _personalInformationData,
         }));
-        // handleSenddata()
+        // setPersonalInformationData(_personalInformationData)
+        // setCandidateProfileData();
+        // handleSenddata({
+        //     personalInformationData: _personalInformationData,
+        // })
     };
-
-    // useEffect(() => {
-    //     // handleSenddata();
-    // }, [candidateProfileData]);
 
     return (
         <Formik
@@ -380,9 +381,9 @@ function PersonalInformations({ action, handleCancel,
                             className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
                             <option value="">Select</option>
-                            {countries.map((country) => (
+                            {countries?.map((country) => (
                                 <option key={country.isoCode} value={country.isoCode} defaultValue={personalInformationDataSavedOnDb?.country}>
-                                    {country.name}
+                                    {country?.name}
                                 </option>
                             ))}
                         </select>
