@@ -112,7 +112,7 @@ function PopupModal({ setIsModalOpen,
 
     const convertStateToFormData = (state) => {
 
-        console.log(state, "valuessssssssss")
+        console.log(state?.jobPreferenceData, "valuessssssssss")
 
         const formData = new FormData();
 
@@ -165,6 +165,7 @@ function PopupModal({ setIsModalOpen,
         const formdata = convertStateToFormData(candidateProfileData);
         // console.log({ val })
 
+        console.log("formdata", formdata)
         // console.log({ candidateProfileData })
 
         try {

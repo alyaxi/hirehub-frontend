@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TextAreaWithLabel({ label, name, required, helperText, onChange, value, maxLength }) {
+function TextAreaWithLabel({ label, name, required, helperText, onChange, value, maxLength, rows }) {
 
     const _label = (name) => {
         switch (name) {
@@ -12,6 +12,8 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
                 return "Summery";
             case "statusLine":
                 return "Status Line";
+            case "inviteDescription":
+                return "Describe here";
             default:
                 return "Label";
         }
@@ -27,6 +29,8 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
                 return "Type summery about yourself...";
             case "statusLine":
                 return "Type Status Line about yourself...";
+            case "inviteDescription":
+                return "Type invite description for candidate.";
 
             default:
                 return "";
@@ -52,7 +56,7 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
                 }
                 <textarea onChange={onChange}
                     className="w-full text-[14px] font-regular leading-[20px] text-gray-700 bg-gray-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
-                    rows={7}
+                    rows={rows ? rows : 7}
                     cols={5}
                     id={name}
                     maxLength={maxLength ? maxLength : "5000"}

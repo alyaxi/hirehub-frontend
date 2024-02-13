@@ -2,7 +2,7 @@ import React from 'react';
 import Calendar from 'react-calendar';
 import { Core } from '../..';
 import Icon from '../../icon';
-// import '../../../assets/css/calender-sm.css'
+import '../../../assets/css/calender-sm.css'
 
 function MyCalenderSm({ selectedDate, setSelectedDate, selectedTime, setSelectedTime }) {
 

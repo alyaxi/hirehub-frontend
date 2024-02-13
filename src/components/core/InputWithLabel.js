@@ -83,7 +83,14 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Send To";
             case "SearchByLocation":
                 return "Location";
-
+            case "date":
+                return "Date";
+            case "startTime":
+                return "Start Time";
+            case "endTime":
+                return "End Time";
+            case "attachDocument":
+                return "Attach Document";
 
             case "skills1title":
             case "skills2title":
@@ -157,7 +164,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "organization":
                 return "Enter Organization Name";
             case "jobLocation":
-                return "Street# 1, Area abc, City, Country.";
+                // return "Street# 1, Area abc, City, Country.";
+                return "Enter here";
             case "package":
                 return "2000";
             case "salary":
@@ -211,7 +219,14 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "password";
             case "calender":
             case "expiryDate":
+            case "date":
                 return "date";
+            case "startTime":
+            case "endTime":
+                return "time";
+            case "attachDocument":
+                return "file";
+
             default:
                 return "text";
         }
@@ -255,6 +270,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     // onChange={(e) => setValue(e.target.value)} 
                     onChange={onChange}
                     maxLength={maxLength && maxLength}
+                    accept={name === "attachDocument" ? "application/pdf" : undefined}
                 />
                 {name === "SearchProduct" &&
                     <span className='absolute left-3 top-[10px] text-gray-6'>
