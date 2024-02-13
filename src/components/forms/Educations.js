@@ -83,16 +83,16 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
     // _id
 
 
-    const [data] = useState({
-        _id: educationToEdit?._id ? educationToEdit?._id : "",
-        degree: educationToEdit?.degree ? educationToEdit?.degree : "",
-        endDate: educationToEdit?.endDate ? educationToEdit?.endDate : "",
-        fieldOfStudy: educationToEdit?.fieldOfStudy ? educationToEdit?.fieldOfStudy : "",
-        grade: educationToEdit?.grade ? educationToEdit?.grade : "",
-        isDeleted: educationToEdit?.isDeleted ? educationToEdit?.isDeleted : "",
-        organization: educationToEdit?.organization ? educationToEdit?.organization : "",
-        selectedCountry: educationToEdit?.selectedCountry ? educationToEdit?.selectedCountry : "",
-        startDate: educationToEdit?.startDate ? educationToEdit?.startDate : "",
+    const [data] = useState(action === "add" ? {} : {
+        _id: educationToEdit?._id || "",
+        degree: educationToEdit?.degree || "",
+        endDate: educationToEdit?.endDate || "",
+        fieldOfStudy: educationToEdit?.fieldOfStudy || "",
+        grade: educationToEdit?.grade || "",
+        isDeleted: educationToEdit?.isDeleted || "",
+        organization: educationToEdit?.organization || "",
+        selectedCountry: educationToEdit?.selectedCountry || "",
+        startDate: educationToEdit?.startDate || "",
     });
     // console.log("data", data)
 
@@ -167,11 +167,11 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
 
         if (type === "startDate" && selectedStartMonth !== "" && name === "year") {
             let _startDate = selectedStartMonth + '/' + value;
-            setStartDate("01/"+_startDate)
+            setStartDate("01/" + _startDate)
         }
         if (type === "endDate" && selectedStartMonth !== "" && name === "year") {
             let _endDate = selectedStartMonth + '/' + value;
-            setEndDate("01/"+_endDate)
+            setEndDate("01/" + _endDate)
         }
     };
 
@@ -181,29 +181,38 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
     };
 
     const handleSubmit = (values, actions) => {
-        // console.log('organization', values.organization);
-        // console.log('degree', values.degree);
-        // console.log('fieldOfStudy', values.fieldOfStudy);
-        // console.log('startDate', startDate);
-        // console.log('endDate', endDate);
-        // console.log('selectedCountry', selectedCountry);
-        // console.log('grade', values.grade);
         let _educationsData = {
             degree: values.degree,
             endDate: endDate,
             fieldOfStudy: values.fieldOfStudy,
             grade: values.grade,
-            // isDeleted: isDeleted,
             organization: values.organization,
             selectedCountry: selectedCountry,
             startDate: startDate,
         };
-        console.log("_educationsData",_educationsData)
-        setCandidateProfileData(prevData => ({
-            ...prevData,
-            educationsData: _educationsData,
-        }));
-        // handleSenddata()
+
+        let educationData;
+
+        if (action === "add") {
+            // educationData = [...educations, _educationsData]
+            setCandidateProfileData(prevData => ({
+                ...prevData,
+                educationsData: _educationsData,
+            }));
+        }
+        else {
+            educationData = educations.map((exp, i) => {
+                if (exp._id === id) {
+                    return _educationsData
+                } else {
+                    return exp
+                }
+            })
+            setCandidateProfileData({
+                educationsData: educationData,
+            });
+        }
+
     };
     return (
         <Formik

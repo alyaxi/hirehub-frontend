@@ -136,21 +136,22 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
 
     const experienceToEdit = experiences?.find(experience => experience?._id === id);
 
-    const [data] = useState({
-        _id: experienceToEdit?._id ? experienceToEdit?._id : "",
-        agreeTerms: experienceToEdit?.agreeTerms ? experienceToEdit?.agreeTerms : "",
-        company: experienceToEdit?.company ? experienceToEdit?.company : "",
-        description: experienceToEdit?.description ? experienceToEdit?.description : "",
-        directlyManageTeam: experienceToEdit?.directlyManageTeam ? experienceToEdit?.directlyManageTeam : "",
-        industry: experienceToEdit?.industry ? experienceToEdit?.industry : "",
-        noOfPeople: experienceToEdit?.noOfPeople ? experienceToEdit?.noOfPeople : "",
-        salary: experienceToEdit?.salary ? experienceToEdit?.salary : "",
-        selectedCity: experienceToEdit?.selectedCity ? experienceToEdit?.selectedCity : "",
-        selectedCountry: experienceToEdit?.selectedCountry ? experienceToEdit?.selectedCountry : "",
-        startDate: experienceToEdit?.startDate ? experienceToEdit?.startDate : "",
-        title: experienceToEdit?.title ? experienceToEdit?.title : "",
-        currentlyInProcess: experienceToEdit?.currentlyInProcess ? experienceToEdit?.currentlyInProcess : false,
+    const [data] = useState(action === "add" ? {} : {
+        _id: experienceToEdit?._id || "",
+        agreeTerms: experienceToEdit?.agreeTerms || "",
+        company: experienceToEdit?.company || "",
+        description: experienceToEdit?.description || "",
+        directlyManageTeam: experienceToEdit?.directlyManageTeam || "",
+        industry: experienceToEdit?.industry || "",
+        noOfPeople: experienceToEdit?.noOfPeople || "",
+        salary: experienceToEdit?.salary || "",
+        selectedCity: experienceToEdit?.selectedCity || "",
+        selectedCountry: experienceToEdit?.selectedCountry || "",
+        startDate: experienceToEdit?.startDate || "",
+        title: experienceToEdit?.title || "",
+        currentlyInProcess: experienceToEdit?.currentlyInProcess || false,
     });
+    
     console.log("data", data)
 
     const [selectedCountry, setSelectedCountry] = useState(experienceToEdit?.selectedCountry ? experienceToEdit?.selectedCountry : "");
@@ -214,7 +215,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
 
                 if (type === "startDate") {
                     setSelectedStartYear(selectedYear)
-                    setStartDate("01/"+selectedDate);
+                    setStartDate("01/" + selectedDate);
                     // console.log("yyyyyy a",selectedDate)
                 }
             }
@@ -231,7 +232,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
         if (type === "startDate" && selectedStartMonth !== "" && name === "year") {
             let _startDate = selectedStartMonth + '/' + value;
             // console.log("yyyyyy b",_startDate)
-            setStartDate("01/"+_startDate)
+            setStartDate("01/" + _startDate)
         }
     };
 
@@ -249,12 +250,28 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
             agreeTerms: values?.agreeTerms,
             description: description,
         };
-        console.log("_experiencesData",_experiencesData)
-        setCandidateProfileData(prevData => ({
-            ...prevData,
-            experiencesData: _experiencesData,
-        }));
-        // handleSenddata()
+
+        let experienceData;
+
+        if (action === "add") {
+            // experienceData = [...experiences, _experiencesData]
+            setCandidateProfileData(prevData => ({
+                ...prevData,
+                experiencesData: _experiencesData,
+            }));
+        }
+        else {
+            experienceData = experiences.map((exp, i) => {
+                if (exp._id === id) {
+                    return _experiencesData
+                } else {
+                    return exp
+                }
+            })
+            setCandidateProfileData({
+                experiencesData: experienceData,
+            });
+        }
     };
     return (
         <Formik

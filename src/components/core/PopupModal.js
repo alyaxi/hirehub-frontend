@@ -112,6 +112,7 @@ function PopupModal({ setIsModalOpen,
 
     const convertStateToFormData = (state) => {
 
+        console.log("valuess state", state)
         console.log(state?.jobPreferenceData, "valuessssssssss")
 
         const formData = new FormData();
@@ -119,6 +120,9 @@ function PopupModal({ setIsModalOpen,
         if (state?.jobPreferenceData) {
             return state?.jobPreferenceData
         }
+        // if (state?.experiencesData) {
+        //     return state?.experiencesData
+        // }
 
 
         const flattenObject = (obj, parentKey = '') => {

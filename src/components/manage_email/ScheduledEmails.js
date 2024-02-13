@@ -168,9 +168,6 @@ function ScheduledEmails({
                         <Core.TextEditorWithLabel name={'emailContent'} height={"h-[300px]"} style={{ height: "84%" }} value={emailContent} setValue={setEmailContent} />
                     </div>
 
-
-
-
                     <div className="mt-5 flex justify-start items-center gap-x-2">
                         <Core.Button
                             onClick={sendEmail} type="narrow" submit>Send</Core.Button>
