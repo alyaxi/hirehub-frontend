@@ -246,7 +246,7 @@ function PopupModal({ setIsModalOpen,
             console.log(error, "catch error")
         }
     }
-    // console.log("---- 2 candidateProfileData", candidateProfileData)
+    console.log("---- 2 candidateProfileData", candidateProfileData)
 
     useEffect(() => {
         handleSenddata();
