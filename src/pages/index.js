@@ -64,6 +64,7 @@ import MainJobsCandidate from "./candidate/jobs/main";
 import MainCandidatesEmployer from "./employer/manage_candidates/main";
 import ViewCandidatesEmployer from "./employer/manage_candidates/view";
 import EditCandidatesEmployer from "./employer/manage_candidates/edit";
+import ScheduleCandidatesEmployer from "./employer/manage_candidates/schedule";
 
 export {
     FourZeroFour,
@@ -133,5 +134,6 @@ export {
     MainJobsCandidate,
     MainCandidatesEmployer,
     ViewCandidatesEmployer,
-    EditCandidatesEmployer
+    EditCandidatesEmployer,
+    ScheduleCandidatesEmployer
 } 

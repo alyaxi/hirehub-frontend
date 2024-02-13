@@ -16,6 +16,7 @@ function TableB({
     onStageClick,
     onDeleteClick,
     onMessageClick,
+    onCalenderClick,
     name,
     setName,
     title,
@@ -154,7 +155,8 @@ function TableB({
                                 </span>
                             }
                             {actions.date &&
-                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'>
+                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
+                                    onClick={() => onCalenderClick(id?.id)}>
                                     <Icon name="Calender1" />
                                 </span>
                             }
@@ -228,7 +230,7 @@ function TableB({
 
                             {filterBy.length ?
                                 <>
-                                    {(!filterBy.includes("SearchByProduct")||!filterBy.includes("SearchByEmailProcess")) &&
+                                    {(!filterBy.includes("SearchByProduct") || !filterBy.includes("SearchByEmailProcess")) &&
                                         <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>}
                                 </>
                                 :
@@ -254,7 +256,7 @@ function TableB({
                                         }
                                         if (value === 'SearchByProduct') {
                                             setProduct(e.target.value);
-                                        }                                        
+                                        }
                                         if (value === 'SearchByEmailProcess') {
                                             setEmailProcess(e.target.value);
                                         }

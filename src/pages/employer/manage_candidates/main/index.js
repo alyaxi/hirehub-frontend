@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom"
 import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 const columns = [
     {
         title: 'Name',
@@ -65,7 +64,7 @@ function MainCandidates() {
     const dispatch = useDispatch()
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
 
-    console.log('AppliedJobCandidate',AppliedJobCandidate)
+    console.log('AppliedJobCandidate', AppliedJobCandidate)
 
     useEffect(() => {
         try {
@@ -92,7 +91,8 @@ function MainCandidates() {
     const onEditClick = (id) => {
         navigate(`/employer/manage-candidates/edit/${id}`);
     };
-    const onMessageClick = (id) => {
+    const onCalenderClick = (id) => {
+        console.log("id", id)
         navigate(`/employer/manage-candidates/schedule/${id}`);
 
     };
@@ -135,7 +135,7 @@ function MainCandidates() {
                 actions={actions}
                 onViewClick={onViewClick}
                 onEditClick={onEditClick}
-                onMessageClick={onMessageClick}
+                onCalenderClick={onCalenderClick}
             />
         </>
     );

@@ -101,7 +101,6 @@ const MyEventsList = [
   // Add more events as needed
 ];
 
-
 function CalanderMainCandidate() {
 
   return (
