@@ -16,23 +16,23 @@ function Preferences({ data, buttons, card }) {
                         Help us match you with your next job
                     </p>
                     {
-                        (!data?.desiredJobTitle.length &&
+                        (!data?.desiredJobTitle?.length &&
                             data?.desiredSalary === "" &&
                             data?.relocation === "" &&
-                            !data?.skills.length)
+                            !data?.skills?.length)
                         &&
                         <p className='text-gray-6 text-[14px] leading-[25px]'>
                             No job preference found
                         </p>
                     }
                     <div className='flex flex-col gap-y-3 pt-3'>
-                        {data?.desiredJobTitle.length &&
+                        {data?.desiredJobTitle?.length &&
                             <div className='w-full mt-3'>
                                 <h6 className='text-[16px] leading-[20px] font-semibold'>Desired Job Title</h6>
                                 {data?.desiredJobTitle.map((value, index) => {
                                     return (
                                         <span key={index * 8} className='text-black-3 text-[12px] leading-[20px] font-medium'>
-                                            {value}{index !== (data?.desiredJobTitle.length - 1) && ", "}
+                                            {value}{index !== (data?.desiredJobTitle?.length - 1) && ", "}
                                         </span>
                                     )
                                 })}
@@ -44,13 +44,13 @@ function Preferences({ data, buttons, card }) {
                                 <p className='text-black-3 text-[12px] leading-[20px]'>USD {data?.desiredSalary}</p>
                             </div>
                         }
-                        {data?.skills.length &&
+                        {data?.skills?.length &&
                             <div className='w-full mt-2'>
                                 <h6 className='text-[16px] leading-[20px] font-semibold'>Desired Skills</h6>
                                 {data?.skills.map((value, index) => {
                                     return (
                                         <span key={index * 9} className='text-black-3 text-[12px] leading-[20px]'>
-                                            {value}{index !== (data?.skills.length - 1) && ", "}
+                                            {value}{index !== (data?.skills?.length - 1) && ", "}
                                         </span>
                                     )
                                 })}
@@ -62,7 +62,7 @@ function Preferences({ data, buttons, card }) {
                                 {data?.relocation?.anywhere !== true && data?.relocation?.onlyNearMe.locations.map((value, index) => {
                                     return (
                                         <span key={index * 9} className='text-black-3 text-[12px] leading-[20px]'>
-                                            {value}{index !== (data?.relocation?.onlyNearMe?.locations.length - 1) && ", "}
+                                            {value}{index !== (data?.relocation?.onlyNearMe?.locations?.length - 1) && ", "}
                                         </span>
                                     )
                                 })}

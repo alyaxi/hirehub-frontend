@@ -1,4 +1,3 @@
-
 // import localStorageUtils from '../utils/localStorage';
 
 import api from "../../api/api";
@@ -24,9 +23,9 @@ const CandidateService = {
             //     console.log(pair[0]+ ', ' + pair[1], "forrrrrrrrrrrm dta"); 
             // }
             const response = await api.post('/update-candidate', formDataToSend, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
+                // headers: {
+                //     'Content-Type': 'multipart/form-data',
+                // },
             });
             if (response && response.data && response.status === 200) {
                 console.log("starttttttttttt", response.data);
@@ -41,7 +40,7 @@ const CandidateService = {
 
             const response = await api.post('/add-projects', formDataToSend, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'multipart/form-data boundary=----WebKitFormBoundaryT1kqB5jA8u51YKOC',
                 },
             });
             if (response && response.data && response.status === 200) {

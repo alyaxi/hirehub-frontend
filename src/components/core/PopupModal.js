@@ -116,7 +116,7 @@ function PopupModal({ setIsModalOpen,
 
         const formData = new FormData();
 
-        if(state?.jobPreferenceData){
+        if (state?.jobPreferenceData) {
             return state?.jobPreferenceData
         }
 
@@ -147,7 +147,12 @@ function PopupModal({ setIsModalOpen,
         formData.append("profilePicture", state?.personalInformationData?.profilePicture)
         if (state && state?.projectsData && state?.projectsData.length) {
             // formData.append("projectImage", state?.projectsData[0]?.projectImage)
-            formData.append("projectImageFile", state?.projectsData[6].projectImageFile)
+            if (action == "add") {
+                formData.append("projectImageFile", state?.projectsData[state?.projectsData?.length - 1]?.projectImageFile)
+            } else {
+                formData.append("projectImageFile", state?.projectsData[index]?.projectImageFile)
+            }
+
         }
 
         return formData
@@ -163,7 +168,7 @@ function PopupModal({ setIsModalOpen,
         console.log("handleSenddata candidateProfileData", candidateProfileData)
         // const candidateProfileData = val;
         const formdata = convertStateToFormData(candidateProfileData);
-        // console.log({ val })
+        console.log(formdata, "formmmmmmmmmmmmmm")
 
         console.log("formdata", formdata)
         // console.log({ candidateProfileData })
