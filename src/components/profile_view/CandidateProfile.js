@@ -34,8 +34,6 @@ function CandidateProfile() {
             dispatch(getCandidate()).unwrap().then(res => {
                 console.log("Successfully fetched data", res);
 
-
-
             }).catch(err => {
                 console.error(`Error Fetching Data ${err}`);
             });

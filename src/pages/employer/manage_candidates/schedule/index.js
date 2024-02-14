@@ -208,7 +208,7 @@ function ScheduleCandidates() {
         const combinedStringEnd = `${item?.scheduledDate} ${item?.endTime}`;
         const obj2 = moment(combinedStringEnd, "YYYY-M-D HH:mm");
         const endTime = obj2.toDate();
-        console.log(startTime, endTime, "dateetiemeee")
+        // console.log(startTime, endTime, "dateetiemeee")
         return (
        
         { ...item, start: startTime, end: endTime, type: "Interview", title: "Interview Invitation" }

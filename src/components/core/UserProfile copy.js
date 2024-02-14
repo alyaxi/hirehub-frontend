@@ -14,7 +14,7 @@ function UserProfile({ data, pageType, dropdownOptions }) {
    
     //Manage Candidate from admin
 
-    const extractedData = data?.find(item => item.candidate.userId === id);
+    const extractedData = data?.find(item => item?.candidate?.userId === id);
     console.log("dropdownOptions", dropdownOptions)
     console.log("status", status)
     console.log({extractedData})

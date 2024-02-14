@@ -71,7 +71,7 @@ function EditJobs() {
                 heading="Edit Candidates"
                 breadcrumb={breadcrumb}
             />
-            <UserProfile handleNext={handleNext} status={status} setStatus={setStatus} data={extractedData} dropdownOptions={dropdownOptions} pageType="edit" />
+            {/* <UserProfile handleNext={handleNext} status={status} setStatus={setStatus} data={extractedData} dropdownOptions={dropdownOptions} pageType="edit" /> */}
         </>
     );
 }

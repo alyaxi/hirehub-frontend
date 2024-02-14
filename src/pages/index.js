@@ -57,6 +57,7 @@ import ManageEmailEmployer from "./employer/manage_email/main";
 
 import MainQuestionnaireEmployer from "./employer/manage_questionnaire/main";
 import AddQuestionnaireEmployer from "./employer/manage_questionnaire/add";
+import EditQuestionnaireEmployer from "./employer/manage_questionnaire/edit";
 // ------------ Candidate ------------
 import ManageProfileCandidate from "./candidate/manage_profile";
 import CalenderCandidate from "./candidate/calender";
@@ -128,6 +129,7 @@ export {
 
     MainQuestionnaireEmployer,
     AddQuestionnaireEmployer,
+    EditQuestionnaireEmployer,
     // ------------ Candidate ------------
     ManageProfileCandidate,
     CalenderCandidate,

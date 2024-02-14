@@ -6,6 +6,8 @@ import { Avatar } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedState, handleNext, setStatus, status }) {
+
+    console.log("UserProfile extractedData",extractedData)
     const location = useLocation();
     const parts = location?.pathname?.split('/');
     const accountType = parts[1];
@@ -38,7 +40,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
     const handlePrivacyChange = (e) => {
         setResumePrivacySetting(e.target.value);
     };
-    // console.log("extractedData?.name", extractedData?.name)
+    console.log("extractedData", extractedData)
 
     const firstLetter = extractedData?.name ? extractedData?.name.trim().charAt(0).toUpperCase() : '';
     // console.log("firstLetter", firstLetter)
@@ -110,7 +112,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                     <div className='w-full h-full flex justify-between items-en d'>
                         <div>
                             <h6 className='text-[22px] leading-[20px] capitalize font-semibold mb-2'>{extractedData?.name}</h6>
-                            <p className='text-gray-6 text-[14px] leading-[20px] max-w-[70%]'>Design Lead | Author of the "Design Manual" and the "Ultimate Guide to Web Design" | Teaching 300,000+ Designers Worldwide</p>
+                            <p className='text-gray-6 text-[14px] leading-[20px] max-w-[70%]'>{extractedData?.statusLine ? extractedData?.statusLine : "-"}</p>
                         </div>
                     </div>
                 </div>
@@ -148,11 +150,11 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                 <Core.Education data={extractedData?.candidate?.education} />
 
                 <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
-              
+
                 <Core.Skills data={extractedData?.candidate?.skills} />
-             
+
                 <span className='block w-full border-gray-11 border-t-[1px] my-5'></span>
-              
+
                 <Core.Languages data={extractedData?.candidate?.languages} />
 
                 {/* {extractedData?.candidate?.languages.map((value, index) => {

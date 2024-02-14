@@ -9,21 +9,13 @@ import ScheduleInterviewForm from './ScheduleInterviewForm';
 import { Core } from '../..';
 import Icon from '../../icon';
 
-
 const localizer = momentLocalizer(moment);
 
-function MyCalendar({ events }) {
-    console.log('events',events)
-    
+function MyCalendar({ events, type }) {
+    console.log('events', events)
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date())
-    
-
-
-    
-    
-
-
 
     const scheduleInterview = () => {
         setIsModalOpen(true);
@@ -43,15 +35,16 @@ function MyCalendar({ events }) {
 
     return (
         <>
-            <Modal title={'Upload Job Description'} width={715} open={isModalOpen} onCancel={handleCancel} footer={[]} >
-                <ScheduleInterviewForm setIsModalOpen={setIsModalOpen} />
+            <Modal title={type === "candidate" ? "Invitation" : 'Upload Job Description'} width={715} open={isModalOpen} onCancel={handleCancel} footer={[]} >
+                <ScheduleInterviewForm setIsModalOpen={setIsModalOpen} type={type} handleCancel={handleCancel} />
             </Modal>
             <div className='calender max-w-[1300px] mx-auto'>
 
-                <div className='flex justify-end pb-3'>
-                    <Core.Button onClick={scheduleInterview}>Schedule Interview</Core.Button>
-                </div>
-
+                {type !== "candidate" &&
+                    <div className='flex justify-end pb-3'>
+                        <Core.Button onClick={scheduleInterview}>Schedule Interview</Core.Button>
+                    </div>
+                }
                 <Core.Card className='flex justify-between gap-x-4 p-4'>
                     <div className={"max-w-[300px]"}>
 
@@ -100,9 +93,7 @@ function MyCalendar({ events }) {
                         date={selectedDate}
                         onNavigate={onNavigate}
                     />
-
                 </Core.Card>
-
             </div>
         </>
     )

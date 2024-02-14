@@ -26,7 +26,7 @@ function PersonalInformation({ data, user, profileCompletion }) {
                         </span>
                         <div className="relative rounded-full overflow-hidd en w-[120px] h-[120px] px-[0.30rem] pt-[0.25rem] pb-[0.30rem]">
                             <Progress type="circle" percent={profileCompletion} className="absolute left-0 -top-[1px]" />
-                            <Avatar size={110} src={data?.profilePicture} className="candidate-profile-avatar relative z-[1] w-full h-full object-cove r overflow-hidden bg-gray-12 rounded-full">{firstLetter}</Avatar>
+                            <Avatar size={109} src={data?.profilePicture} className="candidate-profile-avatar relative z-[1] w-full h-full object-cove r overflow-hidden bg-gray-12 rounded-full">{firstLetter}</Avatar>
                             {/* <div className="absolute top-0 right-0 -z-1 w-[50%] h-[100%] rounded-tl-[5px] rounded-tr-[100px] rounded-bl-[5px] rounded-br-[100px] bg-green-5 border-[7px] border-green-5"></div> */}
                         </div>
                     </div>

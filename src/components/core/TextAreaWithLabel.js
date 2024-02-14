@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TextAreaWithLabel({ label, name, required, helperText, onChange, value, maxLength, rows }) {
+function TextAreaWithLabel({ label, name, required, helperText, onChange, value, maxLength, rows, disabled }) {
 
     const _label = (name) => {
         switch (name) {
@@ -54,8 +54,13 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
                         {helperText}
                     </p>
                 }
-                <textarea onChange={onChange}
-                    className="w-full text-[14px] font-regular leading-[20px] text-gray-700 bg-gray-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+                <textarea
+                    onChange={onChange}
+                    disabled={disabled}
+                    className={`
+                    w-full text-[14px] font-regular leading-[20px] text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]
+                    ${disabled === true && 'bg-gray-3 cursor-not-allowed'} 
+                    `}
                     rows={rows ? rows : 7}
                     cols={5}
                     id={name}

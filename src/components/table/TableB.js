@@ -130,7 +130,7 @@ function TableB({
                     return <span key={`render-${value.dataIndex}-${index}`}>${val?.value || val}</span>;
                 }
                 else if (value.dataIndex === "action") {
-                    console.log(id, "idddddddlll")
+                    // console.log(id, "idddddddlll")
                     return (
                         <Flex gap="small" key={`render-${value.dataIndex}-${index}`}>
                             {actions.view &&

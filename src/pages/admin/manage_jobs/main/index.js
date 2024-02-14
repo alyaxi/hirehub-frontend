@@ -305,9 +305,9 @@ function MainJobs() {
     const onViewClick = (id) => {
         navigate(`/admin/manage-jobs/view/${id}`);
     };
-    const addButton = () => {
-        navigate(`/admin/manage-jobs/add`);
-    };
+    // const addButton = () => {
+    //     navigate(`/admin/manage-jobs/add`);
+    // };
 
     console.log("jobStatus", jobStatus);
     console.log("jobTitle", jobTitle);

@@ -36,7 +36,6 @@ const gradeOptions = [
     { name: "F", value: "F" },
 ];
 
-
 const monthsOptions = [
     { name: 'January', value: '01' },
     { name: 'February', value: '02' },
@@ -82,7 +81,6 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
     // startDate
     // _id
 
-
     const [data] = useState(action === "add" ? {} : {
         _id: educationToEdit?._id || "",
         degree: educationToEdit?.degree || "",
@@ -108,9 +106,6 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
     const _endYear = educationToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
     const __endYear = _endYear ? _endYear[2] : null;
 
-    // console.log("__startYear", __startYear)
-    // console.log("__endYear", __endYear)
-
     const [selectedStartMonth, setSelectedStartMonth] = useState(_startMonth);
     const [selectedEndMonth, setSelectedEndMonth] = useState(_endMonth);
     const [selectedStartYear, setSelectedStartYear] = useState(__startYear);
@@ -118,7 +113,6 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
 
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState('');
-
 
     const [selectedCountry, setSelectedCountry] = useState('');
     const [countries, setCountries] = useState([]);
@@ -214,6 +208,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
         }
 
     };
+
     return (
         <Formik
             initialValues={data}
@@ -382,18 +377,11 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                        {/* {action === "edit" &&
-                            <Core.Button
-                                // onClick={handleBack} 
-                                type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
-                        } */}
                     </div>
 
-                    {/* </div> */}
                 </Form>
-            )
-            }
-        </Formik >
+            )}
+        </Formik>
     );
 }
 

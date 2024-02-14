@@ -111,7 +111,6 @@ function CalanderMainCandidate() {
   const reload = useSelector((state) => state?.candidateInterview?.reload);
   const interviews = useSelector((state) => state?.candidateInterview?.interviews);
 
-
   const modifiedDatainterview = interviews?.map(item => {
     const combinedStringStart = `${item?.scheduledDate} ${item?.startTime}`;
     const obj1 = moment(combinedStringStart, "YYYY-M-D HH:mm");
@@ -119,34 +118,35 @@ function CalanderMainCandidate() {
     const combinedStringEnd = `${item?.scheduledDate} ${item?.endTime}`;
     const obj2 = moment(combinedStringEnd, "YYYY-M-D HH:mm");
     const endTime = obj2.toDate();
-    console.log(startTime, endTime, "dateetiemeee")
+    // console.log(startTime, endTime, "dateetiemeee")
     return (
-   
-    { ...item, start: startTime, end: endTime, type: "Interview", title: "Interview Invitation" }
-)})
+
+      { ...item, start: startTime, end: endTime, type: "Interview", title: "Interview Invitation" }
+    )
+  })
 
   console.log(interviews, "interviewssssss")
 
   useEffect(() => {
     try {
 
-        dispatch(getInterviewsCandidate()).unwrap().then(res => {
-            console.log("Successfully fetched data", res);
+      dispatch(getInterviewsCandidate()).unwrap().then(res => {
+        console.log("Successfully fetched data", res);
 
-        }).catch(err => {
-            console.error(`Error Fetching Data ${err}`);
-        });
+      }).catch(err => {
+        console.error(`Error Fetching Data ${err}`);
+      });
     } catch (error) {
-        console.error(`Error in useEffect of Dashboard ${error}`)
+      console.error(`Error in useEffect of Dashboard ${error}`)
 
     }
 
 
-}, [reload])
+  }, [reload])
 
   return (
     <>
-      <Core.MyCalender events={modifiedDatainterview} />
+      <Core.MyCalender events={modifiedDatainterview} type="candidate" />
     </>
   );
 }

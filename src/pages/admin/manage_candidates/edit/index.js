@@ -17,11 +17,12 @@ const breadcrumb = [
 function EditCandidates() {
     // const { tableData } = employersData;
     const AppliedAllJobs = useSelector((state) => state?.manageCandidateAdmin?.jobs);
+    console.log(AppliedAllJobs, "AppliedAllJobs admin edit")
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [status, setStatus] = useState();
     const { id } = useParams();
-    const extractedData = AppliedAllJobs?.find(item => item.candidate.userId === id);
+    const extractedData = AppliedAllJobs?.find(item => item?.candidate?.userId === id);
     // console.log(extractedData, "data frm comp")
 
     const handleNext = () => {

@@ -80,11 +80,11 @@ function MainQuestionnaireEmployer() {
 
     const navigate = useNavigate();
 
-    const onViewClick = (id) => {
-        navigate(`/employer/manage-candidates/view/${id}`);
-    };
+    // const onViewClick = (id) => {
+    //     navigate(`/employer/manage-candidates/view/${id}`);
+    // };
     const onEditClick = (id) => {
-        navigate(`/employer/manage-candidates/edit/${id}`);
+        navigate(`/employer/manage-questionnaire/edit/${id}`);
     };
     const onDeleteClick = (id) => {
         console.log("to be deleted ", id);
@@ -109,7 +109,7 @@ function MainQuestionnaireEmployer() {
                 ]}
                 setProduct={setProduct}
                 actions={actions}
-                onViewClick={onViewClick}
+                // onViewClick={onViewClick}
                 onEditClick={onEditClick}
                 onDeleteClick={onDeleteClick}
                 addQuestion={addQuestion}

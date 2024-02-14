@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Breadcrumb } from '../../../../components/core';
-import AddQuestionnaire from '../../../../components/questionaire/AddQuestionaire';
+import QuestionnaireForm from '../../../../components/questionaire/QuestionnaireForm';
 // import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 // import { useDispatch, useSelector } from 'react-redux';
 
@@ -83,7 +83,7 @@ function AddQuestionnaireEmployer() {
                 heading="Add Questionnaire"
                 breadcrumb={breadcrumb}
             />
-            <AddQuestionnaire />
+            <QuestionnaireForm />
         </>
     );
 }

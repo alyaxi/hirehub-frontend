@@ -13,11 +13,14 @@ const breadcrumb = [
 ];
 
 function ViewCandidates() {
-    // const { tableData } = employersData;
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
-    const { id } = useParams();
+    
+     console.log(AppliedJobCandidate, "AppliedJobCandidate")
+
+     const { id } = useParams();
     const extractedData = AppliedJobCandidate?.find(item => item?.id === id);
-    //  console.log(extractedData, "data frm comp")
+     
+    console.log(extractedData, "data frm comp")
 
     // console.log({AppliedJobCandidate})
 
@@ -26,12 +29,14 @@ function ViewCandidates() {
         "inactive",
         "on hold",
     ];
+
     return (
         <>
             <Breadcrumb
                 heading="Candidates Details"
                 breadcrumb={breadcrumb}
             />
+            
             {/* <Core.CompanyProfile data={tableData} dropdownOptions={dropdownOptions} pageType="view" /> */}
             <UserProfile data={extractedData} dropdownOptions={dropdownOptions} pageType="view" />
         </>

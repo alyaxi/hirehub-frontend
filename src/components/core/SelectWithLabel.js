@@ -58,6 +58,8 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
                 return "Associated";
             case "proficiency":
                 return "Proficiency";
+            case "position":
+                return "Position";
 
             case "skills1proficiency":
             case "skills2proficiency":

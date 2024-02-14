@@ -12,7 +12,7 @@ export const getInterviewsCandidate = createAsyncThunk('candidate/get-interview-
     try {
 
         const data = await CandidateinterviewSchdule.getInterviews()
-        console.log(data, "dataaaaa")
+        // console.log(data, "dataaaaa")
         return data
     } catch (error) {
         // Handle login error
