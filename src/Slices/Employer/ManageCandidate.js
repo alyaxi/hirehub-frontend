@@ -69,7 +69,7 @@ const manageCandidate = createSlice({
             for (let i = 0; i < appliedJobs1?.length; i++) {
                 console.log("start consoleee")
                 const jobs = appliedJobs1[i];
-                const jobTitle = jobs?.Job[0]?.position
+                const jobTitle = jobs?.Job[0]?.positionTitle
                 const salary = jobs?.Job[0]?.salary
                 const experience = jobs?.Job[0]?.experience;
                 const name = jobs?.user[0]?.name
@@ -94,7 +94,7 @@ const manageCandidate = createSlice({
 
                 });
 
-                console.log({ newAppliedJobs });
+                console.log(newAppliedJobs, "newappliedjob" );
                 state.jobs = newAppliedJobs
             }
 

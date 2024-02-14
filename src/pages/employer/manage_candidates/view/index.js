@@ -16,7 +16,7 @@ function ViewCandidates() {
     // const { tableData } = employersData;
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
     const { id } = useParams();
-    const extractedData = AppliedJobCandidate?.find(item => item.id === id);
+    const extractedData = AppliedJobCandidate?.find(item => item?.id === id);
     //  console.log(extractedData, "data frm comp")
 
     // console.log({AppliedJobCandidate})

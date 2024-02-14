@@ -48,7 +48,7 @@ const RegisterPage = () => {
     }, []);
 
 
-    const onSubmit = (values) => {
+    const onSubmit = (values, { setSubmitting }) => {
         try {
             dispatch(register({
                 name: values.name,
@@ -65,6 +65,9 @@ const RegisterPage = () => {
             }).catch(error => {
                 notificationService.error(error.message)
             })
+                .finally(() => {
+                    setSubmitting(false);
+                });
         } catch (error) {
             console.error(error);
             notificationService.error(error.message);
@@ -225,7 +228,7 @@ const RegisterPage = () => {
                                 </div>
                                 :
                                 <Core.Button
-                                    type='submit'
+                                    submit
                                     className='text-[18px] leading-[20px] rounded-full py-[18px]'
                                 >
                                     Sign Up

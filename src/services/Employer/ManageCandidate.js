@@ -9,7 +9,7 @@ const ManageCandidate = {
             console.log("get applied Jobs by Candidate from servie employer");
             const response = await api.get('/get-applied-jobs-by-candidate');
             if (response && response.data && response.status === 200) {
-                // console.log("starttttttttttt");
+                console.log("starttttttttttt");
                 return response.data;
             }
         } catch (error) {
