@@ -151,7 +151,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
         //     description: description,
         // }
 
-
+        console.log("action prof", action)
         // let projectData = [...projects]
         let projectData;
         if (action === "add") {
@@ -167,6 +167,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                 }
             })
         }
+        console.log("ffgg  projectData", projectData)
 
         setCandidateProfileData({
             projectsData: projectData,
@@ -195,7 +196,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                 <Form>
 
                     <div className='mb-4'>
-                        <DragImg state={projectImage} setState={setProjectImage}  />
+                        <DragImg state={projectImage} setState={setProjectImage} />
                     </div>
 
                     <div className='mb-4'>

@@ -19,7 +19,7 @@ const MyEventsList = [
         type: 'Interview',
     },
     {
-        title: 'Initiate',
+        title: 'Orientation',
         start: new Date(2024, 0, 9, 2, 0), // Date and time
         end: new Date(2024, 0, 9, 3, 0),
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -89,7 +89,27 @@ const MyEventsList = [
         type: 'Reminder',
     },
 
-
+    {
+        title: 'Orientation',
+        start: new Date(2024, 1, 13, 2, 0), // Date and time
+        end: new Date(2024, 1, 13, 3, 0),
+        description: '1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        type: 'Interview',
+    },
+    {
+        title: 'Initiate',
+        start: new Date(2024, 1, 13, 6, 0), // Date and time
+        end: new Date(2024, 1, 13, 5, 0),
+        description: '2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        type: 'Interview',
+    },
+    {
+        title: 'Break',
+        start: new Date(2024, 1, 13, 11, 0), // Date and time
+        end: new Date(2024, 1, 13, 12, 0),
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        type: 'Interview',
+    },
 
 
 

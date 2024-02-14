@@ -1,8 +1,7 @@
 import { Core } from "..";
 import ProjectCard from "./ProjectCard";
 
-function Projects({ data, buttons, card, setProjectsData }) {
-
+function Projects({ data, card, }) {
 
     return (
         <>
@@ -13,7 +12,7 @@ function Projects({ data, buttons, card, setProjectsData }) {
                             <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Projects</h5>
                             <Core.ProficienciesActions buttons={['add']} type={'projectsData'} />
                         </div>
-                        <div className='flex gap-2 flex-wrap pt-3'>
+                        <div className='flex justify-start flex-wrap gap-x-2 gap-y-4 pt-3'>
                             {data?.map((value, index) => {
                                 // console.log(value, "valueeeeeeee")
                                 return (
@@ -30,7 +29,7 @@ function Projects({ data, buttons, card, setProjectsData }) {
                         <Core.ProficienciesActions buttons={['add']} id={data._id} />
                     </div>
                     <div className='flex gap-2 flex-wrap pt-3'>
-                        {data?.map((value, index) => { 
+                        {data?.map((value, index) => {
                             return (
                                 <ProjectCard key={index * 6} data={value} />
                             )
