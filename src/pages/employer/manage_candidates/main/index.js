@@ -91,9 +91,9 @@ function MainCandidates() {
     const onEditClick = (id) => {
         navigate(`/employer/manage-candidates/edit/${id}`);
     };
-    const onCalenderClick = (id) => {
-        console.log("id", id)
-        navigate(`/employer/manage-candidates/schedule/${id}`);
+    const onCalenderClick = (jobid, candidateId) => {
+        console.log("idfromtable", jobid,candidateId )
+        navigate(`/employer/manage-candidates/schedule/${jobid}`);
 
     };
 

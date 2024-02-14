@@ -85,11 +85,13 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Location";
             case "date":
                 return "Date";
+            case "scheduledDate":
+                return "Scheduled Date";
             case "startTime":
                 return "Start Time";
             case "endTime":
                 return "End Time";
-            case "attachDocument":
+            case "attachments":
                 return "Attach Document";
 
             case "skills1title":
@@ -219,12 +221,13 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "password";
             case "calender":
             case "expiryDate":
+            case "scheduledDate":
             case "date":
                 return "date";
             case "startTime":
             case "endTime":
                 return "time";
-            case "attachDocument":
+            case "attachments":
                 return "file";
 
             default:
@@ -270,7 +273,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     // onChange={(e) => setValue(e.target.value)} 
                     onChange={onChange}
                     maxLength={maxLength && maxLength}
-                    accept={name === "attachDocument" ? "application/pdf" : undefined}
+                    accept={name === "attachments" ? "application/pdf" : undefined}
                 />
                 {name === "SearchProduct" &&
                     <span className='absolute left-3 top-[10px] text-gray-6'>

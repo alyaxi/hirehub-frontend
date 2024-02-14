@@ -2,24 +2,45 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Spin } from 'antd';
 import { Core } from '../..';
+import { useDispatch, useSelector } from 'react-redux';
+import { addInterview } from '../../../Slices/Employer/interviewSchuleSlice';
+
 
 // data = {
-//     attachDocument: "C:\\fakepath\\Amin Noor (1).pdf",
-//     date: "2024-02-02",
+//     attachments: "C:\\fakepath\\Amin Noor (1).pdf",
+//     scheduledDate: "2024-02-02",
 //     endTime: "16:40",
-//     inviteDescription: "2",
-//     jobLocation: "2",
+//     description: "2",
+//     location: "2",
 //     startTime: "14:40"
 // }
+
+
+
+
 
 function ScheduleInterviewForm({ setIsModalOpen }) {
 
     const [data] = useState({});
     const [savingForm, setSavingForm] = useState(false);
+    const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
+    const dispatch = useDispatch()
+
 
     const handleSubmit = (values) => {
         setSavingForm(true);
+        console.log(AppliedJobCandidate, "apllieddataaaaaaaaa")
         console.log(values, "valuesssss")
+        dispatch(addInterview({
+            jobId:AppliedJobCandidate[0]?.jobId,
+            candidateId:AppliedJobCandidate[0]?.candidateId,
+            attachments: values?.attachments,
+            scheduledDate: values?.scheduledDate,
+            endTime: values?.endTime,
+            description: values?.description,
+            location: values?.location,
+            startTime: values?.startTime
+        })).unwrap().then(x => console.log(x)).catch(err => console.log(err));
         // functionality
         setSavingForm(false);
         setIsModalOpen(false);
@@ -34,12 +55,12 @@ function ScheduleInterviewForm({ setIsModalOpen }) {
             {({ isSubmitting }) => (
                 <Form>
                     <div className='mb-4'>
-                        <Field name="jobLocation">
+                        <Field name="location">
                             {({ field }) => (
                                 <Core.InputWithLabel
                                     {...field}
                                     sm
-                                    name="jobLocation"
+                                    name="location"
                                     label
                                     edit
                                 />
@@ -48,10 +69,10 @@ function ScheduleInterviewForm({ setIsModalOpen }) {
                     </div>
 
                     <div className='mb-4'>
-                        <Field name="inviteDescription">
+                        <Field name="description">
                             {({ field }) => (
                                 <Core.TextAreaWithLabel
-                                    name="inviteDescription"
+                                    name="description"
                                     label
                                     {...field}
                                     value={field.value}
@@ -62,12 +83,12 @@ function ScheduleInterviewForm({ setIsModalOpen }) {
                     </div>
 
                     <div className='mb-4'>
-                        <Field name="date">
+                        <Field name="scheduledDate">
                             {({ field }) => (
                                 <Core.InputWithLabel
                                     {...field}
                                     sm
-                                    name="date"
+                                    name="scheduledDate"
                                     label
                                     edit
                                 />
@@ -109,12 +130,12 @@ function ScheduleInterviewForm({ setIsModalOpen }) {
                     </div>
 
                     <div className='mb-4'>
-                        <Field name="attachDocument">
+                        <Field name="attachments">
                             {({ field }) => (
                                 <Core.InputWithLabel
                                     {...field}
                                     sm
-                                    name="attachDocument"
+                                    name="attachments"
                                     label
                                     edit
                                 />
@@ -128,9 +149,6 @@ function ScheduleInterviewForm({ setIsModalOpen }) {
                                 <Spin />
                             </div>
                             : <Core.Button type="narrow" submit>Save</Core.Button>}
-                        {/* <Core.Button
-                                // onClick={handleBack} 
-                                type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button> */}
                     </div>
 
                 </Form>

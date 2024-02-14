@@ -37,6 +37,7 @@ function TableB({
     addQuestion,
     addButton
 }) {
+    console.log(data, "tableDataa")
     const newColumn = columns.map((value, index) => {
         let columnSorter;
         if (value.sorter === true) {
@@ -55,6 +56,7 @@ function TableB({
         return {
             ...value,
             render: (val, id) => {
+                console.log(val, id, "valueiiddd")
                 const firstLetter = val?.name ? val.name.trim().charAt(0).toUpperCase() : '';
                 if (value.dataIndex === "name" || value.dataIndex === "employerName" || value.dataIndex === "companyName") {
                     return (
@@ -128,6 +130,7 @@ function TableB({
                     return <span key={`render-${value.dataIndex}-${index}`}>${val?.value || val}</span>;
                 }
                 else if (value.dataIndex === "action") {
+                    console.log(id, "idddddddlll")
                     return (
                         <Flex gap="small" key={`render-${value.dataIndex}-${index}`}>
                             {actions.view &&
@@ -156,7 +159,7 @@ function TableB({
                             }
                             {actions.date &&
                                 <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
-                                    onClick={() => onCalenderClick(id?.id)}>
+                                    onClick={() => onCalenderClick(id?.jobId, id?.candidateId)}>
                                     <Icon name="Calender1" />
                                 </span>
                             }

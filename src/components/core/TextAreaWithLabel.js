@@ -12,7 +12,7 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
                 return "Summery";
             case "statusLine":
                 return "Status Line";
-            case "inviteDescription":
+            case "description":
                 return "Describe here";
             default:
                 return "Label";
@@ -29,7 +29,7 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
                 return "Type summery about yourself...";
             case "statusLine":
                 return "Type Status Line about yourself...";
-            case "inviteDescription":
+            case "description":
                 return "Type invite description for candidate.";
 
             default:
