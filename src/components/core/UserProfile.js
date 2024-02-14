@@ -81,7 +81,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                 }
                 {pageType === "view" &&
                     <span className='text-gray-6 text-[16px] leading-[20px] capitalize font-semibold pl-1 py-1'>
-                        Candidates Status:<span className='text-purple-1'>{extractedData?.stage}</span>
+                        Candidates Status:<span className='text-purple-1'> {extractedData?.stage}</span>
                     </span>
                 }
                 {pageType === "edit" &&

@@ -49,8 +49,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNex
     const handleCancel = () => {
         navigate(-1);
     };
-    console.log("extractedData?.candidate?.name", extractedData?.name)
-    console.log("extractedData?.candidate?.personalInformationData?.statusLine", extractedData?.candidate?.personalInformationData?.statusLine)
+    
     return (
         <Core.Card className={`border pt-[20px] pb-[45px] px-[30px]`}>
             <div className='flex justify-end gap-x-4'>
@@ -80,7 +79,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNex
                 }
                 {pageType === "view" &&
                     <span className='text-gray-6 text-[16px] leading-[20px] capitalize font-semibold pl-1 py-1'>
-                        Candidates Status:<span className='text-purple-1'>{extractedData?.stage}</span>
+                        Candidates Status:<span className='text-purple-1'> {extractedData?.stage}</span>
                     </span>
                 }
                 {pageType === "edit" &&
