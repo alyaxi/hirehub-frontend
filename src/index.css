@@ -195,8 +195,7 @@ ul.menu-list:before {
 }
 
 .responsibilities-container ul,
-.responsibilities-container ol
- {
+.responsibilities-container ol {
   font-size: 12px;
   line-height: 16px;
   list-style-type: disc;
@@ -222,4 +221,9 @@ div :where(.css-dev-only-do-not-override-dkbvqv).ant-btn-primary {
 
 .project-card .ant-card-cover {
   min-height: 100px;
+}
+
+.candidate-profile-avatar span.ant-avatar-string {
+  font-size: 50px;
+  font-weight: 700;
 }

@@ -70,7 +70,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const jp = candidate.jobPreference;
-    console.log("jp", jp)
+    // console.log("jp", jp)
 
     const [data] = useState({
         desiredJobTitle: jp?.desiredJobTitle ? jp?.desiredJobTitle : [],
@@ -122,9 +122,6 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
             onSubmit={handleSubmit}
         >
             {({ isSubmitting, setFieldValue, values }) => {
-                console.log("values", values)
-                console.log("values", values)
-                console.log("values", values)
                 return (
                     <Form>
                         <span className="block text-gray-400 opacity-70 mt-5 mb-2"><span className="text-[red] pr-2">*</span>indicates required</span>

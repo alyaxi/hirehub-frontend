@@ -152,7 +152,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
         currentlyInProcess: experienceToEdit?.currentlyInProcess || false,
     });
     
-    console.log("data", data)
+    // console.log("data", data)
 
     const [selectedCountry, setSelectedCountry] = useState(experienceToEdit?.selectedCountry ? experienceToEdit?.selectedCountry : "");
     const [selectedCity, setSelectedCity] = useState(experienceToEdit?.selectedCity ? experienceToEdit?.selectedCity : "");

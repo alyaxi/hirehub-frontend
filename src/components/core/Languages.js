@@ -1,6 +1,7 @@
+import { Empty } from "antd";
 import { Core } from "..";
 
-function Languages({ data,  card }) {
+function Languages({ data, card }) {
 
     return (
         <>
@@ -11,14 +12,22 @@ function Languages({ data,  card }) {
                         <Core.ProficienciesActions buttons={['add', 'edit']} type="languagesData" />
                     </div>
                     <div className='flex flex-col justify-start gap-x-3 gap-y-2'>
-                        {data?.map((value, index) => {
-                            return (
-                                <div key={index * 7} className={`w-full ${index === 0 ? 'mt-3' : 'mt-2'}`}>
-                                    <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
-                                    <p className='text-black-3 text-[12px] leading-[20px]'>{value?.proficiency}</p>
-                                </div>
-                            )
-                        })}
+                        {data?.length ?
+                            <>
+                                {data?.map((value, index) => {
+                                    return (
+                                        <div key={index * 7} className={`w-full ${index === 0 ? 'mt-3' : 'mt-2'}`}>
+                                            <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
+                                            <p className='text-black-3 text-[12px] leading-[20px]'>{value?.proficiency}</p>
+                                        </div>
+                                    )
+                                })}
+                            </>
+                            :
+                            <div className="flex justify-center w-full">
+                                <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                            </div>
+                        }
                     </div>
                 </Core.Card >
                 :
@@ -28,14 +37,22 @@ function Languages({ data,  card }) {
                         <Core.ProficienciesActions buttons={['add', 'edit']} />
                     </div>
                     <div className='flex justify-start items-end pt-3'>
-                        {data?.map((value, index) => {
-                            return (
-                                <div key={index * 7} className={`w-full ${index === 0 ? 'mt-3' : 'mt-2'}`}>
-                                    <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
-                                    <p className='text-black-3 text-[12px] leading-[20px]'>{value?.proficiency}</p>
-                                </div>
-                            )
-                        })}
+                        {data?.length ?
+                            <>
+                                {data?.map((value, index) => {
+                                    return (
+                                        <div key={index * 7} className={`w-full ${index === 0 ? 'mt-3' : 'mt-2'}`}>
+                                            <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
+                                            <p className='text-black-3 text-[12px] leading-[20px]'>{value?.proficiency}</p>
+                                        </div>
+                                    )
+                                })}
+                            </>
+                            :
+                            <div className="flex justify-center w-full">
+                                <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                            </div>
+                        }
                     </div>
                 </>
             }

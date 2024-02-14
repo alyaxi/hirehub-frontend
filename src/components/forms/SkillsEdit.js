@@ -47,13 +47,19 @@ const SkillsEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }) =
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const skills = candidate.skillsData;
-    console.log("skills", skills)
+    // console.log("skills", skills)
 
     const initialValues = {
         skills: skills?.map(skill => ({ id: skill.id, title: skill.title, experience: skill.experience }))
     };
 
     const multiSelectHandle = (type, selectedItems, setFieldValue, id) => {
+        console.log("multiSelectHandle called")
+        console.log("type",type)
+        console.log("selectedItems",selectedItems)
+        console.log("setFieldValue",setFieldValue)
+        console.log("id",id)
+
         const skillIndex = skills.findIndex(skill => skill.id === id);
 
         if (skillIndex !== -1) {
@@ -67,6 +73,8 @@ const SkillsEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }) =
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
+        console.log("values", values);
+        
         const _skillsData = values?.skills?.map(skill => ({
             id: skill?._id,
             title: skill?.title,

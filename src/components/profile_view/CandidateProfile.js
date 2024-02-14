@@ -44,13 +44,43 @@ function CandidateProfile() {
 
         }
 
-    }, [reload]) 
+    }, [reload])
+
+    let profileCompletion;
+
+    let personalInformationCount = 0;
+    
+    for (const key in candidate?.personalInformationData) {
+        if (candidate?.personalInformationData[key] === "") {
+            personalInformationCount++;
+        }
+    }
+
+    let jobPreferenceCount = 0;
+
+    for (const key in candidate?.jobPreferenceData) {
+        if (candidate?.jobPreferenceData[key] === "") {
+            jobPreferenceCount++;
+        }
+    }
+
+    let _experience = candidate?.experiencesData?.length > 0 ? 15 : candidate?.experiencesData?.length;
+    let _education = candidate?.educationsData?.length > 0 ? 15 : candidate?.educationsData?.length;
+    let _language = candidate?.languagesData?.length > 0 ? 15 : candidate?.languagesData?.length;
+    let _skill = candidate?.skillsData?.length > 0 ? 15 : candidate?.skillsData?.length;
+    let _summery = candidate?.summery?.text?.length > 2 ? 10 : 0;
+    let _personalInformation = personalInformationCount !== 0 ? 15 : 0;
+    let _jobPreference = jobPreferenceCount !== 0 ? 15 : 0;
+
+    profileCompletion = _experience + _education + _language + _skill + _summery + _personalInformation + _jobPreference;
+
+    // console.log("profileCompletion", profileCompletion)
 
     return (
         <div className='flex justify-between gap-x-6 w-full'>
             <div className='w-auto'>
                 <div className='flex flex-col gap-y-3 pb-[50px]'>
-                    <Core.PersonalInformation data={personalInformation} user={user}   />
+                    <Core.PersonalInformation data={personalInformation} user={user} profileCompletion={profileCompletion} />
                     <Core.Summary data={summery} card />
                     <Core.Projects data={projects} card />
                     <Core.Experience data={experience} card />

@@ -25,7 +25,7 @@ const LanguagesEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const languages = candidate.languagesData;
-    console.log("languages", languages)
+    // console.log("languages", languages)
 
     const initialValues = {
         languages: languages?.map(language => ({ id: language.id, title: language.title, proficiency: language.proficiency }))
@@ -45,14 +45,14 @@ const LanguagesEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
-        console.log("values", values)
+        // console.log("values", values)
         const _languagesData = values?.languages?.map(language => ({
             id: language?._id,
             title: language?.title,
             proficiency: language?.proficiency,
         }));
 
-        console.log("_languagesData", _languagesData);
+        // console.log("_languagesData", _languagesData);
 
         setCandidateProfileData(prevData => ({
             ...prevData,

@@ -29,12 +29,12 @@ const monthsOptions = [
 
 function Projects({ action, handleCancel, id, setCandidateProfileData, handleSenddata, index, savingForm }) {
 
-    console.log("index", index)
+    // console.log("index", index)
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const projects = candidate.projectsData;
     const projectToEdit = projects?.find(project => project?._id === id);
 
-    console.log("projectToEdit", projectToEdit)
+    // console.log("projectToEdit", projectToEdit)
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
@@ -167,7 +167,6 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                 }
             })
         }
-        console.log("ffgg  projectData", projectData)
 
         setCandidateProfileData({
             projectsData: projectData,
@@ -175,7 +174,6 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
         // projectData.push(_projectsData1)
 
         // console.log({ projectData })
-        console.log('projectData', projectData)
 
         // handleSenddata({
         //     projectsData: projectData,
@@ -183,7 +181,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
 
         // })
     };
-    console.log('projectImage', projectImage)
+    // console.log('projectImage', projectImage)
 
     return (
         <Formik

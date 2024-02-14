@@ -172,14 +172,14 @@ function PopupModal({ setIsModalOpen,
         console.log("handleSenddata candidateProfileData", candidateProfileData)
         // const candidateProfileData = val;
         const formdata = convertStateToFormData(candidateProfileData);
-        console.log(formdata, "formmmmmmmmmmmmmm")
+        // console.log(formdata, "formmmmmmmmmmmmmm")
 
         console.log("formdata", formdata)
         // console.log({ candidateProfileData })
 
         try {
             if (action == "edit") {
-                console.log(formdata, "editttttttt")
+                // console.log(formdata, "editttttttt")
                 setSavingForm(true);
                 dispatch(UpdateCanidateData(formdata))
                     .unwrap()

@@ -9,6 +9,14 @@ function ViewProfile({ data }) {
             <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-4'>View Profile</h5>
             <div className="mb-8">
                 <h6 className={`block text-[14px] font-medium text-gray-2 tracking-wide mb-1 capitalize`}>
+                    Email
+                </h6>
+                <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
+                    {data?.userId.email}
+                </span>
+            </div>
+            <div className="mb-8">
+                <h6 className={`block text-[14px] font-medium text-gray-2 tracking-wide mb-1 capitalize`}>
                     Your company's name
                 </h6>
                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
@@ -29,7 +37,7 @@ function ViewProfile({ data }) {
                 </h6>
                 <span className={`block mb-2 capitalize`}>
                     {data?.logo ?
-                        <img src={data?.logo} className='max-w-[90px]' alt="Company Logo" width={150} height={150} />
+                        <img src={data?.logo} className='flex justify-center items-center max-w-[110px] bg-gray-12 rounded-[10px] text-[12px]' alt="Company Logo" width={150} height={150} />
                         :
                         <h2 className='w-[170px] text-gray-2 text-[20px] text-center rounded-[10px] opacity-70 bg-gray-5 px-1 py-3'>No Logo</h2>
                     }
@@ -42,9 +50,9 @@ function ViewProfile({ data }) {
                 <div className={`block max-w-[300px] rounded-[10px] overflow-hidden mb-2`}>
                     {data?.welcomeVideo ?
                         <Core.VideoPlayer src={data?.welcomeVideo} />
-                        : 
+                        :
                         <h2 className='w-[280px] text-gray-2 text-[20px] text-center rounded-[10px] opacity-70 bg-gray-5 px-2 py-12'>No Video</h2>
-                    }                   
+                    }
                     {/* <img src={data?.welcomeVideo} alt="Welcome Video" /> */}
                 </div>
             </div>
