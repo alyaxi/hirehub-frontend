@@ -16,6 +16,7 @@ function MyCalendar({ events, type }) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date())
+    const [eventToEdit, setEventToEdit] = useState();
 
     const scheduleInterview = () => {
         setIsModalOpen(true);
@@ -33,10 +34,16 @@ function MyCalendar({ events, type }) {
         return startDate.isSame(today, 'day');
     });
 
+    const handleEventClick = (event) => {
+        setIsModalOpen(true);
+        console.log('Clicked event:', event);
+        setEventToEdit(event);
+    };
+
     return (
         <>
             <Modal title={type === "candidate" ? "Invitation" : 'Upload Job Description'} width={715} open={isModalOpen} onCancel={handleCancel} footer={[]} >
-                <ScheduleInterviewForm setIsModalOpen={setIsModalOpen} type={type} handleCancel={handleCancel} />
+                <ScheduleInterviewForm setIsModalOpen={setIsModalOpen} type={type} handleCancel={handleCancel} eventToEdit={eventToEdit} />
             </Modal>
             <div className='calender max-w-[1300px] mx-auto'>
 
@@ -92,6 +99,7 @@ function MyCalendar({ events, type }) {
                         style={{ height: 720 }}
                         date={selectedDate}
                         onNavigate={onNavigate}
+                        onSelectEvent={event => handleEventClick(event)}
                     />
                 </Core.Card>
             </div>

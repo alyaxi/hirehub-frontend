@@ -4,6 +4,7 @@ import { Spin } from 'antd';
 import { Core } from '../..';
 import { useDispatch, useSelector } from 'react-redux';
 import { addInterview } from '../../../Slices/Employer/interviewSchuleSlice';
+import moment from 'moment';
 
 
 // data = {
@@ -15,16 +16,35 @@ import { addInterview } from '../../../Slices/Employer/interviewSchuleSlice';
 //     startTime: "14:40"
 // }
 
-function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel }) {
+function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit }) {
+    // const formattedDate = moment(start).format('MM/DD/YY');
+    const formattedStartTime = moment(eventToEdit?.start).format('HH:mm');
+    const formattedEndTime = moment(eventToEdit?.end).format('HH:mm');
 
-    const [data] = useState({});
+    const [data] = useState({
+        end: formattedEndTime || '',
+        start: formattedStartTime || '',
+        description: eventToEdit?.description || '',
+        title: eventToEdit?.title || '',
+        type: eventToEdit?.type || '',
+        jobLocation: eventToEdit?.location || '',
+        scheduledDate: eventToEdit?.scheduledDate,
+        startTime: eventToEdit?.startTime,
+        endTime: eventToEdit?.endTime,
+    });
+
+    // console.log(data, "data")
+
     const [savingForm, setSavingForm] = useState(false);
     const [approval, setApproval] = useState(false);
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
-    console.log(AppliedJobCandidate,"AppliedJobCandidate")
+
+    // console.log(AppliedJobCandidate, "AppliedJobCandidate")
+
     const dispatch = useDispatch()
 
     const handleSubmit = (values) => {
+            console.log(values, "values354")
         if (type !== "candidate") {
             setSavingForm(true);
             // console.log(AppliedJobCandidate, "apllieddataaaaaaaaa")
