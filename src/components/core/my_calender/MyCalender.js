@@ -36,7 +36,6 @@ function MyCalendar({ events, type }) {
 
     const handleEventClick = (event) => {
         setIsModalOpen(true);
-        console.log('Clicked event:', event);
         setEventToEdit(event);
     };
 
@@ -99,7 +98,8 @@ function MyCalendar({ events, type }) {
                         style={{ height: 720 }}
                         date={selectedDate}
                         onNavigate={onNavigate}
-                        onSelectEvent={event => handleEventClick(event)}
+                        // onSelectEvent={event => handleEventClick(event)}
+                        onSelectEvent={type === 'candidate' ? event => handleEventClick(event) : undefined}
                     />
                 </Core.Card>
             </div>
