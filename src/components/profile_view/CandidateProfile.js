@@ -47,7 +47,7 @@ function CandidateProfile() {
     let profileCompletion;
 
     let personalInformationCount = 0;
-    
+
     for (const key in candidate?.personalInformationData) {
         if (candidate?.personalInformationData[key] === "") {
             personalInformationCount++;
@@ -79,14 +79,14 @@ function CandidateProfile() {
             <div className='w-auto'>
                 <div className='flex flex-col gap-y-3 pb-[50px]'>
                     <Core.PersonalInformation data={personalInformation} user={user} profileCompletion={profileCompletion} />
-                    <Core.Summary data={summery} card />
-                    <Core.Projects data={projects} card />
-                    <Core.Experience data={experience} card />
-                    <Core.Education data={education} card />
-                    <Core.Skills data={skill} card />
-                    <Core.Languages data={language} card />
-                    <Core.Preferences data={jobPreference} card />
-                    <Core.ResumePrivacySetting resumePrivacySetting={resumePrivacySetting} card handlePrivacyChange={handlePrivacyChange} />
+                    <Core.Summary data={summery} card type="candidate" />
+                    <Core.Projects data={projects} card type="candidate" />
+                    <Core.Experience data={experience} card type="candidate" />
+                    <Core.Education data={education} card type="candidate" />
+                    <Core.Skills data={skill} card type="candidate" />
+                    <Core.Languages data={language} card type="candidate" />
+                    <Core.Preferences data={jobPreference} card type="candidate" />
+                    <Core.ResumePrivacySetting resumePrivacySetting={resumePrivacySetting} card handlePrivacyChange={handlePrivacyChange} type="candidate" />
                 </div>
             </div>
             <div className='flex flex-col gap-y-3 min-w-[310px]'>

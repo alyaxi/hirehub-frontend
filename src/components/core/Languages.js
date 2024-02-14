@@ -1,7 +1,7 @@
 import { Empty } from "antd";
 import { Core } from "..";
 
-function Languages({ data, card }) {
+function Languages({ data, card,type }) {
 
     return (
         <>
@@ -9,7 +9,9 @@ function Languages({ data, card }) {
                 <Core.Card className={"p-5 border"}>
                     <div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Languages</h5>
-                        <Core.ProficienciesActions buttons={['add', 'edit']} type="languagesData" />
+                        {type === "candidate" &&
+                            <Core.ProficienciesActions buttons={['add', 'edit']} type="languagesData" />
+                        }
                     </div>
                     <div className='flex flex-col justify-start gap-x-3 gap-y-2'>
                         {data?.length ?
@@ -34,7 +36,9 @@ function Languages({ data, card }) {
                 <>
                     <div className='flex justify-between items-start'>
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Languages</h5>
-                        <Core.ProficienciesActions buttons={['add', 'edit']} />
+                        {type === "candidate" &&
+                            <Core.ProficienciesActions buttons={['add', 'edit']} />
+                        }
                     </div>
                     <div className='flex justify-start items-end pt-3'>
                         {data?.length ?

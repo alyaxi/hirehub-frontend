@@ -1,16 +1,15 @@
 import { Radio, Space } from "antd";
 import { Core } from "..";
 
-function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, buttons, card }) {
+function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, card }) {
 
     // console.log("resumePrivacySetting", resumePrivacySetting)
     return (
         <>
             {card ?
                 <Core.Card className={"p-5 border"}>
-                    < div className='flex justify-between items-start' >
+                    <div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Resume Privacy Setting</h5>
-                        <Core.ProficienciesActions buttons={buttons} type="resumePrivacySetting" />
                     </div>
                     <Radio.Group onChange={handlePrivacyChange} value={resumePrivacySetting} className='mt-3'>
                         <Space direction="vertical" align='start' justify="start">
@@ -37,7 +36,6 @@ function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, butto
                 <>
                     <div className='flex justify-between items-start'>
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Resume Privacy Setting</h5>
-                        <Core.ProficienciesActions buttons={buttons} />
                     </div>
                     <Radio.Group onChange={handlePrivacyChange} value={resumePrivacySetting} className='mt-3'>
                         <Space direction="vertical" align='start' justify="start">

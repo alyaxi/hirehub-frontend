@@ -1,17 +1,20 @@
 import { Empty } from "antd";
 import { Core } from "..";
 
-function Summary({ data, buttons, card }) {
+function Summary({ data, card, type }) {
 
     // console.log(" Summary data", data)
+
     return (
         <>
             {card ?
                 <>
                     <Core.Card className={"p-5 border"}>
-                        < div className='flex justify-between items-start' >
+                        <div className='flex justify-between items-start' >
                             <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Summary</h5>
-                            <Core.ProficienciesActions buttons={['edit']} type="summery" />
+                            {type === "candidate" &&
+                                <Core.ProficienciesActions buttons={['edit']} type="summery" />
+                            }
                         </div>
                         {(data !== undefined && data !== "") ?
                             <>
@@ -31,7 +34,9 @@ function Summary({ data, buttons, card }) {
                 <>
                     <div className='flex justify-between items-start'>
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Summary</h5>
-                        <Core.ProficienciesActions buttons={['edit']} />
+                        {type === "candidate" &&
+                            <Core.ProficienciesActions buttons={['edit']} />
+                        }
                     </div>
                     {(data !== undefined && data !== "") ?
                         <>

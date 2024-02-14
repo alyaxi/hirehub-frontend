@@ -38,7 +38,7 @@ function ViewCandidates() {
             />
             
             {/* <Core.CompanyProfile data={tableData} dropdownOptions={dropdownOptions} pageType="view" /> */}
-            <UserProfile data={extractedData} dropdownOptions={dropdownOptions} pageType="view" />
+            <UserProfile data={extractedData} dropdownOptions={dropdownOptions} pageType="view" type="employer" />
         </>
     );
 }

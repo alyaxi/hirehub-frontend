@@ -2,7 +2,7 @@ import { Avatar, Empty } from "antd";
 import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
 
-function Education({ data, buttons, card }) {
+function Education({ data, type, card }) {
     // console.log("data",data)
     return (
         <>
@@ -10,7 +10,9 @@ function Education({ data, buttons, card }) {
                 <Core.Card className={"p-5 border"}>
                     < div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Education</h5>
-                        <Core.ProficienciesActions buttons={['add']} type="educationsData" />
+                        {type === "candidate" &&
+                            <Core.ProficienciesActions buttons={['add']} type="educationsData" />
+                        }
                     </div >
                     <div className='flex justify-start items-start flex-col gap-y- 10 gap-y-6 pt-3'>
                         {data?.length ?
@@ -30,9 +32,7 @@ function Education({ data, buttons, card }) {
                                                         <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.degree}</h6>
                                                         <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.organization}</p>
                                                         <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
-                                                        <p className='text-gray-6 text-[14px] leading-[20px] mt-4'>
-                                                            {value?.description}
-                                                        </p>
+                                                        {/* <p className='text-gray-6 text-[14px] leading-[20px] mt-4' dangerouslySetInnerHTML={{ __html: value?.description }}></p> */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -51,9 +51,11 @@ function Education({ data, buttons, card }) {
                 <>
                     <div className='flex justify-between items-start'>
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Education</h5>
-                        <Core.ProficienciesActions buttons={['add']} type="educationsData" />
+                        {type === "candidate" &&
+                            <Core.ProficienciesActions buttons={['add']} type="educationsData" />
+                        }
                     </div>
-                    <div className='flex justify-start items-end pt-3'>
+                    <div className='flex justify-start items-start flex-col gap-y- 10 gap-y-6 pt-3'>
                         {data?.length ?
                             <>
                                 {data?.map((value, index) => {
@@ -68,9 +70,7 @@ function Education({ data, buttons, card }) {
                                                         <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.degree}</h6>
                                                         <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.organization}</p>
                                                         <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
-                                                        <p className='text-gray-6 text-[14px] leading-[20px] mt-4'>
-                                                            {value?.description}
-                                                        </p>
+                                                        {/* <p className='text-gray-6 text-[14px] leading-[20px] mt-4' dangerouslySetInnerHTML={{ __html: value?.description }}></p> */}
                                                     </div>
                                                 </div>
                                             </div>

@@ -112,8 +112,8 @@ function PopupModal({ setIsModalOpen,
 
     const convertStateToFormData = (state) => {
 
-        console.log("valuess state", state)
-        console.log(state?.jobPreferenceData, "valuessssssssss")
+        // console.log("valuess state", state)
+        // console.log(state?.jobPreferenceData, "valuessssssssss")
 
         const formData = new FormData();
 
@@ -173,8 +173,6 @@ function PopupModal({ setIsModalOpen,
         // const candidateProfileData = val;
         const formdata = convertStateToFormData(candidateProfileData);
         // console.log(formdata, "formmmmmmmmmmmmmm")
-
-        console.log("formdata", formdata)
         // console.log({ candidateProfileData })
 
         try {
@@ -203,8 +201,8 @@ function PopupModal({ setIsModalOpen,
                         });
                 }
                 if (type === "experiencesData") {
-                    console.log(type, "typeeeee")
-                    console.log({ candidateProfileData })
+                    // console.log(type, "typeeeee")
+                    // console.log({ candidateProfileData })
                     dispatch(addExperience(candidateProfileData))
                         .unwrap()
                         .then(x => { console.log(x, "Ressss") })
@@ -216,7 +214,7 @@ function PopupModal({ setIsModalOpen,
                 }
 
                 if (type === "educationsData") {
-                    console.log(type, "typeeeee")
+                    // console.log(type, "typeeeee")
                     console.log({ candidateProfileData })
                     dispatch(addEducation(candidateProfileData))
                         .unwrap()
@@ -228,7 +226,7 @@ function PopupModal({ setIsModalOpen,
                         });
                 }
                 if (type === "skillsData") {
-                    console.log(type, "typeeeee")
+                    // console.log(type, "typeeeee")
                     console.log({ candidateProfileData })
                     dispatch(addSkills(candidateProfileData))
                         .unwrap()
@@ -240,7 +238,7 @@ function PopupModal({ setIsModalOpen,
                         });
                 }
                 if (type === "languagesData") {
-                    console.log(type, "typeeeee")
+                    // console.log(type, "typeeeee")
                     console.log({ candidateProfileData })
                     dispatch(addLanguage(candidateProfileData))
                         .unwrap()
@@ -256,7 +254,6 @@ function PopupModal({ setIsModalOpen,
             console.log(error, "catch error")
         }
     }
-    // console.log("---- 2 candidateProfileData", candidateProfileData)
 
     useEffect(() => {
         handleSenddata();

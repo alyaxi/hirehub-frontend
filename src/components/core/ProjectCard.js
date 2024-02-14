@@ -5,7 +5,8 @@ import { Core } from '..';
 
 const { Meta } = Card;
 
-function ProjectCard({ data, index }) {
+function ProjectCard({ data, index, type }) {
+
     // console.log("ProjectCard data",data)
 
     const DEFAULT_THUMBNAIL_SVG = `
@@ -13,17 +14,19 @@ function ProjectCard({ data, index }) {
         <rect width="400" height="250" fill="#D9D9D9"/>
         <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="26" fill="#0000008f">No Image</text>
     </svg>`;
+
     return (
         <div className='project-card min-h-[160px]'>
             <div className='flex justify-end mb-[-45px] right-[10px] relative z-[200]' >
-                <Core.ProficienciesActions buttons={['edit']} type={'projectsData'} id={data?._id} index={index} />
+                {type === "candidate" &&
+                    <Core.ProficienciesActions buttons={['edit']} type={'projectsData'} id={data?._id} index={index} />
+                }
             </div>
             <NavLink to={data?.projectUrl}>
                 <Card
                     size="small"
                     hoverable
                     style={{
-                        // width: 240,
                         width: 196,
                     }}
                     cover={
@@ -32,8 +35,8 @@ function ProjectCard({ data, index }) {
                             src={data?.projectImage || `data:image/svg+xml;base64,${btoa(DEFAULT_THUMBNAIL_SVG)}`}
                             style={{ maxHeight: '100px', objectFit: "cover" }}
                             onError={(e) => {
-                                e.target.onerror = null; // Prevent infinite loop
-                                e.target.src = `data:image/svg+xml;base64,${btoa(DEFAULT_THUMBNAIL_SVG)}`; // Set default thumbnail if image fails to load
+                                e.target.onerror = null;
+                                e.target.src = `data:image/svg+xml;base64,${btoa(DEFAULT_THUMBNAIL_SVG)}`;
                             }}
                         />
                     }
