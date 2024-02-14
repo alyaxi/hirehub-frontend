@@ -125,7 +125,7 @@ function TableB({
                     </span>;
                 }
                 else if (value.dataIndex === "salary") {
-                    return <span key={`render-${value.dataIndex}-${index}`}>${val}</span>;
+                    return <span key={`render-${value.dataIndex}-${index}`}>${val?.value || val}</span>;
                 }
                 else if (value.dataIndex === "action") {
                     return (

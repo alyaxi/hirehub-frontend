@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedState, handleNext, setStatus, status }) {
     const location = useLocation();
-    const parts = location?.pathname.split('/');
+    const parts = location?.pathname?.split('/');
     const accountType = parts[1];
 
     const [resumePrivacy, setResumePrivacy] = useState('');
@@ -127,7 +127,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
 
                 <h6 className='text-[18px] leading-[28px] font-medium mb-2'>Projects</h6>
 
-                {extractedData?.candidate?.projects.map((value, index) => {
+                {extractedData?.candidate?.projects?.map((value, index) => {
                     return (
                         <p key={index * 3} className='text-gray-6 text-[14px] leading-[20px] font-medium mb-4'>
                             {value.description}
