@@ -6,6 +6,7 @@ import moment from 'moment';
 function MyCalenderSmForCalender({ selectedDate, setSelectedDate,
     events
 }) {
+    console.log(events, "eventssssssssss")
 
     const handleDateChange = (date) => {
         setSelectedDate(date);

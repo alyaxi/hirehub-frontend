@@ -172,19 +172,19 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                     Help us match you with your next job
                 </p>
                 {
-                    (!extractedData?.candidate?.jobPreference.desiredJobTitle.length &&
-                        extractedData?.candidate?.jobPreference.desiredSalary === "" &&
-                        extractedData?.candidate?.jobPreference.relocation === "" &&
-                        !extractedData?.candidate?.jobPreference.skills.length)
+                    (!extractedData?.candidate?.jobPreference?.desiredJobTitle?.length &&
+                        extractedData?.candidate?.jobPreference?.desiredSalary === "" &&
+                        extractedData?.candidate?.jobPreference?.relocation === "" &&
+                        !extractedData?.candidate?.jobPreference?.skills?.length)
                     &&
                     <p className='text-gray-6 text-[14px] leading-[25px]'>
                         No job preference found
                     </p>
                 }
-                {extractedData?.candidate?.jobPreference.desiredJobTitle.length &&
+                {extractedData?.candidate?.jobPreference?.desiredJobTitle?.length &&
                     <div className='w-full mt-3'>
                         <h6 className='text-[16px] leading-[20px] font-semibold'>Desired Job Title</h6>
-                        {extractedData?.candidate?.jobPreference.desiredJobTitle.map((value, index) => {
+                        {extractedData?.candidate?.jobPreference?.desiredJobTitle.map((value, index) => {
                             return (
                                 <p key={index * 8} className='text-black-3 text-[12px] leading-[20px] font-medium'>{value}
                                 </p>
@@ -192,20 +192,20 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                         })}
                     </div>
                 }
-                {extractedData?.candidate?.jobPreference.desiredSalary !== "" &&
+                {extractedData?.candidate?.jobPreference?.desiredSalary !== "" &&
                     <div className='w-full mt-2'>
                         <h6 className='text-[16px] leading-[20px] font-semibold'>Desired Salary (USD)</h6>
                         <p className='text-black-3 text-[12px] leading-[20px]'>USD {extractedData?.candidate?.jobPreference?.desiredSalary}</p>
                     </div>
                 }
 
-                {extractedData?.candidate?.jobPreference.skills.length &&
+                {extractedData?.candidate?.jobPreference?.skills?.length &&
                     <div className='w-full mt-2'>
                         <h6 className='text-[16px] leading-[20px] font-semibold'>Desired Skills</h6>
                         {extractedData?.candidate?.jobPreference.skills.map((value, index) => {
                             return (
                                 <span key={index * 9} className='text-black-3 text-[12px] leading-[20px]'>
-                                    {value}{index !== (extractedData?.candidate?.jobPreference.skills.length - 1) && ", "}
+                                    {value}{index !== (extractedData?.candidate?.jobPreference?.skills?.length - 1) && ", "}
                                 </span>
                             )
                         })}
@@ -217,7 +217,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, selectedS
                         {extractedData?.candidate?.jobPreference?.relocation?.anywhere !== true && extractedData?.candidate?.jobPreference?.relocation?.onlyNearMe.locations.map((value, index) => {
                             return (
                                 <span key={index * 9} className='text-black-3 text-[12px] leading-[20px]'>
-                                    {value}{index !== (extractedData?.candidate?.jobPreference?.relocation?.onlyNearMe?.locations.length - 1) && ", "}
+                                    {value}{index !== (extractedData?.candidate?.jobPreference?.relocation?.onlyNearMe?.locations?.length - 1) && ", "}
                                 </span>
                             )
                         })}

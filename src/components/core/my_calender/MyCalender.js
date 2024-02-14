@@ -9,12 +9,21 @@ import ScheduleInterviewForm from './ScheduleInterviewForm';
 import { Core } from '../..';
 import Icon from '../../icon';
 
+
 const localizer = momentLocalizer(moment);
 
 function MyCalendar({ events }) {
-
+    console.log('events',events)
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date())
+    
+
+
+    
+    
+
+
 
     const scheduleInterview = () => {
         setIsModalOpen(true);
