@@ -17,6 +17,18 @@ const CandidateinterviewSchdule = {
             throw error;
         }
     },
+    async UpdateInterviewsStatus() {
+        
+        try {
+            const response = await api.get('/update-interview');
+            if (response && response.data && response.status === 200) {
+                // console.log("starttttttttttt");
+                return response.data;
+            }
+        } catch (error) {
+            throw error;
+        }
+    },
 };
 
 export default CandidateinterviewSchdule;
