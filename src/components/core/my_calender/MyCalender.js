@@ -98,8 +98,22 @@ function MyCalendar({ events, type }) {
                         style={{ height: 720 }}
                         date={selectedDate}
                         onNavigate={onNavigate}
-                        // onSelectEvent={event => handleEventClick(event)}
                         onSelectEvent={type === 'candidate' ? event => handleEventClick(event) : undefined}
+                        eventPropGetter={(event, start, end, isSelected) => {
+                            let backgroundColor;
+                            let border;
+                            if (event.approvalInvite === 'Pending') {
+                                backgroundColor = '#3174ad';
+                                border = "0";
+                            } else if (event.approvalInvite === 'Declined') {
+                                backgroundColor = '#ff6c6c';
+                                border = "0";
+                            } else if (event.approvalInvite === 'Accepted') {
+                                backgroundColor = '#2c9657';
+                                border = "0";
+                            }
+                            return { style: { backgroundColor, border } };
+                        }}
                     />
                 </Core.Card>
             </div>

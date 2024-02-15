@@ -31,9 +31,10 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
         scheduledDate: eventToEdit?.scheduledDate,
         startTime: eventToEdit?.startTime,
         endTime: eventToEdit?.endTime,
+        // approvalInvite: eventToEdit?.approvalInvite,
     });
 
-    // console.log(data, "data")
+    console.log(data, "data")
 
     const [savingForm, setSavingForm] = useState(false);
     const [approval, setApproval] = useState(false);
@@ -44,7 +45,7 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
     const dispatch = useDispatch()
 
     const handleSubmit = (values) => {
-            console.log(values, "values354")
+        console.log(values, "values354")
         if (type !== "candidate") {
             setSavingForm(true);
             // console.log(AppliedJobCandidate, "apllieddataaaaaaaaa")
@@ -184,7 +185,7 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                                     : <Core.Button type="narrow" submit
                                         onClick={() => setApproval(true)}
                                     >Accept</Core.Button>}
-                                <Core.Button type="narrow" color="white" submit onClick={() => setApproval(false)}>Decline</Core.Button>
+                                <Core.Button type="narrow" color="white" submit onClick={() => setApproval(false)} isDisabled={eventToEdit.approvalInvite === "Pending" ? true : false}>Decline</Core.Button>
                             </>
                             :
                             <>

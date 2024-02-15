@@ -34,7 +34,7 @@ function Button({ children, onClick, submit, type, color, icon, className, sm, x
                 ${color === "red" && 'text-gray-8'}
                 ${color === "red" && 'border border-red-500'}
 
-                hover:translate-y-[-1px] transition-all
+                ${isDisabled !== true && "hover:translate-y-[-1px] transition-all"}
 
                 ${sm ? 'py-[9px]' : 'py-[10px]'}  
 
@@ -44,6 +44,8 @@ function Button({ children, onClick, submit, type, color, icon, className, sm, x
                 ${className}
 
                 ${isDisabled && "opacity-50"}
+
+                ${isDisabled === true ? "opacity-50 cursor-not-allowed" : "opacity-100"}
              `}
             // type={submit === "submit"}
             type={submit ? "submit" : "button"}
