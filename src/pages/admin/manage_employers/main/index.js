@@ -26,24 +26,24 @@ function ManageEmployers() {
     console.log({ statsData })
 
     
-    useEffect(() => {
-        try {
+    // useEffect(() => {
+    //     try {
 
-            dispatch(getEmployers()).unwrap().then(res => {
-                console.log("Successfully fetched data", res);
-
-
-
-            }).catch(err => {
-                console.error(`Error Fetching Data ${err}`);
-            });
-        } catch (error) {
-            console.error(`Error in useEffect of Dashboard ${error}`)
-
-        }
+    //         dispatch(getEmployers()).unwrap().then(res => {
+    //             console.log("Successfully fetched data", res);
 
 
-    }, [])
+
+    //         }).catch(err => {
+    //             console.error(`Error Fetching Data ${err}`);
+    //         });
+    //     } catch (error) {
+    //         console.error(`Error in useEffect of Dashboard ${error}`)
+
+    //     }
+
+
+    // }, [])
 
  
 

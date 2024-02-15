@@ -191,7 +191,7 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                                     : <Core.Button type="narrow" submit
                                         onClick={() => setApproval(true)}
                                     >Accept</Core.Button>}
-                                <Core.Button type="narrow" color="white" submit onClick={() => setApproval(false)} isDisabled={eventToEdit.approvalInvite === "Pending" ? true : false}>Decline</Core.Button>
+                                <Core.Button type="narrow" color="white" submit onClick={() => setApproval(false)} isDisabled={eventToEdit.approvalInvite === "Declined" ? true : false}>Decline</Core.Button>
                             </>
                             :
                             <>
