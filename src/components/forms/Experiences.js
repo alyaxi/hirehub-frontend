@@ -151,7 +151,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
         title: experienceToEdit?.title || "",
         currentlyInProcess: experienceToEdit?.currentlyInProcess || false,
     });
-    
+
     // console.log("data", data)
 
     const [selectedCountry, setSelectedCountry] = useState(experienceToEdit?.selectedCountry ? experienceToEdit?.selectedCountry : "");
@@ -231,10 +231,13 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
 
         if (type === "startDate" && selectedStartMonth !== "" && name === "year") {
             let _startDate = selectedStartMonth + '/' + value;
-            // console.log("yyyyyy b",_startDate)
             setStartDate("01/" + _startDate)
         }
     };
+
+    // console.log("selectedStartMonth",selectedStartMonth)
+    // console.log("selectedStartYear",selectedStartYear)
+    // console.log("startDate",startDate)
 
     const handleSubmit = (values) => {
         let _experiencesData = {

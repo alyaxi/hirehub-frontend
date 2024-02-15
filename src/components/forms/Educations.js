@@ -142,11 +142,11 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
 
                 if (type === "startDate") {
                     setStartDate(selectedDate);
-                    setSelectedStartYear(selectedDate)
+                    setSelectedStartYear(selectedYear)
                 }
                 if (type === "endDate") {
                     setEndDate(selectedDate);
-                    setSelectedEndYear(selectedDate)
+                    setSelectedEndYear(selectedYear)
                 }
             }
         };
@@ -163,10 +163,12 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
             let _startDate = selectedStartMonth + '/' + value;
             setStartDate("01/" + _startDate)
         }
+
         if (type === "endDate" && selectedStartMonth !== "" && name === "year") {
             let _endDate = selectedStartMonth + '/' + value;
             setEndDate("01/" + _endDate)
         }
+        
     };
 
     const handleCountryChange = (event) => {
@@ -208,6 +210,10 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
         }
 
     };
+
+    // console.log("selectedStartMonth",selectedStartMonth)
+    // console.log("selectedStartYear",selectedStartYear)
+    // console.log("startDate",startDate)
 
     return (
         <Formik
