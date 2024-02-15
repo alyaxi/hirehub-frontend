@@ -18,6 +18,8 @@ function MyCalendar({ events, type }) {
     const [selectedDate, setSelectedDate] = useState(new Date())
     const [eventToEdit, setEventToEdit] = useState();
 
+    console.log(eventToEdit, "eventttttttttttt")
+
     const scheduleInterview = () => {
         setIsModalOpen(true);
     }

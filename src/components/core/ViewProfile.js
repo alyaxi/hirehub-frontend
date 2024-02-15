@@ -12,7 +12,7 @@ function ViewProfile({ data }) {
                     Email
                 </h6>
                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
-                    {data?.userId.email}
+                    {data?.userId?.email}
                 </span>
             </div>
             <div className="mb-8">

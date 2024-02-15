@@ -21,6 +21,23 @@ export const getInterviewsCandidate = createAsyncThunk('candidate/get-interview-
     }
 });
 
+export const UpdateInterviewsCandidate = createAsyncThunk('candidate/update-interview-schduled', async (status) => {
+
+    try {
+
+        const statusUpdate = {approvalInvite: status}
+
+        // const data = await CandidateinterviewSchdule.UpdateInterviewsStatus()
+        // // console.log(data, "dataaaaa")
+        // return data
+    } catch (error) {
+        // Handle login error
+        console.log(error);
+        handleApiError(error)
+    }
+});
+
+
 
 
 
