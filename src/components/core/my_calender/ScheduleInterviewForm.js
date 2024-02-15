@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addInterview } from '../../../Slices/Employer/interviewSchuleSlice';
 import moment from 'moment';
 
-
 // data = {
 //     attachments: "C:\\fakepath\\Amin Noor (1).pdf",
 //     scheduledDate: "2024-02-02",
