@@ -45,29 +45,6 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
     const dispatch = useDispatch()
 
     const handleSubmit = (values) => {
-<<<<<<< HEAD
-        console.log(values, "values354")
-        if (type !== "candidate") {
-            setSavingForm(true);
-            // console.log(AppliedJobCandidate, "apllieddataaaaaaaaa")
-            // console.log(values, "valuesssss")
-            dispatch(addInterview({
-                jobId: AppliedJobCandidate[0]?.jobId,
-                candidateId: AppliedJobCandidate[0]?.candidateId,
-                attachments: values?.attachments,
-                scheduledDate: values?.scheduledDate,
-                endTime: values?.endTime,
-                description: values?.description,
-                location: values?.jobLocation,
-                startTime: values?.startTime
-            })).unwrap().then(x => console.log(x)).catch(err => console.log(err));
-            // functionality
-            setSavingForm(false);
-            setIsModalOpen(false);
-        }
-        else {
-            console.log("approval", approval)
-=======
         try {
             console.log(values, "values354")
             if (type !== "candidate") {
@@ -90,7 +67,6 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
             }
             else {
                 console.log("approval", approval)
->>>>>>> 2f783b77188e0cd0bfea6d6a3e76984147af3a14
 
 
 
