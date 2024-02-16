@@ -1,6 +1,10 @@
 import { Avatar, Empty } from "antd";
 import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
+import Icon from "../icon";
+{/* <Avatar shape="square" size={60} src={value?.logo}>!</Avatar> */}
+                                            
+
 
 function Education({ data, type, card }) {
     // console.log("data",data)
@@ -24,7 +28,8 @@ function Education({ data, type, card }) {
                                                 <Core.ProficienciesActions buttons={['edit']} type={'educationsData'} id={value?._id} />
                                             </div>
                                             <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
-                                                <Avatar shape="square" size={60} src={value?.logo}>!</Avatar>
+                                                {/* <Avatar shape="square" size={60} src={value?.logo}>!</Avatar> */}
+                                                <Icon name="Education" size={150}/>
                                             </div>
                                             <div className='w-full'>
                                                 <div className='w-full h-full flex justify-between items-end'>
@@ -62,7 +67,8 @@ function Education({ data, type, card }) {
                                     return (
                                         <div key={index * 4} className='flex justify-between gap-x-3'>
                                             <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
-                                                <Avatar shape="square" size={60} src={value?.logo}>!</Avatar>
+                                                {/* <Avatar shape="square" size={60} src={value?.logo}>!</Avatar> */}
+                                                <Icon name="Education" size={150}/>
                                             </div>
                                             <div className='w-full'>
                                                 <div className='w-full h-full flex justify-between items-end'>

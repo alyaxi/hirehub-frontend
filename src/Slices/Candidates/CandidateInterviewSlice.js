@@ -25,11 +25,12 @@ export const UpdateInterviewsCandidate = createAsyncThunk('candidate/update-inte
 
     try {
 
-        const statusUpdate = {approvalInvite: status}
+        
+        console.log(status, "updatedstatusssss")
 
-        // const data = await CandidateinterviewSchdule.UpdateInterviewsStatus()
-        // // console.log(data, "dataaaaa")
-        // return data
+        const data = await CandidateinterviewSchdule.UpdateInterviewsStatus(status)
+        console.log(data, "dataaaaa")
+        return data
     } catch (error) {
         // Handle login error
         console.log(error);
@@ -67,6 +68,10 @@ const CandidateInterviews = createSlice({
             console.log(payload, "payloadd from getting interview interview by employer");
             state.interviews = payload?.data?.interviews            
             state.reload = false
+        })
+        builder.addCase(UpdateInterviewsCandidate.fulfilled, (state, { payload }) => {
+            console.log(payload, "payloadd from getting interview interview by employer");       
+            state.reload = true
         })
 
 

@@ -17,10 +17,10 @@ const CandidateinterviewSchdule = {
             throw error;
         }
     },
-    async UpdateInterviewsStatus() {
+    async UpdateInterviewsStatus(statusUpdate) {
         
         try {
-            const response = await api.get('/update-interview');
+            const response = await api.post('/update-interview', statusUpdate);
             if (response && response.data && response.status === 200) {
                 // console.log("starttttttttttt");
                 return response.data;

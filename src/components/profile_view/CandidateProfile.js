@@ -73,7 +73,14 @@ function CandidateProfile() {
     profileCompletion = _experience + _education + _language + _skill + _summery + _personalInformation + _jobPreference;
 
     // console.log("profileCompletion", profileCompletion)
-
+    let workHistoryCheck = candidate?.experiencesData?.length > 0 || false;
+    let personalInformationCheck = personalInformationCount !== 0 || false;
+    let educationCheck = candidate?.educationsData?.length > 0 || false;
+    let profilePictureCheck = (candidate?.personalInformationData?.profilePicture !== "" && candidate?.personalInformationData?.profilePicture !== undefined) || false;
+    let professionalSummeryCheck = candidate?.summery?.text?.length > 2 || false;
+    let skillCheck = candidate?.skillsData?.length > 0 || false;
+    let projectsCheck = candidate?.projectsData?.length > 0 || false;
+    let languageCheck = candidate?.languagesData?.length > 0 || false;
     return (
         <div className='flex justify-between gap-x-6 w-full'>
             <div className='w-auto'>
@@ -106,17 +113,17 @@ function CandidateProfile() {
                 <Core.Card className={'p-5'}>
                     <h4 className='text-black-1 text-[18px] leading-[22px] font-medium mb-5'>Update your profile for better job recommendations</h4>
                     <h6 className='text-black-3 text-[14px] leading-[20px] font-medium -mb-[3px]'>Product Status</h6>
-                    <Progress percent={50} status="active" className='m-0 ' />
-                    <span className='block text-black-3 text-[10px] leading-[12px] opacity-75'>Profile {personalInformation?.profileCompletion}% Complete</span>
+                    <Progress percent={profileCompletion} status="active" className='m-0 ' />
+                <span className='block text-black-3 text-[10px] leading-[12px] opacity-75'>Profile {profileCompletion}% Complete</span>
                     <ul className='flex flex-col gap-y-2 mt-5'>
-                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-green-5'><Icon name="Tick" /></span><span>Work History</span></li>
-                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-green-5'><Icon name="Tick" /></span><span>Personal Info</span></li>
-                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-green-5'><Icon name="Tick" /></span><span>Education</span></li>
-                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-green-5'><Icon name="Tick" /></span><span>Profile Picture</span></li>
-                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-gray-11'><Icon name="Tick" /></span><span>Professional Summery</span></li>
-                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-gray-11'><Icon name="Tick" /></span><span>Skills</span></li>
-                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-gray-11'><Icon name="Tick" /></span><span>Projects</span></li>
-                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className='text-gray-11'><Icon name="Tick" /></span><span>Languages</span></li>
+                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${workHistoryCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Work History</span></li>
+                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${personalInformationCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Personal Info</span></li>
+                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${educationCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Education</span></li>
+                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${profilePictureCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Profile Picture</span></li>
+                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${professionalSummeryCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Professional Summery</span></li>
+                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${skillCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Skills</span></li>
+                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${projectsCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Projects</span></li>
+                        <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${languageCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Languages</span></li>
                     </ul>
                 </Core.Card>
             </div>

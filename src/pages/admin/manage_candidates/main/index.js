@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 
 
 
+
 // const columns = ["name", "jobTitle", "employer", "eligibility", "experience", "salary", "stage", "status", "action"];
 const columns = [
     {
@@ -16,8 +17,8 @@ const columns = [
         sorter: true,
     }, {
         title: 'Job Title',
-        key: 'jobTitle',
-        dataIndex: 'jobTitle',
+        key: 'JobTitle',
+        dataIndex: 'JobTitle',
     }, {
         title: 'Employer',
         key: 'employerName',
@@ -162,6 +163,9 @@ function MainCandidates() {
     console.log("AppliedAllJobs",AppliedAllJobs)
 
 
+    
+
+
 
     useEffect(() => {
         try {
@@ -189,8 +193,10 @@ function MainCandidates() {
        
         navigate(`/admin/manage-candidates/edit/${id}`);
     };
-    const onMessageClick = (id) => {
-        navigate(`/admin/manage-candidates/schedule/${id}`);
+    const onCalenderClick = (jobId,candidateId) => {
+        // console.log('id',id)
+        console.log('candidateId',candidateId)
+        navigate(`/admin/manage-candidates/schedule/${jobId}/${candidateId}`);
     };
 
     console.log("name", name);
@@ -238,7 +244,7 @@ function MainCandidates() {
                 actions={actions}
                 onViewClick={onViewClick}
                 onEditClick={onEditClick}
-                onMessageClick={onMessageClick}
+                onCalenderClick={onCalenderClick}
             // shadow
             // title="Manage Roles"
             // setTableFilters={setTableFilters}

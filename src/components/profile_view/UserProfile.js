@@ -106,7 +106,9 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNex
                 <div className='relative w-[110px]'>
                     <div className='absolute -top-6 flex justify-center items-center w-[90px] h-[90px] bg-gray-7 rounded-full overflow-hidden'>
                         {/* <Avatar size={90} src={<img src={extractedData?.candidate?.personalInformation?.avatar} alt="avatar" />}>{firstLetter}</Avatar> */}
-                        <Avatar size={90} src={<img src={"https://dp.profilepics.in/profile_pictures/boys-profile-pics/boys-profile-pics-dp-for-whatsapp-facebook-1775.jpg"} alt="avatar" />}>{firstLetter}</Avatar>
+                        {/* <Avatar size={90} src={<img src={"https://dp.profilepics.in/profile_pictures/boys-profile-pics/boys-profile-pics-dp-for-whatsapp-facebook-1775.jpg"} alt="avatar" />}>{firstLetter}</Avatar> */}
+                        <Avatar size={90} src={<img src={extractedData?.candidate?.personalInformationData?.profilePicture} alt="avatar" />}>{firstLetter}</Avatar>
+                        {/* <Avatar size={90} src={<img src={"https://dp.profilepics.in/profile_pictures/boys-profile-pics/boys-profile-pics-dp-for-whatsapp-facebook-1775.jpg"} alt="avatar" />}>{firstLetter}</Avatar> */}
                     </div>
                 </div>
                 <div className='w-full'>
