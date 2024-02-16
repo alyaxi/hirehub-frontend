@@ -11,6 +11,7 @@ import interviewSchuleSlice from '../Slices/Employer/interviewSchuleSlice';
 import CandidateInterviewSlice from '../Slices/Candidates/CandidateInterviewSlice';
 import InterviewAdminSlice from '../Slices/Admin/InterviewAdminSlice';
 import ManageStaticContentSlice from '../Slices/Admin/ManageStaticContentSlice';
+import ManageQuestionairreSlice from '../Slices/Employer/ManageQuestionairreSlice';
 
 
 const rootReducer = combineReducers({
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   interview: interviewSchuleSlice,
   candidateInterview: CandidateInterviewSlice,
   viewInterviewAdmin: InterviewAdminSlice,
-  manageContent: ManageStaticContentSlice
+  manageContent: ManageStaticContentSlice,
+  ManageQuestionaire:ManageQuestionairreSlice, 
  
 });
 

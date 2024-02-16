@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { Core } from '..';
 import { Formik, Form, Field } from 'formik';
 import { Spin } from 'antd';
+import { useDispatch } from 'react-redux';
+import { CreateQuestionnairee, UpdateQuestionnaire } from "../../Slices/Employer/ManageQuestionairreSlice";
+import { useSelector } from 'react-redux';
+
+
 
 
 import { useNavigate, useParams } from "react-router-dom";
@@ -56,16 +61,20 @@ const questionnaire = [
 
 function QuestionnaireForm({ type }) {
 
+    const questionaaire = useSelector((state) => state?.ManageQuestionaire?.data);
+
     const { id } = useParams();
 
     let questionnaireToEdit;
     if (type === "edit") {
-        questionnaireToEdit = questionnaire.find(item => item?.id === id);
+        questionnaireToEdit = questionaaire.find(item => item?._id === id);
     }
 
     // console.log("questionnaireToEdit", questionnaireToEdit)
 
     const [emailContent, setEmailContent] = useState(questionnaireToEdit?.question || '');
+    const dispatch = useDispatch();
+
     const [savingForm, setSavingForm] = useState(false);
 
     const [data] = useState({
@@ -76,15 +85,28 @@ function QuestionnaireForm({ type }) {
     console.log("data", data)
 
     const handleSubmit = (values, actions) => {
-        // setSavingForm(true)
-        console.log("values", values)
+        try {
+            // setSavingForm(true)
+            console.log("values", values)
 
-        let _quesionnaire = {
-            position: values?.position,
-            text: emailContent,
+            let _quesionnaire = {
+                position: values?.position,
+                question: emailContent,
+            }
+            if (type === "edit") {
+                console.log(type, "typeee")
+
+                dispatch(UpdateQuestionnaire({ id: id, _quesionnaire })).unwrap().then(x => console.log(x)).catch(err => console.log(err))
+            } else {
+
+                dispatch(CreateQuestionnairee(_quesionnaire)).unwrap().then(x => console.log(x)).catch(err => console.log(err))
+            }
+
+
+            console.log("_quesionnaire", _quesionnaire)
+        } catch (error) {
+            console.log(error)
         }
-
-        console.log("_quesionnaire", _quesionnaire)
         // setSavingForm(false)
     };
 

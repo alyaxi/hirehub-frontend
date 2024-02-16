@@ -141,13 +141,13 @@ function TableB({
                             }
                             {actions.edit &&
                                 <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
-                                    onClick={() => onEditClick(id?.id)}>
+                                    onClick={() => onEditClick(id?.id || id?._id)}>
                                     <Icon name="Edit" />
                                 </span>
                             }
                             {actions.delete &&
                                 <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
-                                    onClick={() => onDeleteClick(id?.id)}>
+                                    onClick={() => onDeleteClick(id?.id || id?._id)}>
                                     <Icon name="Delete" />
                                 </span>
                             }
