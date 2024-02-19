@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Spin } from 'antd';
 import { Core } from '../..';
 import { useDispatch, useSelector } from 'react-redux';
 import { addInterview } from '../../../Slices/Employer/interviewSchuleSlice';
 import moment from 'moment';
+import { UpdateInterviewsCandidate } from '../../../Slices/Candidates/CandidateInterviewSlice';
 
 // data = {
 //     attachments: "C:\\fakepath\\Amin Noor (1).pdf",
@@ -20,29 +21,44 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
     const formattedStartTime = moment(eventToEdit?.start).format('HH:mm');
     const formattedEndTime = moment(eventToEdit?.end).format('HH:mm');
 
-    const [data] = useState({
-        end: formattedEndTime || '',
-        start: formattedStartTime || '',
-        description: eventToEdit?.description || '',
-        title: eventToEdit?.title || '',
-        type: eventToEdit?.type || '',
-        jobLocation: eventToEdit?.location || '',
-        scheduledDate: eventToEdit?.scheduledDate,
-        startTime: eventToEdit?.startTime,
-        endTime: eventToEdit?.endTime,
-        // approvalInvite: eventToEdit?.approvalInvite,
+
+    const [data, setData] = useState({
+        end: '',
+        start: '',
+        description: '',
+        title: '',
+        type: '',
+        jobLocation: '',
+        scheduledDate: '',
+        startTime: '',
+        endTime: '',
     });
 
-    console.log(data, "data")
+
 
     const [savingForm, setSavingForm] = useState(false);
     const [approval, setApproval] = useState(false);
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
 
-    // console.log(AppliedJobCandidate, "AppliedJobCandidate")
+    console.log(AppliedJobCandidate, "AppliedJobCandidate")
 
     const dispatch = useDispatch()
 
+
+    useEffect(() => {
+        setData({
+            end: moment(eventToEdit?.end).format('HH:mm') || '',
+            start: moment(eventToEdit?.start).format('HH:mm') || '',
+            description: eventToEdit?.description || '',
+            title: eventToEdit?.title || '',
+            type: eventToEdit?.type || '',
+            jobLocation: eventToEdit?.location || '',
+            scheduledDate: eventToEdit?.scheduledDate,
+            startTime: eventToEdit?.startTime,
+            endTime: eventToEdit?.endTime,
+        });
+    }, [eventToEdit]);
+    console.log(data, "data")
     const handleSubmit = (values) => {
         try {
             console.log(values, "values354")
@@ -66,11 +82,13 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
             }
             else {
                 console.log("approval", approval)
-
-
-
-                // setSavingForm(false);
-                // setIsModalOpen(false);
+                const actionToDispatch = approval ? "Accepted" : "Declined";
+                console.log({ actionToDispatch })
+                setSavingForm(true);
+                dispatch(UpdateInterviewsCandidate({ approvalInvite: actionToDispatch, id: eventToEdit?._id })).unwrap().then(x => console.log(x)).catch(err => console.log(err));
+                // functionality
+                setSavingForm(false);
+                setIsModalOpen(false);
             }
 
         } catch (error) {
@@ -96,6 +114,10 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                                     label
                                     edit
                                     disabled={type === "candidate" ? true : false}
+                                    value={data?.jobLocation}
+
+
+
                                 />
                             )}
                         </Field>
@@ -108,9 +130,12 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                                     name="description"
                                     label
                                     {...field}
-                                    value={field.value}
+                                    // value={field.value}
                                     rows={5}
                                     disabled={type === "candidate" ? true : false}
+                                    value={data?.description}
+
+
                                 />
                             )}
                         </Field>
@@ -126,6 +151,9 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                                     label
                                     edit
                                     disabled={type === "candidate" ? true : false}
+                                    value={data?.scheduledDate}
+
+
                                 />
                             )}
                         </Field>
@@ -145,6 +173,9 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                                             name="startTime"
                                             edit
                                             disabled={type === "candidate" ? true : false}
+                                            value={data?.startTime}
+
+
                                         />
                                     )}
                                 </Field>
@@ -159,6 +190,7 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                                             // label
                                             edit
                                             disabled={type === "candidate" ? true : false}
+                                            value={data?.endTime}
                                         />
                                     )}
                                 </Field>
@@ -182,27 +214,30 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                     </div>
 
                     <div className='flex justify-start gap-x-3 pt-6 mt-8 border-t-[1px]'>
-                        {type === "candidate" ?
+                        {type === "candidate" &&
                             <>
                                 {savingForm ?
-                                    <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
-                                        <Spin />
-                                    </div>
-                                    : <Core.Button type="narrow" submit
-                                        onClick={() => setApproval(true)}
-                                    >Accept</Core.Button>}
-                                <Core.Button type="narrow" color="white" submit onClick={() => setApproval(false)} isDisabled={eventToEdit.approvalInvite === "Declined" ? true : false}>Decline</Core.Button>
+                                    <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'><Spin /></div>
+                                    :
+                                    <Core.Button type="narrow" submit onClick={() => setApproval(true)} isDisabled={eventToEdit?.approvalInvite === "Declined" ? true : false} >Accept</Core.Button>
+                                }
+                                <Core.Button type="narrow" color="white" submit onClick={() => setApproval(false)} isDisabled={eventToEdit?.approvalInvite === "Declined" ? true : false}>Decline</Core.Button>
                             </>
-                            :
+
+                        }
+                        {(type !== "candidate" && type !== "admin") &&
                             <>
-                                {savingForm ?
-                                    <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
-                                        <Spin />
-                                    </div>
-                                    : <Core.Button type="narrow" submit>Save</Core.Button>}
+                                {(eventToEdit?.approvalInvite !== "Accepted" && eventToEdit?.approvalInvite !== "Declined") &&
+                                    <>
+                                        {savingForm ?
+                                            <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                                <Spin />
+                                            </div>
+                                            : <Core.Button type="narrow" submit>Save</Core.Button>}
+                                    </>
+                                }
                             </>
                         }
-
                     </div>
 
                 </Form>

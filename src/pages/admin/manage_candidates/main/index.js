@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom"
 import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 import { useDispatch, useSelector } from 'react-redux';
 
+
+
+
+// const columns = ["name", "jobTitle", "employer", "eligibility", "experience", "salary", "stage", "status", "action"];
 const columns = [
     {
         title: 'Name',
@@ -14,8 +18,8 @@ const columns = [
         sorter: true,
     }, {
         title: 'Job Title',
-        key: 'jobTitle',
-        dataIndex: 'jobTitle',
+        key: 'JobTitle',
+        dataIndex: 'JobTitle',
     }, {
         title: 'Experience',
         key: 'experience',
@@ -73,6 +77,9 @@ function MainCandidates() {
     //             console.log("Successfully fetched data", res);
 
 
+    
+
+
 
     // useEffect(() => {
     //     try {
@@ -98,9 +105,10 @@ function MainCandidates() {
     const onEditClick = (id) => {
         navigate(`/employer/manage-candidates/edit/${id}`);
     };
-    const onCalenderClick = (jobid, candidateId) => {
-        console.log("idfromtable", jobid,candidateId )
-        navigate(`/employer/manage-candidates/schedule/${jobid}`);
+    const onCalenderClick = (jobId,candidateId) => {
+        // console.log('id',id)
+        console.log('candidateId',candidateId)
+        navigate(`/admin/manage-candidates/schedule/${jobId}/${candidateId}`);
     };
 
     console.log("name", name);
@@ -142,6 +150,12 @@ function MainCandidates() {
                 onViewClick={onViewClick}
                 onEditClick={onEditClick}
                 onCalenderClick={onCalenderClick}
+            // shadow
+            // title="Manage Roles"
+            // setTableFilters={setTableFilters}
+            // dropdwonOptions={dropdwonOptions}
+            // manageRoles
+            // isLoading={isLoading}
             />
         </>
     );

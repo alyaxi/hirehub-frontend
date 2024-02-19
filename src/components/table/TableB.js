@@ -130,7 +130,7 @@ function TableB({
                     return <span key={`render-${value.dataIndex}-${index}`}>${val?.value || val}</span>;
                 }
                 else if (value.dataIndex === "action") {
-                    // console.log(id, "idddddddlll")
+                    console.log(id, "idddddddlll")
                     return (
                         <Flex gap="small" key={`render-${value.dataIndex}-${index}`}>
                             {actions.view &&
@@ -141,13 +141,13 @@ function TableB({
                             }
                             {actions.edit &&
                                 <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
-                                    onClick={() => onEditClick(id?.id)}>
+                                    onClick={() => onEditClick(id?.id || id?._id)}>
                                     <Icon name="Edit" />
                                 </span>
                             }
                             {actions.delete &&
                                 <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
-                                    onClick={() => onDeleteClick(id?.id)}>
+                                    onClick={() => onDeleteClick(id?.id || id?._id)}>
                                     <Icon name="Delete" />
                                 </span>
                             }
@@ -159,7 +159,7 @@ function TableB({
                             }
                             {actions.date &&
                                 <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
-                                    onClick={() => onCalenderClick(id?.jobId, id?.candidateId)}>
+                                    onClick={() => onCalenderClick(id?.jobId, id?.candidate?.userId)}>
                                     <Icon name="Calender1" />
                                 </span>
                             }

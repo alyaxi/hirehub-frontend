@@ -5,6 +5,7 @@ import notificationService from './notification';
 export const RedirectToLogin = (err) => {
 
   localStorage.removeItem("user");
+  localStorage.removeItem("persist:root");
   window.history.go("/")
   
   notificationService.error(err);

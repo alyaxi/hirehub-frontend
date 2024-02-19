@@ -93,7 +93,7 @@ function App() {
           {/* <Route path="manage-candidates" element={<MainCandidates />} /> */}
           <Route path="manage-candidates/edit/:id" element={<EditCandidates />} />
           <Route path="manage-candidates/view/:id" element={<ViewCandidates />} />
-          <Route path="manage-candidates/schedule/:id" element={<ScheduleCandidatesAdmin />} />
+          <Route path="manage-candidates/schedule/:id/:candidateId" element={<ScheduleCandidatesAdmin />} />
 
           <Route path="manage-jobs" element={<MainJobsAdmin />} />
           <Route path="manage-jobs/add" element={<AddJobsAdmin />} />
