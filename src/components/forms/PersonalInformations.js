@@ -6,7 +6,6 @@ import Icon from '../icon';
 import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
 
-
 const experienceOptions = [
     { name: "Fresh", value: "0" },
     { name: "6 months", value: "6 months" },
@@ -71,15 +70,14 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
         { name: "Lead", value: "lead" },
     ];
 
-
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
     const endYear = currentYear - 5;
     const yearOptions = [];
+    
     for (let year = startYear; year <= endYear; year++) {
         yearOptions.push({ name: year.toString(), value: year.toString() });
     }
-
 
     const daysOptions = Array.from({ length: 31 }, (_, index) => {
         const day = index + 1;
@@ -183,8 +181,8 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
         updateDob();
     }, [selectedDay, selectedMonth, selectedYear]);
 
-    console.log(profilePicture, "ppppppppppp")
-    console.log('dob', dob)
+    // console.log(profilePicture, "ppppppppppp")
+    // console.log('dob', dob)
 
     const handleSubmit = (values, { isSubmitting }) => {
         let _personalInformationData = {

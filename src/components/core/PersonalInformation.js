@@ -1,4 +1,4 @@
-import { Avatar, Progress } from "antd";
+import { Avatar, Progress, Typography } from "antd";
 import { Core } from "..";
 import Icon from "../icon";
 
@@ -17,12 +17,14 @@ function PersonalInformation({ data, user, profileCompletion }) {
                     <Core.ProficienciesActions buttons={['edit']} type="personalInformationData" />
                 </div>
 
-
                 <div className='flex justify-start items-end pt-3'>
                     <div className='flex flex-col justify-center items-center w-[22%] pr-8'>
                         <span className='text-gray-6 text-[18px] font-semibold pl-2'>
-                            {/* {data?.profileCompletion} */}
-                            {profileCompletion}%
+                            {/* <Typography
+                                type={profileCompletion === 100 && "success"}
+                            > */}
+                                {profileCompletion}%
+                            {/* </Typography> */}
                         </span>
                         <div className="relative rounded-full overflow-hidd en w-[120px] h-[120px] px-[0.30rem] pt-[0.25rem] pb-[0.30rem]">
                             <Progress type="circle" percent={profileCompletion} className="absolute left-0 -top-[1px]" />

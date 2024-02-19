@@ -4,7 +4,7 @@ import { Core } from '..';
 
 function ViewProfile({ data }) {
     
-    console.log("ViewProfile data", data)
+    // console.log("ViewProfile data", data)
 
     return (
         <Core.Card className={`py-[20px] px-[20px]`}>

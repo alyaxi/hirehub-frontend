@@ -15,6 +15,7 @@ import MyCalender from "./my_calender/MyCalender";
 import MyCalenderSm from "./my_calender/MyCalenderSm"
 import MyCalenderSmForCalender from "./my_calender/MyCalenderSmForCalender"
 import MyTimePicker from "./time_picker/MyTimePicker";
+import OptionsDropdown from "./OptionsDropdown";
 import Preferences from "./Preferences";
 import PopupModal from "./PopupModal";
 import PopupModalCalender from "./PopupModalCalender";
@@ -52,6 +53,7 @@ export {
     MyCalender,
     MyCalenderSm, MyCalenderSmForCalender,
     MyTimePicker,
+    OptionsDropdown,
     Preferences,
     PopupModal,
     PopupModalCalender,

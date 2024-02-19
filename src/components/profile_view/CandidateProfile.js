@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Core } from '..';
 import Icon from '../icon';
-import { Progress } from 'antd';
 import video from "../../assets/videos/1.mp4";
 import { getCandidate } from '../../Slices/Candidates/CandidateSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, Popover, Progress } from 'antd';
+
+const videoOptions = [
+    'delete',
+];
+
+// const text = <span>Introduction Video</span>;
+
+const content = (
+    <div className='text-[10px] leading-[14px]'>
+        <p>You can upload a short video to introduce</p>
+        <p>yourself and experience</p>
+    </div>
+);
 
 function CandidateProfile() {
     const dispatch = useDispatch();
@@ -22,6 +35,9 @@ function CandidateProfile() {
     const user = candidate?.userId
 
     const [resumePrivacySetting, setResumePrivacySetting] = useState(1);
+
+    const [uploadVideo, setUploadVideo] = useState();
+    console.log("uploadVideo", uploadVideo)
 
     const handlePrivacyChange = (e) => {
         setResumePrivacySetting(e.target.value);
@@ -74,7 +90,7 @@ function CandidateProfile() {
 
     profileCompletion = _experience + _education + _language + _skill + _summery + _personalInformation + _jobPreference;
 
-    // console.log("profileCompletion", profileCompletion)
+    console.log("candidate", candidate)
     let workHistoryCheck = candidate?.experiencesData?.length > 0 || false;
     let personalInformationCheck = personalInformationCount === 0 || false;
     let educationCheck = candidate?.educationsData?.length > 0 || false;
@@ -84,13 +100,13 @@ function CandidateProfile() {
     let projectsCheck = candidate?.projectsData?.length > 0 || false;
     let languageCheck = candidate?.languagesData?.length > 0 || false;
 
-// console.log("_experience",_experience)
-// console.log("_education",_education)
-// console.log("_language",_language)
-// console.log("_skill",_skill)
-// console.log("_summery",_summery)
-// console.log("_personalInformation",_personalInformation)
-// console.log("_jobPreference",_jobPreference)
+    // console.log("_experience",_experience)
+    // console.log("_education",_education)
+    // console.log("_language",_language)
+    // console.log("_skill",_skill)
+    // console.log("_summery",_summery)
+    // console.log("_personalInformation",_personalInformation)
+    // console.log("_jobPreference",_jobPreference)
 
 
     return (
@@ -115,9 +131,30 @@ function CandidateProfile() {
                             <Icon name="Video" />
                             <h2 className='text-black-1 text-[18px] leading-[28px] font-medium'>My Video</h2>
                         </div>
-                        <Icon name="Options" />
+                        {candidate?.video ?
+                            <Core.OptionsDropdown options={videoOptions}
+                                setState={setUploadVideo}
+                                menuWidth={'w-[110px]'}
+                                showFrom="right"
+                            />
+                            :
+                            <Popover placement="leftTop" content={content} className='cursor-pointer'>
+                                <Icon name="Info" size={18} className="opacity-50" />
+                            </Popover>
+                        }
                     </div>
-                    <Core.VideoPlayer src={video} className="max-h-[150px] rounded-[10px] overflow-hidden" />
+
+                    <div className={`block max-w-[300px] rounded-[10px] mb-2`}>
+                        {candidate?.video ?
+                            <Core.VideoPlayer src={candidate?.video} className="max-h-[150px] rounded-[10px] overflow-hidden" />
+                            :
+                            <div className='flex justify-center items-center w-[280px] text-gray-2 text-[20px] text-center rounded-[10px] bg-gray-5 px-2 py-12'>
+                                <Core.Button icon="Upload" iconSize={"18"} sm type="narrow" color="white">
+                                    Upload Video
+                                </Core.Button>
+                            </div>
+                        }
+                    </div>
                 </Core.Card>
                 <Core.Button icon="Download" iconSize={"24"}>
                     Download Resume
@@ -126,7 +163,7 @@ function CandidateProfile() {
                     <h4 className='text-black-1 text-[18px] leading-[22px] font-medium mb-5'>Update your profile for better job recommendations</h4>
                     <h6 className='text-black-3 text-[14px] leading-[20px] font-medium -mb-[3px]'>Product Status</h6>
                     <Progress percent={profileCompletion} status="active" className='m-0 ' />
-                <span className='block text-black-3 text-[10px] leading-[12px] opacity-75'>Profile {profileCompletion}% Complete</span>
+                    <span className='block text-black-3 text-[10px] leading-[12px] opacity-75'>Profile {profileCompletion}% Complete</span>
                     <ul className='flex flex-col gap-y-2 mt-5'>
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${workHistoryCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Work History</span></li>
                         <li className='flex gap-x-[7px] justify-start text-gray-6 text-[13px] font-medium'><span className={`${personalInformationCheck ? 'text-green-5' : 'text-gray-11'}`}><Icon name="Tick" /></span><span>Personal Info</span></li>

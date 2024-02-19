@@ -1,8 +1,11 @@
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { Icons } from '..';
+import Icon from '../icon';
 
-export default function Dropdown2({ options, setState, className, menuWidth, defaultTitle, selectedState, showFrom }) {
+export default function OptionsDropdown({ options, setState, className, menuWidth, defaultTitle, selectedState, showFrom }) {
+
+    console.log("showFrom", showFrom)
 
     const [selectedOption, setSelectedOption] = useState(defaultTitle);
     const handleOptionClick = (value) => {
@@ -14,9 +17,8 @@ export default function Dropdown2({ options, setState, className, menuWidth, def
 
     return (
         <Menu as="div" className={`relative inline-block text-left ${className}`} defaultValue={selectedOption}>
-            <Menu.Button className={`inline-flex w-full justify-between items-center gap-x-1.5 rounded-[8px] bg-white px-3 py-[9px] text-sm whitespace-nowrap text-gray-6 border border-gray-11`}>
-                <span className={`${textColor} text-[14px] leading-[20px] capitalize font-regular`}>{selectedOption}</span>
-                <Icons.GoChevronDown className="ml-1 h-4 w-4 text-gray-1" aria-hidden="true" />
+            <Menu.Button className={`flex justify-center items-center w-[25px] h-[25px] bg-white rounded-[50px] px-1 py-2 text-sm text-gray-6 transition hover:bg-gray-100`}>
+                <Icon name="Options" />
             </Menu.Button>
             <Transition
                 as={Fragment}
