@@ -25,7 +25,7 @@ export default function Dropdown() {
         dispatch(logout())
         navigate("/")
     }
-
+    // console.log("user", user)
     const firstLetter = user?.name ? user.name.trim().charAt(0).toUpperCase() : '';
 
     return (
@@ -40,7 +40,9 @@ export default function Dropdown() {
                     <Badge dot><Avatar src={avatar}>{firstLetter}</Avatar></Badge>
                     <div className='flex flex-col items-start'>
                         <span className='text-black-1 text-[14px] leading-[20px] capitalize font-medium'>{user?.name}</span>
-                        <span className='text-gray-6 text-[11px] leading-[18px] capitalize opacity-80'>{user?.Role}</span>
+                        {user?.Role !== "candidate" &&
+                            <span className='text-gray-6 text-[11px] leading-[18px] capitalize opacity-80'>{user?.Role}</span>
+                        }
                     </div>
                     <Icons.GoChevronDown
                         className="ml-1 h-5 w-5 text-gray-1"
@@ -59,7 +61,7 @@ export default function Dropdown() {
             >
                 <Menu.Items className="absolute right-0 z-[999] mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
                     <div className="px-1 py-1 ">
-                        {accountType !== "admin" &&
+                        {(accountType !== "admin" && accountType !== "candidate") &&
                             <Menu.Item>
                                 {({ active }) => (
                                     <NavLink to="profile">

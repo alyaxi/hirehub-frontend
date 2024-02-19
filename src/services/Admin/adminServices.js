@@ -6,7 +6,7 @@ import api from "../../api/api";
 const adminServices = {
     async getEmployersDetail() {
         try {
-            console.log("starttt from servie employer");
+            // console.log("starttt from servie employer");
             const response = await api.get('/admin/manage-employers');
             if (response && response.data && response.status === 200) {
                 // console.log("starttttttttttt");
@@ -18,7 +18,7 @@ const adminServices = {
     },
     async VieEmployersDetailById(id) {
         try {
-            console.log("starttt from servie employer");
+            // console.log("starttt from servie employer");
             const response = await api.get(`/admin/view-employer-by-id?id=${id}`);
             if (response && response.data && response.status === 200) {
                 console.log("viewww employererererer, res", response);

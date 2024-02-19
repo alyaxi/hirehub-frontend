@@ -7,8 +7,8 @@ import { useParams } from "react-router-dom";
 
 
 const breadcrumb = [
-    { label: "Dashboard", link: "/admin/dashboard" },
-    { label: "Manage Candidates", link: "/admin/manage-candidates" },
+    { label: "Dashboard", link: "/employer/dashboard" },
+    { label: "Manage Candidates", link: "/employer/manage-candidates" },
     { label: "Details" },
 ];
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Core, Table } from '../../../../components';
 import avatar1 from "../../../../assets/images/avatars/2.png";
 import TableB from '../../../../components/table/TableB';
-import employersData from '../../../../data/employersData.json';
+// import employersData from '../../../../data/employersData.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom"
 
@@ -59,7 +59,7 @@ function ApprovedEmployers() {
             dataIndex: 'action',
         },
     ];
-    const { tableData } = employersData;
+    // const { tableData } = employersData;
     const statusToFilter = 'Approved';
     const filteredData = employersTableData.filter(item => item.isVerified === statusToFilter);
 
@@ -75,8 +75,8 @@ function ApprovedEmployers() {
     const onMessageClick = (id) => {
         console.log("onMessageClick", id)
     };
-    console.log("name", name)
-    console.log("jobTitle", jobTitle)
+    // console.log("name", name)
+    // console.log("jobTitle", jobTitle)
     return (
         <>
             <Core.Breadcrumb

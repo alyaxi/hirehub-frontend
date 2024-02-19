@@ -74,6 +74,14 @@ function MainCandidates() {
 
 
 
+    // useEffect(() => {
+    //     try {
+
+    //         dispatch(getAllAppliedJob()).unwrap().then(res => {
+    //             console.log("Successfully fetched data", res);
+
+
+
     //         }).catch(err => {
     //             console.error(`Error Fetching Data ${err}`);
     //         });
@@ -81,9 +89,8 @@ function MainCandidates() {
     //         console.error(`Error in useEffect of Dashboard ${error}`)
 
     //     }
+    // },[])
 
-
-    // }, [])
 
     const onViewClick = (id) => {
         navigate(`/employer/manage-candidates/view/${id}`);

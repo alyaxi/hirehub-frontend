@@ -5,17 +5,19 @@ import { UpdateEmployerById } from '../../../Slices/Employer/EmployerSlice';
 import { toast, ToastContainer } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import notificationService from '../../../utilis/notification';
-
-
+import { useNavigate } from "react-router-dom";
+import { Spin } from 'antd';
 
 const breadcrumb = [
-    { label: "Dashboard", link: "/admin/dashboard" },
+    { label: "Dashboard", link: "/employer/dashboard" },
     { label: "Create an employer account" },
 ];
 
 function ManageProfile() {
+    const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const dispatch = useDispatch();
+    const [savingForm, setSavingForm] = useState(false);
     const [formData, setFormData] = useState({
         companyName: '',
         noOfEmployes: '',
@@ -26,7 +28,7 @@ function ManageProfile() {
         description: '',
     });
 
-    console.log(formData, "formmmmmmmmmasd")
+    // console.log(formData, "formmmmmmmmmasd")
     const GetInput = (data) => {
         console.log("Data received:", data);
         setFormData({ ...formData, ...data });
@@ -53,9 +55,10 @@ function ManageProfile() {
         formData.welcomeVideo !== "";
 
     const handleFinish = () => {
+        setSavingForm(true)
         try {
 
-            console.log(formData, "formmmmmmm")
+            // console.log(formData, "formmmmmmm")
 
             const areAllValuesEmpty = Object.values(formData).every(value => !value);
 
@@ -70,21 +73,23 @@ function ManageProfile() {
                 });
 
                 dispatch(UpdateEmployerById(formDataToSend)).unwrap().then(res => {
-                    console.log(res, "ressssponsee");
+                    // console.log(res, "ressssponsee");
                     if (res.data) {
+                        setSavingForm(false)
                         notificationService.success(res.data.msg);
+                        setTimeout(() => {
+                            navigate("/employer/profile")
+                        }, 3000)
                     }
                 }).catch(error => {
                     notificationService.error(error.message)
+                    setSavingForm(false)
                 })
-
-
-
-
             }
         } catch (error) {
             console.error(error);
             notificationService.error(error.message);
+            setSavingForm(false)
         }
     };
 
@@ -144,10 +149,15 @@ function ManageProfile() {
                             type="narrow">Save and Continue</Core.Button>
                     }
                     {step === 2 &&
-                        <Core.Button
-                            isDisabled={!isAnyEmpty}
-                            onClick={handleFinish}
-                            type="narrow">Save</Core.Button>
+                        <>
+                            {savingForm ?
+                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                    <Spin />
+                                </div>
+                                :
+                                <Core.Button isDisabled={!isAnyEmpty} onClick={handleFinish} type="narrow">Save</Core.Button>
+                            }
+                        </>
                     }
                 </div>
             </div>

@@ -3,9 +3,11 @@ import api from '../../api/api';
 
 const authService = {
     async login(credentials) {
-        try {
+            console.log("credentials",credentials)
+            try {
 
             const response = await api.post('/auth/login', credentials);
+            console.log("response",response)
             if (response && response.data && response.status === 200) {
                 // console.log("starttttttttttt");
                 return response.data;

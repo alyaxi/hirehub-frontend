@@ -8,9 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import notificationService from '../../utilis/notification';
 import { ToastContainer } from 'react-toastify';
 
-
-
-
 const validationSchema = Yup.object().shape({
     oldPassword: Yup.string().required('Old Password is required'),
     newPassword: Yup.string().required('New Password is required'),

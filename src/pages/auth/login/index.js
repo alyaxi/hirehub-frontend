@@ -43,11 +43,13 @@ function LoginPage() {
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
+        console.log(`handleSubmit called`,);
         try {
             dispatch(login(values))
                 .unwrap()
                 .then((res) => {
                     const user = res.data;
+                    console.log(`user`, user);
                     redirectToDashboard(user?.Role, navigate);
                 })
                 .catch((err) => {

@@ -2,7 +2,7 @@ import React  from 'react';
 import { Breadcrumb,   } from '../../../../components/core'; 
  
 const breadcrumb = [
-    { label: "Dashboard", link: "/admin/dashboard" },
+    { label: "Dashboard", link: "/employer/dashboard" },
     { label: "Notification" },
 ];
 

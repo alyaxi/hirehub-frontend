@@ -286,7 +286,9 @@ function MainJobs() {
     const dispatch = useDispatch();
     const jobs = useSelector((state) => state?.AdminJob?.jobs);
 
-    console.log(jobs, "adminjobssssssssss")
+    // console.log(jobs, "adminjobssssssssss")
+
+
 
     // useEffect(() => {
     //     try {
@@ -307,9 +309,9 @@ function MainJobs() {
     //     navigate(`/admin/manage-jobs/add`);
     // };
 
-    console.log("jobStatus", jobStatus);
-    console.log("jobTitle", jobTitle);
-    console.log("expirationDate", expirationDate);
+    // console.log("jobStatus", jobStatus);
+    // console.log("jobTitle", jobTitle);
+    // console.log("expirationDate", expirationDate);
     return (
         <>
             <Breadcrumb

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 
 
 const breadcrumb = [
-    { label: "Dashboard", link: "/admin/dashboard" },
+    { label: "Dashboard", link: "/employer/dashboard" },
     { label: "Manage Jobs" },
     { label: "Job Details" },
 ];

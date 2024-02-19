@@ -16,7 +16,7 @@ import moment from 'moment';
 // ];
 
 const breadcrumb = [
-    { label: "Dashboard", link: "/admin/dashboard" },
+    { label: "Dashboard", link: "/employer/dashboard" },
     { label: "Manage Candidates" },
     { label: "Schedule" },
 ];

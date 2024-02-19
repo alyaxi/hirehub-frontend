@@ -12,9 +12,10 @@ import { convertDateFormat } from '../../utilis/convertDateStamp';
 export const GetjobsAdmin = createAsyncThunk('admin/get-jobs-all-by-admin', async (_) => {
 
     try {
-        console.log("get jobsss consolee")
+        // console.log("get jobsss consolee")
         const data = await MangeJobAdmin.ManageJob()
-        console.log(data, "dataaaaa")
+        // const data = ''
+        // console.log(data, "dataaaaa")
         return data
     } catch (error) {
         // Handle login error

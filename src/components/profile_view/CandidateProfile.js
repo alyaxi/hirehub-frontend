@@ -27,22 +27,22 @@ function CandidateProfile() {
         setResumePrivacySetting(e.target.value);
     };
 
-    useEffect(() => {
-        // console.log("reload..")
-        try {
+    // useEffect(() => {
+    //     // console.log("reload..")
+    //     try {
 
-            dispatch(getCandidate()).unwrap().then(res => {
-                console.log("Successfully fetched data", res);
+    //         dispatch(getCandidate()).unwrap().then(res => {
+    //             console.log("Successfully fetched data", res);
 
-            }).catch(err => {
-                console.error(`Error Fetching Data ${err}`);
-            });
-        } catch (error) {
-            console.error(`Error in useEffect of Dashboard ${error}`)
+    //         }).catch(err => {
+    //             console.error(`Error Fetching Data ${err}`);
+    //         });
+    //     } catch (error) {
+    //         console.error(`Error in useEffect of Dashboard ${error}`)
 
-        }
+    //     }
 
-    }, [reload])
+    // }, [reload])
 
     let profileCompletion;
 

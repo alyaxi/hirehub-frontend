@@ -37,7 +37,7 @@ function TableB({
     addQuestion,
     addButton
 }) {
-    console.log(data, "tableDataa")
+    // console.log(data, "tableDataa")
     const newColumn = columns.map((value, index) => {
         let columnSorter;
         if (value.sorter === true) {
@@ -223,7 +223,7 @@ function TableB({
         setResetTrigger2((prev) => !prev);
         setResetTrigger3((prev) => !prev);
     };
-    console.log("data", data)
+    // console.log("data", data)
     return (
         <div className={`flex flex-col bg-white rounded-[8px] overflow-hidden ${border === 'none' ? 'border-0' : 'border shadow-md'}`}>
             <div className="-m-1.5 overflow-x-auto">

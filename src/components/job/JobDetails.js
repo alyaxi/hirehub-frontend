@@ -94,7 +94,7 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                     <div className='w-full h-full flex justify-between pl-2'>
                         <div>
                             <h6 className={`
-                            ${pageType === "quickView" ? 'text-[20px] leading-[20px]' : 'text-[22px] leading-[2px]'}                            
+                            ${pageType === "quickView" ? 'text-[20px] leading-[20px]' : 'text-[22px] leading-[22px]'}                            
                             capitalize font-semibold 
                             ${!pageType === "quickView" && 'mb-2'}
                             `}>{extractedData?.positionTitle}</h6>

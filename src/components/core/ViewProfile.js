@@ -5,7 +5,7 @@ import { Core } from '..';
 function ViewProfile({ data }) {
     console.log("data3", data)
     return (
-        <Core.Card className={`py-[30px] px-[40px]`}>
+        <Core.Card className={`py-[20px] px-[20px]`}>
             <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-4'>View Profile</h5>
             <div className="mb-8">
                 <h6 className={`block text-[14px] font-medium text-gray-2 tracking-wide mb-1 capitalize`}>
