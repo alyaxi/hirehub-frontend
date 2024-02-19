@@ -12,6 +12,7 @@ import CandidateInterviewSlice from '../Slices/Candidates/CandidateInterviewSlic
 import InterviewAdminSlice from '../Slices/Admin/InterviewAdminSlice';
 import ManageStaticContentSlice from '../Slices/Admin/ManageStaticContentSlice';
 import ManageQuestionairreSlice from '../Slices/Employer/ManageQuestionairreSlice';
+import CandidateJobsSlice from '../Slices/Candidates/CandidateJobsSlice';
 
 
 const rootReducer = combineReducers({
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   viewInterviewAdmin: InterviewAdminSlice,
   manageContent: ManageStaticContentSlice,
   ManageQuestionaire:ManageQuestionairreSlice, 
+  candidateJobs:CandidateJobsSlice, 
  
 });
 
