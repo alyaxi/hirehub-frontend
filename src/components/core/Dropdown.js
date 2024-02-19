@@ -2,12 +2,10 @@ import { Menu, Transition } from '@headlessui/react'
 import { Fragment, } from 'react'
 import { Icons } from '..'
 import Icon from '../../components/icon'
-import avatar from "../../assets/images/avatars/8.png"
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../../Slices/Auth/authSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom';
-import { UserOutlined } from '@ant-design/icons';
 import React from 'react';
 import { Avatar, Badge, Space } from 'antd';
 
@@ -16,6 +14,7 @@ export default function Dropdown() {
     const navigate = useNavigate();
     const user = useSelector((state) => state.auth.user);
     // console.log(user, "user header");
+    const viewprofile = useSelector((state) => state?.employer?.employer);
 
     const location = useLocation();
     const parts = location?.pathname.split('/');
@@ -37,7 +36,7 @@ export default function Dropdown() {
                         <img className="inline-block h-[32px] w-[32px] rounded-full" src={avatar} alt="Image Description" />
                         <span className="absolute bottom-0 end-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white bg-green-1"></span>
                     </div> */}
-                    <Badge dot><Avatar src={avatar}>{firstLetter}</Avatar></Badge>
+                    <Badge dot><Avatar src={viewprofile?.logo}>{firstLetter}</Avatar></Badge>
                     <div className='flex flex-col items-start'>
                         <span className='text-black-1 text-[14px] leading-[20px] capitalize font-medium'>{user?.name}</span>
                         {user?.Role !== "candidate" &&

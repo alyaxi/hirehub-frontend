@@ -125,7 +125,9 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
             setEndDate(_endDate)
         }
     };
+    
     const imgUrl = `http://localhost:4000/${projectImage?.originFileObj?.name}`
+
     const handleSubmit = (values) => {
         let _projectsData = {
             projectImage: imgUrl,
@@ -151,7 +153,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
         //     description: description,
         // }
 
-        console.log("action prof", action)
+        // console.log("action prof", action)
         // let projectData = [...projects]
         let projectData;
         if (action === "add") {

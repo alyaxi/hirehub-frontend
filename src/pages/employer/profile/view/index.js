@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Core, } from '../../../../components';
 import adminData from '../../../../data/adminData.json';
 import { Breadcrumb, } from '../../../../components/core';
-import { useDispatch, useSelector } from 'react-redux';
-import { getEmployerById } from '../../../../Slices/Employer/EmployerSlice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getEmployerById } from '../../../../Slices/Employer/EmployerSlice';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
@@ -11,8 +11,8 @@ const breadcrumb = [
 ];
 
 function ViewProfile() {
-    const { profile } = adminData;
     
+    const { profile } = adminData;
 
     return (
         <>

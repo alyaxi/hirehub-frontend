@@ -28,6 +28,8 @@ function ManageProfile() {
         description: '',
     });
     const viewprofile = useSelector((state) => state?.employer?.employer);
+    
+    console.log("viewprofile",viewprofile)
 
     const GetInput = (data) => {
         console.log("Data received:", data);
@@ -66,6 +68,7 @@ function ManageProfile() {
 
             if (areAllValuesEmpty) {
                 notificationService.warn("Form should contain any value")
+                setSavingForm(false)
             } else {
 
                 const formDataToSend = new FormData();

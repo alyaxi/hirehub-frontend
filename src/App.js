@@ -137,6 +137,7 @@ function App() {
         {/* Candidate Routes */}
         <Route path="candidate/*" element={<PrivateRoute roles={['candidate']}><CandidateLayout /></PrivateRoute>} >
 
+          <Route path="change-password" element={<PrivateRoute roles={['candidate']}><ChangePassword /></PrivateRoute>} />
           <Route path="manage-profile" element={<PrivateRoute roles={['candidate']}><ManageProfileCandidate /></PrivateRoute>} />
           <Route path="calender" element={<PrivateRoute roles={['candidate']}><CalenderCandidate /></PrivateRoute>} />
           <Route path="jobs" element={<PrivateRoute roles={['candidate']}><MainJobsCandidate /></PrivateRoute>} />

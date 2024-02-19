@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Core } from '../..';
 import dropdownOptions from '../../../data/dropdownOptions.json';
 import { Form, Formik, Field } from 'formik';
+import UploadLogo from '../../core/UploadLogo';
+import UploadVideo from '../../core/UploadVideo';
 
 function Form1({ onNext, profileData }) {
 
@@ -28,8 +30,13 @@ function Form1({ onNext, profileData }) {
         onNext({ [name]: value });
     };
 
+    const handleLogoChange = (name, file) => {
+        setFileInputs({ ...fileInputs, [name]: file });
+        onNext({ [name]: file });
+    };
+
     const handleFileChange = (name, event) => {
-        const file = event.target.files[0];
+        const file = event?.target?.files[0];
         setFileInputs({ ...fileInputs, [name]: file });
         onNext({ [name]: file });
     };
@@ -72,7 +79,8 @@ function Form1({ onNext, profileData }) {
                                 )}
                             </Field>
                         </div>
-                        <div className="flex flex-col gap-x-4 mb-4">
+
+                        {/* <div className="flex flex-col gap-x-4 mb-4">
                             <div>
                                 <Core.UploadFile
                                     name={"logo"}
@@ -89,7 +97,39 @@ function Form1({ onNext, profileData }) {
                                     <h2 className='w-[170px] text-gray-2 text-[20px] text-center rounded-[10px] opacity-70 bg-gray-5 px-1 py-3'>No Logo</h2>
                                 }
                             </span>
+                        </div> */}
+
+                        <div className=" mb-4">
+                            <div>
+                                {/* <Core.UploadFile
+                                    name={"logo"}
+                                    label="Company Logo"
+                                    helperText="A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels."
+                                    accept="image/*"
+                                    onChange={(event) => handleFileChange("logo", event)}
+                                /> */}
+
+                                <label className={`block text-[14px] text-gray-2 tracking-wide  mb-1.5  font-semibold capitalize`}>
+                                    Logo
+                                </label>
+                                <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5'>
+                                    A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels.
+                                </p>
+
+                                <UploadLogo
+                                    onChange={handleLogoChange}
+                                    logo={profileData?.logo}
+                                />
+
+                                {/* <UploadVideo
+                                    onChange={handleLogoChange}
+                                    logo={profileData?.welcomeVideo}
+                                /> */}
+
+                            </div>
                         </div>
+
+
                         <div className="flex flex-col gap-x-4 mb-4">
                             <div>
                                 <Core.UploadFile
@@ -101,13 +141,11 @@ function Form1({ onNext, profileData }) {
                                 />
                             </div>
                             <span className={`block mb-2 capitalize`}>
-                                {profileData?.welcomeVideo ?
-                                    <Core.VideoPlayer src={profileData?.welcomeVideo} className="max-h-[150px] rounded-[10px] overflow-hidden" />
-                                    :
-                                    <h2 className='w-[170px] text-gray-2 text-[20px] text-center rounded-[10px] opacity-70 bg-gray-5 px-1 py-3'>No Video</h2>
+                                {profileData?.welcomeVideo && <Core.VideoPlayer src={profileData?.welcomeVideo} className="max-h-[150px] rounded-[10px] overflow-hidden" />
+                                    // :
+                                    // <h2 className='w-[170px] text-gray-2 text-[20px] text-center rounded-[10px] opacity-70 bg-gray-5 px-1 py-3'>No Video</h2>
                                 }
                             </span>
-
                         </div>
                         <div className="mb-4">
                             <Field name="YourPhoneNumber">

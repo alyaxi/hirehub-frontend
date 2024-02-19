@@ -1,13 +1,17 @@
 
 import React from 'react';
-import { ChangePasswordForm, Core } from '../../../components'; 
-
+import { ChangePasswordForm, Core } from '../../../components';
+import { useSelector } from 'react-redux';
 
 function ChangePassword({ }) {
+
+    const user = useSelector((state) => state.auth.user);
+
     const breadcrumb = [
-        { label: "Dashboard", link: "/admin/dashboard" },
+        { label: "Dashboard", link: `/${user?.Role}/dashboard` },
         { label: "Change Password" },
     ];
+
     return (
         <>
             <Core.Breadcrumb

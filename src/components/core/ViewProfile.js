@@ -3,7 +3,9 @@ import React from 'react';
 import { Core } from '..';
 
 function ViewProfile({ data }) {
-    console.log("data3", data)
+    
+    console.log("ViewProfile data", data)
+
     return (
         <Core.Card className={`py-[20px] px-[20px]`}>
             <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-4'>View Profile</h5>
@@ -12,7 +14,7 @@ function ViewProfile({ data }) {
                     Email
                 </h6>
                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
-                    {data?.userId?.email}
+                    {data?.userId?.email || <span className="text-gray-6 text-[14px] leading-[25px] opacity-50">Please update your information</span>}
                 </span>
             </div>
             <div className="mb-8">
@@ -20,7 +22,7 @@ function ViewProfile({ data }) {
                     Your company's name
                 </h6>
                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
-                    {data?.companyName}
+                    {data?.companyName || <span className="text-gray-6 text-[14px] leading-[25px] opacity-50">Please update your information</span>}
                 </span>
             </div>
             <div className="mb-8">
@@ -28,7 +30,7 @@ function ViewProfile({ data }) {
                     Number of Employees
                 </h6>
                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
-                    {data?.noOfEmployes}
+                    {data?.noOfEmployes || <span className="text-gray-6 text-[14px] leading-[25px] opacity-50">Please update your information</span>}
                 </span>
             </div>
             <div className="mb-8">
@@ -61,7 +63,7 @@ function ViewProfile({ data }) {
                     Your Phone Number
                 </h6>
                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
-                    {data?.phoneNo}
+                    {data?.phoneNo || <span className="text-gray-6 text-[14px] leading-[25px] opacity-50">Please update your information</span>}
                 </span>
             </div>
             <div className="mb-8">
@@ -69,7 +71,7 @@ function ViewProfile({ data }) {
                     Your company's industry
                 </h6>
                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
-                    {data?.companyIndustry}
+                    {data?.companyIndustry || <span className="text-gray-6 text-[14px] leading-[25px] opacity-50">Please update your information</span>}
                 </span>
             </div>
             <div className="mb-8">
@@ -77,7 +79,7 @@ function ViewProfile({ data }) {
                     Company Description
                 </h6>
                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
-                    {data?.description}
+                    {data?.description || <span className="text-gray-6 text-[14px] leading-[25px] opacity-50">Please update your information</span>}
                 </span>
             </div>
         </Core.Card>

@@ -3,13 +3,18 @@ import { Core } from '..';
 import Icon from '../icon';
 import { Avatar } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+const dropdownOptions = [
+    "Open",
+    "Closed",
+    "Republished",
+]
 
 function JobDetails({ data: extractedData, pageType, selectedState, handleNext, setStatus, status, closeDetail, onApply }) {
-    const dropdownOptions = [
-        "Open",
-        "Closed",
-        "Republished",
-    ]
+
+    const viewprofile = useSelector((state) => state?.employer?.employer);
+
     const [resumePrivacy, setResumePrivacy] = useState('');
 
     useEffect(() => {
@@ -19,7 +24,7 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
         }
     }, [extractedData]);
 
-    console.log("resumePrivacy", resumePrivacy);
+    console.log("extractedData", extractedData);
 
     // console.log("starttttt useeffect after", status);
 
@@ -44,12 +49,13 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
     // console.log("extractedData?.positionTitle", extractedData?.positionTitle)
 
     const firstLetter = extractedData?.positionTitle ? extractedData?.positionTitle.trim().charAt(0).toUpperCase() : '';
-    console.log("extractedData", extractedData)
+    // console.log("extractedData", extractedData)
 
     const navigate = useNavigate();
     const handleCancel = () => {
         navigate(-1);
     };
+
     return (
         <Core.Card className={`border p-0`} p={'0'} >
             <div className={`bg-gray-7 ${pageType === "quickView" ? "py-[20px] px-[15px]" : 'py-[25px] px-[30px]'}`}>
@@ -88,7 +94,7 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                     <div className='relative w-[100px]'>
                         <div className={`absolute ${!pageType === "quickView" && '-top-3'} flex justify-center items-center w-[80px] h-[80px] bg-gray-7 overflow-hidden`}>
                             {/* <Avatar size={90} src={<img src={extractedData?.candidate?.personalInformation?.avatar} alt="avatar" />}>{firstLetter}</Avatar> */}
-                            <Avatar size={80} className='rounded-[10px]' src={<img src={"https://img.freepik.com/free-vector/colorful-company-logo-template-with-tagline_23-2148802643.jpg"} alt="avatar" />}>{firstLetter}</Avatar>
+                            <Avatar size={80} className='rounded-[10px]' src={<img src={viewprofile?.logo} alt="avatar" />}>{extractedData?.employer?.title}</Avatar>
                         </div>
                     </div>
                     <div className='w-full h-full flex justify-between pl-2'>
@@ -124,42 +130,42 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
             <div className={`w-full ${pageType === "quickView" ? "py-[15px] px-[15px]" : 'py-[25px] px-[30px]'}`}>
 
                 {/* BENEFITS */}
-                <div className='pb-8'>
-                    <h6 className='text-[16px] leading-[22px] font-semibold'>Benefits</h6>
-                    <ul className='flex justify-start flex-wrap gap-x-3 text-gray-6 list-disc pl-4 mt-4'>
-                        {extractedData && extractedData?.benefits?.map(benefit => (
-                            <li className={`${pageType === "quickView" ? "w-[32%]" : 'w-[18%]'} text-[14px] leading-[18px] mb-3`}>{benefit}</li>
-                        ))}
-                    </ul>
-                </div>
-
-                {/* <span className='block w-full border-gray-11 border-t-[1px] my-2.5'></span> */}
-
+                {(extractedData && Array.isArray(extractedData.benefits)) &&
+                    <div className='pb-8'>
+                        <h6 className='text-[16px] leading-[22px] font-semibold'>Benefits</h6>
+                        <ul className='flex justify-start flex-wrap gap-x-3 text-gray-6 list-disc pl-4 mt-4'>
+                            {/* {extractedData && extractedData?.benefits?.map(benefit => ( */}
+                            {extractedData.benefits.map(benefit => (
+                                <li className={`${pageType === "quickView" ? "w-[32%]" : 'w-[18%]'} text-[14px] leading-[18px] mb-3`}>{benefit}</li>
+                            ))}
+                        </ul>
+                    </div>
+                }
                 <h6 className='text-[16px] leading-[22px] font-semibold'>Job Description</h6>
                 {/* position */}
                 <div className="pb-4">
                     <h6 className='text-[14px] leading-[24px] font-semibold'>The Position</h6>
                     <p className='text-gray-6 text-[12px] leading-[18.5px]'>
-                        {extractedData?.aboutPosition}
+                        {extractedData?.aboutPosition || "-"}
                     </p>
                 </div>
 
                 {/* Responsibilities */}
                 <div className="responsibilities-container pb-4">
                     <h6 className='text-[14px] leading-[24px] font-semibold'>Responsibilities</h6>
-                    <div dangerouslySetInnerHTML={{ __html: extractedData?.responsibilities }}></div>
+                    <div dangerouslySetInnerHTML={{ __html: extractedData?.responsibilities || "-" }}></div>
                 </div>
 
                 {/* Qualification */}
                 <div className="responsibilities-container pb-4">
                     <h6 className='text-[16px] leading-[22px] font-semibold'>Qualification</h6>
-                    <div dangerouslySetInnerHTML={{ __html: extractedData?.qualification }}></div>
+                    <div dangerouslySetInnerHTML={{ __html: extractedData?.qualification || "-" }}></div>
                 </div>
 
                 {/* Key Skills */}
                 <div className="responsibilities-container pb-4">
                     <h6 className='text-[16px] leading-[22px] font-semibold'>Key Skills</h6>
-                    <div dangerouslySetInnerHTML={{ __html: extractedData?.skills }}></div>
+                    <div dangerouslySetInnerHTML={{ __html: extractedData?.skills || "-" }}></div>
                 </div>
 
                 {/* Short Summery */}
@@ -171,7 +177,7 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                                 return (
                                     <div key={value?.title + value?.value + index} className='w-full text-black-2'>
                                         <div className='flex justify-between'>
-                                            <h6 className='text-[13px] capitalize font-semibold'>{value?.title}:</h6><span className='text-[13px] w-[50%]'>{value?.value}</span>
+                                            <h6 className='text-[13px] capitalize font-semibold'>{value?.title}:</h6><span className='text-[13px] w-[50%]'>{value?.value || "-"}</span>
                                         </div>
                                         <span className='block w-full border-gray-7 border-t-[1px] my-2.5'></span>
                                     </div>
