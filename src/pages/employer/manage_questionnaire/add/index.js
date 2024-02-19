@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Breadcrumb } from '../../../../components/core';
 import QuestionnaireForm from '../../../../components/questionaire/QuestionnaireForm';
+import { ToastContainer } from 'react-toastify';
+
 // import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 // import { useDispatch, useSelector } from 'react-redux';
 
@@ -79,6 +81,7 @@ function AddQuestionnaireEmployer() {
 
     return (
         <>
+            <ToastContainer></ToastContainer>
             <Breadcrumb
                 heading="Add Questionnaire"
                 breadcrumb={breadcrumb}

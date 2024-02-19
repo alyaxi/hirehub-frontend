@@ -3,7 +3,30 @@ import Icon from '../icon';
 import { Avatar, Table, Flex, Button } from 'antd';
 import '../../assets/css/table.css'
 import { Core } from '..';
-// import { v4 as uuidv4 } from 'uuid';
+
+const UserStatusdropdownOptions = [
+    'new',
+    'attempted to contact',
+    'Connected',
+    'On Hold',
+    'Qualified',
+    'Not Interested',
+    'Unqualified',
+];
+
+const CandidateStagedropdownOptions = [
+    'New Application ',
+    'Screening',
+    'Interview',
+    'Selection',
+    'Job Offer',
+    'Hire',
+];
+const JobStatusDropdownOptions = [
+    'Open',
+    'Closed',
+    'Republished',
+];
 
 function TableB({
     border,
@@ -37,8 +60,11 @@ function TableB({
     addQuestion,
     addButton
 }) {
+
     // console.log(data, "tableDataa")
+
     const newColumn = columns.map((value, index) => {
+
         let columnSorter;
         if (value.sorter === true) {
             columnSorter = (a, b) => {
@@ -55,8 +81,7 @@ function TableB({
         }
         return {
             ...value,
-            render: (val, id) => {
-                console.log(val, id, "valueiiddd")
+            render: (val, id, record, rowIndex) => {
                 const firstLetter = val?.name ? val.name.trim().charAt(0).toUpperCase() : '';
                 if (value.dataIndex === "name" || value.dataIndex === "employerName" || value.dataIndex === "companyName") {
                     return (
@@ -77,6 +102,15 @@ function TableB({
                         <div className='capitalize' key={`render-${value.dataIndex}-${index}`}>
                             {val}
                         </div>
+                    )
+                }
+                else if (value.dataIndex === "question") {
+                    return (
+                        <>
+                            {val !== "" &&
+                                <div className='capitalize' key={`render-${value.dataIndex}-${index}`} dangerouslySetInnerHTML={{ __html: val }}></div>
+                            }
+                        </>
                     )
                 }
                 else if (value.dataIndex === "account") {
@@ -130,7 +164,7 @@ function TableB({
                     return <span key={`render-${value.dataIndex}-${index}`}>${val?.value || val}</span>;
                 }
                 else if (value.dataIndex === "action") {
-                    console.log(id, "idddddddlll")
+                    // console.log(id, "idddddddlll")
                     return (
                         <Flex gap="small" key={`render-${value.dataIndex}-${index}`}>
                             {actions.view &&
@@ -184,29 +218,6 @@ function TableB({
     const handleTableChange = (pagination, filters, sorter) => {
         console.log(pagination);
     };
-    const UserStatusdropdownOptions = [
-        'new',
-        'attempted to contact',
-        'Connected',
-        'On Hold',
-        'Qualified',
-        'Not Interested',
-        'Unqualified',
-    ];
-
-    const CandidateStagedropdownOptions = [
-        'New Application ',
-        'Screening',
-        'Interview',
-        'Selection',
-        'Job Offer',
-        'Hire',
-    ];
-    const JobStatusDropdownOptions = [
-        'Open',
-        'Closed',
-        'Republished',
-    ];
     const [resetTrigger, setResetTrigger] = useState(false);
     const [resetTrigger2, setResetTrigger2] = useState(false);
     const [resetTrigger3, setResetTrigger3] = useState(false);

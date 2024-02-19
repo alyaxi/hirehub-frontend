@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Breadcrumb } from '../../../../components/core';
 import TableB from '../../../../components/table/TableB';
 import { useNavigate } from "react-router-dom"
-// import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
-// import { useDispatch, useSelector } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { DeleteQuestionnaire, GetQuestionnaire } from '../../../../Slices/Employer/ManageQuestionairreSlice';
-
+import notificationService from '../../../../utilis/notification';
+import { ToastContainer } from 'react-toastify';
 
 const actions = {
     edit: true,
@@ -15,7 +14,7 @@ const actions = {
 
 const columns = [
     {
-        title: 'S. No',
+        title: 'S.No',
         key: 'sNo',
         dataIndex: 'sNo',
         sorter: true,
@@ -34,44 +33,14 @@ const columns = [
     },
 ];
 
-const questionnaire = [
-    {
-        id: "1",
-        sNo: "01",
-        question: "What did you like most about your last position?",
-        position: "Manager",
-    },
-    {
-        id: "2",
-        sNo: "02",
-        question: "What did you like least about your last position?",
-        position: "Business Analyst",
-    },
-    {
-        id: "3 ",
-        sNo: "03",
-        question: "Can you tell me about a difficult work situation and how you overcame it?",
-        position: "Engineer",
-    },
-    {
-        id: "4",
-        sNo: "04",
-        question: "How do you respond to stress or change?",
-        position: "Sales Manager",
-    },
-    {
-        id: "5",
-        sNo: "05",
-        question: "How do you handle conflict at work?",
-        position: "Accounting",
-    },
-    {
-        id: "6",
-        sNo: "06",
-        question: "What is your greatest accomplishment?",
-        position: "Management",
-    },
-];
+// const questionnaire = [
+//     {
+//         id: "1",
+//         sNo: "01",
+//         question: "What did you like most about your last position?",
+//         position: "Manager",
+//     }, 
+// ];
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
@@ -84,17 +53,13 @@ function MainQuestionnaireEmployer() {
     const questionaaire = useSelector((state) => state?.ManageQuestionaire?.data);
     const reload = useSelector((state) => state?.ManageQuestionaire?.reload);
 
-
     const navigate = useNavigate();
-
 
     useEffect(() => {
         try {
 
             dispatch(GetQuestionnaire()).unwrap().then(res => {
                 console.log("Successfully fetched data", res);
-
-
 
             }).catch(err => {
                 console.error(`Error Fetching Data ${err}`);
@@ -107,32 +72,48 @@ function MainQuestionnaireEmployer() {
 
     }, [reload])
 
-    
-
-    // const onViewClick = (id) => {
-    //     navigate(`/employer/manage-candidates/view/${id}`);
-    // };
     const onEditClick = (id) => {
         console.log(id, "idddededed")
         navigate(`/employer/manage-questionnaire/edit/${id}`);
     };
+
     const onDeleteClick = (id) => {
-        dispatch(DeleteQuestionnaire(id)).unwrap().then(res => {console.log(res)}).catch(err => { console.log(err)})
+        dispatch(DeleteQuestionnaire(id))
+            .unwrap()
+            .then(res => {
+                if (res) {
+                    notificationService.success('Questionnaire Deleted.');
+                }
+            })
+            .catch(err => {
+                if (err) {
+                    notificationService.error('Deletion Failed.');
+                }
+            })
     };
+
     const addQuestion = () => {
         navigate(`/employer/manage-questionnaire/add`);
     };
 
-    console.log("product", product);
+    // console.log("product", product);
+
+    const _questionaaire = questionaaire?.map((item, index) => {
+        return {
+            ...item,
+            sNo: index + 1
+        }
+    })
 
     return (
         <>
+            <ToastContainer></ToastContainer>
             <Breadcrumb
                 heading="Manage Questionnaire"
                 breadcrumb={breadcrumb}
             />
             <TableB
-                data={questionaaire}
+                data={_questionaaire}
                 columns={columns}
                 filterBy={[
                     "SearchByProduct",

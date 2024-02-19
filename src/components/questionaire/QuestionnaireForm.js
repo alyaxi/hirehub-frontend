@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { Core } from '..';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Spin } from 'antd';
 import { useDispatch } from 'react-redux';
 import { CreateQuestionnairee, UpdateQuestionnaire } from "../../Slices/Employer/ManageQuestionairreSlice";
 import { useSelector } from 'react-redux';
-
-
-
-
 import { useNavigate, useParams } from "react-router-dom";
+import notificationService from '../../utilis/notification';
+import * as Yup from 'yup';
 
 const positionOptions = [
     { name: "Manager", value: "Manager" },
@@ -20,50 +18,26 @@ const positionOptions = [
     { name: "Management", value: "Management" },
 ];
 
-const questionnaire = [
-    {
-        id: "1",
-        sNo: "01",
-        question: "What did you like most about your last position?",
-        position: "Manager",
-    },
-    {
-        id: "2",
-        sNo: "02",
-        question: "What did you like least about your last position?",
-        position: "Business Analyst",
-    },
-    {
-        id: "3 ",
-        sNo: "03",
-        question: "Can you tell me about a difficult work situation and how you overcame it?",
-        position: "Engineer",
-    },
-    {
-        id: "4",
-        sNo: "04",
-        question: "How do you respond to stress or change?",
-        position: "Sales Manager",
-    },
-    {
-        id: "5",
-        sNo: "05",
-        question: "How do you handle conflict at work?",
-        position: "Accounting",
-    },
-    {
-        id: "6",
-        sNo: "06",
-        question: "What is your greatest accomplishment?",
-        position: "Management",
-    },
-];
+// const questionnaire = [
+//     {
+//         id: "1",
+//         sNo: "01",
+//         question: "What did you like most about your last position?",
+//         position: "Manager",
+//     }, 
+// ];
+
+const validationSchema = Yup.object().shape({
+    // position: Yup.string().required('Position is required'),
+    // emailContent: Yup.string().required('Email content is required'),
+});
 
 function QuestionnaireForm({ type }) {
 
     const questionaaire = useSelector((state) => state?.ManageQuestionaire?.data);
 
     const { id } = useParams();
+    const navigate = useNavigate()
 
     let questionnaireToEdit;
     if (type === "edit") {
@@ -86,28 +60,58 @@ function QuestionnaireForm({ type }) {
 
     const handleSubmit = (values, actions) => {
         try {
-            // setSavingForm(true)
-            console.log("values", values)
+            setSavingForm(true)
 
             let _quesionnaire = {
                 position: values?.position,
                 question: emailContent,
             }
+
             if (type === "edit") {
                 console.log(type, "typeee")
-
-                dispatch(UpdateQuestionnaire({ id: id, _quesionnaire })).unwrap().then(x => console.log(x)).catch(err => console.log(err))
+                dispatch(UpdateQuestionnaire({ id: id, _quesionnaire }))
+                    .unwrap()
+                    .then(res => {
+                        setSavingForm(false)
+                        if (res.data) {
+                            notificationService.success('Questionnaire Updated');
+                            setTimeout(() => {
+                                navigate("/employer/manage-questionnaire")
+                            }, 3000)
+                        }
+                    })
+                    .catch(err => {
+                        setSavingForm(false)
+                        if (err) {
+                            notificationService.error('Uploading Failed');
+                        }
+                    })
+                    .finally(() => { setSavingForm(false) })
             } else {
-
-                dispatch(CreateQuestionnairee(_quesionnaire)).unwrap().then(x => console.log(x)).catch(err => console.log(err))
+                dispatch(CreateQuestionnairee(_quesionnaire))
+                    .unwrap()
+                    .then(res => {
+                        setSavingForm(false)
+                        if (res) {
+                            notificationService.success('Questionnaire Added');
+                            setTimeout(() => {
+                                navigate("/employer/manage-questionnaire")
+                            }, 3000)
+                        }
+                    })
+                    .catch(err => {
+                        setSavingForm(false)
+                        if (err) {
+                            notificationService.error('Uploading Failed');
+                        }
+                    })
+                    .finally(() => { setSavingForm(false) })
             }
 
-
-            console.log("_quesionnaire", _quesionnaire)
         } catch (error) {
             console.log(error)
+            setSavingForm(false);
         }
-        // setSavingForm(false)
     };
 
     return (
@@ -115,7 +119,7 @@ function QuestionnaireForm({ type }) {
 
             <Formik
                 initialValues={data}
-                // validationSchema={validationSchema}
+                validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
                 {({ isSubmitting }) => (
@@ -134,12 +138,14 @@ function QuestionnaireForm({ type }) {
                                             value={field.value}
                                         />
                                     )}
+                                    {/* <ErrorMessage name='position' component='div' className='text-red-500' /> */}
                                 </Field>
                             </div>
                         </div>
 
                         <div className='mb-4'>
                             <Core.TextEditorWithLabel name={'emailContent'} height={"h-[300px]"} style={{ height: "84%" }} value={emailContent} setValue={setEmailContent} />
+                            {/* <ErrorMessage name='emailContent' component='div' className='text-red-500' /> */}
                         </div>
 
                         <div className="mt-5 flex justify-start items-center gap-x-2">

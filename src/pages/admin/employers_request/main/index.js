@@ -26,7 +26,6 @@ function MainEmployersRequest() {
     const  employersTableData  = useSelector((state) => state?.admin?.employersDataTable);
     const navigate = useNavigate()
 
-
     const columns = [
         {
             title: 'Employer Name',
