@@ -27,22 +27,22 @@ function CandidateProfile() {
         setResumePrivacySetting(e.target.value);
     };
 
-    // useEffect(() => {
-    //     // console.log("reload..")
-    //     try {
+    useEffect(() => {
+        // console.log("reload..")
+        try {
 
-    //         dispatch(getCandidate()).unwrap().then(res => {
-    //             console.log("Successfully fetched data", res);
+            dispatch(getCandidate()).unwrap().then(res => {
+                console.log("Successfully fetched data", res);
 
-    //         }).catch(err => {
-    //             console.error(`Error Fetching Data ${err}`);
-    //         });
-    //     } catch (error) {
-    //         console.error(`Error in useEffect of Dashboard ${error}`)
+            }).catch(err => {
+                console.error(`Error Fetching Data ${err}`);
+            });
+        } catch (error) {
+            console.error(`Error in useEffect of Dashboard ${error}`)
 
-    //     }
+        }
 
-    // }, [reload])
+    }, [reload])
 
     let profileCompletion;
 
@@ -61,26 +61,38 @@ function CandidateProfile() {
             jobPreferenceCount++;
         }
     }
+    // console.log("candidate?.p/ersonalInformationData", candidate?.personalInformationData)
+    // console.log("personalInformationCount", personalInformationCount)
 
     let _experience = candidate?.experiencesData?.length > 0 ? 15 : candidate?.experiencesData?.length;
     let _education = candidate?.educationsData?.length > 0 ? 15 : candidate?.educationsData?.length;
     let _language = candidate?.languagesData?.length > 0 ? 15 : candidate?.languagesData?.length;
     let _skill = candidate?.skillsData?.length > 0 ? 15 : candidate?.skillsData?.length;
     let _summery = candidate?.summery?.text?.length > 2 ? 10 : 0;
-    let _personalInformation = personalInformationCount !== 0 ? 15 : 0;
-    let _jobPreference = jobPreferenceCount !== 0 ? 15 : 0;
+    let _personalInformation = personalInformationCount === 0 ? 15 : 0;
+    let _jobPreference = jobPreferenceCount === 0 ? 15 : 0;
 
     profileCompletion = _experience + _education + _language + _skill + _summery + _personalInformation + _jobPreference;
 
     // console.log("profileCompletion", profileCompletion)
     let workHistoryCheck = candidate?.experiencesData?.length > 0 || false;
-    let personalInformationCheck = personalInformationCount !== 0 || false;
+    let personalInformationCheck = personalInformationCount === 0 || false;
     let educationCheck = candidate?.educationsData?.length > 0 || false;
     let profilePictureCheck = (candidate?.personalInformationData?.profilePicture !== "" && candidate?.personalInformationData?.profilePicture !== undefined) || false;
     let professionalSummeryCheck = candidate?.summery?.text?.length > 2 || false;
     let skillCheck = candidate?.skillsData?.length > 0 || false;
     let projectsCheck = candidate?.projectsData?.length > 0 || false;
     let languageCheck = candidate?.languagesData?.length > 0 || false;
+
+// console.log("_experience",_experience)
+// console.log("_education",_education)
+// console.log("_language",_language)
+// console.log("_skill",_skill)
+// console.log("_summery",_summery)
+// console.log("_personalInformation",_personalInformation)
+// console.log("_jobPreference",_jobPreference)
+
+
     return (
         <div className='flex justify-between gap-x-6 w-full'>
             <div className='w-auto'>

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 function Header({ toggleSidebar }) {
     const user = useSelector((state) => state.auth.user);
 
-    // console.log(user, "user header");
+    console.log(user, "user header");
 
     return (
         <header className="relative flex items-center justify-between text-gray border-l-[1px] border-gray-5 bg-white shadow-md px-6 py-3">

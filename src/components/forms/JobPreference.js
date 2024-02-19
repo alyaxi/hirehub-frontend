@@ -108,10 +108,11 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
             relocation: values?.relocation,
             skills: values?.skills,
         };
-        setCandidateProfileData(prevData => ({
-            ...prevData,
-            jobPreferenceData: _jobPreferenceData,
-        }));
+        console.log({_jobPreferenceData})
+        // setCandidateProfileData(prevData => ({
+        //     ...prevData,
+        //     jobPreferenceData: _jobPreferenceData,
+        // }));
         // handleSenddata()
     };
 

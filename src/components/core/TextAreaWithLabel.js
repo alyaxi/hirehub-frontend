@@ -4,8 +4,8 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
 
     const _label = (name) => {
         switch (name) {
-            case "companyDiscription":
-                return "Company Discription";
+            case "companyDescription":
+                return "Company Description";
             case "position":
                 return "The Position";
             case "summery":
@@ -21,7 +21,7 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
 
     const placeholder = (name) => {
         switch (name) {
-            case "companyDiscription":
+            case "companyDescription":
                 return "Describe here";
             case "position":
                 return "Brief about The Position";

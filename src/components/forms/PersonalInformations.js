@@ -6,7 +6,57 @@ import Icon from '../icon';
 import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
 
+
+const experienceOptions = [
+    { name: "Fresh", value: "0" },
+    { name: "6 months", value: "6 months" },
+    { name: "1 year", value: "1 year" },
+    { name: "2 years", value: "2 years" },
+    { name: "3 years", value: "3 years" },
+    { name: "4 years", value: "4 years" },
+    { name: "5 years", value: "5 years" },
+    { name: "6 years", value: "6 years" },
+    { name: "7 years", value: "7 years" },
+    { name: "8 years", value: "8 years" },
+    { name: "9 years", value: "9 years" },
+    { name: "10 years", value: "10 years" },
+    { name: "Over 10 years", value: "Over 10 years" },
+];
+
+const expectedSalaryOptions = [
+    { name: "$1000 - $1500", value: "$1000 - $1500" },
+    { name: "$1500 - $2000", value: "$1500 - $2000" },
+    { name: "$2000 - $2500", value: "$2000 - $2500" },
+    { name: "$2500 - $3000", value: "$2500 - $3000" },
+    { name: "$3000 - $3500", value: "$3000 - $3500" },
+    { name: "$3500 - $4000", value: "$3500 - $4000" },
+    { name: "$4000 - $4500", value: "$4000 - $4500" },
+    { name: "Over $4500", value: "Over $4500" },
+];
+
+const genderOptions = [
+    { name: "Male", value: "Male" },
+    { name: "Female", value: "Female" },
+    { name: "No Preference", value: "No Preference" },
+];
+
+const monthsOptions = [
+    { name: 'January', value: '01' },
+    { name: 'February', value: '02' },
+    { name: 'March', value: '03' },
+    { name: 'April', value: '04' },
+    { name: 'May', value: '05' },
+    { name: 'June', value: '06' },
+    { name: 'July', value: '07' },
+    { name: 'August', value: '08' },
+    { name: 'September', value: '09' },
+    { name: 'October', value: '10' },
+    { name: 'November', value: '11' },
+    { name: 'December', value: '12' },
+];
+
 function PersonalInformations({ action, handleCancel, setCandidateProfileData, handleSenddata, savingForm }) {
+
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const personalInformationDataSavedOnDb = candidate?.personalInformationData
 
@@ -21,38 +71,6 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
         { name: "Lead", value: "lead" },
     ];
 
-    const experienceOptions = [
-        { name: "Fresh", value: "0" },
-        { name: "6 months", value: "6 months" },
-        { name: "1 year", value: "1 year" },
-        { name: "2 years", value: "2 years" },
-        { name: "3 years", value: "3 years" },
-        { name: "4 years", value: "4 years" },
-        { name: "5 years", value: "5 years" },
-        { name: "6 years", value: "6 years" },
-        { name: "7 years", value: "7 years" },
-        { name: "8 years", value: "8 years" },
-        { name: "9 years", value: "9 years" },
-        { name: "10 years", value: "10 years" },
-        { name: "Over 10 years", value: "Over 10 years" },
-    ];
-
-    const expectedSalaryOptions = [
-        { name: "$1000 - $1500", value: "$1000 - $1500" },
-        { name: "$1500 - $2000", value: "$1500 - $2000" },
-        { name: "$2000 - $2500", value: "$2000 - $2500" },
-        { name: "$2500 - $3000", value: "$2500 - $3000" },
-        { name: "$3000 - $3500", value: "$3000 - $3500" },
-        { name: "$3500 - $4000", value: "$3500 - $4000" },
-        { name: "$4000 - $4500", value: "$4000 - $4500" },
-        { name: "Over $4500", value: "Over $4500" },
-    ];
-
-    const genderOptions = [
-        { name: "Male", value: "Male" },
-        { name: "Female", value: "Female" },
-        { name: "No Preference", value: "No Preference" },
-    ];
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
@@ -62,20 +80,6 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
         yearOptions.push({ name: year.toString(), value: year.toString() });
     }
 
-    const monthsOptions = [
-        { name: 'January', value: '01' },
-        { name: 'February', value: '02' },
-        { name: 'March', value: '03' },
-        { name: 'April', value: '04' },
-        { name: 'May', value: '05' },
-        { name: 'June', value: '06' },
-        { name: 'July', value: '07' },
-        { name: 'August', value: '08' },
-        { name: 'September', value: '09' },
-        { name: 'October', value: '10' },
-        { name: 'November', value: '11' },
-        { name: 'December', value: '12' },
-    ];
 
     const daysOptions = Array.from({ length: 31 }, (_, index) => {
         const day = index + 1;

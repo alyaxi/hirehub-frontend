@@ -49,6 +49,36 @@
             "link": ""
         }
     ],
+    "numberOfEmployeesOptions": [
+        {
+            "name": "10-20",
+            "value": "10-20"
+        },
+        {
+            "name": "12-30",
+            "value": "20-30"
+        },
+        {
+            "name": "30-50",
+            "value": "30-50"
+        },
+        {
+            "name": "50-100",
+            "value": "50-100"
+        },
+        {
+            "name": "100-200",
+            "value": "100-200"
+        },
+        {
+            "name": "200-300",
+            "value": "200-300"
+        },
+        {
+            "name": "Over 300",
+            "value": "Over 300"
+        }
+    ],
     "salaryOptions_String": [
         "$1000 - $1500",
         "$1500 - $2000",

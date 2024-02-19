@@ -1,22 +1,22 @@
 // Form1.js
 import React, { useState } from 'react';
 import { Core } from '../..';
+import dropdownOptions from '../../../data/dropdownOptions.json';
+import { Form, Formik, Field } from 'formik';
 
-function Form1({ onNext }) {
-    const numberOfEmployeesOptions = [
-        { name: "10-20", value: "10-20" },
-        { name: "12-30", value: "20-30" },
-        { name: "30-50", value: "30-50" },
-        { name: "50-100", value: "50-100" },
-        { name: "100-200", value: "100-200" },
-        { name: "200-300", value: "200-300" },
-        { name: "Over 300", value: "Over 300" },
-    ];
+function Form1({ onNext, profileData }) {
 
-    // const handleChange = (name, event) => {
-    //     const value = event.target.value;
-    //     onNext({ [name]: value });
-    // };
+    console.log("profileData", profileData)
+
+    const {
+        numberOfEmployeesOptions,
+    } = dropdownOptions;
+
+    const [data] = useState({
+        numberofEmployees: profileData?.noOfEmployes || null,
+        YourCompanysName: profileData?.companyName || null,
+        YourPhoneNumber: profileData?.phoneNo || null,
+    });
 
     const [fileInputs, setFileInputs] = useState({
         logo: null,
@@ -34,55 +34,98 @@ function Form1({ onNext }) {
         onNext({ [name]: file });
     };
 
+    const handleSubmit = (values, { isSubmitting }) => { }
 
     return (
-        <Core.Card className={'p-5'} w840 border>
-            <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5>
-            <div className="mb-4">
-                <Core.InputWithLabel
-                    name={"YourCompanysName"}
-                    // label="Company Name"
-                    label
-                    sm
-                    onChange={(value) => handleChange("companyName", value)}
-                />
-            </div>
-            <div className="mb-4">
-                <Core.SelectWithLabel
-                    name={"numberofEmployees"}
-                    label
-                    options={numberOfEmployeesOptions}
-                    onChange={(value) => handleChange("noOfEmployes", value)}
-                />
-            </div>
-            <div className="mb-4">
-                <Core.UploadFile
-                    name={"logo"}
-                    label="Company Logo"
-                    helperText="A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels."
-                    accept="image/*"
-                    onChange={(event) => handleFileChange("logo", event)}
-                />
-            </div>
-            <div className="mb-4">
-                <Core.UploadFile
-                    name={"welcomeVideo"}
-                    label="Welcome Video"
-                    helperText="A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels."
-                    accept="video/*"
-                    onChange={(event) => handleFileChange("welcomeVideo", event)}
-                />
-            </div>
-            <div className="mb-4">
-                <Core.InputWithLabel
-                    name={"YourPhoneNumber"}
-                    // label="Your Phone Number"
-                    label
-                    helperText="We will use this number to text you important notifications"
-                    onChange={(value) => handleChange("phoneNo", value)}
-                />
-            </div>
-        </Core.Card>
+        <Formik
+            initialValues={data}
+            // validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+        >
+            {() => (
+                <Form>
+                    <Core.Card className={'p-5'} w840 border>
+                        <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5>
+                        <div className="mb-4">
+                            <Field name="YourCompanysName">
+                                {({ field }) => (
+                                    <Core.InputWithLabel
+                                        {...field}
+                                        name={"YourCompanysName"}
+                                        label
+                                        sm
+                                        onChange={(value) => handleChange("companyName", value)}
+                                    />
+                                )}
+                            </Field>
+                        </div>
+                        <div className="mb-4">
+                            <Field name="numberofEmployees">
+                                {({ field }) => (
+                                    <Core.SelectWithLabel
+                                        {...field}
+                                        name={"numberofEmployees"}
+                                        label
+                                        options={numberOfEmployeesOptions}
+                                        onChange={(value) => handleChange("noOfEmployes", value)}
+                                    />
+                                )}
+                            </Field>
+                        </div>
+                        <div className="flex flex-col gap-x-4 mb-4">
+                            <div>
+                                <Core.UploadFile
+                                    name={"logo"}
+                                    label="Company Logo"
+                                    helperText="A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels."
+                                    accept="image/*"
+                                    onChange={(event) => handleFileChange("logo", event)}
+                                />
+                            </div>
+                            <span className={`block mb-2 capitalize`}>
+                                {profileData?.logo ?
+                                    <img src={profileData?.logo} className='flex justify-center items-center max-w-[110px] bg-gray-12 rounded-[10px] text-[12px]' alt="Company Logo" width={150} height={150} />
+                                    :
+                                    <h2 className='w-[170px] text-gray-2 text-[20px] text-center rounded-[10px] opacity-70 bg-gray-5 px-1 py-3'>No Logo</h2>
+                                }
+                            </span>
+                        </div>
+                        <div className="flex flex-col gap-x-4 mb-4">
+                            <div>
+                                <Core.UploadFile
+                                    name={"welcomeVideo"}
+                                    label="Welcome Video"
+                                    helperText="A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels."
+                                    accept="video/*"
+                                    onChange={(event) => handleFileChange("welcomeVideo", event)}
+                                />
+                            </div>
+                            <span className={`block mb-2 capitalize`}>
+                                {profileData?.welcomeVideo ?
+                                    <Core.VideoPlayer src={profileData?.welcomeVideo} className="max-h-[150px] rounded-[10px] overflow-hidden" />
+                                    :
+                                    <h2 className='w-[170px] text-gray-2 text-[20px] text-center rounded-[10px] opacity-70 bg-gray-5 px-1 py-3'>No Video</h2>
+                                }
+                            </span>
+
+                        </div>
+                        <div className="mb-4">
+                            <Field name="YourPhoneNumber">
+                                {({ field }) => (
+                                    <Core.InputWithLabel
+                                        name={"YourPhoneNumber"}
+                                        {...field}
+                                        label
+                                        helperText="We will use this number to text you important notifications"
+                                        onChange={(value) => handleChange("phoneNo", value)}
+                                    />
+                                )}
+                            </Field>
+                        </div>
+                    </Core.Card>
+                </Form>
+            )}
+        </Formik >
     );
 }
 

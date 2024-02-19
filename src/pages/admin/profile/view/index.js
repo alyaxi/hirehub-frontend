@@ -11,8 +11,7 @@ const breadcrumb = [
 ];
 
 function ViewProfile() {
-    const { profile } = adminData; 
-
+    // const { profile } = adminData;
     const dispatch = useDispatch()
     const viewprofile = useSelector((state) => state?.employer?.employer);
     const reload = useSelector((state) => state?.employer?.reload);
@@ -21,11 +20,8 @@ function ViewProfile() {
 
     useEffect(() => {
         try {
-
             dispatch(getEmployerById()).unwrap().then(res => {
                 console.log("DATAAAAAAAAAAAAAAAAA", res);
-
-
 
             }).catch(err => {
                 console.error(`Error Fetching Data ${err}`);
@@ -34,8 +30,6 @@ function ViewProfile() {
             console.error(`Error in useEffect of Dashboard ${error}`)
 
         }
-
-
     }, [reload])
 
     return (
