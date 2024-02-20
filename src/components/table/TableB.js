@@ -29,6 +29,7 @@ const JobStatusDropdownOptions = [
 ];
 
 function TableB({
+    tableId,
     border,
     columns,
     data,
@@ -166,21 +167,21 @@ function TableB({
                 else if (value.dataIndex === "action") {
                     // console.log(id, "idddddddlll")
                     return (
-                        <Flex gap="small" key={`render-${value.dataIndex}-${index}`}>
+                        <Flex className={`gap-x-2 ${tableId === "email_template" && 'justify-center gap-x-[35px]'}`} key={`render-${value.dataIndex}-${index}`}>
                             {actions.view &&
-                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
+                                <span className={`text-gray-6 hover:text-purple-2 cursor-pointer ${tableId === "email_template" && 'order-2'}`}
                                     onClick={() => onViewClick(id?.id)}>
                                     <Icon name="View" />
                                 </span>
                             }
                             {actions.edit &&
-                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
+                                <span className={`text-gray-6 hover:text-purple-2 cursor-pointer ${tableId === "email_template" && 'order-1'}`}
                                     onClick={() => onEditClick(id?.id || id?._id)}>
                                     <Icon name="Edit" />
                                 </span>
                             }
                             {actions.delete &&
-                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
+                                <span className={`text-gray-6 hover:text-purple-2 cursor-pointer`}
                                     onClick={() => onDeleteClick(id?.id || id?._id)}>
                                     <Icon name="Delete" />
                                 </span>
@@ -330,7 +331,7 @@ function TableB({
                                     if (value === "SearchByProduct") {
                                         return (
                                             <div key={`searchProduct-${index}`} className='flex justify-start items-center w-full'>
-                                                <Core.SearchInput onInputChange={onInputChange} />
+                                                <Core.SearchInput onInputChange={onInputChange} name="searchProduct" />
                                                 <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button>
                                             </div>
                                         )
@@ -338,7 +339,7 @@ function TableB({
                                     if (value === "SearchByEmailProcess") {
                                         return (
                                             <div key={`SearchByEmailProcess-${index}`} className='flex justify-start items-center w-full'>
-                                                <Core.SearchInput onInputChange={onInputChange} />
+                                                <Core.SearchInput onInputChange={onInputChange} name="SearchByEmailProcess" />
                                                 {/* <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button> */}
                                             </div>
                                         )

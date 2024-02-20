@@ -100,6 +100,7 @@ function Form3({
                     label
                     bgGray
                     sm
+                    required
                     onChange={(e) => handleInput('positionTitle', e.target.value)}
                 />
             </div>

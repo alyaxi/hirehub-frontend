@@ -10,6 +10,7 @@ function Badge({ children }) {
             case "deactive":
             case "rejected":
             case "closed":
+            case "inactive":
                 return "bg-red-3";
             case "hold":
             case "pending":
@@ -46,6 +47,7 @@ function Badge({ children }) {
             case "deactive":
             case "rejected":
             case "closed":
+            case "inactive":
                 return "text-red-2";
             case "hold":
             case "pending":

@@ -20,7 +20,8 @@ import * as Yup from 'yup';
 
 function Form1({ onNext, profileData }) {
 
-    // console.log("profileData", profileData)
+    // console.log("profileData?.phoneNo", profileData?.phoneNo)
+    // console.log("profileData?.phoneNo", typeof(profileData?.phoneNo))
 
     const {
         numberOfEmployeesOptions,
@@ -29,7 +30,7 @@ function Form1({ onNext, profileData }) {
     const [data, setData] = useState({
         noOfEmployes: profileData?.noOfEmployes || null,
         companyName: profileData?.companyName || null,
-        phoneNo: profileData?.phoneNo.toString() || null,
+        phoneNo: profileData?.phoneNo?.toString() || null,
     });
 
     // console.log("data", data)

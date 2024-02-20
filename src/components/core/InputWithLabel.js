@@ -79,6 +79,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
 
             case "SearchProduct":
                 return "Search Product";
+            case "SearchByEmailProcess":
+                return "Search Email Process. . .";
             case "expiryDate":
                 return "Job Expiry Date";
             case "salary":
@@ -257,7 +259,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     </label>
                 }
                 {forgotPassword &&
-                    <a className='text-purple-1 text-[14px] mb-2'
+                    <a className='forgot-link text-purple-1 text-[14px] mb-2'
                         tabIndex="0"
                         onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
@@ -314,7 +316,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 {/* <input type={name === "password" ? inputType : type(name)} value={value} onChange={onChange} className={`w-full text-[14px] font-regular leading-[20px] text-gray-700 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? 'py-[9px]' : 'py-[14px]'} ${className}`} id={name} name={name}
                     placeholder={placeholder(name)} autoFocus /> */}
                 {(name === "password" || name === "newPassword" || name === "confirmPassword" || name === "oldPassword") &&
-                    <span className="absolute right-3 top-4 text-gray-1 text-[20px] cursor-pointer"
+                    <span className="eye-span absolute right-3 top-4 text-gray-1 text-[20px] cursor-pointer"
                         onClick={togglePasswordVisibility}
                         tabIndex="0"
                         onKeyDown={(e) => {

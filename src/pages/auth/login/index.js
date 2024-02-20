@@ -126,7 +126,7 @@ function LoginPage() {
                                     <Switch className='ant-switch' defaultChecked onChange={onChange} />
                                     <span>Remember Me</span>
                                 </div>
-                                <a className='text-gray-6 text-[14px] mb-2'>
+                                <a className='forgot-link text-gray-6 text-[14px] mb-2'>
                                     <NavLink to='/forgot-password'>Forgot Password?</NavLink>
                                 </a>
                             </div>

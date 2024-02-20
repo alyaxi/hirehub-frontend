@@ -2,17 +2,16 @@
 import React, { useState } from 'react';
 import { Core } from '..';
 
-function SearchInput({ onChange,onInputChange }) {
+function SearchInput({ onChange, onInputChange, name }) {
 
     return (
         <div className='flex justify-start gap-x-1 items-center w-full'>
             <Core.InputWithLabel
-                // key={resetTrigger3 ? 'reset' : 'normal'} 
+                sm
                 type="text"
-                name={'SearchProduct'}
-                // setValue={setExpirationDate}
+                name={name}
                 onChange={onInputChange}
-                sm />
+            />
             <Core.Button sm type="narrow" >Search</Core.Button>
         </div>
     )

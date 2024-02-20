@@ -1,7 +1,3 @@
-
-
-
-
 import React, { useState } from 'react';
 import { Breadcrumb } from '../../../../components/core';
 import TableB from '../../../../components/table/TableB';
@@ -17,6 +13,7 @@ const columns = [
         title: 'Status',
         key: 'status',
         dataIndex: 'status',
+        align: 'center',
     },
     //  {
     //     title: 'Process',
@@ -27,6 +24,7 @@ const columns = [
         title: 'Action',
         key: 'action',
         dataIndex: 'action',
+        align: 'center',
     },
 ];
 
@@ -94,18 +92,18 @@ function EmailTemplatesAdmin() {
                 heading="Email Templates"
                 breadcrumb={breadcrumb}
             />
-
             <TableB
                 data={questionnaire}
                 columns={columns}
                 filterBy={[
                     // "SearchByProduct",
-                    // "SearchByEmailProcess",
+                    "SearchByEmailProcess",
                 ]}
                 setEmailProcess={setEmailProcess}
                 actions={actions}
                 onViewClick={onViewClick}
                 onEditClick={onEditClick}
+                tableId="email_template"
             />
         </>
     );

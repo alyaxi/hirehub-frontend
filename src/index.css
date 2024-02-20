@@ -13,13 +13,14 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-svg:focus {
-  outline: 2px solid rgba(30, 30, 243, 0.515);
+.eye-span svg:focus {
+  outline: 2px solid rgba(30, 30, 243, 0.4);
   border-radius: 2px;
+  padding: 0 .5px;
 }
 
-a:focus {
-  outline: 2px solid rgba(30, 30, 243, 0.515);
+a.forgot-link a:focus {
+  outline: 2px solid rgba(30, 30, 243, 0.4);
   border-radius: 2px;
   padding: 2px 4px;
 }
@@ -238,3 +239,21 @@ div :where(.css-dev-only-do-not-override-dkbvqv).ant-btn-primary {
   font-size: 50px;
   font-weight: 700;
 }
+
+/* tab styles start */
+.ant-tabs .ant-tabs-nav .ant-tabs-tab:hover div {
+  color: #8913FF !important;
+}
+
+.ant-tabs-nav .ant-tabs-tab-active div {
+  color: #8913FF !important;
+  font-weight: 500;
+}
+
+.ant-tabs .ant-tabs-ink-bar,
+.ant-tabs-top>.ant-tabs-nav .ant-tabs-ink-bar {
+  height: 3px;
+  background-color: #8913FF;
+}
+
+/* tab styles end */

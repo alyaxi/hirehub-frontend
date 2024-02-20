@@ -12,10 +12,20 @@ function ManageEmail({
     const onChange = (key) => {
         console.log(key);
     };
+
+    // const tabsStyle = {
+    //     itemActiveColor: '#000000', // Use the itemActiveColor token here
+    // };
+
     return (
         <Core.Card>
-            <Tabs defaultActiveKey="1" onChange={onChange} className='fle x justify-ce nter items-cent er w-full text-gray-6 text-[13px]'>
-                <TabPane tab={'INBOX'} key={1}>
+            <Tabs defaultActiveKey="1"
+                onChange={onChange}
+                className='w-full text-gray-6 text-[13px]'
+            // style={tabsStyle}
+            // indicator={{ size: (origin) => origin - 40, align: 44 }}
+            >
+                <TabPane tab={'INBOX'} key={1} >
                     <Inbox />
                 </TabPane>
                 <TabPane tab={'PERSONALIZED EMAILS'} key={2}>
