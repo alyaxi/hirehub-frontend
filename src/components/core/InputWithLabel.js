@@ -80,7 +80,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "SearchProduct":
                 return "Search Product";
             case "SearchByEmailProcess":
-                return "Search Email Process. . .";
+                return "Search by Email";
             case "expiryDate":
                 return "Job Expiry Date";
             case "salary":
@@ -187,6 +187,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
 
             case "SearchProduct":
                 return "Search Product ...";
+            case "SearchByEmailProcess":
+                return "Search Email Process. . .";
             case "SearchByLocation":
                 return "Location";
             default:
@@ -209,6 +211,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "SearchByEmployer":
             case "SearchByEligibility":
             case "SearchProduct":
+            case "SearchByEmailProcess":
             case "zip":
             case "projectUrl":
             case "2ndNumber":
@@ -274,7 +277,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     </a>
                 }
             </div>
-            <div className={`relative ${(name === "SearchProduct" || name === "SearchByJobTitle" || name === "SearchByLocation") && 'w-full'}`}>
+            <div className={`relative ${(name === "SearchProduct" || name === "SearchByEmailProcess" || name === "SearchByJobTitle" || name === "SearchByLocation") && 'w-full'}`}>
                 {helperText &&
                     <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5 '>
                         {helperText}
@@ -284,7 +287,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     disabled={disabled}
                     type={name === "password" || name === "newPassword" || name === "confirmPassword" || name === "oldPassword" ? inputType : type(name)}
                     className={`
-                        w-full text-[14px] font-regular leading-[20px] text-gray-6 ${bgGray ? 'bg-gray-3' : disabled === true ? 'bg-gray-3 cursor-not-allowed' : "bg-white"} border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? (name === "calender" ? 'py-[8px]' : 'py-[9px]') : 'py-[14px]'} ${className} ${(name === "SearchProduct" || (name === "SearchByJobTitle" && iconic) || (name === "SearchByLocation" && iconic)) && "pl-10"}
+                        w-full text-[14px] font-regular leading-[20px] text-gray-6 ${bgGray ? 'bg-gray-3' : disabled === true ? 'bg-gray-3 cursor-not-allowed' : "bg-white"} border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? (name === "calender" ? 'py-[8px]' : 'py-[9px]') : 'py-[14px]'} ${className} ${(name === "SearchProduct" || name === "SearchByEmailProcess" || (name === "SearchByJobTitle" && iconic) || (name === "SearchByLocation" && iconic)) && "pl-10"}
                                            
                     `}
                     id={name}
@@ -299,6 +302,11 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     accept={name === "attachments" ? "application/pdf" : undefined}
                 />
                 {name === "SearchProduct" &&
+                    <span className='absolute left-3 top-[10px] text-gray-6'>
+                        <Icon name="Search" />
+                    </span>
+                }
+                {name === "SearchByEmailProcess" &&
                     <span className='absolute left-3 top-[10px] text-gray-6'>
                         <Icon name="Search" />
                     </span>
