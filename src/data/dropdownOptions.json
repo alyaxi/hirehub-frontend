@@ -55,7 +55,7 @@
             "value": "10-20"
         },
         {
-            "name": "12-30",
+            "name": "20-30",
             "value": "20-30"
         },
         {
@@ -175,5 +175,83 @@
     "companyOptions_String": [
         "ABC",
         "XYZ"
+    ],
+    "companyIndustries": [
+        {
+            "name": "Accounting",
+            "value": "Accounting"
+        },
+        {
+            "name": "Aerospace",
+            "value": "Aerospace"
+        },
+        {
+            "name": "Agriculture",
+            "value": "Agriculture"
+        },
+        {
+            "name": "Automotive",
+            "value": "Automotive"
+        },
+        {
+            "name": "Biotechnology",
+            "value": "Biotechnology"
+        },
+        {
+            "name": "Construction",
+            "value": "Construction"
+        },
+        {
+            "name": "Education",
+            "value": "Education"
+        },
+        {
+            "name": "Energy",
+            "value": "Energy"
+        },
+        {
+            "name": "Entertainment",
+            "value": "Entertainment"
+        },
+        {
+            "name": "Finance",
+            "value": "Finance"
+        },
+        {
+            "name": "Food and Beverage",
+            "value": "Food and Beverage"
+        },
+        {
+            "name": "Healthcare",
+            "value": "Healthcare"
+        },
+        {
+            "name": "Information Technology",
+            "value": "Information Technology"
+        },
+        {
+            "name": "Manufacturing",
+            "value": "Manufacturing"
+        },
+        {
+            "name": "Media",
+            "value": "Media"
+        },
+        {
+            "name": "Retail",
+            "value": "Retail"
+        },
+        {
+            "name": "Telecommunications",
+            "value": "Telecommunications"
+        },
+        {
+            "name": "Transportation",
+            "value": "Transportation"
+        },
+        {
+            "name": "Other",
+            "value": "Other"
+        }
     ]
 }

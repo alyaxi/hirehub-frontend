@@ -21,10 +21,12 @@ function MyCalendar({ events, type }) {
     console.log(eventToEdit, "eventttttttttttt")
 
     const scheduleInterview = () => {
+        console.log('99eventToEdit my c', eventToEdit)
         setEventToEdit();
         setIsModalOpen(true);
     }
 
+    console.log('99eventToEdit comm', eventToEdit)
     const handleCancel = () => {
         setIsModalOpen(false);
     };

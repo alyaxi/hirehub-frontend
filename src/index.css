@@ -13,6 +13,17 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+svg:focus {
+  outline: 2px solid rgba(30, 30, 243, 0.515);
+  border-radius: 2px;
+}
+
+a:focus {
+  outline: 2px solid rgba(30, 30, 243, 0.515);
+  border-radius: 2px;
+  padding: 2px 4px;
+}
+
 .scrollbar::-webkit-scrollbar-track {
   border-radius: 100vh;
   /* background: rgb(241, 241, 241); */

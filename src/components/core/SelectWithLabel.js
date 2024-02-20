@@ -8,7 +8,7 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
                 return "User Type";
             case "YourCompanysIndustry":
                 return "Your Company's Industry";
-            case "numberofEmployees":
+            case "noOfEmployes":
                 return "Number of Employees";
             case "expectedSalary":
                 return "Expected Salary";

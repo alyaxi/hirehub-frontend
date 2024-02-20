@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Breadcrumb } from '../../../components/core';
 import { Core, Employer } from '../../../components';
 import { UpdateEmployerById } from '../../../Slices/Employer/EmployerSlice';
@@ -28,8 +28,8 @@ function ManageProfile() {
         description: '',
     });
     const viewprofile = useSelector((state) => state?.employer?.employer);
-    
-    console.log("viewprofile",viewprofile)
+    // const _viewprofile = viewprofile
+    // console.log("4444 viewprofile",_viewprofile)
 
     const GetInput = (data) => {
         console.log("Data received:", data);
@@ -98,6 +98,35 @@ function ManageProfile() {
         }
     };
 
+
+    // const memoizedButtons = useMemo(() => (
+    //     <div className="mt-5 flex justify-start items-center gap-x-2">
+    //         {step !== 1 &&
+    //             <Core.Button
+    //                 onClick={handleBack}
+    //                 data-hs-stepper-back-btn
+    //                 type="narrow" color="white">Back</Core.Button>
+    //         }
+    //         {step !== 2 &&
+    //             <Core.Button
+    //                 // isDisabled={!isAnyEmpty}
+    //                 onClick={handleNext}
+    //                 type="narrow">Continue</Core.Button>
+    //         }
+    //         {step === 2 &&
+    //             <>
+    //                 {savingForm ?
+    //                     <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+    //                         <Spin />
+    //                     </div>
+    //                     :
+    //                     <Core.Button isDisabled={!isAnyEmpty} onClick={handleFinish} type="narrow">Save</Core.Button>
+    //                 }
+    //             </>
+    //         }
+    //     </div>
+    // ), [ savingForm, isAnyEmpty]);
+
     return (
         <>
             <Breadcrumb
@@ -139,6 +168,7 @@ function ManageProfile() {
                         </>
                     }
                 </div>
+                   {/* {memoizedButtons} */}
             </div>
         </>
     );

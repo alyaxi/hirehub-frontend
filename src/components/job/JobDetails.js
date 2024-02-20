@@ -25,6 +25,7 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
     }, [extractedData]);
 
     console.log("extractedData", extractedData);
+    console.log("viewprofile", viewprofile);
 
     // console.log("starttttt useeffect after", status);
 
@@ -48,7 +49,7 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
     // };
     // console.log("extractedData?.positionTitle", extractedData?.positionTitle)
 
-    const firstLetter = extractedData?.positionTitle ? extractedData?.positionTitle.trim().charAt(0).toUpperCase() : '';
+    // const firstLetter = extractedData?.positionTitle ? extractedData?.positionTitle.trim().charAt(0).toUpperCase() : '';
     // console.log("extractedData", extractedData)
 
     const navigate = useNavigate();

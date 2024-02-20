@@ -15,7 +15,7 @@ import notificationService from '../../../utilis/notification';
 
 
 const validationSchema = Yup.object().shape({
-    userType: Yup.string().required('Please select a user type'),
+    userType: Yup.string().required('Please select user type'),
     name: Yup.string().required('Name is required'),
     email: Yup.string().email('Invalid email').required('Email is required'),
     password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
@@ -59,8 +59,11 @@ const RegisterPage = () => {
                 console.log(res, "ressssponsee");
 
                 const user = res.data.user;
-                redirectToDashboard(user?.role, navigate);;
+
                 notificationService.success("Registration Successful");
+                setTimeout(() => {
+                    redirectToDashboard(user?.role, navigate);
+                }, 3000)
 
             }).catch(error => {
                 notificationService.error(error.message)
@@ -89,7 +92,7 @@ const RegisterPage = () => {
                             Candidate
                             <Field type='radio' name='userType' value='employer' />
                             Employer
-                            <ErrorMessage name='userType' component='div' className='text-red-500' />
+                            <ErrorMessage name='userType' component='div' className='text-[12px] text-red-500' />
                         </div> */}
                         <div className='py-5'>
                             <div className='flex gap-x-1' role="group" aria-labelledby="my-radio-group">
@@ -114,7 +117,7 @@ const RegisterPage = () => {
                                     <span className='pl-1'>Employer</span>
                                 </label>
                             </div>
-                            <ErrorMessage name='userType' component='div' className='text-red-500' />
+                            <ErrorMessage name='userType' component='div' className='text-[12px] text-red-500' />
                         </div>
                         {/* <div className='py-5'>
                             <div className='flex gap-x-1' role="group" aria-labelledby="my-radio-group">
@@ -139,7 +142,7 @@ const RegisterPage = () => {
                                     <span className='pl-1'>Employer</span>
                                 </label>
                             </div>
-                            <ErrorMessage name='userType' component='div' className='text-red-500' />
+                            <ErrorMessage name='userType' component='div' className='text-[12px] text-red-500' />
                         </div> */}
                         <div className='mb-3'>
                             <Field type='text' name='name'>
@@ -153,7 +156,7 @@ const RegisterPage = () => {
                                             className='py-5'
                                             bgGray
                                         />
-                                        <ErrorMessage name='name' component='div' className='text-red-500' />
+                                        <ErrorMessage name='name' component='div' className='text-[12px] text-red-500' />
                                     </>
                                 )}
                             </Field>
@@ -170,7 +173,7 @@ const RegisterPage = () => {
                                             className='py-5'
                                             bgGray
                                         />
-                                        <ErrorMessage name='email' component='div' className='text-red-500' />
+                                        <ErrorMessage name='email' component='div' className='text-[12px] text-red-500' />
                                     </>
                                 )}
                             </Field>
@@ -187,7 +190,7 @@ const RegisterPage = () => {
                                             className='py-5'
                                             bgGray
                                         />
-                                        <ErrorMessage name='password' component='div' className='text-red-500' />
+                                        <ErrorMessage name='password' component='div' className='text-[12px] text-red-500' />
                                     </>
                                 )}
                             </Field>
@@ -204,21 +207,21 @@ const RegisterPage = () => {
                                             className='py-5'
                                             bgGray
                                         />
-                                        <ErrorMessage name='confirmPassword' component='div' className='text-red-500' />
+                                        <ErrorMessage name='confirmPassword' component='div' className='text-[12px] text-red-500' />
                                     </>
                                 )}
                             </Field>
                         </div>
                         <div className='flex flex-col gap-y-5'>
-                            <div className='flex justify-between items-center pt-1'>
+                            <div className='flex flex-col items-start pt-1'>
                                 <div className='flex justify-start items-center gap-x-1'>
                                     <Field type='checkbox' name='agreeTerms' />
                                     I agree to
                                     <a className='text-purple-1'>
                                         <NavLink to='#'> privacy policy & terms</NavLink>
                                     </a>
-                                    <ErrorMessage name='agreeTerms' component='div' className='text-red-500' />
                                 </div>
+                                <ErrorMessage name='agreeTerms' component='div' className='text-[12px] text-red-500' />
                             </div>
                             {isSubmitting ?
                                 <div

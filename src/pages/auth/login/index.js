@@ -49,7 +49,7 @@ function LoginPage() {
                 .unwrap()
                 .then((res) => {
                     const user = res.data;
-                    console.log(`user`, user);
+                    // console.log(`user`,user);
                     redirectToDashboard(user?.Role, navigate);
                 })
                 .catch((err) => {
@@ -98,7 +98,7 @@ function LoginPage() {
                                                 className='py-5'
                                                 bgGray
                                             />
-                                            <ErrorMessage name='email' component='div' className='text-red-500' />
+                                            <ErrorMessage name='email' component='div' className='text-[12px] text-red-500' />
                                         </>
                                     )}
                                 </Field>
@@ -116,7 +116,7 @@ function LoginPage() {
                                                 className='py-5'
                                                 bgGray
                                             />
-                                            <ErrorMessage name='password' component='div' className='text-red-500' />
+                                            <ErrorMessage name='password' component='div' className='text-[12px] text-red-500' />
                                         </>
                                     )}
                                 </Field>

@@ -2,23 +2,37 @@
 import React, { useState } from 'react';
 import { Core } from '../..';
 import dropdownOptions from '../../../data/dropdownOptions.json';
-import { Form, Formik, Field } from 'formik';
 import UploadLogo from '../../core/UploadLogo';
-import UploadVideo from '../../core/UploadVideo';
+// import UploadVideo from '../../core/UploadVideo';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+// const validationSchema = Yup.object().shape({
+//     companyName: Yup.string()
+//         .required('Company name is required'),
+//     noOfEmployes: Yup.string()
+//         .required('Number of employees is required'),
+//     phoneNo: Yup.string()
+//         .matches(/^[0-9]*$/, 'Phone number must contain only digits')
+//         .matches(/^\d{11}$/, 'Phone number must be 11 digits')
+//         .required('Phone number is required')
+// });
 
 function Form1({ onNext, profileData }) {
 
-    console.log("profileData", profileData)
+    // console.log("profileData", profileData)
 
     const {
         numberOfEmployeesOptions,
     } = dropdownOptions;
 
-    const [data] = useState({
-        numberofEmployees: profileData?.noOfEmployes || null,
-        YourCompanysName: profileData?.companyName || null,
-        YourPhoneNumber: profileData?.phoneNo || null,
+    const [data, setData] = useState({
+        noOfEmployes: profileData?.noOfEmployes || null,
+        companyName: profileData?.companyName || null,
+        phoneNo: profileData?.phoneNo.toString() || null,
     });
+
+    // console.log("data", data)
 
     const [fileInputs, setFileInputs] = useState({
         logo: null,
@@ -27,7 +41,27 @@ function Form1({ onNext, profileData }) {
 
     const handleChange = (name, event) => {
         const value = event.target.value;
-        onNext({ [name]: value });
+
+        if (name === "phoneNo") {
+
+            const containsAlphabet = /[a-zA-Z]/.test(value);
+            if (!containsAlphabet) {
+                console.log("Value is valid.");
+                setData(prevData => ({
+                    ...prevData,
+                    [name]: value
+                }));
+                onNext({ [name]: value });
+            }
+        } else {
+            setData(prevData => ({
+                ...prevData,
+                [name]: value
+            }));
+            onNext({ [name]: value });
+        }
+
+
     };
 
     const handleLogoChange = (name, file) => {
@@ -41,6 +75,8 @@ function Form1({ onNext, profileData }) {
         onNext({ [name]: file });
     };
 
+    // console.log("data",data)
+
     const handleSubmit = (values, { isSubmitting }) => { }
 
     return (
@@ -49,33 +85,45 @@ function Form1({ onNext, profileData }) {
             // validationSchema={validationSchema}
             onSubmit={handleSubmit}
         >
-            {() => (
+            {({ }) => (
                 <Form>
                     <Core.Card className={'p-5'} w840 border>
                         <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5>
                         <div className="mb-4">
-                            <Field name="YourCompanysName">
+                            <Field name="companyName">
                                 {({ field }) => (
-                                    <Core.InputWithLabel
-                                        {...field}
-                                        name={"YourCompanysName"}
-                                        label
-                                        sm
-                                        onChange={(value) => handleChange("companyName", value)}
-                                    />
+                                    <div>
+                                        <Core.InputWithLabel
+                                            {...field}
+                                            name={"companyName"}
+                                            label
+                                            sm
+                                            edit
+                                            value={data?.companyName}
+                                            onChange={(value) => handleChange("companyName", value)}
+                                        // onBlur={handleBlur}
+                                        />
+                                        {/* <ErrorMessage name="companyName" component="div" className="text-red-500" /> */}
+                                    </div>
                                 )}
                             </Field>
                         </div>
                         <div className="mb-4">
-                            <Field name="numberofEmployees">
+                            <Field name="noOfEmployes">
                                 {({ field }) => (
-                                    <Core.SelectWithLabel
-                                        {...field}
-                                        name={"numberofEmployees"}
-                                        label
-                                        options={numberOfEmployeesOptions}
-                                        onChange={(value) => handleChange("noOfEmployes", value)}
-                                    />
+                                    <div>
+                                        <Core.SelectWithLabel
+                                            {...field}
+                                            name={"noOfEmployes"}
+                                            label
+                                            edit
+                                            value={data?.noOfEmployes}
+                                            options={numberOfEmployeesOptions}
+                                            onChange={(value) => handleChange("noOfEmployes", value)}
+                                        // onBlur={handleBlur}
+                                        />
+                                        {/* <ErrorMessage name="noOfEmployes" component="div" className="text-red-500" /> */}
+                                    </div>
                                 )}
                             </Field>
                         </div>
@@ -148,15 +196,22 @@ function Form1({ onNext, profileData }) {
                             </span>
                         </div>
                         <div className="mb-4">
-                            <Field name="YourPhoneNumber">
+                            <Field name="phoneNo">
                                 {({ field }) => (
-                                    <Core.InputWithLabel
-                                        name={"YourPhoneNumber"}
-                                        {...field}
-                                        label
-                                        helperText="We will use this number to text you important notifications"
-                                        onChange={(value) => handleChange("phoneNo", value)}
-                                    />
+                                    <div>
+                                        <Core.InputWithLabel
+                                            {...field}
+                                            name={"phoneNo"}
+                                            label
+                                            edit
+                                            value={data?.phoneNo}
+                                            helperText="We will use this number to text you important notifications"
+                                            onChange={(value) => handleChange("phoneNo", value)}
+                                            // onBlur={handleBlur}
+                                            maxLength={'11'}
+                                        />
+                                        {/* <ErrorMessage name="phoneNo" component="div" className="text-red-500" /> */}
+                                    </div>
                                 )}
                             </Field>
                         </div>

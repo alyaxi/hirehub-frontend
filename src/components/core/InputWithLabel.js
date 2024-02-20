@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { Icons } from '..';
 import Icon from '../../components/icon';
+import { useNavigate } from 'react-router-dom';
 
 function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, iconic, maxLength, edit, disabled }) {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
+    const navigate = useNavigate();
+
+    // console.log("value", value)
+    // console.log("data",data)
+    // console.log("data",data)
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -20,9 +26,9 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Password";
             case "username":
                 return "Username";
-            case "YourCompanysName":
+            case "companyName":
                 return "Your Company's Name";
-            case "YourPhoneNumber":
+            case "phoneNo":
                 return "Your Phone Number";
             case "name":
                 return "Name";
@@ -125,9 +131,9 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "SearchByJobTitle":
                 // return "Search By Job Title";
                 return "Job Title";
-            case "YourCompanysName":
+            case "companyName":
                 return "Handmade";
-            case "YourPhoneNumber":
+            case "phoneNo":
                 return "+34 526 952 689";
             case "name":
                 return "Pete Jones";
@@ -235,6 +241,10 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
         }
     }
 
+    const navigateToForgotPassword = () => {
+        navigate("/forgot-password");
+    }
+
     return (
         <>
             <div className="flex justify-between items-center">
@@ -247,7 +257,15 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                     </label>
                 }
                 {forgotPassword &&
-                    <a className='text-purple-1 text-[14px] mb-2'>
+                    <a className='text-purple-1 text-[14px] mb-2'
+                        tabIndex="0"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                navigateToForgotPassword();
+                            }
+                        }}
+                    >
                         <NavLink to="/forgot-password">
                             Forgot Password?
                         </NavLink>
@@ -296,7 +314,15 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 {/* <input type={name === "password" ? inputType : type(name)} value={value} onChange={onChange} className={`w-full text-[14px] font-regular leading-[20px] text-gray-700 ${bgGray ? 'bg-gray-3' : 'bg-white'} border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${sm ? 'py-[9px]' : 'py-[14px]'} ${className}`} id={name} name={name}
                     placeholder={placeholder(name)} autoFocus /> */}
                 {(name === "password" || name === "newPassword" || name === "confirmPassword" || name === "oldPassword") &&
-                    <span className="absolute right-3 top-4 text-gray-1 text-[20px] cursor-pointer" onClick={togglePasswordVisibility}>
+                    <span className="absolute right-3 top-4 text-gray-1 text-[20px] cursor-pointer"
+                        onClick={togglePasswordVisibility}
+                        tabIndex="0"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                togglePasswordVisibility();
+                            }
+                        }}
+                    >
                         {passwordVisible ? <Icons.IoEyeOutline /> : <Icons.IoEyeOffOutline />}
                     </span>
                 }

@@ -1,26 +1,34 @@
 // Form2.js
 import React, { useState } from 'react';
 import { Core } from '../..';
-import companyIndustries from '../../../utilis/companyIndustries';
 import { Form, Formik, Field } from 'formik';
+import dropdownOptions from '../../../data/dropdownOptions.json';
+
+const {
+    companyIndustries,
+} = dropdownOptions;
 
 function Form2({ onNext, profileData }) {
 
-    console.log("profileData", profileData)
+    // console.log("profileData", profileData)
 
-    const [data] = useState({
-        YourCompanysIndustry: profileData?.companyIndustry || null,
-        companyDescription: profileData?.description || null,
+    const [data, setData] = useState({
+        companyIndustry: profileData?.companyIndustry || null,
+        description: profileData?.description || null,
     });
 
     const handleChange = (name, event) => {
         const value = event.target.value;
+        setData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
         onNext({ [name]: value });
     };
 
-    console.log("onNext", onNext.data)
+    // console.log("onNext", onNext.data)
 
-    const handleSubmit = (values) => {    }
+    const handleSubmit = (values) => { }
 
     return (
         <Formik
@@ -33,18 +41,14 @@ function Form2({ onNext, profileData }) {
                     <Core.Card className={'p-5'} w840 boder>
                         <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5>
                         <div className="mb-4">
-                            {/* <Core.SelectWithLabel
-                    name={"YourCompanysIndustry"}
-                    label="Company Industry"
-                    options={companyIndustries}
-                    onChange={(value) => handleChange("companyIndustry", value)}
-                /> */}
-                            <Field name="YourCompanysIndustry">
+                            <Field name="companyIndustry">
                                 {({ field }) => (
                                     <Core.SelectWithLabel
                                         {...field}
                                         name={"YourCompanysIndustry"}
                                         label
+                                        edit
+                                        value={data?.companyIndustry}
                                         options={companyIndustries}
                                         onChange={(value) => handleChange("companyIndustry", value)}
                                     />
@@ -52,20 +56,7 @@ function Form2({ onNext, profileData }) {
                             </Field>
                         </div>
                         <div className="mb-4">
-                            {/* <Core.TextAreaWithLabel
-                    name={"companyDescription"}
-                    label="Company Description"
-                    helperText="Adding a company description to a job posting can attract candidates who share the organization's values and vision"
-                    onChange={(value) => handleChange("description", value)}
-                /> */}
-
-                            {/* <Core.TextAreaWithLabel
-                    name="summery"
-                    label
-                    {...field}
-                    value={field.value}
-                /> */}
-                            <Field name="companyDescription">
+                            <Field name="description">
                                 {({ field }) => (
                                     <Core.TextAreaWithLabel
                                         {...field}

@@ -112,9 +112,9 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                                     sm
                                     name="jobLocation"
                                     label
-                                    edit
+                                    // edit
                                     disabled={type === "candidate" ? true : false}
-                                    value={data?.jobLocation}
+                                    // value={data?.jobLocation}
 
 
 
