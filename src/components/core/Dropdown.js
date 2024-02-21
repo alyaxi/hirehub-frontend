@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom';
 import React from 'react';
 import { Avatar, Badge, Space } from 'antd';
+import { setEmployer } from '../../Slices/Employer/EmployerSlice';
 
 export default function Dropdown() {
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function Dropdown() {
     const accountType = parts[1];
 
     const handleLogOut = () => {
+        dispatch(setEmployer(null))
         dispatch(logout())
         navigate("/")
     }

@@ -61,7 +61,7 @@ function MainCandidates() {
     const [candidateStage, setCandidateStage] = useState("");
     const [userStatus, setUserStatus] = useState("");
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
 
     console.log('AppliedJobCandidate', AppliedJobCandidate)

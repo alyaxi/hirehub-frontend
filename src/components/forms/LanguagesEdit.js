@@ -59,8 +59,8 @@ const LanguagesEdit = ({ handleCancel, setCandidateProfileData, handleSenddata }
             languagesData: _languagesData,
         }));
 
-        handleSenddata()
-        setSubmitting(false);
+        // handleSenddata()
+        // setSubmitting(false);
     };
 
     return (

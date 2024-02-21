@@ -52,7 +52,7 @@ export const changePasswordByUser = createAsyncThunk('auth/change-password', asy
     }
 });
 
-export const recoverPasswordOutside = createAsyncThunk('auth/recover-password', async ({token, password}) => {
+export const recoverPasswordOutside = createAsyncThunk('auth/recover-password', async ({ token, password }) => {
     try {
         const data = await authService.recoverPassword(token, password);
         return data
@@ -68,8 +68,8 @@ export const recoverPasswordOutside = createAsyncThunk('auth/recover-password', 
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        user: JSON.parse(localStorage.getItem('user')),
-        isAuthenticated: JSON.parse(localStorage.getItem('user')) ? true : false,
+        user: null,//JSON.parse(localStorage.getItem('user')),
+        isAuthenticated: false,//JSON.parse(localStorage.getItem('user')) ? true : false,
         role: null,
         error: null,
     },
@@ -78,13 +78,11 @@ const authSlice = createSlice({
             state.user = action.payload;
             state.isAuthenticated = true;
         },
-        logout: (state) => {
+        logout: (state,action) => {
             state.user = null;
             state.isAuthenticated = false;
             localStorage.removeItem("user")
             localStorage.removeItem("persist:root")
-
-
         },
 
     },
@@ -100,32 +98,32 @@ const authSlice = createSlice({
             state.error = null
 
         })
-            builder.addCase(login.rejected, (state, action) => {
-                state.user = null;
-                state.isAuthenticated = false;
-                localStorage.removeItem("user")
-                localStorage.removeItem("persist:root")
-                state.error = action.error.message;
-            });
-            builder.addCase(register.fulfilled, (state, action) => {
-         
-                localStorage.setItem("user", JSON.stringify(action.payload.data.user))
-                const data = action.payload.data
-                console.log(data, "payloaddddd");
-                state.user = data?.user
-                state.role = data?.user?.role
-                state.isAuthenticated = true
-                state.error = null
-                
-            })
-            builder.addCase(forgetPassword.fulfilled, (state, payload) => {
-                console.log(payload, "payloadd from forgot password");
-            })
-            builder.addCase(recoverPasswordOutside.fulfilled, (state, payload) => {
-                console.log(payload, "payloadd from forgot password");
-            })
-            
-            
+        builder.addCase(login.rejected, (state, action) => {
+            state.user = null;
+            state.isAuthenticated = false;
+            localStorage.removeItem("user")
+            localStorage.removeItem("persist:root")
+            state.error = action.error.message;
+        });
+        builder.addCase(register.fulfilled, (state, action) => {
+
+            localStorage.setItem("user", JSON.stringify(action.payload.data.user))
+            const data = action.payload.data
+            console.log(data, "payloaddddd");
+            state.user = data?.user
+            state.role = data?.user?.role
+            state.isAuthenticated = true
+            state.error = null
+
+        })
+        builder.addCase(forgetPassword.fulfilled, (state, payload) => {
+            console.log(payload, "payloadd from forgot password");
+        })
+        builder.addCase(recoverPasswordOutside.fulfilled, (state, payload) => {
+            console.log(payload, "payloadd from forgot password");
+        })
+
+
     }
 });
 
