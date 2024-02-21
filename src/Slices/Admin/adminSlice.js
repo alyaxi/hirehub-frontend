@@ -52,8 +52,8 @@ export const employerStatusChange = createAsyncThunk('admin/change-status-employ
 const adminSlice = createSlice({
     name: 'admin',
     initialState: {
-        user: JSON.parse(localStorage.getItem('user')),
-        isAuthenticated: JSON.parse(localStorage.getItem('user')) ? true : false,
+        user: null,//JSON.parse(localStorage.getItem('user')),
+        isAuthenticated: false,//JSON.parse(localStorage.getItem('user')) ? true : false,
         role: null,
         error: null,
         employersDataTable: [],

@@ -45,15 +45,16 @@ export const UpdateEmployerById = createAsyncThunk('employer/update-detail-by-id
 const employerSlices = createSlice({
     name: 'employer',
     initialState: {
-        user: JSON.parse(localStorage.getItem('user')),
-        isAuthenticated: JSON.parse(localStorage.getItem('user')) ? true : false,
+        user: null,//JSON.parse(localStorage.getItem('user')),
+        isAuthenticated: false,//JSON.parse(localStorage.getItem('user')) ? true : false,
         role: null,
         error: null,
-        employer: {},
+        employer: null,
         reload: false,
     },
     reducers: {
-        setUser: (state, action) => {
+        setEmployer: (state, action) => {
+            state.employer=action.payload;
             // state.user = action.payload;
             // state.isAuthenticated = true;
         },
@@ -78,7 +79,7 @@ const employerSlices = createSlice({
     }
 });
 
-export const { setUser } = employerSlices.actions;
+export const { setEmployer } = employerSlices.actions;
 
 
 export default employerSlices.reducer;
