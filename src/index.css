@@ -235,7 +235,7 @@ div :where(.css-dev-only-do-not-override-dkbvqv).ant-btn-primary {
   min-height: 100px;
 }
 
-.candidate-profile-avatar span.ant-avatar-string {
+.avatar-text span.ant-avatar-string {
   font-size: 50px;
   font-weight: 700;
 }

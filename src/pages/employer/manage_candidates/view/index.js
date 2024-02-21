@@ -35,9 +35,7 @@ function ViewCandidates() {
             <Breadcrumb
                 heading="Candidates Details"
                 breadcrumb={breadcrumb}
-            />
-            
-            {/* <Core.CompanyProfile data={tableData} dropdownOptions={dropdownOptions} pageType="view" /> */}
+            />            
             <UserProfile data={extractedData} dropdownOptions={dropdownOptions} pageType="view" type="employer" />
         </>
     );

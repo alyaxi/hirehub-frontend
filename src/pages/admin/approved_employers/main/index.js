@@ -6,8 +6,6 @@ import TableB from '../../../../components/table/TableB';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom"
 
-
-
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
     { label: "Manage Employers", link: "/admin/manage-employers" },

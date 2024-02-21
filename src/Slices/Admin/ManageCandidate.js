@@ -75,11 +75,13 @@ const manageCandidateAdmin = createSlice({
                 
                 console.log(i, "alljobsssss", alljobs.length);
                 const newAllJob = alljobs[i]
+                // console.log("newAllJob",newAllJob)
                 const candidate = newAllJob?.candidate[0]
                 const name = newAllJob?.user[0]?.name
                 const email = newAllJob?.user[0]?.email
                 const JobTitle = newAllJob?.Job[0]?.positionTitle
                 const employerName = newAllJob?.employer[0]?.companyName
+                // const logo = newAllJob?.employer[0]?.logo
                 const experience = newAllJob?.Job[0]?.experience
                 const salary = newAllJob?.Job[0]?.salary
 
@@ -95,6 +97,7 @@ const manageCandidateAdmin = createSlice({
                     email,
                     JobTitle,
                     employerName,
+                    // logo,
                     experience,
                     salary,
                     eligibility: "Yes"

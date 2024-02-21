@@ -43,8 +43,8 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNex
     };
     const [resumePrivacySetting] = useState(1);
 
-    const firstLetter = extractedData?.candidate?.name ? extractedData?.candidate?.name.trim().charAt(0).toUpperCase() : '';
-
+    const firstLetter = extractedData?.name ? extractedData?.name.trim().charAt(0).toUpperCase() : '';
+console.log("firstLetter",firstLetter)
     const navigate = useNavigate();
     const handleCancel = () => {
         navigate(-1);
@@ -107,7 +107,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNex
                     <div className='absolute -top-6 flex justify-center items-center w-[90px] h-[90px] bg-gray-7 rounded-full overflow-hidden'>
                         {/* <Avatar size={90} src={<img src={extractedData?.candidate?.personalInformation?.avatar} alt="avatar" />}>{firstLetter}</Avatar> */}
                         {/* <Avatar size={90} src={<img src={"https://dp.profilepics.in/profile_pictures/boys-profile-pics/boys-profile-pics-dp-for-whatsapp-facebook-1775.jpg"} alt="avatar" />}>{firstLetter}</Avatar> */}
-                        <Avatar size={90} src={<img src={extractedData?.candidate?.personalInformationData?.profilePicture} alt="avatar" />}>{firstLetter}</Avatar>
+                        <Avatar size={90} src={extractedData?.candidate?.personalInformationData?.profilePicture} className='avatar-text'>{firstLetter}</Avatar>
                         {/* <Avatar size={90} src={<img src={"https://dp.profilepics.in/profile_pictures/boys-profile-pics/boys-profile-pics-dp-for-whatsapp-facebook-1775.jpg"} alt="avatar" />}>{firstLetter}</Avatar> */}
                     </div>
                 </div>

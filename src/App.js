@@ -46,7 +46,6 @@ import {
   EditQuestionnaireEmployer,
   MainJobsAdmin,
   AddJobsAdmin,
-  EditJobsAdmin,
   ViewJobsAdmin,
   ManageFAQsAdmin,
   EmailTemplatesAdmin,
@@ -98,7 +97,6 @@ function App() {
 
           <Route path="manage-jobs" element={<MainJobsAdmin />} />
           <Route path="manage-jobs/add" element={<AddJobsAdmin />} />
-          <Route path="manage-jobs/edit/:id" element={<EditJobsAdmin />} />
           <Route path="manage-jobs/view/:id" element={<ViewJobsAdmin />} />
 
           <Route path="manage-terms-and-conditions" element={<ManageTermAndConditionAdmin />} />

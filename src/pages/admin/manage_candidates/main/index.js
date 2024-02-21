@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Breadcrumb } from '../../../../components/core';
-// import avatar1 from "../../../../assets/images/avatars/2.png";
 import TableB from '../../../../components/table/TableB';
 import { useNavigate } from "react-router-dom"
-import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllAppliedJob } from '../../../../Slices/Admin/ManageCandidate';
 
-
-
-
-// const columns = ["name", "jobTitle", "employer", "eligibility", "experience", "salary", "stage", "status", "action"];
 const columns = [
     {
         title: 'Name',
