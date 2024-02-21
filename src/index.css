@@ -257,3 +257,8 @@ div :where(.css-dev-only-do-not-override-dkbvqv).ant-btn-primary {
 }
 
 /* tab styles end */
+
+.ant-upload-wrapper .ant-upload-drag .ant-upload {
+  padding-top: 23px;
+  padding-bottom: 23px;
+}

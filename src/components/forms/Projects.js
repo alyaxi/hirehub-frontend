@@ -125,7 +125,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
             setEndDate(_endDate)
         }
     };
-    
+
     const imgUrl = `http://localhost:4000/${projectImage?.originFileObj?.name}`
 
     const handleSubmit = (values) => {
@@ -195,7 +195,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
             {({ isSubmitting }) => (
                 <Form>
 
-                    <div className='mb-4'>
+                    <div className='max-h-[250px] mb-4'>
                         <DragImg state={projectImage} setState={setProjectImage} />
                     </div>
 
@@ -321,19 +321,12 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                     <div className='flex justify-between pt-6 mt-8 border-t-[1px]'>
                         <div className='flex justify-start gap-x-3 '>
                             {savingForm ?
-                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
-                                    <Spin />
-                                </div>
-                                : <Core.Button type="narrow" submit>Save</Core.Button>}
-                            <Core.Button
-                                // onClick={handleBack} 
-                                type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'><Spin /></div>
+                                :
+                                <Core.Button type="narrow" submit>Save</Core.Button>
+                            }
+                            <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                        {/* {action === "edit" &&
-                            <Core.Button
-                                // onClick={handleBack} 
-                                type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
-                        } */}
                     </div>
 
                 </Form>
