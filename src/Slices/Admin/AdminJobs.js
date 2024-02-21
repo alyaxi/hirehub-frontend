@@ -68,8 +68,9 @@ const AdminJobs = createSlice({
                     salary: job.salary.value,
                     jobStatus: job.jobStatus,
                     employer: {
-                        title: job.employer[0].companyName,
-                        address: job.jobLocation,
+                        title: job?.employer[0]?.companyName,
+                        address: job?.jobLocation,
+                        logo: job?.employer[0]?.logo,
                     },
                     postedDate: job.postedDate,
                     qualification: job.qualification,

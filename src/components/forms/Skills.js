@@ -27,7 +27,7 @@ const options = [
 ];
 
 const skillExperienceOptions = [
-    { name: "Fresh", value: "0" },
+    { name: "Fresh", value: "Fresh" },
     { name: "6 months", value: "6 months" },
     { name: "1 year", value: "1 year" },
     { name: "2 years", value: "2 years" },
@@ -43,6 +43,7 @@ const skillExperienceOptions = [
 ];
 
 function Skills({ action, handleCancel, setCandidateProfileData, handleSenddata, savingForm }) {
+    // console.log("Skills savingForm", savingForm)
 
     const [data] = useState({
         // _id: "",
@@ -112,15 +113,8 @@ function Skills({ action, handleCancel, setCandidateProfileData, handleSenddata,
                                     <Spin />
                                 </div>
                                 : <Core.Button type="narrow" submit>Save</Core.Button>}
-                            <Core.Button
-                                // onClick={handleBack} 
-                                type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+                            <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                        {/* {action === "edit" &&
-                            <Core.Button
-                                // onClick={handleBack} 
-                                type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
-                        } */}
                     </div>
 
 

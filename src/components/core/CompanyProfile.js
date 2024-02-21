@@ -42,14 +42,14 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
     const handleNext = () => {
         try {
             if (!status) return;
-            console.log({ id })
+            // console.log({ id })
             const statusCheck = status === "Pending" || status === "Approved" || status === "Rejected"
                 ? { isVerified: status }
                 : { status: status }
-            console.log({ statusCheck })
+            // console.log({ statusCheck })
 
             dispatch(employerStatusChange({ id, statusCheck })).unwrap().then(res => {
-                console.log("reSSSSSSSSS", res);
+                // console.log("reSSSSSSSSS", res);
                 if (res) {
                     notificationService.success(res.data.msg)
                     setTimeout(() => {
@@ -72,7 +72,7 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
         navigate(-1);
     }
 
-    console.log("employerDetails?.accountStatus", employerDetails?.accountStatus);
+    console.log("employerDetails", employerDetails);
     return (
         <Core.Card className={`pt-[30px] ${pageType === "edit" ? 'pb-[70px]' : 'pb-[35px]'} px-[60px]`}>
             <ToastContainer></ToastContainer>

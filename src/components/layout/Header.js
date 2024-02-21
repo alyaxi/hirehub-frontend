@@ -7,7 +7,7 @@ function Header({ toggleSidebar }) {
 
     const user = useSelector((state) => state.auth.user);
 
-    console.log(user, "userrrrrrrr")
+    // console.log(user, "userrrrrrrr")
 
     return (
         <header className="relative flex items-center justify-between text-gray border-l-[1px] border-gray-5 bg-white shadow-md px-6 py-3">

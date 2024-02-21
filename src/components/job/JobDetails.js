@@ -95,7 +95,7 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                     <div className='relative w-[100px]'>
                         <div className={`absolute ${!pageType === "quickView" && '-top-3'} flex justify-center items-center w-[80px] h-[80px] bg-gray-7 overflow-hidden`}>
                             {/* <Avatar size={90} src={<img src={extractedData?.candidate?.personalInformation?.avatar} alt="avatar" />}>{firstLetter}</Avatar> */}
-                            <Avatar size={80} className='rounded-[10px]' src={<img src={viewprofile?.logo} alt="avatar" />}>{extractedData?.employer?.title}</Avatar>
+                            <Avatar size={80} className='rounded-[10px]' src={<img src={extractedData?.employer?.logo} alt="avatar" />}>{extractedData?.employer?.title}</Avatar>
                         </div>
                     </div>
                     <div className='w-full h-full flex justify-between pl-2'>
