@@ -91,7 +91,7 @@ function ChangePasswordForm() {
                     />
                 </div>
                 <div className='flex justify-start gap-x-3'>
-                    <Core.Button type="submit" disabled={!formik.isValid}>Submit</Core.Button>
+                    <Core.Button submit disabled={!formik.isValid}>Submit</Core.Button>
                     <Core.Button type="button" color="white" onClick={formik.handleReset}>Cancel</Core.Button>
                 </div>
             </form>

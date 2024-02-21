@@ -75,7 +75,7 @@ function ForgotPasswordPage() {
                             </Field>
                         </div>
                     </div>
-                    <Core.Button className="text-[18px] leading-[20px] rounded-full py-[18px]">Send Reset Link</Core.Button>
+                    <Core.Button submit className="text-[18px] leading-[20px] rounded-full py-[18px]">Send Reset Link</Core.Button>
                     <p className='text-gray-6 text-[18px] leading-[24px]'>
                         <a><NavLink to="/"> Back to login </NavLink></a>
                     </p>

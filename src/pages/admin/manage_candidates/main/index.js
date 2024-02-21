@@ -5,6 +5,7 @@ import TableB from '../../../../components/table/TableB';
 import { useNavigate } from "react-router-dom"
 import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllAppliedJob } from '../../../../Slices/Admin/ManageCandidate';
 
 
 
@@ -66,7 +67,7 @@ function MainCandidates() {
     const [userStatus, setUserStatus] = useState("");
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
+    const AppliedJobCandidate = useSelector((state) => state?.manageCandidateAdmin?.jobs);
 
     console.log('AppliedJobCandidate', AppliedJobCandidate)
 
@@ -81,29 +82,30 @@ function MainCandidates() {
 
 
 
-    // useEffect(() => {
-    //     try {
+    useEffect(() => {
+        try {
 
-    //         dispatch(getAllAppliedJob()).unwrap().then(res => {
-    //             console.log("Successfully fetched data", res);
+            dispatch(getAllAppliedJob()).unwrap().then(res => {
+                console.log("Successfully fetched data", res);
 
 
 
-    //         }).catch(err => {
-    //             console.error(`Error Fetching Data ${err}`);
-    //         });
-    //     } catch (error) {
-    //         console.error(`Error in useEffect of Dashboard ${error}`)
+            }).catch(err => {
+                console.error(`Error Fetching Data ${err}`);
+            });
+        } catch (error) {
+            console.error(`Error in useEffect of Dashboard ${error}`)
 
-    //     }
-    // },[])
+        }
+    },[])
 
 
     const onViewClick = (id) => {
-        navigate(`/employer/manage-candidates/view/${id}`);
+        
+        navigate(`/admin/manage-candidates/view/${id}`);
     };
     const onEditClick = (id) => {
-        navigate(`/employer/manage-candidates/edit/${id}`);
+        navigate(`/admin/manage-candidates/edit/${id}`);
     };
     const onCalenderClick = (jobId,candidateId) => {
         // console.log('id',id)

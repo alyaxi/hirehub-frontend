@@ -82,6 +82,8 @@ const authSlice = createSlice({
             state.user = null;
             state.isAuthenticated = false;
             localStorage.removeItem("user")
+            localStorage.removeItem("persist:root")
+
 
         },
 
@@ -102,6 +104,7 @@ const authSlice = createSlice({
                 state.user = null;
                 state.isAuthenticated = false;
                 localStorage.removeItem("user")
+                localStorage.removeItem("persist:root")
                 state.error = action.error.message;
             });
             builder.addCase(register.fulfilled, (state, action) => {

@@ -16,6 +16,8 @@ export default function Dropdown() {
     // console.log(user, "user header");
     const viewprofile = useSelector((state) => state?.employer?.employer);
 
+    console.log(viewprofile, "viewwwProfileee")
+
     const location = useLocation();
     const parts = location?.pathname.split('/');
     const accountType = parts[1];

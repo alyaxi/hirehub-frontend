@@ -92,7 +92,7 @@ function NewPasswordPage() {
                                 </Field>
                             </div>
                         </div>
-                        <Core.Button type="submit" className="text-[18px] leading-[20px] py-[18px]">
+                        <Core.Button submit className="text-[18px] leading-[20px] py-[18px]">
                             Submit
                         </Core.Button>
                     </Form>

@@ -290,17 +290,17 @@ function MainJobs() {
 
 
 
-    // useEffect(() => {
-    //     try {
-    //         dispatch(GetjobsAdmin()).unwrap().then(res => {
-    //             console.log("Successfully fetched data", res);
-    //         }).catch(err => {
-    //             console.error(`Error Fetching Data ${err}`);
-    //         });
-    //     } catch (error) {
-    //         console.error(`Error in useEffect of Dashboard ${error}`)
-    //     }
-    // }, [])
+    useEffect(() => {
+        try {
+            dispatch(GetjobsAdmin()).unwrap().then(res => {
+                console.log("Successfully fetched data", res);
+            }).catch(err => {
+                console.error(`Error Fetching Data ${err}`);
+            });
+        } catch (error) {
+            console.error(`Error in useEffect of Dashboard ${error}`)
+        }
+    }, [])
 
     const onViewClick = (id) => {
         navigate(`/admin/manage-jobs/view/${id}`);
