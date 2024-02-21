@@ -66,7 +66,7 @@ function MyCalendar({ events, type }) {
                         />
 
                         <div>
-                            {eventsToday?.length &&
+                            {eventsToday?.length !== 0 &&
                                 <>
                                     <div className='flex justify-start gap-x-1 mt-5'>
                                         <Icon name="Calender2" size={24} />

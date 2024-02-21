@@ -19,8 +19,7 @@ import { UpdateInterviewsCandidate } from '../../../Slices/Candidates/CandidateI
 function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit }) {
     // const formattedDate = moment(start).format('MM/DD/YY');
     const formattedStartTime = moment(eventToEdit?.start).format('HH:mm');
-    const formattedEndTime = moment(eventToEdit?.end).format('HH:mm');
-
+    const formattedEndTime = moment(eventToEdit?.end).format('HH:mm')
 
     const [data, setData] = useState({
         end: '',
@@ -34,8 +33,6 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
         endTime: '',
     });
 
-
-
     const [savingForm, setSavingForm] = useState(false);
     const [approval, setApproval] = useState(false);
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
@@ -43,7 +40,6 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
     console.log(AppliedJobCandidate, "AppliedJobCandidate")
 
     const dispatch = useDispatch()
-
 
     useEffect(() => {
         setData({
@@ -115,9 +111,6 @@ function ScheduleInterviewForm({ setIsModalOpen, type, handleCancel, eventToEdit
                                     // edit
                                     disabled={type === "candidate" ? true : false}
                                     // value={data?.jobLocation}
-
-
-
                                 />
                             )}
                         </Field>
