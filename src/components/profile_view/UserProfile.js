@@ -91,11 +91,9 @@ console.log("firstLetter",firstLetter)
                         <span className="absolute right-3 top-8 ">
                             <Core.Dropdown2
                                 selectedState={extractedData?.stage}
-                                status={status}
                                 setState={setStatus}
                                 options={dropdownOptions}
                                 className={"min-w-[160px]"}
-                                // defaultTitle={extractedData?.status}
                                 defaultTitle={extractedData?.stage}
                             />
                         </span>

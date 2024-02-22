@@ -72,7 +72,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Organization";
             case "grade":
                 return "Grade";
-            case "jobLocation":
+            case "location":
                 return "Job Location";
             case "package":
                 return "Package";
@@ -173,7 +173,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Enter Company Name";
             case "organization":
                 return "Enter Organization Name";
-            case "jobLocation":
+            case "location":
                 // return "Street# 1, Area abc, City, Country.";
                 return "Enter here";
             case "package":
@@ -219,7 +219,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "title":
             case "company":
             case "organization":
-            case "jobLocation":
+            case "location":
             case "package":
             case "salary":
             case "positionTitle":

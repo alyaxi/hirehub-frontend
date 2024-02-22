@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { Breadcrumb, } from '../../../../components/core';
 import { UserProfile, } from '../../../../components';
-// import employersData from '../../../../data/employersData.json';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeAppliedJobStatusAdmin } from '../../../../Slices/Admin/ManageCandidate';
 import notificationService from '../../../../utilis/notification';
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
+
+const dropdownOptions = [
+    'screening',
+    'new application',
+    'hire',
+    "selection"
+];
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
@@ -15,7 +21,7 @@ const breadcrumb = [
 ];
 
 function EditCandidates() {
-    // const { tableData } = employersData;
+    
     const AppliedAllJobs = useSelector((state) => state?.manageCandidateAdmin?.jobs);
     console.log(AppliedAllJobs, "AppliedAllJobs admin edit")
     const dispatch = useDispatch();
@@ -23,7 +29,7 @@ function EditCandidates() {
     const [status, setStatus] = useState();
     const { id } = useParams();
     const extractedData = AppliedAllJobs?.find(item => item?.candidate?.userId === id);
-    // console.log(extractedData, "data frm comp")
+
 
     const handleNext = () => {
         // console.log(status, "statusssssssssssss")
@@ -53,13 +59,6 @@ function EditCandidates() {
 
         }
     }
-
-    const dropdownOptions = [
-        'screening',
-        'new application',
-        'hire',
-        "selection"
-    ];
 
     return (
         <>

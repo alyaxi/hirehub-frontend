@@ -59,7 +59,6 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
 
     const firstLetter = extractedData?.employer?.title ? extractedData?.employer?.title.trim().charAt(0).toUpperCase() : '';
 
-
     return (
         <Core.Card className={`border p-0`} p={'0'} >
             <div className={`bg-gray-7 ${pageType === "quickView" ? "py-[20px] px-[15px]" : 'py-[25px] px-[30px]'}`}>
@@ -84,7 +83,6 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                             <span className="absolute right-3 top-8 ">
                                 <Core.Dropdown2
                                     selectedState={extractedData?.jobStatus}
-                                    status={status}
                                     setState={setStatus}
                                     options={dropdownOptions}
                                     className={"min-w-[160px]"}
