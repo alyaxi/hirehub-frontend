@@ -1,7 +1,7 @@
 import { Empty } from "antd";
 import { Core } from "..";
 
-function Languages({ data, card,type }) {
+function Languages({ data, card, type }) {
 
     return (
         <>
@@ -10,7 +10,7 @@ function Languages({ data, card,type }) {
                     <div className='flex justify-between items-start' >
                         <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Languages</h5>
                         {type === "candidate" &&
-                            <Core.ProficienciesActions buttons={['add', 'edit']} type="languagesData" />
+                            <Core.ProficienciesActions buttons={['add']} type="languagesData" />
                         }
                     </div>
                     <div className='flex flex-col justify-start gap-x-3 gap-y-2'>
@@ -18,9 +18,14 @@ function Languages({ data, card,type }) {
                             <>
                                 {data?.map((value, index) => {
                                     return (
-                                        <div key={index * 7} className={`w-full ${index === 0 ? 'mt-3' : 'mt-2'}`}>
-                                            <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
-                                            <p className='text-black-3 text-[12px] leading-[20px]'>{value?.proficiency}</p>
+                                        <div key={index * 4} className='relative flex justify-between gap-x-3 w-full mt-3'>
+                                            <div className='absolute top-0 right-0 z-[200] flex justify-end' >
+                                                <Core.ProficienciesActions buttons={['edit']} type={'languagesData'} id={value?._id} />
+                                            </div>
+                                            <div className={`w-full'}`}>
+                                                <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
+                                                <p className='text-black-3 text-[12px] leading-[20px]'>{value?.proficiency}</p>
+                                            </div>
                                         </div>
                                     )
                                 })}
@@ -45,9 +50,14 @@ function Languages({ data, card,type }) {
                             <>
                                 {data?.map((value, index) => {
                                     return (
-                                        <div key={index * 7} className={`w-full ${index === 0 ? 'mt-3' : 'mt-2'}`}>
-                                            <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
-                                            <p className='text-black-3 text-[12px] leading-[20px]'>{value?.proficiency}</p>
+                                        <div key={index * 4} className='relative flex justify-between gap-x-3 w-full mt-3'>
+                                            <div className='absolute top-0 right-0 z-[200] flex justify-end' >
+                                                <Core.ProficienciesActions buttons={['edit']} type={'languagesData'} id={value?._id} />
+                                            </div>
+                                            <div className={`w-full'}`}>
+                                                <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
+                                                <p className='text-black-3 text-[12px] leading-[20px]'>{value?.proficiency}</p>
+                                            </div>
                                         </div>
                                     )
                                 })}

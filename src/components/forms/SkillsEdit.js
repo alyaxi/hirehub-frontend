@@ -93,7 +93,7 @@ const SkillsEdit = ({ handleCancel, setCandidateProfileData, savingForm }) => {
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
-        console.log("11 22 handleSubmit called", values);
+        console.log("vv 11 22 handleSubmit called", values);
         // console.log("8888 values", values);
 
         // const _skillsData = values?.skills?.map(skill => ({
@@ -104,10 +104,10 @@ const SkillsEdit = ({ handleCancel, setCandidateProfileData, savingForm }) => {
 
         // console.log("11 22 8888 _skillsData", _skillsData);
 
-        setCandidateProfileData(prevData => ({
-            ...prevData,
-            skillsData: values?.skills,
-        }));
+        // setCandidateProfileData(prevData => ({
+        //     ...prevData,
+        //     skillsData: values?.skills,
+        // }));
 
         // handleSenddata()
         // setSubmitting(false);

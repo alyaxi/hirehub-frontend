@@ -103,8 +103,7 @@ function App() {
           <Route path="manage-faqs" element={<ManageFAQsAdmin />} />
           <Route path="email-templates" element={<EmailTemplatesAdmin />} />
 
-        </Route >
-
+        </Route>
 
         {/* Employer Routes */}
         <Route path="employer/*" element={<PrivateRoute roles={['employer']}><EmployerLayout /></PrivateRoute>} >

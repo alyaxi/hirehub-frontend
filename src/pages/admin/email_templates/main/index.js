@@ -8,6 +8,11 @@ const actions = {
     view: true,
 };
 
+const breadcrumb = [
+    { label: "Dashboard", link: "/admin/dashboard" },
+    { label: "Email Templates" },
+];
+
 const columns = [
     {
         title: 'Status',
@@ -68,11 +73,6 @@ const questionnaire = [
     },
 ];
 
-const breadcrumb = [
-    { label: "Dashboard", link: "/admin/dashboard" },
-    { label: "Email Templates" },
-];
-
 function EmailTemplatesAdmin() {
     const [emailProcess, setEmailProcess] = useState("");
 
@@ -85,7 +85,7 @@ function EmailTemplatesAdmin() {
         navigate(`/employer/manage-candidates/edit/${id}`);
     };
 
-    console.log("emailProcess", emailProcess);
+    console.log("filter by emailProcess", emailProcess);
 
     return (
         <>

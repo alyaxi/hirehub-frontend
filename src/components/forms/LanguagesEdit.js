@@ -47,18 +47,18 @@ const LanguagesEdit = ({ handleCancel, setCandidateProfileData, savingForm }) =>
     const handleSubmit = (values, { setSubmitting }) => {
         console.log("values", values)
         
-        const _languagesData = values?.languages?.map(language => ({
-            id: language?._id,
-            title: language?.title,
-            proficiency: language?.proficiency,
-        }));
+        // const _languagesData = values?.languages?.map(language => ({
+        //     id: language?._id,
+        //     title: language?.title,
+        //     proficiency: language?.proficiency,
+        // }));
 
-        console.log("_languagesData", _languagesData);
+        // console.log("_languagesData", _languagesData);
 
-        setCandidateProfileData(prevData => ({
-            ...prevData,
-            languagesData: _languagesData,
-        }));
+        // setCandidateProfileData(prevData => ({
+        //     ...prevData,
+        //     languagesData: _languagesData,
+        // }));
 
         // handleSenddata()
         // setSubmitting(false);

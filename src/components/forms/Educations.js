@@ -51,16 +51,17 @@ const monthsOptions = [
     { name: 'December', value: '12' },
 ];
 
-function Educations({ action, handleCancel, id, setCandidateProfileData, handleSenddata, savingForm }) {
+function Educations({ action, handleCancel, id, setCandidateProfileData, savingForm }) {
     // console.log("id", id)
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
-    const educations = candidate.educationsData;
+    const educations = candidate?.educationsData;
 
     const educationToEdit = educations?.find(education => education?._id === id);
 
     // console.log("educationToEdit", educationToEdit)
 
+    
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
     const endYear = currentYear - 5;
@@ -168,7 +169,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
             let _endDate = selectedStartMonth + '/' + value;
             setEndDate("01/" + _endDate)
         }
-        
+
     };
 
     const handleCountryChange = (event) => {
@@ -176,13 +177,13 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
         setSelectedCountry(countryValue);
     };
 
-    const handleSubmit = (values, actions) => {
+    const handleSubmit = (values) => {
         let _educationsData = {
-            degree: values.degree,
+            degree: values?.degree,
             endDate: endDate,
-            fieldOfStudy: values.fieldOfStudy,
-            grade: values.grade,
-            organization: values.organization,
+            fieldOfStudy: values?.fieldOfStudy,
+            grade: values?.grade,
+            organization: values?.organization,
             selectedCountry: selectedCountry,
             startDate: startDate,
         };
@@ -190,6 +191,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
         let educationData;
 
         if (action === "add") {
+            // console.log("vv add _educationsData",_educationsData)
             // educationData = [...educations, _educationsData]
             setCandidateProfileData(prevData => ({
                 ...prevData,
@@ -197,13 +199,14 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, handleS
             }));
         }
         else {
-            educationData = educations.map((exp, i) => {
+            educationData = educations?.map((exp) => {
                 if (exp._id === id) {
                     return _educationsData
                 } else {
                     return exp
                 }
             })
+            // console.log("vv edit educationData",educationData)
             setCandidateProfileData({
                 educationsData: educationData,
             });

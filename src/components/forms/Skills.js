@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Core } from '..';
 import MultiSelectInput from '../core/MultiSelectInput';
+import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
 
 const options = [
@@ -42,27 +43,71 @@ const skillExperienceOptions = [
     { name: "Over 10 years", value: "Over 10 years" },
 ];
 
-function Skills({ action, handleCancel, setCandidateProfileData, handleSenddata, savingForm }) {
-    // console.log("Skills savingForm", savingForm)
+function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm, }) {
 
-    const [data] = useState({
-        // _id: "",
-        title: '',
-        experience: '',
-        isDeleted: false,
+    const candidate = useSelector((state) => state?.Candidate?.candidate);
+    const skills = candidate?.skillsData;
+
+    // console.log("vv skills form action", action)
+    // console.log("vv skills form id", id)
+
+    // console.log("vv candidate", candidate)
+
+    const skillToEdit = skills?.find(skill => skill?._id === id);
+
+    // console.log("vv skillToEdit", skillToEdit)
+
+    const [data] = useState(action === "add" ? {} : {
+        _id: skillToEdit?._id || "",
+        title: skillToEdit?.title || "",
+        experience: skillToEdit?.experience || "",
+        isDeleted: skillToEdit?.isDeleted || false,
     });
+
+    // const [data, setData] = useState({});
+
+    // useEffect(() => {
+    //     const initialData = {
+    //         _id: skillToEdit?._id || "",
+    //         title: skillToEdit?.title || "",
+    //         experience: skillToEdit?.experience || "",
+    //         isDeleted: skillToEdit?.isDeleted || false,
+    //     };
+    //     setData(initialData);
+    // }, [action, skillToEdit]);
+
+    // console.log("vv data", data)
 
     const handleSubmit = (values) => {
         let _skillsData = {
             title: values?.title,
             experience: values?.experience,
-            isDeleted: false,
+            isDeleted: skillToEdit?.isDeleted ? skillToEdit?.isDeleted : false,
         }
-        setCandidateProfileData(prevData => ({
-            ...prevData,
-            skillsData: _skillsData,
-        }));
-        // handleSenddata()
+
+        let skillData;
+
+        if (action === "add") {
+            // console.log("vv add _skillsData", _skillsData)
+            setCandidateProfileData(prevData => ({
+                ...prevData,
+                skillsData: _skillsData,
+            }));
+        }
+        else {
+            // console.log("vv else _skillsData", _skillsData)
+            skillData = skills?.map((skill) => {
+                if (skill._id === id) {
+                    return _skillsData
+                } else {
+                    return skill
+                }
+            })
+            // console.log("vv else skillData", skillData)
+            setCandidateProfileData({
+                skillsData: skillData,
+            });
+        }
     };
 
     const multiSelectHandle = (title, setFieldValue) => {
@@ -73,54 +118,56 @@ function Skills({ action, handleCancel, setCandidateProfileData, handleSenddata,
         <Formik
             initialValues={data}
             // validationSchema={validationSchema}
+            enableReinitialize={true}
             onSubmit={handleSubmit}
         >
-            {({ isSubmitting, setFieldValue }) => (
-                <Form>
-                    <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>indicates required</span>
-                    <div className="mb-4">
-                        <Field name="title">
-                            {({ field }) => (
-                                <MultiSelectInput
-                                    {...field}
-                                    mode={"single"}
-                                    name={'title'}
-                                    label
-                                    options={options}
-                                    onChange={(selectedSkills) => multiSelectHandle(selectedSkills, setFieldValue)}
-                                />
-                            )}
-                        </Field>
-                    </div>
-                    <div className='mb-4'>
-                        <Field name="experience">
-                            {({ field }) => (
-                                <Core.SelectWithLabel
-                                    {...field}
-                                    name={"experience"}
-                                    label
-                                    options={skillExperienceOptions}
-                                    defaultOption="Choose any one"
-                                />
-                            )}
-                        </Field>
-                    </div>
-
-                    <div className='flex justify-between  pt-6 mt-8 border-t-[1px]'>
-                        <div className='flex justify-start gap-x-3 '>
-                            {savingForm ?
-                                <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
-                                    <Spin />
-                                </div>
-                                : <Core.Button type="narrow" submit>Save</Core.Button>}
-                            <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+            {({ values, setFieldValue }) => {
+                // console.log("vv values", values)
+                return (
+                    <Form>
+                        <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>indicates required</span>
+                        <div className="mb-4">
+                            <Field name="title">
+                                {({ field }) => (
+                                    <MultiSelectInput
+                                        {...field}
+                                        mode={"single"}
+                                        name={'title'}
+                                        label
+                                        options={options}
+                                        onChange={(selectedSkills) => multiSelectHandle(selectedSkills, setFieldValue)}
+                                        defaultValue={values?.title}
+                                    />
+                                )}
+                            </Field>
                         </div>
-                    </div>
+                        <div className='mb-4'>
+                            <Field name="experience">
+                                {({ field }) => (
+                                    <Core.SelectWithLabel
+                                        {...field}
+                                        name={"experience"}
+                                        label
+                                        options={skillExperienceOptions}
+                                        defaultOption="Choose any one"
+                                    />
+                                )}
+                            </Field>
+                        </div>
 
-
-                    {/* </div> */}
-                </Form>
-            )
+                        <div className='flex justify-between  pt-6 mt-8 border-t-[1px]'>
+                            <div className='flex justify-start gap-x-3 '>
+                                {savingForm ?
+                                    <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                        <Spin />
+                                    </div>
+                                    : <Core.Button type="narrow" submit>Save</Core.Button>}
+                                <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+                            </div>
+                        </div>
+                    </Form>
+                )
+            }
             }
         </Formik >
     );

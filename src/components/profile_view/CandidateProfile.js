@@ -64,33 +64,53 @@ function CandidateProfile() {
 
     let personalInformationCount = 0;
 
-    for (const key in candidate?.personalInformationData) {
-        if (candidate?.personalInformationData[key] === "") {
-            personalInformationCount++;
-        }
-    }
+    const requiredProperties = [
+        "profilePicture",
+        "zipCode",
+        "expectedSalary",
+        "careerLevel",
+        "experience",
+        "gender",
+        "phoneNo",
+        "statusLine",
+        "country",
+    ];
+
+    personalInformationCount = requiredProperties.every(property => {
+        return candidate?.personalInformationData?.hasOwnProperty(property) && candidate?.personalInformationData[property] !== "";
+    });
+
+    console.log('personalInformationCount', personalInformationCount);
 
     let jobPreferenceCount = 0;
 
-    for (const key in candidate?.jobPreferenceData) {
-        if (candidate?.jobPreferenceData[key] === "") {
-            jobPreferenceCount++;
+    const requiredPropertiesJob = ["desiredJobTitle", "desiredSalary", "skills"];
+
+    jobPreferenceCount = requiredPropertiesJob?.every(property => {
+
+        if (!candidate?.jobPreferenceData?.hasOwnProperty(property)) return false;
+
+        if (Array.isArray(candidate?.jobPreferenceData[property])) {
+            return candidate?.jobPreferenceData[property].length > 0;
         }
-    }
-    // console.log("candidate?.p/ersonalInformationData", candidate?.personalInformationData)
-    // console.log("personalInformationCount", personalInformationCount)
+
+        if (typeof candidate?.jobPreferenceData[property] === "string") {
+            return candidate?.jobPreferenceData[property].trim() !== "";
+        }
+
+        return true;
+    });
 
     let _experience = candidate?.experiencesData?.length > 0 ? 15 : candidate?.experiencesData?.length;
     let _education = candidate?.educationsData?.length > 0 ? 15 : candidate?.educationsData?.length;
     let _language = candidate?.languagesData?.length > 0 ? 15 : candidate?.languagesData?.length;
     let _skill = candidate?.skillsData?.length > 0 ? 15 : candidate?.skillsData?.length;
     let _summery = candidate?.summery?.text?.length > 2 ? 10 : 0;
-    let _personalInformation = personalInformationCount === 0 ? 15 : 0;
+    let _personalInformation = personalInformationCount === true ? 15 : 0;
     let _jobPreference = jobPreferenceCount === 0 ? 15 : 0;
 
     profileCompletion = _experience + _education + _language + _skill + _summery + _personalInformation + _jobPreference;
 
-    console.log("candidate", candidate)
     let workHistoryCheck = candidate?.experiencesData?.length > 0 || false;
     let personalInformationCheck = personalInformationCount === 0 || false;
     let educationCheck = candidate?.educationsData?.length > 0 || false;
@@ -100,13 +120,13 @@ function CandidateProfile() {
     let projectsCheck = candidate?.projectsData?.length > 0 || false;
     let languageCheck = candidate?.languagesData?.length > 0 || false;
 
-    // console.log("_experience",_experience)
-    // console.log("_education",_education)
-    // console.log("_language",_language)
-    // console.log("_skill",_skill)
-    // console.log("_summery",_summery)
-    // console.log("_personalInformation",_personalInformation)
-    // console.log("_jobPreference",_jobPreference)
+    console.log("_experience", _experience)
+    console.log("_education", _education)
+    console.log("_language", _language)
+    console.log("_skill", _skill)
+    console.log("_summery", _summery)
+    console.log("_personalInformation", _personalInformation)
+    console.log("_jobPreference", _jobPreference)
 
 
     return (

@@ -313,41 +313,45 @@ function PopupModal({ setIsModalOpen,
 
 
 
-            {(type === "skillsData" && action !== "edit") &&
+            {/* {(type === "skillsData" && action !== "edit") && */}
+            {type === "skillsData" &&
                 <Forms.Skills
                     handleCancel={handleCancel}
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
-                    handleSenddata={handleSenddata}
+                    id={action === "edit" ? id : null}
+                    // handleSenddata={handleSenddata}
                     savingForm={savingForm}
                 />}
 
-            {(type === "skillsData" && action === "edit") &&
+            {/* {(type === "skillsData" && action === "edit") &&
                 <Forms.SkillsEdit
                     handleCancel={handleCancel}
                     action={'edit'}
                     setCandidateProfileData={setCandidateProfileData}
                     savingForm={savingForm}
-                />}
+                />} */}
 
 
 
-            {(type === "languagesData" && action !== "edit") &&
+            {/* {(type === "languagesData" && action !== "edit") && */}
+            {type === "languagesData" &&
                 <Forms.Languages
                     handleCancel={handleCancel}
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
-                    handleSenddata={handleSenddata}
+                    id={action === "edit" ? id : null}
+                    // handleSenddata={handleSenddata}
                     savingForm={savingForm}
                 />}
 
-            {(type === "languagesData" && action === "edit") &&
+            {/* {(type === "languagesData" && action === "edit") &&
                 <Forms.LanguagesEdit
                     handleCancel={handleCancel}
                     action={'edit'}
                     setCandidateProfileData={setCandidateProfileData}
                     savingForm={savingForm}
-                />}
+                />} */}
 
 
 
