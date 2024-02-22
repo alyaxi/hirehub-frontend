@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Core } from '..';
 import Icon from '../icon';
-import video from "../../assets/videos/1.mp4";
 import { getCandidate } from '../../Slices/Candidates/CandidateSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Popover, Progress } from 'antd';
+import { Popover, Progress } from 'antd';
 
 const videoOptions = [
     'delete',
@@ -23,6 +22,11 @@ function CandidateProfile() {
     const dispatch = useDispatch();
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const reload = useSelector((state) => state?.Candidate?.reload);
+
+    const _user = useSelector((state) => state.auth.user);
+
+    console.log("ww _user", _user)
+    console.log("ww candidate", candidate)
 
     const personalInformation = candidate?.personalInformationData
     const experience = candidate?.experiencesData
@@ -60,7 +64,7 @@ function CandidateProfile() {
 
     }, [reload])
 
-    let profileCompletion;
+    let profileCompletion = 0;
 
     let personalInformationCount = 0;
 
@@ -110,6 +114,9 @@ function CandidateProfile() {
     let _jobPreference = jobPreferenceCount === 0 ? 15 : 0;
 
     profileCompletion = _experience + _education + _language + _skill + _summery + _personalInformation + _jobPreference;
+    profileCompletion = isNaN(profileCompletion) ? 0 : profileCompletion
+
+    // console.log("ww profileCompletion", profileCompletion)
 
     let workHistoryCheck = candidate?.experiencesData?.length > 0 || false;
     let personalInformationCheck = personalInformationCount === 0 || false;
@@ -127,7 +134,6 @@ function CandidateProfile() {
     console.log("_summery", _summery)
     console.log("_personalInformation", _personalInformation)
     console.log("_jobPreference", _jobPreference)
-
 
     return (
         <div className='flex justify-between gap-x-6 w-full'>

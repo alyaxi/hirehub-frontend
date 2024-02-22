@@ -9,7 +9,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
     const [inputType, setInputType] = useState('password');
     const navigate = useNavigate();
 
-    // console.log("value", value)
+    console.log("name", name)
+    console.log("value", value)
     // console.log("data",data)
     // console.log("data",data)
 
@@ -198,6 +199,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
     const type = (name) => {
         switch (name) {
             case "email":
+                return "email";
             case "fullName":
             case "ssn":
             case "phoneNumber":

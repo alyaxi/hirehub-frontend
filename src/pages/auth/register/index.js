@@ -16,13 +16,27 @@ import notificationService from '../../../utilis/notification';
 
 const validationSchema = Yup.object().shape({
     userType: Yup.string().required('Please select user type'),
+
     name: Yup.string().required('Name is required'),
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
+
+    email: Yup.string()
+        .email('Invalid email')
+        .required('Email is required'),
+
+    password: Yup.string()
+        .min(8, 'Password must be at least 8 characters')
+        .matches(
+            /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=\`{}\[\]:";'<>?,.\/]).*$/,
+            'Password must contain at least one uppercase letter and one special character'
+        )
+        .required('Password is required'),
+
     confirmPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Passwords must match')
         .required('Confirm Password is required'),
-    agreeTerms: Yup.bool().oneOf([true], 'You must agree to the terms'),
+
+    agreeTerms: Yup.bool()
+        .oneOf([true], 'You must agree to the terms'),
 });
 
 const initialValues = {
@@ -162,7 +176,7 @@ const RegisterPage = () => {
                             </Field>
                         </div>
                         <div className='mb-3'>
-                            <Field type='text' name='email'>
+                            <Field name='email'>
                                 {({ field }) => (
                                     <>
                                         <Core.InputWithLabel
@@ -170,6 +184,10 @@ const RegisterPage = () => {
                                             name={field.name}
                                             value={field.value}
                                             onChange={field.onChange}
+                                            // onChange={(e) => {
+                                            //     const trimmedValue = e.target.value.trim(); // Trim spaces
+                                            //     field.onChange(e.target.name)(trimmedValue); // Update field value
+                                            // }}
                                             className='py-5'
                                             bgGray
                                         />
