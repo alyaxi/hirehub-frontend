@@ -14,12 +14,13 @@ const columns = [
         key: 'status',
         dataIndex: 'status',
         align: 'center',
+        sorter: (a, b) => {
+            if (!a.status || !b.status) {
+                return 0;
+            }
+            return a.status.localeCompare(b.status);
+        },
     },
-    //  {
-    //     title: 'Process',
-    //     key: 'process',
-    //     dataIndex: 'process',
-    // },
     {
         title: 'Action',
         key: 'action',

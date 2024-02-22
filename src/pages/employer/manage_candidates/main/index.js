@@ -11,7 +11,12 @@ const columns = [
         title: 'Name',
         key: 'name',
         dataIndex: 'name',
-        sorter: true,
+        sorter: (a, b) => {
+            if (!a.name || !b.name) {
+                return 0;
+            }
+            return a.name.localeCompare(b.name);
+        },
     }, {
         title: 'Job Title',
         key: 'jobTitle',
@@ -28,13 +33,13 @@ const columns = [
         title: 'Stage',
         key: 'stage',
         dataIndex: 'stage',
-        sorter: true
+        sorter: (a, b) => {
+            if (!a.stage || !b.stage) {
+                return 0;
+            }
+            return a.stage.localeCompare(b.stage);
+        },
     },
-    // }, {
-    //     title: 'Status',
-    //     key: 'status',
-    //     dataIndex: 'status',
-    // }, {
     {
         title: 'Action',
         key: 'action',
@@ -92,7 +97,7 @@ function MainCandidates() {
         navigate(`/employer/manage-candidates/edit/${id}`);
     };
     const onCalenderClick = (jobid, candidateId) => {
-        console.log("idfromtable", jobid,candidateId )
+        console.log("idfromtable", jobid, candidateId)
         navigate(`/employer/manage-candidates/schedule/${jobid}`);
     };
 

@@ -62,27 +62,26 @@ function TableB({
     addButton
 }) {
 
-    // console.log(data, "tableDataa")
-
+    console.log("tableDataa", data)
     const newColumn = columns.map((value, index) => {
 
-        let columnSorter;
-        if (value.sorter === true) {
-            columnSorter = (a, b) => {
-                if (typeof a.name === 'string' && typeof b.name === 'string') {
-                    return a.name.localeCompare(b.name);
-                } else if (typeof a.name === 'number' && typeof b.name === 'number') {
-                    return a.name - b.name;
-                } else {
-                    return 0;
-                }
-            };
-        } else if (value.sorter === false) {
-            columnSorter = undefined;
-        }
+        // let columnSorter;
+        // if (value.sorter === true) {
+        //     columnSorter = (a, b) => {
+        //         if (typeof a.name === 'string' && typeof b.name === 'string') {
+        //             return a.name.localeCompare(b.name);
+        //         } else if (typeof a.name === 'number' && typeof b.name === 'number') {
+        //             return a.name - b.name;
+        //         } else {
+        //             return 0;
+        //         }
+        //     };
+        // } else if (value.sorter === false) {
+        //     columnSorter = undefined;
+        // }
         return {
             ...value,
-            render: (val, id, record, rowIndex) => {
+            render: (val, id) => {
                 const firstLetter = val?.name ? val.name.trim().charAt(0).toUpperCase() : '';
                 if (value.dataIndex === "name" || value.dataIndex === "employerName" || value.dataIndex === "companyName") {
                     return (
@@ -93,7 +92,7 @@ function TableB({
                                     <Avatar src={val?.img}>{firstLetter}</Avatar>
                                     <span className='whitespace-nowrap font-semibold'>{val?.name}</span>
                                 </div> :
-                                <span>{val}</span>
+                                <span className='capitalize'>{val}</span>
                             }
                         </React.Fragment>
                     )
@@ -208,11 +207,34 @@ function TableB({
                         </span>
                     )
                 }
+
+
+                else if (value.dataIndex === "nextPayment" || value.dataIndex === "expirationDate") {
+
+                    const regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
+                    if (regex.test(val)) {
+                        const dateString = val;
+                        const date = new Date(dateString);
+                        const formattedDate = date.toISOString().split('T')[0];
+                        return (
+                            <span key={`render-${value.dataIndex}-${index}`}>
+                                {formattedDate}
+                            </span>
+                        )
+                    } else {
+                        return (
+                            <span key={`render-${value.dataIndex}-${index}`}>
+                                {val}
+                            </span>
+                        )
+                    }
+                }
                 else {
                     return <span className='text-gray-6' key={`render-${value.dataIndex}-${index}`}>{val}</span>;
                 }
             },
-            sorter: columnSorter,
+            // sorter: columnSorter,
+            // sorter: value.sorter,
         }
     });
 
@@ -235,7 +257,12 @@ function TableB({
         setResetTrigger2((prev) => !prev);
         setResetTrigger3((prev) => !prev);
     };
-    // console.log("data", data)
+    console.log("555 data", data)
+    console.log("555 newColumn", newColumn)
+    console.log("555 data.map(_data => ({ ..._data, key: _data.id }))", data.map(_data => ({ ..._data, key: _data.id })))
+
+
+
     return (
         <div className={`flex flex-col bg-white rounded-[8px] overflow-hidden ${border === 'none' ? 'border-0' : 'border shadow-md'}`}>
             <div className="-m-1.5 overflow-x-auto">

@@ -17,7 +17,13 @@ const columns = [
         title: 'S.No',
         key: 'sNo',
         dataIndex: 'sNo',
-        sorter: true,
+        sorter: (a, b) => {
+            if (!a.sNo || !b.sNo) {
+                return 0;
+            }
+            return a.sNo - b.sNo;
+        },
+        defaultSortOrder: 'descend',
     }, {
         title: 'Question',
         key: 'question',
@@ -48,12 +54,14 @@ const breadcrumb = [
 ];
 
 function MainQuestionnaireEmployer() {
-    const [product, setProduct] = useState("");
+
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const questionaaire = useSelector((state) => state?.ManageQuestionaire?.data);
     const reload = useSelector((state) => state?.ManageQuestionaire?.reload);
 
-    const navigate = useNavigate();
+    const [product, setProduct] = useState("");
 
     useEffect(() => {
         try {
@@ -120,7 +128,6 @@ function MainQuestionnaireEmployer() {
                 ]}
                 setProduct={setProduct}
                 actions={actions}
-                // onViewClick={onViewClick}
                 onEditClick={onEditClick}
                 onDeleteClick={onDeleteClick}
                 addQuestion={addQuestion}

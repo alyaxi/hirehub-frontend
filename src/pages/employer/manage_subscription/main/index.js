@@ -12,8 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //     {
 //         title: 'Name',
 //         key: 'name',
-//         dataIndex: 'name',
-//         sorter: true,
+//         dataIndex: 'name', 
 //     }, {
 //         title: 'Job Title',
 //         key: 'jobTitle',
@@ -29,8 +28,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //     }, {
 //         title: 'Stage',
 //         key: 'stage',
-//         dataIndex: 'stage',
-//         sorter: true
+//         dataIndex: 'stage', 
 //     },
 //     // }, {
 //     //     title: 'Status',

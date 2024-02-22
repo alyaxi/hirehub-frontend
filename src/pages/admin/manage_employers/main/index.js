@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Breadcrumb, StatsGroup } from '../../../../components/core';
 import TableB from '../../../../components/table/TableB';
-// import employersData from '../../../../data/employersData';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEmployers } from '../../../../Slices/Admin/adminSlice';
 import { useStatsData } from "../../../../utilis/statsData";
@@ -18,14 +17,67 @@ const actions = {
     message: true,
 };
 
+const _columns = [
+    {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        sorter: (a, b) => {
+            if (!a.name || !b.name) {
+                return 0;
+            }
+            return a.name.localeCompare(b.name);
+        },
+    },
+    {
+        title: 'Plans',
+        dataIndex: 'plans',
+        key: 'plans',
+    },
+    {
+        title: 'Payment',
+        dataIndex: 'payment',
+        key: 'payment',
+    },
+    {
+        title: 'Next Payment',
+        dataIndex: 'nextPayment',
+        key: 'nextPayment',
+        sorter: (a, b) => {
+            if (!a.nextPayment || !b.nextPayment) {
+                return 0;
+            }
+            return new Date(a.nextPayment) - new Date(b.nextPayment);
+        },
+        defaultSortOrder: 'descend',
+    },
+    {
+        title: 'Account',
+        key: 'account',
+        dataIndex: 'account',
+        sorter: (a, b) => {
+            if (!a.account || !b.account) {
+                return 0;
+            }
+            return a.account.localeCompare(b.account);
+        },
+    },
+    {
+        title: 'Action',
+        key: 'action',
+        dataIndex: 'action',
+    },
+];
+
 function ManageEmployers() {
+
     const employersTableData = useSelector((state) => state?.admin?.employersDataTable);
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const statsData = useStatsData()
-    console.log({ statsData })
 
-    
+    // console.log({ statsData })
+
     useEffect(() => {
         try {
 
@@ -45,43 +97,6 @@ function ManageEmployers() {
 
     }, [])
 
- 
-
-    const _columns = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-            sorter: true,
-        },
-        {
-            title: 'Plans',
-            dataIndex: 'plans',
-            key: 'plans',
-            sorter: true,
-        },
-        {
-            title: 'Payment',
-            dataIndex: 'payment',
-            key: 'payment',
-        },
-        {
-            title: 'Next Payment',
-            dataIndex: 'nextPayment',
-            key: 'nextPayment',
-        },
-        {
-            title: 'Account',
-            key: 'account',
-            dataIndex: 'account',
-            sorter: true,
-        },
-        {
-            title: 'Action',
-            key: 'action',
-            dataIndex: 'action',
-        },
-    ];
     const onViewClick = (id) => {
         navigate(`/admin/manage-employers/view/${id}`);
     };
@@ -91,6 +106,15 @@ function ManageEmployers() {
     const onMessageClick = (id) => {
         console.log("onMessageClick", id)
     };
+
+    // const modifiedData = employersTableData?.map(item => {
+    //     const datePart = item?.nextPayment?.split(' ')[0];
+    //     return {
+    //         ...item,
+    //         nextPayment: datePart
+    //     };
+    // });
+
     return (
         <>
             <Breadcrumb
