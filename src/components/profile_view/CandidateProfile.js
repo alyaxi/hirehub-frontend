@@ -92,18 +92,53 @@ function CandidateProfile() {
 
     jobPreferenceCount = requiredPropertiesJob?.every(property => {
 
-        if (!candidate?.jobPreferenceData?.hasOwnProperty(property)) return false;
+        if (!candidate?.jobPreference?.hasOwnProperty(property)) return false;
 
-        if (Array.isArray(candidate?.jobPreferenceData[property])) {
-            return candidate?.jobPreferenceData[property].length > 0;
+        if (Array.isArray(candidate?.jobPreference[property])) {
+            return candidate?.jobPreference[property].length > 0;
         }
 
-        if (typeof candidate?.jobPreferenceData[property] === "string") {
-            return candidate?.jobPreferenceData[property].trim() !== "";
+        if (typeof candidate?.jobPreference[property] === "string") {
+            return candidate?.jobPreference[property].trim() !== "";
         }
 
         return true;
     });
+
+
+
+
+    // console.log("555 requiredPropertiesJob:", requiredPropertiesJob);
+    // console.log("555 candidate?.jobPreference:", candidate?.jobPreference);
+
+    // jobPreferenceCount = requiredPropertiesJob?.every(property => {
+    //     if (candidate?.jobPreference !== undefined) {
+    //         if (candidate?.jobPreference[property] !== undefined) {
+    //             if (Array.isArray(candidate?.jobPreference[property])) {
+    //                 return candidate?.jobPreference[property].length > 0;
+    //             }
+    //             if (typeof candidate?.jobPreference[property] === "string") {
+    //                 return candidate?.jobPreference[property].trim() !== "";
+    //             }
+    //             // Handle other types if needed
+    //             return true;
+    //         } else {
+    //             return false; // Property doesn't exist, so it's not valid
+    //         }
+    //     }
+    //     else {
+    //         return false; // Property doesn't exist, so it's not valid
+    //     }
+    // });
+
+    console.log("555 jobPreferenceCount after", jobPreferenceCount);
+
+
+
+
+
+
+    console.log("jobPreferenceCount after", jobPreferenceCount)
 
     let _experience = candidate?.experiencesData?.length > 0 ? 15 : candidate?.experiencesData?.length;
     let _education = candidate?.educationsData?.length > 0 ? 15 : candidate?.educationsData?.length;
@@ -111,7 +146,7 @@ function CandidateProfile() {
     let _skill = candidate?.skillsData?.length > 0 ? 15 : candidate?.skillsData?.length;
     let _summery = candidate?.summery?.text?.length > 2 ? 10 : 0;
     let _personalInformation = personalInformationCount === true ? 15 : 0;
-    let _jobPreference = jobPreferenceCount === 0 ? 15 : 0;
+    let _jobPreference = jobPreferenceCount === true ? 15 : 0;
 
     profileCompletion = _experience + _education + _language + _skill + _summery + _personalInformation + _jobPreference;
     profileCompletion = isNaN(profileCompletion) ? 0 : profileCompletion
@@ -119,7 +154,7 @@ function CandidateProfile() {
     // console.log("ww profileCompletion", profileCompletion)
 
     let workHistoryCheck = candidate?.experiencesData?.length > 0 || false;
-    let personalInformationCheck = personalInformationCount === 0 || false;
+    let personalInformationCheck = personalInformationCount === true ? true : false;
     let educationCheck = candidate?.educationsData?.length > 0 || false;
     let profilePictureCheck = (candidate?.personalInformationData?.profilePicture !== "" && candidate?.personalInformationData?.profilePicture !== undefined) || false;
     let professionalSummeryCheck = candidate?.summery?.text?.length > 2 || false;

@@ -31,7 +31,7 @@ function ChangePasswordForm() {
         onSubmit: (values) => {
             try {
                 dispatch(changePasswordByUser({ password: values.oldPassword, newPassword: values.newPassword })).unwrap().then(res => {
-                    console.log(res);
+                    console.log('res tttt',res);
                     notificationService.success(res.data)
                     // console.log("aaaa 1111")
                     setTimeout(() => {

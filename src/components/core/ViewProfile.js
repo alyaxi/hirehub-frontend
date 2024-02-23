@@ -1,19 +1,29 @@
 
 import React from 'react';
 import { Core } from '..';
+import { useNavigate } from "react-router-dom"
 
 function ViewProfile({ data }) {
-    
+
     // console.log("ViewProfile data", data)
+
+    const navigate = useNavigate();
+
+    const editProfile = () => {
+        navigate("/employer/manage-profile/edit")
+    }
 
     return (
         <Core.Card className={`py-[20px] px-[20px]`}>
-            <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-4'>View Profile</h5>
+            <div className='flex justify-between'>
+                <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-4'>Profile Information</h5>
+                <Core.Button sm type="narrow" onClick={editProfile} className={"ml-3"}>Edit Profile</Core.Button>
+            </div>
             <div className="mb-8">
                 <h6 className={`block text-[14px] font-medium text-gray-2 tracking-wide mb-1 capitalize`}>
                     Email
                 </h6>
-                <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
+                <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 lowercase`}>
                     {data?.userId?.email || <span className="text-gray-6 text-[14px] leading-[25px] opacity-50">Please update your information</span>}
                 </span>
             </div>
@@ -26,7 +36,7 @@ function ViewProfile({ data }) {
                 </span>
             </div>
             <div className="mb-8">
-                <h6 className={`block text-[14px] font-medium text-gray-2 tracking-wide mb-1 capitalize`}>
+                <h6 className={`block text-[14px] font-medium text-gray-2 tracking-wide mb-1`}>
                     Number of Employees
                 </h6>
                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>

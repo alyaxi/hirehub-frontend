@@ -50,7 +50,7 @@ function Preferences({ data, buttons, card, type }) {
                         {data?.desiredSalary !== "" &&
                             <div className='w-full mt-2'>
                                 <h6 className='text-[16px] leading-[20px] font-semibold'>Desired Salary (USD)</h6>
-                                <p className='text-black-3 text-[12px] leading-[20px]'> {data?.desiredSalary ? data?.desiredSalary + 'USD' : "-"}</p>
+                                <p className='text-black-3 text-[12px] leading-[20px]'> {data?.desiredSalary ? data?.desiredSalary + ' USD' : "-"}</p>
                             </div>
                         }
                         <div className='w-full mt-2'>
