@@ -8,6 +8,8 @@ import { Modal } from 'antd';
 import ScheduleInterviewForm from './ScheduleInterviewForm';
 import { Core } from '../..';
 import Icon from '../../icon';
+import { ToastContainer } from 'react-toastify';
+
 
 const localizer = momentLocalizer(moment);
 
@@ -47,6 +49,7 @@ function MyCalendar({ events, type }) {
 
     return (
         <>
+         <ToastContainer />
             <Modal title={(type === "candidate" || type === "admin") ? "Invitation" : 'Upload Job Description'} width={715} open={isModalOpen} onCancel={handleCancel} footer={[]} >
                 <ScheduleInterviewForm setIsModalOpen={setIsModalOpen} type={type} handleCancel={handleCancel} eventToEdit={eventToEdit} />
             </Modal>
