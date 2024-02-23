@@ -8,7 +8,7 @@ const {
     companyIndustries,
 } = dropdownOptions;
 
-function Form2({ onNext, profileData }) {
+function Form2({ onNext, profileData, validationSchema ,handleFinish}) {
 
     // console.log("profileData", profileData)
 
@@ -33,15 +33,15 @@ function Form2({ onNext, profileData }) {
     return (
         <Formik
             initialValues={data}
-            // validationSchema={validationSchema}
-            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+            onSubmit={handleFinish}
         >
             {() => (
                 <Form>
                     <Core.Card className={'p-5'} w840 boder>
                         <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5>
                         <div className="mb-4">
-                            <Field name="companyIndustry">
+                            <Field name="companyIndustry" >
                                 {({ field }) => (
                                     <Core.SelectWithLabel
                                         {...field}

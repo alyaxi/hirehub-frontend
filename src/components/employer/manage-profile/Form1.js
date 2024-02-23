@@ -5,7 +5,6 @@ import dropdownOptions from '../../../data/dropdownOptions.json';
 import UploadLogo from '../../core/UploadLogo';
 // import UploadVideo from '../../core/UploadVideo';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 
 // const validationSchema = Yup.object().shape({
 //     companyName: Yup.string()
@@ -18,7 +17,7 @@ import * as Yup from 'yup';
 //         .required('Phone number is required')
 // });
 
-function Form1({ onNext, profileData }) {
+function Form1({ onNext, profileData , validationSchema, handleFinish}) {
 
     // console.log("profileData?.phoneNo", profileData?.phoneNo)
     // console.log("profileData?.phoneNo", typeof(profileData?.phoneNo))
@@ -83,15 +82,15 @@ function Form1({ onNext, profileData }) {
     return (
         <Formik
             initialValues={data}
-            // validationSchema={validationSchema}
-            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+            onSubmit={handleFinish}
         >
             {({ }) => (
                 <Form>
                     <Core.Card className={'p-5'} w840 border>
                         <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5>
                         <div className="mb-4">
-                            <Field name="companyName">
+                            <Field name="companyName"  id="companyName" >
                                 {({ field }) => (
                                     <div>
                                         <Core.InputWithLabel
@@ -104,13 +103,13 @@ function Form1({ onNext, profileData }) {
                                             onChange={(value) => handleChange("companyName", value)}
                                         // onBlur={handleBlur}
                                         />
-                                        {/* <ErrorMessage name="companyName" component="div" className="text-red-500" /> */}
+                                        <ErrorMessage name="companyName" component="div" className="text-red-500" />
                                     </div>
                                 )}
                             </Field>
                         </div>
                         <div className="mb-4">
-                            <Field name="noOfEmployes">
+                            <Field name="noOfEmployes" id="noOfEmployees" >
                                 {({ field }) => (
                                     <div>
                                         <Core.SelectWithLabel
@@ -123,7 +122,7 @@ function Form1({ onNext, profileData }) {
                                             onChange={(value) => handleChange("noOfEmployes", value)}
                                         // onBlur={handleBlur}
                                         />
-                                        {/* <ErrorMessage name="noOfEmployes" component="div" className="text-red-500" /> */}
+                                        <ErrorMessage name="noOfEmployes" component="div" className="text-red-500" />
                                     </div>
                                 )}
                             </Field>
@@ -197,7 +196,7 @@ function Form1({ onNext, profileData }) {
                             </span>
                         </div>
                         <div className="mb-4">
-                            <Field name="phoneNo">
+                            <Field name="phoneNo"  id="phoneNo">
                                 {({ field }) => (
                                     <div>
                                         <Core.InputWithLabel
@@ -211,7 +210,7 @@ function Form1({ onNext, profileData }) {
                                             // onBlur={handleBlur}
                                             maxLength={'11'}
                                         />
-                                        {/* <ErrorMessage name="phoneNo" component="div" className="text-red-500" /> */}
+                                        <ErrorMessage name="phoneNo" component="div" className="text-red-500" />
                                     </div>
                                 )}
                             </Field>

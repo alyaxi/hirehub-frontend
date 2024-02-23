@@ -56,7 +56,7 @@ function Form2({ handleSalaryChange, handleInput }) {
                 <div className='flex justify-between w-full'>
 
                     <div className='flex gap-y-5 w-[75%]'>
-                        <Radio.Group onChange={handleEmploymentTypeChange} value={employmentType} className="pr-3">
+                        <Radio.Group onChange={handleEmploymentTypeChange} value={employmentType} className="pr-3" >
                             <div className="flex flex-col justify-around h-[100%] gap-y-3">
                                 <Radio value={false}></Radio>
                                 <Radio value={true}></Radio>
@@ -66,6 +66,7 @@ function Form2({ handleSalaryChange, handleInput }) {
                             <div className={`${employmentType && "disable-me"}`}>
                                 <Core.SelectWithLabel
                                     name={"salary"}
+                                    required
                                     label
                                     options={salaryOptions}
                                     onChange={(e) => handleSalary(e.target.value)}
@@ -76,6 +77,7 @@ function Form2({ handleSalaryChange, handleInput }) {
                                     name={"salary"}
                                     label
                                     bgGray
+                                    required
                                     sm
                                     onChange={(e) => handleSalary(e.target.value)}
                                 />
@@ -88,6 +90,7 @@ function Form2({ handleSalaryChange, handleInput }) {
                             name={"rate"}
                             label
                             options={rateOptions}
+                            required
                             onChange={(e) => handleRate(e.target.value)}
                         />
                     </div>
