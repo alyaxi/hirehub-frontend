@@ -10,7 +10,12 @@ import { ToastContainer } from 'react-toastify';
 
 const validationSchema = Yup.object().shape({
     oldPassword: Yup.string().required('Old Password is required'),
-    newPassword: Yup.string().required('New Password is required'),
+    newPassword: Yup.string().min(8, 'Password must be at least 8 characters')
+        .matches(
+            /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+|~=\`{}\[\]:";'<>?,.\/]).*$/,
+            'Password must contain at least one uppercase letter and one special character'
+        )
+        .required('Password is required'),
     confirmPassword: Yup.string()
         .oneOf([Yup.ref('newPassword'), null], 'Passwords must match')
         .required('Confirm Password is required'),
@@ -26,12 +31,12 @@ function ChangePasswordForm() {
             confirmPassword: '',
         },
         validationSchema: validationSchema,
-        validateOnChange: false, 
-        validateOnBlur: false, 
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values) => {
             try {
                 dispatch(changePasswordByUser({ password: values.oldPassword, newPassword: values.newPassword })).unwrap().then(res => {
-                    console.log('res tttt',res);
+                    console.log('res tttt', res);
                     notificationService.success(res.data)
                     // console.log("aaaa 1111")
                     setTimeout(() => {
