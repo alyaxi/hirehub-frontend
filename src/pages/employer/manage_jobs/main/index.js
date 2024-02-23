@@ -11,7 +11,12 @@ const columns = [
         title: 'Position Title',
         key: 'positionTitle',
         dataIndex: 'positionTitle',
-        sorter: true,
+        sorter: (a, b) => {
+            if (!a.positionTitle || !b.positionTitle) {
+                return 0;
+            }
+            return a.positionTitle.localeCompare(b.positionTitle);
+        },
     }, {
         title: 'Applicant Counts',
         key: 'applicationCount',
@@ -20,22 +25,49 @@ const columns = [
         title: 'No. Of Openings',
         key: 'noOfOpenings',
         dataIndex: 'noOfOpenings',
-        sorter: true,
+        sorter: (a, b) => {
+            if (!a.noOfOpenings || !b.noOfOpenings) {
+                return 0;
+            }
+            return a.noOfOpenings - b.noOfOpenings;
+        },
     }, {
         title: 'Expiration Date',
         key: 'expirationDate',
         dataIndex: 'expirationDate',
-        sorter: true,
+        sorter: (a, b) => {
+            if (!a.expirationDate || !b.expirationDate) {
+                return 0;
+            }
+            return new Date(a.expirationDate) - new Date(b.expirationDate);
+        },
+        defaultSortOrder: 'descend',
     }, {
         title: 'Salary',
         key: 'salary',
         dataIndex: 'salary',
-        sorter: true,
+        sorter: (a, b) => {
+            if (!a.salary || !b.salary) {
+                return 0;
+            }
+            const [minA, maxA] = a.salary.match(/\d+/g).map(Number);
+            const [minB, maxB] = b.salary.match(/\d+/g).map(Number);
+            if (minA !== minB) {
+                return minA - minB;
+            }
+            return maxA - maxB;
+        },
+
     }, {
         title: 'Job Status',
         key: 'jobStatus',
         dataIndex: 'jobStatus',
-        sorter: true
+        sorter: (a, b) => {
+            if (!a.jobStatus || !b.jobStatus) {
+                return 0;
+            }
+            return a.jobStatus.localeCompare(b.jobStatus);
+        },
     },
     {
         title: 'Action',
@@ -77,7 +109,7 @@ function MainJobs() {
             console.error(`Error in useEffect of Dashboard ${error}`)
         }
     }, [])
-    
+
     const onViewClick = (id) => {
         navigate(`/employer/manage-jobs/view/${id}`);
     };

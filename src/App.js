@@ -25,10 +25,12 @@ import {
   ScheduleCandidatesAdmin,
   NewPasswordPage,
   FourZeroFour,
-  ViewProfile,
+  // ViewProfile,
+  EditProfile,
   ManageProfileCandidate,
   CalenderCandidate,
   MainJobsCandidate,
+  MainJobHistoryCandidate,
   MainCandidatesEmployer,
   EditCandidatesEmployer,
   ViewCandidatesEmployer,
@@ -46,11 +48,16 @@ import {
   EditQuestionnaireEmployer,
   MainJobsAdmin,
   AddJobsAdmin,
-  EditJobsAdmin,
   ViewJobsAdmin,
   ManageFAQsAdmin,
   EmailTemplatesAdmin,
+  MainManagePaymentsAdmin,
+  MainManageSubscriptionPackagesAdmin,
+  MainManageNotificationsAdmin,
+  MainManagePlatformSettingAdmin,
   ManageTermAndConditionAdmin,
+  MainAlertsCandidate,
+  MainChatCandidate,
 } from "./pages/index";
 import { AdminLayout, CandidateLayout, EmployerLayout } from "./components";
 import PrivateRoute from "./utilis/PrivateRoute";
@@ -58,7 +65,7 @@ import PrivateRoute from "./utilis/PrivateRoute";
 function App() {
 
   console.log(process.env.REACT_APP_API_BASE_URL, "envvvvvvvvvvvvvvv");
-  
+
 
   return (
     <BrowserRouter>
@@ -98,21 +105,25 @@ function App() {
 
           <Route path="manage-jobs" element={<MainJobsAdmin />} />
           <Route path="manage-jobs/add" element={<AddJobsAdmin />} />
-          <Route path="manage-jobs/edit/:id" element={<EditJobsAdmin />} />
           <Route path="manage-jobs/view/:id" element={<ViewJobsAdmin />} />
 
           <Route path="manage-terms-and-conditions" element={<ManageTermAndConditionAdmin />} />
           <Route path="manage-faqs" element={<ManageFAQsAdmin />} />
           <Route path="email-templates" element={<EmailTemplatesAdmin />} />
 
-        </Route >
+          <Route path="manage-payments" element={<PrivateRoute roles={['admin']}><MainManagePaymentsAdmin /></PrivateRoute>} />
+          <Route path="manage-subscription-packages" element={<PrivateRoute roles={['admin']}><MainManageSubscriptionPackagesAdmin /></PrivateRoute>} />
+          <Route path="manage-notifications" element={<PrivateRoute roles={['admin']}><MainManageNotificationsAdmin /></PrivateRoute>} />
+          <Route path="manage-platform-setting" element={<PrivateRoute roles={['admin']}><MainManagePlatformSettingAdmin /></PrivateRoute>} />
 
+        </Route>
 
         {/* Employer Routes */}
         <Route path="employer/*" element={<PrivateRoute roles={['employer']}><EmployerLayout /></PrivateRoute>} >
           <Route path="dashboard" element={<PrivateRoute roles={['employer']}><EmployerDashboard /></PrivateRoute>} />
           <Route path="manage-profile" element={<PrivateRoute roles={['employer']}><ManageProfile /></PrivateRoute>} />
-          <Route path="profile" element={<PrivateRoute roles={['employer']}><ViewProfile /></PrivateRoute>} />
+          <Route path="manage-profile/edit" element={<PrivateRoute roles={['employer']}><EditProfile /></PrivateRoute>} />
+          {/* <Route path="profile" element={<PrivateRoute roles={['employer']}><ViewProfile /></PrivateRoute>} /> */}
           <Route path="change-password" element={<PrivateRoute roles={['employer']}><ChangePassword /></PrivateRoute>} />
 
           <Route path="manage-candidates" element={<MainCandidatesEmployer />} />
@@ -142,6 +153,9 @@ function App() {
           <Route path="change-password" element={<PrivateRoute roles={['candidate']}><ChangePassword /></PrivateRoute>} />
           <Route path="calender" element={<PrivateRoute roles={['candidate']}><CalenderCandidate /></PrivateRoute>} />
           <Route path="jobs" element={<PrivateRoute roles={['candidate']}><MainJobsCandidate /></PrivateRoute>} />
+          <Route path="job-history" element={<PrivateRoute roles={['candidate']}><MainJobHistoryCandidate /></PrivateRoute>} />
+          <Route path="alerts" element={<PrivateRoute roles={['candidate']}><MainAlertsCandidate /></PrivateRoute>} />
+          <Route path="chat" element={<PrivateRoute roles={['candidate']}><MainChatCandidate /></PrivateRoute>} />
 
         </Route>
 

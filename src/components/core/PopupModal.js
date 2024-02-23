@@ -167,18 +167,18 @@ function PopupModal({ setIsModalOpen,
     // console.log({ action })
 
     const [savingForm, setSavingForm] = useState(false);
+    // console.log(savingForm, "out")
 
     const handleSenddata = (val, file) => {
-        console.log("handleSenddata candidateProfileData", candidateProfileData)
+        console.log("candidateProfileData", candidateProfileData)
         // const candidateProfileData = val;
         const formdata = convertStateToFormData(candidateProfileData);
-        // console.log(formdata, "formmmmmmmmmmmmmm")
-        // console.log({ candidateProfileData })
 
         try {
             if (action == "edit") {
                 // console.log(formdata, "editttttttt")
                 setSavingForm(true);
+                // console.log(savingForm, "dispatch")
                 dispatch(UpdateCanidateData(formdata))
                     .unwrap()
                     .then(x => { console.log(x, "Ressss") })
@@ -215,7 +215,7 @@ function PopupModal({ setIsModalOpen,
 
                 if (type === "educationsData") {
                     // console.log(type, "typeeeee")
-                    console.log({ candidateProfileData })
+                    // console.log({ candidateProfileData })
                     dispatch(addEducation(candidateProfileData))
                         .unwrap()
                         .then(x => { console.log(x, "Ressss") })
@@ -313,44 +313,45 @@ function PopupModal({ setIsModalOpen,
 
 
 
-            {(type === "skillsData" && action !== "edit") &&
+            {/* {(type === "skillsData" && action !== "edit") && */}
+            {type === "skillsData" &&
                 <Forms.Skills
                     handleCancel={handleCancel}
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
-                    handleSenddata={handleSenddata}
+                    id={action === "edit" ? id : null}
+                    // handleSenddata={handleSenddata}
                     savingForm={savingForm}
                 />}
 
-            {(type === "skillsData" && action === "edit") &&
+            {/* {(type === "skillsData" && action === "edit") &&
                 <Forms.SkillsEdit
                     handleCancel={handleCancel}
                     action={'edit'}
-                    handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
                     savingForm={savingForm}
-
-                />}
-
+                />} */}
 
 
-            {(type === "languagesData" && action !== "edit") &&
+
+            {/* {(type === "languagesData" && action !== "edit") && */}
+            {type === "languagesData" &&
                 <Forms.Languages
                     handleCancel={handleCancel}
                     action={action}
                     setCandidateProfileData={setCandidateProfileData}
-                    handleSenddata={handleSenddata}
+                    id={action === "edit" ? id : null}
+                    // handleSenddata={handleSenddata}
                     savingForm={savingForm}
                 />}
 
-            {(type === "languagesData" && action === "edit") &&
+            {/* {(type === "languagesData" && action === "edit") &&
                 <Forms.LanguagesEdit
                     handleCancel={handleCancel}
                     action={'edit'}
-                    handleSenddata={handleSenddata}
                     setCandidateProfileData={setCandidateProfileData}
                     savingForm={savingForm}
-                />}
+                />} */}
 
 
 

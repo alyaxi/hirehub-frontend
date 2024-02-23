@@ -91,7 +91,10 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
         if (type === "willingToLocations") {
             setFieldValue('relocation', {
                 ...values.relocation,
-                locations: selectedItems
+                onlyNearMe: {
+                    ...values.relocation.onlyNearMe,
+                    locations: selectedItems
+                }
             });
         }
         if (type === "skills") {
@@ -100,6 +103,8 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
     };
 
     const handleSubmit = (values) => {
+        // console.log("handleSubmit called")
+
         let _jobPreferenceData = {
             desiredJobTitle: values?.desiredJobTitle,
             desiredSalary: values?.desiredSalary,
@@ -108,11 +113,11 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
             relocation: values?.relocation,
             skills: values?.skills,
         };
-        console.log({_jobPreferenceData})
-        // setCandidateProfileData(prevData => ({
-        //     ...prevData,
-        //     jobPreferenceData: _jobPreferenceData,
-        // }));
+        console.log({ _jobPreferenceData })
+        setCandidateProfileData(prevData => ({
+            ...prevData,
+            jobPreferenceData: _jobPreferenceData,
+        }));
         // handleSenddata()
     };
 
@@ -122,7 +127,8 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
             // validationSchema={validationSchema}
             onSubmit={handleSubmit}
         >
-            {({ isSubmitting, setFieldValue, values }) => {
+            {({ setFieldValue, values }) => {
+                console.log("values", values)
                 return (
                     <Form>
                         <span className="block text-gray-400 opacity-70 mt-5 mb-2"><span className="text-[red] pr-2">*</span>indicates required</span>
@@ -180,6 +186,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                             className={` block text-[14px] text-gray-2 tracking-wide mb-2 font-semibold capitalize`}>
                             Relocation
                         </label>
+
                         <div className='flex justify-between items-center pt-1 mb-2'>
                             <div className='flex justify-start items-center gap-x-1'>
                                 <Field type='checkbox' name='currentlyInProcess' id="willing-to-relocate"
@@ -194,14 +201,14 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                             <div className="mb-4">
                                 <Field name="relocationPreference" as={Radio.Group} className="w-full">
                                     <div className="flex flex-col gap-y-1 w-full pt-2 pl-6">
-                                        <Radio
+                                        {/* <Radio
                                             value={"anywhere"}
                                             className='w-[20%]'
                                             onChange={() => {
                                                 setFieldValue('relocation.anywhere', true);
                                                 setFieldValue('relocationPreference', 'anywhere');
                                             }}
-                                            checked={values.relocationPreference === 'anywhere'}
+                                            checked={values?.relocation?.anywhere === true}
                                         >
                                             Anywhere
                                         </Radio>
@@ -212,17 +219,27 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                                                 setFieldValue('relocation.anywhere', false);
                                                 setFieldValue('relocationPreference', 'onlyNearMe');
                                             }}
-                                            checked={values.relocationPreference === 'onlyNearMe'}
+                                            checked={values?.relocation?.anywhere === false}
                                         >
                                             Only near...
-                                        </Radio>
+                                        </Radio> */}
+                                        <Radio.Group
+                                            onChange={() => {
+                                                setFieldValue('relocation.anywhere', !values?.relocation?.anywhere);
+                                            }}
+                                            className='flex-col'
+                                            value={values?.relocation?.anywhere === true ? 0 : 1}>
+                                            <Radio value={0}>Anywhere</Radio>
+                                            <Radio value={1}>Only near...</Radio>
+                                        </Radio.Group>
                                     </div>
                                 </Field>
 
                             </div>
                         )}
 
-                        {(values?.relocation?.anywhere === false)
+                        {
+                            (values?.relocation?.anywhere === false)
                             &&
                             <div className="mb-4">
                                 <Field name="willingToLocations">
@@ -241,7 +258,8 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                             </div>
                         }
 
-                        {action === "edit" &&
+                        {
+                            action === "edit" &&
                             <div className='flex justify-start gap-x-3 pt-6 mt-8 border-t-[1px]'>
                                 {savingForm ?
                                     <div className=' flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
@@ -253,10 +271,10 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                                     type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                             </div>
                         }
-                    </Form>
+                    </Form >
                 )
             }}
-        </Formik>
+        </Formik >
     );
 }
 

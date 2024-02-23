@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-import {  UserProfile, } from '../../../../components';
+import { UserProfile, } from '../../../../components';
 // import employersData from '../../../../data/employersData.json';
-import { useSelector,useDispatch } from 'react-redux';
-import { useNavigate , useParams} from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, useParams } from "react-router-dom";
 import { changeAppliedJobStatusEmployer } from '../../../../Slices/Employer/ManageCandidate';
 import notificationService from '../../../../utilis/notification';
 import { ToastContainer } from 'react-toastify';
 
-
+const dropdownOptions = [
+    'screening',
+    'new application',
+    'hire',
+    "selection"
+];
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
@@ -17,32 +22,27 @@ const breadcrumb = [
 ];
 
 function EditCandidates() {
+
     // const { tableData } = employersData;
-    const  AppliedJobCandidate  = useSelector((state) => state?.manageCandidate?.jobs);
+    const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
     const { id } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [status, setStatus] = useState();
-    
-    const extractedData = AppliedJobCandidate?.find(item => item.id === id);
-  //  console.log(extractedData, "data frm comp")
 
-    const dropdownOptions = [
-        'screening',
-        'new application',
-        'hire',
-        "selection"
-    ];
+    const extractedData = AppliedJobCandidate?.find(item => item.id === id);
+    //  console.log(extractedData, "data frm comp")
+
     const handleNext = () => {
         console.log(status, "statusssssssssssss")
         try {
             if (!status) return;
             console.log({ id })
             const statusCheck = status === "screening" || status === "new application" || status === "hire" || status === "selection"
-            ? { appicaionStage: status }
-            : { applicationStatus: status }
+                ? { appicaionStage: status }
+                : { applicationStatus: status }
             console.log({ statusCheck })
-            
+
             dispatch(changeAppliedJobStatusEmployer({ id, statusCheck })).unwrap().then(res => {
                 console.log("reSSSSSSSSS", res);
                 if (res) {
@@ -51,7 +51,7 @@ function EditCandidates() {
                 setTimeout(() => {
                     navigate("/employer/manage-candidates")
                 }, 2000)
-                
+
             }).catch(err => {
                 console.error(`Error Fetching Data ${err}`);
                 notificationService.error(err)
@@ -59,18 +59,18 @@ function EditCandidates() {
         } catch (error) {
             console.error(`Error in useEffect of Dashboard ${error}`)
             notificationService.error(error)
-            
+
         }
     }
 
     return (
         <>
-        <ToastContainer></ToastContainer>
+            <ToastContainer></ToastContainer>
             <Breadcrumb
                 heading="Edit Candidates"
                 breadcrumb={breadcrumb}
             />
-            <UserProfile handleNext={handleNext} status={status} setStatus={setStatus} data={extractedData} dropdownOptions={dropdownOptions} pageType="edit"  />
+            <UserProfile handleNext={handleNext} status={status} setStatus={setStatus} data={extractedData} dropdownOptions={dropdownOptions} pageType="edit" />
         </>
     );
 }

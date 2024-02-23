@@ -88,7 +88,8 @@ function Form1({ onNext, profileData , validationSchema, handleFinish}) {
             {({ }) => (
                 <Form>
                     <Core.Card className={'p-5'} w840 border>
-                        <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5>
+                        {/* <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5> */}
+                        <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Update Profile</h5>
                         <div className="mb-4">
                             <Field name="companyName"  id="companyName" >
                                 {({ field }) => (

@@ -15,8 +15,7 @@ import { ToastContainer } from 'react-toastify';
 //     {
 //         title: 'S. No',
 //         key: 'sNo',
-//         dataIndex: 'sNo',
-//         sorter: true,
+//         dataIndex: 'sNo', 
 //     }, {
 //         title: 'Question',
 //         key: 'question',

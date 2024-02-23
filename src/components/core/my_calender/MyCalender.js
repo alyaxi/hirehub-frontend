@@ -18,15 +18,15 @@ function MyCalendar({ events, type }) {
     const [selectedDate, setSelectedDate] = useState(new Date())
     const [eventToEdit, setEventToEdit] = useState();
 
-    console.log(eventToEdit, "eventttttttttttt")
+    // console.log(eventToEdit, "eventttttttttttt")
 
     const scheduleInterview = () => {
-        console.log('99eventToEdit my c', eventToEdit)
-        setEventToEdit();
+        // console.log('99eventToEdit my c', eventToEdit)
+        setEventToEdit({});
         setIsModalOpen(true);
     }
 
-    console.log('99eventToEdit comm', eventToEdit)
+    // console.log('99eventToEdit comm', eventToEdit)
     const handleCancel = () => {
         setIsModalOpen(false);
     };
@@ -40,6 +40,7 @@ function MyCalendar({ events, type }) {
     });
 
     const handleEventClick = (event) => {
+        // console.log("handleEventClick called")
         setIsModalOpen(true);
         setEventToEdit(event);
     };
@@ -66,7 +67,7 @@ function MyCalendar({ events, type }) {
                         />
 
                         <div>
-                            {eventsToday?.length &&
+                            {eventsToday?.length !== 0 &&
                                 <>
                                     <div className='flex justify-start gap-x-1 mt-5'>
                                         <Icon name="Calender2" size={24} />

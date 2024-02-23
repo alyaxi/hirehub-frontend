@@ -57,6 +57,8 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
         navigate(-1);
     };
 
+    const firstLetter = extractedData?.employer?.title ? extractedData?.employer?.title.trim().charAt(0).toUpperCase() : '';
+
     return (
         <Core.Card className={`border p-0`} p={'0'} >
             <div className={`bg-gray-7 ${pageType === "quickView" ? "py-[20px] px-[15px]" : 'py-[25px] px-[30px]'}`}>
@@ -81,7 +83,6 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                             <span className="absolute right-3 top-8 ">
                                 <Core.Dropdown2
                                     selectedState={extractedData?.jobStatus}
-                                    status={status}
                                     setState={setStatus}
                                     options={dropdownOptions}
                                     className={"min-w-[160px]"}
@@ -94,8 +95,7 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                 <div className='flex justify-between -mt-3'>
                     <div className='relative w-[100px]'>
                         <div className={`absolute ${!pageType === "quickView" && '-top-3'} flex justify-center items-center w-[80px] h-[80px] bg-gray-7 overflow-hidden`}>
-                            {/* <Avatar size={90} src={<img src={extractedData?.candidate?.personalInformation?.avatar} alt="avatar" />}>{firstLetter}</Avatar> */}
-                            <Avatar size={80} className='rounded-[10px]' src={<img src={viewprofile?.logo} alt="avatar" />}>{extractedData?.employer?.title}</Avatar>
+                            <Avatar size={80} className='avatar-text rounded-[10px]' src={extractedData?.employer?.logo}>{firstLetter}</Avatar>
                         </div>
                     </div>
                     <div className='w-full h-full flex justify-between pl-2'>

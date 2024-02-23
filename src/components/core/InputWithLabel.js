@@ -9,6 +9,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
     const [inputType, setInputType] = useState('password');
     const navigate = useNavigate();
 
+    // console.log("name", name)
     // console.log("value", value)
     // console.log("data",data)
     // console.log("data",data)
@@ -72,7 +73,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Organization";
             case "grade":
                 return "Grade";
-            case "jobLocation":
+            case "location":
                 return "Job Location";
             case "package":
                 return "Package";
@@ -173,7 +174,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Enter Company Name";
             case "organization":
                 return "Enter Organization Name";
-            case "jobLocation":
+            case "location":
                 // return "Street# 1, Area abc, City, Country.";
                 return "Enter here";
             case "package":
@@ -198,6 +199,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
     const type = (name) => {
         switch (name) {
             case "email":
+                return "email";
             case "fullName":
             case "ssn":
             case "phoneNumber":
@@ -219,7 +221,7 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "title":
             case "company":
             case "organization":
-            case "jobLocation":
+            case "location":
             case "package":
             case "salary":
             case "positionTitle":

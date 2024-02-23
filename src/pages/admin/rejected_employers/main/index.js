@@ -7,7 +7,7 @@ import companyLogo3 from "../../../../assets/images/company-logos/7.png";
 import TableB from '../../../../components/table/TableB';
 import employersData from '../../../../data/employersData.json';
 import { useDispatch, useSelector } from 'react-redux';
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -24,7 +24,7 @@ const actions = {
 };
 
 function MainRejectedEmployers() {
-    const  employersTableData  = useSelector((state) => state?.admin?.employersDataTable);
+    const employersTableData = useSelector((state) => state?.admin?.employersDataTable);
     const navigate = useNavigate()
 
 
@@ -33,19 +33,34 @@ function MainRejectedEmployers() {
             title: 'Employer Name',
             dataIndex: 'companyName',
             key: 'companyName',
-            sorter: true,
+            sorter: (a, b) => {
+                if (!a.companyName || !b.companyName) {
+                    return 0;
+                }
+                return a.companyName.localeCompare(b.companyName);
+            },
         },
         {
             title: 'Email',
             dataIndex: 'email',
             key: 'email',
-            sorter: true,
+            sorter: (a, b) => {
+                if (!a.email || !b.email) {
+                    return 0;
+                }
+                return a.email.localeCompare(b.email);
+            },
         },
         {
             title: 'Account Status',
             dataIndex: 'account',
             key: 'account',
-            sorter: true,
+            sorter: (a, b) => {
+                if (!a.account || !b.account) {
+                    return 0;
+                }
+                return a.account.localeCompare(b.account);
+            },
         },
         {
             title: 'Action',
@@ -60,7 +75,7 @@ function MainRejectedEmployers() {
         navigate(`/admin/rejected-employers/view/${id}`);
     };
     const onEditClick = (id) => {
-       navigate(`/admin/rejected-employers/edit/${id}`);
+        navigate(`/admin/rejected-employers/edit/${id}`);
     };
     const onMessageClick = (id) => {
         console.log("onMessageClick", id)

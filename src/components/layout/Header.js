@@ -7,7 +7,7 @@ function Header({ toggleSidebar }) {
 
     const user = useSelector((state) => state.auth.user);
 
-    console.log(user, "userrrrrrrr")
+    // console.log(user, "userrrrrrrr")
 
     return (
         <header className="relative flex items-center justify-between text-gray border-l-[1px] border-gray-5 bg-white shadow-md px-6 py-3">
@@ -19,22 +19,22 @@ function Header({ toggleSidebar }) {
                 <h6 className='text-gray-6 text-[20px] leading-[20px] capitalize font-semibold'>Welcome, {user?.name}</h6>
             </div>
             <div className='flex justify-end items-center gap-x-7'>
-                <span className='text-gray-6 text-[19px] cursor-pointer'>
+                <span className='text-gray-6 text-[19px] cursor-pointer hover:text-purple-1 transition-all'>
                     <Icon name="Search" />
                 </span>
                 <div className="relative cursor-pointer">
                     <div className="top-[-11px] absolute left-[13px]">
-                        <p className="flex h-1 min-w-1 items-center justify-center text-white text-[10px] rounded-full bg-red-500 px-[5px] py-2">3</p>
+                        {/* <p className="flex h-1 min-w-1 items-center justify-center text-white text-[10px] rounded-full bg-red-500 px-[5px] py-2">3</p> */}
                     </div>
-                    <span className='text-gray-6 text-[19px]'>
+                    <span className='text-gray-6 text-[19px] hover:text-purple-1 transition-all'>
                         <Icon name="Bell2" />
                     </span>
                 </div>
                 <div className="relative cursor-pointer">
                     <div className="top-[-11px] absolute left-[13px]">
-                        <p className="flex h-1 min-w-1 items-center justify-center text-white text-[10px] rounded-full bg-red-500 px-[5px] py-2">64</p>
+                        {/* <p className="flex h-1 min-w-1 items-center justify-center text-white text-[10px] rounded-full bg-red-500 px-[5px] py-2">64</p> */}
                     </div>
-                    <span className='text-gray-6 text-[19px]'>
+                    <span className='text-gray-6 text-[19px] hover:text-purple-1 transition-all'>
                         <Icon name="Envelope" />
                     </span>
                 </div>

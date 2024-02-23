@@ -2,8 +2,8 @@ import { Core } from "..";
 
 function Preferences({ data, buttons, card, type }) {
 
-    // console.log(" Preferences data", data)
-    
+    console.log(" Preferences data", data?.relocation?.onlyNearMe?.locations)
+
     return (
         <>
             {card ?
@@ -50,7 +50,7 @@ function Preferences({ data, buttons, card, type }) {
                         {data?.desiredSalary !== "" &&
                             <div className='w-full mt-2'>
                                 <h6 className='text-[16px] leading-[20px] font-semibold'>Desired Salary (USD)</h6>
-                                <p className='text-black-3 text-[12px] leading-[20px]'> {data?.desiredSalary ? data?.desiredSalary + 'USD' : "-"}</p>
+                                <p className='text-black-3 text-[12px] leading-[20px]'> {data?.desiredSalary ? data?.desiredSalary + ' USD' : "-"}</p>
                             </div>
                         }
                         <div className='w-full mt-2'>
@@ -78,13 +78,19 @@ function Preferences({ data, buttons, card, type }) {
                                 </span>
                                 :
                                 <>
-                                    {data?.relocation?.anywhere !== true && data?.relocation?.onlyNearMe?.locations.map((value, index) => {
-                                        return (
-                                            <span key={index * 9} className='text-black-3 text-[12px] leading-[20px]'>
-                                                {value}{index !== (data?.relocation?.onlyNearMe?.locations?.length - 1) && ", "}
-                                            </span>
-                                        )
-                                    })}
+                                    {data?.relocation?.onlyNearMe?.locations.length !== 0 ?
+                                        <>
+                                            {data?.relocation?.onlyNearMe?.locations?.map((value, index) => {
+                                                return (
+                                                    <span key={index * 9} className='text-black-3 text-[12px] leading-[20px]'>
+                                                        {value}{index !== (data?.relocation?.onlyNearMe?.locations?.length - 1) && ", "}
+                                                    </span>
+                                                )
+                                            })}
+                                        </>
+                                        :
+                                        "-"
+                                    }
                                 </>
                             }
                         </div>
@@ -167,13 +173,19 @@ function Preferences({ data, buttons, card, type }) {
                                 </span>
                                 :
                                 <>
-                                    {data?.relocation?.anywhere !== true && data?.relocation?.onlyNearMe?.locations.map((value, index) => {
-                                        return (
-                                            <span key={index * 9} className='text-black-3 text-[12px] leading-[20px]'>
-                                                {value}{index !== (data?.relocation?.onlyNearMe?.locations?.length - 1) && ", "}
-                                            </span>
-                                        )
-                                    })}
+                                    {data?.relocation?.onlyNearMe?.locations.length !== 0 ?
+                                        <>
+                                            {data?.relocation?.onlyNearMe?.locations?.map((value, index) => {
+                                                return (
+                                                    <span key={index * 9} className='text-black-3 text-[12px] leading-[20px]'>
+                                                        {value}{index !== (data?.relocation?.onlyNearMe?.locations?.length - 1) && ", "}
+                                                    </span>
+                                                )
+                                            })}
+                                        </>
+                                        :
+                                        "-"
+                                    }
                                 </>
                             }
                         </div>

@@ -26,7 +26,7 @@ const menu = [
     },
     {
         icon: <Icon name="Chat1" size="19" />,
-        path: "hat",
+        path: "chat",
         name: "Chat",
     },
     {

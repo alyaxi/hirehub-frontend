@@ -31,16 +31,22 @@ import EditCandidates from "./admin/manage_candidates/edit";
 import MainJobsAdmin from "./admin/manage_jobs/main";
 import AddJobsAdmin from "./admin/manage_jobs/add";
 import ViewJobsAdmin from "./admin/manage_jobs/view";
-import EditJobsAdmin from "./admin/manage_jobs/edit";
 
-import ViewProfile from "./admin/profile/view";
+// import ViewProfile from "./admin/profile/view";
 import ScheduleCandidatesAdmin from "./admin/manage_candidates/schedule";
 import ManageFAQsAdmin from "./admin/manage_faqs";
 import EmailTemplatesAdmin from "./admin/email_templates/main";
+
+import MainManagePaymentsAdmin from "./admin/manage_payments/main";
+import MainManageSubscriptionPackagesAdmin from "./admin/manage_subscription_packages/main";
+import MainManageNotificationsAdmin from "./admin/manage_notificationws/main";
+import MainManagePlatformSettingAdmin from "./admin/manage_platform_settings/main";
+
 import ManageTermAndConditionAdmin from "./admin/term_and_condition";
 // ------------ Employer ------------
 import EmployerDashboard from "./employer/dashboard";
-import ManageProfile from "./employer/manage_profile";
+import ManageProfile from "./employer/manage_profile/main";
+import EditProfile from "./employer/manage_profile/edit";
 
 import MainJobsEmployer from "./employer/manage_jobs/main";
 import AddJobsEmployer from "./employer/manage_jobs/add";
@@ -62,6 +68,9 @@ import EditQuestionnaireEmployer from "./employer/manage_questionnaire/edit";
 import ManageProfileCandidate from "./candidate/manage_profile";
 import CalenderCandidate from "./candidate/calender";
 import MainJobsCandidate from "./candidate/jobs/main";
+import MainJobHistoryCandidate from "./candidate/job_history/main";
+import MainAlertsCandidate from "./candidate/alerts/main";
+import MainChatCandidate from "./candidate/chat/main";
 import MainCandidatesEmployer from "./employer/manage_candidates/main";
 import ViewCandidatesEmployer from "./employer/manage_candidates/view";
 import EditCandidatesEmployer from "./employer/manage_candidates/edit";
@@ -100,19 +109,23 @@ export {
 
     MainJobsAdmin,
     AddJobsAdmin,
-    EditJobsAdmin,
     ViewJobsAdmin,
 
-    ViewProfile,
+    // ViewProfile,
 
     ScheduleCandidatesAdmin,
     ManageFAQsAdmin,
     EmailTemplatesAdmin,
+    MainManagePaymentsAdmin,
+    MainManageSubscriptionPackagesAdmin,
+    MainManageNotificationsAdmin,
+    MainManagePlatformSettingAdmin,
     ManageTermAndConditionAdmin,
     // ------------ Employer ------------
     EmployerDashboard,
 
     ManageProfile,
+    EditProfile,
 
     MainJobsEmployer,
     AddJobsEmployer,
@@ -134,6 +147,9 @@ export {
     ManageProfileCandidate,
     CalenderCandidate,
     MainJobsCandidate,
+    MainJobHistoryCandidate,
+    MainAlertsCandidate,
+    MainChatCandidate,
     MainCandidatesEmployer,
     ViewCandidatesEmployer,
     EditCandidatesEmployer,

@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Breadcrumb } from '../../../../components/core';
-// import avatar1 from "../../../../assets/images/avatars/2.png";
 import TableB from '../../../../components/table/TableB';
 import { useNavigate } from "react-router-dom"
-import { getAppliedJobByCandidate } from '../../../../Slices/Employer/ManageCandidate';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllAppliedJob } from '../../../../Slices/Admin/ManageCandidate';
 
-
-
-
-// const columns = ["name", "jobTitle", "employer", "eligibility", "experience", "salary", "stage", "status", "action"];
 const columns = [
     {
         title: 'Name',
         key: 'name',
         dataIndex: 'name',
-        sorter: true,
+        sorter: (a, b) => {
+            if (!a.name || !b.name) {
+                return 0;
+            }
+            return a.name.localeCompare(b.name);
+        },
     }, {
         title: 'Job Title',
         key: 'JobTitle',
@@ -33,13 +32,13 @@ const columns = [
         title: 'Stage',
         key: 'stage',
         dataIndex: 'stage',
-        sorter: true
-    },
-    // }, {
-    //     title: 'Status',
-    //     key: 'status',
-    //     dataIndex: 'status',
-    // }, {
+        sorter: (a, b) => {
+            if (!a.stage || !b.stage) {
+                return 0;
+            }
+            return a.stage.localeCompare(b.stage);
+        },
+    }, 
     {
         title: 'Action',
         key: 'action',
@@ -78,7 +77,7 @@ function MainCandidates() {
     //             console.log("Successfully fetched data", res);
 
 
-    
+
 
 
 
@@ -97,19 +96,19 @@ function MainCandidates() {
             console.error(`Error in useEffect of Dashboard ${error}`)
 
         }
-    },[])
+    }, [])
 
 
     const onViewClick = (id) => {
-        
+
         navigate(`/admin/manage-candidates/view/${id}`);
     };
     const onEditClick = (id) => {
         navigate(`/admin/manage-candidates/edit/${id}`);
     };
-    const onCalenderClick = (jobId,candidateId) => {
+    const onCalenderClick = (jobId, candidateId) => {
         // console.log('id',id)
-        console.log('candidateId',candidateId)
+        console.log('candidateId', candidateId)
         navigate(`/admin/manage-candidates/schedule/${jobId}/${candidateId}`);
     };
 

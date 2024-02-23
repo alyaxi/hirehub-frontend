@@ -28,7 +28,7 @@ const CandidateService = {
                 // },
             });
             if (response && response.data && response.status === 200) {
-                console.log("starttttttttttt", response.data);
+                // console.log("starttttttttttt", response.data);
                 return response.data;
             }
         } catch (error) {
@@ -67,11 +67,11 @@ const CandidateService = {
     async addEducationService(formDataToSend) {
         try {
 
-            console.log("educationnnnnnnnnnnnnnnn", formDataToSend)
+            // console.log("educationnnnnnnnnnnnnnnn", formDataToSend)
             const response = await api.post('/add-education', formDataToSend);
             if (response && response.data && response.status === 200) {
-                console.log("response", response);
-                console.log("response.data", response.data);
+                // console.log("response", response);
+                // console.log("response.data", response.data);
                 return response.data;
             }
         } catch (error) {

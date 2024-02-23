@@ -235,7 +235,7 @@ div :where(.css-dev-only-do-not-override-dkbvqv).ant-btn-primary {
   min-height: 100px;
 }
 
-.candidate-profile-avatar span.ant-avatar-string {
+.avatar-text span.ant-avatar-string {
   font-size: 50px;
   font-weight: 700;
 }
@@ -257,3 +257,8 @@ div :where(.css-dev-only-do-not-override-dkbvqv).ant-btn-primary {
 }
 
 /* tab styles end */
+
+.ant-upload-wrapper .ant-upload-drag .ant-upload {
+  padding-top: 23px;
+  padding-bottom: 23px;
+}

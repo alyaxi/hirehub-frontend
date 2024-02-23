@@ -40,12 +40,12 @@ function DragImg({ state, setState }) {
         setImageUrl('');
         setState(null);
     };
-    
+
     return (
         <>
             <label className={`flex justify-start text-[14px] font-medium text-gray-2 tracking-wide mb-2 font-semibold capitalize`}>Upload Image</label>
-            {(imageUrl === "" && (state === undefined || state === null|| state === '')) ?
-                <Dragger {...props}>
+            {(imageUrl === "" && (state === undefined || state === null || state === '')) ?
+                <Dragger {...props} className='h-[500px]'>
                     <p className="ant-upload-drag-icon mt-4">
                         <InboxOutlined />
                     </p>
@@ -57,8 +57,8 @@ function DragImg({ state, setState }) {
                 :
                 <>
                     {imageUrl && (
-                        <div className='relative flex justify-between items-center min-h-[150px] py-2'>
-                            <img src={imageUrl} alt="Uploaded" className='w-full max-w-[100%] h-[100%] max-h-[220px] rounded-lg object-cover' />
+                        <div className='relative flex justify-between items-center min-h-[220px] pb-3'>
+                            <img src={imageUrl} alt="Uploaded" className='max-w-[100%] h-[100%] max-h-[220px] rounded-lg object-contain mx-auto' />
                             <span onClick={deleteFile} className='absolute right-3 top-5 bg-white text-[red] cursor-pointer rounded-full shadow-md p-2'>
                                 <Icon name="Delete" />
                             </span>

@@ -22,7 +22,7 @@ function ProjectCard({ data, index, type }) {
                     <Core.ProficienciesActions buttons={['edit']} type={'projectsData'} id={data?._id} index={index} />
                 }
             </div>
-            <NavLink to={data?.projectUrl}>
+            {/* <NavLink to={data?.projectUrl}> */}
                 <Card
                     size="small"
                     hoverable
@@ -46,7 +46,7 @@ function ProjectCard({ data, index, type }) {
                         description={data?.projectUrl ? data?.projectUrl : "-"}
                     />
                 </Card>
-            </NavLink>
+            {/* </NavLink> */}
         </div>
     )
 };

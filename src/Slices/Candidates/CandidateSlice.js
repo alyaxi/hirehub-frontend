@@ -23,11 +23,11 @@ export const getCandidate = createAsyncThunk('candidate/get-candidate', async (_
 export const UpdateCanidateData = createAsyncThunk('candidate/update-candidate', async (formDataToSend) => {
 
     try {
-        console.log("updateEmployererrrbyidddd consolee", formDataToSend)
+        // console.log("updateEmployererrrbyidddd consolee", formDataToSend)
 
 
         const data = await CandidateService.UpdateCandidateData(formDataToSend)
-        console.log("UpdateCandidateData dataaaaa", data)
+        // console.log("UpdateCandidateData dataaaaa", data)
         return data
     } catch (error) {
         // Handle login error

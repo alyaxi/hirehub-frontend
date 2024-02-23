@@ -1,14 +1,8 @@
 import React from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-// import { Table } from '../../../../components';
-// import companyLogo1 from "../../../../assets/images/company-logos/5.png";
-// import companyLogo2 from "../../../../assets/images/company-logos/4.png";
-// import companyLogo3 from "../../../../assets/images/company-logos/7.png";
 import TableB from '../../../../components/table/TableB';
-import employersData from '../../../../data/employersData.json';
-import {  useSelector } from 'react-redux';
-import {useNavigate} from "react-router-dom"
-
+import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom"
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
@@ -23,7 +17,8 @@ const actions = {
 };
 
 function MainEmployersRequest() {
-    const  employersTableData  = useSelector((state) => state?.admin?.employersDataTable);
+
+    const employersTableData = useSelector((state) => state?.admin?.employersDataTable);
     const navigate = useNavigate()
 
     const columns = [
@@ -31,19 +26,34 @@ function MainEmployersRequest() {
             title: 'Employer Name',
             dataIndex: 'companyName',
             key: 'companyName',
-            sorter: true,
+            sorter: (a, b) => {
+                if (!a.companyName || !b.companyName) {
+                    return 0;
+                }
+                return a.companyName.localeCompare(b.companyName);
+            },
         },
         {
             title: 'Email',
             dataIndex: 'email',
             key: 'email',
-            sorter: true,
+            sorter: (a, b) => {
+                if (!a.email || !b.email) {
+                    return 0;
+                }
+                return a.email.localeCompare(b.email);
+            },
         },
         {
             title: 'Account Status',
             dataIndex: 'account',
             key: 'account',
-            sorter: true,
+            sorter: (a, b) => {
+                if (!a.account || !b.account) {
+                    return 0;
+                }
+                return a.account.localeCompare(b.account);
+            },
         },
         {
             title: 'Action',
@@ -51,13 +61,16 @@ function MainEmployersRequest() {
             dataIndex: 'action',
         },
     ];
-    const { tableData } = employersData;
+
     const statusToFilter = 'Pending';
+
     const filteredData = employersTableData.filter(item => item.isVerified === statusToFilter);
+
+    console.log("filteredData", filteredData)
     const onViewClick = (id) => {
         console.log("onViewClick", id)
         navigate(`/admin/employers-request/view/${id}`);
-        
+
     };
     const onEditClick = (id) => {
         console.log("onEditClick", id)
@@ -66,6 +79,7 @@ function MainEmployersRequest() {
     const onMessageClick = (id) => {
         console.log("onMessageClick", id)
     };
+
     return (
         <>
             <Breadcrumb

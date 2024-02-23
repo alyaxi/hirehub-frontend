@@ -7,13 +7,14 @@ const authService = {
             try {
 
             const response = await api.post('/auth/login', credentials);
-            console.log("response",response)
+            // console.log("response",response)
             if (response && response.data && response.status === 200) {
-                // console.log("starttttttttttt");
+                // console.log("starttttttttttt",response.data);
                 return response.data;
             }
         } catch (error) {
-            throw error;
+                // console.log("starttttttttttt error",error);
+                throw error;
         }
     },
     async register(credentials) {

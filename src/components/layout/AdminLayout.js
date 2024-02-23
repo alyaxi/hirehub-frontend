@@ -36,8 +36,8 @@ const menu = [
     },
     {
         icon: <Icon name="Bell1" />,
-        path: "manage-notification",
-        name: "Manage Notification",
+        path: "manage-notifications",
+        name: "Manage Notifications",
     },
     {
         icon: <Icon name="Document1" />,

@@ -26,12 +26,16 @@ function ChangePasswordForm() {
             confirmPassword: '',
         },
         validationSchema: validationSchema,
+        validateOnChange: false, 
+        validateOnBlur: false, 
         onSubmit: (values) => {
             try {
                 dispatch(changePasswordByUser({ password: values.oldPassword, newPassword: values.newPassword })).unwrap().then(res => {
-                    console.log(res);
+                    console.log('res tttt',res);
                     notificationService.success(res.data)
+                    // console.log("aaaa 1111")
                     setTimeout(() => {
+                        // console.log("aaaa 2222")
                         navigate('/', { replace: true })
                     }, 2000)
                 }).catch(error => {
@@ -44,7 +48,7 @@ function ChangePasswordForm() {
             }
         },
         onReset: () => {
-            console.log("clickeddddddddd")
+            console.log("aaaa clickeddddddddd")
             navigate(-1)
         },
     });
@@ -70,7 +74,7 @@ function ChangePasswordForm() {
                     <Core.InputWithLabel
                         name="newPassword"
                         // label="New Password"
-                        label 
+                        label
                         value={formik.values.newPassword}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}

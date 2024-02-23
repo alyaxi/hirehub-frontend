@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Core } from '..';
 import Icon from '../icon';
-import video from "../../assets/videos/1.mp4";
 import { getCandidate } from '../../Slices/Candidates/CandidateSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Popover, Progress } from 'antd';
+import { Popover, Progress } from 'antd';
 
 const videoOptions = [
     'delete',
@@ -23,6 +22,11 @@ function CandidateProfile() {
     const dispatch = useDispatch();
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const reload = useSelector((state) => state?.Candidate?.reload);
+
+    const _user = useSelector((state) => state.auth.user);
+
+    console.log("ww _user", _user)
+    console.log("ww candidate", candidate)
 
     const personalInformation = candidate?.personalInformationData
     const experience = candidate?.experiencesData
@@ -60,39 +64,97 @@ function CandidateProfile() {
 
     }, [reload])
 
-    let profileCompletion;
+    let profileCompletion = 0;
 
     let personalInformationCount = 0;
 
-    for (const key in candidate?.personalInformationData) {
-        if (candidate?.personalInformationData[key] === "") {
-            personalInformationCount++;
-        }
-    }
+    const requiredProperties = [
+        "profilePicture",
+        "zipCode",
+        "expectedSalary",
+        "careerLevel",
+        "experience",
+        "gender",
+        "phoneNo",
+        "statusLine",
+        "country",
+    ];
+
+    personalInformationCount = requiredProperties.every(property => {
+        return candidate?.personalInformationData?.hasOwnProperty(property) && candidate?.personalInformationData[property] !== "";
+    });
+
+    console.log('personalInformationCount', personalInformationCount);
 
     let jobPreferenceCount = 0;
 
-    for (const key in candidate?.jobPreferenceData) {
-        if (candidate?.jobPreferenceData[key] === "") {
-            jobPreferenceCount++;
+    const requiredPropertiesJob = ["desiredJobTitle", "desiredSalary", "skills"];
+
+    jobPreferenceCount = requiredPropertiesJob?.every(property => {
+
+        if (!candidate?.jobPreference?.hasOwnProperty(property)) return false;
+
+        if (Array.isArray(candidate?.jobPreference[property])) {
+            return candidate?.jobPreference[property].length > 0;
         }
-    }
-    // console.log("candidate?.p/ersonalInformationData", candidate?.personalInformationData)
-    // console.log("personalInformationCount", personalInformationCount)
+
+        if (typeof candidate?.jobPreference[property] === "string") {
+            return candidate?.jobPreference[property].trim() !== "";
+        }
+
+        return true;
+    });
+
+
+
+
+    // console.log("555 requiredPropertiesJob:", requiredPropertiesJob);
+    // console.log("555 candidate?.jobPreference:", candidate?.jobPreference);
+
+    // jobPreferenceCount = requiredPropertiesJob?.every(property => {
+    //     if (candidate?.jobPreference !== undefined) {
+    //         if (candidate?.jobPreference[property] !== undefined) {
+    //             if (Array.isArray(candidate?.jobPreference[property])) {
+    //                 return candidate?.jobPreference[property].length > 0;
+    //             }
+    //             if (typeof candidate?.jobPreference[property] === "string") {
+    //                 return candidate?.jobPreference[property].trim() !== "";
+    //             }
+    //             // Handle other types if needed
+    //             return true;
+    //         } else {
+    //             return false; // Property doesn't exist, so it's not valid
+    //         }
+    //     }
+    //     else {
+    //         return false; // Property doesn't exist, so it's not valid
+    //     }
+    // });
+
+    console.log("555 jobPreferenceCount after", jobPreferenceCount);
+
+
+
+
+
+
+    console.log("jobPreferenceCount after", jobPreferenceCount)
 
     let _experience = candidate?.experiencesData?.length > 0 ? 15 : candidate?.experiencesData?.length;
     let _education = candidate?.educationsData?.length > 0 ? 15 : candidate?.educationsData?.length;
     let _language = candidate?.languagesData?.length > 0 ? 15 : candidate?.languagesData?.length;
     let _skill = candidate?.skillsData?.length > 0 ? 15 : candidate?.skillsData?.length;
     let _summery = candidate?.summery?.text?.length > 2 ? 10 : 0;
-    let _personalInformation = personalInformationCount === 0 ? 15 : 0;
-    let _jobPreference = jobPreferenceCount === 0 ? 15 : 0;
+    let _personalInformation = personalInformationCount === true ? 15 : 0;
+    let _jobPreference = jobPreferenceCount === true ? 15 : 0;
 
     profileCompletion = _experience + _education + _language + _skill + _summery + _personalInformation + _jobPreference;
+    profileCompletion = isNaN(profileCompletion) ? 0 : profileCompletion
 
-    console.log("candidate", candidate)
+    // console.log("ww profileCompletion", profileCompletion)
+
     let workHistoryCheck = candidate?.experiencesData?.length > 0 || false;
-    let personalInformationCheck = personalInformationCount === 0 || false;
+    let personalInformationCheck = personalInformationCount === true ? true : false;
     let educationCheck = candidate?.educationsData?.length > 0 || false;
     let profilePictureCheck = (candidate?.personalInformationData?.profilePicture !== "" && candidate?.personalInformationData?.profilePicture !== undefined) || false;
     let professionalSummeryCheck = candidate?.summery?.text?.length > 2 || false;
@@ -100,14 +162,13 @@ function CandidateProfile() {
     let projectsCheck = candidate?.projectsData?.length > 0 || false;
     let languageCheck = candidate?.languagesData?.length > 0 || false;
 
-    // console.log("_experience",_experience)
-    // console.log("_education",_education)
-    // console.log("_language",_language)
-    // console.log("_skill",_skill)
-    // console.log("_summery",_summery)
-    // console.log("_personalInformation",_personalInformation)
-    // console.log("_jobPreference",_jobPreference)
-
+    console.log("_experience", _experience)
+    console.log("_education", _education)
+    console.log("_language", _language)
+    console.log("_skill", _skill)
+    console.log("_summery", _summery)
+    console.log("_personalInformation", _personalInformation)
+    console.log("_jobPreference", _jobPreference)
 
     return (
         <div className='flex justify-between gap-x-6 w-full'>
