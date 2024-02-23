@@ -128,7 +128,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
     //     }
     // };
 
-    const imgUrl = `http://167.99.148.81/${projectImage?.originFileObj?.name}`
+    const imgUrl = `http://167.99.148.81/server/${projectImage?.originFileObj?.name}`
 
     const handleSubmit = (values) => {
 
