@@ -1,15 +1,8 @@
 import React from 'react';
 import { Breadcrumb, } from '../../../../components/core';
-import { Table } from '../../../../components';
-import companyLogo1 from "../../../../assets/images/company-logos/5.png";
-import companyLogo2 from "../../../../assets/images/company-logos/4.png";
-import companyLogo3 from "../../../../assets/images/company-logos/7.png";
 import TableB from '../../../../components/table/TableB';
-import employersData from '../../../../data/employersData.json';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom"
-
-
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
@@ -68,9 +61,10 @@ function MainRejectedEmployers() {
             dataIndex: 'action',
         },
     ];
-    const { tableData } = employersData;
+
     const statusToFilter = 'Rejected';
     const filteredData = employersTableData.filter(item => item.isVerified === statusToFilter);
+    
     const onViewClick = (id) => {
         navigate(`/admin/rejected-employers/view/${id}`);
     };
@@ -80,6 +74,7 @@ function MainRejectedEmployers() {
     const onMessageClick = (id) => {
         console.log("onMessageClick", id)
     };
+
     return (
         <>
             <Breadcrumb

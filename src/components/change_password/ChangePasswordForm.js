@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { changePasswordByUser } from '../../Slices/Auth/authSlice';
 import { useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import notificationService from '../../utilis/notification';
 import { ToastContainer } from 'react-toastify';
 

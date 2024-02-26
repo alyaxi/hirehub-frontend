@@ -2,12 +2,12 @@ import React from 'react';
 import { Breadcrumb, } from '../../../../components/core';
 import { JobDetails, } from '../../../../components';
 import { useLocation } from 'react-router-dom';
-import {   useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
-    { label: "Manage Jobs" },
+    { label: "Manage Jobs", link: "/admin/manage-jobs" },
     { label: "Job Details" },
 ];
 
@@ -238,12 +238,14 @@ const breadcrumb = [
 // });
 
 function ViewJob() {
+
     const location = useLocation();
     const parts = location?.pathname.split('/');
     const id = parts[parts.length - 1];
     const jobs = useSelector((state) => state?.AdminJob?.jobs);
 
     const data = jobs.find(job => job.id === id);
+
     return (
         <>
             <Breadcrumb

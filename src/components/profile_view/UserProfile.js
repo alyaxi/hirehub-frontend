@@ -7,7 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNext, setStatus, status, type }) {
 
-    console.log("UserProfile extractedData", extractedData)
+    console.log("44444 UserProfile type", type)
+
+    // console.log("UserProfile extractedData", extractedData)
     const location = useLocation();
     const parts = location?.pathname?.split('/');
     const accountType = parts[1];
@@ -44,12 +46,14 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNex
     const [resumePrivacySetting] = useState(1);
 
     const firstLetter = extractedData?.name ? extractedData?.name.trim().charAt(0).toUpperCase() : '';
-console.log("firstLetter",firstLetter)
+
+    // console.log("firstLetter",firstLetter)
+
     const navigate = useNavigate();
     const handleCancel = () => {
         navigate(-1);
     };
-    
+
     return (
         <Core.Card className={`border pt-[20px] pb-[45px] px-[30px]`}>
             <div className='flex justify-end gap-x-4'>

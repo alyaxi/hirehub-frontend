@@ -52,7 +52,9 @@ function Skills({ data, card, type }) {
                                     return (
                                         <div key={index * 4} className='relative flex justify-between gap-x-3 w-full mt-3'>
                                             <div className='absolute top-0 right-0 z-[200] flex justify-end' >
-                                                <Core.ProficienciesActions buttons={['edit']} type={'skillsData'} id={value?._id} />
+                                                {type === "candidate" &&
+                                                    <Core.ProficienciesActions buttons={['edit']} type={'skillsData'} id={value?._id} />
+                                                }
                                             </div>
                                             <div className={`w-full'}`}>
                                                 <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>

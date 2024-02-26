@@ -14,12 +14,12 @@ const breadcrumb = [
 
 function ViewCandidates() {
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
-    
-     console.log(AppliedJobCandidate, "AppliedJobCandidate")
 
-     const { id } = useParams();
+    console.log(AppliedJobCandidate, "AppliedJobCandidate")
+
+    const { id } = useParams();
     const extractedData = AppliedJobCandidate?.find(item => item?.id === id);
-     
+
     console.log(extractedData, "data frm comp")
 
     // console.log({AppliedJobCandidate})
@@ -35,8 +35,13 @@ function ViewCandidates() {
             <Breadcrumb
                 heading="Candidates Details"
                 breadcrumb={breadcrumb}
-            />            
-            <UserProfile data={extractedData} dropdownOptions={dropdownOptions} pageType="view" type="employer" />
+            />
+            <UserProfile
+                data={extractedData}
+                dropdownOptions={dropdownOptions}
+                pageType="view"
+                type="employer"
+            />
         </>
     );
 }

@@ -4,13 +4,13 @@ import { Spin } from 'antd';
 import { Core } from '../..';
 import { useDispatch, useSelector } from 'react-redux';
 import { addInterview } from '../../../Slices/Employer/interviewSchuleSlice';
-import moment from 'moment';
 import { UpdateInterviewsCandidate } from '../../../Slices/Candidates/CandidateInterviewSlice';
 import notificationService from '../../../utilis/notification';
 import { ToastContainer } from 'react-toastify';
 
 
 function ScheduleInterviewForm({ setIsModalOpen, type, eventToEdit }) {
+    
     const [savingForm, setSavingForm] = useState(false);
     const [approval, setApproval] = useState(false);
     const AppliedJobCandidate = useSelector((state) => state?.manageCandidate?.jobs);
@@ -216,35 +216,36 @@ function ScheduleInterviewForm({ setIsModalOpen, type, eventToEdit }) {
                                 </Field>
                             </div>
 
-                            {/* Save/Submit buttons */}
-                            <div className='flex justify-start gap-x-3 pt-6 mt-8 border-t-[1px]'>
-                                {type === "candidate" &&
-                                    <>
-                                        {savingForm ?
-                                            <div className='flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'><Spin /></div>
-                                            :
-                                            <Core.Button type="narrow" submit onClick={() => setApproval(true)} isDisabled={eventToEdit?.approvalInvite === "Declined"} >Accept</Core.Button>
-                                        }
-                                        <Core.Button type="narrow" color="white" submit onClick={() => setApproval(false)} isDisabled={eventToEdit?.approvalInvite === "Declined"}>Decline</Core.Button>
-                                    </>
-                                }
-                                {(type !== "candidate" && type !== "admin" && eventToEdit?.approvalInvite !== "Accepted" && eventToEdit?.approvalInvite !== "Declined" && isDisableFields === false) &&
-                                    <>
-                                        {savingForm ?
-                                            <div className='flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
-                                                <Spin />
-                                            </div>
-                                            : <Core.Button type="narrow" submit isDisabled={isDisableButton}>Save</Core.Button>
-                                        }
-                                    </>
-                                }
-                            </div>
-                        </Form>
-                    )
-                }}
-            </Formik>
+                           {/* Save/Submit buttons */}
+                           <div className='flex justify-start gap-x-3 pt-6 mt-8 border-t-[1px]'>
+                            {type === "candidate" &&
+                                <>
+                                    {savingForm ?
+                                        <div className='flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'><Spin /></div>
+                                        :
+                                        <Core.Button type="narrow" submit onClick={() => setApproval(true)} isDisabled={eventToEdit?.approvalInvite === "Declined" || eventToEdit?.approvalInvite === "Accepted"} >Accept</Core.Button>
+                                    }
+                                    <Core.Button type="narrow" color="white" submit onClick={() => setApproval(false)} isDisabled={eventToEdit?.approvalInvite === "Declined" || eventToEdit?.approvalInvite === "Accepted"}>Decline</Core.Button>
+                                </>
+                            }
+                            {(type !== "candidate" && type !== "admin" && eventToEdit?.approvalInvite !== "Accepted" && eventToEdit?.approvalInvite !== "Declined" && isDisableFields === false) &&
+                                <>
+                                    {savingForm ?
+                                        <div className='flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]'>
+                                            <Spin />
+                                        </div>
+                                        : <Core.Button type="narrow" submit isDisabled={isDisableButton}>Save</Core.Button>
+                                    }
+                                </>
+                            }
+                        </div>
+                    </Form>
+                )
+            }}
+        </Formik>
         </div>
 
+                   
     );
 }
 

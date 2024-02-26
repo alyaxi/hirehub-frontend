@@ -94,6 +94,7 @@ const JobsEmployer = createSlice({
                     employer: {
                         title: job.employerId[0].companyName,
                         address: job.jobLocation,
+                        logo: job?.employerId[0]?.logo
                     },
                     postedDate: job.postedDate,
                     qualification: job.qualification,
