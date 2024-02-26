@@ -32,7 +32,6 @@ import MainJobsAdmin from "./admin/manage_jobs/main";
 import AddJobsAdmin from "./admin/manage_jobs/add";
 import ViewJobsAdmin from "./admin/manage_jobs/view";
 
-// import ViewProfile from "./admin/profile/view";
 import ScheduleCandidatesAdmin from "./admin/manage_candidates/schedule";
 import ManageFAQsAdmin from "./admin/manage_faqs";
 import EmailTemplatesAdmin from "./admin/email_templates/main";
@@ -110,9 +109,7 @@ export {
     MainJobsAdmin,
     AddJobsAdmin,
     ViewJobsAdmin,
-
-    // ViewProfile,
-
+    
     ScheduleCandidatesAdmin,
     ManageFAQsAdmin,
     EmailTemplatesAdmin,

@@ -12,7 +12,7 @@ const dropdownOptions = [
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
-    { label: "Manage Candidates" },
+    { label: "Manage Candidates", link: "/admin/manage-candidates" },
     { label: "Details" },
 ];
 
