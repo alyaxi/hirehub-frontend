@@ -24,7 +24,7 @@ function Experience({ data, type, card }) {
                                     {data?.map((value, index) => {
                                         return (
                                             <div key={index * 4} className='relative flex justify-between gap-x-3 w-full rounded-[15px] border bg-[#f7f7f7] px-3 py-5'>
-                                                <div className='absolute top-0 right-0 z-[200] flex justify-end' >
+                                                <div className='absolute top-2 right-2 z-[200] flex justify-end' >
                                                     <Core.ProficienciesActions buttons={['edit']} type={'experiencesData'} id={value?._id} />
                                                 </div>
                                                 <div className='w-full'>

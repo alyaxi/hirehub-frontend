@@ -13,11 +13,9 @@ function DragImg({ state, setState }) {
         name: 'file',
         multiple: false,
         action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
+        accept: "image/png, image/jpeg, image/webp",
         onChange(info) {
             const { status } = info.file;
-            // if (status !== 'uploading') {
-            //     console.log(info.file);
-            // }
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);
                 setState(info.file);
@@ -51,6 +49,8 @@ function DragImg({ state, setState }) {
                     </p>
                     <p className="ant-upload-hint mb-4">
                         Drag and drop image here, or click add image
+                        <br />
+                        Accepted formats: .png, .jpg, and .webp only.
                     </p>
                     <Core.Button type="narrow" className={"mb-4"}>Add Image</Core.Button>
                 </Dragger>

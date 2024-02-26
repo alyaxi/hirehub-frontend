@@ -193,7 +193,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
         >
             {({ isSubmitting, values }) => {
                 console.log("values", values)
-      
+
                 // console.log("values startMonth", values?.startMonth)
                 // console.log("values startYear", values?.startYear)
                 // console.log("values endMonth", values?.endMonth)
@@ -208,7 +208,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                 return (
                     <Form>
 
-                        <div className='max-h-[250px] mb-4'>
+                        <div className='max-h-[270px] mb-4'>
                             <DragImg state={projectImage} setState={setProjectImage} />
                         </div>
 
