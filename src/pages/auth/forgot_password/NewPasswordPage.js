@@ -7,6 +7,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import notificationService from '../../../utilis/notification';
 import { recoverPasswordOutside } from '../../../Slices/Auth/authSlice';
+import { ToastContainer } from 'react-toastify';
+
 
 // Validation schema using Yup
 const validationSchema = Yup.object().shape({
@@ -32,17 +34,20 @@ function NewPasswordPage() {
                setTimeout(()=>{navigate('/', { replace: true })},2000);
             
             }).catch(error => {
-                notificationService.error(error.message)
+                console.log(error, "error from component")
+                notificationService.error(error?.message)
             })
         } catch (error) {
-            console.error(error);
-            notificationService.error(error.message);
+            console.log(error, "error from component")
+            // console.error(error);
+            notificationService.error(error);
         }
     };
 
 
     return (
         <AuthLayout>
+            <ToastContainer></ToastContainer>
             <img src={image} className='w-[360px]' alt="Logo" />
             <h1 className='text-black-3 text-[42px] leading-[57px] tracking-[0.5px] font-regular'>
                 New Password

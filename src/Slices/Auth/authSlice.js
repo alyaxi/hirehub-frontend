@@ -59,7 +59,8 @@ export const recoverPasswordOutside = createAsyncThunk('auth/recover-password', 
     } catch (error) {
         // Handle login error
         console.log(error);
-        handleApiError(error)
+        throw Error(error);
+        // handleApiError(error)
     }
 });
 
