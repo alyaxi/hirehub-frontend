@@ -4,8 +4,7 @@ import { Core } from '../..';
 import dropdownOptions from '../../../data/dropdownOptions.json';
 import UploadLogo from '../../core/UploadLogo';
 // import UploadVideo from '../../core/UploadVideo';
-import { Form, Formik, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { Form, Formik, Field } from 'formik';
 
 // const validationSchema = Yup.object().shape({
 //     companyName: Yup.string()

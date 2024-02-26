@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { changePasswordByUser } from '../../Slices/Auth/authSlice';
 import { useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import notificationService from '../../utilis/notification';
 import { ToastContainer } from 'react-toastify';
 
@@ -26,12 +26,12 @@ function ChangePasswordForm() {
             confirmPassword: '',
         },
         validationSchema: validationSchema,
-        validateOnChange: false, 
-        validateOnBlur: false, 
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values) => {
             try {
                 dispatch(changePasswordByUser({ password: values.oldPassword, newPassword: values.newPassword })).unwrap().then(res => {
-                    console.log('res tttt',res);
+                    console.log('res tttt', res);
                     notificationService.success(res.data)
                     // console.log("aaaa 1111")
                     setTimeout(() => {

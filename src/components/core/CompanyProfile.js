@@ -73,7 +73,7 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
 
     console.log("employerDetails", employerDetails);
 
-    const firstLetter = employerDetails?.companyName ? employerDetails?.companyName.trim().charAt(0).toUpperCase() : '';
+    // const firstLetter = employerDetails?.companyName ? employerDetails?.companyName.trim().charAt(0).toUpperCase() : '';
 
     return (
         <Core.Card className={`pt-[30px] ${pageType === "edit" ? 'pb-[70px]' : 'pb-[35px]'} px-[60px]`}>

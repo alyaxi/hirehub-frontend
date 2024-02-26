@@ -28,7 +28,12 @@ function ViewCandidates() {
                 heading="Candidates Details"
                 breadcrumb={breadcrumb}
             />
-            <UserProfile data={extractedData} dropdownOptions={dropdownOptions} pageType="view" />
+            <UserProfile
+                data={extractedData}
+                dropdownOptions={dropdownOptions}
+                pageType="view"
+                type="admin"
+            />
         </>
     );
 }

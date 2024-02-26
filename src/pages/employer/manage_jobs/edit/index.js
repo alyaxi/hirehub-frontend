@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
-    { label: "Manage Jobs" },
+    { label: "Manage Jobs", link: "/employer/manage-jobs" },
     { label: "Job Details" },
 ];
 
@@ -24,11 +24,11 @@ function EditJob() {
     const jobs = useSelector((state) => state?.jobSlice.jobs);
     const data = jobs.find(job => job.id === id);
     const [status, setStatus] = useState();
-    console.log("status", status)
 
+    // console.log("status", status)
 
     const handleNext = () => {
-        console.log(status, "statusssssssssssss")
+        // console.log(status, "statusssssssssssss")
         try {
             if (!status) return;
             console.log({ id })
@@ -41,7 +41,7 @@ function EditJob() {
                         navigate("/employer/manage-jobs")
                     }, 2000)
                 }
-               
+
 
             }).catch(err => {
 
@@ -55,6 +55,7 @@ function EditJob() {
 
         }
     }
+    
     return (
         <>
             <Breadcrumb

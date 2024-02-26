@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Breadcrumb } from '../../../../components/core';
 import { Core, Employer } from '../../../../components';
 import { UpdateEmployerById } from '../../../../Slices/Employer/EmployerSlice';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import notificationService from '../../../../utilis/notification';
 import { useNavigate } from "react-router-dom";
@@ -100,7 +100,7 @@ function EditProfile() {
         }
     };
 
- 
+
 
     return (
         <>
@@ -143,7 +143,7 @@ function EditProfile() {
                         </>
                     }
                 </div>
-                   {/* {memoizedButtons} */}
+                {/* {memoizedButtons} */}
             </div>
         </>
     );
