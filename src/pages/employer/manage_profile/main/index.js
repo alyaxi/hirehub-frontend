@@ -42,7 +42,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getEmployerById } from '../../../../Slices/Employer/EmployerSlice';
 
 const breadcrumb = [
-    { label: "Dashboard", link: "/admin/dashboard" },
+    { label: "Dashboard", link: "/employer/dashboard" },
     { label: "Profile Information" },
 ];
 

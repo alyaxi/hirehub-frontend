@@ -72,7 +72,7 @@ import { ToastContainer } from 'react-toastify';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
-    { label: "Manage Questionnaire" },
+    { label: "Manage Questionnaire", link: "/employer/manage-questionnaire" },
     { label: "Add" },
 ];
 

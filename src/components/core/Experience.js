@@ -3,7 +3,10 @@ import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
 
 function Experience({ data, type, card }) {
+
     // console.log(data, "productionnnn")
+    console.log("44444  type Experience", type)
+
     return (
         <>
             {card ?
@@ -60,7 +63,7 @@ function Experience({ data, type, card }) {
                             <>
                                 {data?.map((value, index) => {
                                     return (
-                                        <div key={index * 4} className='flex justify-between gap-x-3'>
+                                        <div key={index * 4} className='relative flex justify-between gap-x-3 w-full rounded-[15px] border bg-[#f7f7f7] px-3 py-5'>
                                             <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
                                                 <Avatar shape="square" size={60} src={value?.logo}>!</Avatar>
                                             </div>

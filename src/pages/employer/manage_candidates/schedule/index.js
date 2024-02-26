@@ -17,7 +17,7 @@ import moment from 'moment';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
-    { label: "Manage Candidates" },
+    { label: "Manage Candidates", link: "/employer/manage-candidates" },
     { label: "Schedule" },
 ];
 
@@ -71,7 +71,7 @@ function ScheduleCandidates() {
                 heading="Schedule"
                 breadcrumb={breadcrumb}
             />
-            <Core.MyCalender events={modifiedDatainterview} type="employer"/>
+            <Core.MyCalender events={modifiedDatainterview} type="employer" />
         </>
     );
 }

@@ -4,6 +4,7 @@ import { Core } from "..";
 function Summary({ data, card, type }) {
 
     // console.log(" Summary data", data)
+    console.log("44444  type Summary", type)
 
     return (
         <>

@@ -5,7 +5,7 @@ import QuestionnaireForm from '../../../../components/questionaire/Questionnaire
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
-    { label: "Manage Questionnaire" },
+    { label: "Manage Questionnaire", link: "/employer/manage-questionnaire" },
     { label: "Edit" },
 ];
 
