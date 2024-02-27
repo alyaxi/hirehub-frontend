@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Breadcrumb } from '../../../components/core';
 import { Core, Employer } from '../../../components';
 import { UpdateEmployerById } from '../../../Slices/Employer/EmployerSlice';
@@ -7,12 +7,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import notificationService from '../../../utilis/notification';
 import { useNavigate } from "react-router-dom";
 import { Spin } from 'antd';
+import * as Yup from 'yup';
+
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
     { label: "Create an employer account" },
 ];
 
+
+const validationSchema = Yup.object().shape({
+    companyName: Yup.string().required('Company name is required'),
+    noOfEmployes: Yup.string().required('Number of employees is required'),
+    phoneNo: Yup.string()
+        .matches(/^[0-9]*$/, 'Phone number must contain only digits')
+        .matches(/^\d{11}$/, 'Phone number must be 11 digits')
+        .required('Phone number is required'),
+    companyIndustry: Yup.string().required('Company industry is required'),
+    description: Yup.string().required('Description is required'),
+});
 function ManageProfile() {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
@@ -99,7 +112,7 @@ function ManageProfile() {
     };
 
 
-    // const memoizedButtons = useMemo(() => (
+    // const memoizedButtons = useCallback(() => (
     //     <div className="mt-5 flex justify-start items-center gap-x-2">
     //         {step !== 1 &&
     //             <Core.Button
@@ -125,7 +138,7 @@ function ManageProfile() {
     //             </>
     //         }
     //     </div>
-    // ), [ savingForm, isAnyEmpty]);
+    // ), []);
 
     return (
         <>
@@ -137,10 +150,10 @@ function ManageProfile() {
                 <ToastContainer></ToastContainer>
 
                 {step === 1 &&
-                    <Employer.ManageProfile.Form1 onNext={GetInput} profileData={viewprofile} />
+                    <Employer.ManageProfile.Form1 onNext={GetInput} profileData={viewprofile} validationSchema={validationSchema} handleFinish={handleFinish}/>
                 }
                 {step === 2 &&
-                    <Employer.ManageProfile.Form2 onNext={GetInput} profileData={viewprofile} />
+                    <Employer.ManageProfile.Form2 onNext={GetInput} profileData={viewprofile} validationSchema={validationSchema} handleFinish={handleFinish} />
                 }
 
                 <div className="mt-5 flex justify-start items-center gap-x-2">
@@ -168,7 +181,7 @@ function ManageProfile() {
                         </>
                     }
                 </div>
-                   {/* {memoizedButtons} */}
+                {/* {memoizedButtons()} */}
             </div>
         </>
     );

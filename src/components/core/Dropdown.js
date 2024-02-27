@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 import React from 'react';
 import { Avatar, Badge, Space } from 'antd';
 import { setEmployer } from '../../Slices/Employer/EmployerSlice';
+import { setCandidate } from '../../Slices/Candidates/CandidateSlice';
 
 export default function Dropdown() {
     const dispatch = useDispatch();
@@ -16,8 +17,13 @@ export default function Dropdown() {
     const user = useSelector((state) => state.auth.user);
     // console.log(user, "user header");
     const viewprofile = useSelector((state) => state?.employer?.employer);
+    const candidate = useSelector((state) => state?.Candidate?.candidate);
 
-    // console.log(viewprofile, "viewwwProfileee")
+    const profilePicture =candidate?.personalInformationData?.profilePicture
+    
+
+
+    console.log(profilePicture, "viewwwProfileee")
 
     const location = useLocation();
     const parts = location?.pathname.split('/');
@@ -25,6 +31,7 @@ export default function Dropdown() {
 
     const handleLogOut = () => {
         dispatch(setEmployer(null))
+        dispatch(setCandidate(null))
         dispatch(logout())
         navigate("/")
     }
@@ -40,7 +47,7 @@ export default function Dropdown() {
                         <img className="inline-block h-[32px] w-[32px] rounded-full" src={avatar} alt="Image Description" />
                         <span className="absolute bottom-0 end-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white bg-green-1"></span>
                     </div> */}
-                    <Badge dot><Avatar src={viewprofile?.logo}>{firstLetter}</Avatar></Badge>
+                    <Badge dot><Avatar src={viewprofile?.logo || profilePicture}>{firstLetter}</Avatar></Badge>
                     <div className='flex flex-col items-start'>
                         <span className='text-black-1 text-[14px] leading-[20px] capitalize font-medium'>{user?.name}</span>
                         {user?.Role !== "candidate" &&

@@ -115,17 +115,16 @@ export const addLanguage = createAsyncThunk('candidate/add-language', async (lan
 const CandidateSlice = createSlice({
     name: 'candidate',
     initialState: {
-        user: JSON.parse(localStorage.getItem('user')),
-        isAuthenticated: JSON.parse(localStorage.getItem('user')) ? true : false,
+        user:null,// JSON.parse(localStorage.getItem('user')),
+        isAuthenticated:null,// JSON.parse(localStorage.getItem('user')) ? true : false,
         role: null,
         error: null,
-        candidate: {},
+        candidate: null,
         reload: false,
     },
     reducers: {
-        setUser: (state, action) => {
-            // state.user = action.payload;
-            // state.isAuthenticated = true;
+        setCandidate: (state, action) => {
+            state.candidate=action.payload;
         },
 
 
@@ -174,7 +173,7 @@ const CandidateSlice = createSlice({
     }
 });
 
-export const { setUser } = CandidateSlice.actions;
+export const { setCandidate } = CandidateSlice.actions;
 
 
 export default CandidateSlice.reducer;

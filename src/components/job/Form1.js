@@ -24,7 +24,7 @@ function Form1({
                 <label className={` flex justify-start text-[14px] text-gray-2 tracking-wide  mb-2 font-semibold capitalize`}>
                     What type of job is it?
                 </label>
-                <Radio.Group className="w-full" onChange={(e) => handleInput('jobType',e.target.value)}>
+                <Radio.Group className="w-full" onChange={(e) => handleInput('jobType',e.target.value)} >
                     <div className="flex flex-wrap gap-y-3 w-full max-w-[570px]">
                         <Radio value={"Full Time"} className='w-[20%]'>Full Time</Radio>
                         <Radio value={'Part Time'} className='w-[20%]'>Part Time</Radio>
@@ -46,7 +46,7 @@ function Form1({
                 />
             </div>
             <div className="mb-4">
-                <Core.InputWithLabel name="expiryDate" label bgGray sm
+                <Core.InputWithLabel name="expiryDate" label bgGray sm required
                     onChange={(e) => handleExpiryDateChange(e.target.value)}
                 />
             </div>
