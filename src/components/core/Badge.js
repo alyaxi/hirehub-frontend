@@ -20,7 +20,6 @@ function Badge({ children }) {
             case "screening":
             case "job offer":
             case "hire":
-            case "screening":
             case "interview":
             case "interested":
             case "not interested":
@@ -57,7 +56,6 @@ function Badge({ children }) {
             case "screening":
             case "job offer":
             case "hire":
-            case "screening":
             case "interview":
             case "interested":
             case "not interested":

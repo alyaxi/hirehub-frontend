@@ -128,7 +128,7 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
     useEffect(() => {
         const allCountries = Country.getAllCountries();
         setCountries(allCountries);
-    }, []);
+    });
 
     const handleCountryChange = (event) => {
         const countryValue = event.target.value;

@@ -175,13 +175,9 @@ function Table({
                                                     <td key={column * 5} className="h-[54px] text-gray-6 dark:text-gray-200 text-[13px] leading-[19px] capitalize font-medium
                                                       px-3 py-0
                                                             ">
-                                                        {/* {row[column]} */}
                                                         {renderTableCell(row[column], column)}
                                                     </td>
                                                 )
-
-                                                {/* <span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-500 text-white">Badge</span> */ }
-
                                             })}
                                         </tr>
                                     ))}

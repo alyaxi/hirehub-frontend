@@ -1,11 +1,10 @@
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
-import { Icons } from '..';
 import Icon from '../icon';
 
 export default function OptionsDropdown({ options, setState, className, menuWidth, defaultTitle, selectedState, showFrom }) {
 
-    console.log("showFrom", showFrom)
+    // console.log("showFrom", showFrom)
 
     const [selectedOption, setSelectedOption] = useState(defaultTitle);
     const handleOptionClick = (value) => {
@@ -13,7 +12,7 @@ export default function OptionsDropdown({ options, setState, className, menuWidt
         setState(value);
     };
 
-    let textColor = selectedOption === ('Status' || 'Job Status' || 'Stage') ? 'text-gray-400' : 'text-black-1';
+    // let textColor = selectedOption === ('Status' || 'Job Status' || 'Stage') ? 'text-gray-400' : 'text-black-1';
 
     return (
         <Menu as="div" className={`relative inline-block text-left ${className}`} defaultValue={selectedOption}>

@@ -7,7 +7,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { register } from '../../../Slices/Auth/authSlice';
 import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { redirectToDashboard } from '../../../utilis/RedirectionToDashboard';
@@ -54,12 +54,13 @@ const RegisterPage = () => {
     const navigate = useNavigate();
     const user = useSelector((state) => state.auth.user);
     // const [userType, setUserType] = useState('');
+    
     useEffect(() => {
         // Check if the user is already authenticated
         if (user) {
             redirectToDashboard(user?.Role, navigate);
         }
-    }, []);
+    });
 
 
     const onSubmit = (values, { setSubmitting }) => {
@@ -93,7 +94,7 @@ const RegisterPage = () => {
     return (
         <AuthLayout>
             <ToastContainer></ToastContainer>
-            <img src={image} alt="Logo" className='w-[360px]' />
+            <img src={image} className='w-[360px]' alt="Logo" />
             <h1 className='text-black-3 text-[32px] leading-[43px] tracking-[0.5px] font-regular'>
                 Welcome to Hirehub, <br />
                 Sign up to Continue

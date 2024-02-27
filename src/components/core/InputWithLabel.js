@@ -5,6 +5,7 @@ import Icon from '../../components/icon';
 import { useNavigate } from 'react-router-dom';
 
 function InputWithLabel({ onChange, label, name, forgotPassword, required, helperText, className, sm, bgGray, value, setValue, onBlur, error, icon, iconic, maxLength, edit, disabled }) {
+
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputType, setInputType] = useState('password');
     const navigate = useNavigate();

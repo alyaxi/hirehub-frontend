@@ -447,7 +447,7 @@ export default TableB
 //   // Set initial data
 //   useState(() => {
 //     generateData();
-//   }, []);
+//   });
 
 //   // Columns for the table
 //   const columns = [

@@ -52,7 +52,7 @@ function ViewProfile() {
     const viewprofile = useSelector((state) => state?.employer?.employer);
     const reload = useSelector((state) => state?.employer?.reload);
 
-    console.log("data3", viewprofile)
+    // console.log("data3", viewprofile)
 
     useEffect(() => {
         try {

@@ -1,4 +1,4 @@
-import { Avatar, Progress, Typography } from "antd";
+import { Avatar, Progress } from "antd";
 import { Core } from "..";
 import Icon from "../icon";
 

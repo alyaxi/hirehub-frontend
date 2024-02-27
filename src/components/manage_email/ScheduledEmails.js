@@ -86,8 +86,7 @@ const savedTemplate = [
 ];
 
 
-function ScheduledEmails({
-}) {
+function ScheduledEmails({}) {
 
     const [sendTo, setSendTo] = useState("");
     const [emailTitle, setEmailTitle] = useState("");
@@ -106,8 +105,8 @@ function ScheduledEmails({
     const [emailNames, setEmailNames] = useState("");
     const [emailStages, setEmailStages] = useState("");
 
-    // console.log("emailNames", emailNames)
-    // console.log("emailStages", emailStages)
+    console.log("emailNames", emailNames)
+    console.log("emailStages", emailStages)
 
     const handleTitle = (e) => {
         setEmailTitle(e.target.value)

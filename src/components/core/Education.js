@@ -1,13 +1,12 @@
-import { Avatar, Empty } from "antd";
+import {  Empty } from "antd";
 import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
-import Icon from "../icon";
-{/* <Avatar shape="square" size={60} src={value?.logo}>!</Avatar> */}
-                                            
-
+import Icon from "../icon";                                           
 
 function Education({ data, type, card }) {
+
     // console.log("data",data)
+    
     return (
         <>
             {card ?

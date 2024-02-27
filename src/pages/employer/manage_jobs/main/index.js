@@ -108,7 +108,7 @@ function MainJobs() {
         } catch (error) {
             console.error(`Error in useEffect of Dashboard ${error}`)
         }
-    }, [])
+    })
 
     const onViewClick = (id) => {
         navigate(`/employer/manage-jobs/view/${id}`);

@@ -200,10 +200,10 @@ function JobPosts() {
         return b.postedDate.localeCompare(a.postedDate);
     });
     
-    console.log({ sortedArray });
+    // console.log({ sortedArray });
     
 
-    console.log(jobPosts, "jobPostsssssssss")
+    // console.log(jobPosts, "jobPostsssssssss")
 
 
     const [open, setOpen] = useState(false);
@@ -349,14 +349,14 @@ function JobPosts() {
 
 
     const openJob = (id) => {
-        console.log("id", id)
+        // console.log("id", id)
         const _selectedJob = sortedArray.find(job => job._id === id);
         setSelectedJob(_selectedJob);
         setSelectedJobId(id);
     }
 
     const closeDetail = () => {
-        console.log("closeDetail called")
+        // console.log("closeDetail called")
         setSelectedJob("")
         setSelectedJobId("")
     }
@@ -393,6 +393,7 @@ function JobPosts() {
 
     console.log(selectedJob.positionTitle)
     console.log(selectedJob.positionTitle !== "" ? "ys" : "no")
+    
     return (
         <>
             <Modal title={'title'} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
@@ -490,7 +491,7 @@ function JobPosts() {
             <div className='flex justify-between gap-x-6 w-full pt-5'>
                 <div className='flex flex-col gap-y-3 w-full pb-[50px]'>
                     {sortedArray?.map((job, index) => {
-                        console.log("job", job)
+                        // console.log("job", job)
                         return (
                             <Core.Card key={job.positionTitle + index}
                                 className={`

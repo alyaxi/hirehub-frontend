@@ -11,20 +11,21 @@ const languagesOptions = [
     { label: 'Spanish', value: 'Spanish' },
     { label: 'French', value: 'French' },
     { label: 'German', value: 'German' },
-    { label: 'Chinese', value: 'Chinese' },
+    { label: 'Chinese', value: 'Chinese' }
 ];
 
 const languageProficiencyOptions = [
     { name: 'Basic', value: 'Basic' },
     { name: 'Intermediate', value: 'Intermediate' },
     { name: 'Advanced', value: 'Advanced' },
-    { name: 'Fluent', value: 'Fluent' }, ,
+    { name: 'Fluent', value: 'Fluent' }
 ];
 
 const LanguagesEdit = ({ handleCancel, setCandidateProfileData, savingForm }) => {
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const languages = candidate.languagesData;
+
     // console.log("languages", languages)
 
     const initialValues = {
@@ -45,6 +46,7 @@ const LanguagesEdit = ({ handleCancel, setCandidateProfileData, savingForm }) =>
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
+        
         console.log("values", values)
         
         // const _languagesData = values?.languages?.map(language => ({

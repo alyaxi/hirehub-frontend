@@ -27,7 +27,7 @@ function PopupModal({ setIsModalOpen,
     };
 
 
-    let [testImage, setTestImage] = useState()
+    // let [testImage, setTestImage] = useState()
 
 
     let _action = action === "edit" ? "Edit" : "Add";
@@ -70,9 +70,9 @@ function PopupModal({ setIsModalOpen,
 
     const cleanAndAppendToFormData = (data) => {
         const formData = new FormData();
-        console.log("block 0")
+        // console.log("block 0")
         if (data?.personalInformationData) {
-            console.log("block 1")
+            // console.log("block 1")
             for (const key in data.personalInformationData) {
                 const value = data.personalInformationData[key];
                 if (value !== undefined && value !== '') {
@@ -81,7 +81,7 @@ function PopupModal({ setIsModalOpen,
             }
         }
         else if (data?.summery) {
-            console.log("block 2")
+            // console.log("block 2")
             for (const key in data.summery) {
                 if (data.summery.hasOwnProperty(key)) {
                     formData.append(`summery[${key}]`, data.summery[key]);
@@ -151,7 +151,7 @@ function PopupModal({ setIsModalOpen,
         formData.append("profilePicture", state?.personalInformationData?.profilePicture)
         if (state && state?.projectsData && state?.projectsData.length) {
             // formData.append("projectImage", state?.projectsData[0]?.projectImage)
-            if (action == "add") {
+            if (action === "add") {
                 formData.append("projectImageFile", state?.projectsData[state?.projectsData?.length - 1]?.projectImageFile)
             } else {
                 formData.append("projectImageFile", state?.projectsData[index]?.projectImageFile)
@@ -175,7 +175,7 @@ function PopupModal({ setIsModalOpen,
         const formdata = convertStateToFormData(candidateProfileData);
 
         try {
-            if (action == "edit") {
+            if (action === "edit") {
                 // console.log(formdata, "editttttttt")
                 setSavingForm(true);
                 // console.log(savingForm, "dispatch")
@@ -189,7 +189,7 @@ function PopupModal({ setIsModalOpen,
                     });
             } else if (action === "add") {
                 setSavingForm(true);
-                if (type == "projectsData") {
+                if (type === "projectsData") {
                     setSavingForm(true);
                     dispatch(addProject(formdata))
                         .unwrap()
@@ -227,7 +227,7 @@ function PopupModal({ setIsModalOpen,
                 }
                 if (type === "skillsData") {
                     // console.log(type, "typeeeee")
-                    console.log({ candidateProfileData })
+                    // console.log({ candidateProfileData })
                     dispatch(addSkills(candidateProfileData))
                         .unwrap()
                         .then(x => { console.log(x, "Ressss") })
