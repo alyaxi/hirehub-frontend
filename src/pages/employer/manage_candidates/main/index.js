@@ -88,7 +88,7 @@ function MainCandidates() {
         }
 
 
-    })
+    }, [])
 
     const onViewClick = (id) => {
         navigate(`/employer/manage-candidates/view/${id}`);

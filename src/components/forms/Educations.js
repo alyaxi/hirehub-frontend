@@ -84,7 +84,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
     useEffect(() => {
         const allCountries = Country.getAllCountries();
         setCountries(allCountries);
-    });
+    }, []);
 
     const handleDateChange = (type, name, event) => {
         const value = event.target.value;

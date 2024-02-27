@@ -60,7 +60,7 @@ const RegisterPage = () => {
         if (user) {
             redirectToDashboard(user?.Role, navigate);
         }
-    });
+    }, []);
 
 
     const onSubmit = (values, { setSubmitting }) => {

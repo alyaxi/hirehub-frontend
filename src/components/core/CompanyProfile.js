@@ -191,6 +191,8 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
                                             ${(employerDetails?.isVerified)?.toLowerCase() === "activated" && 'text-green-4'}
 
                                             ${(employerDetails?.isVerified)?.toLowerCase() === "pending" && 'text-orange-1'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "on-hold" && 'text-orange-1'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "onhold" && 'text-orange-1'}
 
                                             ${(employerDetails?.isVerified)?.toLowerCase() === "rejected" && 'text-red-2'}
                                             ${(employerDetails?.isVerified)?.toLowerCase() === "deactive" && 'text-red-2'}

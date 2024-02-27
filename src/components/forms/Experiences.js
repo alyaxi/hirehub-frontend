@@ -66,7 +66,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
     useEffect(() => {
         const allCountries = Country.getAllCountries();
         setCountries(allCountries);
-    });
+    }, []);
 
     const handleCountryChange = (event) => {
         const countryValue = event.target.value;
