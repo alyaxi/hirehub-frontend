@@ -2,6 +2,7 @@
 import { useSelector } from 'react-redux';
 
 export const useStatsData = () => {
+  
   const employersTableData = useSelector((state) => state?.admin?.employersDataTable);
   const approvedEmpLength = employersTableData.filter(x => x.isVerified === "Approved").length;
   const pendingEmpLength = employersTableData.filter(x => x.isVerified === "Pending").length;

@@ -5,21 +5,12 @@ import { Core } from '..';
 import MultiSelectInput from '../core/MultiSelectInput';
 import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const languagesOptions = [
-    { label: 'English', value: 'English' },
-    { label: 'Spanish', value: 'Spanish' },
-    { label: 'French', value: 'French' },
-    { label: 'German', value: 'German' },
-    { label: 'Chinese', value: 'Chinese' }
-];
-
-const languageProficiencyOptions = [
-    { name: 'Basic', value: 'Basic' },
-    { name: 'Intermediate', value: 'Intermediate' },
-    { name: 'Advanced', value: 'Advanced' },
-    { name: 'Fluent', value: 'Fluent' }
-];
+const {
+    languagesOptions,
+    languageProficiencyOptions
+} = dropdownOptions;
 
 const LanguagesEdit = ({ handleCancel, setCandidateProfileData, savingForm }) => {
 

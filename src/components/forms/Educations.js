@@ -4,54 +4,17 @@ import { Country } from 'country-state-city';
 import { Core } from '..';
 import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const degreeOptions = [
-    { name: "Bachelor's in Computer Science", value: "Bachelor's in Computer Science" },
-    { name: "BSCS", value: "BSCS" },
-    { name: "BSSE", value: "BSSE" },
-    { name: "B Com.", value: "B Com." },
-    { name: "BS", value: "BS" },
-    { name: "Masters", value: "Masters" },
-    { name: "MPhill", value: "MPhill" },
-    { name: "Ph. D", value: "Ph. D" },
-];
-
-const fieldOfStudyOptions = [
-    { name: "Computer Science", value: "Computer Science" },
-    { name: "Engineering", value: "Engineering" },
-    { name: "Medicine", value: "Medicine" },
-    { name: "Business Administration", value: "Business Administration" },
-    { name: "Psychology", value: "Psychology" },
-    { name: "Biology", value: "Biology" },
-    { name: "Economics", value: "Economics" },
-    { name: "Political Science", value: "Political Science" },
-];
-
-const gradeOptions = [
-    { name: "A", value: "A" },
-    { name: "B", value: "B" },
-    { name: "C", value: "C" },
-    { name: "D", value: "D" },
-    { name: "E", value: "E" },
-    { name: "F", value: "F" },
-];
-
-const monthsOptions = [
-    { name: 'January', value: '01' },
-    { name: 'February', value: '02' },
-    { name: 'March', value: '03' },
-    { name: 'April', value: '04' },
-    { name: 'May', value: '05' },
-    { name: 'June', value: '06' },
-    { name: 'July', value: '07' },
-    { name: 'August', value: '08' },
-    { name: 'September', value: '09' },
-    { name: 'October', value: '10' },
-    { name: 'November', value: '11' },
-    { name: 'December', value: '12' },
-];
+const {
+    degreeOptions,
+    fieldOfStudyOptions,
+    gradeOptions,
+    monthsOptions,
+} = dropdownOptions;
 
 function Educations({ action, handleCancel, id, setCandidateProfileData, savingForm }) {
+
     // console.log("id", id)
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
@@ -61,7 +24,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
 
     // console.log("educationToEdit", educationToEdit)
 
-    
+
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
     const endYear = currentYear - 5;

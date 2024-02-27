@@ -18,7 +18,7 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
     const dispatch = useDispatch();
     const { id } = useParams();
     const navigate = useNavigate();
-
+    console.log("employerDetails 44", employerDetails)
     useEffect(() => {
         try {
 
@@ -175,27 +175,30 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
                         </div>
                         <div className='w-[30%]'>
                             <h6 className='text-[18px] leading-[28px] font-medium'>Status</h6>
-
                             {pageType === 'edit' ?
                                 <Core.Dropdown2
                                     selectedState={selectedState}
                                     options={dropdownOptions}
                                     setState={setStatus}
                                     className={"min-w-[160px]"}
-                                    defaultTitle={employerDetails?.accountStatus}
+                                    defaultTitle={employerDetails?.isVerified}
                                 />
                                 :
                                 <span className={`
                                             text-gray-6                             
-                                            ${(employerDetails?.accountStatus)?.toLowerCase() === "active" && 'text-green-4'}
-                                            ${(employerDetails?.accountStatus)?.toLowerCase() === "deactive" && 'text-red-2'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "approved" && 'text-green-4'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "active" && 'text-green-4'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "activated" && 'text-green-4'}
+
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "pending" && 'text-orange-1'}
+
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "rejected" && 'text-red-2'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "deactive" && 'text-red-2'}
                                              text-[14px] leading-[20px] font-medium
                                              `}>
-                                    {employerDetails?.accountStatus ? employerDetails?.accountStatus : "--"}
+                                    {employerDetails?.isVerified ? employerDetails?.isVerified : "--"}
                                 </span>
                             }
-
-
                         </div>
                         <div className='w-[30%]'>
                             <h6 className='text-[18px] leading-[28px] font-medium'>Hired candidate</h6>

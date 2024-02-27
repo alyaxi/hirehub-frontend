@@ -3,29 +3,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
 import DragImg from '../core/DragImg';
 import { useSelector } from 'react-redux';
-import { Spin } from 'antd';
+import { Spin } from 'antd'; import dropdownOptions from '../../data/dropdownOptions.json';
 
-
-const associatedOptions = [
-    { name: "Project Association", value: "Project Association" },
-    { name: "option 2", value: "option 2" },
-    { name: "option 3", value: "option 3" },
-];
-
-const monthsOptions = [
-    { name: 'January', value: '01' },
-    { name: 'February', value: '02' },
-    { name: 'March', value: '03' },
-    { name: 'April', value: '04' },
-    { name: 'May', value: '05' },
-    { name: 'June', value: '06' },
-    { name: 'July', value: '07' },
-    { name: 'August', value: '08' },
-    { name: 'September', value: '09' },
-    { name: 'October', value: '10' },
-    { name: 'November', value: '11' },
-    { name: 'December', value: '12' },
-];
+const {
+    associatedOptions,
+    monthsOptions
+} = dropdownOptions;
 
 function Projects({ action, handleCancel, id, setCandidateProfileData, handleSenddata, index, savingForm }) {
 

@@ -7,7 +7,6 @@ import { Dropdown, Space, Divider, Button, theme, Modal } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllJobsforCandidate } from '../../Slices/Candidates/CandidateJobsSlice';
 
-
 // const jobPosts = [
 //     {
 //         _id: "1",
@@ -177,17 +176,17 @@ import { getAllJobsforCandidate } from '../../Slices/Candidates/CandidateJobsSli
 // ]
 
 
-function JobPosts() {
+const {
+    salaryOptions_String,
+    experienceOptions_String,
+    jobShift_String,
+    skillsOptions_String,
+    industryOptions_String,
+    funtionalAreaOptions_String,
+    companyOptions_String,
+} = dropdownOptions;
 
-    const {
-        salaryOptions_String,
-        experienceOptions_String,
-        jobShift_String,
-        skillsOptions_String,
-        industryOptions_String,
-        funtionalAreaOptions_String,
-        companyOptions_String,
-    } = dropdownOptions;
+function JobPosts() {
 
     const { useToken } = theme;
     const dispatch = useDispatch();

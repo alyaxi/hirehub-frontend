@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Core } from '..';
 import Icon from '../icon';
+import dropdownOptions from '../../data/dropdownOptions.json';
+
+const {
+    languageProficiencyOptions
+} = dropdownOptions;
 
 function LanguagesEdit({ action, handleCancel }) {
-    const languageProficiencyOptions = [
-        { name: 'Basic', value: 'basic' },
-        { name: 'Intermediate', value: 'intermediate' },
-        { name: 'Advanced', value: 'advanced' },
-        { name: 'Fluent', value: 'fluent' },
-      ];
+
     const [languages, setLanguages] = useState([
         {
             id: 1,

@@ -4,12 +4,11 @@ import Icon from '../icon';
 import { Avatar } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const dropdownOptions = [
-    "Open",
-    "Closed",
-    "Republished",
-]
+const {
+    jobStatusOptions,
+} = dropdownOptions;
 
 function JobDetails({ data: extractedData, pageType, selectedState, handleNext, setStatus, status, closeDetail, onApply }) {
 
@@ -84,7 +83,7 @@ function JobDetails({ data: extractedData, pageType, selectedState, handleNext, 
                                 <Core.Dropdown2
                                     selectedState={extractedData?.jobStatus}
                                     setState={setStatus}
-                                    options={dropdownOptions}
+                                    options={jobStatusOptions}
                                     className={"min-w-[160px]"}
                                     defaultTitle={extractedData?.jobStatus}
                                 />

@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { Core } from '..';
 import TableB from '../table/TableB';
 import Icon from '../icon';
+import dropdownOptions from '../../data/dropdownOptions.json';
+
+const {
+    emailNameDropdownOptions,
+    emailStageDropdownOptions
+} = dropdownOptions;
 
 const columns = [
     {
@@ -14,19 +20,6 @@ const columns = [
         key: 'process',
         dataIndex: 'process',
     },
-];
-
-const emailNameDropdownOptions = [
-    'Email Titile ',
-    'Job Interview Invitation',
-    'Job Offer',
-    'Background Check and References',
-    'Assessment/Testing Instructions',
-    'Interview Rescheduling',
-];
-
-const emailStageDropdownOptions = [
-    'Proceed to Next',
 ];
 
 const savedTemplate = [
@@ -85,14 +78,14 @@ const savedTemplate = [
     },
 ];
 
-
-function ScheduledEmails({}) {
+function ScheduledEmails({ }) {
 
     const [sendTo, setSendTo] = useState("");
     const [emailTitle, setEmailTitle] = useState("");
     const [emailContent, setEmailContent] = useState("");
     const [proceedToNext, setProceedToNext] = useState(false);
     const [emailToSend, setEmailToSend] = useState("");
+
     console.log("2 emailTitle", emailTitle)
 
     const onStageClick = (id) => {
@@ -126,11 +119,10 @@ function ScheduledEmails({}) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
         setIsModalOpen(true);
-    }; 
+    };
 
     return (
         <>
-
             <Core.PopupModalCalender isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
             {proceedToNext ?
                 <>

@@ -1,52 +1,44 @@
 {
     "salaryOptions": [
         {
-            "title": "3333$1000 - $1500",
-            "count": "",
-            "iconName": "",
-            "link": ""
+            "name": "$1000",
+            "value": "$1000"
         },
         {
-            "title": "$1500 - $2000",
-            "count": "",
-            "iconName": "",
-            "link": ""
+            "name": "$1500",
+            "value": "$1500"
         },
         {
-            "title": "$2000 - $2500",
-            "count": "",
-            "iconName": "",
-            "link": ""
+            "name": "$2000",
+            "value": "$2000"
         },
         {
-            "title": "$2500 - $3000",
-            "count": "",
-            "iconName": "",
-            "link": ""
+            "name": "$2500",
+            "value": "$2500"
         },
         {
-            "title": "$3000 - $3500",
-            "count": "",
-            "iconName": "",
-            "link": ""
+            "name": "$3000",
+            "value": "$3000"
         },
         {
-            "title": "$3500 - $4000",
-            "count": "",
-            "iconName": "",
-            "link": ""
+            "name": "$3500",
+            "value": "$3500"
         },
         {
-            "title": "$4000 - $4500",
-            "count": "",
-            "iconName": "",
-            "link": ""
+            "name": "$4000",
+            "value": "$4000"
         },
         {
-            "title": "Over $4500",
-            "count": "",
-            "iconName": "",
-            "link": ""
+            "name": "$80000",
+            "value": "$80000"
+        },
+        {
+            "name": "$80,000",
+            "value": "$80,000"
+        },
+        {
+            "name": "Over $8000",
+            "value": "Over $8000"
         }
     ],
     "numberOfEmployeesOptions": [
@@ -253,5 +245,1292 @@
             "name": "Other",
             "value": "Other"
         }
+    ],
+    "degreeOptions": [
+        {
+            "name": "Bachelor's in Computer Science",
+            "value": "Bachelor's in Computer Science"
+        },
+        {
+            "name": "BSCS",
+            "value": "BSCS"
+        },
+        {
+            "name": "BSSE",
+            "value": "BSSE"
+        },
+        {
+            "name": "B Com.",
+            "value": "B Com."
+        },
+        {
+            "name": "BS",
+            "value": "BS"
+        },
+        {
+            "name": "Masters",
+            "value": "Masters"
+        },
+        {
+            "name": "MPhill",
+            "value": "MPhill"
+        },
+        {
+            "name": "Ph. D",
+            "value": "Ph. D"
+        }
+    ],
+    "fieldOfStudyOptions": [
+        {
+            "name": "Computer Science",
+            "value": "Computer Science"
+        },
+        {
+            "name": "Engineering",
+            "value": "Engineering"
+        },
+        {
+            "name": "Medicine",
+            "value": "Medicine"
+        },
+        {
+            "name": "Business Administration",
+            "value": "Business Administration"
+        },
+        {
+            "name": "Psychology",
+            "value": "Psychology"
+        },
+        {
+            "name": "Biology",
+            "value": "Biology"
+        },
+        {
+            "name": "Economics",
+            "value": "Economics"
+        },
+        {
+            "name": "Political Science",
+            "value": "Political Science"
+        }
+    ],
+    "gradeOptions": [
+        {
+            "name": "A",
+            "value": "A"
+        },
+        {
+            "name": "B",
+            "value": "B"
+        },
+        {
+            "name": "C",
+            "value": "C"
+        },
+        {
+            "name": "D",
+            "value": "D"
+        },
+        {
+            "name": "E",
+            "value": "E"
+        },
+        {
+            "name": "F",
+            "value": "F"
+        }
+    ],
+    "monthsOptions": [
+        {
+            "name": "January",
+            "value": "01"
+        },
+        {
+            "name": "February",
+            "value": "02"
+        },
+        {
+            "name": "March",
+            "value": "03"
+        },
+        {
+            "name": "April",
+            "value": "04"
+        },
+        {
+            "name": "May",
+            "value": "05"
+        },
+        {
+            "name": "June",
+            "value": "06"
+        },
+        {
+            "name": "July",
+            "value": "07"
+        },
+        {
+            "name": "August",
+            "value": "08"
+        },
+        {
+            "name": "September",
+            "value": "09"
+        },
+        {
+            "name": "October",
+            "value": "10"
+        },
+        {
+            "name": "November",
+            "value": "11"
+        },
+        {
+            "name": "December",
+            "value": "12"
+        }
+    ],
+    "industryOptions": [
+        {
+            "name": "Accounting",
+            "value": "Accounting"
+        },
+        {
+            "name": "Administration",
+            "value": "Administration"
+        },
+        {
+            "name": "Aerospace and Defense",
+            "value": "Aerospace and Defense"
+        },
+        {
+            "name": "Agriculture",
+            "value": "Agriculture"
+        },
+        {
+            "name": "Architecture",
+            "value": "Architecture"
+        },
+        {
+            "name": "Art and Design",
+            "value": "Art and Design"
+        },
+        {
+            "name": "Automotive",
+            "value": "Automotive"
+        },
+        {
+            "name": "Cleaning & Maintenance",
+            "value": "Cleaning & Maintenance"
+        },
+        {
+            "name": "Customer Service",
+            "value": "Customer Service"
+        },
+        {
+            "name": "Construction and Real Estate",
+            "value": "Construction and Real Estate"
+        },
+        {
+            "name": "Consulting",
+            "value": "Consulting"
+        },
+        {
+            "name": "Education and Training",
+            "value": "Education and Training"
+        },
+        {
+            "name": "Energy and Utilities",
+            "value": "Energy and Utilities"
+        },
+        {
+            "name": "Engineering",
+            "value": "Engineering"
+        },
+        {
+            "name": "Environmental Services",
+            "value": "Environmental Services"
+        },
+        {
+            "name": "Fashion and Apparel",
+            "value": "Fashion and Apparel"
+        },
+        {
+            "name": "Finance and Banking",
+            "value": "Finance and Banking"
+        },
+        {
+            "name": "Food",
+            "value": "Food"
+        },
+        {
+            "name": "Government and Public",
+            "value": "Government and Public"
+        },
+        {
+            "name": "Healthcare and Medical",
+            "value": "Healthcare and Medical"
+        },
+        {
+            "name": "Hospitality and Tourism",
+            "value": "Hospitality and Tourism"
+        },
+        {
+            "name": "Human Resources",
+            "value": "Human Resources"
+        },
+        {
+            "name": "Information Technology (IT)",
+            "value": "Information Technology (IT)"
+        },
+        {
+            "name": "Legal",
+            "value": "Legal"
+        },
+        {
+            "name": "Manufacturing Retail",
+            "value": "Manufacturing Retail"
+        },
+        {
+            "name": "Marketing and Advertising",
+            "value": "Marketing and Advertising"
+        },
+        {
+            "name": "Media and Entertainment",
+            "value": "Media and Entertainment"
+        },
+        {
+            "name": "Non-Profit and Social Services",
+            "value": "Non-Profit and Social Services"
+        },
+        {
+            "name": "Pharmaceuticals and Biotechnology",
+            "value": "Pharmaceuticals and Biotechnology"
+        },
+        {
+            "name": "Sales",
+            "value": "Sales"
+        },
+        {
+            "name": "Sports and Recreation",
+            "value": "Sports and Recreation"
+        },
+        {
+            "name": "Telecommunications",
+            "value": "Telecommunications"
+        },
+        {
+            "name": "Transportation and Logistics",
+            "value": "Transportation and Logistics"
+        },
+        {
+            "name": "Other",
+            "value": "Other"
+        }
+    ],
+    "directlyManageTeamOptions": [
+        {
+            "name": "Yes",
+            "value": "Yes"
+        },
+        {
+            "name": "No",
+            "value": "No"
+        }
+    ],
+    "noOfPeopleOptions": [
+        {
+            "name": "10",
+            "value": "10"
+        },
+        {
+            "name": "20",
+            "value": "20"
+        },
+        {
+            "name": "30",
+            "value": "30"
+        },
+        {
+            "name": "40",
+            "value": "40"
+        },
+        {
+            "name": "50",
+            "value": "50"
+        },
+        {
+            "name": "60",
+            "value": "60"
+        },
+        {
+            "name": "70",
+            "value": "70"
+        },
+        {
+            "name": "80",
+            "value": "80"
+        },
+        {
+            "name": "90",
+            "value": "90"
+        },
+        {
+            "name": "100",
+            "value": "100"
+        },
+        {
+            "name": "110",
+            "value": "110"
+        },
+        {
+            "name": "120",
+            "value": "120"
+        },
+        {
+            "name": "130",
+            "value": "130"
+        },
+        {
+            "name": "140",
+            "value": "140"
+        },
+        {
+            "name": "150",
+            "value": "150"
+        },
+        {
+            "name": "160",
+            "value": "160"
+        },
+        {
+            "name": "170",
+            "value": "170"
+        },
+        {
+            "name": "180",
+            "value": "180"
+        },
+        {
+            "name": "190",
+            "value": "190"
+        },
+        {
+            "name": "200",
+            "value": "200"
+        },
+        {
+            "name": "210",
+            "value": "210"
+        },
+        {
+            "name": "220",
+            "value": "220"
+        },
+        {
+            "name": "230",
+            "value": "230"
+        },
+        {
+            "name": "240",
+            "value": "240"
+        },
+        {
+            "name": "250",
+            "value": "250"
+        },
+        {
+            "name": "260",
+            "value": "260"
+        },
+        {
+            "name": "270",
+            "value": "270"
+        },
+        {
+            "name": "280",
+            "value": "280"
+        },
+        {
+            "name": "290",
+            "value": "290"
+        },
+        {
+            "name": "300",
+            "value": "300"
+        },
+        {
+            "name": "310",
+            "value": "310"
+        },
+        {
+            "name": "320",
+            "value": "320"
+        },
+        {
+            "name": "330",
+            "value": "330"
+        },
+        {
+            "name": "340",
+            "value": "340"
+        },
+        {
+            "name": "350",
+            "value": "350"
+        },
+        {
+            "name": "360",
+            "value": "360"
+        },
+        {
+            "name": "370",
+            "value": "370"
+        },
+        {
+            "name": "380",
+            "value": "380"
+        },
+        {
+            "name": "390",
+            "value": "390"
+        },
+        {
+            "name": "400",
+            "value": "400"
+        },
+        {
+            "name": "410",
+            "value": "410"
+        },
+        {
+            "name": "420",
+            "value": "420"
+        },
+        {
+            "name": "430",
+            "value": "430"
+        },
+        {
+            "name": "440",
+            "value": "440"
+        },
+        {
+            "name": "450",
+            "value": "450"
+        },
+        {
+            "name": "460",
+            "value": "460"
+        },
+        {
+            "name": "470",
+            "value": "470"
+        },
+        {
+            "name": "480",
+            "value": "480"
+        },
+        {
+            "name": "490",
+            "value": "490"
+        },
+        {
+            "name": "500",
+            "value": "500"
+        },
+        {
+            "name": "Over 500",
+            "value": "over500"
+        }
+    ],
+    "desiredJobTitleOptions": [
+        {
+            "label": "UX/UI Designer",
+            "value": "UX/UI Designer"
+        },
+        {
+            "label": "UX/UI Head",
+            "value": "UX/UI Head"
+        },
+        {
+            "label": "Creative Head",
+            "value": "Creative Head"
+        },
+        {
+            "label": "Design Head",
+            "value": "Design Head"
+        },
+        {
+            "label": "Software Engineer",
+            "value": "Software Engineer"
+        },
+        {
+            "label": "Data Scientist",
+            "value": "Data Scientist"
+        },
+        {
+            "label": "Product Manager",
+            "value": "Product Manager"
+        },
+        {
+            "label": "Marketing Specialist",
+            "value": "Marketing Specialist"
+        },
+        {
+            "label": "Financial Analyst",
+            "value": "Financial Analyst"
+        },
+        {
+            "label": "Human Resources Manager",
+            "value": "Human Resources Manager"
+        },
+        {
+            "label": "Sales Representative",
+            "value": "Sales Representative"
+        },
+        {
+            "label": "Customer Support Specialist",
+            "value": "Customer Support Specialist"
+        },
+        {
+            "label": "Graphic Designer",
+            "value": "Graphic Designer"
+        },
+        {
+            "label": "Content Writer",
+            "value": "Content Writer"
+        }
+    ],
+    "desiredSalaryOptions": [
+        {
+            "name": "$1000 - $1500",
+            "value": "$1000 - $1500"
+        },
+        {
+            "name": "$1500 - $2000",
+            "value": "$1500 - $2000"
+        },
+        {
+            "name": "$2000 - $2500",
+            "value": "$2000 - $2500"
+        },
+        {
+            "name": "$2500 - $3000",
+            "value": "$2500 - $3000"
+        },
+        {
+            "name": "$3000 - $3500",
+            "value": "$3000 - $3500"
+        },
+        {
+            "name": "$3500 - $4000",
+            "value": "$3500 - $4000"
+        },
+        {
+            "name": "$4000 - $4500",
+            "value": "$4000 - $4500"
+        },
+        {
+            "name": "60000",
+            "value": "60000"
+        },
+        {
+            "name": "Over $4500",
+            "value": "Over $4500"
+        }
+    ],
+    "expectedSalaryOptions": [
+        {
+            "name": "$1000 - $1500",
+            "value": "$1000 - $1500"
+        },
+        {
+            "name": "$1500 - $2000",
+            "value": "$1500 - $2000"
+        },
+        {
+            "name": "$2000 - $2500",
+            "value": "$2000 - $2500"
+        },
+        {
+            "name": "$2500 - $3000",
+            "value": "$2500 - $3000"
+        },
+        {
+            "name": "$3000 - $3500",
+            "value": "$3000 - $3500"
+        },
+        {
+            "name": "$3500 - $4000",
+            "value": "$3500 - $4000"
+        },
+        {
+            "name": "$4000 - $4500",
+            "value": "$4000 - $4500"
+        },
+        {
+            "name": "60000",
+            "value": "60000"
+        },
+        {
+            "name": "Over $4500",
+            "value": "Over $4500"
+        }
+    ],
+    "skillsOptions": [
+        {
+            "label": "HTML&CSS",
+            "value": "HTML&CSS"
+        },
+        {
+            "label": "Bootstrap",
+            "value": "Bootstrap"
+        },
+        {
+            "label": "Illustrator",
+            "value": "Illustrator"
+        },
+        {
+            "label": "Photoshop",
+            "value": "Photoshop"
+        },
+        {
+            "label": "JavaScript",
+            "value": "JavaScript"
+        },
+        {
+            "label": "React.js",
+            "value": "React.js"
+        },
+        {
+            "label": "Node.js",
+            "value": "Node.js"
+        },
+        {
+            "label": "Python",
+            "value": "Python"
+        },
+        {
+            "label": "Java",
+            "value": "Java"
+        },
+        {
+            "label": "HTML",
+            "value": "HTML"
+        },
+        {
+            "label": "CSS",
+            "value": "CSS"
+        },
+        {
+            "label": "SQL",
+            "value": "SQL"
+        },
+        {
+            "label": "Angular",
+            "value": "Angular"
+        },
+        {
+            "label": "Vue.js",
+            "value": "Vue.js"
+        },
+        {
+            "label": "TypeScript",
+            "value": "TypeScript"
+        },
+        {
+            "label": "Git",
+            "value": "Git"
+        },
+        {
+            "label": "Docker",
+            "value": "Docker"
+        },
+        {
+            "label": "AWS",
+            "value": "AWS"
+        },
+        {
+            "label": "Redux",
+            "value": "Redux"
+        }
+    ],
+    "locationsOptions": [
+        {
+            "name": "New York",
+            "value": "New York"
+        },
+        {
+            "name": "Los Angeles",
+            "value": "Los Angeles"
+        },
+        {
+            "name": "Chicago",
+            "value": "Chicago"
+        },
+        {
+            "name": "London",
+            "value": "London"
+        },
+        {
+            "name": "Dubai",
+            "value": "Dubai"
+        },
+        {
+            "name": "Singapore",
+            "value": "Singapore"
+        },
+        {
+            "name": "Kuwait",
+            "value": "Kuwait"
+        }
+    ],
+    "experienceOptions": [
+        {
+            "name": "Fresh",
+            "value": "Fresh"
+        },
+        {
+            "name": "6 months",
+            "value": "6 months"
+        },
+        {
+            "name": "1 year",
+            "value": "1 year"
+        },
+        {
+            "name": "2 years",
+            "value": "2 years"
+        },
+        {
+            "name": "3 years",
+            "value": "3 years"
+        },
+        {
+            "name": "4 years",
+            "value": "4 years"
+        },
+        {
+            "name": "5 years",
+            "value": "5 years"
+        },
+        {
+            "name": "6 years",
+            "value": "6 years"
+        },
+        {
+            "name": "7 years",
+            "value": "7 years"
+        },
+        {
+            "name": "8 years",
+            "value": "8 years"
+        },
+        {
+            "name": "9 years",
+            "value": "9 years"
+        },
+        {
+            "name": "10 years",
+            "value": "10 years"
+        },
+        {
+            "name": "Over 10 years",
+            "value": "Over 10 years"
+        }
+    ],
+    "genderOptions": [
+        {
+            "name": "Male",
+            "value": "Male"
+        },
+        {
+            "name": "Female",
+            "value": "Female"
+        },
+        {
+            "name": "No Preference",
+            "value": "No Preference"
+        }
+    ],
+    "careerLevelOptions": [
+        {
+            "name": "Entry Level",
+            "value": "Entry Level"
+        },
+        {
+            "name": "Mid-Level",
+            "value": "Mid-Level"
+        },
+        {
+            "name": "Senior",
+            "value": "Senior"
+        },
+        {
+            "name": "Lead",
+            "value": "Lead"
+        },
+        {
+            "name": "Experienced Professional",
+            "value": "Experienced Professional"
+        }
+    ],
+    "rateOptions": [
+        {
+            "name": "USD/hour",
+            "value": "USD/hour"
+        },
+        {
+            "name": "EUR/hour",
+            "value": "EUR/hour"
+        },
+        {
+            "name": "GBP/hour",
+            "value": "GBP/hour"
+        },
+        {
+            "name": "AUD/hour",
+            "value": "AUD/hour"
+        },
+        {
+            "name": "CAD/hour",
+            "value": "CAD/hour"
+        },
+        {
+            "name": "INR/hour",
+            "value": "INR/hour"
+        },
+        {
+            "name": "JPY/hour",
+            "value": "JPY/hour"
+        },
+        {
+            "name": "CNY/hour",
+            "value": "CNY/hour"
+        },
+        {
+            "name": "CHF/hour",
+            "value": "CHF/hour"
+        },
+        {
+            "name": "SEK/hour",
+            "value": "SEK/hour"
+        }
+    ],
+    "languagesOptions": [
+        {
+            "label": "English",
+            "value": "English"
+        },
+        {
+            "label": "Spanish",
+            "value": "Spanish"
+        },
+        {
+            "label": "French",
+            "value": "French"
+        },
+        {
+            "label": "German",
+            "value": "German"
+        },
+        {
+            "label": "Chinese",
+            "value": "Chinese"
+        }
+    ],
+    "languageProficiencyOptions": [
+        {
+            "name": "Basic",
+            "value": "Basic"
+        },
+        {
+            "name": "Intermediate",
+            "value": "Intermediate"
+        },
+        {
+            "name": "Advanced",
+            "value": "Advanced"
+        },
+        {
+            "name": "Fluent",
+            "value": "Fluent"
+        }
+    ],
+    "associatedOptions": [
+        {
+            "name": "Project Association",
+            "value": "Project Association"
+        },
+        {
+            "name": "option 2",
+            "value": "option 2"
+        },
+        {
+            "name": "option 3",
+            "value": "option 3"
+        }
+    ],
+    "skillExperienceOptions": [
+        {
+            "name": "Fresh",
+            "value": "Fresh"
+        },
+        {
+            "name": "6 months",
+            "value": "6 months"
+        },
+        {
+            "name": "1 year",
+            "value": "1 year"
+        },
+        {
+            "name": "2 years",
+            "value": "2 years"
+        },
+        {
+            "name": "3 years",
+            "value": "3 years"
+        },
+        {
+            "name": "4 years",
+            "value": "4 years"
+        },
+        {
+            "name": "5 years",
+            "value": "5 years"
+        },
+        {
+            "name": "6 years",
+            "value": "6 years"
+        },
+        {
+            "name": "7 years",
+            "value": "7 years"
+        },
+        {
+            "name": "8 years",
+            "value": "8 years"
+        },
+        {
+            "name": "9 years",
+            "value": "9 years"
+        },
+        {
+            "name": "10 years",
+            "value": "10 years"
+        },
+        {
+            "name": "Over 10 years",
+            "value": "Over 10 years"
+        }
+    ],
+    "noOfPeopleToHireOptions": [
+        {
+            "name": "10",
+            "value": "10"
+        },
+        {
+            "name": "12",
+            "value": "20"
+        },
+        {
+            "name": "30",
+            "value": "30"
+        },
+        {
+            "name": "50",
+            "value": "50"
+        },
+        {
+            "name": "100",
+            "value": "100"
+        },
+        {
+            "name": "200",
+            "value": "200"
+        },
+        {
+            "name": "Over 200",
+            "value": "Over 200"
+        }
+    ],
+    "departmentOptions": [
+        {
+            "name": "Graphics Designers",
+            "value": "Graphics Designers"
+        },
+        {
+            "name": "Design",
+            "value": "Design"
+        },
+        {
+            "name": "Web/App Development",
+            "value": "Web/App Development"
+        },
+        {
+            "name": "Sales",
+            "value": "Sales"
+        },
+        {
+            "name": "Marketing",
+            "value": "Marketing"
+        },
+        {
+            "name": "Content Writing",
+            "value": "Content Writing"
+        },
+        {
+            "name": "HR",
+            "value": "HR"
+        },
+        {
+            "name": "Administration",
+            "value": "Administration"
+        }
+    ],
+    "minimumEducationOptions": [
+        {
+            "name": "High School Diploma",
+            "value": "High School Diploma"
+        },
+        {
+            "name": "Associate's Degree",
+            "value": "Associate's Degree"
+        },
+        {
+            "name": "Bachelor's Degree",
+            "value": "Bachelor's Degree"
+        },
+        {
+            "name": "Master's Degree",
+            "value": "Master's Degree"
+        },
+        {
+            "name": "Doctorate/Ph.D.",
+            "value": "Doctorate/Ph.D."
+        }
+    ],
+    "jobShiftOptions": [
+        {
+            "name": "First Shift (Day)",
+            "value": "First Shift (Day)"
+        },
+        {
+            "name": "Second Shift (Afternoon)",
+            "value": "Second Shift (Afternoon)"
+        },
+        {
+            "name": "Work from Home",
+            "value": "Work from Home"
+        },
+        {
+            "name": "Third Shift (Night)",
+            "value": "Third Shift (Night)"
+        },
+        {
+            "name": "Rotating",
+            "value": "Rotating"
+        }
+    ],
+    "benefitsOptions": [
+        {
+            "label": "Flexible Work Hours",
+            "value": "Flexible Work Hours"
+        },
+        {
+            "label": "Remote Work Opportunities",
+            "value": "Remote Work Opportunities"
+        },
+        {
+            "label": "Health Insurance",
+            "value": "Health Insurance"
+        },
+        {
+            "label": "Dental Insurance",
+            "value": "Dental Insurance"
+        },
+        {
+            "label": "Vision Insurance",
+            "value": "Vision Insurance"
+        },
+        {
+            "label": "401(k) Retirement Plan",
+            "value": "401(k) Retirement Plan"
+        },
+        {
+            "label": "Paid Time Off (PTO)",
+            "value": "Paid Time Off (PTO)"
+        },
+        {
+            "label": "Paid Holidays",
+            "value": "Paid Holidays"
+        },
+        {
+            "label": "Flexible Spending Account (FSA)",
+            "value": "Flexible Spending Account (FSA)"
+        },
+        {
+            "label": "Life Insurance",
+            "value": "Life Insurance"
+        },
+        {
+            "label": "Employee Assistance Program (EAP)",
+            "value": "Employee Assistance Program (EAP)"
+        },
+        {
+            "label": "Professional Development Opportunities",
+            "value": "Professional Development Opportunities"
+        },
+        {
+            "label": "Tuition Reimbursement",
+            "value": "Tuition Reimbursement"
+        },
+        {
+            "label": "Stock Options or Equity",
+            "value": "Stock Options or Equity"
+        },
+        {
+            "label": "Gym Memberships",
+            "value": "Gym Memberships"
+        },
+        {
+            "label": "Casual Dress Code",
+            "value": "Casual Dress Code"
+        },
+        {
+            "label": "Company Events and Activities",
+            "value": "Company Events and Activities"
+        },
+        {
+            "label": "On-site Fitness Facilities",
+            "value": "On-site Fitness Facilities"
+        },
+        {
+            "label": "Employee Recognition Programs",
+            "value": "Employee Recognition Programs"
+        },
+        {
+            "label": "Maternity and Paternity Leave",
+            "value": "Maternity and Paternity Leave"
+        },
+        {
+            "label": "Sick Leave",
+            "value": "Sick Leave"
+        },
+        {
+            "label": "Commuter Benefits",
+            "value": "Commuter Benefits"
+        }
+    ],
+    "emailNameDropdownOptions": [
+        {
+            "label": "Email Titile",
+            "value": "Email Titile"
+        },
+        {
+            "label": "Job Interview Invitation",
+            "value": "Job Interview Invitation"
+        },
+        {
+            "label": "Job Offer",
+            "value": "Job Offer"
+        },
+        {
+            "label": "Background Check and References",
+            "value": "Background Check and References"
+        },
+        {
+            "label": "Assessment/Testing Instructions",
+            "value": "Assessment/Testing Instructions"
+        },
+        {
+            "label": "Interview Rescheduling",
+            "value": "Interview Rescheduling"
+        }
+    ],
+    "emailStageDropdownOptions": [
+        {
+            "label": "Proceed to Next",
+            "value": "Proceed to Next"
+        }
+    ],
+    "positionOptions": [
+        {
+            "name": "Manager",
+            "value": "Manager"
+        },
+        {
+            "name": "Sales Manager",
+            "value": "Sales Manager"
+        },
+        {
+            "name": "Business Analyst",
+            "value": "Business Analyst"
+        },
+        {
+            "name": "Engineer",
+            "value": "Engineer"
+        },
+        {
+            "name": "Accounting",
+            "value": "Accounting"
+        },
+        {
+            "name": "Management",
+            "value": "Management"
+        }
+    ],
+    "UserStatusdropdownOptions": [
+        "New",
+        "Attempted to Contact",
+        "Connected",
+        "On Hold",
+        "Qualified",
+        "Not Interested",
+        "Unqualified"
+    ],
+    "CandidateStagedropdownOptions": [
+        "New Application",
+        "Screening",
+        "Interview",
+        "Selection",
+        "Job Offer",
+        "Hire"
+    ],
+    "JobStatusDropdownOptions": [
+        "Open",
+        "Closed",
+        "Republished"
+    ],
+    "videoOptions": [
+        "delete"
+    ],
+    "userTypeOptions": [
+        {
+            "name": "Employer",
+            "value": "employer"
+        },
+        {
+            "name": "Candidate",
+            "value": "candidate"
+        }
+    ],
+    "employerStatusOptions": [
+        "activate",
+        "inactive",
+        "on hold"
+    ],
+    "candidateStageOptions": [
+        "screening",
+        "new application",
+        "hire",
+        "selection"
+    ],
+    "jobStatusOptions": [
+        "Open",
+        "Closed",
+        "Republished"
     ]
 }

@@ -1,30 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Core } from '..';
 import { Divider, Radio } from 'antd';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const salaryOptions = [
-    { name: "$1000 - $1500", value: "$1000 - $1500" },
-    { name: "$1500 - $2000", value: "$1500 - $2000" },
-    { name: "$2000 - $2500", value: "$2000 - $2500" },
-    { name: "$3000 - $3500", value: "$3000 - $3500" },
-    { name: "$3500 - $4000", value: "$3500 - $4000" },
-    { name: "$4000 - $4500", value: "$4000 - $4500" },
-    { name: "$5000 - $5000", value: "$5000 - $5000" },
-];
-const rateOptions = [
-    { name: "USD/hour", value: "USD/hour" },
-    { name: "EUR/hour", value: "EUR/hour" },
-    { name: "GBP/hour", value: "GBP/hour" },
-    { name: "AUD/hour", value: "AUD/hour" },
-    { name: "CAD/hour", value: "CAD/hour" },
-    { name: "INR/hour", value: "INR/hour" },
-    { name: "JPY/hour", value: "JPY/hour" },
-    { name: "CNY/hour", value: "CNY/hour" },
-    { name: "CHF/hour", value: "CHF/hour" },
-    { name: "SEK/hour", value: "SEK/hour" },
-];
+const {
+    salaryOptions,
+    rateOptions
+} = dropdownOptions;
+  
+function Form2({ handleSalaryChange }) {
 
-function Form2({ handleSalaryChange, handleInput }) {
     const [rate, setRate] = useState('');
     const [salary, setSalary] = useState('');
     const [employmentType, setEmploymentType] = useState(false);

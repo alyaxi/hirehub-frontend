@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
-    { label: "Approved Employers", link: "/admin/approved-employers" },
+    { label: "Manage Employers", link: "/admin/manage-employers" },
+    { label: "Employer's Request", link: "/admin/employers-request" },
     { label: "Edit" },
 ];
 
@@ -24,7 +25,7 @@ function EditEmployersRequest() {
     return (
         <>
             <Breadcrumb
-                heading="Edit Approved Employers"
+                heading="Edit Employer's Request"
                 breadcrumb={breadcrumb}
             />
             <Core.CompanyProfile selectedState={employerDetails.isVerified} data={tableData} dropdownOptions={dropdownOptions} pageType="edit" />

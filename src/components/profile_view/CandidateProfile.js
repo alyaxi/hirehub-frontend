@@ -4,10 +4,11 @@ import Icon from '../icon';
 import { getCandidate } from '../../Slices/Candidates/CandidateSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Popover, Progress } from 'antd';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const videoOptions = [
-    'delete',
-];
+const {
+    videoOptions, 
+} = dropdownOptions; 
 
 // const text = <span>Introduction Video</span>;
 

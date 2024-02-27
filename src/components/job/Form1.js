@@ -2,16 +2,12 @@
 import React from 'react';
 import { Core } from '..';
 import { Radio } from 'antd';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const noOfPeopleToHireOptions = [
-    { name: "10", value: "10" },
-    { name: "12", value: "20" },
-    { name: "30", value: "30" },
-    { name: "50", value: "50" },
-    { name: "100", value: "100" },
-    { name: "200", value: "200" },
-    { name: "Over 200", value: "Over 200" },
-];
+const {
+    noOfPeopleToHireOptions,
+} = dropdownOptions;
+
 function Form1({
     // handleShortSummeryChange,
     handleNoOfPeopleToHireChange,
@@ -24,7 +20,7 @@ function Form1({
                 <label className={` flex justify-start text-[14px] text-gray-2 tracking-wide  mb-2 font-semibold capitalize`}>
                     What type of job is it?
                 </label>
-                <Radio.Group className="w-full" onChange={(e) => handleInput('jobType',e.target.value)} >
+                <Radio.Group className="w-full" onChange={(e) => handleInput('jobType', e.target.value)} >
                     <div className="flex flex-wrap gap-y-3 w-full max-w-[570px]">
                         <Radio value={"Full Time"} className='w-[20%]'>Full Time</Radio>
                         <Radio value={'Part Time'} className='w-[20%]'>Part Time</Radio>

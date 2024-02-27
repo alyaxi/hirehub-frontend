@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
+    { label: "Manage Employers", link: "/admin/manage-employers" },
     { label: "Rejected Employers", link: "/admin/rejected-employers" },
     { label: "Edit" },
 ];

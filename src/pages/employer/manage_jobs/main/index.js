@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 import { GetjobsEmployer } from '../../../../Slices/Employer/JobSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 const columns = [
     {
         title: 'Position Title',
@@ -76,7 +75,6 @@ const columns = [
     },
 ];
 
-
 const actions = {
     view: true,
     edit: true,
@@ -95,8 +93,7 @@ function MainJobs() {
     const dispatch = useDispatch();
     const jobs = useSelector((state) => state?.jobSlice.jobs);
 
-    console.log(jobs, "jobsssssssss")
-
+    // console.log(jobs, "jobsssssssss")
 
     useEffect(() => {
         try {

@@ -17,9 +17,9 @@ const actions = {
 };
 
 function MainRejectedEmployers() {
+
     const employersTableData = useSelector((state) => state?.admin?.employersDataTable);
     const navigate = useNavigate()
-
 
     const columns = [
         {
@@ -64,7 +64,7 @@ function MainRejectedEmployers() {
 
     const statusToFilter = 'Rejected';
     const filteredData = employersTableData.filter(item => item.isVerified === statusToFilter);
-    
+
     const onViewClick = (id) => {
         navigate(`/admin/rejected-employers/view/${id}`);
     };

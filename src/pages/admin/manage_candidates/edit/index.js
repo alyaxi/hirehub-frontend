@@ -6,13 +6,11 @@ import { changeAppliedJobStatusAdmin } from '../../../../Slices/Admin/ManageCand
 import notificationService from '../../../../utilis/notification';
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
+import dropdownOptions from '../../../../data/dropdownOptions.json';
 
-const dropdownOptions = [
-    'screening',
-    'new application',
-    'hire',
-    "selection"
-];
+const {
+    candidateStageOptions, 
+} = dropdownOptions; 
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
@@ -72,7 +70,7 @@ function EditCandidates() {
                 status={status}
                 setStatus={setStatus}
                 data={extractedData}
-                dropdownOptions={dropdownOptions}
+                dropdownOptions={candidateStageOptions}
                 pageType="edit"
                 type="admin"
             />

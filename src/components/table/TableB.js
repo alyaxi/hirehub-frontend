@@ -3,30 +3,13 @@ import Icon from '../icon';
 import { Avatar, Table, Flex, Button } from 'antd';
 import '../../assets/css/table.css'
 import { Core } from '..';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const UserStatusdropdownOptions = [
-    'new',
-    'attempted to contact',
-    'Connected',
-    'On Hold',
-    'Qualified',
-    'Not Interested',
-    'Unqualified',
-];
-
-const CandidateStagedropdownOptions = [
-    'New Application ',
-    'Screening',
-    'Interview',
-    'Selection',
-    'Job Offer',
-    'Hire',
-];
-const JobStatusDropdownOptions = [
-    'Open',
-    'Closed',
-    'Republished',
-];
+const {
+    UserStatusdropdownOptions,
+    CandidateStagedropdownOptions,
+    JobStatusDropdownOptions
+} = dropdownOptions;
 
 function TableB({
     tableId,
@@ -62,7 +45,8 @@ function TableB({
     addButton
 }) {
 
-    console.log("tableDataa", data)
+    // console.log("tableDataa", data)
+
     const newColumn = columns.map((value, index) => {
 
         // let columnSorter;
@@ -79,6 +63,7 @@ function TableB({
         // } else if (value.sorter === false) {
         //     columnSorter = undefined;
         // }
+
         return {
             ...value,
             render: (val, id) => {
@@ -241,6 +226,7 @@ function TableB({
     const handleTableChange = (pagination, filters, sorter) => {
         console.log(pagination);
     };
+
     const [resetTrigger, setResetTrigger] = useState(false);
     const [resetTrigger2, setResetTrigger2] = useState(false);
     const [resetTrigger3, setResetTrigger3] = useState(false);
@@ -257,11 +243,10 @@ function TableB({
         setResetTrigger2((prev) => !prev);
         setResetTrigger3((prev) => !prev);
     };
-    console.log("555 data", data)
-    console.log("555 newColumn", newColumn)
-    console.log("555 data.map(_data => ({ ..._data, key: _data.id }))", data.map(_data => ({ ..._data, key: _data.id })))
 
-
+    // console.log("555 data", data)
+    // console.log("555 newColumn", newColumn)
+    // console.log("555 data.map(_data => ({ ..._data, key: _data.id }))", data.map(_data => ({ ..._data, key: _data.id })))
 
     return (
         <div className={`flex flex-col bg-white rounded-[8px] overflow-hidden ${border === 'none' ? 'border-0' : 'border shadow-md'}`}>

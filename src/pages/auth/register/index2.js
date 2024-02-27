@@ -2,11 +2,11 @@ import React from 'react';
 import { AuthCard, AuthLayout, Core } from '../../../components';
 import "../../../assets/css/login";
 import { NavLink } from 'react-router-dom';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const userTypeOptions = [
-    { name: "Employeer", value: "employeer" },
-    { name: "Candidate", value: "candidate" },
-]
+const {
+    userTypeOptions,
+} = dropdownOptions;
 
 function RegisterPage() {
     return (

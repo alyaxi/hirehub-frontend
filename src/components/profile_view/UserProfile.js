@@ -7,9 +7,12 @@ import { useNavigate } from 'react-router-dom';
 
 function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNext, setStatus, status, type }) {
 
-    console.log("44444 UserProfile type", type)
-
+    // console.log("44444 UserProfile type", type)
+    // console.log("44444 UserProfile pageType", pageType)
+    // console.log("44444 UserProfile dropdownOptions", dropdownOptions)
+    
     // console.log("UserProfile extractedData", extractedData)
+
     const location = useLocation();
     const parts = location?.pathname?.split('/');
     const accountType = parts[1];
