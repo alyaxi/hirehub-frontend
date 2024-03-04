@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import { useNavigate } from "react-router-dom"
 import { Image } from 'antd';
 
-function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
+function CompanyProfile({ data, pageType, dropdownOptions }) {
 
     const [status, setStatus] = useState("");
     const employerDetails = useSelector((state) => state?.admin?.employerDetails);
@@ -18,7 +18,7 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
     const dispatch = useDispatch();
     const { id } = useParams();
     const navigate = useNavigate();
-    console.log("employerDetails 44", employerDetails)
+
     useEffect(() => {
         try {
 
@@ -71,7 +71,7 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
         navigate(-1);
     }
 
-    console.log("employerDetails", employerDetails);
+    console.log("44 employerDetails", employerDetails);
 
     // const firstLetter = employerDetails?.companyName ? employerDetails?.companyName.trim().charAt(0).toUpperCase() : '';
 
@@ -139,28 +139,6 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
                         </div>
                     </div>
                     <div className='flex justify-start items-start flex-wrap gap-x-2 gap-y-8 pt-10 pb-8'>
-                        {/* {extractedData?.stats.map((value, index) => {
-                            console.log(value, "valueeeeeee")
-                            return (
-                                <>
-                                    <div key={value * 6} className='w-[30%]'>
-                                        <h6 className='text-[18px] leading-[28px] font-medium'>{value?.title}</h6>
-                                        {pageType === 'edit' && value?.title === "Status" ?
-                                            <Core.Dropdown2 selectedState={selectedState} options={dropdownOptions} setState={setStatus} />
-                                            :
-                                            <span className={`
-                                            text-gray-6
-                                            ${(value?.value).toLowerCase() === "activated" && 'text-green-4'}
-                                            ${(value?.value).toLowerCase() === "deactivated" && 'text-red-2'}
-                                             text-[14px] leading-[20px] font-medium`}>
-                                                {value?.value}
-                                            </span>
-                                        }
-                                    </div>
-                                    {index === 4 && <div className='w-[30%]'></div>}
-                                </>
-                            )
-                        })} */}
                         <div className='w-[30%]'>
                             <h6 className='text-[18px] leading-[28px] font-medium'>Company size</h6>
                             <span className='text-gray-6 text-[14px] leading-[20px] font-medium'>
@@ -177,7 +155,6 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
                             <h6 className='text-[18px] leading-[28px] font-medium'>Status</h6>
                             {pageType === 'edit' ?
                                 <Core.Dropdown2
-                                    selectedState={selectedState}
                                     options={dropdownOptions}
                                     setState={setStatus}
                                     className={"min-w-[160px]"}

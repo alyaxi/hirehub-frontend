@@ -1522,6 +1522,11 @@
         "inactive",
         "on hold"
     ],
+    "employerApprovalOptions": [
+        "approved",
+        "pending",
+        "rejected"
+    ],
     "candidateStageOptions": [
         "screening",
         "new application",

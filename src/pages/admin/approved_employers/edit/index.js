@@ -3,12 +3,17 @@ import { Breadcrumb, } from '../../../../components/core';
 import { Core, } from '../../../../components';
 import employersData from '../../../../data/employersData.json';
 import { useSelector } from 'react-redux';
+import dropdownOptions from '../../../../data/dropdownOptions.json';
 
-const dropdownOptions = [
-    'Approved',
-    'Pending',
-    'Rejected',
-];
+const {
+    employerApprovalOptions,
+} = dropdownOptions;
+
+// const dropdownOptions = [
+//     'Approved',
+//     'Pending',
+//     'Rejected',
+// ];
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
@@ -28,7 +33,7 @@ function EditApprovedEmployers() {
                 heading="Edit Approved Employers"
                 breadcrumb={breadcrumb}
             />
-            <Core.CompanyProfile data={tableData} selectedState={employerDetails?.isVerified} dropdownOptions={dropdownOptions} pageType="edit" />
+            <Core.CompanyProfile data={tableData} selectedState={employerDetails?.isVerified} dropdownOptions={employerApprovalOptions} pageType="edit" />
         </>
     );
 }
