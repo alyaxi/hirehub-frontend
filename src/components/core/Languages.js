@@ -3,7 +3,7 @@ import { Core } from "..";
 
 function Languages({ data, card, type }) {
 
-    console.log("44444  type Languages", type)
+    // console.log("44444  type Languages", type)
 
     return (
         <>

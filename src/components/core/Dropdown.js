@@ -20,8 +20,8 @@ export default function Dropdown() {
     const viewprofile = useSelector((state) => state?.employer?.employer);
     const candidate = useSelector((state) => state?.Candidate?.candidate);
 
-    const profilePicture =candidate?.personalInformationData?.profilePicture
-    
+    const profilePicture = candidate?.personalInformationData?.profilePicture
+
     // console.log(profilePicture, "viewwwProfileee")
 
     const location = useLocation();
@@ -35,8 +35,8 @@ export default function Dropdown() {
         navigate("/")
     }
     // console.log("user", user)
-    
-    const firstLetter = user?.name ? user.name.trim().charAt(0).toUpperCase() : '';
+
+    const firstLetter = user?.name ? user?.name?.trim()?.charAt(0)?.toUpperCase() : '';
 
     return (
         <Menu as="div" className="relative inline-block text-left -ml-3">

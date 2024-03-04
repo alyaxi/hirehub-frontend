@@ -14,9 +14,7 @@ function PopupModal({ setIsModalOpen,
 }) {
     const dispatch = useDispatch()
 
-
     const [candidateProfileData, setCandidateProfileData] = useState();
-
 
     const handleOk = () => {
         setIsModalOpen(false);
@@ -26,9 +24,7 @@ function PopupModal({ setIsModalOpen,
         setIsModalOpen(false);
     };
 
-
     // let [testImage, setTestImage] = useState()
-
 
     let _action = action === "edit" ? "Edit" : "Add";
     let title = '';
@@ -324,14 +320,6 @@ function PopupModal({ setIsModalOpen,
                     savingForm={savingForm}
                 />}
 
-            {/* {(type === "skillsData" && action === "edit") &&
-                <Forms.SkillsEdit
-                    handleCancel={handleCancel}
-                    action={'edit'}
-                    setCandidateProfileData={setCandidateProfileData}
-                    savingForm={savingForm}
-                />} */}
-
 
 
             {/* {(type === "languagesData" && action !== "edit") && */}
@@ -343,16 +331,7 @@ function PopupModal({ setIsModalOpen,
                     id={action === "edit" ? id : null}
                     // handleSenddata={handleSenddata}
                     savingForm={savingForm}
-                />}
-
-            {/* {(type === "languagesData" && action === "edit") &&
-                <Forms.LanguagesEdit
-                    handleCancel={handleCancel}
-                    action={'edit'}
-                    setCandidateProfileData={setCandidateProfileData}
-                    savingForm={savingForm}
-                />} */}
-
+                />} 
 
 
             {(type === "jobPreference" && action === "edit") &&

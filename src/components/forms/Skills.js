@@ -82,6 +82,11 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
         setFieldValue('title', title);
     };
 
+    const deleteItem = (id) => {
+        console.log('to be deleted', id)
+        handleCancel()
+    }
+
     return (
         <Formik
             initialValues={data}
@@ -132,6 +137,9 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
                                     : <Core.Button type="narrow" submit>Save</Core.Button>}
                                 <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                             </div>
+                            {action === "edit" &&
+                                <Core.Button onClick={() => deleteItem(id)} type="narrow" color="red" >Delete</Core.Button>
+                            }
                         </div>
                     </Form>
                 )

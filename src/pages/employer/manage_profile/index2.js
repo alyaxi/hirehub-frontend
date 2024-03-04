@@ -14,6 +14,7 @@ const breadcrumb = [
 ];
 
 function ManageProfile() {
+    
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function ManageProfile() {
         description: '',
     });
     const viewprofile = useSelector((state) => state?.employer?.employer);
-    // const _viewprofile = viewprofile
+
     // console.log("4444 viewprofile",_viewprofile)
 
     const GetInput = (data) => {
@@ -98,8 +99,6 @@ function ManageProfile() {
             setSavingForm(false)
         }
     };
-
- 
 
     return (
         <>

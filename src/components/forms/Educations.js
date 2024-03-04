@@ -177,6 +177,11 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
 
     };
 
+    const deleteItem = (id) => {
+        console.log('to be deleted', id)
+        handleCancel()
+    }
+
     // console.log("selectedStartMonth",selectedStartMonth)
     // console.log("selectedStartYear",selectedStartYear)
     // console.log("startDate",startDate)
@@ -349,6 +354,9 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
+                        {action === "edit" &&
+                            <Core.Button onClick={() => deleteItem(id)} type="narrow" color="red" >Delete</Core.Button>
+                        }
                     </div>
 
                 </Form>

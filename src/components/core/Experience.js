@@ -5,7 +5,7 @@ import { Core } from "..";
 function Experience({ data, type, card }) {
 
     // console.log(data, "productionnnn")
-    console.log("44444  type Experience", type)
+    // console.log("44444  type Experience", type)
 
     return (
         <>

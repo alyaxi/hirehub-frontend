@@ -14,7 +14,7 @@ const {
     salaryOptions
 } = dropdownOptions;
 
-function Experiences({ action, handleCancel, id, setCandidateProfileData, handleSenddata, savingForm }) {
+function Experiences({ action, handleCancel, id, setCandidateProfileData, savingForm }) {
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const experiences = candidate.experiencesData;
@@ -161,6 +161,12 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
             });
         }
     };
+
+    const deleteItem = (id) => {
+        console.log('to be deleted', id)
+        handleCancel()
+    }
+
     return (
         <Formik
             initialValues={data}
@@ -347,7 +353,6 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
                         </div>
                     </div>
 
-
                     <div className='flex justify-between items-center pt-1 mb-2'>
                         <div className='flex justify-start items-center gap-x-1'>
                             <Field type='checkbox' name='currentlyInProcess' />
@@ -371,11 +376,9 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, handle
                                 // onClick={handleBack} 
                                 type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                         </div>
-                        {/* {action === "edit" &&
-                            <Core.Button
-                                // onClick={handleBack} 
-                                type="narrow" color="red" onClick={handleCancel}>Delete</Core.Button>
-                        } */}
+                        {action === "edit" &&
+                            <Core.Button onClick={() => deleteItem(id)} type="narrow" color="red" >Delete</Core.Button>
+                        }
                     </div>
 
                 </Form>

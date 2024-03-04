@@ -79,6 +79,11 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
         setFieldValue('title', title);
     };
 
+    const deleteItem = (id) => {
+        console.log('to be deleted', id)
+        handleCancel()
+    }
+
     return (
         <Formik
             initialValues={data}
@@ -129,6 +134,9 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
                                     : <Core.Button type="narrow" submit>Save</Core.Button>}
                                 <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                             </div>
+                            {action === "edit" &&
+                                <Core.Button onClick={() => deleteItem(id)} type="narrow" color="red" >Delete</Core.Button>
+                            }
                         </div>
                     </Form>
                 )

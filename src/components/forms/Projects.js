@@ -18,7 +18,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
     const projects = candidate.projectsData;
     const projectToEdit = projects?.find(project => project?._id === id);
 
-    console.log("projectToEdit", projectToEdit)
+    // console.log("projectToEdit", projectToEdit)
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
@@ -115,7 +115,6 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
 
     const handleSubmit = (values) => {
 
-
         // startMonth
         // startYear
         // endMonth
@@ -151,16 +150,14 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
         setCandidateProfileData({
             projectsData: projectData,
         })
-        // projectData.push(_projectsData1)
 
-        console.log('projectData', projectData)
-
-        // handleSenddata({
-        //     projectsData: projectData,
-
-
-        // })
+        // console.log('projectData', projectData)
     };
+
+    const deleteItem = (id) => {
+        console.log('to be deleted', id)
+        handleCancel()
+    }
 
     // console.log('selectedStartMonth', selectedStartMonth)
     // console.log('selectedEndMonth', selectedEndMonth)
@@ -366,6 +363,9 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                                 }
                                 <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                             </div>
+                            {action === "edit" &&
+                            <Core.Button onClick={() => deleteItem(id)} type="narrow" color="red" >Delete</Core.Button>
+                        }
                         </div>
 
                     </Form>
