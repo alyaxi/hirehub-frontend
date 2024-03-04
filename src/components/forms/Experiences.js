@@ -176,7 +176,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, saving
             {({ isSubmitting }) => (
                 <Form>
 
-                    <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>indicates required</span>
+                    <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>Required fields</span>
 
                     <div className='mb-4'>
                         <Field name="title">
@@ -270,6 +270,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, saving
                                     label
                                     options={salaryOptions}
                                     defaultOption="Select Salary Range"
+                                    helperText={"Note that all figures in this form are in US dollars and indicate yearly salary ranges."}
                                     required
                                 />
                             )}
@@ -281,10 +282,10 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, saving
                             <div className='w-[50%]'>
                                 {/* Country */}
                                 <label className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}>
-                                    Nationality <span className='text-[red]'>*</span>
+                                    Country <span className='text-[red]'>*</span>
                                 </label>
                                 <select
-                                    name="nationality"
+                                    name="country"
                                     onChange={handleCountryChange} value={selectedCountry}
                                     className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                                 >

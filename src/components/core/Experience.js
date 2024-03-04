@@ -4,8 +4,8 @@ import { Core } from "..";
 
 function Experience({ data, type, card }) {
 
-    // console.log(data, "productionnnn")
-    // console.log("44444  type Experience", type)
+    // console.log("type Experience", type)
+    console.log("Experience data", data)
 
     return (
         <>
@@ -22,6 +22,9 @@ function Experience({ data, type, card }) {
                             {data?.length ?
                                 <>
                                     {data?.map((value, index) => {
+                                        if (!value?.title || !value?.company) {
+                                            return null;
+                                        }
                                         return (
                                             <div key={index * 4} className='relative flex justify-between gap-x-3 w-full rounded-[15px] border bg-[#f7f7f7] px-3 py-5'>
                                                 <div className='absolute top-2 right-2 z-[200] flex justify-end' >
@@ -30,9 +33,11 @@ function Experience({ data, type, card }) {
                                                 <div className='w-full'>
                                                     <div className='w-full h-full flex justify-between items-end'>
                                                         <div>
-                                                            <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
-                                                            <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.company}</p>
-                                                            <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
+                                                            <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title ? value?.title : "-"}</h6>
+                                                            <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.company ? value?.company : "-"}</p>
+                                                            {(value?.startDate && value?.endDate) &&
+                                                                <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
+                                                            }
                                                             <p className='text-gray-6 text-[14px] leading-[20px] mt-4' dangerouslySetInnerHTML={{ __html: value?.description }}></p>
                                                         </div>
                                                     </div>
@@ -62,6 +67,9 @@ function Experience({ data, type, card }) {
                         {data?.length ?
                             <>
                                 {data?.map((value, index) => {
+                                    if (!value?.title || !value?.company) {
+                                        return null;
+                                    }
                                     return (
                                         <div key={index * 4} className='relative flex justify-between gap-x-3 w-full rounded-[15px] border bg-[#f7f7f7] px-3 py-5'>
                                             <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
@@ -70,9 +78,11 @@ function Experience({ data, type, card }) {
                                             <div className='w-full'>
                                                 <div className='w-full h-full flex justify-between items-end'>
                                                     <div>
-                                                        <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
-                                                        <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.company}</p>
-                                                        <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
+                                                        <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title ? value?.title : "-"}</h6>
+                                                        <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.company ? value?.company : "-"}</p>
+                                                        {(value?.startDate && value?.endDate) &&
+                                                            <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
+                                                        }
                                                         <p className='text-gray-6 text-[14px] leading-[20px] mt-4' dangerouslySetInnerHTML={{ __html: value?.description }}></p>
                                                     </div>
                                                 </div>

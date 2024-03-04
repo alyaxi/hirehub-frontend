@@ -396,6 +396,20 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
                     </div>
 
                     <div className='mb-4'>
+                        <Field name="zipCode">
+                            {({ field }) => (
+                                <Core.InputWithLabel
+                                    {...field}
+                                    sm
+                                    name="zipCode"
+                                    label
+                                    edit
+                                />
+                            )}
+                        </Field>
+                    </div>
+
+                    <div className='mb-4'>
                         <div className='flex gap-x-2'>
                             <div className='w-full'>
                                 <Field name="careerLevel">
@@ -439,20 +453,6 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
                                     label
                                     options={expectedSalaryOptions}
                                     value={field.value}
-                                />
-                            )}
-                        </Field>
-                    </div>
-
-                    <div className='mb-4'>
-                        <Field name="zipCode">
-                            {({ field }) => (
-                                <Core.InputWithLabel
-                                    {...field}
-                                    sm
-                                    name="zipCode"
-                                    label
-                                    edit
                                 />
                             )}
                         </Field>

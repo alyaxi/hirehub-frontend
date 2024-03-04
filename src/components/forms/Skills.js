@@ -98,7 +98,7 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
                 // console.log("vv values", values)
                 return (
                     <Form>
-                        <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>indicates required</span>
+                        <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>Required fields</span>
                         <div className="mb-4">
                             <Field name="title">
                                 {({ field }) => (

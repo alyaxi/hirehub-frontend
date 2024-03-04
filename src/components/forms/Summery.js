@@ -36,11 +36,11 @@ function Summery({ action, handleCancel,
             {({ isSubmitting }) => (
                 <Form>
 
-                    <Field name="summery">
+                    <Field name="summary">
                         {({ field }) => (
                             <Core.TextAreaWithLabel
-                                name="summery"
-                                label
+                                name="summary"
+                                // label
                                 {...field}
                                 value={field.value}
                             />

@@ -3,11 +3,13 @@ import { Core } from "..";
 import Icon from "../icon";
 
 function ProficienciesActions({ buttons, type, id, index }) {
+    
     const [action, setAction] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
         setIsModalOpen(true);
     };
+
     return (
         <>
             <Core.PopupModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} type={type} action={action} id={id} index={index} />

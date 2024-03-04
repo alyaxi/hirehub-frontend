@@ -40,10 +40,10 @@ function PopupModal({ setIsModalOpen,
             title = 'Skills';
             break;
         case 'personalInformationData':
-            title = 'Personal Informations';
+            title = 'Personal Information';
             break;
-        case 'summery':
-            title = 'Summery';
+        case 'summary':
+            title = 'Summary';
             break;
         case 'projectsData':
             title = 'Projects';
@@ -76,7 +76,7 @@ function PopupModal({ setIsModalOpen,
                 }
             }
         }
-        else if (data?.summery) {
+        else if (data?.summary) {
             // console.log("block 2")
             for (const key in data.summery) {
                 if (data.summery.hasOwnProperty(key)) {
@@ -267,7 +267,7 @@ function PopupModal({ setIsModalOpen,
                     savingForm={savingForm}
                 />}
 
-            {type === "summery" &&
+            {type === "summary" &&
                 <Forms.Summery
                     handleCancel={handleCancel}
                     action={action}

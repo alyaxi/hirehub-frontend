@@ -78,7 +78,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                 console.log("values", values)
                 return (
                     <Form>
-                        <span className="block text-gray-400 opacity-70 mt-5 mb-2"><span className="text-[red] pr-2">*</span>indicates required</span>
+                        <span className="block text-gray-400 opacity-70 mt-5 mb-2"><span className="text-[red] pr-2">*</span>Required fields</span>
                         <p className='text-black-1 text-[14px] font-semibold mb-2'>Help us match you with your next job</p>
                         <div className="mb-4">
                             <Field name="desiredJobTitle">
@@ -107,6 +107,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                                         required
                                         options={desiredSalaryOptions}
                                         value={field.value}
+                                        helperText={"Note that all figures in this form are in US dollars and indicate yearly salary ranges."}
                                     />
                                 )}
                             </Field>

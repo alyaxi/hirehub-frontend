@@ -8,8 +8,8 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
                 return "Company Description";
             case "position":
                 return "The Position";
-            case "summery":
-                return "Summery";
+            case "summary":
+                return "Summary";
             case "statusLine":
                 return "Status Line";
             case "description":
@@ -25,8 +25,8 @@ function TextAreaWithLabel({ label, name, required, helperText, onChange, value,
                 return "Describe here";
             case "position":
                 return "Brief about The Position";
-            case "summery":
-                return "Type summery about yourself...";
+            case "summary":
+                return "Type summary about yourself...";
             case "statusLine":
                 return "Type Status Line about yourself...";
             case "description":

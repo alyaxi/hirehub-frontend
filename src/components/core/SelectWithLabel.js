@@ -49,7 +49,7 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
             case "languageProficiency":
                 return "Proficiency with this language";
             case "desiredSalary":
-                return "Desired Salary (PKR)";
+                return "Desired Salary";
             case "gender":
                 return "Gender";
             case "nationality":

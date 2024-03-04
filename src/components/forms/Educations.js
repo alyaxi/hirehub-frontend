@@ -9,7 +9,7 @@ import dropdownOptions from '../../data/dropdownOptions.json';
 const {
     degreeOptions,
     fieldOfStudyOptions,
-    gradeOptions,
+    // gradeOptions,
     monthsOptions,
 } = dropdownOptions;
 
@@ -50,7 +50,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
         degree: educationToEdit?.degree || "",
         endDate: educationToEdit?.endDate || "",
         fieldOfStudy: educationToEdit?.fieldOfStudy || "",
-        grade: educationToEdit?.grade || "",
+        // grade: educationToEdit?.grade || "",
         isDeleted: educationToEdit?.isDeleted || "",
         organization: educationToEdit?.organization || "",
         selectedCountry: educationToEdit?.selectedCountry || "",
@@ -145,7 +145,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
             degree: values?.degree,
             endDate: endDate,
             fieldOfStudy: values?.fieldOfStudy,
-            grade: values?.grade,
+            // grade: values?.grade,
             organization: values?.organization,
             selectedCountry: selectedCountry,
             startDate: startDate,
@@ -195,7 +195,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
             {({ isSubmitting }) => (
                 <Form>
 
-                    <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>indicates required</span>
+                    <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>Required fields</span>
 
                     <div className='mb-4'>
                         <Field name="organization">
@@ -205,7 +205,6 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
                                     sm
                                     name="organization"
                                     label
-                                    placeholder="Enter Organization Name"
                                     required
                                     edit
                                 />
@@ -311,7 +310,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
                     <div className='mb-4'>
                         {/* Country */}
                         <label className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}>
-                            Location <span className='text-[red]'>*</span>
+                            Country <span className='text-[red]'>*</span>
                         </label>
                         <select
                             name="nationality"
@@ -327,7 +326,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
                         </select>
                     </div>
 
-                    <div className='mb-4'>
+                    {/* <div className='mb-4'>
                         <Field name="grade">
                             {({ field }) => (
                                 <Core.SelectWithLabel
@@ -341,7 +340,7 @@ function Educations({ action, handleCancel, id, setCandidateProfileData, savingF
                                 />
                             )}
                         </Field>
-                    </div>
+                    </div> */}
 
                     <div className='flex justify-between  pt-6 mt-8 border-t-[1px]'>
                         <div className='flex justify-start gap-x-3 '>

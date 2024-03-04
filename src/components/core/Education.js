@@ -1,12 +1,12 @@
-import {  Empty } from "antd";
+import { Empty } from "antd";
 import { calculateTimePeriod } from '../../utilis/calculateTimePeriod';
 import { Core } from "..";
-import Icon from "../icon";                                           
+import Icon from "../icon";
 
 function Education({ data, type, card }) {
 
-    // console.log("data",data)
-    
+    // console.log("Education data", data)
+
     return (
         <>
             {card ?
@@ -21,6 +21,9 @@ function Education({ data, type, card }) {
                         {data?.length ?
                             <>
                                 {data?.map((value, index) => {
+                                    if (!value?.degree || !value?.organization) {
+                                        return null;
+                                    }
                                     return (
                                         <div key={index * 4} className='relative flex justify-between gap-x-3 w-full'>
                                             <div className='absolute top-0 right-0 z-[200] flex justify-end' >
@@ -28,14 +31,16 @@ function Education({ data, type, card }) {
                                             </div>
                                             <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
                                                 {/* <Avatar shape="square" size={60} src={value?.logo}>!</Avatar> */}
-                                                <Icon name="Education" size={150}/>
+                                                <Icon name="Education" size={150} />
                                             </div>
                                             <div className='w-full'>
                                                 <div className='w-full h-full flex justify-between items-end'>
                                                     <div>
                                                         <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.degree}</h6>
                                                         <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.organization}</p>
-                                                        <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
+                                                        {(value?.startDate && value?.endDate) &&
+                                                            <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, value?.endDate)}</p>
+                                                        }
                                                         {/* <p className='text-gray-6 text-[14px] leading-[20px] mt-4' dangerouslySetInnerHTML={{ __html: value?.description }}></p> */}
                                                     </div>
                                                 </div>
@@ -63,18 +68,23 @@ function Education({ data, type, card }) {
                         {data?.length ?
                             <>
                                 {data?.map((value, index) => {
+                                    if (!value?.degree || !value?.organization) {
+                                        return null;
+                                    }
                                     return (
                                         <div key={index * 4} className='flex justify-between gap-x-3'>
                                             <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>
                                                 {/* <Avatar shape="square" size={60} src={value?.logo}>!</Avatar> */}
-                                                <Icon name="Education" size={150}/>
+                                                <Icon name="Education" size={150} />
                                             </div>
                                             <div className='w-full'>
                                                 <div className='w-full h-full flex justify-between items-end'>
                                                     <div>
                                                         <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.degree}</h6>
                                                         <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.organization}</p>
-                                                        <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
+                                                        {(value?.startDate && value?.endDate) &&
+                                                            <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, value?.endDate)}</p>
+                                                        }
                                                         {/* <p className='text-gray-6 text-[14px] leading-[20px] mt-4' dangerouslySetInnerHTML={{ __html: value?.description }}></p> */}
                                                     </div>
                                                 </div>
