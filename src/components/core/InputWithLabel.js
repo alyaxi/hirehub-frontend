@@ -26,6 +26,12 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Email";
             case "password":
                 return "Password";
+            case "newPassword":
+                return "New Password";
+            case "confirmPassword":
+                return "Confirm Password";
+            case "oldPassword":
+                return "Old Password";
             case "username":
                 return "Username";
             case "companyName":
@@ -45,20 +51,11 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "Full Name";
             case "lastName":
                 return "Last Name";
-            case "newPassword":
-                return "New Password";
-            case "confirmPassword":
-                return "Confirm Password";
-            case "oldPassword":
-                return "Old Password";
             case "calender":
                 return "DOB";
             case "ssn":
                 return "SSN";
-            case "phoneNumber":
-                return "Mobile Number";
             case "mobile":
-            case "phoneNo":
                 return "Mobile";
             case "phoneNumber":
                 return "Phone Number";
@@ -104,12 +101,6 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "attachments":
                 return "Attach Document";
 
-            case "skills1title":
-            case "skills2title":
-            case "skills3title":
-            case "skills4title":
-                return "Title";
-
             default:
                 return "Label";
         }
@@ -138,7 +129,8 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "companyName":
                 return "Handmade";
             case "phoneNo":
-                return "+34 526 952 689";
+                // return "+34 526 952 689";
+                return "0000-0000000";
             case "name":
                 return "Pete Jones";
             case "SearchByEmployer":
@@ -154,10 +146,6 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "AAA-GG-SSSS";
             case "phoneNumber":
             case "mobile":
-            case "phoneNo":
-                return "0000-0000000";
-            case "phoneNumber":
-                return "0000-0000000";
             case "message":
                 return "Message";
 
@@ -206,7 +194,6 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
             case "phoneNumber":
             case "lastName":
             case "message":
-            case "phoneNumber":
             case "phoneNo":
             case "mobile":
             case "SearchByName":
@@ -243,7 +230,6 @@ function InputWithLabel({ onChange, label, name, forgotPassword, required, helpe
                 return "time";
             case "attachments":
                 return "file";
-
             default:
                 return "text";
         }

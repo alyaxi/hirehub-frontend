@@ -22,7 +22,8 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
-    const endYear = currentYear - 5;
+    // const endYear = currentYear - 5;
+    const endYear = currentYear;
     const yearOptions = [];
 
     for (let year = startYear; year <= endYear; year++) {

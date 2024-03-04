@@ -45,8 +45,8 @@ function ForgotPasswordPage() {
                 <Form className="flex flex-col gap-y-9 max-w-[600px] mb-3">
                     <img src={image} className='w-[360px]' alt="Logo" />
                     <h1 className='text-black-3 text-[42px] leading-[57px] tracking-[0.5px] font-regular'>
-                        Forget Password?
-                    </h1> 
+                        Forgot Password?
+                    </h1>
                     <p className='text-black-3 text-[22px] leading-[30px]'>
                         No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
                     </p>
@@ -71,7 +71,7 @@ function ForgotPasswordPage() {
                     <Core.Button submit className="text-[18px] leading-[20px] rounded-full py-[18px]">Send Reset Link</Core.Button>
                     <p className='text-gray-6 text-[18px] leading-[24px]'>
                         <a><NavLink to="/"> Back to login </NavLink></a>
-                    </p> 
+                    </p>
                 </Form>
             </Formik>
         </AuthLayout>
