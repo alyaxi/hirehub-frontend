@@ -200,10 +200,8 @@ function JobPosts() {
     });
     
     // console.log({ sortedArray });
-    
 
     // console.log(jobPosts, "jobPostsssssssss")
-
 
     const [open, setOpen] = useState(false);
     const handleMenuClick = (e) => {

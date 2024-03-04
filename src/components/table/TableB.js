@@ -5,10 +5,26 @@ import '../../assets/css/table.css'
 import { Core } from '..';
 import dropdownOptions from '../../data/dropdownOptions.json';
 
+// all possible filter for table:
+// SearchByProduct
+// SearchByEmailProcess
+// SearchByExpirationDate
+// SearchByAppliedDate
+// SearchByName
+// SearchByTitle
+// SearchByEmployer
+// SearchByEligibility
+// SearchByJobStatus
+// SearchByJobTitle
+// SearchByUserStatus
+// SearchByCandidateStage
+// SearchByApplicationStatus
+
 const {
     UserStatusdropdownOptions,
     CandidateStagedropdownOptions,
-    JobStatusDropdownOptions
+    JobStatusDropdownOptions,
+    ApplicationStatusDropdownOptions
 } = dropdownOptions;
 
 function TableB({
@@ -36,6 +52,7 @@ function TableB({
     setUserStatus,
     jobStatus,
     setJobStatus,
+    setApplicationStatus,
     jobTitle,
     setJobTitle,
     setExpirationDate,
@@ -313,6 +330,9 @@ function TableB({
                                         case 'SearchByJobStatus':
                                             inputWidth = 'w-[100px]';
                                             break;
+                                        case 'SearchByApplicationStatus':
+                                            inputWidth = 'w-[100px]';
+                                            break;
                                         case 'SearchByJobTitle':
                                             inputWidth = 'w-[100px]';
                                             break;
@@ -359,6 +379,11 @@ function TableB({
                                     if (value === "SearchByJobStatus") {
                                         return (
                                             <Core.Dropdown2 key={`jobStatus-${index}`} options={JobStatusDropdownOptions} setState={setJobStatus} defaultTitle="Job Status" menuWidth={'w-[150px]'} />
+                                        )
+                                    }                                    
+                                    if (value === "SearchByApplicationStatus") {
+                                        return (
+                                            <Core.Dropdown2 key={`applicationStatus-${index}`} options={ApplicationStatusDropdownOptions} setState={setApplicationStatus} defaultTitle="Application Status" menuWidth={'w-[150px]'} />
                                         )
                                     }
                                     else {

@@ -76,6 +76,11 @@ a.forgot-link a:focus {
   display: none;
 }
 
+.ant-pagination.ant-table-pagination.ant-table-pagination-right {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .ant-tabs-nav-wrap {
   display: flex;
   justify-content: center;

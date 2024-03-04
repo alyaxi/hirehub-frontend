@@ -1504,6 +1504,11 @@
         "Closed",
         "Republished"
     ],
+    "ApplicationStatusDropdownOptions": [
+        "New",
+        "Offer Made",
+        "Offer accepted"
+    ],
     "videoOptions": [
         "delete"
     ],
