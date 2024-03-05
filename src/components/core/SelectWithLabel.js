@@ -35,7 +35,9 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
             case "skillExperience":
                 return "Experience with this Skill";
             case "noOfPeopleToHire":
+            case "noOfOpenings":
                 return "How many people do you want to hire for this opening?";
+                // return "noOfOpenings";
             case "minimum":
                 return "Minimum";
             case "maximum":
