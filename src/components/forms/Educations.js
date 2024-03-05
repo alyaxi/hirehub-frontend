@@ -210,9 +210,9 @@ function Educations({
         }
       });
       console.log("vv edit educationData", educationData);
-      // setCandidateProfileData({
-      //     educationsData: educationData,
-      // });
+      setCandidateProfileData({
+          educationsData: educationData,
+      });
     }
   };
 
