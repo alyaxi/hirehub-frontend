@@ -8,8 +8,8 @@ import dropdownOptions from '../../data/dropdownOptions.json';
 
 const {
     industryOptions,
-    directlyManageTeamOptions,
-    noOfPeopleOptions,
+    // directlyManageTeamOptions,
+    // noOfPeopleOptions,
     monthsOptions,
     salaryOptions
 } = dropdownOptions;
@@ -26,9 +26,9 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, saving
         agreeTerms: experienceToEdit?.agreeTerms || "",
         company: experienceToEdit?.company || "",
         description: experienceToEdit?.description || "",
-        directlyManageTeam: experienceToEdit?.directlyManageTeam || "",
+        // directlyManageTeam: experienceToEdit?.directlyManageTeam || "",
+        // noOfPeople: experienceToEdit?.noOfPeople || "",
         industry: experienceToEdit?.industry || "",
-        noOfPeople: experienceToEdit?.noOfPeople || "",
         salary: experienceToEdit?.salary || "",
         selectedCity: experienceToEdit?.selectedCity || "",
         selectedCountry: experienceToEdit?.selectedCountry || "",
@@ -129,8 +129,8 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, saving
             title: values?.title,
             company: values?.company,
             industry: values?.industry,
-            directlyManageTeam: values?.directlyManageTeam,
-            noOfPeople: values?.noOfPeople,
+            // directlyManageTeam: values?.directlyManageTeam,
+            // noOfPeople: values?.noOfPeople,
             salary: values?.salary,
             selectedCountry: selectedCountry,
             selectedCity: selectedCity,
@@ -226,7 +226,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, saving
                         </Field>
                     </div>
 
-                    <div className='mb-4'>
+                    {/* <div className='mb-4'>
                         <div className='flex gap-x-2'>
                             <div className='w-full'>
                                 <Field name="directlyManageTeam">
@@ -259,7 +259,7 @@ function Experiences({ action, handleCancel, id, setCandidateProfileData, saving
                                 </Field>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className='mb-4'>
                         <Field name="salary">

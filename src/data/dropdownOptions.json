@@ -728,59 +728,59 @@
     ],
     "desiredJobTitleOptions": [
         {
-            "label": "UX/UI Designer",
-            "value": "UX/UI Designer"
+            "name": "3UX/UI Designer",
+            "value": "3UX/UI Designer"
         },
         {
-            "label": "UX/UI Head",
+            "name": "UX/UI Head",
             "value": "UX/UI Head"
         },
         {
-            "label": "Creative Head",
+            "name": "Creative Head",
             "value": "Creative Head"
         },
         {
-            "label": "Design Head",
+            "name": "Design Head",
             "value": "Design Head"
         },
         {
-            "label": "Software Engineer",
+            "name": "Software Engineer",
             "value": "Software Engineer"
         },
         {
-            "label": "Data Scientist",
+            "name": "Data Scientist",
             "value": "Data Scientist"
         },
         {
-            "label": "Product Manager",
+            "name": "Product Manager",
             "value": "Product Manager"
         },
         {
-            "label": "Marketing Specialist",
+            "name": "Marketing Specialist",
             "value": "Marketing Specialist"
         },
         {
-            "label": "Financial Analyst",
+            "name": "Financial Analyst",
             "value": "Financial Analyst"
         },
         {
-            "label": "Human Resources Manager",
+            "name": "Human Resources Manager",
             "value": "Human Resources Manager"
         },
         {
-            "label": "Sales Representative",
+            "name": "Sales Representative",
             "value": "Sales Representative"
         },
         {
-            "label": "Customer Support Specialist",
+            "name": "Customer Support Specialist",
             "value": "Customer Support Specialist"
         },
         {
-            "label": "Graphic Designer",
+            "name": "Graphic Designer",
             "value": "Graphic Designer"
         },
         {
-            "label": "Content Writer",
+            "name": "Content Writer",
             "value": "Content Writer"
         }
     ],
@@ -838,79 +838,79 @@
     ],
     "skillsOptions": [
         {
-            "label": "HTML&CSS",
+            "name": "HTML&CSS",
             "value": "HTML&CSS"
         },
         {
-            "label": "Bootstrap",
+            "name": "Bootstrap",
             "value": "Bootstrap"
         },
         {
-            "label": "Illustrator",
+            "name": "Illustrator",
             "value": "Illustrator"
         },
         {
-            "label": "Photoshop",
+            "name": "Photoshop",
             "value": "Photoshop"
         },
         {
-            "label": "JavaScript",
+            "name": "JavaScript",
             "value": "JavaScript"
         },
         {
-            "label": "React.js",
+            "name": "React.js",
             "value": "React.js"
         },
         {
-            "label": "Node.js",
+            "name": "Node.js",
             "value": "Node.js"
         },
         {
-            "label": "Python",
+            "name": "Python",
             "value": "Python"
         },
         {
-            "label": "Java",
+            "name": "Java",
             "value": "Java"
         },
         {
-            "label": "HTML",
+            "name": "HTML",
             "value": "HTML"
         },
         {
-            "label": "CSS",
+            "name": "CSS",
             "value": "CSS"
         },
         {
-            "label": "SQL",
+            "name": "SQL",
             "value": "SQL"
         },
         {
-            "label": "Angular",
+            "name": "Angular",
             "value": "Angular"
         },
         {
-            "label": "Vue.js",
+            "name": "Vue.js",
             "value": "Vue.js"
         },
         {
-            "label": "TypeScript",
+            "name": "TypeScript",
             "value": "TypeScript"
         },
         {
-            "label": "Git",
+            "name": "Git",
             "value": "Git"
         },
         {
-            "label": "Docker",
+            "name": "Docker",
             "value": "Docker"
         },
         {
-            "label": "AWS",
+            "name": "AWS",
             "value": "AWS"
         },
         {
-            "label": "Redux",
+            "name": "Redux",
             "value": "Redux"
         }
     ],
@@ -1078,54 +1078,54 @@
     ],
     "languagesOptions": [
         {
-            "label": "English",
+            "name": "English",
             "value": "English"
         },
         {
-            "label": "Spanish",
+            "name": "Spanish",
             "value": "Spanish"
         },
         {
-            "label": "French",
+            "name": "French",
             "value": "French"
         },
         {
-            "label": "German",
+            "name": "German",
             "value": "German"
         },
         {
-            "label": "Chinese",
+            "name": "Chinese",
             "value": "Chinese"
         },
         {
-            "label": "Portuguese",
+            "name": "Portuguese",
             "value": "Portuguese"
         },
         {
-            "label": "Italian",
+            "name": "Italian",
             "value": "Italian"
         },
         {
-            "label": "Mandarin",
+            "name": "Mandarin",
             "value": "Mandarin"
-        },        
+        },
         {
-            "label": "Japanese",
+            "name": "Japanese",
             "value": "Japanese"
         },
         {
-            "label": "Russian",
+            "name": "Russian",
             "value": "Russian"
         },
         {
-            "label": "Arabic",
+            "name": "Arabic",
             "value": "Arabic"
         },
         {
-            "label": "Hindi",
+            "name": "Hindi",
             "value": "Hindi"
         }
-    ],    
+    ],
     "languageProficiencyOptions": [
         {
             "name": "Basic",
@@ -1215,6 +1215,21 @@
             "name": "Over 10 years",
             "value": "Over 10 years"
         }
+    ],
+    "skillExperienceOptions_String": [
+        "Fresh",
+        "6 months",
+        "1 year",
+        "2 years",
+        "3 years",
+        "4 years",
+        "5 years",
+        "6 years",
+        "7 years",
+        "8 years",
+        "9 years",
+        "10 years",
+        "Over 10 years"
     ],
     "noOfPeopleToHireOptions": [
         {
@@ -1326,123 +1341,123 @@
     ],
     "benefitsOptions": [
         {
-            "label": "Flexible Work Hours",
+            "name": "Flexible Work Hours",
             "value": "Flexible Work Hours"
         },
         {
-            "label": "Remote Work Opportunities",
+            "name": "Remote Work Opportunities",
             "value": "Remote Work Opportunities"
         },
         {
-            "label": "Health Insurance",
+            "name": "Health Insurance",
             "value": "Health Insurance"
         },
         {
-            "label": "Dental Insurance",
+            "name": "Dental Insurance",
             "value": "Dental Insurance"
         },
         {
-            "label": "Vision Insurance",
+            "name": "Vision Insurance",
             "value": "Vision Insurance"
         },
         {
-            "label": "401(k) Retirement Plan",
+            "name": "401(k) Retirement Plan",
             "value": "401(k) Retirement Plan"
         },
         {
-            "label": "Paid Time Off (PTO)",
+            "name": "Paid Time Off (PTO)",
             "value": "Paid Time Off (PTO)"
         },
         {
-            "label": "Paid Holidays",
+            "name": "Paid Holidays",
             "value": "Paid Holidays"
         },
         {
-            "label": "Flexible Spending Account (FSA)",
+            "name": "Flexible Spending Account (FSA)",
             "value": "Flexible Spending Account (FSA)"
         },
         {
-            "label": "Life Insurance",
+            "name": "Life Insurance",
             "value": "Life Insurance"
         },
         {
-            "label": "Employee Assistance Program (EAP)",
+            "name": "Employee Assistance Program (EAP)",
             "value": "Employee Assistance Program (EAP)"
         },
         {
-            "label": "Professional Development Opportunities",
+            "name": "Professional Development Opportunities",
             "value": "Professional Development Opportunities"
         },
         {
-            "label": "Tuition Reimbursement",
+            "name": "Tuition Reimbursement",
             "value": "Tuition Reimbursement"
         },
         {
-            "label": "Stock Options or Equity",
+            "name": "Stock Options or Equity",
             "value": "Stock Options or Equity"
         },
         {
-            "label": "Gym Memberships",
+            "name": "Gym Memberships",
             "value": "Gym Memberships"
         },
         {
-            "label": "Casual Dress Code",
+            "name": "Casual Dress Code",
             "value": "Casual Dress Code"
         },
         {
-            "label": "Company Events and Activities",
+            "name": "Company Events and Activities",
             "value": "Company Events and Activities"
         },
         {
-            "label": "On-site Fitness Facilities",
+            "name": "On-site Fitness Facilities",
             "value": "On-site Fitness Facilities"
         },
         {
-            "label": "Employee Recognition Programs",
+            "name": "Employee Recognition Programs",
             "value": "Employee Recognition Programs"
         },
         {
-            "label": "Maternity and Paternity Leave",
+            "name": "Maternity and Paternity Leave",
             "value": "Maternity and Paternity Leave"
         },
         {
-            "label": "Sick Leave",
+            "name": "Sick Leave",
             "value": "Sick Leave"
         },
         {
-            "label": "Commuter Benefits",
+            "name": "Commuter Benefits",
             "value": "Commuter Benefits"
         }
     ],
     "emailNameDropdownOptions": [
         {
-            "label": "Email Titile",
+            "name": "Email Titile",
             "value": "Email Titile"
         },
         {
-            "label": "Job Interview Invitation",
+            "name": "Job Interview Invitation",
             "value": "Job Interview Invitation"
         },
         {
-            "label": "Job Offer",
+            "name": "Job Offer",
             "value": "Job Offer"
         },
         {
-            "label": "Background Check and References",
+            "name": "Background Check and References",
             "value": "Background Check and References"
         },
         {
-            "label": "Assessment/Testing Instructions",
+            "name": "Assessment/Testing Instructions",
             "value": "Assessment/Testing Instructions"
         },
         {
-            "label": "Interview Rescheduling",
+            "name": "Interview Rescheduling",
             "value": "Interview Rescheduling"
         }
     ],
     "emailStageDropdownOptions": [
         {
-            "label": "Proceed to Next",
+            "name": "Proceed to Next",
             "value": "Proceed to Next"
         }
     ],

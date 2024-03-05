@@ -5,7 +5,7 @@ import Icon from "../icon";
 function PersonalInformation({ data, user, profileCompletion }) {
 
     // console.log(profileCompletion, "profileCompletion")
-    console.log(user, "ww userrrrrrrrrrrrr")
+    // console.log(user, "ww userrrrrrrrrrrrr")
 
     const firstLetter = user?.name ? user?.name.trim().charAt(0).toUpperCase() : '';
 

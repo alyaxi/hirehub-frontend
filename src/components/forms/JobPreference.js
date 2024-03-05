@@ -13,7 +13,7 @@ const {
     locationsOptions
 } = dropdownOptions;
 
-function JobPreference({ action, handleCancel, setCandidateProfileData, handleSenddata, savingForm }) {
+function JobPreference({ action, handleCancel, setCandidateProfileData, savingForm }) {
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const jp = candidate.jobPreference;
@@ -28,14 +28,30 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
         skills: jp?.skills ? jp?.skills : [],
     });
 
+    console.log(" data", data)
+    console.log("data?.relocation?.onlyNearMe?.locations", data?.relocation?.onlyNearMe?.locations)
+
     const [isRelocating, setIsRelocating] = useState((data.relocation.anywhere === true || data.relocation.anywhere === false) ? true : false);
+    const [isDisableLocations, setIsDisableLocations] = useState();
 
     const multiSelectHandle = (type, selectedItems, setFieldValue, values) => {
+        // console.log(" values", values.relocation.onlyNearMe.locations.length)
 
         if (type === "desiredJobTitle") {
             setFieldValue('desiredJobTitle', selectedItems);
         }
         if (type === "willingToLocations") {
+            // console.log("uuu values?.relocation?.onlyNearMe?.locations", values?.relocation?.onlyNearMe?.locations)
+            // console.log("uuu length", values?.relocation?.onlyNearMe?.locations?.length)
+            // if (values?.relocation?.onlyNearMe?.locations?.length <= 3) {
+            //     console.log("uuu true")
+            //     setIsDisableLocations(true)
+            // }
+            // else {
+            //     console.log("uuu false")
+            //     setIsDisableLocations(false)
+            // }
+            // if (values?.relocation?.onlyNearMe?.locations?.length < 3) {
             setFieldValue('relocation', {
                 ...values.relocation,
                 onlyNearMe: {
@@ -43,6 +59,12 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                     locations: selectedItems
                 }
             });
+            // console.log(" if false")
+            // setIsDisableLocations(false)
+            // } else {
+            //     console.log("else  true")
+            //     setIsDisableLocations(true)
+            // }
         }
         if (type === "skills") {
             setFieldValue('skills', selectedItems);
@@ -60,13 +82,14 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
             relocation: values?.relocation,
             skills: values?.skills,
         };
-        console.log({ _jobPreferenceData })
+        // console.log({ _jobPreferenceData })
         setCandidateProfileData(prevData => ({
             ...prevData,
             jobPreferenceData: _jobPreferenceData,
         }));
-        // handleSenddata()
     };
+
+    // console.log("uuu isDisableLocations  ", isDisableLocations)
 
     return (
         <Formik
@@ -75,7 +98,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
             onSubmit={handleSubmit}
         >
             {({ setFieldValue, values }) => {
-                console.log("values", values)
+                // console.log("values", values)
                 return (
                     <Form>
                         <span className="block text-gray-400 opacity-70 mt-5 mb-2"><span className="text-[red] pr-2">*</span>Required fields</span>
@@ -189,7 +212,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                         {
                             (values?.relocation?.anywhere === false)
                             &&
-                            <div className="mb-4">
+                            <div className="willing-to-locations mb-4">
                                 <Field name="willingToLocations">
                                     {({ field }) => (
                                         <MultiSelectInput
@@ -200,6 +223,9 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                                             options={locationsOptions}
                                             onChange={(selectedItems) => multiSelectHandle("willingToLocations", selectedItems, setFieldValue, values)}
                                             defaultValue={values?.relocation?.onlyNearMe?.locations}
+                                        // warningText={"Only First 3 locations will be accepted"}
+                                        // helperText={}
+                                        // maxCount={3}
                                         />
                                     )}
                                 </Field>

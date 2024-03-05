@@ -17,7 +17,7 @@ import { Form, Formik, Field, ErrorMessage } from 'formik';
 //         .required('Phone number is required')
 // });
 
-function Form1({ onNext, profileData , validationSchema, handleFinish}) {
+function Form1({ onNext, profileData, validationSchema, handleFinish }) {
 
     // console.log("profileData?.phoneNo", profileData?.phoneNo)
     // console.log("profileData?.phoneNo", typeof(profileData?.phoneNo))
@@ -77,7 +77,7 @@ function Form1({ onNext, profileData , validationSchema, handleFinish}) {
 
     // console.log("data",data)
 
-    const handleSubmit = (values, { isSubmitting }) => { }
+    // const handleSubmit = (values, { isSubmitting }) => { }
 
     return (
         <Formik
@@ -88,10 +88,10 @@ function Form1({ onNext, profileData , validationSchema, handleFinish}) {
             {({ }) => (
                 <Form>
                     <Core.Card className={'p-5'} w840 border>
-                        {/* <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5> */}
+                        {/* <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Update Profile</h5> */}
                         <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Update Profile</h5>
                         <div className="mb-4">
-                            <Field name="companyName"  id="companyName" >
+                            <Field name="companyName" id="companyName" >
                                 {({ field }) => (
                                     <div>
                                         <Core.InputWithLabel
@@ -197,7 +197,7 @@ function Form1({ onNext, profileData , validationSchema, handleFinish}) {
                             </span>
                         </div>
                         <div className="mb-4">
-                            <Field name="phoneNo"  id="phoneNo">
+                            <Field name="phoneNo" id="phoneNo">
                                 {({ field }) => (
                                     <div>
                                         <Core.InputWithLabel

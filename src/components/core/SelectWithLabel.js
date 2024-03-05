@@ -1,6 +1,8 @@
 import React from 'react';
 
-function SelectWithLabel({ label, name, options, required, helperText, onChange, defaultOption, value }) {
+function SelectWithLabel({ label, name, options, required, helperText, onChange, defaultOption, value, customLabel }) {
+
+    // console.log("SelectWithLabel value", value)
 
     const _label = (name) => {
         switch (name) {
@@ -60,29 +62,27 @@ function SelectWithLabel({ label, name, options, required, helperText, onChange,
                 return "Proficiency";
             case "position":
                 return "Position";
-
-            case "skills1proficiency":
-            case "skills2proficiency":
-            case "skills3proficiency":
-            case "skills4proficiency":
-                return "Proficiency";
-
+            case "title":
+                return "Title";
+            case "languages":
+                return "Language";
             default:
                 return "Label";
         }
     }
+
     return (
         <>
             {label && <label htmlFor={name} className={`
                 block text-[14px] text-gray-2 tracking-wide ${helperText ? 'mb-1.5' : 'mb-2'} font-semibold capitalize`}>
-                {_label(name)}: {required && <span className='text-[red]'>*</span>}
+                {customLabel ? customLabel : _label(name)}: {required && <span className='text-[red]'>*</span>}
             </label>}
             {helperText &&
                 <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5'>
                     {helperText}
                 </p>
             }
-            <select id={name} onChange={onChange} value={value} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]">
+            <select id={name} onChange={onChange} value={value || ''} className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]">
                 <option value="">{defaultOption ? defaultOption : 'Select an option...'}</option>
                 {options.map((value, index) =>
                     <option key={value?.name + index} value={value?.value}>{value?.name}</option>

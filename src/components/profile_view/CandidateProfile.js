@@ -132,14 +132,11 @@ function CandidateProfile() {
     //     }
     // });
 
-    console.log("555 jobPreferenceCount after", jobPreferenceCount);
+    // console.log("555 jobPreferenceCount after", jobPreferenceCount);
 
 
 
-
-
-
-    console.log("jobPreferenceCount after", jobPreferenceCount)
+    // console.log("jobPreferenceCount after", jobPreferenceCount)
 
     let _experience = candidate?.experiencesData?.length > 0 ? 15 : candidate?.experiencesData?.length;
     let _education = candidate?.educationsData?.length > 0 ? 15 : candidate?.educationsData?.length;

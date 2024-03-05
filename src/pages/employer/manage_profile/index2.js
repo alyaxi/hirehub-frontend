@@ -10,7 +10,7 @@ import { Spin } from 'antd';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
-    { label: "Create an employer account" },
+    { label: "Update Profile" },
 ];
 
 function ManageProfile() {

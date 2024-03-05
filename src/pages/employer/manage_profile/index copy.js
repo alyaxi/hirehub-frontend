@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
-    { label: "Create an employer account" },
+    { label: "Update Profile" },
 ];
 
 

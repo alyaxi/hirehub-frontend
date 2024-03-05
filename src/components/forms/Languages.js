@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
-import MultiSelectInput from '../core/MultiSelectInput';
+// import MultiSelectInput from '../core/MultiSelectInput';
 import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
 import dropdownOptions from '../../data/dropdownOptions.json';
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object().shape({
+    title: Yup.string()
+        .trim()
+        .nullable() // Allow null values
+        .required('title is required'),
+    proficiency: Yup.string()
+        .trim()
+        .nullable() // Allow null values
+        .required('proficiency is required')
+});
 
 const {
     languagesOptions,
@@ -16,34 +28,20 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const languages = candidate?.languagesData;
 
-    // console.log("vv languages form action", action)
-    // console.log("vv languages form id", id)
-
-    // console.log("vv candidate", candidate)
-
     const languageToEdit = languages?.find(language => language?._id === id);
 
-    // console.log("vv languageToEdit", languageToEdit)
-    // console.log("vv languageToEdit.title", languageToEdit?.title)
-    // console.log("vv languageToEdit.proficiency", languageToEdit?.proficiency)
-
-    const [data] = useState(action === "add" ? {} : {
+    const [data] = useState(action === "add" ? {
+        title: "",
+        proficiency: "",
+    } : {
         _id: languageToEdit?._id || "",
         title: languageToEdit?.title || "",
         proficiency: languageToEdit?.proficiency || "",
         isDeleted: languageToEdit?.isDeleted || false,
     });
 
-    // const [data] = useState({
-    //     // _id: "",
-    //     title: '',
-    //     proficiency: '',
-    //     isDeleted: false,
-    // });
-
-    // console.log("vv data", data)
-
-    const handleSubmit = (values) => {
+    const handleSubmit = (values, { resetForm }) => {
+        // console.log("handleSubmit called")
         let _languagesData = {
             title: values?.title,
             proficiency: values?.proficiency,
@@ -53,14 +51,14 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
         let languageData;
 
         if (action === "add") {
-            console.log("vv add _languagesData", _languagesData)
+            // console.log("vv add _languagesData", _languagesData)
             setCandidateProfileData(prevData => ({
                 ...prevData,
                 languagesData: _languagesData,
             }));
         }
         else {
-            console.log("vv else _languagesData", _languagesData)
+            // console.log("vv else _languagesData", _languagesData)
             languageData = languages?.map((language) => {
                 if (language._id === id) {
                     return _languagesData
@@ -68,16 +66,17 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
                     return language
                 }
             })
-            console.log("vv else languageData", languageData)
+            // console.log("vv else languageData", languageData)
             setCandidateProfileData({
                 languagesData: languageData,
             });
         }
+        resetForm()
     };
 
-    const multiSelectHandle = (title, setFieldValue) => {
-        setFieldValue('title', title);
-    };
+    // const multiSelectHandle = (title, setFieldValue) => {
+    //     setFieldValue('title', title);
+    // };
 
     const deleteItem = (id) => {
         console.log('to be deleted', id)
@@ -87,40 +86,47 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
     return (
         <Formik
             initialValues={data}
-            // validationSchema={validationSchema}
+            validationSchema={validationSchema}
             enableReinitialize={true}
             onSubmit={handleSubmit}
         >
-            {({ values, setFieldValue }) => {
+            {({ resetForm }) => {
                 // console.log("vv values", values)
                 return (
                     <Form>
                         <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>Required fields</span>
-                        <div className="mb-4">
-                            <Field name="languages">
+
+                        <div className='mb-4'>
+                            <Field name="title">
                                 {({ field }) => (
-                                    <MultiSelectInput
-                                        {...field}
-                                        mode={"single"}
-                                        name={'languages'}
-                                        label
-                                        options={languagesOptions}
-                                        onChange={(selectedLanguages) => multiSelectHandle(selectedLanguages, setFieldValue)}
-                                        defaultValue={values?.title}
-                                    />
+                                    <>
+                                        <Core.SelectWithLabel
+                                            {...field}
+                                            name={"title"}
+                                            customLabel={"Language"}
+                                            label
+                                            options={languagesOptions}
+                                            defaultOption="Choose any one"
+                                        />
+                                        <ErrorMessage name="title" component="div" className="text-red-500 error" />
+                                    </>
                                 )}
                             </Field>
                         </div>
+
                         <div className='mb-4'>
                             <Field name="proficiency">
                                 {({ field }) => (
-                                    <Core.SelectWithLabel
-                                        {...field}
-                                        name={"proficiency"}
-                                        label
-                                        options={languageProficiencyOptions}
-                                        defaultOption="Choose any one"
-                                    />
+                                    <>
+                                        <Core.SelectWithLabel
+                                            {...field}
+                                            name={"proficiency"}
+                                            label
+                                            options={languageProficiencyOptions}
+                                            defaultOption="Choose any one"
+                                        />
+                                        <ErrorMessage name="proficiency" component="div" className="text-red-500 error" />
+                                    </>
                                 )}
                             </Field>
                         </div>
@@ -132,12 +138,13 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
                                         <Spin />
                                     </div>
                                     : <Core.Button type="narrow" submit>Save</Core.Button>}
-                                <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+                                <Core.Button type="narrow" color="white" onClick={() => { handleCancel(); resetForm(); }}>Cancel</Core.Button>
                             </div>
                             {action === "edit" &&
-                                <Core.Button onClick={() => deleteItem(id)} type="narrow" color="red" >Delete</Core.Button>
+                                <Core.Button onClick={() => { deleteItem(id); resetForm(); }} type="narrow" color="red" >Delete</Core.Button>
                             }
                         </div>
+
                     </Form>
                 )
             }
