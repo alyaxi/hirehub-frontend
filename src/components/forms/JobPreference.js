@@ -28,8 +28,8 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, savingFo
         skills: jp?.skills ? jp?.skills : [],
     });
 
-    console.log(" data", data)
-    console.log("data?.relocation?.onlyNearMe?.locations", data?.relocation?.onlyNearMe?.locations)
+    // console.log(" data", data)
+    // console.log("data?.relocation?.onlyNearMe?.locations", data?.relocation?.onlyNearMe?.locations)
 
     const [isRelocating, setIsRelocating] = useState((data.relocation.anywhere === true || data.relocation.anywhere === false) ? true : false);
     const [isDisableLocations, setIsDisableLocations] = useState();

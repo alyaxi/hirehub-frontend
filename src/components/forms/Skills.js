@@ -7,20 +7,7 @@ import { Spin } from 'antd';
 import dropdownOptions from '../../data/dropdownOptions.json';
 import * as Yup from 'yup';
 
-const validationSchema = Yup.object().shape({
-    title: Yup.string()
-        .trim()
-        .nullable() // Allow null values
-        .required('title is required'),
-    // .test('title-validation', 'Custom validation for title field', function (value) {
-    //     console.log('Value of title field:', value);
-    //     return true; // Return true to pass the validation, or false to fail it
-    // }),
-    experience: Yup.string()
-        .trim()
-        .nullable() // Allow null values
-        .required('experience is required')
-});
+
 
 const {
     skillExperienceOptions,
@@ -43,20 +30,6 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
         experience: skillToEdit?.experience || "",
         isDeleted: skillToEdit?.isDeleted || false,
     });
-
-    // const [data, setData] = useState({});
-
-    // useEffect(() => {
-    //     const initialData = {
-    //         _id: skillToEdit?._id || "",
-    //         title: skillToEdit?.title || "",
-    //         experience: skillToEdit?.experience || "",
-    //         isDeleted: skillToEdit?.isDeleted || false,
-    //     };
-    //     setData(initialData);
-    // }, [action, skillToEdit]);
-
-    // console.log("vv data", data)
 
     const handleSubmit = (values, { resetForm }) => {
         // console.log("handleSubmit called")
@@ -101,6 +74,22 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
         handleCancel()
     }
 
+    const validationSchema = Yup.object().shape({
+        title: Yup.string()
+            .trim()
+            .nullable()
+            .required('title is required')
+            .test('unique-skill', 'This skill is already exists', async function (value) {
+                const existingSkills = candidate?.skillsData || [];
+                const skillExists = existingSkills.some(item => item.title === value);
+                return !skillExists;
+            }),
+        experience: Yup.string()
+            .trim()
+            .nullable()
+            .required('experience is required')
+    });
+
     return (
         <Formik
             initialValues={data}
@@ -125,6 +114,7 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
                                             options={skillsOptions}
                                             defaultOption="Choose any one"
                                             value={values?.title}
+                                            required
                                         />
                                         <ErrorMessage name="title" component="div" className="text-red-500 error" />
                                     </>
@@ -143,9 +133,9 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
                                             options={skillExperienceOptions}
                                             defaultOption="Choose any one"
                                             value={values?.experience}
+                                            required
                                         />
                                         <ErrorMessage name="experience" component="div" className="text-red-500 error" />
-
                                     </>
                                 )}
                             </Field>

@@ -177,6 +177,7 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
         >
             {({ isSubmitting, setFieldValue }) => (
                 <Form>
+                    <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>Required fields</span>
 
                     <Core.UploadAvatar setState={setProfilePictrue} />
 

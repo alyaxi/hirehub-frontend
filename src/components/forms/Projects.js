@@ -203,6 +203,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                                         label
                                         placeholder="Enter your name"
                                         edit
+                                        required
                                     />
                                 )}
                             </Field>
@@ -352,7 +353,15 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                         </div>
 
                         <div className='mb-4'>
-                            <Core.TextEditorWithLabel name={'description'} label height={"h-[200px]"} style={{ height: "84%" }} value={description} setValue={setDescription} />
+                            <Core.TextEditorWithLabel
+                                name={'description'}
+                                label
+                                height={"h-[200px]"}
+                                style={{ height: "84%" }}
+                                value={description}
+                                setValue={setDescription}
+                                required
+                            />
                         </div>
 
                         <div className='flex justify-between pt-6 mt-8 border-t-[1px]'>
@@ -365,8 +374,8 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                                 <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                             </div>
                             {action === "edit" &&
-                            <Core.Button onClick={() => deleteItem(id)} type="narrow" color="red" >Delete</Core.Button>
-                        }
+                                <Core.Button onClick={() => deleteItem(id)} type="narrow" color="red" >Delete</Core.Button>
+                            }
                         </div>
 
                     </Form>

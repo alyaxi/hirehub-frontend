@@ -7,8 +7,8 @@ import { Popover, Progress } from 'antd';
 import dropdownOptions from '../../data/dropdownOptions.json';
 
 const {
-    videoOptions, 
-} = dropdownOptions; 
+    videoOptions,
+} = dropdownOptions;
 
 // const text = <span>Introduction Video</span>;
 
@@ -26,8 +26,8 @@ function CandidateProfile() {
 
     const _user = useSelector((state) => state.auth.user);
 
-    console.log("ww _user", _user)
-    console.log("ww candidate", candidate)
+    // console.log("ww _user", _user)
+    // console.log("ww candidate", candidate)
 
     const personalInformation = candidate?.personalInformationData
     const experience = candidate?.experiencesData
@@ -85,7 +85,7 @@ function CandidateProfile() {
         return candidate?.personalInformationData?.hasOwnProperty(property) && candidate?.personalInformationData[property] !== "";
     });
 
-    console.log('personalInformationCount', personalInformationCount);
+    // console.log('personalInformationCount', personalInformationCount);
 
     let jobPreferenceCount = 0;
 
@@ -160,13 +160,16 @@ function CandidateProfile() {
     let projectsCheck = candidate?.projectsData?.length > 0 || false;
     let languageCheck = candidate?.languagesData?.length > 0 || false;
 
-    console.log("_experience", _experience)
-    console.log("_education", _education)
-    console.log("_language", _language)
-    console.log("_skill", _skill)
-    console.log("_summery", _summery)
-    console.log("_personalInformation", _personalInformation)
-    console.log("_jobPreference", _jobPreference)
+    console.log('profileCompletion separately',{
+        '_experience': _experience,
+        '_education': _education,
+        '_language': _language,
+        '_skill': _skill,
+        '_summery': _summery,
+        '_personalInformation': _personalInformation,
+        '_jobPreference': _jobPreference
+    });
+
 
     return (
         <div className='flex justify-between gap-x-6 w-full'>

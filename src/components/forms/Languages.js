@@ -7,17 +7,6 @@ import { Spin } from 'antd';
 import dropdownOptions from '../../data/dropdownOptions.json';
 import * as Yup from 'yup';
 
-const validationSchema = Yup.object().shape({
-    title: Yup.string()
-        .trim()
-        .nullable() // Allow null values
-        .required('title is required'),
-    proficiency: Yup.string()
-        .trim()
-        .nullable() // Allow null values
-        .required('proficiency is required')
-});
-
 const {
     languagesOptions,
     languageProficiencyOptions
@@ -83,6 +72,22 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
         handleCancel()
     }
 
+    const validationSchema = Yup.object().shape({
+        title: Yup.string()
+            .trim()
+            .nullable()
+            .required('title is required')
+            .test('unique-language', 'This Language is already exists', async function (value) {
+                const existingLanguages = candidate?.languagesData || []; // Get existing languages from Redux store
+                const languageExists = existingLanguages.some(item => item.title === value); // Check if language exists
+                return !languageExists; // Return true if language is unique, false otherwise
+            }),
+        proficiency: Yup.string()
+            .trim()
+            .nullable()
+            .required('proficiency is required')
+    });
+
     return (
         <Formik
             initialValues={data}
@@ -91,7 +96,6 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
             onSubmit={handleSubmit}
         >
             {({ resetForm }) => {
-                // console.log("vv values", values)
                 return (
                     <Form>
                         <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>Required fields</span>
@@ -107,6 +111,7 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
                                             label
                                             options={languagesOptions}
                                             defaultOption="Choose any one"
+                                            required
                                         />
                                         <ErrorMessage name="title" component="div" className="text-red-500 error" />
                                     </>
@@ -124,6 +129,7 @@ function Languages({ action, handleCancel, id, setCandidateProfileData, savingFo
                                             label
                                             options={languageProficiencyOptions}
                                             defaultOption="Choose any one"
+                                            required
                                         />
                                         <ErrorMessage name="proficiency" component="div" className="text-red-500 error" />
                                     </>
