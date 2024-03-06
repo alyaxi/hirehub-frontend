@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Icon from '../icon';
-import { Avatar, Table, Flex, Button } from 'antd';
-import '../../assets/css/table.css'
-import { Core } from '..';
-import dropdownOptions from '../../data/dropdownOptions.json';
+import React, { useState } from "react";
+import Icon from "../icon";
+import { Avatar, Table, Flex, Button } from "antd";
+import "../../assets/css/table.css";
+import { Core } from "..";
+import dropdownOptions from "../../data/dropdownOptions.json";
 
 // all possible filter for table:
 // SearchByProduct
@@ -21,440 +21,590 @@ import dropdownOptions from '../../data/dropdownOptions.json';
 // SearchByApplicationStatus
 
 const {
-    UserStatusdropdownOptions,
-    CandidateStagedropdownOptions,
-    JobStatusDropdownOptions,
-    ApplicationStatusDropdownOptions
+  UserStatusdropdownOptions,
+  CandidateStagedropdownOptions,
+  JobStatusDropdownOptions,
+  ApplicationStatusDropdownOptions,
 } = dropdownOptions;
 
 function TableB({
-    tableId,
-    border,
-    columns,
-    data,
-    filterBy,
-    actions,
-    onViewClick,
-    onEditClick,
-    onStageClick,
-    onDeleteClick,
-    onMessageClick,
-    onCalenderClick,
-    name,
-    setName,
-    title,
-    setTitle,
-    employer,
-    setEmployer,
-    setEligibility,
-    setAppliedDate,
-    setCandidateStage,
-    setUserStatus,
-    jobStatus,
-    setJobStatus,
-    setApplicationStatus,
-    jobTitle,
-    setJobTitle,
-    setExpirationDate,
-    setProduct,
-    setEmailProcess,
-    addQuestion,
-    addButton
+  tableId,
+  border,
+  columns,
+  data,
+  filterBy,
+  actions,
+  onViewClick,
+  onEditClick,
+  onStageClick,
+  onDeleteClick,
+  onMessageClick,
+  onCalenderClick,
+  name,
+  setName,
+  title,
+  setTitle,
+  employer,
+  setEmployer,
+  setEligibility,
+  setAppliedDate,
+  setCandidateStage,
+  setUserStatus,
+  jobStatus,
+  setJobStatus,
+  setApplicationStatus,
+  jobTitle,
+  setJobTitle,
+  setExpirationDate,
+  setProduct,
+  setEmailProcess,
+  addQuestion,
+  addButton,
 }) {
+  console.log("tableDataa", data);
 
-    console.log("tableDataa", data?.candidate?.personalInformationData?.profilePicture)
-    console.log("tableDataa", data?.candidate?.personalInformationData?.profilePicture)
-    console.log("tableDataa", data?.candidate)
-    console.log("tableDataa", data?.candidate?.personalInformationData)
-    console.log("tableDataa", data?.candidate?.personalInformationData?.profilePicture)
+  const newColumn = columns.map((value, index) => {
+    console.log("newColumn", value);
 
-    const newColumn = columns.map((value, index) => {
-        console.log("newColumn", value)
+    // let columnSorter;
+    // if (value?.sorter === true) {
+    //     columnSorter = (a, b) => {
+    //         if (typeof a.name === 'string' && typeof b.name === 'string') {
+    //             return a.name.localeCompare(b.name);
+    //         } else if (typeof a.name === 'number' && typeof b.name === 'number') {
+    //             return a.name - b.name;
+    //         } else {
+    //             return 0;
+    //         }
+    //     };
+    // } else if (value?.sorter === false) {
+    //     columnSorter = undefined;
+    // }
 
-        // let columnSorter;
-        // if (value.sorter === true) {
-        //     columnSorter = (a, b) => {
-        //         if (typeof a.name === 'string' && typeof b.name === 'string') {
-        //             return a.name.localeCompare(b.name);
-        //         } else if (typeof a.name === 'number' && typeof b.name === 'number') {
-        //             return a.name - b.name;
-        //         } else {
-        //             return 0;
-        //         }
-        //     };
-        // } else if (value.sorter === false) {
-        //     columnSorter = undefined;
-        // }
+    // candidate?.personalInformationData?.profilePicture
 
-        // candidate?.personalInformationData?.profilePicture
-
-        return {
-            ...value,
-            render: (val, id) => {
-                const firstLetter = val?.name ? val.name.trim().charAt(0).toUpperCase() : '';
-                console.log("ggg val",val)
-                if (value.dataIndex === "name" || value.dataIndex === "employerName" || value.dataIndex === "companyName") {
-                    return (
-                        <React.Fragment key={`render-${value.dataIndex}-${index}`}>
-                            {val?.img &&
-                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px] border border-red-500 `}>
-                                    <img className="inline-block h-[30px] w-[30px] rounded-full" src={val?.img} alt="profile image" />
-                                    <Avatar src={val?.img}>{firstLetter}</Avatar>
-                                    <span className='whitespace-nowrap font-semibold'>{val?.name}</span>
-                                </div> 
-                            }
-                            {/* {val?.candidate?.personalInformationData?.profilePicture &&
-                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px]`}>
+    return {
+      ...value,
+      render: (val, id) => {
+        const firstLetter = val?.name
+          ? val.name.trim().charAt(0).toUpperCase()
+          : "";
+        console.log("ggg val", val);
+        if (
+          value?.dataIndex === "name" ||
+          value?.dataIndex === "employerName" ||
+          value?.dataIndex === "companyName"
+        ) {
+          return (
+            <React.Fragment key={`render-${value?.dataIndex}-${index}`}>
+              {val?.img && (
+                <div
+                  className={`render-${value?.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px] border border-red-500 `}
+                >
+                  <img
+                    className="inline-block h-[30px] w-[30px] rounded-full"
+                    src={val?.img}
+                    alt="profile image"
+                  />
+                  <Avatar src={val?.img}>{firstLetter}</Avatar>
+                  <span className="whitespace-nowrap font-semibold">
+                    {val?.name}
+                  </span>
+                </div>
+              )}
+              {/* {val?.candidate?.personalInformationData?.profilePicture &&
+                                <div className={`render-${value?.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px]`}>
                                     <img className="inline-block h-[30px] w-[30px] rounded-full" src={val?.candidate?.personalInformationData?.profilePicture} alt="profile image" />
                                     <Avatar src={val?.candidate?.personalInformationData?.profilePicture}>{firstLetter}</Avatar>
                                     <span className='whitespace-nowrap font-semibold'>{val?.name}</span>
                                 </div> 
                             } */}
-                            <span className='capitalize'>{val}</span>
-                        </React.Fragment>
-                    )
-                }
-                else if (value.dataIndex === "avatar") {
-                    return (                        
-                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2`}>
-                                    <Avatar src={val}>{firstLetter}</Avatar> 
-                                </div>                           
-                    )
-                }
-                else if (value.dataIndex === "payment") {
-                    return (
-                        <div className='capitalize' key={`render-${value.dataIndex}-${index}`}>
-                            {val}
-                        </div>
-                    )
-                }
-                else if (value.dataIndex === "question") {
-                    return (
-                        <>
-                            {val !== "" &&
-                                <div className='capitalize' key={`render-${value.dataIndex}-${index}`} dangerouslySetInnerHTML={{ __html: val }}></div>
-                            }
-                        </>
-                    )
-                }
-                else if (value.dataIndex === "account") {
-                    return (
-                        <div className='w-full text-center' key={`render-${value.dataIndex}-${index}`}>
-                            <Core.Badge>{id.account}</Core.Badge>
-                        </div>
-                    )
-                }
-                else if (value.dataIndex === "stage") {
-                    return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'><Core.Badge>{id.stage}</Core.Badge></div>;
-                }
-                else if (value.dataIndex === "status") {
-                    return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'><Core.Badge>{id.status}</Core.Badge></div>;
-                }
-                else if (value.dataIndex === "jobStatus") {
-                    return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'><Core.Badge>{id.jobStatus}</Core.Badge></div>;
-                }
-                else if (value.dataIndex === "process") {
-                    return <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'>
-                        <Button
-                            onClick={() => onStageClick && onStageClick(id?._id)}
-                        >
-                            Proceed to Next
-                        </Button>
-
-                    </div>;
-                }
-
-                else if (value.dataIndex === "accountStatus") {
-                    return (
-                        <div key={`render-${value.dataIndex}-${index}`} className='w-full text-center'>
-                            <Core.Badge>{id.accountStatus}</Core.Badge>
-                        </div>
-                    )
-                }
-                else if (value.dataIndex === "positionTitle") {
-                    return <span key={`render-${value.dataIndex}-${index}`} className='whitespace-nowrap font-medium'>{val}</span>;
-                }
-                else if (value.dataIndex === "emailTitle") {
-                    // const htmlText = val?.text
-                    // const tempElement = document.createElement('div');
-                    // tempElement.innerHTML = htmlText;
-                    // const textContent = tempElement.textContent || tempElement.innerText;
-                    // const initialText = textContent.slice(0, 140);
-                    return <span key={`render-${value.dataIndex}-${index}`} className='whitespace-nowrap font-medium'>
-                        {val?.subject}
-                    </span>;
-                }
-                else if (value.dataIndex === "salary") {
-                    return <span key={`render-${value.dataIndex}-${index}`}>{val?.value || val || "-"}</span>;
-                }
-                else if (value.dataIndex === "action") {
-                    // console.log(id, "idddddddlll")
-                    return (
-                        <Flex className={`gap-x-2 ${tableId === "email_template" && 'justify-center gap-x-[35px]'}`} key={`render-${value.dataIndex}-${index}`}>
-                            {actions.view &&
-                                <span className={`text-gray-6 hover:text-purple-2 cursor-pointer ${tableId === "email_template" && 'order-2'}`}
-                                    onClick={() => onViewClick(id?.id)}>
-                                    <Icon name="View" />
-                                </span>
-                            }
-                            {actions.edit &&
-                                <span className={`text-gray-6 hover:text-purple-2 cursor-pointer ${tableId === "email_template" && 'order-1'}`}
-                                    onClick={() => onEditClick(id?.id || id?._id)}>
-                                    <Icon name="Edit" />
-                                </span>
-                            }
-                            {actions.delete &&
-                                <span className={`text-gray-6 hover:text-purple-2 cursor-pointer`}
-                                    onClick={() => onDeleteClick(id?.id || id?._id)}>
-                                    <Icon name="Delete" />
-                                </span>
-                            }
-                            {actions.message &&
-                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
-                                    onClick={() => onMessageClick(id?.id)}>
-                                    <Icon name="Message" />
-                                </span>
-                            }
-                            {actions.date &&
-                                <span className='text-gray-6 hover:text-purple-2 cursor-pointer'
-                                    onClick={() => onCalenderClick(id?.jobId, id?.candidate?.userId)}>
-                                    <Icon name="Calender1" />
-                                </span>
-                            }
-                        </Flex>
-                    )
-                }
-                else if (value.dataIndex === "employer") {
-                    return (
-                        <span key={`render-${value.dataIndex}-${index}`}>
-                            {val?.title}
-                        </span>
-                    )
-                }
-
-
-                else if (value.dataIndex === "nextPayment" || value.dataIndex === "expirationDate") {
-
-                    const regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
-                    if (regex.test(val)) {
-                        const dateString = val;
-                        const date = new Date(dateString);
-                        const formattedDate = date.toISOString().split('T')[0];
-                        return (
-                            <span key={`render-${value.dataIndex}-${index}`}>
-                                {formattedDate}
-                            </span>
-                        )
-                    } else {
-                        return (
-                            <span key={`render-${value.dataIndex}-${index}`}>
-                                {val}
-                            </span>
-                        )
-                    }
-                }
-                else {
-                    return <span className='text-gray-6' key={`render-${value.dataIndex}-${index}`}>{val}</span>;
-                }
-            },
-            // sorter: columnSorter,
-            // sorter: value.sorter,
-        }
-    });
-
-    const handleTableChange = (pagination, filters, sorter) => {
-        console.log(pagination);
-    };
-
-    const [resetTrigger, setResetTrigger] = useState(false);
-    const [resetTrigger2, setResetTrigger2] = useState(false);
-    const [resetTrigger3, setResetTrigger3] = useState(false);
-
-    const resetFilters = () => {
-        setJobTitle && setJobTitle('');
-        setName && setName('');
-        setTitle && setTitle('');
-        setEmployer && setEmployer('');
-        setEligibility && setEligibility('');
-        setExpirationDate && setExpirationDate('');
-        setProduct && setProduct('');
-        setResetTrigger((prev) => !prev);
-        setResetTrigger2((prev) => !prev);
-        setResetTrigger3((prev) => !prev);
-    };
-
-    // console.log("555 data", data)
-    // console.log("555 newColumn", newColumn)
-    // console.log("555 data.map(_data => ({ ..._data, key: _data.id }))", data.map(_data => ({ ..._data, key: _data.id })))
-
-    return (
-        <div className={`flex flex-col bg-white rounded-[8px] overflow-hidden ${border === 'none' ? 'border-0' : 'border shadow-md'}`}>
-            <div className="-m-1.5 overflow-x-auto">
-                <div className="p-1.5 min-w-full inline-block align-middle">
-                    <div className="overflow-hidden ">
-                        <div className="bg-white flex justify-between items-center gap-x-2 py-3 px-5">
-
-                            {filterBy.length ?
-                                <>
-                                    {(!filterBy.includes("SearchByProduct") || !filterBy.includes("SearchByEmailProcess")) &&
-                                        <span className='text-black-2 text-[18px] leading-[28px] font-medium'>Filters</span>}
-                                </>
-                                :
-                                null
-                            }
-                            <div className={`flex ${addButton ? '' : 'justify-end'} items-center gap-1 w-full`}>
-                                {filterBy?.map((value, index) => {
-                                    const onInputChange = (e) => {
-                                        if (value === 'SearchByName') {
-                                            setName(e.target.value);
-                                        }
-                                        if (value === 'SearchByTitle') {
-                                            setTitle(e.target.value);
-                                        }
-                                        if (value === 'SearchByEmployer') {
-                                            setEmployer(e.target.value);
-                                        }
-                                        if (value === 'SearchByEligibility') {
-                                            setEligibility(e.target.value);
-                                        }
-                                        if (value === 'SearchByJobTitle') {
-                                            setJobTitle(e.target.value);
-                                        }
-                                        if (value === 'SearchByProduct') {
-                                            setProduct(e.target.value);
-                                        }
-                                        if (value === 'SearchByEmailProcess') {
-                                            setEmailProcess(e.target.value);
-                                        }
-                                    }
-                                    const onDateChange = (e) => {
-                                        if (value === 'SearchByExpirationDate') {
-                                            setExpirationDate(e.target.value);
-                                        }
-                                        if (value === 'SearchByAppliedDate') {
-                                            setAppliedDate(e.target.value);
-                                        }
-                                    }
-                                    let inputWidth = 'auto'
-                                    switch (value) {
-                                        case 'SearchByName':
-                                            inputWidth = 'w-[160px]';
-                                            break;
-                                        case 'SearchByTitle':
-                                            inputWidth = 'w-[150px]';
-                                            break;
-                                        case 'SearchByEmployer':
-                                            inputWidth = 'w-[100px]';
-                                            break;
-                                        case 'SearchByEligibility':
-                                            inputWidth = 'w-[100px]';
-                                            break;
-                                        case 'SearchByJobStatus':
-                                            inputWidth = 'w-[100px]';
-                                            break;
-                                        case 'SearchByApplicationStatus':
-                                            inputWidth = 'w-[100px]';
-                                            break;
-                                        case 'SearchByJobTitle':
-                                            inputWidth = 'w-[100px]';
-                                            break;
-                                        default:
-                                            break;
-                                    }
-
-                                    if (value === "SearchByAppliedDate") {
-                                        return (
-                                            <Core.InputWithLabel key={resetTrigger2 ? ('reset' + value) : ('normal' + value)} name={'calender'} setValue={setAppliedDate} onChange={onDateChange} sm />
-                                        )
-                                    }
-                                    if (value === "SearchByExpirationDate") {
-                                        return (
-                                            <Core.InputWithLabel key={resetTrigger3 ? ('reset' + value) : ('normal' + value)} name={'calender'} setValue={setExpirationDate} onChange={onDateChange} sm />
-                                        )
-                                    }
-                                    if (value === "SearchByUserStatus") {
-                                        return (
-                                            <Core.Dropdown2 key={`userStatus-${index}`} options={UserStatusdropdownOptions} setState={setUserStatus} defaultTitle="Status" menuWidth={'w-[190px]'} />
-                                        )
-                                    }
-                                    if (value === "SearchByCandidateStage") {
-                                        return (
-                                            <Core.Dropdown2 key={`candidateStage-${index}`} options={CandidateStagedropdownOptions} setState={setCandidateStage} defaultTitle="Stage" menuWidth={'w-[150px]'} />
-                                        )
-                                    }
-                                    if (value === "SearchByProduct") {
-                                        return (
-                                            <div key={`searchProduct-${index}`} className='flex justify-start items-center w-full'>
-                                                <Core.SearchInput onInputChange={onInputChange} name="searchProduct" />
-                                                <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button>
-                                            </div>
-                                        )
-                                    }
-                                    if (value === "SearchByEmailProcess") {
-                                        return (
-                                            <div key={`SearchByEmailProcess-${index}`} className='flex justify-start items-center w-full'>
-                                                <Core.SearchInput onInputChange={onInputChange} name="SearchByEmailProcess" />
-                                                {/* <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button> */}
-                                            </div>
-                                        )
-                                    }
-                                    if (value === "SearchByJobStatus") {
-                                        return (
-                                            <Core.Dropdown2 key={`jobStatus-${index}`} options={JobStatusDropdownOptions} setState={setJobStatus} defaultTitle="Job Status" menuWidth={'w-[150px]'} />
-                                        )
-                                    }                                    
-                                    if (value === "SearchByApplicationStatus") {
-                                        return (
-                                            <Core.Dropdown2 key={`applicationStatus-${index}`} options={ApplicationStatusDropdownOptions} setState={setApplicationStatus} defaultTitle="Application Status" menuWidth={'w-[150px]'} />
-                                        )
-                                    }
-                                    else {
-                                        return (
-                                            <Core.InputWithLabel
-                                                key={resetTrigger ? ('reset' + value) : ('normal' + value)}
-                                                name={value} onChange={onInputChange}
-                                                sm className={inputWidth} />
-                                        )
-                                    }
-                                })}
-                                {filterBy && filterBy.length > 2 ? <div className='flex justify-end items-center gap-1'>
-                                    <Core.Button sm type="narrow" >Search</Core.Button>
-                                    <Core.Button sm type="narrow" color="white" icon="Cross" onClick={resetFilters}>Reset</Core.Button>
-                                </div> : null}
-                            </div>
-                            {/* <div> */}
-                            {addButton &&
-                                <Core.Button sm type="narrow" onClick={addButton?.func} className={"ml-3"}>{addButton?.title}</Core.Button>
-                            }
-                            {/* </div> */}
-                        </div>
-                        <div className="overflow-hidden">
-                            <Table
-                                columns={newColumn}
-                                // dataSource={data}
-                                dataSource={data.map(_data => ({ ..._data, key: _data.id }))}
-                                pagination={{ pageSize: 10 }}
-                                onChange={handleTableChange}
-                            />
-                        </div>
-                        {/* <div className="flex justify-between items-center border-t py-5 px-4"> 
-                        </div> */}
-                    </div>
-                </div>
+              <span className="capitalize">{val}</span>
+            </React.Fragment>
+          );
+        } else if (value?.dataIndex === "avatar") {
+          return (
+            <div
+              className={`render-${value?.dataIndex}-${index} flex justify-start items-center gap-x-2`}
+            >
+              {/* <img className="inline-block h-[30px] w-[30px] rounded-full" src={val} alt="profile image" /> */}
+              <Avatar src={val}>!</Avatar>
             </div>
-        </div >
+          );
+        } else if (value?.dataIndex === "payment") {
+          return (
+            <div
+              className="capitalize"
+              key={`render-${value?.dataIndex}-${index}`}
+            >
+              {val}
+            </div>
+          );
+        } else if (value?.dataIndex === "question") {
+          return (
+            <>
+              {val !== "" && (
+                <div
+                  className="capitalize"
+                  key={`render-${value?.dataIndex}-${index}`}
+                  dangerouslySetInnerHTML={{ __html: val }}
+                ></div>
+              )}
+            </>
+          );
+        } else if (value?.dataIndex === "account") {
+          return (
+            <div
+              className="w-full text-center"
+              key={`render-${value?.dataIndex}-${index}`}
+            >
+              <Core.Badge>{id.account}</Core.Badge>
+            </div>
+          );
+        } else if (value?.dataIndex === "stage") {
+          return (
+            <div
+              key={`render-${value?.dataIndex}-${index}`}
+              className="w-full text-center"
+            >
+              <Core.Badge>{id.stage}</Core.Badge>
+            </div>
+          );
+        } else if (value?.dataIndex === "status") {
+          return (
+            <div
+              key={`render-${value?.dataIndex}-${index}`}
+              className="w-full text-center"
+            >
+              <Core.Badge>{id.status}</Core.Badge>
+            </div>
+          );
+        } else if (value?.dataIndex === "jobStatus") {
+          return (
+            <div
+              key={`render-${value?.dataIndex}-${index}`}
+              className="w-full text-center"
+            >
+              <Core.Badge>{id.jobStatus}</Core.Badge>
+            </div>
+          );
+        } else if (value?.dataIndex === "process") {
+          return (
+            <div
+              key={`render-${value?.dataIndex}-${index}`}
+              className="w-full text-center"
+            >
+              <Button onClick={() => onStageClick && onStageClick(id?._id)}>
+                Proceed to Next
+              </Button>
+            </div>
+          );
+        } else if (value?.dataIndex === "accountStatus") {
+          return (
+            <div
+              key={`render-${value?.dataIndex}-${index}`}
+              className="w-full text-center"
+            >
+              <Core.Badge>{id.accountStatus}</Core.Badge>
+            </div>
+          );
+        } else if (value?.dataIndex === "positionTitle") {
+          return (
+            <span
+              key={`render-${value?.dataIndex}-${index}`}
+              className="whitespace-nowrap font-medium"
+            >
+              {val}
+            </span>
+          );
+        } else if (value?.dataIndex === "emailTitle") {
+          // const htmlText = val?.text
+          // const tempElement = document.createElement('div');
+          // tempElement.innerHTML = htmlText;
+          // const textContent = tempElement.textContent || tempElement.innerText;
+          // const initialText = textContent.slice(0, 140);
+          return (
+            <span
+              key={`render-${value?.dataIndex}-${index}`}
+              className="whitespace-nowrap font-medium"
+            >
+              {val?.subject}
+            </span>
+          );
+        } else if (value?.dataIndex === "salary") {
+          return (
+            <span key={`render-${value?.dataIndex}-${index}`}>
+              {val?.value || val || "-"}
+            </span>
+          );
+        } else if (value?.dataIndex === "action") {
+          // console.log(id, "idddddddlll")
+          return (
+            <Flex
+              className={`gap-x-2 ${
+                tableId === "email_template" && "justify-center gap-x-[35px]"
+              }`}
+              key={`render-${value?.dataIndex}-${index}`}
+            >
+              {actions.view && (
+                <span
+                  className={`text-gray-6 hover:text-purple-2 cursor-pointer ${
+                    tableId === "email_template" && "order-2"
+                  }`}
+                  onClick={() => onViewClick(id?.id)}
+                >
+                  <Icon name="View" />
+                </span>
+              )}
+              {actions.edit && (
+                <span
+                  className={`text-gray-6 hover:text-purple-2 cursor-pointer ${
+                    tableId === "email_template" && "order-1"
+                  }`}
+                  onClick={() => onEditClick(id?.id || id?._id)}
+                >
+                  <Icon name="Edit" />
+                </span>
+              )}
+              {actions.delete && (
+                <span
+                  className={`text-gray-6 hover:text-purple-2 cursor-pointer`}
+                  onClick={() => onDeleteClick(id?.id || id?._id)}
+                >
+                  <Icon name="Delete" />
+                </span>
+              )}
+              {actions.message && (
+                <span
+                  className="text-gray-6 hover:text-purple-2 cursor-pointer"
+                  onClick={() => onMessageClick(id?.id)}
+                >
+                  <Icon name="Message" />
+                </span>
+              )}
+              {actions.date && (
+                <span
+                  className="text-gray-6 hover:text-purple-2 cursor-pointer"
+                  onClick={() =>
+                    onCalenderClick(id?.jobId, id?.candidate?.userId)
+                  }
+                >
+                  <Icon name="Calender1" />
+                </span>
+              )}
+            </Flex>
+          );
+        } else if (value?.dataIndex === "employer") {
+          return (
+            <span key={`render-${value?.dataIndex}-${index}`}>
+              {val?.title}
+            </span>
+          );
+        } else if (
+          value?.dataIndex === "nextPayment" ||
+          value?.dataIndex === "expirationDate"
+        ) {
+          const regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
+          if (regex.test(val)) {
+            const dateString = val;
+            const date = new Date(dateString);
+            const formattedDate = date.toISOString().split("T")[0];
+            return (
+              <span key={`render-${value?.dataIndex}-${index}`}>
+                {formattedDate}
+              </span>
+            );
+          } else {
+            return (
+              <span key={`render-${value?.dataIndex}-${index}`}>{val}</span>
+            );
+          }
+        } else {
+          return (
+            <span
+              className="text-gray-6"
+              key={`render-${value?.dataIndex}-${index}`}
+            >
+              {val}
+            </span>
+          );
+        }
+      },
+      // sorter: columnSorter,
+      // sorter: value?.sorter,
+    };
+  });
 
-    )
+  const handleTableChange = (pagination, filters, sorter) => {
+    console.log(pagination);
+  };
+
+  const [resetTrigger, setResetTrigger] = useState(false);
+  const [resetTrigger2, setResetTrigger2] = useState(false);
+  const [resetTrigger3, setResetTrigger3] = useState(false);
+
+  const resetFilters = () => {
+    setJobTitle && setJobTitle("");
+    setName && setName("");
+    setTitle && setTitle("");
+    setEmployer && setEmployer("");
+    setEligibility && setEligibility("");
+    setExpirationDate && setExpirationDate("");
+    setProduct && setProduct("");
+    setResetTrigger((prev) => !prev);
+    setResetTrigger2((prev) => !prev);
+    setResetTrigger3((prev) => !prev);
+  };
+
+  // console.log("555 data", data)
+  // console.log("555 newColumn", newColumn)
+  // console.log("555 data.map(_data => ({ ..._data, key: _data.id }))", data.map(_data => ({ ..._data, key: _data.id })))
+
+  return (
+    <div
+      className={`flex flex-col bg-white rounded-[8px] overflow-hidden ${
+        border === "none" ? "border-0" : "border shadow-md"
+      }`}
+    >
+      <div className="-m-1.5 overflow-x-auto">
+        <div className="p-1.5 min-w-full inline-block align-middle">
+          <div className="overflow-hidden ">
+            <div className="bg-white flex justify-between items-center gap-x-2 py-3 px-5">
+              {filterBy.length ? (
+                <>
+                  {(!filterBy.includes("SearchByProduct") ||
+                    !filterBy.includes("SearchByEmailProcess")) && (
+                    <span className="text-black-2 text-[18px] leading-[28px] font-medium">
+                      Filters
+                    </span>
+                  )}
+                </>
+              ) : null}
+              <div
+                className={`flex ${
+                  addButton ? "" : "justify-end"
+                } items-center gap-1 w-full`}
+              >
+                {filterBy?.map((value, index) => {
+                  const onInputChange = (e) => {
+                    if (value === "SearchByName") {
+                      setName(e.target.value);
+                    }
+                    if (value === "SearchByTitle") {
+                      setTitle(e.target.value);
+                    }
+                    if (value === "SearchByEmployer") {
+                      setEmployer(e.target.value);
+                    }
+                    if (value === "SearchByEligibility") {
+                      setEligibility(e.target.value);
+                    }
+                    if (value === "SearchByJobTitle") {
+                      setJobTitle(e.target.value);
+                    }
+                    if (value === "SearchByProduct") {
+                      setProduct(e.target.value);
+                    }
+                    if (value === "SearchByEmailProcess") {
+                      setEmailProcess(e.target.value);
+                    }
+                  };
+                  const onDateChange = (e) => {
+                    if (value === "SearchByExpirationDate") {
+                      setExpirationDate(e.target.value);
+                    }
+                    if (value === "SearchByAppliedDate") {
+                      setAppliedDate(e.target.value);
+                    }
+                  };
+                  let inputWidth = "auto";
+                  switch (value) {
+                    case "SearchByName":
+                      inputWidth = "w-[160px]";
+                      break;
+                    case "SearchByTitle":
+                      inputWidth = "w-[150px]";
+                      break;
+                    case "SearchByEmployer":
+                      inputWidth = "w-[100px]";
+                      break;
+                    case "SearchByEligibility":
+                      inputWidth = "w-[100px]";
+                      break;
+                    case "SearchByJobStatus":
+                      inputWidth = "w-[100px]";
+                      break;
+                    case "SearchByApplicationStatus":
+                      inputWidth = "w-[100px]";
+                      break;
+                    case "SearchByJobTitle":
+                      inputWidth = "w-[100px]";
+                      break;
+                    default:
+                      break;
+                  }
+
+                  if (value === "SearchByAppliedDate") {
+                    return (
+                      <Core.InputWithLabel
+                        key={resetTrigger2 ? "reset" + value : "normal" + value}
+                        name={"calender"}
+                        setValue={setAppliedDate}
+                        onChange={onDateChange}
+                        sm
+                      />
+                    );
+                  }
+                  if (value === "SearchByExpirationDate") {
+                    return (
+                      <Core.InputWithLabel
+                        key={resetTrigger3 ? "reset" + value : "normal" + value}
+                        name={"calender"}
+                        setValue={setExpirationDate}
+                        onChange={onDateChange}
+                        sm
+                      />
+                    );
+                  }
+                  if (value === "SearchByUserStatus") {
+                    return (
+                      <Core.Dropdown2
+                        key={`userStatus-${index}`}
+                        options={UserStatusdropdownOptions}
+                        setState={setUserStatus}
+                        defaultTitle="Status"
+                        menuWidth={"w-[190px]"}
+                      />
+                    );
+                  }
+                  if (value === "SearchByCandidateStage") {
+                    return (
+                      <Core.Dropdown2
+                        key={`candidateStage-${index}`}
+                        options={CandidateStagedropdownOptions}
+                        setState={setCandidateStage}
+                        defaultTitle="Stage"
+                        menuWidth={"w-[150px]"}
+                      />
+                    );
+                  }
+                  if (value === "SearchByProduct") {
+                    return (
+                      <div
+                        key={`searchProduct-${index}`}
+                        className="flex justify-start items-center w-full"
+                      >
+                        <Core.SearchInput
+                          onInputChange={onInputChange}
+                          name="searchProduct"
+                        />
+                        <Core.Button
+                          sm
+                          type="narrow"
+                          onClick={addQuestion}
+                          className={"ml-3"}
+                        >
+                          Add Question
+                        </Core.Button>
+                      </div>
+                    );
+                  }
+                  if (value === "SearchByEmailProcess") {
+                    return (
+                      <div
+                        key={`SearchByEmailProcess-${index}`}
+                        className="flex justify-start items-center w-full"
+                      >
+                        <Core.SearchInput
+                          onInputChange={onInputChange}
+                          name="SearchByEmailProcess"
+                        />
+                        {/* <Core.Button sm type="narrow" onClick={addQuestion} className={"ml-3"}>Add Question</Core.Button> */}
+                      </div>
+                    );
+                  }
+                  if (value === "SearchByJobStatus") {
+                    return (
+                      <Core.Dropdown2
+                        key={`jobStatus-${index}`}
+                        options={JobStatusDropdownOptions}
+                        setState={setJobStatus}
+                        defaultTitle="Job Status"
+                        menuWidth={"w-[150px]"}
+                      />
+                    );
+                  }
+                  if (value === "SearchByApplicationStatus") {
+                    return (
+                      <Core.Dropdown2
+                        key={`applicationStatus-${index}`}
+                        options={ApplicationStatusDropdownOptions}
+                        setState={setApplicationStatus}
+                        defaultTitle="Application Status"
+                        menuWidth={"w-[150px]"}
+                      />
+                    );
+                  } else {
+                    return (
+                      <Core.InputWithLabel
+                        key={resetTrigger ? "reset" + value : "normal" + value}
+                        name={value}
+                        onChange={onInputChange}
+                        sm
+                        className={inputWidth}
+                      />
+                    );
+                  }
+                })}
+                {filterBy && filterBy.length > 2 ? (
+                  <div className="flex justify-end items-center gap-1">
+                    <Core.Button sm type="narrow">
+                      Search
+                    </Core.Button>
+                    <Core.Button
+                      sm
+                      type="narrow"
+                      color="white"
+                      icon="Cross"
+                      onClick={resetFilters}
+                    >
+                      Reset
+                    </Core.Button>
+                  </div>
+                ) : null}
+              </div>
+              {/* <div> */}
+              {addButton && (
+                <Core.Button
+                  sm
+                  type="narrow"
+                  onClick={addButton?.func}
+                  className={"ml-3"}
+                >
+                  {addButton?.title}
+                </Core.Button>
+              )}
+              {/* </div> */}
+            </div>
+            <div className="overflow-hidden">
+              <Table
+                columns={newColumn}
+                // dataSource={data}
+                dataSource={data.map((_data) => ({ ..._data, key: _data.id }))}
+                pagination={{ pageSize: 10 }}
+                onChange={handleTableChange}
+              />
+            </div>
+            {/* <div className="flex justify-between items-center border-t py-5 px-4"> 
+                        </div> */}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default TableB
-
-
-
-
-
-
-
+export default TableB;
 
 // import React, { useState } from 'react';
 // import { Table } from 'antd';

@@ -72,7 +72,7 @@ function ScheduleCandidates() {
                 heading="Schedule"
                 breadcrumb={breadcrumb}
             />
-            <Core.MyCalender events={modifiedDatainterview} type="employer" />
+            <Core.MyCalender events={modifiedDatainterview || []} type="employer" />
         </>
     );
 }

@@ -37,7 +37,7 @@ function CompanyProfile({ data, pageType, dropdownOptions }) {
 
         }
 
-    }, [reload])
+    }, [reload,dispatch])
 
     const handleNext = () => {
         try {
