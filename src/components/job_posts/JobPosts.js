@@ -5,7 +5,10 @@ import Icon from '../icon';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space, Divider, Button, theme, Modal } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllJobsforCandidate } from '../../Slices/Candidates/CandidateJobsSlice';
+import { applyforJob, getAllJobsforCandidate } from '../../Slices/Candidates/CandidateJobsSlice';
+import notificationService from '../../utilis/notification';
+import { ToastContainer } from 'react-toastify';
+
 
 // const jobPosts = [
 //     {
@@ -91,7 +94,7 @@ function JobPosts() {
 
     // console.log({ sortedArray });
 
-    // console.log(jobPosts, "jobPostsssssssss")
+    console.log(jobPosts, "jobPostsssssssss")
 
     const [open, setOpen] = useState(false);
     const handleMenuClick = (e) => {
@@ -233,6 +236,8 @@ function JobPosts() {
     const [selectedJob, setSelectedJob] = useState("")
     const [selectedJobId, setSelectedJobId] = useState('');
 
+    console.log(selectedJob, "selectedJobId")
+
     const openJob = (id) => {
         // console.log("id", id)
         const _selectedJob = sortedArray.find(job => job._id === id);
@@ -260,7 +265,18 @@ function JobPosts() {
     };
 
     const onApply = () => {
-        showModal()
+        // showModal()
+        try {
+            console.log(selectedJobId, "jobIddd")
+            dispatch(applyforJob({employerId:selectedJob?.employer[0]?.userId, jobId: selectedJobId}))
+                .then(() => {
+                    notificationService.success("Application Sent Successfully");
+                }).catch((err) => {
+                    notificationService.error("Error Sending")
+                })
+        } catch (error) {
+            notificationService.danger("Error Sending")
+        }
     }
 
     console.log("filterby", {
@@ -280,6 +296,8 @@ function JobPosts() {
 
     return (
         <>
+                        <ToastContainer></ToastContainer>
+
             <Modal title={'title'} width={715} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]} >
             </Modal>
 
