@@ -123,8 +123,8 @@ function MainCandidates() {
     ...candidate,
     avatar: candidate?.candidate?.personalInformationData?.profilePicture || "", // Set a default value if profilePicture is missing
   }));
-  //   console.log("AppliedJobCandidate",AppliedJobCandidate)
-  //   console.log("_AppliedJobCandidate",_AppliedJobCandidate)
+    console.log("AppliedJobCandidate",AppliedJobCandidate)
+    console.log("_AppliedJobCandidate",_AppliedJobCandidate)
   return (
     <>
       <Breadcrumb heading="Manage Candidates" breadcrumb={breadcrumb} />

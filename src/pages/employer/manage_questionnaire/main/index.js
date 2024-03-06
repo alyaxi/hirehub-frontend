@@ -78,7 +78,7 @@ function MainQuestionnaireEmployer() {
         }
 
 
-    }, [reload])
+    }, [reload,dispatch])
 
     const onEditClick = (id) => {
         // console.log(id, "idddededed")

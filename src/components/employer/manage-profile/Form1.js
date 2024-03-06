@@ -1,10 +1,10 @@
 // Form1.js
-import React, { useState } from 'react';
-import { Core } from '../..';
-import dropdownOptions from '../../../data/dropdownOptions.json';
-import UploadLogo from '../../core/UploadLogo';
+import React, { useState } from "react";
+import { Core } from "../..";
+import dropdownOptions from "../../../data/dropdownOptions.json";
+import UploadLogo from "../../core/UploadLogo";
 // import UploadVideo from '../../core/UploadVideo';
-import { Form, Formik, Field, ErrorMessage } from 'formik';
+import { Form, Formik, Field, ErrorMessage } from "formik";
 
 // const validationSchema = Yup.object().shape({
 //     companyName: Yup.string()
@@ -18,118 +18,126 @@ import { Form, Formik, Field, ErrorMessage } from 'formik';
 // });
 
 function Form1({ onNext, profileData, validationSchema, handleFinish }) {
+  // console.log("profileData?.phoneNo", profileData?.phoneNo)
+  // console.log("profileData?.phoneNo", typeof(profileData?.phoneNo))
 
-    // console.log("profileData?.phoneNo", profileData?.phoneNo)
-    // console.log("profileData?.phoneNo", typeof(profileData?.phoneNo))
+  const { numberOfEmployeesOptions } = dropdownOptions;
 
-    const {
-        numberOfEmployeesOptions,
-    } = dropdownOptions;
+  const [data, setData] = useState({
+    noOfEmployes: profileData?.noOfEmployes || null,
+    companyName: profileData?.companyName || null,
+    phoneNo: profileData?.phoneNo?.toString() || null,
+  });
 
-    const [data, setData] = useState({
-        noOfEmployes: profileData?.noOfEmployes || null,
-        companyName: profileData?.companyName || null,
-        phoneNo: profileData?.phoneNo?.toString() || null,
-    });
+  // console.log("data", data)
 
-    // console.log("data", data)
+  const [fileInputs, setFileInputs] = useState({
+    logo: null,
+    welcomeVideo: null,
+  });
 
-    const [fileInputs, setFileInputs] = useState({
-        logo: null,
-        welcomeVideo: null,
-    });
+  const handleChange = (name, event) => {
+    const value = event.target.value;
+    console.log("type", typeof value);
 
-    const handleChange = (name, event) => {
-        const value = event.target.value;
+    if (name === "phoneNo") {
+      const containsAlphabet = /[a-zA-Z]/.test(value); // Check if string contains alphabetic characters
+      const containsSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(
+        value
+      );
+      if (!containsAlphabet && !containsSpecialChar) {
+        console.log("Value is valid.");
+        setData((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }));
+        onNext({ [name]: value });
+      }
+    } else {
+      setData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+      onNext({ [name]: value });
+    }
+  };
 
-        if (name === "phoneNo") {
+  const handleLogoChange = (name, file) => {
+    setFileInputs({ ...fileInputs, [name]: file });
+    onNext({ [name]: file });
+  };
 
-            const containsAlphabet = /[a-zA-Z]/.test(value);
-            if (!containsAlphabet) {
-                console.log("Value is valid.");
-                setData(prevData => ({
-                    ...prevData,
-                    [name]: value
-                }));
-                onNext({ [name]: value });
-            }
-        } else {
-            setData(prevData => ({
-                ...prevData,
-                [name]: value
-            }));
-            onNext({ [name]: value });
-        }
+  const handleFileChange = (name, event) => {
+    const file = event?.target?.files[0];
+    setFileInputs({ ...fileInputs, [name]: file });
+    onNext({ [name]: file });
+  };
 
+  // console.log("data",data)
 
-    };
+  // const handleSubmit = (values, { isSubmitting }) => { }
 
-    const handleLogoChange = (name, file) => {
-        setFileInputs({ ...fileInputs, [name]: file });
-        onNext({ [name]: file });
-    };
+  return (
+    <Formik
+      initialValues={data}
+      validationSchema={validationSchema}
+      onSubmit={handleFinish}
+    >
+      {({}) => (
+        <Form>
+          <Core.Card className={"p-5"} w840 border>
+            {/* <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Update Profile</h5> */}
+            <h5 className="text-black-2 text-[24px] leading-[32px] font-medium mb-2">
+              Update Profile
+            </h5>
+            <div className="mb-4">
+              <Field name="companyName" id="companyName">
+                {({ field }) => (
+                  <div>
+                    <Core.InputWithLabel
+                      {...field}
+                      name={"companyName"}
+                      label
+                      sm
+                      edit
+                      value={data?.companyName}
+                      onChange={(value) => handleChange("companyName", value)}
+                      // onBlur={handleBlur}
+                    />
+                    <ErrorMessage
+                      name="companyName"
+                      component="div"
+                      className="text-red-500"
+                    />
+                  </div>
+                )}
+              </Field>
+            </div>
+            <div className="mb-4">
+              <Field name="noOfEmployes" id="noOfEmployees">
+                {({ field }) => (
+                  <div>
+                    <Core.SelectWithLabel
+                      {...field}
+                      name={"noOfEmployes"}
+                      label
+                      edit
+                      value={data?.noOfEmployes}
+                      options={numberOfEmployeesOptions}
+                      onChange={(value) => handleChange("noOfEmployes", value)}
+                      // onBlur={handleBlur}
+                    />
+                    <ErrorMessage
+                      name="noOfEmployes"
+                      component="div"
+                      className="text-red-500"
+                    />
+                  </div>
+                )}
+              </Field>
+            </div>
 
-    const handleFileChange = (name, event) => {
-        const file = event?.target?.files[0];
-        setFileInputs({ ...fileInputs, [name]: file });
-        onNext({ [name]: file });
-    };
-
-    // console.log("data",data)
-
-    // const handleSubmit = (values, { isSubmitting }) => { }
-
-    return (
-        <Formik
-            initialValues={data}
-            validationSchema={validationSchema}
-            onSubmit={handleFinish}
-        >
-            {({ }) => (
-                <Form>
-                    <Core.Card className={'p-5'} w840 border>
-                        {/* <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Update Profile</h5> */}
-                        <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Update Profile</h5>
-                        <div className="mb-4">
-                            <Field name="companyName" id="companyName" >
-                                {({ field }) => (
-                                    <div>
-                                        <Core.InputWithLabel
-                                            {...field}
-                                            name={"companyName"}
-                                            label
-                                            sm
-                                            edit
-                                            value={data?.companyName}
-                                            onChange={(value) => handleChange("companyName", value)}
-                                        // onBlur={handleBlur}
-                                        />
-                                        <ErrorMessage name="companyName" component="div" className="text-red-500" />
-                                    </div>
-                                )}
-                            </Field>
-                        </div>
-                        <div className="mb-4">
-                            <Field name="noOfEmployes" id="noOfEmployees" >
-                                {({ field }) => (
-                                    <div>
-                                        <Core.SelectWithLabel
-                                            {...field}
-                                            name={"noOfEmployes"}
-                                            label
-                                            edit
-                                            value={data?.noOfEmployes}
-                                            options={numberOfEmployeesOptions}
-                                            onChange={(value) => handleChange("noOfEmployes", value)}
-                                        // onBlur={handleBlur}
-                                        />
-                                        <ErrorMessage name="noOfEmployes" component="div" className="text-red-500" />
-                                    </div>
-                                )}
-                            </Field>
-                        </div>
-
-                        {/* <div className="flex flex-col gap-x-4 mb-4">
+            {/* <div className="flex flex-col gap-x-4 mb-4">
                             <div>
                                 <Core.UploadFile
                                     name={"logo"}
@@ -148,9 +156,9 @@ function Form1({ onNext, profileData, validationSchema, handleFinish }) {
                             </span>
                         </div> */}
 
-                        <div className=" mb-4">
-                            <div>
-                                {/* <Core.UploadFile
+            <div className=" mb-4">
+              <div>
+                {/* <Core.UploadFile
                                     name={"logo"}
                                     label="Company Logo"
                                     helperText="A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels."
@@ -158,69 +166,80 @@ function Form1({ onNext, profileData, validationSchema, handleFinish }) {
                                     onChange={(event) => handleFileChange("logo", event)}
                                 /> */}
 
-                                <label className={`block text-[14px] text-gray-2 tracking-wide  mb-1.5  font-semibold capitalize`}>
-                                    Logo
-                                </label>
-                                <p className='text-gray-12 text-[14px] leading-[16px] mb-1.5'>
-                                    A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels.
-                                </p>
+                <label
+                  className={`block text-[14px] text-gray-2 tracking-wide  mb-1.5  font-semibold capitalize`}
+                >
+                  Logo
+                </label>
+                <p className="text-gray-12 text-[14px] leading-[16px] mb-1.5">
+                  A company logo helps candidates connect the job opportunity
+                  with your brand. Recommended specs are 400x400 pixels.
+                </p>
 
-                                <UploadLogo
-                                    onChange={handleLogoChange}
-                                    logo={profileData?.logo}
-                                />
+                <UploadLogo
+                  onChange={handleLogoChange}
+                  logo={profileData?.logo}
+                />
 
-                                {/* <UploadVideo
+                {/* <UploadVideo
                                     onChange={handleLogoChange}
                                     logo={profileData?.welcomeVideo}
                                 /> */}
+              </div>
+            </div>
 
-                            </div>
-                        </div>
-
-
-                        <div className="flex flex-col gap-x-4 mb-4">
-                            <div>
-                                <Core.UploadFile
-                                    name={"welcomeVideo"}
-                                    label="Welcome Video"
-                                    helperText="A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels."
-                                    accept="video/*"
-                                    onChange={(event) => handleFileChange("welcomeVideo", event)}
-                                />
-                            </div>
-                            <span className={`block mb-2 capitalize`}>
-                                {profileData?.welcomeVideo && <Core.VideoPlayer src={profileData?.welcomeVideo} className="max-h-[150px] rounded-[10px] overflow-hidden" />
-                                    // :
-                                    // <h2 className='w-[170px] text-gray-2 text-[20px] text-center rounded-[10px] opacity-70 bg-gray-5 px-1 py-3'>No Video</h2>
-                                }
-                            </span>
-                        </div>
-                        <div className="mb-4">
-                            <Field name="phoneNo" id="phoneNo">
-                                {({ field }) => (
-                                    <div>
-                                        <Core.InputWithLabel
-                                            {...field}
-                                            name={"phoneNo"}
-                                            label
-                                            edit
-                                            value={data?.phoneNo}
-                                            helperText="We will use this number to text you important notifications"
-                                            onChange={(value) => handleChange("phoneNo", value)}
-                                            // onBlur={handleBlur}
-                                            maxLength={'11'}
-                                        />
-                                        <ErrorMessage name="phoneNo" component="div" className="text-red-500" />
-                                    </div>
-                                )}
-                            </Field>
-                        </div>
-                    </Core.Card>
-                </Form>
-            )}
-        </Formik >
-    );
+            <div className="flex flex-col gap-x-4 mb-4">
+              <div>
+                <Core.UploadFile
+                  name={"welcomeVideo"}
+                  label="Welcome Video"
+                  helperText="A company logo helps candidates connect the job opportunity with your brand. Recommended specs are 400x400 pixels."
+                  accept="video/*"
+                  onChange={(event) => handleFileChange("welcomeVideo", event)}
+                />
+              </div>
+              <span className={`block mb-2 capitalize`}>
+                {
+                  profileData?.welcomeVideo && (
+                    <Core.VideoPlayer
+                      src={profileData?.welcomeVideo}
+                      className="max-h-[150px] rounded-[10px] overflow-hidden"
+                    />
+                  )
+                  // :
+                  // <h2 className='w-[170px] text-gray-2 text-[20px] text-center rounded-[10px] opacity-70 bg-gray-5 px-1 py-3'>No Video</h2>
+                }
+              </span>
+            </div>
+            <div className="mb-4">
+              <Field name="phoneNo" id="phoneNo">
+                {({ field }) => (
+                  <div>
+                    <Core.InputWithLabel
+                      {...field}
+                      name={"phoneNo"}
+                      label
+                      edit
+                      value={data?.phoneNo}
+                      helperText="We will use this number to text you important notifications"
+                      onChange={(value) => handleChange("phoneNo", value)}
+                      // onBlur={handleBlur}
+                      maxLength={"11"}
+                    />
+                    <ErrorMessage
+                      name="phoneNo"
+                      component="div"
+                      className="text-red-500"
+                    />
+                  </div>
+                )}
+              </Field>
+            </div>
+          </Core.Card>
+        </Form>
+      )}
+    </Formik>
+  );
 }
 
 export default Form1;

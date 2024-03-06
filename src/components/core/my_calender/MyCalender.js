@@ -45,6 +45,8 @@ function MyCalendar({ events, type }) {
         setEventToEdit(event);
     };
 
+    console.log("iiiiii events",events)
+
     return (
         <>
             <Modal title={(type === "candidate" || type === "admin") ? "Invitation" : 'Upload Job Description'} width={715} open={isModalOpen} onCancel={handleCancel} footer={[]} >
