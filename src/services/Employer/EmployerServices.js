@@ -17,6 +17,7 @@ const employerServices = {
         }
     },
     async UpdateEmployerDetailById(formDataToSend) {
+        console.log('yy UpdateEmployerDetailById called')
         try {
             console.log("updated from servie employer", formDataToSend);
             for (var pair of formDataToSend.entries()) {
@@ -32,6 +33,7 @@ const employerServices = {
                 return response.data;
             }
         } catch (error) {
+            console.log('yy UpdateEmployerDetailById error',error)            
             throw error;
         }
     },
