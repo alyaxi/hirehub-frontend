@@ -21,6 +21,20 @@ export const getAllJobsforCandidate = createAsyncThunk('candidate/get-all-jobs',
     }
 });
 
+export const applyforJob = createAsyncThunk('candidate/apply-for-job', async (dataSend) => {
+
+    try {
+        console.log({dataSend})
+        const data = await CandidateJobs.ApplyForJob(dataSend)
+        // console.log(data, "dataaaaa")
+        return data
+    } catch (error) {
+        // Handle login error
+        console.log(error);
+        handleApiError(error)
+    }
+});
+
 
 
 
@@ -54,7 +68,11 @@ const CandidateJobsSlice = createSlice({
             state.allJobs = payload?.data?.jobs
             state.reload = false
         })
-
+        builder.addCase(applyforJob.fulfilled, (state, { payload }) => {
+            console.log(payload, "payloadd from getting interview interview by employer");
+            // state.allJobs = payload?.data?.jobs
+            state.reload = true
+        })
 
 
     }

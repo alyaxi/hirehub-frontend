@@ -17,18 +17,19 @@ const CandidateJobs = {
             throw error;
         }
     },
-    // async UpdateInterviewsStatus(statusUpdate) {
+    async ApplyForJob({employerId,jobId}) {
         
-    //     try {
-    //         const response = await api.post('/update-interview', statusUpdate);
-    //         if (response && response.data && response.status === 200) {
-    //             // console.log("starttttttttttt");
-    //             return response.data;
-    //         }
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // },
+        try {
+            console.log(employerId,jobId, "useriddddddd")
+            const response = await api.post(`/apply-for-job/${jobId}`, {employerId});
+            if (response && response.data && response.status === 200) {
+                // console.log("starttttttttttt");
+                return response.data;
+            }
+        } catch (error) {
+            throw error;
+        }
+    },
 };
 
 export default CandidateJobs;
