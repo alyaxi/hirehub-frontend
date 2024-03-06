@@ -1,8 +1,8 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Core } from '..';
 
-function SearchInput({ onChange, onInputChange, name }) {
+function SearchInput({ onInputChange, name }) {
 
     return (
         <div className='flex justify-start gap-x-1 items-center w-full'>

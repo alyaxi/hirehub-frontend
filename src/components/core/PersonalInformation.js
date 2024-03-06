@@ -1,11 +1,11 @@
-import { Avatar, Progress, Typography } from "antd";
+import { Avatar, Progress } from "antd";
 import { Core } from "..";
 import Icon from "../icon";
 
 function PersonalInformation({ data, user, profileCompletion }) {
 
     // console.log(profileCompletion, "profileCompletion")
-    console.log(user, "ww userrrrrrrrrrrrr")
+    // console.log(user, "ww userrrrrrrrrrrrr")
 
     const firstLetter = user?.name ? user?.name.trim().charAt(0).toUpperCase() : '';
 
@@ -33,7 +33,7 @@ function PersonalInformation({ data, user, profileCompletion }) {
                         </div>
                     </div>
                     <div className='w-[80%]'>
-                        <h6 className='text-[22px] leading-[20px] font-semibold mb-3'>{user?.name.toUpperCase()}</h6>
+                        <h6 className='text-[22px] leading-[20px] font-semibold mb-3'>{user?.name?.toUpperCase()}</h6>
                         <p className='text-gray-6 text-[14px] leading-[20px]'>{data?.statusLine ? data?.statusLine : "Type Status Line"}</p>
                         <p className='flex justify-start gap-x-6 text-gray-6 text-[14px] leading-[20px] mt-5'>
                             <span className='flex justify-start gap-x-1'>

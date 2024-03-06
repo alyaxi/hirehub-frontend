@@ -8,15 +8,11 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
 import notificationService from '../../utilis/notification';
 import * as Yup from 'yup';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const positionOptions = [
-    { name: "Manager", value: "Manager" },
-    { name: "Sales Manager", value: "Sales Manager" },
-    { name: "Business Analyst", value: "Business Analyst" },
-    { name: "Engineer", value: "Engineer" },
-    { name: "Accounting", value: "Accounting" },
-    { name: "Management", value: "Management" },
-];
+const {
+    positionOptions
+} = dropdownOptions;
 
 // const questionnaire = [
 //     {

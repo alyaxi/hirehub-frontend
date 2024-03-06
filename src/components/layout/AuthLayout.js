@@ -1,4 +1,4 @@
-import { Col, Image, Row } from "antd";
+import { Col, Row } from "antd";
 import image from "../../assets/images/bg/man.jpg";
 import '../../assets/css/auth_layout.css'
 
@@ -7,7 +7,7 @@ function AuthLayout({ children }) {
         <Row className="auth-layout">
             <Col flex="40%">
                 <div className="img-wrapper">
-                    <img src={image} />
+                    <img src={image} alt="Background" />
                 </div>
             </Col>
             <Col flex="auto" className="content-main-wrapper">

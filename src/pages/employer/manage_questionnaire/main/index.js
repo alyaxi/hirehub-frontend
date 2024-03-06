@@ -81,7 +81,7 @@ function MainQuestionnaireEmployer() {
     }, [reload])
 
     const onEditClick = (id) => {
-        console.log(id, "idddededed")
+        // console.log(id, "idddededed")
         navigate(`/employer/manage-questionnaire/edit/${id}`);
     };
 
@@ -104,7 +104,7 @@ function MainQuestionnaireEmployer() {
         navigate(`/employer/manage-questionnaire/add`);
     };
 
-    // console.log("product", product);
+    console.log("product", product);
 
     const _questionaaire = questionaaire?.map((item, index) => {
         return {

@@ -16,7 +16,7 @@ function MyCalenderSmForCalender({ selectedDate, setSelectedDate, events }) {
             dates.push(startDate);
         }
         return dates;
-    }, []);
+    });
 
     const tileContent = ({ date, view }) => {
         if (view === 'month') {

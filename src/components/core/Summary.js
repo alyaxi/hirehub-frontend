@@ -4,7 +4,7 @@ import { Core } from "..";
 function Summary({ data, card, type }) {
 
     // console.log(" Summary data", data)
-    console.log("44444  type Summary", type)
+    // console.log("44444  type Summary", type)
 
     return (
         <>
@@ -14,7 +14,7 @@ function Summary({ data, card, type }) {
                         <div className='flex justify-between items-start' >
                             <h5 className='text-black-1 text-[18px] leading-[28px] font-semibold'>Summary</h5>
                             {type === "candidate" &&
-                                <Core.ProficienciesActions buttons={['edit']} type="summery" />
+                                <Core.ProficienciesActions buttons={['edit']} type="summary" />
                             }
                         </div>
                         {(data !== undefined && data !== "") ?

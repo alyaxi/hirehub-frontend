@@ -12,41 +12,34 @@ const breadcrumb = [
     { label: "Schedule" },
 ];
 
-
-const MyEventsList = [
-    {
-        title: 'Initiate',
-        start: new Date(2024, 1, 9, 6, 0), // Date and time
-        end: new Date(2024, 1, 9, 5, 0),
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        type: 'Interview',
-    },
-    {
-        title: 'Break',
-        start: new Date(2024, 1, 9, 11, 0), // Date and time
-        end: new Date(2024, 1, 9, 12, 0),
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        type: 'Interview',
-    },
-
-];
-
-
+// const MyEventsList = [
+//     {
+//         title: 'Initiate',
+//         start: new Date(2024, 1, 9, 6, 0), // Date and time
+//         end: new Date(2024, 1, 9, 5, 0),
+//         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+//         type: 'Interview',
+//     },
+//     {
+//         title: 'Break',
+//         start: new Date(2024, 1, 9, 11, 0), // Date and time
+//         end: new Date(2024, 1, 9, 12, 0),
+//         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+//         type: 'Interview',
+//     },
+// ];
 
 function ScheduleCandidatesAdmin() {
+
     const reload = useSelector((state) => state?.viewInterviewAdmin?.reload);
     const interview = useSelector((state) => state?.viewInterviewAdmin?.interviewsbyadmin);
 
     const dispatch = useDispatch();
-
     const { id: jobId, candidateId } = useParams();
 
     // Now you can use jobId and candidateId in your component logic
-    console.log('Job ID:', jobId);
-    console.log('Candidate ID:', interview);
-
-
-
+    // console.log('Job ID:', jobId);
+    // console.log('Candidate ID:', interview);
 
     useEffect(() => {
         try {
@@ -67,9 +60,6 @@ function ScheduleCandidatesAdmin() {
 
     }, [reload])
 
-
-
-
     const modifiedDatainterview = interview?.map(item => {
         const combinedStringStart = `${item?.scheduledDate} ${item?.startTime}`;
         const obj1 = moment(combinedStringStart, "YYYY-M-D HH:mm");
@@ -84,7 +74,8 @@ function ScheduleCandidatesAdmin() {
         )
     })
 
-    console.log("MyEventsList", MyEventsList)
+    // console.log("MyEventsList", MyEventsList)
+
     return (
         <>
             <Breadcrumb

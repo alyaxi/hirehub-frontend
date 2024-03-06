@@ -1,5 +1,3 @@
-
-import { Icons } from '../../components';
 import Icon from '../icon';
 import logo from "../../assets/images/logo/logo.png"
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -7,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from '../../Slices/Auth/authSlice';
 
 const NavItem = ({ value, slug }) => {
+
     const pathParts = slug.split('/');
     // const _slug = pathParts[pathParts.length - 1];
     // console.log("pathParts",pathParts)
@@ -17,6 +16,7 @@ const NavItem = ({ value, slug }) => {
     // }else {
     //     console.log("no-----------------")
     // }
+    
     return (
         <li className='pb-2'>
             <NavLink
@@ -29,7 +29,9 @@ const NavItem = ({ value, slug }) => {
         </li >
     );
 };
+
 function Sidebar({ isSidebarOpen, toggleSidebar, menu }) {
+
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -38,7 +40,7 @@ function Sidebar({ isSidebarOpen, toggleSidebar, menu }) {
         dispatch(logout())
         navigate("/")
     }
-    
+
     let redirectionLink;
     if (user?.Role === "candidate") {
         redirectionLink = "/candidate/manage-profile";
@@ -49,9 +51,9 @@ function Sidebar({ isSidebarOpen, toggleSidebar, menu }) {
     return (
         <aside
             className={`${isSidebarOpen ? 'translate-x-0' : ''} 
-                fixed md:sticky top-0 z-50 min-w-[264px] max-w-[264px] h-screen
+                fixed lg:sticky top-0 z-50 min-w-[264px] max-w-[264px] h-screen
                 text-black bg-white 
-                -translate-x-full md:translate-x-0 transition-all shadow-md
+                -translate-x-full lg:translate-x-0 transition-all shadow-md
                 flex flex-col justify-between 
             `}
         >
@@ -60,9 +62,9 @@ function Sidebar({ isSidebarOpen, toggleSidebar, menu }) {
                     <NavLink to={redirectionLink}>
                         <img src={logo} className='max-w-[200px]' alt="logo" />
                     </NavLink>
-                    <span className={`absolute top-[18px] right-[-13px] ${isSidebarOpen ? 'block' : 'hidden'}  md:hidden text-white text-[20px] cursor-pointer border-[5px] border-white rounded-full bg-purple-1`}
+                    <span className={`absolute top-[18px] right-[-13px] ${isSidebarOpen ? 'block' : 'hidden'}  lg:hidden text-white text-[20px] cursor-pointer border-[5px] border-white rounded-full bg-purple-1`}
                         onClick={toggleSidebar}>
-                        <Icons.GoChevronLeft />
+                        <Icon name="ChevronLeft" />
                     </span>
                 </div>
                 <ul className="menu-list relative max-h-[610px ] max-h-[720px] overflow-y-scroll scrollbar p-4">

@@ -8,7 +8,7 @@ function AuthCard({ children }) {
             <div className="pt-9 px-[1rem] py-[1.5rem]">
                 <a>
                     <NavLink to="/">
-                        <img src={logo} className="w-100" />
+                        <img src={logo} className="w-100" alt="Logo" />
                     </NavLink>
                 </a>
                 {children}

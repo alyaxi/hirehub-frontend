@@ -14,9 +14,7 @@ function PopupModal({ setIsModalOpen,
 }) {
     const dispatch = useDispatch()
 
-
     const [candidateProfileData, setCandidateProfileData] = useState();
-
 
     const handleOk = () => {
         setIsModalOpen(false);
@@ -26,9 +24,7 @@ function PopupModal({ setIsModalOpen,
         setIsModalOpen(false);
     };
 
-
-    let [testImage, setTestImage] = useState()
-
+    // let [testImage, setTestImage] = useState()
 
     let _action = action === "edit" ? "Edit" : "Add";
     let title = '';
@@ -44,10 +40,10 @@ function PopupModal({ setIsModalOpen,
             title = 'Skills';
             break;
         case 'personalInformationData':
-            title = 'Personal Informations';
+            title = 'Personal Information';
             break;
-        case 'summery':
-            title = 'Summery';
+        case 'summary':
+            title = 'Summary';
             break;
         case 'projectsData':
             title = 'Projects';
@@ -70,9 +66,9 @@ function PopupModal({ setIsModalOpen,
 
     const cleanAndAppendToFormData = (data) => {
         const formData = new FormData();
-        console.log("block 0")
+        // console.log("block 0")
         if (data?.personalInformationData) {
-            console.log("block 1")
+            // console.log("block 1")
             for (const key in data.personalInformationData) {
                 const value = data.personalInformationData[key];
                 if (value !== undefined && value !== '') {
@@ -80,8 +76,8 @@ function PopupModal({ setIsModalOpen,
                 }
             }
         }
-        else if (data?.summery) {
-            console.log("block 2")
+        else if (data?.summary) {
+            // console.log("block 2")
             for (const key in data.summery) {
                 if (data.summery.hasOwnProperty(key)) {
                     formData.append(`summery[${key}]`, data.summery[key]);
@@ -151,7 +147,7 @@ function PopupModal({ setIsModalOpen,
         formData.append("profilePicture", state?.personalInformationData?.profilePicture)
         if (state && state?.projectsData && state?.projectsData.length) {
             // formData.append("projectImage", state?.projectsData[0]?.projectImage)
-            if (action == "add") {
+            if (action === "add") {
                 formData.append("projectImageFile", state?.projectsData[state?.projectsData?.length - 1]?.projectImageFile)
             } else {
                 formData.append("projectImageFile", state?.projectsData[index]?.projectImageFile)
@@ -175,7 +171,7 @@ function PopupModal({ setIsModalOpen,
         const formdata = convertStateToFormData(candidateProfileData);
 
         try {
-            if (action == "edit") {
+            if (action === "edit") {
                 // console.log(formdata, "editttttttt")
                 setSavingForm(true);
                 // console.log(savingForm, "dispatch")
@@ -189,7 +185,7 @@ function PopupModal({ setIsModalOpen,
                     });
             } else if (action === "add") {
                 setSavingForm(true);
-                if (type == "projectsData") {
+                if (type === "projectsData") {
                     setSavingForm(true);
                     dispatch(addProject(formdata))
                         .unwrap()
@@ -227,7 +223,7 @@ function PopupModal({ setIsModalOpen,
                 }
                 if (type === "skillsData") {
                     // console.log(type, "typeeeee")
-                    console.log({ candidateProfileData })
+                    // console.log({ candidateProfileData })
                     dispatch(addSkills(candidateProfileData))
                         .unwrap()
                         .then(x => { console.log(x, "Ressss") })
@@ -271,7 +267,7 @@ function PopupModal({ setIsModalOpen,
                     savingForm={savingForm}
                 />}
 
-            {type === "summery" &&
+            {type === "summary" &&
                 <Forms.Summery
                     handleCancel={handleCancel}
                     action={action}
@@ -324,14 +320,6 @@ function PopupModal({ setIsModalOpen,
                     savingForm={savingForm}
                 />}
 
-            {/* {(type === "skillsData" && action === "edit") &&
-                <Forms.SkillsEdit
-                    handleCancel={handleCancel}
-                    action={'edit'}
-                    setCandidateProfileData={setCandidateProfileData}
-                    savingForm={savingForm}
-                />} */}
-
 
 
             {/* {(type === "languagesData" && action !== "edit") && */}
@@ -343,16 +331,7 @@ function PopupModal({ setIsModalOpen,
                     id={action === "edit" ? id : null}
                     // handleSenddata={handleSenddata}
                     savingForm={savingForm}
-                />}
-
-            {/* {(type === "languagesData" && action === "edit") &&
-                <Forms.LanguagesEdit
-                    handleCancel={handleCancel}
-                    action={'edit'}
-                    setCandidateProfileData={setCandidateProfileData}
-                    savingForm={savingForm}
-                />} */}
-
+                />} 
 
 
             {(type === "jobPreference" && action === "edit") &&

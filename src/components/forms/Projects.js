@@ -3,29 +3,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
 import DragImg from '../core/DragImg';
 import { useSelector } from 'react-redux';
-import { Spin } from 'antd';
+import { Spin } from 'antd'; import dropdownOptions from '../../data/dropdownOptions.json';
 
-
-const associatedOptions = [
-    { name: "Project Association", value: "Project Association" },
-    { name: "option 2", value: "option 2" },
-    { name: "option 3", value: "option 3" },
-];
-
-const monthsOptions = [
-    { name: 'January', value: '01' },
-    { name: 'February', value: '02' },
-    { name: 'March', value: '03' },
-    { name: 'April', value: '04' },
-    { name: 'May', value: '05' },
-    { name: 'June', value: '06' },
-    { name: 'July', value: '07' },
-    { name: 'August', value: '08' },
-    { name: 'September', value: '09' },
-    { name: 'October', value: '10' },
-    { name: 'November', value: '11' },
-    { name: 'December', value: '12' },
-];
+const {
+    associatedOptions,
+    monthsOptions
+} = dropdownOptions;
 
 function Projects({ action, handleCancel, id, setCandidateProfileData, handleSenddata, index, savingForm }) {
 
@@ -35,11 +18,12 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
     const projects = candidate.projectsData;
     const projectToEdit = projects?.find(project => project?._id === id);
 
-    console.log("projectToEdit", projectToEdit)
+    // console.log("projectToEdit", projectToEdit)
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
-    const endYear = currentYear - 5;
+    // const endYear = currentYear - 5;
+    const endYear = currentYear;
     const yearOptions = [];
 
     for (let year = startYear; year <= endYear; year++) {
@@ -132,7 +116,6 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
 
     const handleSubmit = (values) => {
 
-
         // startMonth
         // startYear
         // endMonth
@@ -168,16 +151,14 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
         setCandidateProfileData({
             projectsData: projectData,
         })
-        // projectData.push(_projectsData1)
 
-        console.log('projectData', projectData)
-
-        // handleSenddata({
-        //     projectsData: projectData,
-
-
-        // })
+        // console.log('projectData', projectData)
     };
+
+    const deleteItem = (id) => {
+        console.log('to be deleted', id)
+        handleCancel()
+    }
 
     // console.log('selectedStartMonth', selectedStartMonth)
     // console.log('selectedEndMonth', selectedEndMonth)
@@ -193,7 +174,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
         >
             {({ isSubmitting, values }) => {
                 console.log("values", values)
-      
+
                 // console.log("values startMonth", values?.startMonth)
                 // console.log("values startYear", values?.startYear)
                 // console.log("values endMonth", values?.endMonth)
@@ -208,7 +189,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                 return (
                     <Form>
 
-                        <div className='max-h-[250px] mb-4'>
+                        <div className='max-h-[270px] mb-4'>
                             <DragImg state={projectImage} setState={setProjectImage} />
                         </div>
 
@@ -222,6 +203,7 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                                         label
                                         placeholder="Enter your name"
                                         edit
+                                        required
                                     />
                                 )}
                             </Field>
@@ -371,7 +353,15 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                         </div>
 
                         <div className='mb-4'>
-                            <Core.TextEditorWithLabel name={'description'} label height={"h-[200px]"} style={{ height: "84%" }} value={description} setValue={setDescription} />
+                            <Core.TextEditorWithLabel
+                                name={'description'}
+                                label
+                                height={"h-[200px]"}
+                                style={{ height: "84%" }}
+                                value={description}
+                                setValue={setDescription}
+                                required
+                            />
                         </div>
 
                         <div className='flex justify-between pt-6 mt-8 border-t-[1px]'>
@@ -383,6 +373,9 @@ function Projects({ action, handleCancel, id, setCandidateProfileData, handleSen
                                 }
                                 <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
                             </div>
+                            {action === "edit" &&
+                                <Core.Button onClick={() => deleteItem(id)} type="narrow" color="red" >Delete</Core.Button>
+                            }
                         </div>
 
                     </Form>

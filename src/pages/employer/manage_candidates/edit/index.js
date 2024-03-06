@@ -7,13 +7,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { changeAppliedJobStatusEmployer } from '../../../../Slices/Employer/ManageCandidate';
 import notificationService from '../../../../utilis/notification';
 import { ToastContainer } from 'react-toastify';
+import dropdownOptions from '../../../../data/dropdownOptions.json';
 
-const dropdownOptions = [
-    'screening',
-    'new application',
-    'hire',
-    "selection"
-];
+const {
+    candidateStageOptions, 
+} = dropdownOptions; 
 
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
@@ -75,7 +73,7 @@ function EditCandidates() {
                 status={status}
                 setStatus={setStatus}
                 data={extractedData}
-                dropdownOptions={dropdownOptions}
+                dropdownOptions={candidateStageOptions}
                 pageType="edit"
                 type="employer"
             />

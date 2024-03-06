@@ -66,16 +66,18 @@ function MainEmployersRequest() {
 
     const filteredData = employersTableData.filter(item => item.isVerified === statusToFilter);
 
-    console.log("filteredData", filteredData)
-    const onViewClick = (id) => {
-        console.log("onViewClick", id)
-        navigate(`/admin/employers-request/view/${id}`);
+    // console.log("filteredData", filteredData)
 
+    const onViewClick = (id) => {
+        // console.log("onViewClick", id)
+        navigate(`/admin/employers-request/view/${id}`);
     };
+
     const onEditClick = (id) => {
-        console.log("onEditClick", id)
+        // console.log("onEditClick", id)
         navigate(`/admin/employers-request/edit/${id}`);
     };
+
     const onMessageClick = (id) => {
         console.log("onMessageClick", id)
     };

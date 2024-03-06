@@ -2,7 +2,7 @@ import { Core } from "..";
 
 function Preferences({ data, buttons, card, type }) {
 
-    console.log(" Preferences data", data?.relocation?.onlyNearMe?.locations)
+    // console.log(" Preferences data", data?.relocation?.onlyNearMe?.locations)
 
     return (
         <>
@@ -47,12 +47,14 @@ function Preferences({ data, buttons, card, type }) {
                                 "-"
                             }
                         </div>
+
                         {data?.desiredSalary !== "" &&
                             <div className='w-full mt-2'>
                                 <h6 className='text-[16px] leading-[20px] font-semibold'>Desired Salary (USD)</h6>
                                 <p className='text-black-3 text-[12px] leading-[20px]'> {data?.desiredSalary ? data?.desiredSalary + ' USD' : "-"}</p>
                             </div>
                         }
+
                         <div className='w-full mt-2'>
                             <h6 className='text-[16px] leading-[20px] font-semibold'>Desired Skills</h6>
                             {data?.skills?.length ?
@@ -94,6 +96,7 @@ function Preferences({ data, buttons, card, type }) {
                                 </>
                             }
                         </div>
+                        
                     </div>
                 </Core.Card>
                 :

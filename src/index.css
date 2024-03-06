@@ -76,6 +76,11 @@ a.forgot-link a:focus {
   display: none;
 }
 
+.ant-pagination.ant-table-pagination.ant-table-pagination-right {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .ant-tabs-nav-wrap {
   display: flex;
   justify-content: center;
@@ -261,4 +266,13 @@ div :where(.css-dev-only-do-not-override-dkbvqv).ant-btn-primary {
 .ant-upload-wrapper .ant-upload-drag .ant-upload {
   padding-top: 23px;
   padding-bottom: 23px;
+}
+
+/* .willing-to-locations .ant-select-selection-overflow .ant-select-selection-overflow-item:nth-child(n+4) {
+  display: none;
+} */
+.willing-to-locations .ant-select-selection-overflow .ant-select-selection-overflow-item:nth-child(n+4) .ant-select-selection-item {
+  /* display: none; */
+  background: #ffa5a5;
+  /* border: 2px solid green;  */
 }

@@ -28,7 +28,7 @@ function Form2({ onNext, profileData, validationSchema ,handleFinish}) {
 
     // console.log("onNext", onNext.data)
 
-    const handleSubmit = (values) => { }
+    // const handleSubmit = (values) => { }
 
     return (
         <Formik
@@ -38,8 +38,8 @@ function Form2({ onNext, profileData, validationSchema ,handleFinish}) {
         >
             {() => (
                 <Form>
-                    <Core.Card className={'p-5'} w840 boder>
-                        <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Create an Employer Account</h5>
+                    <Core.Card className={'p-5'} w840 border>
+                        <h5 className='text-black-2 text-[24px] leading-[32px] font-medium mb-2'>Update Profile</h5>
                         <div className="mb-4">
                             <Field name="companyIndustry" >
                                 {({ field }) => (

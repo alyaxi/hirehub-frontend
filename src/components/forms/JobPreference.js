@@ -4,69 +4,16 @@ import { Core } from '..';
 import { Radio, Spin } from 'antd/es';
 import MultiSelectInput from '../core/MultiSelectInput';
 import { useSelector } from 'react-redux';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const desiredJobTitleOptions = [
-    { label: 'UX/UI Designer', value: 'UX/UI Designer' },
-    { label: 'UX/UI Head', value: 'UX/UI Head' },
-    { label: 'Creative Head', value: 'Creative Head' },
-    { label: 'Design Head', value: 'Design Head' },
-    { label: 'Software Engineer', value: 'Software Engineer' },
-    { label: 'Data Scientist', value: 'Data Scientist' },
-    { label: 'Product Manager', value: 'Product Manager' },
-    { label: 'Marketing Specialist', value: 'Marketing Specialist' },
-    { label: 'Financial Analyst', value: 'Financial Analyst' },
-    { label: 'Human Resources Manager', value: 'Human Resources Manager' },
-    { label: 'Sales Representative', value: 'Sales Representative' },
-    { label: 'Customer Support Specialist', value: 'Customer Support Specialist' },
-    { label: 'Graphic Designer', value: 'Graphic Designer' },
-    { label: 'Content Writer', value: 'Content Writer' },
-];
+const {
+    desiredJobTitleOptions,
+    desiredSalaryOptions,
+    skillsOptions,
+    locationsOptions
+} = dropdownOptions;
 
-const desiredSalaryOptions = [
-    { name: "$1000 - $1500", value: "$1000 - $1500" },
-    { name: "$1500 - $2000", value: "$1500 - $2000" },
-    { name: "$2000 - $2500", value: "$2000 - $2500" },
-    { name: "$2500 - $3000", value: "$2500 - $3000" },
-    { name: "$3000 - $3500", value: "$3000 - $3500" },
-    { name: "$3500 - $4000", value: "$3500 - $4000" },
-    { name: "$4000 - $4500", value: "$4000 - $4500" },
-    { name: "60000", value: "60000" },
-    { name: "Over $4500", value: "Over $4500" },
-];
-
-const skillsOptions = [
-    { label: 'HTML&CSS', value: 'HTML&CSS' },
-    { label: 'Bootstrap', value: 'Bootstrap' },
-    { label: 'Illustrator', value: 'Illustrator' },
-    { label: 'Photoshop', value: 'Photoshop' },
-    { label: 'JavaScript', value: 'JavaScript' },
-    { label: 'React.js', value: 'React.js' },
-    { label: 'Node.js', value: 'Node.js' },
-    { label: 'Python', value: 'Python' },
-    { label: 'Java', value: 'Java' },
-    { label: 'HTML', value: 'HTML' },
-    { label: 'CSS', value: 'CSS' },
-    { label: 'SQL', value: 'SQL' },
-    { label: 'Angular', value: 'Angular' },
-    { label: 'Vue.js', value: 'Vue.js' },
-    { label: 'TypeScript', value: 'TypeScript' },
-    { label: 'Git', value: 'Git' },
-    { label: 'Docker', value: 'Docker' },
-    { label: 'AWS', value: 'AWS' },
-    { label: 'Redux', value: 'Redux' },
-];
-
-const locationsOptions = [
-    { name: "New York", value: "New York" },
-    { name: "Los Angeles", value: "Los Angeles" },
-    { name: "Chicago", value: "Chicago" },
-    { name: "London", value: "London" },
-    { name: "Dubai", value: "Dubai" },
-    { name: "Singapore", value: "Singapore" },
-    { name: "Kuwait", value: "Kuwait" },
-];
-
-function JobPreference({ action, handleCancel, setCandidateProfileData, handleSenddata, savingForm }) {
+function JobPreference({ action, handleCancel, setCandidateProfileData, savingForm }) {
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const jp = candidate.jobPreference;
@@ -81,14 +28,30 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
         skills: jp?.skills ? jp?.skills : [],
     });
 
+    // console.log(" data", data)
+    // console.log("data?.relocation?.onlyNearMe?.locations", data?.relocation?.onlyNearMe?.locations)
+
     const [isRelocating, setIsRelocating] = useState((data.relocation.anywhere === true || data.relocation.anywhere === false) ? true : false);
+    const [isDisableLocations, setIsDisableLocations] = useState();
 
     const multiSelectHandle = (type, selectedItems, setFieldValue, values) => {
+        // console.log(" values", values.relocation.onlyNearMe.locations.length)
 
         if (type === "desiredJobTitle") {
             setFieldValue('desiredJobTitle', selectedItems);
         }
         if (type === "willingToLocations") {
+            // console.log("uuu values?.relocation?.onlyNearMe?.locations", values?.relocation?.onlyNearMe?.locations)
+            // console.log("uuu length", values?.relocation?.onlyNearMe?.locations?.length)
+            // if (values?.relocation?.onlyNearMe?.locations?.length <= 3) {
+            //     console.log("uuu true")
+            //     setIsDisableLocations(true)
+            // }
+            // else {
+            //     console.log("uuu false")
+            //     setIsDisableLocations(false)
+            // }
+            // if (values?.relocation?.onlyNearMe?.locations?.length < 3) {
             setFieldValue('relocation', {
                 ...values.relocation,
                 onlyNearMe: {
@@ -96,6 +59,12 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                     locations: selectedItems
                 }
             });
+            // console.log(" if false")
+            // setIsDisableLocations(false)
+            // } else {
+            //     console.log("else  true")
+            //     setIsDisableLocations(true)
+            // }
         }
         if (type === "skills") {
             setFieldValue('skills', selectedItems);
@@ -113,13 +82,14 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
             relocation: values?.relocation,
             skills: values?.skills,
         };
-        console.log({ _jobPreferenceData })
+        // console.log({ _jobPreferenceData })
         setCandidateProfileData(prevData => ({
             ...prevData,
             jobPreferenceData: _jobPreferenceData,
         }));
-        // handleSenddata()
     };
+
+    // console.log("uuu isDisableLocations  ", isDisableLocations)
 
     return (
         <Formik
@@ -128,10 +98,10 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
             onSubmit={handleSubmit}
         >
             {({ setFieldValue, values }) => {
-                console.log("values", values)
+                // console.log("values", values)
                 return (
                     <Form>
-                        <span className="block text-gray-400 opacity-70 mt-5 mb-2"><span className="text-[red] pr-2">*</span>indicates required</span>
+                        <span className="block text-gray-400 opacity-70 mt-5 mb-2"><span className="text-[red] pr-2">*</span>Required fields</span>
                         <p className='text-black-1 text-[14px] font-semibold mb-2'>Help us match you with your next job</p>
                         <div className="mb-4">
                             <Field name="desiredJobTitle">
@@ -160,6 +130,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                                         required
                                         options={desiredSalaryOptions}
                                         value={field.value}
+                                        helperText={"Note that all figures in this form are in US dollars and indicate yearly salary ranges."}
                                     />
                                 )}
                             </Field>
@@ -241,7 +212,7 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                         {
                             (values?.relocation?.anywhere === false)
                             &&
-                            <div className="mb-4">
+                            <div className="willing-to-locations mb-4">
                                 <Field name="willingToLocations">
                                     {({ field }) => (
                                         <MultiSelectInput
@@ -252,6 +223,9 @@ function JobPreference({ action, handleCancel, setCandidateProfileData, handleSe
                                             options={locationsOptions}
                                             onChange={(selectedItems) => multiSelectHandle("willingToLocations", selectedItems, setFieldValue, values)}
                                             defaultValue={values?.relocation?.onlyNearMe?.locations}
+                                        // warningText={"Only First 3 locations will be accepted"}
+                                        // helperText={}
+                                        // maxCount={3}
                                         />
                                     )}
                                 </Field>

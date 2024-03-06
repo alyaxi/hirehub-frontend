@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import { useNavigate } from "react-router-dom"
 import { Image } from 'antd';
 
-function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
+function CompanyProfile({ data, pageType, dropdownOptions }) {
 
     const [status, setStatus] = useState("");
     const employerDetails = useSelector((state) => state?.admin?.employerDetails);
@@ -71,9 +71,7 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
         navigate(-1);
     }
 
-    console.log("employerDetails", employerDetails);
-
-    // const firstLetter = employerDetails?.companyName ? employerDetails?.companyName.trim().charAt(0).toUpperCase() : '';
+    // console.log("44 employerDetails", employerDetails);
 
     return (
         <Core.Card className={`pt-[30px] ${pageType === "edit" ? 'pb-[70px]' : 'pb-[35px]'} px-[60px]`}>
@@ -139,28 +137,6 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
                         </div>
                     </div>
                     <div className='flex justify-start items-start flex-wrap gap-x-2 gap-y-8 pt-10 pb-8'>
-                        {/* {extractedData?.stats.map((value, index) => {
-                            console.log(value, "valueeeeeee")
-                            return (
-                                <>
-                                    <div key={value * 6} className='w-[30%]'>
-                                        <h6 className='text-[18px] leading-[28px] font-medium'>{value?.title}</h6>
-                                        {pageType === 'edit' && value?.title === "Status" ?
-                                            <Core.Dropdown2 selectedState={selectedState} options={dropdownOptions} setState={setStatus} />
-                                            :
-                                            <span className={`
-                                            text-gray-6
-                                            ${(value?.value).toLowerCase() === "activated" && 'text-green-4'}
-                                            ${(value?.value).toLowerCase() === "deactivated" && 'text-red-2'}
-                                             text-[14px] leading-[20px] font-medium`}>
-                                                {value?.value}
-                                            </span>
-                                        }
-                                    </div>
-                                    {index === 4 && <div className='w-[30%]'></div>}
-                                </>
-                            )
-                        })} */}
                         <div className='w-[30%]'>
                             <h6 className='text-[18px] leading-[28px] font-medium'>Company size</h6>
                             <span className='text-gray-6 text-[14px] leading-[20px] font-medium'>
@@ -175,27 +151,31 @@ function CompanyProfile({ data, pageType, dropdownOptions, selectedState }) {
                         </div>
                         <div className='w-[30%]'>
                             <h6 className='text-[18px] leading-[28px] font-medium'>Status</h6>
-
                             {pageType === 'edit' ?
                                 <Core.Dropdown2
-                                    selectedState={selectedState}
                                     options={dropdownOptions}
                                     setState={setStatus}
                                     className={"min-w-[160px]"}
-                                    defaultTitle={employerDetails?.accountStatus}
+                                    defaultTitle={employerDetails?.isVerified}
                                 />
                                 :
                                 <span className={`
                                             text-gray-6                             
-                                            ${(employerDetails?.accountStatus)?.toLowerCase() === "active" && 'text-green-4'}
-                                            ${(employerDetails?.accountStatus)?.toLowerCase() === "deactive" && 'text-red-2'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "approved" && 'text-green-4'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "active" && 'text-green-4'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "activated" && 'text-green-4'}
+
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "pending" && 'text-orange-1'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "on-hold" && 'text-orange-1'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "onhold" && 'text-orange-1'}
+
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "rejected" && 'text-red-2'}
+                                            ${(employerDetails?.isVerified)?.toLowerCase() === "deactive" && 'text-red-2'}
                                              text-[14px] leading-[20px] font-medium
                                              `}>
-                                    {employerDetails?.accountStatus ? employerDetails?.accountStatus : "--"}
+                                    {employerDetails?.isVerified ? employerDetails?.isVerified : "--"}
                                 </span>
                             }
-
-
                         </div>
                         <div className='w-[30%]'>
                             <h6 className='text-[18px] leading-[28px] font-medium'>Hired candidate</h6>

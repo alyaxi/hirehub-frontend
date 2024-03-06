@@ -6,8 +6,8 @@ import Projects from "./Projects";
 import Skills from "./Skills";
 import Summery from "./Summery";
 import Languages from "./Languages";
-import SkillsEdit from "./SkillsEdit";
-import LanguagesEdit from "./LanguagesEdit";
+// import SkillsEdit from "./SkillsEdit";
+// import LanguagesEdit from "./LanguagesEdit";
 
 export default {
     Experiences,
@@ -18,6 +18,6 @@ export default {
     Skills,
     Summery,
     Languages,
-    SkillsEdit,
-    LanguagesEdit,
+    // SkillsEdit,
+    // LanguagesEdit,
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 // import { NavLink } from "react-router-dom";
-// import { Icons } from '..';
 
 function UploadFile({ label, name, required, helperText, accept, onChange }) {
 

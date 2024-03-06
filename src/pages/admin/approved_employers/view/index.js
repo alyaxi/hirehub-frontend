@@ -5,6 +5,7 @@ import employersData from '../../../../data/employersData.json';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
+    { label: "Manage Employers", link: "/admin/manage-employers" },
     { label: "Approved Employers", link: "/admin/approved-employers" },
     { label: "Details" },
 ];

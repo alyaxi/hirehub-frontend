@@ -2,7 +2,12 @@ import React from 'react';
 import { Select } from 'antd';
 import Icon from '../icon';
 
-const MultiSelectInput = ({ label, helperText, name, required, icon, options, onChange, mode, defaultValue }) => {
+const MultiSelectInput = ({ label, helperText, warningText, name, required, icon, options, onChange, mode, defaultValue, maxCount,value }) => {
+
+    // console.log("MultiSelectInput value", value)
+
+    // console.log("uuu maxCount", maxCount)
+
     const _label = (name) => {
         switch (name) {
             case "benefits":
@@ -26,6 +31,19 @@ const MultiSelectInput = ({ label, helperText, name, required, icon, options, on
         }
     }
 
+    
+//   const [value, setValue] = React.useState(['Ava Swift']);
+  
+    // const suffix = (
+    //     <>
+    //         <span>
+    //             {value.length} / {maxCount ? maxCount : null}
+    //         </span>
+    //         {/* <DownOutlined /> */}
+    //         delete
+    //     </>
+    // );
+
     return (
         <>
             {label &&
@@ -41,6 +59,11 @@ const MultiSelectInput = ({ label, helperText, name, required, icon, options, on
                     {helperText}
                 </p>
             }
+            {warningText &&
+                <p className='text-red-500 text-[14px] leading-[16px] mb-1.5'>
+                    {warningText}
+                </p>
+            }
             <Select
                 id={name}
                 mode={mode ? mode : "multiple"}
@@ -48,11 +71,16 @@ const MultiSelectInput = ({ label, helperText, name, required, icon, options, on
                 placeholder="Please select"
                 onChange={onChange}
                 options={options}
+                value={value}
                 size="large"
                 style={{
                     width: '100%',
-                }}
+                }} 
                 defaultValue={defaultValue && defaultValue}
+
+                // maxCount={maxCount ? maxCount : null}
+                // suffixIcon={suffix}
+
             />
         </>
     )

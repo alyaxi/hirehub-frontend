@@ -5,16 +5,19 @@ import employersData from '../../../../data/employersData.json';
 
 const breadcrumb = [
     { label: "Dashboard", link: "/admin/dashboard" },
-    { label: "Approved Employers", link: "/admin/approved-employers" },
+    { label: "Manage Employers", link: "/admin/manage-employers" },
+    { label: "Employer's Request", link: "/admin/employers-request" },
     { label: "Details" },
 ];
 
 function ViewEmployersRequest() {
-    const { tableData } = employersData; 
+
+    const { tableData } = employersData;
+
     return (
         <>
             <Breadcrumb
-                heading="Approved Employers Details"
+                heading="Employer's Request Details"
                 breadcrumb={breadcrumb}
             />
             <Core.CompanyProfile data={tableData} pageType="view" />

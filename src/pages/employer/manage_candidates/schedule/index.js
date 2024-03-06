@@ -15,16 +15,16 @@ import moment from 'moment';
 //     }, 
 // ];
 
+// const dropdownOptions = [
+//     'activate',
+//     'inactive',
+//     'on hold',
+// ];
+
 const breadcrumb = [
     { label: "Dashboard", link: "/employer/dashboard" },
     { label: "Manage Candidates", link: "/employer/manage-candidates" },
     { label: "Schedule" },
-];
-
-const dropdownOptions = [
-    'activate',
-    'inactive',
-    'on hold',
 ];
 
 function ScheduleCandidates() {
@@ -32,7 +32,7 @@ function ScheduleCandidates() {
     const reload = useSelector((state) => state?.interview?.reload);
     const interview = useSelector((state) => state?.interview?.interviews);
 
-    console.log('interview', interview)
+    // console.log('interview', interview)
 
     useEffect(() => {
         try {
@@ -52,6 +52,7 @@ function ScheduleCandidates() {
     }, [reload])
 
     const modifiedDatainterview = interview?.map(item => {
+
         const combinedStringStart = `${item?.scheduledDate} ${item?.startTime}`;
         const obj1 = moment(combinedStringStart, "YYYY-M-D HH:mm");
         const startTime = obj1.toDate();

@@ -10,7 +10,6 @@ import Experience from "./Experience";
 import Education from "./Education";
 import InputWithLabel from "./InputWithLabel";
 import Languages from "./Languages";
-import MobileInputs from "./MobileInputs";
 import MyCalender from "./my_calender/MyCalender";
 import MyCalenderSm from "./my_calender/MyCalenderSm"
 import MyCalenderSmForCalender from "./my_calender/MyCalenderSmForCalender"
@@ -49,7 +48,6 @@ export {
     Education,
     InputWithLabel,
     Languages,
-    MobileInputs,
     MyCalender,
     MyCalenderSm, MyCalenderSmForCalender,
     MyTimePicker,

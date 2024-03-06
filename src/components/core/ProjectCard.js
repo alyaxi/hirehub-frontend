@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { Core } from '..';
 
 const { Meta } = Card;
@@ -31,7 +31,7 @@ function ProjectCard({ data, index, type }) {
                     }}
                     cover={
                         <img
-                            alt="example"
+                            alt="Project"
                             src={data?.projectImage || `data:image/svg+xml;base64,${btoa(DEFAULT_THUMBNAIL_SVG)}`}
                             style={{ maxHeight: '100px', objectFit: "cover" }}
                             onError={(e) => {

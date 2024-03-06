@@ -3,30 +3,29 @@ import Icon from '../icon';
 import { Avatar, Table, Flex, Button } from 'antd';
 import '../../assets/css/table.css'
 import { Core } from '..';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const UserStatusdropdownOptions = [
-    'new',
-    'attempted to contact',
-    'Connected',
-    'On Hold',
-    'Qualified',
-    'Not Interested',
-    'Unqualified',
-];
+// all possible filter for table:
+// SearchByProduct
+// SearchByEmailProcess
+// SearchByExpirationDate
+// SearchByAppliedDate
+// SearchByName
+// SearchByTitle
+// SearchByEmployer
+// SearchByEligibility
+// SearchByJobStatus
+// SearchByJobTitle
+// SearchByUserStatus
+// SearchByCandidateStage
+// SearchByApplicationStatus
 
-const CandidateStagedropdownOptions = [
-    'New Application ',
-    'Screening',
-    'Interview',
-    'Selection',
-    'Job Offer',
-    'Hire',
-];
-const JobStatusDropdownOptions = [
-    'Open',
-    'Closed',
-    'Republished',
-];
+const {
+    UserStatusdropdownOptions,
+    CandidateStagedropdownOptions,
+    JobStatusDropdownOptions,
+    ApplicationStatusDropdownOptions
+} = dropdownOptions;
 
 function TableB({
     tableId,
@@ -53,6 +52,7 @@ function TableB({
     setUserStatus,
     jobStatus,
     setJobStatus,
+    setApplicationStatus,
     jobTitle,
     setJobTitle,
     setExpirationDate,
@@ -62,8 +62,14 @@ function TableB({
     addButton
 }) {
 
-    console.log("tableDataa", data)
+    console.log("tableDataa", data?.candidate?.personalInformationData?.profilePicture)
+    console.log("tableDataa", data?.candidate?.personalInformationData?.profilePicture)
+    console.log("tableDataa", data?.candidate)
+    console.log("tableDataa", data?.candidate?.personalInformationData)
+    console.log("tableDataa", data?.candidate?.personalInformationData?.profilePicture)
+
     const newColumn = columns.map((value, index) => {
+        console.log("newColumn", value)
 
         // let columnSorter;
         // if (value.sorter === true) {
@@ -79,22 +85,40 @@ function TableB({
         // } else if (value.sorter === false) {
         //     columnSorter = undefined;
         // }
+
+        // candidate?.personalInformationData?.profilePicture
+
         return {
             ...value,
             render: (val, id) => {
                 const firstLetter = val?.name ? val.name.trim().charAt(0).toUpperCase() : '';
+                console.log("ggg val",val)
                 if (value.dataIndex === "name" || value.dataIndex === "employerName" || value.dataIndex === "companyName") {
                     return (
                         <React.Fragment key={`render-${value.dataIndex}-${index}`}>
-                            {val?.img ?
-                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px]`}>
+                            {val?.img &&
+                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px] border border-red-500 `}>
                                     <img className="inline-block h-[30px] w-[30px] rounded-full" src={val?.img} alt="profile image" />
                                     <Avatar src={val?.img}>{firstLetter}</Avatar>
                                     <span className='whitespace-nowrap font-semibold'>{val?.name}</span>
-                                </div> :
-                                <span className='capitalize'>{val}</span>
+                                </div> 
                             }
+                            {/* {val?.candidate?.personalInformationData?.profilePicture &&
+                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px]`}>
+                                    <img className="inline-block h-[30px] w-[30px] rounded-full" src={val?.candidate?.personalInformationData?.profilePicture} alt="profile image" />
+                                    <Avatar src={val?.candidate?.personalInformationData?.profilePicture}>{firstLetter}</Avatar>
+                                    <span className='whitespace-nowrap font-semibold'>{val?.name}</span>
+                                </div> 
+                            } */}
+                            <span className='capitalize'>{val}</span>
                         </React.Fragment>
+                    )
+                }
+                else if (value.dataIndex === "avatar") {
+                    return (                        
+                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2`}>
+                                    <Avatar src={val}>{firstLetter}</Avatar> 
+                                </div>                           
                     )
                 }
                 else if (value.dataIndex === "payment") {
@@ -241,6 +265,7 @@ function TableB({
     const handleTableChange = (pagination, filters, sorter) => {
         console.log(pagination);
     };
+
     const [resetTrigger, setResetTrigger] = useState(false);
     const [resetTrigger2, setResetTrigger2] = useState(false);
     const [resetTrigger3, setResetTrigger3] = useState(false);
@@ -257,11 +282,10 @@ function TableB({
         setResetTrigger2((prev) => !prev);
         setResetTrigger3((prev) => !prev);
     };
-    console.log("555 data", data)
-    console.log("555 newColumn", newColumn)
-    console.log("555 data.map(_data => ({ ..._data, key: _data.id }))", data.map(_data => ({ ..._data, key: _data.id })))
 
-
+    // console.log("555 data", data)
+    // console.log("555 newColumn", newColumn)
+    // console.log("555 data.map(_data => ({ ..._data, key: _data.id }))", data.map(_data => ({ ..._data, key: _data.id })))
 
     return (
         <div className={`flex flex-col bg-white rounded-[8px] overflow-hidden ${border === 'none' ? 'border-0' : 'border shadow-md'}`}>
@@ -328,6 +352,9 @@ function TableB({
                                         case 'SearchByJobStatus':
                                             inputWidth = 'w-[100px]';
                                             break;
+                                        case 'SearchByApplicationStatus':
+                                            inputWidth = 'w-[100px]';
+                                            break;
                                         case 'SearchByJobTitle':
                                             inputWidth = 'w-[100px]';
                                             break;
@@ -374,6 +401,11 @@ function TableB({
                                     if (value === "SearchByJobStatus") {
                                         return (
                                             <Core.Dropdown2 key={`jobStatus-${index}`} options={JobStatusDropdownOptions} setState={setJobStatus} defaultTitle="Job Status" menuWidth={'w-[150px]'} />
+                                        )
+                                    }                                    
+                                    if (value === "SearchByApplicationStatus") {
+                                        return (
+                                            <Core.Dropdown2 key={`applicationStatus-${index}`} options={ApplicationStatusDropdownOptions} setState={setApplicationStatus} defaultTitle="Application Status" menuWidth={'w-[150px]'} />
                                         )
                                     }
                                     else {
@@ -447,7 +479,7 @@ export default TableB
 //   // Set initial data
 //   useState(() => {
 //     generateData();
-//   }, []);
+//   });
 
 //   // Columns for the table
 //   const columns = [

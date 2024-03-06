@@ -9,14 +9,15 @@ const breadcrumb = [
     { label: "Details" },
 ];
 
-function ViewEmployers() {
-    const { tableData } = employersData;    
+const dropdownOptions = [
+    'Active',
+    'Deactive',
+    'On Hold',
+];
 
-    const dropdownOptions = [
-        'Active',
-        'Deactive',
-        'On Hold',
-    ];
+function ViewEmployers() {
+    
+    const { tableData } = employersData;
     return (
         <>
             <Breadcrumb

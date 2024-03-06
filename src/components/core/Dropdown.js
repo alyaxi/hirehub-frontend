@@ -7,11 +7,12 @@ import { logout } from '../../Slices/Auth/authSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom';
 import React from 'react';
-import { Avatar, Badge, Space } from 'antd';
+import { Avatar, Badge } from 'antd';
 import { setEmployer } from '../../Slices/Employer/EmployerSlice';
 import { setCandidate } from '../../Slices/Candidates/CandidateSlice';
 
 export default function Dropdown() {
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.auth.user);
@@ -19,11 +20,9 @@ export default function Dropdown() {
     const viewprofile = useSelector((state) => state?.employer?.employer);
     const candidate = useSelector((state) => state?.Candidate?.candidate);
 
-    const profilePicture =candidate?.personalInformationData?.profilePicture
-    
+    const profilePicture = candidate?.personalInformationData?.profilePicture
 
-
-    console.log(profilePicture, "viewwwProfileee")
+    // console.log(profilePicture, "viewwwProfileee")
 
     const location = useLocation();
     const parts = location?.pathname.split('/');
@@ -36,7 +35,8 @@ export default function Dropdown() {
         navigate("/")
     }
     // console.log("user", user)
-    const firstLetter = user?.name ? user.name.trim().charAt(0).toUpperCase() : '';
+
+    const firstLetter = user?.name ? user?.name?.trim()?.charAt(0)?.toUpperCase() : '';
 
     return (
         <Menu as="div" className="relative inline-block text-left -ml-3">

@@ -18,7 +18,7 @@ export const handleApiError = (error) => {
 
   console.log(error, "error");
 
-  if (error.response && error.response.status == 401) {
+  if (error.response && error.response.status === 401) {
     // Redirect to login page on unauthorized response
     return RedirectToLogin("jwt expired")
 

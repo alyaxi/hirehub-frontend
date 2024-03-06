@@ -5,54 +5,15 @@ import { Core } from '..';
 import Icon from '../icon';
 import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
+import dropdownOptions from '../../data/dropdownOptions.json';
 
-const experienceOptions = [
-    { name: "Fresh", value: "0" },
-    { name: "6 months", value: "6 months" },
-    { name: "1 year", value: "1 year" },
-    { name: "2 years", value: "2 years" },
-    { name: "3 years", value: "3 years" },
-    { name: "4 years", value: "4 years" },
-    { name: "5 years", value: "5 years" },
-    { name: "6 years", value: "6 years" },
-    { name: "7 years", value: "7 years" },
-    { name: "8 years", value: "8 years" },
-    { name: "9 years", value: "9 years" },
-    { name: "10 years", value: "10 years" },
-    { name: "Over 10 years", value: "Over 10 years" },
-];
-
-const expectedSalaryOptions = [
-    { name: "$1000 - $1500", value: "$1000 - $1500" },
-    { name: "$1500 - $2000", value: "$1500 - $2000" },
-    { name: "$2000 - $2500", value: "$2000 - $2500" },
-    { name: "$2500 - $3000", value: "$2500 - $3000" },
-    { name: "$3000 - $3500", value: "$3000 - $3500" },
-    { name: "$3500 - $4000", value: "$3500 - $4000" },
-    { name: "$4000 - $4500", value: "$4000 - $4500" },
-    { name: "Over $4500", value: "Over $4500" },
-];
-
-const genderOptions = [
-    { name: "Male", value: "Male" },
-    { name: "Female", value: "Female" },
-    { name: "No Preference", value: "No Preference" },
-];
-
-const monthsOptions = [
-    { name: 'January', value: '01' },
-    { name: 'February', value: '02' },
-    { name: 'March', value: '03' },
-    { name: 'April', value: '04' },
-    { name: 'May', value: '05' },
-    { name: 'June', value: '06' },
-    { name: 'July', value: '07' },
-    { name: 'August', value: '08' },
-    { name: 'September', value: '09' },
-    { name: 'October', value: '10' },
-    { name: 'November', value: '11' },
-    { name: 'December', value: '12' },
-];
+const {
+    expectedSalaryOptions,
+    experienceOptions,
+    genderOptions,
+    monthsOptions,
+    careerLevelOptions
+} = dropdownOptions;
 
 function PersonalInformations({ action, handleCancel, setCandidateProfileData, handleSenddata, savingForm }) {
 
@@ -62,19 +23,14 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
     const user = candidate?.userId
     const lastName = user?.name.split(" ")[1]
     const firstName = user?.name.split(" ")[0]
-    console.log("personalInformationDataSavedOnDb", personalInformationDataSavedOnDb)
-    const careerLevelOptions = [
-        { name: "Entry Level", value: "entryLevel" },
-        { name: "Mid-Level", value: "midLevel" },
-        { name: "Senior", value: "senior" },
-        { name: "Lead", value: "lead" },
-    ];
+
+    // console.log("personalInformationDataSavedOnDb", personalInformationDataSavedOnDb)
 
     const currentYear = new Date().getFullYear();
     const startYear = 1901;
     const endYear = currentYear - 5;
     const yearOptions = [];
-    
+
     for (let year = startYear; year <= endYear; year++) {
         yearOptions.push({ name: year.toString(), value: year.toString() });
     }
@@ -102,6 +58,7 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
         city: personalInformationDataSavedOnDb?.city,
 
     });
+
     const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedState, setSelectedState] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
@@ -123,7 +80,8 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
     const [selectedYear, setSelectedYear] = useState(_year);
     const [dob, setDob] = useState(personalInformationDataSavedOnDb?.dob ? personalInformationDataSavedOnDb?.dob : "");
     const [profilePicture, setProfilePictrue] = useState('');
-    console.log(personalInformationDataSavedOnDb?.country, "countryyyyyyyy")
+
+    // console.log(personalInformationDataSavedOnDb?.country, "countryyyyyyyy")
 
     useEffect(() => {
         const allCountries = Country.getAllCountries();
@@ -219,6 +177,7 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
         >
             {({ isSubmitting, setFieldValue }) => (
                 <Form>
+                    <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>Required fields</span>
 
                     <Core.UploadAvatar setState={setProfilePictrue} />
 
@@ -438,6 +397,20 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
                     </div>
 
                     <div className='mb-4'>
+                        <Field name="zipCode">
+                            {({ field }) => (
+                                <Core.InputWithLabel
+                                    {...field}
+                                    sm
+                                    name="zipCode"
+                                    label
+                                    edit
+                                />
+                            )}
+                        </Field>
+                    </div>
+
+                    <div className='mb-4'>
                         <div className='flex gap-x-2'>
                             <div className='w-full'>
                                 <Field name="careerLevel">
@@ -481,20 +454,6 @@ function PersonalInformations({ action, handleCancel, setCandidateProfileData, h
                                     label
                                     options={expectedSalaryOptions}
                                     value={field.value}
-                                />
-                            )}
-                        </Field>
-                    </div>
-
-                    <div className='mb-4'>
-                        <Field name="zipCode">
-                            {({ field }) => (
-                                <Core.InputWithLabel
-                                    {...field}
-                                    sm
-                                    name="zipCode"
-                                    label
-                                    edit
                                 />
                             )}
                         </Field>

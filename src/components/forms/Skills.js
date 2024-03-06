@@ -1,84 +1,38 @@
-import React, {  useState } from 'react';
-import { Formik, Form, Field } from 'formik';
+import React, { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Core } from '..';
-import MultiSelectInput from '../core/MultiSelectInput';
+// import MultiSelectInput from '../core/MultiSelectInput';
 import { useSelector } from 'react-redux';
 import { Spin } from 'antd';
+import dropdownOptions from '../../data/dropdownOptions.json';
+import * as Yup from 'yup';
 
-const options = [
-    { label: 'HTML&CSS', value: 'HTML&CSS' },
-    { label: 'Bootstrap', value: 'Bootstrap' },
-    { label: 'Illustrator', value: 'Illustrator' },
-    { label: 'Photoshop', value: 'Photoshop' },
-    { label: 'JavaScript', value: 'JavaScript' },
-    { label: 'React.js', value: 'React.js' },
-    { label: 'Node.js', value: 'Node.js' },
-    { label: 'Python', value: 'Python' },
-    { label: 'Java', value: 'Java' },
-    { label: 'HTML', value: 'HTML' },
-    { label: 'CSS', value: 'CSS' },
-    { label: 'SQL', value: 'SQL' },
-    { label: 'Angular', value: 'Angular' },
-    { label: 'Vue.js', value: 'Vue.js' },
-    { label: 'TypeScript', value: 'TypeScript' },
-    { label: 'Git', value: 'Git' },
-    { label: 'Docker', value: 'Docker' },
-    { label: 'AWS', value: 'AWS' },
-    { label: 'Redux', value: 'Redux' },
-];
 
-const skillExperienceOptions = [
-    { name: "Fresh", value: "Fresh" },
-    { name: "6 months", value: "6 months" },
-    { name: "1 year", value: "1 year" },
-    { name: "2 years", value: "2 years" },
-    { name: "3 years", value: "3 years" },
-    { name: "4 years", value: "4 years" },
-    { name: "5 years", value: "5 years" },
-    { name: "6 years", value: "6 years" },
-    { name: "7 years", value: "7 years" },
-    { name: "8 years", value: "8 years" },
-    { name: "9 years", value: "9 years" },
-    { name: "10 years", value: "10 years" },
-    { name: "Over 10 years", value: "Over 10 years" },
-];
+
+const {
+    skillExperienceOptions,
+    skillsOptions
+} = dropdownOptions;
 
 function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm, }) {
 
     const candidate = useSelector((state) => state?.Candidate?.candidate);
     const skills = candidate?.skillsData;
 
-    // console.log("vv skills form action", action)
-    // console.log("vv skills form id", id)
-
-    // console.log("vv candidate", candidate)
-
     const skillToEdit = skills?.find(skill => skill?._id === id);
 
-    // console.log("vv skillToEdit", skillToEdit)
-
-    const [data] = useState(action === "add" ? {} : {
+    const [data] = useState(action === "add" ? {
+        title: "",
+        experience: "",
+    } : {
         _id: skillToEdit?._id || "",
         title: skillToEdit?.title || "",
         experience: skillToEdit?.experience || "",
         isDeleted: skillToEdit?.isDeleted || false,
     });
 
-    // const [data, setData] = useState({});
-
-    // useEffect(() => {
-    //     const initialData = {
-    //         _id: skillToEdit?._id || "",
-    //         title: skillToEdit?.title || "",
-    //         experience: skillToEdit?.experience || "",
-    //         isDeleted: skillToEdit?.isDeleted || false,
-    //     };
-    //     setData(initialData);
-    // }, [action, skillToEdit]);
-
-    // console.log("vv data", data)
-
-    const handleSubmit = (values) => {
+    const handleSubmit = (values, { resetForm }) => {
+        // console.log("handleSubmit called")
         let _skillsData = {
             title: values?.title,
             experience: values?.experience,
@@ -95,7 +49,7 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
             }));
         }
         else {
-            // console.log("vv else _skillsData", _skillsData)
+            // console.log("vv else edit _skillsData", _skillsData)
             skillData = skills?.map((skill) => {
                 if (skill._id === id) {
                     return _skillsData
@@ -103,54 +57,86 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
                     return skill
                 }
             })
-            // console.log("vv else skillData", skillData)
+            // console.log("vv else edit skillData", skillData)
             setCandidateProfileData({
                 skillsData: skillData,
             });
         }
+        resetForm()
     };
 
-    const multiSelectHandle = (title, setFieldValue) => {
-        setFieldValue('title', title);
-    };
+    // const multiSelectHandle = (title, setFieldValue) => {
+    //     setFieldValue('title', title);
+    // };
+
+    const deleteItem = (id) => {
+        console.log('to be deleted', id)
+        handleCancel()
+    }
+
+    const validationSchema = Yup.object().shape({
+        title: Yup.string()
+            .trim()
+            .nullable()
+            .required('title is required')
+            .test('unique-skill', 'This skill is already exists', async function (value) {
+                const existingSkills = candidate?.skillsData || [];
+                const skillExists = existingSkills.some(item => item.title === value);
+                return !skillExists;
+            }),
+        experience: Yup.string()
+            .trim()
+            .nullable()
+            .required('experience is required')
+    });
 
     return (
         <Formik
             initialValues={data}
-            // validationSchema={validationSchema}
+            validationSchema={validationSchema}
             enableReinitialize={true}
             onSubmit={handleSubmit}
         >
-            {({ values, setFieldValue }) => {
-                // console.log("vv values", values)
+            {({ values, resetForm }) => {
                 return (
                     <Form>
-                        <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>indicates required</span>
+                        <span className="block text-gray-400 opacity-70 my-5"><span className="text-[red] pr-2">*</span>Required fields</span>
+
                         <div className="mb-4">
                             <Field name="title">
                                 {({ field }) => (
-                                    <MultiSelectInput
-                                        {...field}
-                                        mode={"single"}
-                                        name={'title'}
-                                        label
-                                        options={options}
-                                        onChange={(selectedSkills) => multiSelectHandle(selectedSkills, setFieldValue)}
-                                        defaultValue={values?.title}
-                                    />
+                                    <>
+                                        <Core.SelectWithLabel
+                                            {...field}
+                                            name={"title"}
+                                            customLabel={"Skill"}
+                                            label
+                                            options={skillsOptions}
+                                            defaultOption="Choose any one"
+                                            value={values?.title}
+                                            required
+                                        />
+                                        <ErrorMessage name="title" component="div" className="text-red-500 error" />
+                                    </>
                                 )}
                             </Field>
                         </div>
+
                         <div className='mb-4'>
                             <Field name="experience">
                                 {({ field }) => (
-                                    <Core.SelectWithLabel
-                                        {...field}
-                                        name={"experience"}
-                                        label
-                                        options={skillExperienceOptions}
-                                        defaultOption="Choose any one"
-                                    />
+                                    <>
+                                        <Core.SelectWithLabel
+                                            {...field}
+                                            name={"experience"}
+                                            label
+                                            options={skillExperienceOptions}
+                                            defaultOption="Choose any one"
+                                            value={values?.experience}
+                                            required
+                                        />
+                                        <ErrorMessage name="experience" component="div" className="text-red-500 error" />
+                                    </>
                                 )}
                             </Field>
                         </div>
@@ -162,8 +148,11 @@ function Skills({ action, handleCancel, id, setCandidateProfileData, savingForm,
                                         <Spin />
                                     </div>
                                     : <Core.Button type="narrow" submit>Save</Core.Button>}
-                                <Core.Button type="narrow" color="white" onClick={handleCancel}>Cancel</Core.Button>
+                                <Core.Button type="narrow" color="white" onClick={() => { handleCancel(); resetForm(); }}>Cancel</Core.Button>
                             </div>
+                            {action === "edit" &&
+                                <Core.Button onClick={() => { deleteItem(id); resetForm(); }} type="narrow" color="red" >Delete</Core.Button>
+                            }
                         </div>
                     </Form>
                 )
