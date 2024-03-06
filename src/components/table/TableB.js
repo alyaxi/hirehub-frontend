@@ -62,9 +62,14 @@ function TableB({
     addButton
 }) {
 
-    // console.log("tableDataa", data)
+    console.log("tableDataa", data?.candidate?.personalInformationData?.profilePicture)
+    console.log("tableDataa", data?.candidate?.personalInformationData?.profilePicture)
+    console.log("tableDataa", data?.candidate)
+    console.log("tableDataa", data?.candidate?.personalInformationData)
+    console.log("tableDataa", data?.candidate?.personalInformationData?.profilePicture)
 
     const newColumn = columns.map((value, index) => {
+        console.log("newColumn", value)
 
         // let columnSorter;
         // if (value.sorter === true) {
@@ -81,22 +86,39 @@ function TableB({
         //     columnSorter = undefined;
         // }
 
+        // candidate?.personalInformationData?.profilePicture
+
         return {
             ...value,
             render: (val, id) => {
                 const firstLetter = val?.name ? val.name.trim().charAt(0).toUpperCase() : '';
+                console.log("ggg val",val)
                 if (value.dataIndex === "name" || value.dataIndex === "employerName" || value.dataIndex === "companyName") {
                     return (
                         <React.Fragment key={`render-${value.dataIndex}-${index}`}>
-                            {val?.img ?
-                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px]`}>
+                            {val?.img &&
+                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px] border border-red-500 `}>
                                     <img className="inline-block h-[30px] w-[30px] rounded-full" src={val?.img} alt="profile image" />
                                     <Avatar src={val?.img}>{firstLetter}</Avatar>
                                     <span className='whitespace-nowrap font-semibold'>{val?.name}</span>
-                                </div> :
-                                <span className='capitalize'>{val}</span>
+                                </div> 
                             }
+                            {/* {val?.candidate?.personalInformationData?.profilePicture &&
+                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2 min-w-[140px]`}>
+                                    <img className="inline-block h-[30px] w-[30px] rounded-full" src={val?.candidate?.personalInformationData?.profilePicture} alt="profile image" />
+                                    <Avatar src={val?.candidate?.personalInformationData?.profilePicture}>{firstLetter}</Avatar>
+                                    <span className='whitespace-nowrap font-semibold'>{val?.name}</span>
+                                </div> 
+                            } */}
+                            <span className='capitalize'>{val}</span>
                         </React.Fragment>
+                    )
+                }
+                else if (value.dataIndex === "avatar") {
+                    return (                        
+                                <div className={`render-${value.dataIndex}-${index} flex justify-start items-center gap-x-2`}>
+                                    <Avatar src={val}>{firstLetter}</Avatar> 
+                                </div>                           
                     )
                 }
                 else if (value.dataIndex === "payment") {
