@@ -47,6 +47,8 @@ function MyCalendar({ events, type }) {
         setEventToEdit(event);
     };
 
+    console.log("iiiiii events",events)
+
     return (
         <>
          <ToastContainer />
