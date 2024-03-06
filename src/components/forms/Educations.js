@@ -11,12 +11,14 @@ const validationSchema = Yup.object().shape({
   organization: Yup.string()
     .trim()
     .nullable()
-    .required("organization is required"),
-  degree: Yup.string().trim().nullable().required("degree is required"),
+    .required("Organization is required"),
+  degree: Yup.string().trim().nullable().required("Degree is required"),
+  selectedCountry: Yup.string().required("Country is required"),
+  // selectedCity: Yup.string().required("City is required"),
   fieldOfStudy: Yup.string()
     .trim()
     .nullable()
-    .required("fieldOfStudy is required"),
+    .required("Field of Study is required"),
 });
 
 const {
@@ -104,15 +106,13 @@ function Educations({
   const [selectedCity, setSelectedCity] = useState(
     educationToEdit?.selectedCity ? educationToEdit?.selectedCity : ""
   );
-  console.log("ed selectedCountry", selectedCountry);
+  console.log("555 selectedCountry", selectedCountry);
   const [countries, setCountries] = useState([]);
-  //   console.log("ed countries", countries);
   const [cities, setCities] = useState([]);
-
+  console.log("555 cities", cities);
   useEffect(() => {
     const allCountries = Country?.getAllCountries();
     setCountries(allCountries);
-    // console.log("ed allCountries", allCountries);
   }, []);
 
   const handleDateChange = (type, name, event) => {
@@ -166,9 +166,11 @@ function Educations({
 
   const handleCountryChange = (event) => {
     const countryValue = event.target.value;
+    console.log("countryValue", countryValue);
     setSelectedCountry(countryValue);
 
     const countryCities = City.getCitiesOfCountry(countryValue);
+    console.log("countryCities", countryCities);
     setCities(countryCities);
 
     setSelectedCity("");
@@ -197,10 +199,10 @@ function Educations({
     if (action === "add") {
       console.log("vv add _educationsData", _educationsData);
       // educationData = [...educations, _educationsData]
-      setCandidateProfileData(prevData => ({
-          ...prevData,
-          educationsData: _educationsData,
-      }));
+      // setCandidateProfileData(prevData => ({
+      //     ...prevData,
+      //     educationsData: _educationsData,
+      // }));
     } else {
       educationData = educations?.map((exp) => {
         if (exp._id === id) {
@@ -210,9 +212,9 @@ function Educations({
         }
       });
       console.log("vv edit educationData", educationData);
-      setCandidateProfileData({
-          educationsData: educationData,
-      });
+      // setCandidateProfileData({
+      //     educationsData: educationData,
+      // });
     }
   };
 
@@ -231,276 +233,374 @@ function Educations({
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ values, resetForm }) => (
-        <Form>
-          <span className="block text-gray-400 opacity-70 my-5">
-            <span className="text-[red] pr-2">*</span>Required fields
-          </span>
+      {({ values, resetForm }) => {
+        console.log("values", values);
+        return (
+          <Form>
+            <span className="block text-gray-400 opacity-70 my-5">
+              <span className="text-[red] pr-2">*</span>Required fields
+            </span>
 
-          <div className="mb-4">
-            <>
-              <Field name="organization">
-                {({ field }) => (
-                  <Core.InputWithLabel
-                    {...field}
-                    sm
-                    name="organization"
-                    value={values?.organization}
-                    label
-                    required
-                    edit
-                  />
-                )}
-              </Field>
-              <ErrorMessage
-                name="organization"
-                component="div"
-                className="text-red-500 error"
-              />
-            </>
-          </div>
-
-          <div className="mb-4">
-            <>
-              <Field name="degree">
-                {({ field }) => (
-                  <Core.SelectWithLabel
-                    {...field}
-                    name={"degree"}
-                    label
-                    options={degreeOptions}
-                    defaultOption="Choose any one"
-                    required
-                  />
-                )}
-              </Field>
-              <ErrorMessage
-                name="degree"
-                component="div"
-                className="text-red-500 error"
-              />
-            </>
-          </div>
-
-          <div className="mb-4">
-            <>
-              <Field name="fieldOfStudy">
-                {({ field }) => (
-                  <Core.SelectWithLabel
-                    {...field}
-                    name={"fieldOfStudy"}
-                    label
-                    options={fieldOfStudyOptions}
-                    defaultOption="Field Of Study"
-                    required
-                  />
-                )}
-              </Field>
-              <ErrorMessage
-                name="fieldOfStudy"
-                component="div"
-                className="text-red-500 error"
-              />
-            </>
-          </div>
-
-          <div className="w-full mb-4">
-            <div className="flex gap-x-2">
-              <div className="w-[50%]">
-                <label
-                  className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
-                >
-                  Start <span className="text-[red]">*</span>
-                </label>
-                <div className="flex gap-x-2">
-                  <div className="w-[50%]">
-                    <Core.SelectWithLabel
-                      name={"month"}
+            <div className="mb-4">
+              <>
+                <Field name="organization">
+                  {({ field }) => (
+                    <Core.InputWithLabel
+                      {...field}
                       sm
-                      options={monthsOptions}
-                      defaultOption="Month"
-                      onChange={(value) =>
-                        handleDateChange("startDate", "month", value)
-                      }
+                      name="organization"
+                      value={values?.organization}
+                      label
                       required
-                      value={selectedStartMonth}
+                      edit
                     />
-                  </div>
-                  <div className="w-[50%]">
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="organization"
+                  component="div"
+                  className="text-red-500 error"
+                />
+              </>
+            </div>
+
+            <div className="mb-4">
+              <>
+                <Field name="degree">
+                  {({ field }) => (
                     <Core.SelectWithLabel
-                      name={"year"}
-                      sm
-                      options={yearOptions}
-                      defaultOption="Year"
-                      onChange={(value) =>
-                        handleDateChange("startDate", "year", value)
-                      }
+                      {...field}
+                      name={"degree"}
+                      label
+                      options={degreeOptions}
+                      defaultOption="Choose any one"
                       required
-                      value={selectedStartYear}
                     />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="degree"
+                  component="div"
+                  className="text-red-500 error"
+                />
+              </>
+            </div>
+
+            <div className="mb-4">
+              <>
+                <Field name="fieldOfStudy">
+                  {({ field }) => (
+                    <Core.SelectWithLabel
+                      {...field}
+                      name={"fieldOfStudy"}
+                      label
+                      options={fieldOfStudyOptions}
+                      defaultOption="Field Of Study"
+                      required
+                    />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="fieldOfStudy"
+                  component="div"
+                  className="text-red-500 error"
+                />
+              </>
+            </div>
+
+            <div className="w-full mb-4">
+              <div className="flex gap-x-2">
+                <div className="w-[50%]">
+                  <label
+                    className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+                  >
+                    Start <span className="text-[red]">*</span>
+                  </label>
+                  <div className="flex gap-x-2">
+                    <div className="w-[50%]">
+                      <Core.SelectWithLabel
+                        name={"month"}
+                        sm
+                        options={monthsOptions}
+                        defaultOption="Month"
+                        onChange={(value) =>
+                          handleDateChange("startDate", "month", value)
+                        }
+                        required
+                        value={selectedStartMonth}
+                      />
+                    </div>
+                    <div className="w-[50%]">
+                      <Core.SelectWithLabel
+                        name={"year"}
+                        sm
+                        options={yearOptions}
+                        defaultOption="Year"
+                        onChange={(value) =>
+                          handleDateChange("startDate", "year", value)
+                        }
+                        required
+                        value={selectedStartYear}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="w-[50%]">
-                <label
-                  className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
-                >
-                  End <span className="text-[red]">*</span>
-                </label>
-                <div className="flex gap-x-2">
-                  <div className="w-[50%]">
-                    <Core.SelectWithLabel
-                      name={"month"}
-                      sm
-                      options={monthsOptions}
-                      defaultOption="Month"
-                      onChange={(value) =>
-                        handleDateChange("endDate", "month", value)
-                      }
-                      required
-                      value={selectedEndMonth}
-                    />
-                  </div>
-                  <div className="w-[50%]">
-                    <Core.SelectWithLabel
-                      name={"year"}
-                      sm
-                      options={yearOptions}
-                      defaultOption="Year"
-                      onChange={(value) =>
-                        handleDateChange("endDate", "year", value)
-                      }
-                      required
-                      value={selectedEndYear}
-                    />
+                <div className="w-[50%]">
+                  <label
+                    className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+                  >
+                    End <span className="text-[red]">*</span>
+                  </label>
+                  <div className="flex gap-x-2">
+                    <div className="w-[50%]">
+                      <Core.SelectWithLabel
+                        name={"month"}
+                        sm
+                        options={monthsOptions}
+                        defaultOption="Month"
+                        onChange={(value) =>
+                          handleDateChange("endDate", "month", value)
+                        }
+                        required
+                        value={selectedEndMonth}
+                      />
+                    </div>
+                    <div className="w-[50%]">
+                      <Core.SelectWithLabel
+                        name={"year"}
+                        sm
+                        options={yearOptions}
+                        defaultOption="Year"
+                        onChange={(value) =>
+                          handleDateChange("endDate", "year", value)
+                        }
+                        required
+                        value={selectedEndYear}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* <div className="mb-4">
-            {/* Country * / }
-            <label
-              className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
-            >
-              Country <span className="text-[red]">*</span>
-            </label>
-            <select
-              name="nationality"
-              onChange={handleCountryChange}
-              value={selectedCountry}
-              className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
-            >
-              <option value="">Select</option>
-              {countries?.map((country) => (
-                <option key={country?.isoCode} value={country?.isoCode}>
-                  {country?.name}
-                </option>
-              ))}
-            </select>
-          </div> */}
+            {/* <div className="mb-4">
+              {/* Country * / }
+              <label
+                className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+              >
+                Country <span className="text-[red]">*</span>
+              </label>
+              <select
+                name="nationality"
+                onChange={handleCountryChange}
+                value={selectedCountry}
+                className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+              >
+                <option value="">Select</option>
+                {countries?.map((country) => (
+                  <option key={country?.isoCode} value={country?.isoCode}>
+                    {country?.name}
+                  </option>
+                ))}
+              </select>
+            </div> */}
 
-          <div className="mb-4">
-            <div className="flex justify-between gap-x-2">
-              <div className="w-[50%]">
-                {/* Country */}
-                <label
-                  className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
-                >
-                  Country <span className="text-[red]">*</span>
-                </label>
-                <select
-                  name="country"
-                  onChange={handleCountryChange}
-                  value={selectedCountry}
-                  className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
-                >
-                  <option value="">Select</option>
-                  {countries?.map((country) => (
-                    <option key={country?.isoCode} value={country?.isoCode}>
-                      {country?.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="w-[50%]">
-                {/* City */}
-                <label
-                  className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
-                >
-                  City
-                </label>
-                <select
-                  name="city"
-                  onChange={handleCityChange}
-                  value={selectedCity}
-                  className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
-                >
-                  <option value="">Select City</option>
-                  {cities.map((city) => (
-                    <option key={city.name} value={city.name}>
-                      {city.name}
-                    </option>
-                  ))}
-                </select>
+            <div className="mb-4">
+              <div className="flex justify-between gap-x-2">
+                <div className="w-[50%]">
+                  {/* Country */}
+                  <label
+                    className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+                  >
+                    Country <span className="text-[red]">*</span>
+                  </label>
+
+                  <>
+                    <Field name="selectedCountry">
+                      {({ field, form }) => (
+                        <select
+                          name="country"
+                          value={selectedCountry}
+                          onChange={(e) => {
+                            const selectedValue = e.target.value; // Extract selected value from event object
+                            form.setFieldValue(
+                              "selectedCountry",
+                              selectedValue
+                            );
+                            handleCountryChange(e); // Pass selected value to handleCountryChange
+                          }}
+                          className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+                        >
+                          <option value="">Select Country</option>
+                          {countries?.map((country) => (
+                            <option
+                              key={country?.isoCode}
+                              value={country?.isoCode}
+                            >
+                              {country?.name}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    </Field>
+                    <ErrorMessage
+                      name="selectedCountry"
+                      component="div"
+                      className="text-red-500 error"
+                    />
+                  </>
+
+                  {/* <>
+                    <Field name="selectedCountry">
+                      {({ field,form  }) => (
+                        <Core.SelectWithLabel
+                          {...field}
+                          name={"selectedCountry"}
+                    value={selectedCountry}
+                          onChange={(value) => {
+                            form.setFieldValue("selectedCountry", value);
+                            handleCountryChange(value); // Call handleCountryChange here
+                          }}
+                          label
+                          options={countries}
+                          defaultOption="Select Country"
+                          required
+                        />
+                      )}
+                    </Field>
+                    <ErrorMessage
+                      name="selectedCountry"
+                      component="div"
+                      className="text-red-500 error"
+                    />  
+                  </>   */}
+                </div>
+                <div className="w-[50%]">
+                  {/* City */}
+                  <label
+                    className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+                  >
+                    City
+                  </label>
+
+                  <>
+                    <Field name="selectedCity">
+                      {({ form }) => (
+                        <select
+                          name="city"
+                          value={selectedCity}
+                          onChange={(e) => {
+                            const selectedValue = e.target.value; // Extract selected value from event object
+                            form.setFieldValue("selectedCity", selectedValue);
+                            handleCityChange(e); // Pass selected value to handleCountryChange
+                          }}
+                          className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+                        >
+                          <option value="">Select City</option>
+                          {cities.map((city) => (
+                            <option key={city.name} value={city.name}>
+                              {city.name}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    </Field>
+                    <ErrorMessage
+                      name="selectedCity"
+                      component="div"
+                      className="text-red-500 error"
+                    />
+                  </>
+
+                  {/* <>
+                    <Field name="selectedCity">
+                      {({ field }) => (
+                        <Core.SelectWithLabel
+                          {...field}
+                          name={"selectedCity"}
+                          label
+                          options={cities}
+                          defaultOption="Select City"
+                          required
+                        />
+                      )}
+                    </Field>
+                    <ErrorMessage
+                      name="selectedCity"
+                      component="div"
+                      className="text-red-500 error"
+                    />
+                  </> */}
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* <div className='mb-4'>
-                        <Field name="grade">
-                            {({ field }) => (
-                                <Core.SelectWithLabel
-                                    {...field}
-                                    name={"grade"}
-                                    label
-                                    options={gradeOptions}
-                                    defaultOption="Select Your Grade"
-                                // onChange={(value) => handleChange("grade", value)}
-                                // value={field.value}
-                                />
-                            )}
-                        </Field>
-                    </div> */}
+            {/* <div className='mb-4'>
+                          <Field name="grade">
+                              {({ field }) => (
+                                  <Core.SelectWithLabel
+                                      {...field}
+                                      name={"grade"}
+                                      label
+                                      options={gradeOptions}
+                                      defaultOption="Select Your Grade"
+                                  // onChange={(value) => handleChange("grade", value)}
+                                  // value={field.value}
+                                  />
+                              )}
+                          </Field>
+                      </div> */}
 
-          <div className="flex justify-between  pt-6 mt-8 border-t-[1px]">
-            <div className="flex justify-start gap-x-3 ">
-              {savingForm ? (
-                <div className=" flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]">
-                  <Spin />
-                </div>
-              ) : (
-                <Core.Button type="narrow" submit>
-                  Save
+            <div className="flex justify-between  pt-6 mt-8 border-t-[1px]">
+              <div className="flex justify-start gap-x-3 ">
+                {savingForm ? (
+                  <div className=" flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]">
+                    <Spin />
+                  </div>
+                ) : (
+                  <Core.Button
+                    type="narrow"
+                    submit
+                    isDisabled={
+                      values?.degree === "" ||
+                      values?.fieldOfStudy === "" ||
+                      values?.organization === "" ||
+                       selectedCountry === ""
+                      //  ||
+                      // values?.startDate === "" ||
+                      // values?.endDate === "" 
+                    }
+                  >
+                    Save
+                  </Core.Button>
+                )}
+                <Core.Button
+                  type="narrow"
+                  color="white"
+                  onClick={() => {
+                    handleCancel();
+                    resetForm();
+                  }}
+                >
+                  Cancel
+                </Core.Button>
+              </div>
+              {action === "edit" && (
+                <Core.Button
+                  onClick={() => {
+                    deleteItem(id);
+                    resetForm();
+                  }}
+                  type="narrow"
+                  color="red"
+                >
+                  Delete
                 </Core.Button>
               )}
-              <Core.Button
-                type="narrow"
-                color="white"
-                onClick={() => {
-                  handleCancel();
-                  resetForm();
-                }}
-              >
-                Cancel
-              </Core.Button>
             </div>
-            {action === "edit" && (
-              <Core.Button
-                onClick={() => {
-                  deleteItem(id);
-                  resetForm();
-                }}
-                type="narrow"
-                color="red"
-              >
-                Delete
-              </Core.Button>
-            )}
-          </div>
-        </Form>
-      )}
+          </Form>
+        );
+      }}
     </Formik>
   );
 }
