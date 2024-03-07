@@ -5,6 +5,14 @@ import { Core } from "..";
 import { useSelector } from "react-redux";
 import { Spin } from "antd";
 import dropdownOptions from "../../data/dropdownOptions.json";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  title: Yup.string().required("Degree is required"),
+  company: Yup.string().required("company is required"),
+  industry: Yup.string().required("industry is required"),
+  salary: Yup.string().required("salary is required"),
+});
 
 const {
   industryOptions,
@@ -30,7 +38,18 @@ function Experiences({
 
   const [data] = useState(
     action === "add"
-      ? {}
+      ? {
+          agreeTerms: "",
+          company: "",
+          description: "",
+          industry: "",
+          salary: "",
+          selectedCity: "",
+          selectedCountry: "",
+          startDate: "",
+          title: "",
+          currentlyInProcess: "",
+        }
       : {
           _id: experienceToEdit?._id || "",
           agreeTerms: experienceToEdit?.agreeTerms || "",
@@ -58,7 +77,7 @@ function Experiences({
   );
   console.log("ex selectedCountry", selectedCountry);
   const [countries, setCountries] = useState([]);
-//   console.log("ed countries", countries);
+  //   console.log("ed countries", countries);
   const [cities, setCities] = useState([]);
   const [description, setDescription] = useState(
     experienceToEdit?.description ? experienceToEdit?.description : ""
@@ -72,15 +91,37 @@ function Experiences({
     yearOptions.push({ name: year.toString(), value: year.toString() });
   }
 
+ 
+
+
+
+  
   const startMonth = experienceToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
   const _startMonth = startMonth ? startMonth[1] : null;
+
+  const endMonth = experienceToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
+  const _endMonth = endMonth ? endMonth[1] : null;
 
   const _startYear = experienceToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
   const __startYear = _startYear ? _startYear[2] : null;
 
+  const _endYear = experienceToEdit?.endDate?.match(/(\d+)\/(\d+)$/);
+  const __endYear = _endYear ? _endYear[2] : null;
+
   const [selectedStartMonth, setSelectedStartMonth] = useState(_startMonth);
+  const [selectedEndMonth, setSelectedEndMonth] = useState(_endMonth);
   const [selectedStartYear, setSelectedStartYear] = useState(__startYear);
+  const [selectedEndYear, setSelectedEndYear] = useState(__endYear);
+
   const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState("");
+
+
+
+
+
+
+
 
   useEffect(() => {
     const allCountries = Country?.getAllCountries();
@@ -110,18 +151,25 @@ function Experiences({
       if (type === "startDate") {
         setSelectedStartMonth(selectedMonth);
       }
+      if (type === "endDate") {
+        setSelectedEndMonth(selectedMonth);
+      }
     };
 
     const setYear = (selectedYear) => {
-      const selectedMonth = selectedStartMonth;
+      const selectedMonth =
+        type === "startDate" ? selectedStartMonth : selectedEndMonth;
 
       if (selectedMonth !== "" && selectedYear !== "") {
         const selectedDate = selectedMonth + "/" + selectedYear;
 
         if (type === "startDate") {
+          setStartDate(selectedDate);
           setSelectedStartYear(selectedYear);
-          setStartDate("01/" + selectedDate);
-          // console.log("yyyyyy a",selectedDate)
+        }
+        if (type === "endDate") {
+          setEndDate(selectedDate);
+          setSelectedEndYear(selectedYear);
         }
       }
     };
@@ -136,9 +184,17 @@ function Experiences({
 
     if (type === "startDate" && selectedStartMonth !== "" && name === "year") {
       let _startDate = selectedStartMonth + "/" + value;
-      setStartDate("01/" + _startDate);
+      // setStartDate("01/" + _startDate);
+      setStartDate(_startDate);
+    }
+
+    if (type === "endDate" && selectedEndMonth !== "" && name === "year") {
+      let _endDate = selectedEndMonth + "/" + value;
+      // setEndDate("01/" + _endDate);
+      setEndDate(_endDate);
     }
   };
+
 
   // console.log("selectedStartMonth",selectedStartMonth)
   // console.log("selectedStartYear",selectedStartYear)
@@ -155,7 +211,8 @@ function Experiences({
       selectedCountry: selectedCountry,
       selectedCity: selectedCity,
       startDate: startDate,
-      agreeTerms: values?.agreeTerms,
+        endDate: endDate,
+        agreeTerms: values?.agreeTerms,
       description: description,
     };
 
@@ -189,7 +246,7 @@ function Experiences({
   return (
     <Formik
       initialValues={data}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
@@ -199,51 +256,74 @@ function Experiences({
           </span>
 
           <div className="mb-4">
-            <Field name="title">
-              {({ field }) => (
-                <Core.InputWithLabel
-                  {...field}
-                  sm
-                  name="title"
-                  label
-                  placeholder="Enter title here"
-                  required
-                  edit
-                />
-              )}
-            </Field>
+            <>
+              <Field name="title">
+                {({ field }) => (
+                  <Core.InputWithLabel
+                    {...field}
+                    sm
+                    name="title"
+                    label
+                    placeholder="Enter title here"
+                    required
+                    edit
+                  />
+                )}
+              </Field>
+              <ErrorMessage
+                name="title"
+                component="div"
+                className="text-red-500 error"
+              />
+            </>
           </div>
 
           <div className="mb-4">
-            <Field name="company">
-              {({ field }) => (
-                <Core.InputWithLabel
-                  {...field}
-                  sm
-                  name="company"
-                  label
-                  placeholder="Enter your Company Name"
-                  required
-                  edit
-                />
-              )}
-            </Field>
+            <>
+              <Field name="company">
+                {({ field }) => (
+                  <Core.InputWithLabel
+                    {...field}
+                    sm
+                    name="company"
+                    label
+                    placeholder="Enter your Company Name"
+                    required
+                    edit
+                  />
+                )}
+              </Field>
+
+              <ErrorMessage
+                name="company"
+                component="div"
+                className="text-red-500 error"
+              />
+            </>
           </div>
 
           <div className="mb-4">
-            <Field name="industry">
-              {({ field }) => (
-                <Core.SelectWithLabel
-                  {...field}
-                  name="industry"
-                  label
-                  options={industryOptions}
-                  defaultOption="Choose any one"
-                  value={field.value}
-                  required
-                />
-              )}
-            </Field>
+            <>
+              <Field name="industry">
+                {({ field }) => (
+                  <Core.SelectWithLabel
+                    {...field}
+                    name="industry"
+                    label
+                    options={industryOptions}
+                    defaultOption="Choose any one"
+                    value={field.value}
+                    required
+                  />
+                )}
+              </Field>
+
+              <ErrorMessage
+                name="industry"
+                component="div"
+                className="text-red-500 error"
+              />
+            </>
           </div>
 
           {/* <div className='mb-4'>
@@ -282,21 +362,29 @@ function Experiences({
                     </div> */}
 
           <div className="mb-4">
-            <Field name="salary">
-              {({ field }) => (
-                <Core.SelectWithLabel
-                  {...field}
-                  name={"salary"}
-                  label
-                  options={salaryOptions}
-                  defaultOption="Select Salary Range"
-                  helperText={
-                    "Note that all figures in this form are in US dollars and indicate yearly salary ranges."
-                  }
-                  required
-                />
-              )}
-            </Field>
+            <>
+              <Field name="salary">
+                {({ field }) => (
+                  <Core.SelectWithLabel
+                    {...field}
+                    name={"salary"}
+                    label
+                    options={salaryOptions}
+                    defaultOption="Select Salary Range"
+                    helperText={
+                      "Note that all figures in this form are in US dollars and indicate yearly salary ranges."
+                    }
+                    required
+                  />
+                )}
+              </Field>
+
+              <ErrorMessage
+                name="salary"
+                component="div"
+                className="text-red-500 error"
+              />
+            </>
           </div>
 
           <div className="mb-4">
@@ -347,44 +435,79 @@ function Experiences({
           </div>
 
           <div className="w-full mb-4">
-            <div className="flex gap-x-2">
-              <div className="w-[50%]">
-                <label
-                  className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
-                >
-                  Start <span className="text-[red]">*</span>
-                </label>
-                <div className="flex gap-x-2">
-                  <div className="w-[50%]">
-                    <Core.SelectWithLabel
-                      name={"month"}
-                      sm
-                      options={monthsOptions}
-                      defaultOption="Month"
-                      onChange={(value) =>
-                        handleDateChange("startDate", "month", value)
-                      }
-                      required
-                      value={selectedStartMonth}
-                    />
+              <div className="flex gap-x-2">
+                <div className="w-[50%]">
+                  <label
+                    className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+                  >
+                    Start <span className="text-[red]">*</span>
+                  </label>
+                  <div className="flex gap-x-2">
+                    <div className="w-[50%]">
+                      <Core.SelectWithLabel
+                        name={"month"}
+                        sm
+                        options={monthsOptions}
+                        defaultOption="Month"
+                        onChange={(value) =>
+                          handleDateChange("startDate", "month", value)
+                        }
+                        required
+                        value={selectedStartMonth}
+                      />
+                    </div>
+                    <div className="w-[50%]">
+                      <Core.SelectWithLabel
+                        name={"year"}
+                        sm
+                        options={yearOptions}
+                        defaultOption="Year"
+                        onChange={(value) =>
+                          handleDateChange("startDate", "year", value)
+                        }
+                        required
+                        value={selectedStartYear}
+                      />
+                    </div>
                   </div>
-                  <div className="w-[50%]">
-                    <Core.SelectWithLabel
-                      name={"year"}
-                      sm
-                      options={yearOptions}
-                      defaultOption="Year"
-                      onChange={(value) =>
-                        handleDateChange("startDate", "year", value)
-                      }
-                      required
-                      value={selectedStartYear}
-                    />
+                </div>
+                <div className="w-[50%]">
+                  <label
+                    className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+                  >
+                    End <span className="text-[red]">*</span>
+                  </label>
+                  <div className="flex gap-x-2">
+                    <div className="w-[50%]">
+                      <Core.SelectWithLabel
+                        name={"month"}
+                        sm
+                        options={monthsOptions}
+                        defaultOption="Month"
+                        onChange={(value) =>
+                          handleDateChange("endDate", "month", value)
+                        }
+                        required
+                        value={selectedEndMonth}
+                      />
+                    </div>
+                    <div className="w-[50%]">
+                      <Core.SelectWithLabel
+                        name={"year"}
+                        sm
+                        options={yearOptions}
+                        defaultOption="Year"
+                        onChange={(value) =>
+                          handleDateChange("endDate", "year", value)
+                        }
+                        required
+                        value={selectedEndYear}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
           <div className="flex justify-between items-center pt-1 mb-2">
             <div className="flex justify-start items-center gap-x-1">
@@ -399,6 +522,9 @@ function Experiences({
           </div>
 
           <div className="mb-4">
+
+
+            
             <Core.TextEditorWithLabel
               name={"description"}
               label
@@ -407,6 +533,9 @@ function Experiences({
               value={description}
               setValue={setDescription}
             />
+
+
+            
           </div>
 
           <div className="flex justify-between  pt-6 mt-8 border-t-[1px]">

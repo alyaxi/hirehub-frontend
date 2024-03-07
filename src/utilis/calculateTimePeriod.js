@@ -35,18 +35,52 @@
 //     return result;
 // }
 
-
-
-
 export function calculateTimePeriod(startDate, endDate) {
+  // const startDateObject = new Date(startDate);
+  // let endDateObject;
 
-  const startDateObject = new Date(startDate);
+  // if (endDate === "present") {
+  //   endDateObject = new Date(); // Current date/time
+  // } else {
+  //   endDateObject = new Date(endDate);
+  // }
+
+  const startDateParts = startDate.split("/");
+  const endDateParts = endDate.split("/");
+
+  // Create Date objects for startDate and endDate
+  let startDateObject;
+
+  if (startDateParts.length === 2) {
+    startDateObject = new Date(
+      parseInt(startDateParts[1]), // Year
+      parseInt(startDateParts[0]) - 1, // Month (subtract 1 as months are 0-indexed)
+      1 // Day (set to 1 as day is not provided)
+    );
+  } else {
+    startDateObject = new Date(startDate);
+  }
+
   let endDateObject;
 
   if (endDate === "present") {
     endDateObject = new Date(); // Current date/time
   } else {
-    endDateObject = new Date(endDate);
+    // endDateObject = new Date(
+    //   parseInt(endDateParts[1]), // Year
+    //   parseInt(endDateParts[0]) - 1, // Month (subtract 1 as months are 0-indexed)
+    //   1 // Day (set to 1 as day is not provided)
+    // );
+
+    if (endDateParts.length === 2) {
+      endDateObject = new Date(
+        parseInt(endDateParts[1]), // Year
+        parseInt(endDateParts[0]) - 1, // Month (subtract 1 as months are 0-indexed)
+        1 // Day (set to 1 as day is not provided)
+      );
+    } else {
+      endDateObject = new Date(endDate);
+    }
   }
 
   const startYear = startDateObject.getFullYear();
@@ -64,8 +98,6 @@ export function calculateTimePeriod(startDate, endDate) {
     (endYear - startYear) * 12 +
     (endDateObject.getMonth() - startDateObject.getMonth()) +
     1;
-
-  // console.log("88 totalMonthsDiff", totalMonthsDiff);
 
   // Calculate years difference in months
   const yearsInMonths = yearsDiff * 12;
@@ -85,8 +117,10 @@ export function calculateTimePeriod(startDate, endDate) {
   if (monthsDiff === 12) {
     result += ` · ${yearsDiff + 1} years`;
   } else {
-    result += ` · ${yearsDiff} ${yearsDiff === 1 ? "year" : "years"
-      } ${monthsDiff} ${monthsDiff === 1 ? "month" : "months"}`;
+    result += ` · ${yearsDiff !== 0 ? yearsDiff : ""}
+     ${yearsDiff !== 0 ? (yearsDiff === 1 ? "year" : "years") : ""}
+      ${monthsDiff}
+      ${monthsDiff === 1 ? "month" : "months"}`;
   }
 
   return result;
