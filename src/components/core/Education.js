@@ -24,7 +24,7 @@ function Education({ data, type, card }) {
                                     if (!value?.degree || !value?.organization) {
                                         return null;
                                     }
-                                    console.log("value dates",value.startDate,value.endDate)
+                                    // console.log("value dates",value.startDate,value.endDate)
                                     return (
                                         <div key={index * 4} className='relative flex justify-between gap-x-3 w-full'>
                                             <div className='absolute top-0 right-0 z-[200] flex justify-end' >
@@ -72,7 +72,7 @@ function Education({ data, type, card }) {
                                     if (!value?.degree || !value?.organization) {
                                         return null;
                                     }
-                                    console.log("value dates",value.startDate,value.endDate)
+                                    // console.log("value dates",value.startDate,value.endDate)
                                     return (
                                         <div key={index * 4} className='flex justify-between gap-x-3'>
                                             <div className='flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden'>

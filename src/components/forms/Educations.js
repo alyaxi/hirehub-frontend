@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Country, City } from "country-state-city";
+import { Country, State, City } from "country-state-city";
 import { Core } from "..";
 import { useSelector } from "react-redux";
-import { Spin } from "antd";
+import { DatePicker, Spin } from "antd";
 import dropdownOptions from "../../data/dropdownOptions.json";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
-  organization: Yup.string()
-    .trim()
-    .nullable()
-    .required("Organization is required"),
+  // organization: Yup.string()
+  //   .trim()
+  //   .nullable()
+  //   .required("Organization is required"),
   degree: Yup.string().trim().nullable().required("Degree is required"),
   selectedCountry: Yup.string().required("Country is required"),
   // selectedCity: Yup.string().required("City is required"),
@@ -46,7 +46,7 @@ function Educations({
 
   const currentYear = new Date().getFullYear();
   const startYear = 1901;
-  const endYear = currentYear - 5;
+  const endYear = currentYear;
   const yearOptions = [];
   for (let year = startYear; year <= endYear; year++) {
     yearOptions.push({ name: year.toString(), value: year.toString() });
@@ -58,9 +58,11 @@ function Educations({
           degree: "",
           endDate: "",
           fieldOfStudy: "",
-          isDeleted: "",
+          isDeleted: false,
           organization: "",
           selectedCountry: "",
+          selectedState: "",
+          selectedCity: "",
           startDate: "",
         }
       : {
@@ -69,20 +71,15 @@ function Educations({
           endDate: educationToEdit?.endDate || "",
           fieldOfStudy: educationToEdit?.fieldOfStudy || "",
           // grade: educationToEdit?.grade || "",
-          isDeleted: educationToEdit?.isDeleted || "",
+          isDeleted: educationToEdit?.isDeleted || false,
           organization: educationToEdit?.organization || "",
-          selectedCity: educationToEdit?.selectedCity || "",
           selectedCountry: educationToEdit?.selectedCountry || "",
+          selectedState: educationToEdit?.selectedState || "",
+          selectedCity: educationToEdit?.selectedCity || "",
           startDate: educationToEdit?.startDate || "",
         }
   );
 
-
-
-
-
-
-  
   const startMonth = educationToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
   const _startMonth = startMonth ? startMonth[1] : null;
 
@@ -99,27 +96,24 @@ function Educations({
   const [selectedEndMonth, setSelectedEndMonth] = useState(_endMonth);
   const [selectedStartYear, setSelectedStartYear] = useState(__startYear);
   const [selectedEndYear, setSelectedEndYear] = useState(__endYear);
-
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState("");
-
-
-
-
-
-
-
+  const [startDate, setStartDate] = useState(educationToEdit?.startDate || "");
+  const [endDate, setEndDate] = useState(educationToEdit?.endDate || "");
 
   const [selectedCountry, setSelectedCountry] = useState(
-    educationToEdit?.selectedCountry ? educationToEdit?.selectedCountry : ""
+    educationToEdit?.selectedCountry || ""
+  );
+  const [selectedState, setSelectedState] = useState(
+    educationToEdit?.selectedState || ""
   );
   const [selectedCity, setSelectedCity] = useState(
-    educationToEdit?.selectedCity ? educationToEdit?.selectedCity : ""
+    educationToEdit?.selectedCity || ""
   );
-  // console.log("555 selectedCountry", selectedCountry);
   const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
-  // console.log("555 cities", cities);
+
+  const [dateValidateion, setDateValidateion] = useState(false);
+  
   useEffect(() => {
     const allCountries = Country?.getAllCountries();
     setCountries(allCountries);
@@ -131,26 +125,82 @@ function Educations({
     const setMonth = (selectedMonth) => {
       if (type === "startDate") {
         setSelectedStartMonth(selectedMonth);
+        if (selectedMonth?.length > 1 && selectedStartYear?.length > 1) {
+          setStartDate(selectedMonth + "/" + selectedStartYear);
+        } else {
+          setStartDate("");
+        }
       }
       if (type === "endDate") {
         setSelectedEndMonth(selectedMonth);
+        if (selectedMonth?.length > 1 && selectedEndYear?.length > 1) {
+          let _endDate = selectedMonth + "/" + selectedEndYear;
+          const startDateParts = startDate.split("/");
+          const endDateParts = _endDate.split("/");
+
+          const startMonth = parseInt(startDateParts[0]);
+          const startYear = parseInt(startDateParts[1]);
+          const endMonth = parseInt(endDateParts[0]);
+          const endYear = parseInt(endDateParts[1]);
+
+          if (endYear > startYear) {
+            setEndDate(_endDate);
+            setDateValidateion(false);
+          } else if (endYear === startYear) {
+            if (endMonth > startMonth) {
+              setEndDate(_endDate);
+              setDateValidateion(false);
+            } else {
+              setDateValidateion(true);
+            }
+          } else {
+            setDateValidateion(true);
+          }
+
+          // setEndDate(selectedMonth + "/" + selectedEndYear);
+        } else {
+          setEndDate("");
+        }
       }
     };
 
     const setYear = (selectedYear) => {
-      const selectedMonth =
-        type === "startDate" ? selectedStartMonth : selectedEndMonth;
-
-      if (selectedMonth !== "" && selectedYear !== "") {
-        const selectedDate = selectedMonth + "/" + selectedYear;
-
-        if (type === "startDate") {
-          setStartDate(selectedDate);
-          setSelectedStartYear(selectedYear);
+      if (type === "startDate") {
+        setSelectedStartYear(selectedYear);
+        if (selectedStartMonth?.length > 1 && selectedYear?.length > 1) {
+          setStartDate(selectedStartMonth + "/" + selectedYear);
+        } else {
+          setStartDate("");
         }
-        if (type === "endDate") {
-          setEndDate(selectedDate);
-          setSelectedEndYear(selectedYear);
+      }
+      if (type === "endDate") {
+        setSelectedEndYear(selectedYear);
+        if (selectedEndMonth?.length > 1 && selectedYear?.length > 1) {
+          let _endDate = selectedEndMonth + "/" + selectedYear;
+          const startDateParts = startDate.split("/");
+          const endDateParts = _endDate.split("/");
+
+          const startMonth = parseInt(startDateParts[0]);
+          const startYear = parseInt(startDateParts[1]);
+          const endMonth = parseInt(endDateParts[0]);
+          const endYear = parseInt(endDateParts[1]);
+
+          if (endYear > startYear) {
+            setEndDate(_endDate);
+            setDateValidateion(false);
+          } else if (endYear === startYear) {
+            if (endMonth > startMonth) {
+              setEndDate(_endDate);
+              setDateValidateion(false);
+            } else {
+              setDateValidateion(true);
+            }
+          } else {
+            setDateValidateion(true);
+          }
+          // setEndDate(selectedEndMonth + "/" + selectedYear);
+        } else {
+          setEndDate("");
         }
       }
     };
@@ -162,26 +212,28 @@ function Educations({
     if (name === "year") {
       setYear(value);
     }
-
-    if (type === "startDate" && selectedStartMonth !== "" && name === "year") {
-      let _startDate = selectedStartMonth + "/" + value;
-      // setStartDate("01/" + _startDate);
-      setStartDate(_startDate);
-    }
-
-    if (type === "endDate" && selectedEndMonth !== "" && name === "year") {
-      let _endDate = selectedEndMonth + "/" + value;
-      // setEndDate("01/" + _endDate);
-      setEndDate(_endDate);
-    }
   };
 
-  const handleCountryChange = (event) => {
+  const handleCountryChange = (event, setFieldValue) => {
     const countryValue = event.target.value;
     setSelectedCountry(countryValue);
 
-    const countryCities = City.getCitiesOfCountry(countryValue);
-    setCities(countryCities);
+    setFieldValue("selectedState", "");
+    setFieldValue("selectedCity", "");
+
+    const countryStates = State.getStatesOfCountry(countryValue);
+    setStates(countryStates);
+
+    setSelectedState("");
+    setSelectedCity("");
+  };
+
+  const handleStateChange = (event) => {
+    const stateValue = event.target.value;
+    setSelectedState(stateValue);
+
+    const stateCities = City.getCitiesOfState(selectedCountry, stateValue);
+    setCities(stateCities);
 
     setSelectedCity("");
   };
@@ -192,35 +244,36 @@ function Educations({
   };
 
   const handleSubmit = (values) => {
-
     let _educationsData;
     if (action === "add") {
       _educationsData = {
         degree: values?.degree,
-        endDate: endDate,
         fieldOfStudy: values?.fieldOfStudy,
         // grade: values?.grade,
         organization: values?.organization,
         selectedCountry: selectedCountry,
+        selectedState: selectedState,
         selectedCity: selectedCity,
         startDate: startDate,
+        endDate: endDate,
       };
     } else {
       _educationsData = {
         degree: values?.degree,
-        endDate: values?.endDate,
         fieldOfStudy: values?.fieldOfStudy,
         // grade: values?.grade,
         organization: values?.organization,
         selectedCountry: selectedCountry,
+        selectedState: selectedState,
         selectedCity: selectedCity,
-        startDate: values?.startDate,
+        startDate: startDate,
+        endDate: endDate,
       };
     }
     let educationData;
 
     if (action === "add") {
-      console.log("vv add _educationsData", _educationsData);
+      // console.log("vv add _educationsData", _educationsData);
       educationData = [...educations, _educationsData];
       setCandidateProfileData((prevData) => ({
         ...prevData,
@@ -234,7 +287,7 @@ function Educations({
           return exp;
         }
       });
-      console.log("vv edit educationData", educationData);
+      // console.log("vv edit educationData", educationData);
       setCandidateProfileData({
         educationsData: educationData,
       });
@@ -245,7 +298,16 @@ function Educations({
     console.log("to be deleted", id);
     handleCancel();
   };
- 
+
+  // console.log("dateValidateion",dateValidateion)
+  // console.log("startDate", startDate);
+  // console.log("endDate", endDate);
+  // console.log("selectedCountry", selectedCountry);
+  // console.log("selectedState", selectedState);
+  // console.log("selectedCity", selectedCity);
+
+  // console.log("educationToEdit", educationToEdit);
+
   return (
     <Formik
       initialValues={data}
@@ -326,7 +388,25 @@ function Educations({
                 />
               </>
             </div>
+            {/* <>
+              <Field name="startM">
+                {({ field }) => (
+                  <>
+                    <DatePicker
+                      picker="month"
 
+                     onChange={onChangeStartMonth}
+
+                    //  setFieldValue("dateRange", _dates);
+
+                       />
+                       <input
+                              onChange={onChangeStartMonth}
+                       type="month" id="bdaymonth" name="bdaymonth" />
+                  </>
+                )}
+              </Field>
+            </> */}
             <div className="w-full mb-4">
               <div className="flex gap-x-2">
                 <div className="w-[50%]">
@@ -363,6 +443,13 @@ function Educations({
                       />
                     </div>
                   </div>
+                  {dateValidateion === true ? (
+                    <span className="block text-[red] mt-1">
+                      Select Proper Dates
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="w-[50%]">
                   <label
@@ -382,6 +469,16 @@ function Educations({
                         }
                         required
                         value={selectedEndMonth}
+                        // isDisabled={
+                        //   startDate === "" || startDate === undefined
+                        //     ? true
+                        //     : false
+                        // }
+                        isDisabled={
+                          startDate?.length < 6 || startDate === undefined
+                            ? true
+                            : false
+                        }
                       />
                     </div>
                     <div className="w-[50%]">
@@ -395,6 +492,11 @@ function Educations({
                         }
                         required
                         value={selectedEndYear}
+                        isDisabled={
+                          startDate?.length < 6 || startDate === undefined
+                            ? true
+                            : false
+                        }
                       />
                     </div>
                   </div>
@@ -402,11 +504,10 @@ function Educations({
               </div>
             </div>
 
-
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <div className="flex justify-between gap-x-2">
                 <div className="w-[50%]">
-                  {/* Country */}
+                  { / * Country * / }
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
@@ -415,7 +516,7 @@ function Educations({
 
                   <>
                     <Field name="selectedCountry">
-                      {({ field, form }) => (
+                      {({ form }) => (
                         <select
                           name="country"
                           value={selectedCountry}
@@ -449,13 +550,128 @@ function Educations({
                   </>
                 </div>
                 <div className="w-[50%]">
-                  {/* City */}
+                  { / * City * / }
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
                     City
                   </label>
 
+                  <>
+                    <Field name="selectedCity">
+                      {({ form }) => (
+                        <select
+                          name="city"
+                          value={selectedCity}
+                          onChange={(e) => {
+                            const selectedValue = e.target.value; // Extract selected value from event object
+                            form.setFieldValue("selectedCity", selectedValue);
+                            handleCityChange(e); // Pass selected value to handleCountryChange
+                          }}
+                          className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+                        >
+                          <option value="">Select City</option>
+                          {cities.map((city) => (
+                            <option key={city.name} value={city.name}>
+                              {city.name}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    </Field>
+                    <ErrorMessage
+                      name="selectedCity"
+                      component="div"
+                      className="text-red-500 error"
+                    />
+                  </>
+                </div>
+              </div>
+            </div> */}
+
+            <div className="mb-4">
+              {/* Country */}
+              <label
+                className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+              >
+                Country <span className="text-[red]">*</span>
+              </label>
+
+              <>
+                <Field name="selectedCountry">
+                  {({ form }) => (
+                    <select
+                      name="country"
+                      value={selectedCountry}
+                      onChange={(e) => {
+                        const selectedValue = e.target.value; // Extract selected value from event object
+                        form.setFieldValue("selectedCountry", selectedValue);
+                        handleCountryChange(e, form.setFieldValue); // Pass selected value to handleCountryChange
+                      }}
+                      className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+                    >
+                      <option value="">Select Country</option>
+                      {countries?.map((country) => (
+                        <option key={country?.isoCode} value={country?.isoCode}>
+                          {country?.name}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="selectedCountry"
+                  component="div"
+                  className="text-red-500 error"
+                />
+              </>
+            </div>
+
+            <div className="mb-4">
+              <div className="flex justify-between   gap-x-2">
+                <div className="w-[50%]">
+                  {/* State */}
+                  <label
+                    className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+                  >
+                    State
+                  </label>
+                  <>
+                    <Field name="selectedState">
+                      {({ form }) => (
+                        <select
+                          name="state"
+                          value={selectedState}
+                          onChange={(e) => {
+                            const selectedValue = e.target.value;
+                            form.setFieldValue("selectedState", selectedValue);
+                            handleStateChange(e);
+                          }}
+                          className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+                        >
+                          <option value="">Select State</option>
+                          {states.map((state) => (
+                            <option key={state?.isoCode} value={state?.isoCode}>
+                              {state?.name}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    </Field>
+                    <ErrorMessage
+                      name="selectedState"
+                      component="div"
+                      className="text-red-500 error"
+                    />
+                  </>
+                </div>
+                <div className="w-[50%]">
+                  {/* City */}
+                  <label
+                    className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
+                  >
+                    City
+                  </label>
                   <>
                     <Field name="selectedCity">
                       {({ form }) => (
@@ -502,6 +718,7 @@ function Educations({
                       values?.degree === "" ||
                       values?.fieldOfStudy === "" ||
                       values?.organization === "" ||
+                      dateValidateion === true ||
                       (values?.startDate === "" && startDate === "") ||
                       (values?.endDate === "" && endDate === "") ||
                       (values?.selectedCountry === "" && selectedCountry === "")
@@ -518,6 +735,7 @@ function Educations({
                     resetForm();
                     if (action === "add") {
                       setSelectedCountry("");
+                      setSelectedState("");
                       setSelectedCity("");
                       setSelectedStartMonth("");
                       setSelectedEndMonth("");
@@ -538,6 +756,7 @@ function Educations({
                     resetForm();
                     if (action === "add") {
                       setSelectedCountry("");
+                      setSelectedState("");
                       setSelectedCity("");
                       setSelectedStartMonth("");
                       setSelectedEndMonth("");

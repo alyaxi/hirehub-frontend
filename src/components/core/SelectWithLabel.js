@@ -10,6 +10,7 @@ function SelectWithLabel({
   defaultOption,
   value,
   customLabel,
+  isDisabled,
 }) {
   // console.log("SelectWithLabel value", value)
 
@@ -111,6 +112,7 @@ function SelectWithLabel({
         onChange={onChange}
         value={value || ""}
         className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
+        disabled={isDisabled ? isDisabled : false}
       >
         <option value="">
           {defaultOption ? defaultOption : "Select an option..."}
