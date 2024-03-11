@@ -40,11 +40,11 @@ function ProjectCard({ data, index, type }) {
                             }}
                         />
                     }
-                >
-                    <Meta
+                > 
+                   <Meta
                         title={data?.name ? data?.name : "-"}
                         description={data?.projectUrl ? data?.projectUrl : "-"}
-                    />
+                    /> 
                 </Card>
             {/* </NavLink> */}
         </div>

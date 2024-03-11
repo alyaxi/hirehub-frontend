@@ -54,7 +54,7 @@ const CandidateService = {
     async addExperienceService(formDataToSend) {
         try {
 
-            console.log({ formDataToSend })
+            // console.log({ formDataToSend })
             const response = await api.post('/add-experience', formDataToSend);
             if (response && response.data && response.status === 200) {
                 // console.log("starttttttttttt");
