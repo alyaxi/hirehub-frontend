@@ -181,10 +181,10 @@ function PersonalInformations({
       zipCode: values.zipCode || "",
     };
     console.log("_personalInformationData", _personalInformationData);
-    // setCandidateProfileData((prevData) => ({
-    //   ...prevData,
-    //   personalInformationData: _personalInformationData,
-    // }));
+    setCandidateProfileData((prevData) => ({
+      ...prevData,
+      personalInformationData: _personalInformationData,
+    }));
   };
 
   console.log("dob", dob);

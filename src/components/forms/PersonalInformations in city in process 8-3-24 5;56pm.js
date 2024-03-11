@@ -173,10 +173,10 @@ function PersonalInformations({
       personalInformationData: _personalInformationData,
     }));
     // setPersonalInformationData(_personalInformationData)
-    // setCandidateProfileData();
-    // handleSenddata({
-    //     personalInformationData: _personalInformationData,
-    // })
+    setCandidateProfileData();
+    handleSenddata({
+        personalInformationData: _personalInformationData,
+    })
   };
 
 
