@@ -5,7 +5,7 @@ import { Core } from "..";
 function Experience({ data, type, card }) {
 
     // console.log("type Experience", type)
-    console.log("Experience data", data)
+    // console.log("Experience data", data)
 
     return (
         <>
@@ -36,7 +36,7 @@ function Experience({ data, type, card }) {
                                                             <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title ? value?.title : "-"}</h6>
                                                             <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.company ? value?.company : "-"}</p>
                                                             {(value?.startDate && value?.endDate) &&
-                                                                <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
+                                                                <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, value?.endDate)}</p>
                                                             }
                                                             <p className='text-gray-6 text-[14px] leading-[20px] mt-4' dangerouslySetInnerHTML={{ __html: value?.description }}></p>
                                                         </div>
@@ -81,7 +81,7 @@ function Experience({ data, type, card }) {
                                                         <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title ? value?.title : "-"}</h6>
                                                         <p className='text-black-3 text-[12px] leading-[20px] font-medium'>{value?.company ? value?.company : "-"}</p>
                                                         {(value?.startDate && value?.endDate) &&
-                                                            <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, "present")}</p>
+                                                            <p className='text-gray-6 text-[12px] leading-[20px]'>{calculateTimePeriod(value?.startDate, value?.endDate)}</p>
                                                         }
                                                         <p className='text-gray-6 text-[14px] leading-[20px] mt-4' dangerouslySetInnerHTML={{ __html: value?.description }}></p>
                                                     </div>

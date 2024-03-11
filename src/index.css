@@ -276,3 +276,14 @@ div :where(.css-dev-only-do-not-override-dkbvqv).ant-btn-primary {
   background: #ffa5a5;
   /* border: 2px solid green;  */
 }
+
+.ant-card-meta-title {
+text-transform: capitalize;
+}
+
+
+.upload-avatar-wrapper 
+
+.ant-btn.ant-btn-text.ant-btn-sm.ant-btn-icon-only.ant-upload-list-item-action {
+  display: none;
+}
