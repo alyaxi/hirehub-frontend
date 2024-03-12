@@ -67,8 +67,8 @@ function Experiences({
         }
   );
   const [maxDescriptionLimit, setMaxDescriptionLimit] = useState(false);
-  const [dateValidateion, setDateValidateion] = useState(false);
-
+  const [dateValidation, setDateValidation] = useState(false);
+  console.log("dateValidation", dateValidation);
   const [selectedCountry, setSelectedCountry] = useState(
     experienceToEdit?.selectedCountry || ""
   );
@@ -174,16 +174,16 @@ function Experiences({
 
           if (endYear > startYear) {
             setEndDate(_endDate);
-            setDateValidateion(false);
+            setDateValidation(false);
           } else if (endYear === startYear) {
             if (endMonth > startMonth) {
               setEndDate(_endDate);
-              setDateValidateion(false);
+              setDateValidation(false);
             } else {
-              setDateValidateion(true);
+              setDateValidation(true);
             }
           } else {
-            setDateValidateion(true);
+            setDateValidation(true);
           }
 
           // setEndDate(selectedMonth + "/" + selectedEndYear);
@@ -216,16 +216,16 @@ function Experiences({
 
           if (endYear > startYear) {
             setEndDate(_endDate);
-            setDateValidateion(false);
+            setDateValidation(false);
           } else if (endYear === startYear) {
             if (endMonth > startMonth) {
               setEndDate(_endDate);
-              setDateValidateion(false);
+              setDateValidation(false);
             } else {
-              setDateValidateion(true);
+              setDateValidation(true);
             }
           } else {
-            setDateValidateion(true);
+            setDateValidation(true);
           }
           // setEndDate(selectedEndMonth + "/" + selectedYear);
         } else {
@@ -310,7 +310,8 @@ function Experiences({
       onSubmit={handleSubmit}
     >
       {({ values, resetForm }) => {
-        console.log("valuesdd", values);
+        console.log("currentlyInProcess", values?.currentlyInProcess);
+        console.log("dateValidation", dateValidation);
         return (
           <Form>
             <span className="block text-gray-400 opacity-70 my-5">
@@ -600,7 +601,8 @@ function Experiences({
                       />
                     </div>
                   </div>
-                  {dateValidateion === true ? (
+                  {dateValidation === true &&
+                  values?.currentlyInProcess !== true ? (
                     <span className="block text-[red] mt-1">
                       The end date cannot be before the start date
                     </span>
@@ -627,7 +629,11 @@ function Experiences({
                         required
                         value={selectedEndMonth}
                         isDisabled={
-                          values?.currentlyInProcess === true ? true : false
+                          startDate?.length < 6 ||
+                          startDate === undefined ||
+                          values?.currentlyInProcess === true
+                            ? true
+                            : false
                         }
                       />
                     </div>
@@ -643,7 +649,11 @@ function Experiences({
                         required
                         value={selectedEndYear}
                         isDisabled={
-                          values?.currentlyInProcess === true ? true : false
+                          startDate?.length < 6 ||
+                          startDate === undefined ||
+                          values?.currentlyInProcess === true
+                            ? true
+                            : false
                         }
                       />
                     </div>
@@ -710,7 +720,8 @@ function Experiences({
                       values?.title === "" ||
                       values?.company === "" ||
                       values?.industry === "" ||
-                      dateValidateion === true ||
+                      (values?.currentlyInProcess !== true &&
+                        dateValidation === true) ||
                       values?.salary === "" ||
                       (values?.description?.length < 14 &&
                         description?.length < 14)
