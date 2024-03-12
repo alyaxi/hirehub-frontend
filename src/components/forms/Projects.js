@@ -218,7 +218,7 @@ function Projects({
         description: description,
 
         startDate: startDate,
-        endDate: endDate,
+        endDate: values?.currentlyInProcess === true ? "" : endDate,
       };
     } else {
       _projectsData = {
@@ -232,7 +232,7 @@ function Projects({
         description: description,
 
         startDate: startDate,
-        endDate: endDate,
+        endDate: values?.currentlyInProcess === true ? "" : endDate,
       };
     }
 
@@ -253,7 +253,7 @@ function Projects({
       projectsData: projectData,
     });
 
-    // console.log("projectData", projectData);
+    console.log("projectData", projectData);
   };
 
   const deleteItem = (id) => {
@@ -308,9 +308,9 @@ function Projects({
                   <Core.InputWithLabel
                     {...field}
                     name="name"
+                    customPlaceholder="Project Name"
                     sm
                     label
-                    placeholder="Enter your name"
                     edit
                     required
                   />
@@ -370,7 +370,7 @@ function Projects({
                   </div>
                   {dateValidateion === true ? (
                     <span className="block text-[red] mt-1">
-                      Select Proper Dates
+                      The end date cannot be before the start date
                     </span>
                   ) : (
                     ""
@@ -394,6 +394,9 @@ function Projects({
                         }
                         required
                         value={selectedEndMonth}
+                        isDisabled={
+                          values?.currentlyInProcess === true ? true : false
+                        }
                       />
                     </div>
                     <div className="w-[50%]">
@@ -407,6 +410,9 @@ function Projects({
                         }
                         required
                         value={selectedEndYear}
+                        isDisabled={
+                          values?.currentlyInProcess === true ? true : false
+                        }
                       />
                     </div>
                   </div>

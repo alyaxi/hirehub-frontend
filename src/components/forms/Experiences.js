@@ -48,7 +48,7 @@ function Experiences({
           selectedCountry: "",
           startDate: "",
           title: "",
-          currentlyInProcess: "",
+          currentlyInProcess: false,
         }
       : {
           _id: experienceToEdit?._id || "",
@@ -259,9 +259,10 @@ function Experiences({
       selectedCity: selectedCity,
       selectedState: selectedState,
       startDate: startDate,
-      endDate: endDate,
+      endDate: values?.currentlyInProcess === true ? "" : endDate,
       agreeTerms: values?.agreeTerms,
       description: description,
+      currentlyInProcess: values?.currentlyInProcess,
     };
 
     let experienceData;
@@ -295,12 +296,12 @@ function Experiences({
 
   // console.log("data", data)
   // console.log("description", description);
-  console.log("ex startDate", startDate);
-  console.log("ex endDate", endDate);
+  // console.log("ex startDate", startDate);
+  // console.log("ex endDate", endDate);
 
-  console.log("selectedCountry", selectedCountry);
-  console.log("selectedState", selectedState);
-  console.log("selectedCity", selectedCity);
+  // console.log("selectedCountry", selectedCountry);
+  // console.log("selectedState", selectedState);
+  // console.log("selectedCity", selectedCity);
 
   return (
     <Formik
@@ -601,7 +602,7 @@ function Experiences({
                   </div>
                   {dateValidateion === true ? (
                     <span className="block text-[red] mt-1">
-                      Select Proper Dates
+                      The end date cannot be before the start date
                     </span>
                   ) : (
                     ""
@@ -625,6 +626,9 @@ function Experiences({
                         }
                         required
                         value={selectedEndMonth}
+                        isDisabled={
+                          values?.currentlyInProcess === true ? true : false
+                        }
                       />
                     </div>
                     <div className="w-[50%]">
@@ -638,6 +642,9 @@ function Experiences({
                         }
                         required
                         value={selectedEndYear}
+                        isDisabled={
+                          values?.currentlyInProcess === true ? true : false
+                        }
                       />
                     </div>
                   </div>
