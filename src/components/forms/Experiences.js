@@ -610,7 +610,9 @@ function Experiences({
                     ""
                   )}
                 </div>
-                <div className="w-[50%]">
+                <div
+                  className={`w-[50%] ${values?.currentlyInProcess === true && "hidden"}`}
+                >
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
@@ -629,9 +631,7 @@ function Experiences({
                         required
                         value={selectedEndMonth}
                         isDisabled={
-                          startDate?.length < 6 ||
-                          startDate === undefined ||
-                          values?.currentlyInProcess === true
+                          startDate?.length < 6 || startDate === undefined
                             ? true
                             : false
                         }
@@ -649,9 +649,7 @@ function Experiences({
                         required
                         value={selectedEndYear}
                         isDisabled={
-                          startDate?.length < 6 ||
-                          startDate === undefined ||
-                          values?.currentlyInProcess === true
+                          startDate?.length < 6 || startDate === undefined
                             ? true
                             : false
                         }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Core } from "..";
 // import MultiSelectInput from '../core/MultiSelectInput';
@@ -18,27 +18,45 @@ function Languages({
 }) {
   const candidate = useSelector((state) => state?.Candidate?.candidate);
   const languages = candidate?.languagesData;
+  // console.log("lang > languages", languages);
 
   const languageToEdit = languages?.find((language) => language?._id === id);
+  // console.log("lang > languageToEdit", languageToEdit);
 
-  const [data] = useState(
-    action === "add"
-      ? {
-          title: "",
-          proficiency: "",
-        }
-      : {
-          _id: languageToEdit?._id || "",
-          title: languageToEdit?.title || "",
-          proficiency: languageToEdit?.proficiency || "",
-          isDeleted: languageToEdit?.isDeleted || false,
-        }
-  );
+  // const [data] = useState(
+  //   action === "add"
+  //     ? {
+  //         title: "",
+  //         proficiency: "",
+  //       }
+  //     : {
+  //         _id: languageToEdit?._id || "",
+  //         title: languageToEdit?.title || "",
+  //         proficiency: languageToEdit?.proficiency || "",
+  //         isDeleted: languageToEdit?.isDeleted || false,
+  //       }
+  // );
+
+  useEffect(() => {
+    if (action === "edit") {
+      setFormData({
+        _id: languageToEdit?._id || "",
+        title: languageToEdit?.title || "",
+        proficiency: languageToEdit?.proficiency || "",
+        isDeleted: languageToEdit?.isDeleted || false,
+      });
+    }
+  }, [languageToEdit, action]);
+
+  const [formData, setFormData] = useState({
+    title: "",
+    proficiency: "",
+  });
 
   const handleSubmit = (values, { resetForm }) => {
     // console.log("handleSubmit called")
     let _languagesData = {
-      title: values?.title,
+      title: values?.title === "Other" ? values?.customLanguage : values?.title,
       proficiency: values?.proficiency,
       isDeleted: languageToEdit?.isDeleted ? languageToEdit?.isDeleted : false,
     };
@@ -46,7 +64,7 @@ function Languages({
     let languageData;
 
     if (action === "add") {
-      // console.log("vv add _languagesData", _languagesData)
+      console.log("vv add _languagesData", _languagesData);
       setCandidateProfileData((prevData) => ({
         ...prevData,
         languagesData: _languagesData,
@@ -60,7 +78,7 @@ function Languages({
           return language;
         }
       });
-      // console.log("vv else languageData", languageData)
+      console.log("vv else languageData", languageData);
       setCandidateProfileData({
         languagesData: languageData,
       });
@@ -80,18 +98,18 @@ function Languages({
   };
 
   const validationSchemaForEdit = Yup.object().shape({
-    title: Yup.string().trim().nullable().required("title is required"),
+    title: Yup.string().trim().nullable().required("Title is required"),
     proficiency: Yup.string()
       .trim()
       .nullable()
-      .required("proficiency is required"),
+      .required("Proficiency is required"),
   });
 
   const validationSchemaForAdd = Yup.object().shape({
     title: Yup.string()
       .trim()
       .nullable()
-      .required("title is required")
+      .required("Title is required")
       .test(
         "unique-language",
         "This Language is already exists",
@@ -103,22 +121,40 @@ function Languages({
           return !languageExists; // Return true if language is unique, false otherwise
         }
       ),
+    customLanguage: Yup.string()
+      .trim()
+      .nullable()
+      .required("Language is required")
+      .test(
+        "unique-language",
+        "This Language is already exists",
+        async function (value) {
+          console.log("async function (value", value);
+          const existingLanguages = candidate?.languagesData || []; // Get existing languages from Redux store
+          const languageExists = existingLanguages.some(
+            (item) => item.title?.toLowerCase() === value?.toLowerCase()
+          ); // Check if language exists
+          return !languageExists; // Return true if language is unique, false otherwise
+        }
+      ),
     proficiency: Yup.string()
       .trim()
       .nullable()
-      .required("proficiency is required"),
+      .required("Proficiency is required"),
   });
 
   return (
     <Formik
-      initialValues={data}
+      // initialValues={data}
+      initialValues={formData}
       validationSchema={
         action === "add" ? validationSchemaForAdd : validationSchemaForEdit
       }
       enableReinitialize={true}
       onSubmit={handleSubmit}
     >
-      {({ resetForm }) => {
+      {({ resetForm, values }) => {
+        console.log("values", values);
         return (
           <Form>
             <span className="block text-gray-400 opacity-70 my-5">
@@ -126,26 +162,65 @@ function Languages({
             </span>
 
             <div className="mb-4">
-              <Field name="title">
-                {({ field }) => (
-                  <>
-                    <Core.SelectWithLabel
-                      {...field}
-                      name={"title"}
-                      customLabel={"Language"}
-                      label
-                      options={languagesOptions}
-                      defaultOption="Choose any one"
-                      required
-                    />
-                    <ErrorMessage
-                      name="title"
-                      component="div"
-                      className="text-red-500 error"
-                    />
-                  </>
-                )}
-              </Field>
+              {action === "edit" ? (
+                <span className="select-none">
+                  <label
+                    className={`block text-[14px] text-gray-2 tracking-wide mb-1 font-semibold capitalize`}
+                  >
+                    Language
+                  </label>
+                  {values?.title}
+                </span>
+              ) : (
+                <>
+                  <Field name="title">
+                    {({ field }) => (
+                      <>
+                        <Core.SelectWithLabel
+                          {...field}
+                          name={"title"}
+                          customLabel={"Language"}
+                          label
+                          options={languagesOptions}
+                          defaultOption="Choose any one"
+                          required
+                          isDisabled={action === "edit"}
+                        />
+                        <ErrorMessage
+                          name="title"
+                          component="div"
+                          className="text-red-500 error"
+                        />
+                      </>
+                    )}
+                  </Field>
+
+                  <div className="mt-1">
+                    {values?.title === "Other" && (
+                      <Field name="customLanguage">
+                        {({ field }) => (
+                          <>
+                            <Core.InputWithLabel
+                              {...field}
+                              sm
+                              name="customLanguage"
+                              // value={values?.customLanguage}
+                              // label
+                              required
+                              edit
+                            />
+                            <ErrorMessage
+                              name="customLanguage"
+                              component="div"
+                              className="text-red-500 error"
+                            />
+                          </>
+                        )}
+                      </Field>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="mb-4">

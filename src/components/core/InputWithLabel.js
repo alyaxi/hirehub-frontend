@@ -120,6 +120,8 @@ function InputWithLabel({
         return "End Time";
       case "attachments":
         return "Attach Document";
+      case "customLanguage":
+        return "Custom Language";
 
       default:
         return "Label";
@@ -201,6 +203,8 @@ function InputWithLabel({
         return "Search Email Process. . .";
       case "SearchByLocation":
         return "Location";
+      case "customLanguage":
+        return "Type Language";
       default:
         return "";
     }
@@ -234,6 +238,7 @@ function InputWithLabel({
       case "salary":
       case "positionTitle":
       case "sendTo":
+      case "customLanguage":
         return "text";
       case "password":
       case "newPassword":

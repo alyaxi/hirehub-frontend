@@ -376,7 +376,11 @@ function Projects({
                     ""
                   )}
                 </div>
-                <div className="w-[50%]">
+                <div
+                  className={`w-[50%] ${
+                    values?.currentlyInProcess === true && "hidden"
+                  }`}
+                >
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
@@ -395,7 +399,9 @@ function Projects({
                         required
                         value={selectedEndMonth}
                         isDisabled={
-                          values?.currentlyInProcess === true ? true : false
+                          startDate?.length < 6 || startDate === undefined
+                            ? true
+                            : false
                         }
                       />
                     </div>
@@ -411,7 +417,9 @@ function Projects({
                         required
                         value={selectedEndYear}
                         isDisabled={
-                          values?.currentlyInProcess === true ? true : false
+                          startDate?.length < 6 || startDate === undefined
+                            ? true
+                            : false
                         }
                       />
                     </div>

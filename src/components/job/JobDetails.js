@@ -117,7 +117,13 @@ function JobDetails({
               <Avatar
                 size={80}
                 className="avatar-text rounded-[10px]"
-                src={extractedData?.employer?.logo}
+                // src={extractedData?.employer?.logo}
+                // src={extractedData?.employer[0]?.logo}
+                src={
+                  extractedData?.employer?.length
+                    ? extractedData?.employer[0]?.logo
+                    : extractedData?.employer?.logo
+                }
               >
                 {firstLetter}
               </Avatar>
@@ -139,7 +145,9 @@ function JobDetails({
                 {extractedData?.positionTitle}
               </h6>
               <a className="text-purple-4 text-[12px] leading-[22px] underline capitalize font-medium mb-2">
-                {extractedData?.employer?.title}
+                {extractedData?.employer?.length
+                  ? extractedData?.employer[0]?.companyName
+                  : extractedData?.employer?.title}
               </a>
               <p className="text-gray-6 text-[12px] leading-[20px]">
                 <span>

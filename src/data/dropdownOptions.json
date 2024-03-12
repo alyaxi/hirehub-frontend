@@ -728,8 +728,8 @@
     ],
     "desiredJobTitleOptions": [
         {
-            "name": "3UX/UI Designer",
-            "value": "3UX/UI Designer"
+            "name": "UX/UI Designer",
+            "value": "UX/UI Designer"
         },
         {
             "name": "UX/UI Head",
@@ -1124,6 +1124,10 @@
         {
             "name": "Hindi",
             "value": "Hindi"
+        },
+        {
+            "name": "Other",
+            "value": "Other"
         }
     ],
     "languageProficiencyOptions": [

@@ -66,6 +66,31 @@ function PersonalInformations({
     dob: personalInformationDataSavedOnDb?.dob || "",
   });
 
+  // useEffect(() => { 
+  //     setFormData({
+  //       profilePicture: personalInformationDataSavedOnDb?.profilePicture || "",
+  //       name: firstName,
+  //       lastName: lastName || "",
+  //       email: user?.email,
+  //       zipCode: personalInformationDataSavedOnDb?.zipCode || "",
+  //       expectedSalary: personalInformationDataSavedOnDb?.expectedSalary || "",
+  //       careerLevel: personalInformationDataSavedOnDb?.careerLevel || "",
+  //       experience: personalInformationDataSavedOnDb?.experience || "",
+  //       gender: personalInformationDataSavedOnDb?.gender || "",
+  //       phoneNo: personalInformationDataSavedOnDb?.phoneNo || "",
+  //       statusLine: personalInformationDataSavedOnDb?.statusLine || "",
+  //       country: personalInformationDataSavedOnDb?.country || "",
+  //       state: personalInformationDataSavedOnDb?.state || "",
+  //       city: personalInformationDataSavedOnDb?.city || "",
+  //       dob: personalInformationDataSavedOnDb?.dob || "",
+  //     }); 
+  // }, [personalInformationDataSavedOnDb, action]);
+
+  // const [formData, setFormData] = useState({
+  //   name: firstName,
+  //   email: user?.email,
+  // });
+
   const [selectedCountry, setSelectedCountry] = useState(
     personalInformationDataSavedOnDb?.country || ""
   );
@@ -588,7 +613,7 @@ function PersonalInformations({
                       // values?.profilePicture === "" ||
                       // values?.profilePicture === undefined ||
                       !profilePicture?.length ||
-                      values?.statusLine?.length < 4 ||
+                      values?.statusLine?.length < 1 ||
                       values?.zipCode?.length < 5
                     }
                   >

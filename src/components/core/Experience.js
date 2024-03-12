@@ -36,7 +36,9 @@ function Experience({ data, type, card }) {
                     return (
                       <div
                         key={index * 4}
-                        className="relative flex justify-between gap-x-3 w-full rounded-[15px] border bg-[#f7f7f7] px-3 py-5"
+                        className={`relative flex justify-between gap-x-3 w-full rounded-[15px ]   ${
+                          index === data?.length - 1 ? "" : "border-b-[1px]"
+                        } border-b-gray -2 bg-[#f7f7f7 ] px- 3 py-4`}
                       >
                         <div className="absolute top-2 right-2 z-[200] flex justify-end">
                           <Core.ProficienciesActions
