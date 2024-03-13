@@ -52,9 +52,10 @@ function Languages({
     title: "",
     proficiency: "",
   });
-
+  
+  console.log(action, "actionnnnnnnn")
   const handleSubmit = (values, { resetForm }) => {
-    // console.log("handleSubmit called")
+    console.log("handleSubmit called")
     let _languagesData = {
       title: values?.title === "Other" ? values?.customLanguage : values?.title,
       proficiency: values?.proficiency,
@@ -109,7 +110,7 @@ function Languages({
     title: Yup.string()
       .trim()
       .nullable()
-      .required("Title is required")
+      // .required("Title is required")
       .test(
         "unique-language",
         "This Language is already exists",
@@ -121,22 +122,22 @@ function Languages({
           return !languageExists; // Return true if language is unique, false otherwise
         }
       ),
-    customLanguage: Yup.string()
-      .trim()
-      .nullable()
-      .required("Language is required")
-      .test(
-        "unique-language",
-        "This Language is already exists",
-        async function (value) {
-          console.log("async function (value", value);
-          const existingLanguages = candidate?.languagesData || []; // Get existing languages from Redux store
-          const languageExists = existingLanguages.some(
-            (item) => item.title?.toLowerCase() === value?.toLowerCase()
-          ); // Check if language exists
-          return !languageExists; // Return true if language is unique, false otherwise
-        }
-      ),
+    // customLanguage: Yup.string()
+    //   .trim()
+    //   .nullable()
+    //   .required("Language is required")
+    //   .test(
+    //     "unique-language",
+    //     "This Language is already exists",
+    //     async function (value) {
+    //       console.log("async function (value", value);
+    //       const existingLanguages = candidate?.languagesData || []; // Get existing languages from Redux store
+    //       const languageExists = existingLanguages.some(
+    //         (item) => item.title?.toLowerCase() === value?.toLowerCase()
+    //       ); // Check if language exists
+    //       return !languageExists; // Return true if language is unique, false otherwise
+    //     }
+    //   ),
     proficiency: Yup.string()
       .trim()
       .nullable()
