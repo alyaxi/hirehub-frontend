@@ -42,7 +42,7 @@ function CandidateProfile() {
     const [resumePrivacySetting, setResumePrivacySetting] = useState(1);
 
     const [uploadVideo, setUploadVideo] = useState();
-    console.log("uploadVideo", uploadVideo)
+    console.log("uploadVideo", projects)
 
     const handlePrivacyChange = (e) => {
         setResumePrivacySetting(e.target.value);

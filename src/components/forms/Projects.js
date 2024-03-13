@@ -67,6 +67,7 @@ function Projects({
     projectToEdit?.projectImage ? projectToEdit?.projectImage : ""
   );
 
+  console.log({projectImage})
   const startMonth = projectToEdit?.startDate?.match(/(\d+)\/(\d+)$/);
   const _startMonth = startMonth ? startMonth[1] : null;
 
@@ -223,7 +224,7 @@ function Projects({
     } else {
       _projectsData = {
         projectImage: imgUrl,
-        // projectImageFile: projectImage?.originFileObj,
+        projectImageFile: projectImage?.originFileObj,
 
         name: values?.name,
         projectUrl: values?.projectUrl,

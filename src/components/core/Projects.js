@@ -19,7 +19,7 @@ function Projects({ data, card, type }) {
                             {data?.length ?
                                 <>
                                     {data?.map((value, index) => {
-                                        // console.log(value, "valueeeeeeee")
+                                        console.log(value, "valueeeeeeee")
                                         return (
                                             <ProjectCard key={index * 6} data={value} index={index} type={type} />
                                         )

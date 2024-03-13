@@ -7,7 +7,7 @@ const { Meta } = Card;
 
 function ProjectCard({ data, index, type }) {
 
-    // console.log("ProjectCard data",data)
+    console.log("ProjectCard data",data)
 
     const DEFAULT_THUMBNAIL_SVG = `
     <svg width="400" height="250" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,7 +32,7 @@ function ProjectCard({ data, index, type }) {
                     cover={
                         <img
                             alt="Project"
-                            src={data?.projectImage || `data:image/svg+xml;base64,${btoa(DEFAULT_THUMBNAIL_SVG)}`}
+                            src={data?.projectImage}
                             style={{ maxHeight: '100px', objectFit: "cover" }}
                             onError={(e) => {
                                 e.target.onerror = null;
