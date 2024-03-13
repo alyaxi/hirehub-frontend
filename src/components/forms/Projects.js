@@ -198,7 +198,7 @@ function Projects({
     let imgUrl = "";
     if (projectImage?.uid) {
       // console.log("projectImage?.uid", projectImage?.uid);
-      imgUrl = `http://localhost:4000/${projectImage?.originFileObj?.name}`;
+      imgUrl = `http://167.99.148.81:4000/server/${projectImage?.originFileObj?.name}`;
     } else {
       // console.log("no uid so > projectImage > ", projectImage);
       imgUrl = projectImage;
