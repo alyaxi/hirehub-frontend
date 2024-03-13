@@ -445,7 +445,7 @@ function Educations({
                   </div>
                   {dateValidateion === true ? (
                     <span className="block text-[red] mt-1">
-                      Select Proper Dates
+                      The end date cannot be before the start date
                     </span>
                   ) : (
                     ""

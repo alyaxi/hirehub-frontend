@@ -23,7 +23,7 @@ function Skills({ data, card, type }) {
                                                 <Core.ProficienciesActions buttons={['edit']} type={'skillsData'} id={value?._id} />
                                             </div>
                                             <div className={`w-full'}`}>
-                                                <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
+                                                <h6 className='text-[16px] leading-[20px] font-semibold capitalize'>{value?.title}</h6>
                                                 <p className='text-black-3 text-[12px] leading-[20px]'>{value?.experience}</p>
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@ function Skills({ data, card, type }) {
                                                 }
                                             </div>
                                             <div className={`w-full'}`}>
-                                                <h6 className='text-[16px] leading-[20px] font-semibold'>{value?.title}</h6>
+                                                <h6 className='text-[16px] leading-[20px] font-semibold capitalize'>{value?.title}</h6>
                                                 <p className='text-black-3 text-[12px] leading-[20px]'>{value?.experience}</p>
                                             </div>
                                         </div>

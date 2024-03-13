@@ -10,7 +10,7 @@ const CandidateJobs = {
         try {
             const response = await api.get('/get-all-jobs');
             if (response && response.data && response.status === 200) {
-                // console.log("starttttttttttt");
+                console.log("starttttttttttt",response.data);
                 return response.data;
             }
         } catch (error) {
