@@ -19,7 +19,6 @@ function PersonalInformations({
   action,
   handleCancel,
   setCandidateProfileData,
-  handleSenddata,
   savingForm,
 }) {
   const candidate = useSelector((state) => state?.Candidate?.candidate);
@@ -50,22 +49,47 @@ function PersonalInformations({
   });
 
   const [data] = useState({
-    profilePicture: personalInformationDataSavedOnDb?.profilePicture,
+    profilePicture: personalInformationDataSavedOnDb?.profilePicture || "",
     name: firstName,
-    lastName: lastName,
+    lastName: lastName || "",
     email: user?.email,
-    zipCode: personalInformationDataSavedOnDb?.zipCode,
-    expectedSalary: personalInformationDataSavedOnDb?.expectedSalary,
-    careerLevel: personalInformationDataSavedOnDb?.careerLevel,
-    experience: personalInformationDataSavedOnDb?.experience,
-    gender: personalInformationDataSavedOnDb?.gender,
-    phoneNo: personalInformationDataSavedOnDb?.phoneNo,
-    statusLine: personalInformationDataSavedOnDb?.statusLine,
-    country: personalInformationDataSavedOnDb?.country,
-    state: personalInformationDataSavedOnDb?.state,
-    city: personalInformationDataSavedOnDb?.city,
-    dob: personalInformationDataSavedOnDb?.dob,
+    zipCode: personalInformationDataSavedOnDb?.zipCode || "",
+    expectedSalary: personalInformationDataSavedOnDb?.expectedSalary || "",
+    careerLevel: personalInformationDataSavedOnDb?.careerLevel || "",
+    experience: personalInformationDataSavedOnDb?.experience || "",
+    gender: personalInformationDataSavedOnDb?.gender || "",
+    phoneNo: personalInformationDataSavedOnDb?.phoneNo || "",
+    statusLine: personalInformationDataSavedOnDb?.statusLine || "",
+    country: personalInformationDataSavedOnDb?.country || "",
+    state: personalInformationDataSavedOnDb?.state || "",
+    city: personalInformationDataSavedOnDb?.city || "",
+    dob: personalInformationDataSavedOnDb?.dob || "",
   });
+
+  // useEffect(() => { 
+  //     setFormData({
+  //       profilePicture: personalInformationDataSavedOnDb?.profilePicture || "",
+  //       name: firstName,
+  //       lastName: lastName || "",
+  //       email: user?.email,
+  //       zipCode: personalInformationDataSavedOnDb?.zipCode || "",
+  //       expectedSalary: personalInformationDataSavedOnDb?.expectedSalary || "",
+  //       careerLevel: personalInformationDataSavedOnDb?.careerLevel || "",
+  //       experience: personalInformationDataSavedOnDb?.experience || "",
+  //       gender: personalInformationDataSavedOnDb?.gender || "",
+  //       phoneNo: personalInformationDataSavedOnDb?.phoneNo || "",
+  //       statusLine: personalInformationDataSavedOnDb?.statusLine || "",
+  //       country: personalInformationDataSavedOnDb?.country || "",
+  //       state: personalInformationDataSavedOnDb?.state || "",
+  //       city: personalInformationDataSavedOnDb?.city || "",
+  //       dob: personalInformationDataSavedOnDb?.dob || "",
+  //     }); 
+  // }, [personalInformationDataSavedOnDb, action]);
+
+  // const [formData, setFormData] = useState({
+  //   name: firstName,
+  //   email: user?.email,
+  // });
 
   const [selectedCountry, setSelectedCountry] = useState(
     personalInformationDataSavedOnDb?.country || ""
@@ -81,17 +105,22 @@ function PersonalInformations({
   const [cities, setCities] = useState([]);
 
   const day = personalInformationDataSavedOnDb?.dob?.match(/^(\d+)\//);
-  const _day = day ? day[1] : null;
+  const _day = day ? day[1] : "";
 
   const month = personalInformationDataSavedOnDb?.dob?.match(/\/(\d+)\//);
-  const _month = month ? month[1] : null;
+  const _month = month ? month[1] : "";
 
   const year = personalInformationDataSavedOnDb?.dob?.match(/\/(\d+)$/);
-  const _year = year ? year[1] : null;
+  const _year = year ? year[1] : "";
 
   const [selectedDay, setSelectedDay] = useState(_day);
   const [selectedMonth, setSelectedMonth] = useState(_month);
   const [selectedYear, setSelectedYear] = useState(_year);
+
+  // console.log("selectedDay", selectedDay);
+  // console.log("selectedMonth", selectedMonth);
+  // console.log("selectedYear", selectedYear);
+
   const [dob, setDob] = useState(
     personalInformationDataSavedOnDb?.dob
       ? personalInformationDataSavedOnDb?.dob
@@ -137,7 +166,7 @@ function PersonalInformations({
 
   const handleDateChange = (name, event) => {
     const value = event.target.value;
-    console.log("handleDateChange", name, " - ", value);
+    // console.log("handleDateChange", name, " - ", value);
     if (name === "day") {
       setSelectedDay(value);
     }
@@ -150,19 +179,21 @@ function PersonalInformations({
   };
 
   const updateDob = () => {
-    console.log("updateDob called");
-    if (selectedDay !== "" && selectedMonth !== "" && selectedYear !== "") {
+    // console.log("updateDob called");
+    if (selectedDay?.length && selectedMonth?.length && selectedYear?.length) {
       let _dob = selectedDay + "/" + selectedMonth + "/" + selectedYear;
       setDob(_dob);
+    } else {
+      setDob("");
     }
   };
 
   useEffect(() => {
-    console.log("useEffect called");
+    // console.log("useEffect called");
     updateDob();
   }, [selectedDay, selectedMonth, selectedYear]);
 
-  // console.log(profilePicture, "ppppppppppp")
+  // console.log(profilePicture, "ppppppppppp");
   // console.log('dob', dob)
 
   const handleSubmit = (values, { isSubmitting }) => {
@@ -181,18 +212,18 @@ function PersonalInformations({
       zipCode: values.zipCode || "",
     };
     console.log("_personalInformationData", _personalInformationData);
-    // setCandidateProfileData((prevData) => ({
-    //   ...prevData,
-    //   personalInformationData: _personalInformationData,
-    // }));
+    setCandidateProfileData((prevData) => ({
+      ...prevData,
+      personalInformationData: _personalInformationData,
+    }));
   };
 
-  console.log("dob", dob);
-  // console.log("profilePicture", profilePicture);
-  console.log("selectedDay", selectedDay);
-  console.log("selectedMonth", selectedMonth);
-  console.log("selectedYear", selectedYear);
-  console.log("selectedCountry", selectedCountry);
+  // console.log("dob", dob);
+  // console.log("!profilePicture?.length", !profilePicture?.length);
+  // console.log("selectedDay", selectedDay);
+  // console.log("selectedMonth", selectedMonth);
+  // console.log("selectedYear", selectedYear);
+  // console.log("selectedCountry", selectedCountry);
   // console.log("selectedState", selectedState);
   // console.log("selectedCity", selectedCity);
 
@@ -202,8 +233,8 @@ function PersonalInformations({
       // validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ values, resetForm }) => {
-        console.log("values", values);
+      {({ values }) => {
+        // console.log("values", values);
         return (
           <Form>
             <span className="block text-gray-400 opacity-70 my-5">
@@ -224,7 +255,7 @@ function PersonalInformations({
                     name="name"
                     label
                     bgGray
-                    placeholder="Enter your name"
+                    customPlaceholder="Enter your name"
                     edit
                     disabled
                     required
@@ -573,14 +604,16 @@ function PersonalInformations({
                       values?.email === "" ||
                       values?.expectedSalary === "" ||
                       values?.experience === "" ||
-                      values?.lastName === "" ||
+                      // values?.lastName === "" ||
                       values?.name === "" ||
                       values?.gender === "" ||
                       values?.phoneNo === "" ||
                       selectedCountry === "" ||
-                      values?.profilePicture === "" ||
-                      values?.profilePicture === undefined ||
-                      values?.statusLine?.length < 4 ||
+                      dob === "" ||
+                      // values?.profilePicture === "" ||
+                      // values?.profilePicture === undefined ||
+                      !profilePicture?.length ||
+                      values?.statusLine?.length < 1 ||
                       values?.zipCode?.length < 5
                     }
                   >

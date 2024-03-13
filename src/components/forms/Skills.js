@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Core } from "..";
 // import MultiSelectInput from '../core/MultiSelectInput';
@@ -21,19 +21,35 @@ function Skills({
 
   const skillToEdit = skills?.find((skill) => skill?._id === id);
 
-  const [data] = useState(
-    action === "add"
-      ? {
-          title: "",
-          experience: "",
-        }
-      : {
-          _id: skillToEdit?._id || "",
-          title: skillToEdit?.title || "",
-          experience: skillToEdit?.experience || "",
-          isDeleted: skillToEdit?.isDeleted || false,
-        }
-  );
+  // const [data] = useState(
+  //   action === "add"
+  //     ? {
+  //         title: "",
+  //         experience: "",
+  //       }
+  //     : {
+  //         _id: skillToEdit?._id || "",
+  //         title: skillToEdit?.title || "",
+  //         experience: skillToEdit?.experience || "",
+  //         isDeleted: skillToEdit?.isDeleted || false,
+  //       }
+  // );
+
+  useEffect(() => {
+    if (action === "edit") {
+      setFormData({
+        _id: skillToEdit?._id || "",
+        title: skillToEdit?.title || "",
+        experience: skillToEdit?.experience || "",
+        isDeleted: skillToEdit?.isDeleted || false,
+      });
+    }
+  }, [skillToEdit, action]);
+
+  const [formData, setFormData] = useState({
+    title: "",
+    experience: "",
+  });
 
   const handleSubmit = (values, { resetForm }) => {
     // console.log("handleSubmit called")
@@ -80,18 +96,18 @@ function Skills({
   };
 
   const validationSchemaForEdit = Yup.object().shape({
-    title: Yup.string().trim().nullable().required("title is required"),
+    title: Yup.string().trim().nullable().required("Title is required"),
     experience: Yup.string()
       .trim()
       .nullable()
-      .required("experience is required"),
+      .required("Experience is required"),
   });
 
   const validationSchemaForAdd = Yup.object().shape({
     title: Yup.string()
       .trim()
       .nullable()
-      .required("title is required")
+      .required("Title is required")
       .test(
         "unique-skill",
         "This skill is already exists",
@@ -106,12 +122,13 @@ function Skills({
     experience: Yup.string()
       .trim()
       .nullable()
-      .required("experience is required"),
+      .required("Experience is required"),
   });
 
   return (
     <Formik
-      initialValues={data}
+      // initialValues={data}
+      initialValues={formData}
       validationSchema={
         action === "add" ? validationSchemaForAdd : validationSchemaForEdit
       }
@@ -138,6 +155,7 @@ function Skills({
                       defaultOption="Choose any one"
                       value={values?.title}
                       required
+                      isDisabled={action === "edit"}
                     />
                     <ErrorMessage
                       name="title"

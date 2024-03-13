@@ -418,7 +418,7 @@ function AddJob() {
                       type="narrow"
                       color="white"
                     >
-                      back
+                      Back
                     </Core.Button>
                     <Core.Button
                       onClick={nextStep}
@@ -464,7 +464,7 @@ function AddJob() {
                       type="narrow"
                       color="white"
                     >
-                      back
+                      Back
                     </Core.Button>
                     <Core.Button
                       onClick={nextStep}
@@ -526,7 +526,7 @@ function AddJob() {
                       type="narrow"
                       color="white"
                     >
-                      back
+                      Back
                     </Core.Button>
 
                     <Core.Button

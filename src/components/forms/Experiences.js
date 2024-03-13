@@ -48,7 +48,7 @@ function Experiences({
           selectedCountry: "",
           startDate: "",
           title: "",
-          currentlyInProcess: "",
+          currentlyInProcess: false,
         }
       : {
           _id: experienceToEdit?._id || "",
@@ -67,8 +67,8 @@ function Experiences({
         }
   );
   const [maxDescriptionLimit, setMaxDescriptionLimit] = useState(false);
-  const [dateValidateion, setDateValidateion] = useState(false);
-
+  const [dateValidation, setDateValidation] = useState(false);
+  console.log("dateValidation", dateValidation);
   const [selectedCountry, setSelectedCountry] = useState(
     experienceToEdit?.selectedCountry || ""
   );
@@ -174,16 +174,16 @@ function Experiences({
 
           if (endYear > startYear) {
             setEndDate(_endDate);
-            setDateValidateion(false);
+            setDateValidation(false);
           } else if (endYear === startYear) {
             if (endMonth > startMonth) {
               setEndDate(_endDate);
-              setDateValidateion(false);
+              setDateValidation(false);
             } else {
-              setDateValidateion(true);
+              setDateValidation(true);
             }
           } else {
-            setDateValidateion(true);
+            setDateValidation(true);
           }
 
           // setEndDate(selectedMonth + "/" + selectedEndYear);
@@ -216,16 +216,16 @@ function Experiences({
 
           if (endYear > startYear) {
             setEndDate(_endDate);
-            setDateValidateion(false);
+            setDateValidation(false);
           } else if (endYear === startYear) {
             if (endMonth > startMonth) {
               setEndDate(_endDate);
-              setDateValidateion(false);
+              setDateValidation(false);
             } else {
-              setDateValidateion(true);
+              setDateValidation(true);
             }
           } else {
-            setDateValidateion(true);
+            setDateValidation(true);
           }
           // setEndDate(selectedEndMonth + "/" + selectedYear);
         } else {
@@ -259,9 +259,10 @@ function Experiences({
       selectedCity: selectedCity,
       selectedState: selectedState,
       startDate: startDate,
-      endDate: endDate,
+      endDate: values?.currentlyInProcess === true ? "" : endDate,
       agreeTerms: values?.agreeTerms,
       description: description,
+      currentlyInProcess: values?.currentlyInProcess,
     };
 
     let experienceData;
@@ -295,12 +296,12 @@ function Experiences({
 
   // console.log("data", data)
   // console.log("description", description);
-  console.log("ex startDate", startDate);
-  console.log("ex endDate", endDate);
+  // console.log("ex startDate", startDate);
+  // console.log("ex endDate", endDate);
 
-  console.log("selectedCountry", selectedCountry);
-  console.log("selectedState", selectedState);
-  console.log("selectedCity", selectedCity);
+  // console.log("selectedCountry", selectedCountry);
+  // console.log("selectedState", selectedState);
+  // console.log("selectedCity", selectedCity);
 
   return (
     <Formik
@@ -309,7 +310,8 @@ function Experiences({
       onSubmit={handleSubmit}
     >
       {({ values, resetForm }) => {
-        console.log("valuesdd", values);
+        console.log("currentlyInProcess", values?.currentlyInProcess);
+        console.log("dateValidation", dateValidation);
         return (
           <Form>
             <span className="block text-gray-400 opacity-70 my-5">
@@ -599,15 +601,18 @@ function Experiences({
                       />
                     </div>
                   </div>
-                  {dateValidateion === true ? (
+                  {dateValidation === true &&
+                  values?.currentlyInProcess !== true ? (
                     <span className="block text-[red] mt-1">
-                      Select Proper Dates
+                      The end date cannot be before the start date
                     </span>
                   ) : (
                     ""
                   )}
                 </div>
-                <div className="w-[50%]">
+                <div
+                  className={`w-[50%] ${values?.currentlyInProcess === true && "hidden"}`}
+                >
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
@@ -625,6 +630,11 @@ function Experiences({
                         }
                         required
                         value={selectedEndMonth}
+                        isDisabled={
+                          startDate?.length < 6 || startDate === undefined
+                            ? true
+                            : false
+                        }
                       />
                     </div>
                     <div className="w-[50%]">
@@ -638,6 +648,11 @@ function Experiences({
                         }
                         required
                         value={selectedEndYear}
+                        isDisabled={
+                          startDate?.length < 6 || startDate === undefined
+                            ? true
+                            : false
+                        }
                       />
                     </div>
                   </div>
@@ -703,7 +718,8 @@ function Experiences({
                       values?.title === "" ||
                       values?.company === "" ||
                       values?.industry === "" ||
-                      dateValidateion === true ||
+                      (values?.currentlyInProcess !== true &&
+                        dateValidation === true) ||
                       values?.salary === "" ||
                       (values?.description?.length < 14 &&
                         description?.length < 14)

@@ -23,6 +23,7 @@ function InputWithLabel({
   maxLength,
   edit,
   disabled,
+  customPlaceholder,
 }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [inputType, setInputType] = useState("password");
@@ -119,6 +120,8 @@ function InputWithLabel({
         return "End Time";
       case "attachments":
         return "Attach Document";
+      case "customLanguage":
+        return "Custom Language";
 
       default:
         return "Label";
@@ -151,7 +154,7 @@ function InputWithLabel({
         // return "+34 526 952 689";
         return "0000-0000000";
       case "name":
-        return "Pete Jones";
+        return "Name";
       case "SearchByEmployer":
         return "Employer";
       case "SearchByEligibility":
@@ -200,6 +203,8 @@ function InputWithLabel({
         return "Search Email Process. . .";
       case "SearchByLocation":
         return "Location";
+      case "customLanguage":
+        return "Type Language";
       default:
         return "";
     }
@@ -233,6 +238,7 @@ function InputWithLabel({
       case "salary":
       case "positionTitle":
       case "sendTo":
+      case "customLanguage":
         return "text";
       case "password":
       case "newPassword":
@@ -242,7 +248,7 @@ function InputWithLabel({
       case "calender":
       case "expiryDate":
       case "expirationDate":
-        case "scheduledDate":
+      case "scheduledDate":
       case "date":
         return "date";
       case "startTime":
@@ -338,7 +344,9 @@ function InputWithLabel({
           id={name}
           name={name}
           value={edit && value}
-          placeholder={placeholder(name)}
+          placeholder={
+            customPlaceholder ? customPlaceholder : placeholder(name)
+          }
           autoFocus
           onBlur={onBlur}
           // onChange={(e) => setValue(e.target.value)}
