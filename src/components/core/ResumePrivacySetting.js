@@ -18,7 +18,7 @@ function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, card 
                                 </Radio>
                                 <label className="text-gray-1 w-full" htmlFor="public">
                                     <h6 className='text-black-2 text-[16px] leading-[20px] font-semibold'>Public</h6>
-                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will be visible to every registered Rozee employer.</p>
+                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will be visible to every registered employer.</p>
                                 </label>
                             </div>
                             <div className='flex items-start gap-x-1'>
@@ -44,7 +44,7 @@ function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, card 
                                 </Radio>
                                 <label className="text-gray-1 w-full" htmlFor="public">
                                     <h6 className='text-black-2 text-[16px] leading-[20px] font-semibold'>Public</h6>
-                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will be visible to every registered Rozee employer.</p>
+                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will be visible to every registered employer.</p>
                                 </label>
                             </div>
                             <div className='flex gap-x-2'>
