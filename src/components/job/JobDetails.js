@@ -95,7 +95,7 @@ function JobDetails({
               <span className="text-gray-6 text-[16px] leading-[20px] capitalize font-semibold pl-1 py-1">
                 Job Status:
               </span>
-              <span className="absolute right-3 top-8 ">
+              <span className="absolute right-0 top-8 ">
                 <Core.Dropdown2
                   selectedState={extractedData?.jobStatus}
                   setState={setStatus}

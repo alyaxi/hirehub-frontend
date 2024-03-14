@@ -100,7 +100,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNex
                                 selectedState={extractedData?.stage}
                                 setState={setStatus}
                                 options={dropdownOptions}
-                                className={"min-w-[160px ]"}
+                                className={"min-w-[160px]"}
                                 defaultTitle={extractedData?.stage}
                             />
                         </span>
