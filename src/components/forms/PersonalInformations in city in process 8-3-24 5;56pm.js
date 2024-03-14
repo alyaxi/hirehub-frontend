@@ -33,10 +33,10 @@ function PersonalInformations({
 
   const currentYear = new Date().getFullYear();
   const startYear = 1901;
-  const endYear = currentYear - 5;
+  const endYear = currentYear;
   const yearOptions = [];
 
-  for (let year = startYear; year <= endYear; year++) {
+   for (let year = endYear; year >= startYear; year--) {
     yearOptions.push({ name: year.toString(), value: year.toString() });
   }
 

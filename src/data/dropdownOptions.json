@@ -1499,5 +1499,271 @@
     "hire",
     "selection"
   ],
-  "jobStatusOptions": ["Open", "Closed", "Republished"]
+  "jobStatusOptions": ["Open", "Closed", "Republished"],
+  "industryWithJobTitles": {
+    "Accounting": [
+      "Financial Analyst",
+      "Accountant",
+      "Auditor",
+      "Tax Accountant",
+      "Forensic Accountant",
+      "Cost Analyst"
+    ],
+    "Administration": [
+      "Office Manager",
+      "Executive Assistant",
+      "Administrative Assistant",
+      "Office Administrator",
+      "Office Coordinator",
+      "Office Clerk"
+    ],
+    "Aerospace and Defense": [
+      "Aerospace Engineer",
+      "Defense Analyst",
+      "Flight Operations Specialist",
+      "Aircraft Mechanic",
+      "Avionics Technician",
+      "Spacecraft Designer"
+    ],
+    "Agriculture": [
+      "Agricultural Scientist",
+      "Farm Manager",
+      "Agricultural Engineer",
+      "Agricultural Technician",
+      "Crop Consultant",
+      "Livestock Specialist"
+    ],
+    "Architecture": [
+      "Architect",
+      "Urban Planner",
+      "Landscape Architect",
+      "Architectural Drafter",
+      "Building Inspector",
+      "Interior Architect"
+    ],
+    "Art and Design": [
+      "Graphic Designer",
+      "Art Director",
+      "Interior Designer",
+      "Illustrator",
+      "Web Designer",
+      "UX/UI Designer"
+    ],
+    "Automotive": [
+      "Automotive Engineer",
+      "Mechanic",
+      "Car Salesperson",
+      "Auto Body Technician",
+      "Automotive Service Advisor",
+      "Automotive Electrician"
+    ],
+    "Cleaning & Maintenance": [
+      "Janitor",
+      "Building Maintenance Technician",
+      "Housekeeper",
+      "Groundskeeper",
+      "Pest Control Technician",
+      "Pool Cleaner"
+    ],
+    "Customer Service": [
+      "Customer Support Representative",
+      "Call Center Agent",
+      "Client Success Manager",
+      "Technical Support Specialist",
+      "Customer Experience Manager",
+      "Complaints Handler"
+    ],
+    "Construction and Real Estate": [
+      "Construction Manager",
+      "Real Estate Agent",
+      "Civil Engineer",
+      "Project Manager",
+      "Quantity Surveyor",
+      "Building Inspector"
+    ],
+    "Consulting": [
+      "Management Consultant",
+      "Strategy Consultant",
+      "Financial Consultant",
+      "Human Resources Consultant",
+      "Marketing Consultant",
+      "Technology Consultant"
+    ],
+    "Education and Training": [
+      "Teacher",
+      "Trainer",
+      "Instructional Designer",
+      "Curriculum Developer",
+      "Education Administrator",
+      "School Counselor"
+    ],
+    "Energy and Utilities": [
+      "Energy Analyst",
+      "Utilities Technician",
+      "Renewable Energy Engineer",
+      "Oil & Gas Engineer",
+      "Power Plant Operator",
+      "Water Treatment Specialist"
+    ],
+    "Engineering": [
+      "Mechanical Engineer",
+      "Electrical Engineer",
+      "Civil Engineer",
+      "Chemical Engineer",
+      "Industrial Engineer",
+      "Software Engineer"
+    ],
+    "Environmental Services": [
+      "Environmental Scientist",
+      "Environmental Engineer",
+      "Sustainability Consultant",
+      "Ecologist",
+      "Air Quality Specialist",
+      "Water Resource Engineer"
+    ],
+    "Fashion and Apparel": [
+      "Fashion Designer",
+      "Fashion Merchandiser",
+      "Textile Designer",
+      "Fashion Buyer",
+      "Pattern Maker",
+      "Stylist"
+    ],
+    "Finance and Banking": [
+      "Financial Analyst",
+      "Bank Teller",
+      "Investment Banker",
+      "Loan Officer",
+      "Financial Controller",
+      "Wealth Manager"
+    ],
+    "Food": [
+      "Chef",
+      "Food Scientist",
+      "Nutritionist",
+      "Sommelier",
+      "Food Technologist",
+      "Food Safety Inspector"
+    ],
+    "Government and Public": [
+      "Public Administrator",
+      "Government Analyst",
+      "Policy Advisor",
+      "Diplomat",
+      "Civil Servant",
+      "Legislative Assistant"
+    ],
+    "Healthcare and Medical": [
+      "Doctor",
+      "Nurse",
+      "Medical Technologist",
+      "Pharmacist",
+      "Physical Therapist",
+      "Dentist"
+    ],
+    "Hospitality and Tourism": [
+      "Hotel Manager",
+      "Tour Guide",
+      "Event Coordinator",
+      "Concierge",
+      "Cruise Director",
+      "Travel Agent"
+    ],
+    "Human Resources": [
+      "HR Manager",
+      "Recruiter",
+      "Training Coordinator",
+      "Benefits Administrator",
+      "HR Generalist",
+      "Employee Relations Specialist"
+    ],
+    "Information Technology (IT)": [
+      "Software Engineer",
+      "Data Analyst",
+      "IT Support Specialist",
+      "Network Engineer",
+      "Database Administrator",
+      "Cyber Security Analyst"
+    ],
+    "Legal": [
+      "Lawyer",
+      "Legal Assistant",
+      "Paralegal",
+      "Legal Secretary",
+      "Court Reporter",
+      "Legal Researcher"
+    ],
+    "Manufacturing Retail": [
+      "Production Manager",
+      "Retail Sales Associate",
+      "Supply Chain Manager",
+      "Quality Control Inspector",
+      "Warehouse Manager",
+      "Operations Manager"
+    ],
+    "Marketing and Advertising": [
+      "Marketing Manager",
+      "Advertising Specialist",
+      "Market Research Analyst",
+      "Public Relations Specialist",
+      "Digital Marketer",
+      "Brand Manager"
+    ],
+    "Media and Entertainment": [
+      "Journalist",
+      "Film Producer",
+      "Social Media Manager",
+      "Content Creator",
+      "Art Director",
+      "Video Editor"
+    ],
+    "Non-Profit and Social Services": [
+      "Social Worker",
+      "Nonprofit Program Manager",
+      "Community Organizer",
+      "Fundraiser",
+      "Volunteer Coordinator",
+      "Grant Writer"
+    ],
+    "Pharmaceuticals and Biotechnology": [
+      "Pharmaceutical Sales Representative",
+      "Biomedical Engineer",
+      "Biotechnologist",
+      "Clinical Research Associate",
+      "Pharmacologist",
+      "Lab Technician"
+    ],
+    "Sales": [
+      "Sales Representative",
+      "Sales Manager",
+      "Account Executive",
+      "Business Development Manager",
+      "Sales Consultant",
+      "Sales Engineer"
+    ],
+    "Sports and Recreation": [
+      "Athletic Coach",
+      "Sports Manager",
+      "Recreation Worker",
+      "Fitness Instructor",
+      "Personal Trainer",
+      "Sports Psychologist"
+    ],
+    "Telecommunications": [
+      "Telecommunications Engineer",
+      "Network Administrator",
+      "Telecom Sales Representative",
+      "Telecom Technician",
+      "VoIP Engineer",
+      "Fiber Optic Technician"
+    ],
+    "Transportation and Logistics": [
+      "Logistics Manager",
+      "Truck Driver",
+      "Supply Chain Analyst",
+      "Warehouse Supervisor",
+      "Logistics Coordinator",
+      "Delivery Driver"
+    ]
+  }
 }

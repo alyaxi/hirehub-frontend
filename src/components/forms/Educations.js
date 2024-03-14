@@ -46,9 +46,9 @@ function Educations({
 
   const currentYear = new Date().getFullYear();
   const startYear = 1901;
-  const endYear = currentYear;
+  const endYear = currentYear + 4;
   const yearOptions = [];
-  for (let year = startYear; year <= endYear; year++) {
+   for (let year = endYear; year >= startYear; year--) {
     yearOptions.push({ name: year.toString(), value: year.toString() });
   }
 
@@ -64,6 +64,7 @@ function Educations({
           selectedState: "",
           selectedCity: "",
           startDate: "",
+          currentlyInProcess: false,
         }
       : {
           _id: educationToEdit?._id || "",
@@ -77,6 +78,7 @@ function Educations({
           selectedState: educationToEdit?.selectedState || "",
           selectedCity: educationToEdit?.selectedCity || "",
           startDate: educationToEdit?.startDate || "",
+          currentlyInProcess: educationToEdit?.currentlyInProcess || false,
         }
   );
 
@@ -99,6 +101,8 @@ function Educations({
   const [startDate, setStartDate] = useState(educationToEdit?.startDate || "");
   const [endDate, setEndDate] = useState(educationToEdit?.endDate || "");
 
+  const [dateValidation, setDateValidation] = useState(false);
+
   const [selectedCountry, setSelectedCountry] = useState(
     educationToEdit?.selectedCountry || ""
   );
@@ -112,8 +116,6 @@ function Educations({
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
 
-  const [dateValidateion, setDateValidateion] = useState(false);
-  
   useEffect(() => {
     const allCountries = Country?.getAllCountries();
     setCountries(allCountries);
@@ -145,16 +147,16 @@ function Educations({
 
           if (endYear > startYear) {
             setEndDate(_endDate);
-            setDateValidateion(false);
+            setDateValidation(false);
           } else if (endYear === startYear) {
             if (endMonth > startMonth) {
               setEndDate(_endDate);
-              setDateValidateion(false);
+              setDateValidation(false);
             } else {
-              setDateValidateion(true);
+              setDateValidation(true);
             }
           } else {
-            setDateValidateion(true);
+            setDateValidation(true);
           }
 
           // setEndDate(selectedMonth + "/" + selectedEndYear);
@@ -187,16 +189,16 @@ function Educations({
 
           if (endYear > startYear) {
             setEndDate(_endDate);
-            setDateValidateion(false);
+            setDateValidation(false);
           } else if (endYear === startYear) {
             if (endMonth > startMonth) {
               setEndDate(_endDate);
-              setDateValidateion(false);
+              setDateValidation(false);
             } else {
-              setDateValidateion(true);
+              setDateValidation(true);
             }
           } else {
-            setDateValidateion(true);
+            setDateValidation(true);
           }
           // setEndDate(selectedEndMonth + "/" + selectedYear);
         } else {
@@ -255,7 +257,8 @@ function Educations({
         selectedState: selectedState,
         selectedCity: selectedCity,
         startDate: startDate,
-        endDate: endDate,
+        endDate: values?.currentlyInProcess === true ? "" : endDate,
+        currentlyInProcess: values?.currentlyInProcess,
       };
     } else {
       _educationsData = {
@@ -267,13 +270,14 @@ function Educations({
         selectedState: selectedState,
         selectedCity: selectedCity,
         startDate: startDate,
-        endDate: endDate,
+        endDate: values?.currentlyInProcess === true ? "" : endDate,
+        currentlyInProcess: values?.currentlyInProcess,
       };
     }
     let educationData;
 
     if (action === "add") {
-      // console.log("vv add _educationsData", _educationsData);
+      console.log("vv add _educationsData", _educationsData);
       educationData = [...educations, _educationsData];
       setCandidateProfileData((prevData) => ({
         ...prevData,
@@ -287,7 +291,7 @@ function Educations({
           return exp;
         }
       });
-      // console.log("vv edit educationData", educationData);
+      console.log("vv edit educationData", educationData);
       setCandidateProfileData({
         educationsData: educationData,
       });
@@ -299,7 +303,7 @@ function Educations({
     handleCancel();
   };
 
-  // console.log("dateValidateion",dateValidateion)
+  // console.log("dateValidation",dateValidation)
   // console.log("startDate", startDate);
   // console.log("endDate", endDate);
   // console.log("selectedCountry", selectedCountry);
@@ -307,7 +311,7 @@ function Educations({
   // console.log("selectedCity", selectedCity);
 
   // console.log("educationToEdit", educationToEdit);
-
+ 
   return (
     <Formik
       initialValues={data}
@@ -315,7 +319,7 @@ function Educations({
       onSubmit={handleSubmit}
     >
       {({ values, resetForm }) => {
-        console.log("values", values);
+        console.log("values --", values);
         return (
           <Form>
             <span className="block text-gray-400 opacity-70 my-5">
@@ -413,7 +417,7 @@ function Educations({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Start <span className="text-[red]">*</span>
+                    Start Date <span className="text-[red]">*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[50%]">
@@ -443,7 +447,8 @@ function Educations({
                       />
                     </div>
                   </div>
-                  {dateValidateion === true ? (
+                  {dateValidation === true &&
+                  values?.currentlyInProcess !== true ? (
                     <span className="block text-[red] mt-1">
                       The end date cannot be before the start date
                     </span>
@@ -451,11 +456,15 @@ function Educations({
                     ""
                   )}
                 </div>
-                <div className="w-[50%]">
+                <div
+                  className={`w-[50%] ${
+                    values?.currentlyInProcess === true && "hidden"
+                  }`}
+                >
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    End <span className="text-[red]">*</span>
+                    End Date<span className="text-[red]">*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[50%]">
@@ -501,6 +510,18 @@ function Educations({
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="flex justify-between items-center pt-1 mb-2">
+              <div className="flex justify-start items-center gap-x-1">
+                <Field type="checkbox" name="currentlyInProcess" />
+                Currently in process
+                <ErrorMessage
+                  name="inProcess"
+                  component="div"
+                  className="text-red-500"
+                />
               </div>
             </div>
 
@@ -718,9 +739,10 @@ function Educations({
                       values?.degree === "" ||
                       values?.fieldOfStudy === "" ||
                       values?.organization === "" ||
-                      dateValidateion === true ||
-                      (values?.startDate === "" && startDate === "") ||
-                      (values?.endDate === "" && endDate === "") ||
+                      
+                      (values?.currentlyInProcess !== true &&
+                        dateValidation === true) ||
+
                       (values?.selectedCountry === "" && selectedCountry === "")
                     }
                   >

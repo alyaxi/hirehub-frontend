@@ -37,7 +37,7 @@ const MultiSelectInput = ({
       case "desiredJobTitle":
         return "Desired Job Title";
       case "willingToLocations":
-        return "Enter up to 3 locations you'd be willing to relocate to...";
+        return "Location Preference";
       default:
         return "Label";
     }
@@ -47,6 +47,12 @@ const MultiSelectInput = ({
     switch (name) {
       case "benefits":
         return "Please select benefits";
+      case "desiredJobTitle":
+        return "Please select your preferred job title";
+      case "skills":
+        return "Please select your relevant skills";
+      case "willingToLocations":
+        return "Enter up to 3 locations you'd be willing to relocate to...";
 
       default:
         return "Please select";
