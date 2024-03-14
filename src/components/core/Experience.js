@@ -26,7 +26,7 @@ function Experience({ data, type, card }) {
                 />
               )}
             </div>
-            <div className="flex justify-start items-start flex-col gap-y-2 pt-3">
+            <div className="flex justify-start items-start flex-col gap-y-2 pt- 3">
               {data?.length ? (
                 <>
                   {data?.map((value, index) => {
@@ -40,7 +40,7 @@ function Experience({ data, type, card }) {
                           index === data?.length - 1 ? "" : "border-b-[1px]"
                         } border-b-gray -2 bg-[#f7f7f7 ] px- 3 py-4`}
                       >
-                        <div className="absolute top-2 right-2 z-[200] flex justify-end">
+                        <div className="absolute top-2 right-0 z-[200] flex justify-end">
                           <Core.ProficienciesActions
                             buttons={["edit"]}
                             type={"experiencesData"}
@@ -103,7 +103,7 @@ function Experience({ data, type, card }) {
               <Core.ProficienciesActions buttons={["add"]} />
             )}
           </div>
-          <div className="flex justify-start items-end pt-3">
+          <div className="flex flex-col justify-start gap-x-3 gap-y-2 mt-3">
             {data?.length ? (
               <>
                 {data?.map((value, index) => {

@@ -1126,8 +1126,8 @@
             "value": "Hindi"
         },
         {
-            "name": "Other",
-            "value": "Other"
+            "name": "Other (please specify)",
+            "value": "Other (please specify)"
         }
     ],
     "languageProficiencyOptions": [

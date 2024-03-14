@@ -16,8 +16,8 @@ function ProjectCard({ data, index, type }) {
     </svg>`;
 
     return (
-        <div className='project-card min-h-[160px]'>
-            <div className='flex justify-end mb-[-45px] right-[10px] relative z-[200]' >
+        <div className='relative project-card min-h-[160px]'>
+            <div className='flex justify-end mb-[-45 px] top-[5px] right-[5px] absolute z-[200]' >
                 {type === "candidate" &&
                     <Core.ProficienciesActions buttons={['edit']} type={'projectsData'} id={data?._id} index={index} />
                 }
