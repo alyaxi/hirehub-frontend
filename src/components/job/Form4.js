@@ -9,7 +9,7 @@ import * as Yup from "yup";
 const { benefitsOptions } = dropdownOptions;
 
 function Form4({ multiSelectHandle, handleJobUpdate,values,job }) {
-  console.log("Form4 values", values);
+  // console.log("Form4 values", values);
   const [responsibilities, setResponsibilities] = useState(job?.responsibilities||"");
   const [qualification, setQualification] = useState(job?.qualification||"");
   const [skills, setSkills] = useState(job?.skills||"");

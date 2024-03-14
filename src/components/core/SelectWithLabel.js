@@ -19,7 +19,7 @@ function SelectWithLabel({
       case "userType":
         return "User Type";
       case "YourCompanysIndustry":
-        return "Your Company's Industry";
+        return "Company Industry";
       case "noOfEmployes":
         return "Number of Employees";
       case "expectedSalary":

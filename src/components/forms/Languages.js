@@ -56,7 +56,7 @@ function Languages({
   const handleSubmit = (values, { resetForm }) => {
     // console.log("handleSubmit called")
     let _languagesData = {
-      title: values?.title === "Other" ? values?.customLanguage : values?.title,
+      title: values?.title === "Other (please specify)" ? values?.customLanguage : values?.title,
       proficiency: values?.proficiency,
       isDeleted: languageToEdit?.isDeleted ? languageToEdit?.isDeleted : false,
     };
@@ -182,7 +182,7 @@ function Languages({
                           customLabel={"Language"}
                           label
                           options={languagesOptions}
-                          defaultOption="Choose any one"
+                          defaultOption="Please specify the language"
                           required
                           isDisabled={action === "edit"}
                         />
@@ -196,7 +196,7 @@ function Languages({
                   </Field>
 
                   <div className="mt-1">
-                    {values?.title === "Other" && (
+                    {values?.title === "Other (please specify)" && (
                       <Field name="customLanguage">
                         {({ field }) => (
                           <>
@@ -232,7 +232,7 @@ function Languages({
                       name={"proficiency"}
                       label
                       options={languageProficiencyOptions}
-                      defaultOption="Choose any one"
+                      defaultOption="Please select your proficiency level"
                       required
                     />
                     <ErrorMessage

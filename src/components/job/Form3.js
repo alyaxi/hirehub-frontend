@@ -71,7 +71,7 @@ function Form3({
                 name={"industry"}
                 label
                 options={industryOptions}
-                defaultOption="Choose any one"
+                defaultOption="Please select the industry"
                 value={values?.industry}
                 required
               />
@@ -100,7 +100,7 @@ function Form3({
                 name={"department"}
                 label
                 options={departmentOptions}
-                defaultOption="Choose any one"
+                defaultOption="Please select the department"
                 value={values?.department}
                 required
               />
@@ -129,7 +129,7 @@ function Form3({
                 name={"careerLevel"}
                 label
                 options={careerLevelOptions}
-                defaultOption="Choose any one"
+                defaultOption="Please select the career level"
                 value={values?.careerLevel}
                 required
               />
@@ -143,13 +143,6 @@ function Form3({
         </Field>
       </div>
       <div className="mb-4">
-        {/* <Core.SelectWithLabel
-          name={"experience"}
-          label
-          options={experienceOptions}
-          onChange={(e) => handleInput("experience", e.target.value)}
-        /> */}
-
         <Field name="experience">
           {({ field }) => (
             <>
@@ -158,7 +151,7 @@ function Form3({
                 name={"experience"}
                 label
                 options={experienceOptions}
-                defaultOption="Choose any one"
+                defaultOption="Please select your level of experience"
                 value={values?.experience}
                 required
               />
@@ -188,7 +181,7 @@ function Form3({
                 name={"minimumEducation"}
                 label
                 options={minimumEducationOptions}
-                defaultOption="Choose any one"
+                defaultOption="Please select your minimum education"
                 value={values?.minimumEducation}
                 required
               />
@@ -217,7 +210,7 @@ function Form3({
                 name={"jobShift"}
                 label
                 options={jobShiftOptions}
-                defaultOption="Choose any one"
+                defaultOption="Please select the job shift"
                 value={values?.jobShift}
                 required
               />
@@ -275,7 +268,7 @@ function Form3({
         <label
           className={` flex justify-start text-[14px] text-gray-2 tracking-wide  mb-2 font-semibold capitalize`}
         >
-          Gender:<span className='text-[red]'>*</span>
+          Gender:<span className="text-[red]">*</span>
         </label>
 
         {/* <Radio.Group

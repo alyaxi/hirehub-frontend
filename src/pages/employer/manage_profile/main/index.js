@@ -113,7 +113,7 @@ export default ViewProfile;
 //             </div>
 //             <div className="mb-8">
 //                 <h6 className={`block text-[14px] font-medium text-gray-2 tracking-wide mb-1 capitalize`}>
-//                     Your company's name
+//                     Company Name
 //                 </h6>
 //                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
 //                     {data?.companyName || <span className="text-gray-6 text-[14px] leading-[25px] opacity-50">Please update your information</span>}
@@ -162,7 +162,7 @@ export default ViewProfile;
 //             </div>
 //             <div className="mb-8">
 //                 <h6 className={`block text-[14px] font-medium text-gray-2 tracking-wide mb-1 capitalize`}>
-//                     Your company's industry
+//                     Company Industry
 //                 </h6>
 //                 <span className={`block text-[14px] font-medium text-gray-8 tracking-wide mb-2 capitalize`}>
 //                     {data?.companyIndustry || <span className="text-gray-6 text-[14px] leading-[25px] opacity-50">Please update your information</span>}

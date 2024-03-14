@@ -105,7 +105,7 @@ function Form1({
                 name={"noOfOpenings"}
                 label
                 options={noOfPeopleToHireOptions}
-                defaultOption="Choose any one"
+                defaultOption="Please select no of openings"
                 value={values?.noOfOpenings}
                 required
               />

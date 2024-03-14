@@ -211,7 +211,7 @@ function PersonalInformations({
       expectedSalary: values.expectedSalary || "",
       zipCode: values.zipCode || "",
     };
-    console.log("_personalInformationData", _personalInformationData);
+    // console.log("_personalInformationData", _personalInformationData);
     setCandidateProfileData((prevData) => ({
       ...prevData,
       personalInformationData: _personalInformationData,
@@ -252,7 +252,7 @@ function PersonalInformations({
                   <Core.InputWithLabel
                     {...field}
                     sm
-                    name="name"
+                    name="firstName"
                     label
                     bgGray
                     customPlaceholder="Enter your name"
@@ -429,7 +429,7 @@ function PersonalInformations({
                       }}
                       className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                     >
-                      <option value="">Select Country</option>
+                      <option value="">Please select your country</option>
                       {countries?.map((country) => (
                         <option key={country?.isoCode} value={country?.isoCode}>
                           {country?.name}
@@ -468,7 +468,7 @@ function PersonalInformations({
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select State</option>
+                          <option value="">Please select your state</option>
                           {states.map((state) => (
                             <option key={state?.isoCode} value={state?.isoCode}>
                               {state?.name}
@@ -504,7 +504,7 @@ function PersonalInformations({
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select City</option>
+                          <option value="">Please select your city</option>
                           {cities.map((city) => (
                             <option key={city.name} value={city.name}>
                               {city.name}
@@ -548,7 +548,7 @@ function PersonalInformations({
                         name={"careerLevel"}
                         label
                         options={careerLevelOptions}
-                        defaultOption="Choose any one"
+                        defaultOption="Please select your career level"
                         // value={field.value}
                         required
                       />
@@ -563,7 +563,7 @@ function PersonalInformations({
                         name={"experience"}
                         label
                         options={experienceOptions}
-                        defaultOption="Choose any one"
+                        defaultOption="Please select your level of experience"
                         // value={field.value}
                         required
                       />

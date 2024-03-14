@@ -54,7 +54,7 @@ function InputWithLabel({
       case "username":
         return "Username";
       case "companyName":
-        return "Your Company's Name";
+        return "Company Name";
       case "name":
         return "Name";
       case "SearchByEmployer":
@@ -64,6 +64,8 @@ function InputWithLabel({
       case "projectUrl":
         return "Project URL";
 
+      case "firstName":
+        return "First Name";
       case "fullName":
         return "Full Name";
       case "lastName":
@@ -133,7 +135,7 @@ function InputWithLabel({
       case "email":
         return "Enter your email";
       case "username":
-        return "Enter your username";
+        return "Please enter your username";
       case "password":
       case "newPassword":
       case "confirmPassword":
@@ -151,6 +153,8 @@ function InputWithLabel({
       case "companyName":
         return "Handmade";
       case "phoneNo":
+      case "phoneNumber":
+      case "mobile":
         // return "+34 526 952 689";
         return "0000-0000000";
       case "name":
@@ -159,18 +163,17 @@ function InputWithLabel({
         return "Employer";
       case "SearchByEligibility":
         return "Eligibility";
-
+      case "firstName":
+        return "Please enter First Name";
       case "fullName":
-        return "Full Name";
+        return "Please enter Full Name";
       case "lastName":
-        return "Last Name";
+        return "Please enter Last Name";
       case "ssn":
         return "AAA-GG-SSSS";
-      case "phoneNumber":
-      case "mobile":
-      case "message":
-        return "Message";
 
+      case "message":
+        return "Please type message";
       case "zip":
         return "123456";
       case "projectUrl":
@@ -180,20 +183,22 @@ function InputWithLabel({
       case "3rdNumber":
         return "000-0000";
       case "title":
-        return "Enter Title";
+        return "Please enter your job title";
       case "company":
-        return "Enter Company Name";
+        return "Please enter the name of the company";
       case "organization":
-        return "Enter Educational Institution Name";
+        return "Please enter the name of your educational institution";
       case "location":
         // return "Street# 1, Area abc, City, Country.";
         return "Enter here";
+      case "jobLocation":
+        return "Type location of your job";
       case "package":
         return "2000";
       case "salary":
-        return "Salary";
+        return "Please type the salary";
       case "positionTitle":
-        return "Position Title";
+        return "Type the title of the position";
       case "sendTo":
         return "Select Reciept";
 
@@ -204,7 +209,7 @@ function InputWithLabel({
       case "SearchByLocation":
         return "Location";
       case "customLanguage":
-        return "Type Language";
+        return "Please type the language";
       default:
         return "";
     }
@@ -213,6 +218,7 @@ function InputWithLabel({
     switch (name) {
       case "email":
         return "email";
+      case "firstName":
       case "fullName":
       case "ssn":
       case "phoneNumber":

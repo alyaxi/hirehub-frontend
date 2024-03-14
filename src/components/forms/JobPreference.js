@@ -165,7 +165,7 @@ function JobPreference({
                     options={desiredSalaryOptions}
                     value={field.value}
                     helperText={
-                      "Note that all figures in this form are in US dollars and indicate yearly salary ranges."
+                      "Note: All figures in this form are denoted in US dollars and represent annual salary ranges."
                     }
                   />
                 )}

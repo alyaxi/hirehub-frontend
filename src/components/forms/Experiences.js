@@ -374,7 +374,7 @@ function Experiences({
                       name="industry"
                       label
                       options={industryOptions}
-                      defaultOption="Choose any one"
+                      defaultOption="Please select the industry"
                       value={field.value}
                       required
                     />
@@ -433,9 +433,9 @@ function Experiences({
                       name={"salary"}
                       label
                       options={salaryOptions}
-                      defaultOption="Select Salary Range"
+                      defaultOption="Please select your annual salary range"
                       helperText={
-                        "Note that all figures in this form are in US dollars and indicate yearly salary ranges."
+                        "Note: All figures in this form are denoted in US dollars and represent annual salary ranges."
                       }
                       required
                     />
@@ -471,7 +471,7 @@ function Experiences({
                       }}
                       className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                     >
-                      <option value="">Select Country</option>
+                      <option value="">Please select your country</option>
                       {countries?.map((country) => (
                         <option key={country?.isoCode} value={country?.isoCode}>
                           {country?.name}
@@ -510,7 +510,7 @@ function Experiences({
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select State</option>
+                          <option value="">Please select your state</option>
                           {states.map((state) => (
                             <option key={state?.isoCode} value={state?.isoCode}>
                               {state?.name}
@@ -546,7 +546,7 @@ function Experiences({
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select City</option>
+                          <option value="">Please select your city</option>
                           {cities.map((city) => (
                             <option key={city.name} value={city.name}>
                               {city.name}
@@ -611,7 +611,9 @@ function Experiences({
                   )}
                 </div>
                 <div
-                  className={`w-[50%] ${values?.currentlyInProcess === true && "hidden"}`}
+                  className={`w-[50%] ${
+                    values?.currentlyInProcess === true && "hidden"
+                  }`}
                 >
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}

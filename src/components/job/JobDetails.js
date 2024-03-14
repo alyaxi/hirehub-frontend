@@ -244,7 +244,7 @@ function JobDetails({
         {/* position */}
         <div className="pb-4">
           <h6 className="text-[14px] leading-[24px] font-semibold">
-            The Position
+            Position Details
           </h6>
           <p className="text-gray-6 text-[12px] leading-[18.5px]">
             {extractedData?.aboutPosition || "-"}
@@ -285,10 +285,10 @@ function JobDetails({
           ></div>
         </div>
 
-        {/* Short Summery */}
+        {/* Short Summery / Brief Overview */}
         <div className="pb-4">
           <h6 className="text-[16px] leading-[22px] font-semibold">
-            Short Summery
+            Brief Overview
           </h6>
           <div className="flex justify-between gap-x-6 pt-4">
             <div className="flex justify-start flex-col w-full">
