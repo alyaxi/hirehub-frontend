@@ -158,12 +158,7 @@ function PopupModal({ setIsModalOpen,
         return formData
     };
 
-
-
-    // console.log({ action })
-
     const [savingForm, setSavingForm] = useState(false);
-    // console.log(savingForm, "out")
 
     const handleSenddata = (val, file) => {
         console.log("candidateProfileData", candidateProfileData)
