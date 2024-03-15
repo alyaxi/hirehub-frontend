@@ -71,12 +71,12 @@ function Languages({
       setCustomLanguageError("Language is Required");
     } else {
       setCustomLanguageError("");
+      const candidateLanguagesData = candidate?.languagesData || [];
+      const titleExists = candidateLanguagesData.some(
+        (language) =>
+          language.title.toLowerCase() === _languagesData.title.toLowerCase()
+      );
       if (action === "add") {
-        const candidateLanguagesData = candidate?.languagesData || [];
-        const titleExists = candidateLanguagesData.some(
-          (language) =>
-            language.title.toLowerCase() === _languagesData.title.toLowerCase()
-        );
 
         if (titleExists) {
           setCustomLanguageError("This Language is already exists");
@@ -98,10 +98,18 @@ function Languages({
             return language;
           }
         });
-        // console.log("vv else languageData", languageData);
-        setCandidateProfileData({
+
+        if (titleExists) {
+          setCustomLanguageError("This Language is already exists");
+        } else {
+         // console.log("vv else languageData", languageData);
+         setCandidateProfileData({
           languagesData: languageData,
         });
+          setCustomLanguageError("");
+        }
+
+      
       }
       setTimeout(() => {
         resetForm();
