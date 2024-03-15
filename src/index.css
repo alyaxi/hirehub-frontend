@@ -287,3 +287,7 @@ text-transform: capitalize;
 .ant-btn.ant-btn-text.ant-btn-sm.ant-btn-icon-only.ant-upload-list-item-action {
   display: none;
 }
+
+.phone-input input {
+  outline: none;
+}

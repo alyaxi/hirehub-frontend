@@ -6,6 +6,11 @@ import Icon from "../icon";
 import { useSelector } from "react-redux";
 import { Spin } from "antd";
 import dropdownOptions from "../../data/dropdownOptions.json";
+import countryCodesOptions from "../../data/countryCodes.json";
+
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+import { parsePhoneNumber } from "react-phone-number-input";
 
 const {
   expectedSalaryOptions,
@@ -29,8 +34,8 @@ function PersonalInformations({
   const firstName = user?.name.split(" ")[0];
 
   // console.log(
-  //   "personalInformationDataSavedOnDb",
-  //   personalInformationDataSavedOnDb
+  //   "countryCodesOptions",
+  //   countryCodesOptions
   // );
 
   const currentYear = new Date().getFullYear();
@@ -38,7 +43,7 @@ function PersonalInformations({
   const endYear = currentYear;
   const yearOptions = [];
 
-   for (let year = endYear; year >= startYear; year--) {
+  for (let year = endYear; year >= startYear; year--) {
     yearOptions.push({ name: year.toString(), value: year.toString() });
   }
 
@@ -66,7 +71,7 @@ function PersonalInformations({
     dob: personalInformationDataSavedOnDb?.dob || "",
   });
 
-  // useEffect(() => { 
+  // useEffect(() => {
   //     setFormData({
   //       profilePicture: personalInformationDataSavedOnDb?.profilePicture || "",
   //       name: firstName,
@@ -83,7 +88,7 @@ function PersonalInformations({
   //       state: personalInformationDataSavedOnDb?.state || "",
   //       city: personalInformationDataSavedOnDb?.city || "",
   //       dob: personalInformationDataSavedOnDb?.dob || "",
-  //     }); 
+  //     });
   // }, [personalInformationDataSavedOnDb, action]);
 
   // const [formData, setFormData] = useState({
@@ -103,6 +108,9 @@ function PersonalInformations({
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
+
+  // const [countryCode, setCountryCode] = useState("");
+  const [value, setValue] = useState();
 
   const day = personalInformationDataSavedOnDb?.dob?.match(/^(\d+)\//);
   const _day = day ? day[1] : "";
@@ -187,6 +195,7 @@ function PersonalInformations({
       setDob("");
     }
   };
+  // console.log("SelectWithLabel value", 'abcdfdfdf ( dff)'.substring('abcdfdfdf ( dff)'.indexOf('(')))
 
   useEffect(() => {
     // console.log("useEffect called");
@@ -218,7 +227,9 @@ function PersonalInformations({
     }));
   };
 
-  // console.log("dob", dob);
+  // const phoneNumber = value && parsePhoneNumber(value)
+  // console.log("phoneNumber33", phoneNumber);
+  console.log("value", value);
   // console.log("!profilePicture?.length", !profilePicture?.length);
   // console.log("selectedDay", selectedDay);
   // console.log("selectedMonth", selectedMonth);
@@ -234,7 +245,7 @@ function PersonalInformations({
       onSubmit={handleSubmit}
     >
       {({ values }) => {
-        // console.log("values", values);
+        console.log("formik values", values);
         return (
           <Form>
             <span className="block text-gray-400 opacity-70 my-5">
@@ -303,6 +314,34 @@ function PersonalInformations({
             </div>
 
             <div className="mb-4">
+              <div className="flex justify-between items-center">
+                <label
+                  className={`flex justify-start text-[14px] font-medium text-gray-2 tracking-wide mb-1 font-semibold capitalize`}
+                >
+                  Phone Number: <span className="text-[red]">*</span>
+                  <span className="mt-[2px] ml-[3px]">
+                    <Icon name={"Lock1"} />
+                  </span>
+                </label>
+              </div>
+              <div className={`relative w-ful l `}>
+                <p className="text-gray-12 text-[14px] leading-[16px] mb-1.5 ">
+                  Only provided to employers you apply or respond to
+                </p>
+              </div>
+              <Field name="phoneNo">
+                {({ field, form }) => (
+                  <PhoneInput
+                    placeholder="Enter phone number"
+                    value={field.value}
+                    onChange={(value) => form.setFieldValue("phoneNo", value)}
+                    className={`phone-input w-full text-[14px] font-regular leading-[20px] text-gray-6  bg-gray-3 bg-white  border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[9px] `}
+                  />
+                )}
+              </Field>
+            </div>
+
+            {/* <div className="mb-4">
               <Field name="phoneNo">
                 {({ field }) => (
                   <Core.InputWithLabel
@@ -320,7 +359,7 @@ function PersonalInformations({
                   />
                 )}
               </Field>
-            </div>
+            </div> */}
 
             <Field name="statusLine">
               {({ field }) => (
