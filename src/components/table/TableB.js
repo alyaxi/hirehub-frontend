@@ -61,10 +61,10 @@ function TableB({
   addQuestion,
   addButton,
 }) {
-  console.log("tableDataa", data);
+  // console.log("tableDataa", data);
 
   const newColumn = columns.map((value, index) => {
-    console.log("newColumn", value);
+    // console.log("newColumn", value);
 
     // let columnSorter;
     // if (value?.sorter === true) {
@@ -89,7 +89,7 @@ function TableB({
         const firstLetter = val?.name
           ? val.name.trim().charAt(0).toUpperCase()
           : "";
-        console.log("ggg val", val);
+        // console.log("ggg val", val);
         if (
           value?.dataIndex === "name" ||
           value?.dataIndex === "employerName" ||

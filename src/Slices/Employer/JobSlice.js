@@ -11,9 +11,9 @@ import { convertDateFormat } from '../../utilis/convertDateStamp';
 export const GetjobsEmployer = createAsyncThunk('employer/get-jobs-by-employer', async (_) => {
 
     try {
-        console.log("get jobsss consolee")
+        console.log("-- get jobsss consolee")
         const data = await jobServices.jobListing()
-        console.log(data, "dataaaaa")
+        console.log(data, "-- dataaaaa")
         return data
     } catch (error) {
         // Handle login error

@@ -15,9 +15,11 @@ function ViewJobs() {
     const location = useLocation();
     const parts = location?.pathname.split('/');
     const id = parts[parts.length - 1];
-    const jobs = useSelector((state) => state?.jobSlice.jobs);
+    const jobs = useSelector((state) => state?.jobSlice?.jobs);
     const data = jobs.find(job => job.id === id);
-    // console.log("data",data)
+    
+    console.log("--da ta",data)
+    console.log("--da ddddta",data)
     
     return (
         <>

@@ -175,7 +175,8 @@ ul.menu-list:before {
 /* Example styles for different elements */
 .responsibilities-container p {
   font-size: 12px;
-  line-height: 24px;
+  /* line-height: 24px; */
+  line-height: 18.5px;
   margin-bottom: 10px;
 }
 
