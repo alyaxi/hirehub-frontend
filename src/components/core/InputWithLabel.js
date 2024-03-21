@@ -103,7 +103,7 @@ function InputWithLabel({
         return "Search by Email";
       case "expiryDate":
       case "expirationDate":
-        return "Job Expiry Date";
+        return "Job Expiration Date";
       case "salary":
         return "Salary";
       case "positionTitle":

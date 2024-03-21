@@ -446,9 +446,10 @@ function JobPosts() {
                                     border-[2px]
                                     ${
                                       selectedJobId === job._id
-                                        ? " border-purple-1"
-                                        : "border-gray-11 hover:border-[transparent]"
+                                        ? "border-purple-1"
+                                        : "border-[transparent] hover:border-gray-11"
                                     } 
+                                    transition-all
                                     cursor-pointer p-4
                                 `}
               >

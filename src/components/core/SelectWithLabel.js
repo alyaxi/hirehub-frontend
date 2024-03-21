@@ -39,7 +39,7 @@ function SelectWithLabel({
       case "degree":
         return "Degree";
       case "fieldOfStudy":
-        return "Field Of Study";
+        return "Field of Study";
       case "grade":
         return "Grade";
       case "skillExperience":
@@ -96,7 +96,7 @@ function SelectWithLabel({
           className={`
                 block text-[14px] text-gray-2 tracking-wide ${
                   helperText ? "mb-1.5" : "mb-2"
-                } font-semibold capitalize`}
+                } font-semibold capitaliz e`}
         >
           {customLabel ? customLabel : _label(name)}:{" "}
           {required && <span className='text-[red]'>*</span>}
