@@ -36,6 +36,8 @@
 // }
 
 export function calculateTimePeriod(startDate, endDate) {
+  console.log("7777777 startDate",startDate)
+  console.log("7777777 endDate",endDate)
   // const startDateObject = new Date(startDate);
   // let endDateObject;
 
