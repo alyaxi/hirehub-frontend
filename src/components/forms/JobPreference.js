@@ -7,10 +7,12 @@ import { useSelector } from "react-redux";
 import dropdownOptions from "../../data/dropdownOptions.json";
 
 const {
-  desiredJobTitleOptions,
+  // desiredJobTitleOptions,
+  industryWithJobTitles,
   desiredSalaryOptions,
   skillsOptions,
   locationsOptions,
+  industryOptions,
 } = dropdownOptions;
 
 function JobPreference({
@@ -30,6 +32,7 @@ function JobPreference({
     onlyNearMe: jp?.onlyNearMe ? jp?.onlyNearMe : "",
     relocation: jp?.relocation ? jp?.relocation : {},
     skills: jp?.skills ? jp?.skills : [],
+    industry: jp?.industry ? jp?.industry : "",
   });
 
   // console.log(" data", data)
@@ -44,9 +47,9 @@ function JobPreference({
   const [maxLocationsLimit, setMaxLocationsLimit] = useState(false);
 
   const multiSelectHandle = (type, selectedItems, setFieldValue, values) => {
-    console.log(" type", type);
-    console.log(" selectedItems", selectedItems);
-    console.log(" length", values?.relocation?.onlyNearMe?.locations?.length);
+    // console.log(" type", type);
+    // console.log(" selectedItems", selectedItems);
+    // console.log(" length", values?.relocation?.onlyNearMe?.locations?.length);
 
     if (type === "desiredJobTitle") {
       setFieldValue("desiredJobTitle", selectedItems);
@@ -105,6 +108,7 @@ function JobPreference({
       onlyNearMe: values?.onlyNearMe,
       relocation: values?.relocation,
       skills: values?.skills,
+      industry: values?.industry,
     };
     console.log("_jobPreferenceData", _jobPreferenceData);
     setCandidateProfileData((prevData) => ({
@@ -114,6 +118,15 @@ function JobPreference({
   };
 
   // console.log("uuu isDisableLocations  ", isDisableLocations)
+
+  const getJobTitlesForIndustry = (industry) => {
+    return industryWithJobTitles[industry] || [];
+  };
+
+  // console.log(
+  //   "getJobTitlesForIndustry('Administration')",
+  //   getJobTitlesForIndustry("Administration")
+  // );
 
   return (
     <Formik
@@ -131,6 +144,36 @@ function JobPreference({
             <p className="text-black-1 text-[14px] font-semibold mb-2">
               Help us match you with your next job
             </p>
+
+            <div className="mb-4">
+              <Field name="industry">
+                {({ field }) => (
+                  <>
+                    <Core.SelectWithLabel
+                      {...field}
+                      name={"industry"}
+                      label
+                      options={industryOptions}
+                      defaultOption="Please select the industry"
+                      value={values?.industry}
+                      required
+                      onChange={(e) => {
+                        // Empty the desiredJobTitle array when a new industry is selected
+                        setFieldValue("desiredJobTitle", []);
+                        // Set the industry field value
+                        field.onChange(e);
+                      }}
+                    />
+                    {/* <ErrorMessage
+                      name="industry"
+                      component="div"
+                      className="text-red-500 error"
+                    /> */}
+                  </>
+                )}
+              </Field>
+            </div>
+
             <div className="mb-4">
               <Field name="desiredJobTitle">
                 {({ field }) => (
@@ -140,7 +183,10 @@ function JobPreference({
                     name={"desiredJobTitle"}
                     label
                     required
-                    options={desiredJobTitleOptions}
+                    // options={desiredJobTitleOptions}
+                    options={getJobTitlesForIndustry(values?.industry)?.map(
+                      (title) => ({ name: title, value: title })
+                    )}
                     onChange={(selectedItems) =>
                       multiSelectHandle(
                         "desiredJobTitle",
@@ -154,6 +200,8 @@ function JobPreference({
               </Field>
             </div>
 
+            {/* <span className='block w-full border-gray-11 border-t-[1px] my-5'></span> */}
+
             <div className="mb-4">
               <Field name="desiredSalary">
                 {({ field }) => (
@@ -163,9 +211,10 @@ function JobPreference({
                     label
                     required
                     options={desiredSalaryOptions}
+                    defaultOption="Please select your preferred annual salary range"
                     value={field.value}
                     helperText={
-                      "Note that all figures in this form are in US dollars and indicate yearly salary ranges."
+                      "Note: All figures in this form are denoted in US dollars and represent annual salary ranges."
                     }
                   />
                 )}
@@ -271,6 +320,7 @@ function JobPreference({
                       {...field}
                       mode={"multiple"}
                       name={"willingToLocations"}
+                      helperText={"Enter up to 3 locations you'd be willing to relocate to..."}
                       label
                       options={locationsOptions}
                       onChange={(selectedItems) =>

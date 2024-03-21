@@ -33,10 +33,10 @@ function PersonalInformations({
 
   const currentYear = new Date().getFullYear();
   const startYear = 1901;
-  const endYear = currentYear - 5;
+  const endYear = currentYear;
   const yearOptions = [];
 
-  for (let year = startYear; year <= endYear; year++) {
+   for (let year = endYear; year >= startYear; year--) {
     yearOptions.push({ name: year.toString(), value: year.toString() });
   }
 
@@ -290,7 +290,7 @@ return (
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Date of Birth <span className="text-[red]">*</span>
+                    Date of Birth <span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[33%]">
@@ -332,7 +332,7 @@ return (
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Gender <span className="text-[red]">*</span>
+                    Gender <span className='text-[red]'>*</span>
                   </label>
                   <Field name="gender">
                     {({ field }) => (
@@ -378,7 +378,7 @@ return (
                     <label
                         className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                     >
-                        Country <span className="text-[red]">*</span>
+                        Country <span className='text-[red]'>*</span>
                     </label> 
 
 
@@ -398,7 +398,7 @@ return (
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select Country</option>
+                          <option value="">Please select your country</option>
                           {countries?.map((country) => (
                             <option
                               key={country?.isoCode}
@@ -446,7 +446,7 @@ return (
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select State</option>
+                          <option value="">Please select your state</option>
                           {states.map((state) => (
                             <option key={state.name} value={state.name}>
                               {state.name}
@@ -477,7 +477,7 @@ return (
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select City</option>
+                          <option value="">Please select your city</option>
                           {cities.map((city) => (
                             <option key={city.name} value={city.name}>
                               {city.name}
@@ -533,7 +533,7 @@ return (
                     disabled={!selectedCountry}
                     className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                   >
-                    <option value="">Select State</option>
+                    <option value="">Please select your state</option>
                     {states.map((state) => (
                       <option key={state.isoCode} value={state.isoCode}>
                         {state.name}
@@ -555,7 +555,7 @@ return (
                     disabled={!selectedState}
                     className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                   >
-                    <option value="">Select City</option>
+                    <option value="">Please select your city</option>
                     {cities.map((city) => (
                       <option key={city.name} value={city.name}>
                         {city.name}
@@ -590,7 +590,7 @@ return (
                         name={"careerLevel"}
                         label
                         options={careerLevelOptions}
-                        defaultOption="Choose any one"
+                        defaultOption="Please select your career level"
                         value={field.value}
                         required
                       />
@@ -605,7 +605,7 @@ return (
                         name={"experience"}
                         label
                         options={experienceOptions}
-                        defaultOption="Choose any one"
+                        defaultOption="Please select your level of experience"
                         required
                         value={field.value}
                       />

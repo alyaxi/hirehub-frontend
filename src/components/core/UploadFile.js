@@ -27,7 +27,7 @@ function UploadFile({ label, name, required, helperText, accept, onChange }) {
                     `}
           >
             {_label(name)}
-            {required && <span className="text-[red]">*</span>}
+            {required && <span className='text-[red]'>*</span>}
           </label>
         )}
       </div>

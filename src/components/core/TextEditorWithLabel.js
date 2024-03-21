@@ -61,7 +61,7 @@ function TextEditorWithLabel({
                         } font-semibold capitalize
                         `}
         >
-          {_label(name)}: {required && <span className="text-[red]">*</span>}
+          {_label(name)}: {required && <span className='text-[red]'>*</span>}
           <span className="mt-[2px] ml-[3px]">
             {" "}
             {icon && <Icon name={icon} />}

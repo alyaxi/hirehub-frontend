@@ -17,7 +17,7 @@ function TextAreaWithLabel({
         return "Company Description";
       case "position":
       case "aboutPosition":
-        return "The Position";
+        return "Position Details";
       case "summary":
       case "summery":
         return "Summary";
@@ -36,7 +36,7 @@ function TextAreaWithLabel({
         return "Describe here";
       case "position":
       case "aboutPosition":
-        return "Brief about The Position";
+        return "Type position details";
       case "summary":
       case "summery":
         return "Type summary about yourself...";
@@ -63,7 +63,7 @@ function TextAreaWithLabel({
                     `}
           >
             {_label(name)}
-            {required && <span className="text-[red]">*</span>}
+            {required && <span className='text-[red]'>*</span>}
           </label>
         )}
       </div>

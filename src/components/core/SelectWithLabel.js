@@ -19,7 +19,7 @@ function SelectWithLabel({
       case "userType":
         return "User Type";
       case "YourCompanysIndustry":
-        return "Your Company's Industry";
+        return "Company Industry";
       case "noOfEmployes":
         return "Number of Employees";
       case "expectedSalary":
@@ -99,7 +99,7 @@ function SelectWithLabel({
                 } font-semibold capitalize`}
         >
           {customLabel ? customLabel : _label(name)}:{" "}
-          {required && <span className="text-[red]">*</span>}
+          {required && <span className='text-[red]'>*</span>}
         </label>
       )}
       {helperText && (

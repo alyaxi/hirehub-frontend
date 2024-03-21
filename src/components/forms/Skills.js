@@ -152,7 +152,7 @@ function Skills({
                       customLabel={"Skill"}
                       label
                       options={skillsOptions}
-                      defaultOption="Choose any one"
+                      defaultOption="Please specify your skill"
                       value={values?.title}
                       required
                       isDisabled={action === "edit"}
@@ -176,7 +176,7 @@ function Skills({
                       name={"experience"}
                       label
                       options={skillExperienceOptions}
-                      defaultOption="Choose any one"
+                      defaultOption="Please select your level of experience"
                       value={values?.experience}
                       required
                     />

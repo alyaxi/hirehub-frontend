@@ -35,6 +35,7 @@ function Experiences({
   const experienceToEdit = experiences?.find(
     (experience) => experience?._id === id
   );
+  // console.log("experienceToEdit", experienceToEdit);
 
   const [data] = useState(
     action === "add"
@@ -68,7 +69,6 @@ function Experiences({
   );
   const [maxDescriptionLimit, setMaxDescriptionLimit] = useState(false);
   const [dateValidation, setDateValidation] = useState(false);
-  console.log("dateValidation", dateValidation);
   const [selectedCountry, setSelectedCountry] = useState(
     experienceToEdit?.selectedCountry || ""
   );
@@ -88,9 +88,9 @@ function Experiences({
 
   const currentYear = new Date().getFullYear();
   const startYear = 1901;
-  const endYear = currentYear - 5;
+  const endYear = currentYear;
   const yearOptions = [];
-  for (let year = startYear; year <= endYear; year++) {
+  for (let year = endYear; year >= startYear; year--) {
     yearOptions.push({ name: year.toString(), value: year.toString() });
   }
 
@@ -243,10 +243,6 @@ function Experiences({
     }
   };
 
-  // console.log("selectedStartMonth",selectedStartMonth)
-  // console.log("selectedStartYear",selectedStartYear)
-  // console.log("startDate",startDate)
-
   const handleSubmit = (values) => {
     let _experiencesData = {
       title: values?.title,
@@ -294,6 +290,10 @@ function Experiences({
     handleCancel();
   };
 
+  // console.log("selectedStartMonth",selectedStartMonth)
+  // console.log("selectedStartYear",selectedStartYear)
+  // console.log("startDate",startDate)
+
   // console.log("data", data)
   // console.log("description", description);
   // console.log("ex startDate", startDate);
@@ -310,8 +310,8 @@ function Experiences({
       onSubmit={handleSubmit}
     >
       {({ values, resetForm }) => {
-        console.log("currentlyInProcess", values?.currentlyInProcess);
-        console.log("dateValidation", dateValidation);
+        // console.log("currentlyInProcess", values?.currentlyInProcess);
+        // console.log("dateValidation", dateValidation);
         return (
           <Form>
             <span className="block text-gray-400 opacity-70 my-5">
@@ -374,7 +374,7 @@ function Experiences({
                       name="industry"
                       label
                       options={industryOptions}
-                      defaultOption="Choose any one"
+                      defaultOption="Please select the industry"
                       value={field.value}
                       required
                     />
@@ -433,9 +433,9 @@ function Experiences({
                       name={"salary"}
                       label
                       options={salaryOptions}
-                      defaultOption="Select Salary Range"
+                      defaultOption="Please select your annual salary range"
                       helperText={
-                        "Note that all figures in this form are in US dollars and indicate yearly salary ranges."
+                        "Note: All figures in this form are denoted in US dollars and represent annual salary ranges."
                       }
                       required
                     />
@@ -455,7 +455,7 @@ function Experiences({
               <label
                 className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
               >
-                Country <span className="text-[red]">*</span>
+                Country <span className='text-[red]'>*</span>
               </label>
 
               <>
@@ -471,7 +471,7 @@ function Experiences({
                       }}
                       className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                     >
-                      <option value="">Select Country</option>
+                      <option value="">Please select your country</option>
                       {countries?.map((country) => (
                         <option key={country?.isoCode} value={country?.isoCode}>
                           {country?.name}
@@ -510,7 +510,7 @@ function Experiences({
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select State</option>
+                          <option value="">Please select your state</option>
                           {states.map((state) => (
                             <option key={state?.isoCode} value={state?.isoCode}>
                               {state?.name}
@@ -546,7 +546,7 @@ function Experiences({
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select City</option>
+                          <option value="">Please select your city</option>
                           {cities.map((city) => (
                             <option key={city.name} value={city.name}>
                               {city.name}
@@ -571,7 +571,7 @@ function Experiences({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Start <span className="text-[red]">*</span>
+                    Start Date <span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[50%]">
@@ -611,12 +611,14 @@ function Experiences({
                   )}
                 </div>
                 <div
-                  className={`w-[50%] ${values?.currentlyInProcess === true && "hidden"}`}
+                  className={`w-[50%] ${
+                    values?.currentlyInProcess === true && "hidden"
+                  }`}
                 >
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    End <span className="text-[red]">*</span>
+                    End Date<span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[50%]">
@@ -718,11 +720,15 @@ function Experiences({
                       values?.title === "" ||
                       values?.company === "" ||
                       values?.industry === "" ||
+                      values?.salary === "" ||
+
                       (values?.currentlyInProcess !== true &&
                         dateValidation === true) ||
-                      values?.salary === "" ||
                       (values?.description?.length < 14 &&
-                        description?.length < 14)
+                        description?.length < 14)||
+
+                      (values?.selectedCountry === "" && selectedCountry === "")
+
                     }
                   >
                     Save

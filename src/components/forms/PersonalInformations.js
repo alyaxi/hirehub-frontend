@@ -6,6 +6,11 @@ import Icon from "../icon";
 import { useSelector } from "react-redux";
 import { Spin } from "antd";
 import dropdownOptions from "../../data/dropdownOptions.json";
+import countryCodesOptions from "../../data/countryCodes.json";
+
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+import { parsePhoneNumber } from "react-phone-number-input";
 
 const {
   expectedSalaryOptions,
@@ -29,16 +34,16 @@ function PersonalInformations({
   const firstName = user?.name.split(" ")[0];
 
   // console.log(
-  //   "personalInformationDataSavedOnDb",
-  //   personalInformationDataSavedOnDb
+  //   "countryCodesOptions",
+  //   countryCodesOptions
   // );
 
   const currentYear = new Date().getFullYear();
   const startYear = 1901;
-  const endYear = currentYear - 5;
+  const endYear = currentYear;
   const yearOptions = [];
 
-  for (let year = startYear; year <= endYear; year++) {
+  for (let year = endYear; year >= startYear; year--) {
     yearOptions.push({ name: year.toString(), value: year.toString() });
   }
 
@@ -66,7 +71,7 @@ function PersonalInformations({
     dob: personalInformationDataSavedOnDb?.dob || "",
   });
 
-  // useEffect(() => { 
+  // useEffect(() => {
   //     setFormData({
   //       profilePicture: personalInformationDataSavedOnDb?.profilePicture || "",
   //       name: firstName,
@@ -83,7 +88,7 @@ function PersonalInformations({
   //       state: personalInformationDataSavedOnDb?.state || "",
   //       city: personalInformationDataSavedOnDb?.city || "",
   //       dob: personalInformationDataSavedOnDb?.dob || "",
-  //     }); 
+  //     });
   // }, [personalInformationDataSavedOnDb, action]);
 
   // const [formData, setFormData] = useState({
@@ -103,6 +108,9 @@ function PersonalInformations({
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
+
+  // const [countryCode, setCountryCode] = useState("");
+  const [value, setValue] = useState();
 
   const day = personalInformationDataSavedOnDb?.dob?.match(/^(\d+)\//);
   const _day = day ? day[1] : "";
@@ -134,6 +142,36 @@ function PersonalInformations({
     const allCountries = Country.getAllCountries();
     setCountries(allCountries);
   }, []);
+
+
+  // for pre populate state and city start
+  
+  useEffect(() => {
+    const allCountries = Country.getAllCountries();
+    setCountries(allCountries);
+    setSelectedCountry(personalInformationDataSavedOnDb?.country || "");
+  }, []);
+  
+  useEffect(() => {
+    if (selectedCountry) {
+      const countryStates = State.getStatesOfCountry(selectedCountry);
+      setStates(countryStates);
+    } else {
+      setStates([]);
+    }
+  }, [selectedCountry]);
+  
+  useEffect(() => {
+    if (selectedState) {
+      const stateCities = City.getCitiesOfState(selectedCountry, selectedState);
+      setCities(stateCities);
+    } else {
+      setCities([]);
+    }
+  }, [selectedState]);
+
+  // for pre populate state and city end
+  
 
   const handleCountryChange = (event, setFieldValue) => {
     const countryValue = event.target.value;
@@ -187,6 +225,7 @@ function PersonalInformations({
       setDob("");
     }
   };
+  // console.log("SelectWithLabel value", 'abcdfdfdf ( dff)'.substring('abcdfdfdf ( dff)'.indexOf('(')))
 
   useEffect(() => {
     // console.log("useEffect called");
@@ -211,21 +250,23 @@ function PersonalInformations({
       expectedSalary: values.expectedSalary || "",
       zipCode: values.zipCode || "",
     };
-    console.log("_personalInformationData", _personalInformationData);
+    // console.log("_personalInformationData", _personalInformationData);
     setCandidateProfileData((prevData) => ({
       ...prevData,
       personalInformationData: _personalInformationData,
     }));
   };
 
-  // console.log("dob", dob);
+  // const phoneNumber = value && parsePhoneNumber(value)
+  // console.log("phoneNumber33", phoneNumber);
+  // console.log("value", value);
   // console.log("!profilePicture?.length", !profilePicture?.length);
   // console.log("selectedDay", selectedDay);
   // console.log("selectedMonth", selectedMonth);
   // console.log("selectedYear", selectedYear);
-  // console.log("selectedCountry", selectedCountry);
-  // console.log("selectedState", selectedState);
-  // console.log("selectedCity", selectedCity);
+  console.log("selectedCountry", selectedCountry);
+  console.log("selectedState", selectedState);
+  console.log("selectedCity", selectedCity);
 
   return (
     <Formik
@@ -234,7 +275,7 @@ function PersonalInformations({
       onSubmit={handleSubmit}
     >
       {({ values }) => {
-        // console.log("values", values);
+        console.log("formik values", values);
         return (
           <Form>
             <span className="block text-gray-400 opacity-70 my-5">
@@ -252,7 +293,7 @@ function PersonalInformations({
                   <Core.InputWithLabel
                     {...field}
                     sm
-                    name="name"
+                    name="firstName"
                     label
                     bgGray
                     customPlaceholder="Enter your name"
@@ -303,6 +344,34 @@ function PersonalInformations({
             </div>
 
             <div className="mb-4">
+              <div className="flex justify-between items-center">
+                <label
+                  className={`flex justify-start text-[14px] font-medium text-gray-2 tracking-wide mb-1 font-semibold capitalize`}
+                >
+                  Phone Number: <span className='text-[red]'>*</span>
+                  <span className="mt-[2px] ml-[3px]">
+                    <Icon name={"Lock1"} />
+                  </span>
+                </label>
+              </div>
+              <div className={`relative w-ful l `}>
+                <p className="text-gray-12 text-[14px] leading-[16px] mb-1.5 ">
+                  Only provided to employers you apply or respond to
+                </p>
+              </div>
+              <Field name="phoneNo">
+                {({ field, form }) => (
+                  <PhoneInput
+                    placeholder="Enter phone number"
+                    value={field.value}
+                    onChange={(value) => form.setFieldValue("phoneNo", value)}
+                    className={`phone-input w-full text-[14px] font-regular leading-[20px] text-gray-6  bg-gray-3 bg-white  border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[9px] `}
+                  />
+                )}
+              </Field>
+            </div>
+
+            {/* <div className="mb-4">
               <Field name="phoneNo">
                 {({ field }) => (
                   <Core.InputWithLabel
@@ -320,7 +389,7 @@ function PersonalInformations({
                   />
                 )}
               </Field>
-            </div>
+            </div> */}
 
             <Field name="statusLine">
               {({ field }) => (
@@ -341,7 +410,7 @@ function PersonalInformations({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Date of Birth <span className="text-[red]">*</span>
+                    Date of Birth <span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[33%]">
@@ -383,7 +452,7 @@ function PersonalInformations({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Gender <span className="text-[red]">*</span>
+                    Gender <span className='text-[red]'>*</span>
                   </label>
                   <Field name="gender">
                     {({ field }) => (
@@ -413,7 +482,7 @@ function PersonalInformations({
               <label
                 className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
               >
-                Country <span className="text-[red]">*</span>
+                Country <span className='text-[red]'>*</span>
               </label>
 
               <>
@@ -429,7 +498,7 @@ function PersonalInformations({
                       }}
                       className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                     >
-                      <option value="">Select Country</option>
+                      <option value="">Please select your country</option>
                       {countries?.map((country) => (
                         <option key={country?.isoCode} value={country?.isoCode}>
                           {country?.name}
@@ -468,7 +537,7 @@ function PersonalInformations({
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select State</option>
+                          <option value="">Please select your state</option>
                           {states.map((state) => (
                             <option key={state?.isoCode} value={state?.isoCode}>
                               {state?.name}
@@ -504,7 +573,7 @@ function PersonalInformations({
                           }}
                           className="w-full text-[14px] font-regular leading-[20px] text-gray-700 font-medium bg-gray-3 border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]"
                         >
-                          <option value="">Select City</option>
+                          <option value="">Please select your city</option>
                           {cities.map((city) => (
                             <option key={city.name} value={city.name}>
                               {city.name}
@@ -548,7 +617,7 @@ function PersonalInformations({
                         name={"careerLevel"}
                         label
                         options={careerLevelOptions}
-                        defaultOption="Choose any one"
+                        defaultOption="Please select your career level"
                         // value={field.value}
                         required
                       />
@@ -563,7 +632,7 @@ function PersonalInformations({
                         name={"experience"}
                         label
                         options={experienceOptions}
-                        defaultOption="Choose any one"
+                        defaultOption="Please select your level of experience"
                         // value={field.value}
                         required
                       />

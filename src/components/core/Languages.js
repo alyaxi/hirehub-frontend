@@ -47,7 +47,7 @@ function Languages({ data, card, type }) {
                             <Core.ProficienciesActions buttons={['add', 'edit']} />
                         }
                     </div>
-                    <div className='flex justify-start items-end pt-3'>
+                    <div className='flex flex-col justify-start gap-x-3 gap-y-2'>
                         {data?.length ?
                             <>
                                 {data?.map((value, index) => {

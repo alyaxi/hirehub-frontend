@@ -48,7 +48,6 @@ function ScheduleCandidates() {
 
         }
 
-
     }, [reload])
 
     const modifiedDatainterview = interview?.map(item => {

@@ -17,11 +17,9 @@ function Languages({
   savingForm,
 }) {
   const candidate = useSelector((state) => state?.Candidate?.candidate);
-  const languages = candidate?.languagesData;
-  // console.log("lang > languages", languages);
+  const languages = candidate?.languagesData; 
 
   const languageToEdit = languages?.find((language) => language?._id === id);
-  // console.log("lang > languageToEdit", languageToEdit);
 
   // const [data] = useState(
   //   action === "add"
@@ -52,41 +50,71 @@ function Languages({
     title: "",
     proficiency: "",
   });
-  
-  console.log(action, "actionnnnnnnn")
+
+  const [customLanguageError, setCustomLanguageError] = useState("");
+
   const handleSubmit = (values, { resetForm }) => {
-    console.log("handleSubmit called")
+    console.log("handleSubmit called");
+
     let _languagesData = {
-      title: values?.title === "Other" ? values?.customLanguage : values?.title,
+      title:
+        values?.title === "Other (please specify)"
+          ? values?.customLanguage
+          : values?.title,
       proficiency: values?.proficiency,
       isDeleted: languageToEdit?.isDeleted ? languageToEdit?.isDeleted : false,
     };
-
+    console.log("_languagesData.title", _languagesData.title);
     let languageData;
 
-    if (action === "add") {
-      console.log("vv add _languagesData", _languagesData);
-      setCandidateProfileData((prevData) => ({
-        ...prevData,
-        languagesData: _languagesData,
-      }));
+    if (_languagesData.title === undefined) {
+      setCustomLanguageError("Language is Required");
     } else {
-      // console.log("vv else _languagesData", _languagesData)
-      languageData = languages?.map((language) => {
-        if (language._id === id) {
-          return _languagesData;
+      setCustomLanguageError("");
+      const candidateLanguagesData = candidate?.languagesData || [];
+      const titleExists = candidateLanguagesData.some(
+        (language) =>
+          language.title.toLowerCase() === _languagesData.title.toLowerCase()
+      );
+      if (action === "add") {
+
+        if (titleExists) {
+          setCustomLanguageError("This Language is already exists");
+          // console.log('exists in candidate's languagesData array');
         } else {
-          return language;
+          // console.log("vv add _languagesData", _languagesData);
+          // console.log('does not exist in candidate's');
+          setCandidateProfileData((prevData) => ({
+            ...prevData,
+            languagesData: _languagesData,
+          }));
+          setCustomLanguageError("");
         }
-      });
-      console.log("vv else languageData", languageData);
-      setCandidateProfileData({
-        languagesData: languageData,
-      });
+      } else {
+        languageData = languages?.map((language) => {
+          if (language._id === id) {
+            return _languagesData;
+          } else {
+            return language;
+          }
+        });
+
+        if (titleExists) {
+          setCustomLanguageError("This Language is already exists");
+        } else {
+         // console.log("vv else languageData", languageData);
+         setCandidateProfileData({
+          languagesData: languageData,
+        });
+          setCustomLanguageError("");
+        }
+
+      
+      }
+      setTimeout(() => {
+        resetForm();
+      }, 1500);
     }
-    setTimeout(() => {
-      resetForm();
-    }, 1500);
   };
 
   // const multiSelectHandle = (title, setFieldValue) => {
@@ -183,7 +211,7 @@ function Languages({
                           customLabel={"Language"}
                           label
                           options={languagesOptions}
-                          defaultOption="Choose any one"
+                          defaultOption="Please specify the language"
                           required
                           isDisabled={action === "edit"}
                         />
@@ -197,7 +225,7 @@ function Languages({
                   </Field>
 
                   <div className="mt-1">
-                    {values?.title === "Other" && (
+                    {values?.title === "Other (please specify)" && (
                       <Field name="customLanguage">
                         {({ field }) => (
                           <>
@@ -205,16 +233,19 @@ function Languages({
                               {...field}
                               sm
                               name="customLanguage"
-                              // value={values?.customLanguage}
-                              // label
                               required
                               edit
                             />
-                            <ErrorMessage
+                            {/* <ErrorMessage
                               name="customLanguage"
                               component="div"
                               className="text-red-500 error"
-                            />
+                            /> */}
+                            {customLanguageError && (
+                              <span className="text-[red]">
+                                {customLanguageError}
+                              </span>
+                            )}
                           </>
                         )}
                       </Field>
@@ -233,7 +264,7 @@ function Languages({
                       name={"proficiency"}
                       label
                       options={languageProficiencyOptions}
-                      defaultOption="Choose any one"
+                      defaultOption="Please select your proficiency level"
                       required
                     />
                     <ErrorMessage

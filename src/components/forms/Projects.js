@@ -37,7 +37,7 @@ function Projects({
   const endYear = currentYear;
   const yearOptions = [];
 
-  for (let year = startYear; year <= endYear; year++) {
+   for (let year = endYear; year >= startYear; year--) {
     yearOptions.push({ name: year.toString(), value: year.toString() });
   }
 
@@ -340,7 +340,7 @@ function Projects({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Start <span className="text-[red]">*</span>
+                    Start Date <span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[50%]">
@@ -386,7 +386,7 @@ function Projects({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    End <span className="text-[red]">*</span>
+                    End Date<span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[50%]">
@@ -465,6 +465,7 @@ function Projects({
                       {...field}
                       name={"description"}
                       label
+                      required
                       height={"h-[200px]"}
                       style={{ height: "84%" }}
                       value={description}

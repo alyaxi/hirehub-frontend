@@ -18,7 +18,7 @@ function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, card 
                                 </Radio>
                                 <label className="text-gray-1 w-full" htmlFor="public">
                                     <h6 className='text-black-2 text-[16px] leading-[20px] font-semibold'>Public</h6>
-                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will be visible to every registered employer.</p>
+                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will be visible to all employees.</p>
                                 </label>
                             </div>
                             <div className='flex items-start gap-x-1'>
@@ -26,7 +26,7 @@ function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, card 
                                 </Radio>
                                 <label className="text-gray-1 w-full" htmlFor="private">
                                     <h6 className='text-black-2 text-[16px] leading-[20px] font-semibold'>Private</h6>
-                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will not be visible to anyone except you. However, you will be able to attach it when applying for a job.</p>
+                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will remain confidential and visible only to you. However, you can still attach it</p>
                                 </label>
                             </div>
                         </Space>
@@ -44,7 +44,7 @@ function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, card 
                                 </Radio>
                                 <label className="text-gray-1 w-full" htmlFor="public">
                                     <h6 className='text-black-2 text-[16px] leading-[20px] font-semibold'>Public</h6>
-                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will be visible to every registered employer.</p>
+                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will be visible to all employees.</p>
                                 </label>
                             </div>
                             <div className='flex gap-x-2'>
@@ -52,7 +52,7 @@ function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, card 
                                 </Radio>
                                 <label className="text-gray-1 w-full" htmlFor="private">
                                     <h6 className='text-black-2 text-[16px] leading-[20px] font-semibold'>Private</h6>
-                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will not be visible to anyone except you. However, you will be able to attach it when applying for a job.</p>
+                                    <p className='text-black-3 text-[12px] leading-[20px]'>when applying for a job.</p>
                                 </label>
                             </div>
                         </Space>

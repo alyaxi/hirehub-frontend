@@ -151,7 +151,7 @@ function App() {
 
           <Route path="manage-profile" element={<PrivateRoute roles={['candidate']}><ManageProfileCandidate /></PrivateRoute>} />
           <Route path="change-password" element={<PrivateRoute roles={['candidate']}><ChangePassword /></PrivateRoute>} />
-          <Route path="calender" element={<PrivateRoute roles={['candidate']}><CalenderCandidate /></PrivateRoute>} />
+          <Route path="calendar" element={<PrivateRoute roles={['candidate']}><CalenderCandidate /></PrivateRoute>} />
           <Route path="jobs" element={<PrivateRoute roles={['candidate']}><MainJobsCandidate /></PrivateRoute>} />
           <Route path="job-history" element={<PrivateRoute roles={['candidate']}><MainJobHistoryCandidate /></PrivateRoute>} />
           <Route path="alerts" element={<PrivateRoute roles={['candidate']}><MainAlertsCandidate /></PrivateRoute>} />

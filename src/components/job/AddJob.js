@@ -139,21 +139,21 @@ function AddJob() {
     // careerLevel: "",
     // experience: "",
   });
-  console.log("job", job);
-  const handleNext = () => {
-    if (step < 4) {
-      setStep(step + 1);
-    }
-  };
+  // console.log("job", job);
+  // const handleNext = () => {
+  //   if (step < 4) {
+  //     setStep(step + 1);
+  //   }
+  // };
 
-  const handleBack = () => {
-    if (step >= 2) {
-      setStep(step - 1);
-    }
-  };
+  // const handleBack = () => {
+  //   if (step >= 2) {
+  //     setStep(step - 1);
+  //   }
+  // };
 
   const handleFinish = (values) => {
-    console.log("handleFinish called");
+    // console.log("handleFinish called");
     let currentDate = new Date();
     let formattedCurrentDate = convertDateFormat(currentDate);
     const updatedJob = {
@@ -168,7 +168,8 @@ function AddJob() {
       industry: values?.industry,
       jobShift: values?.jobShift,
       department: values?.department,
-      gender: values?.gender,
+      // gender: values?.gender,
+      gender: '',
       minimumEducation: values?.minimumEducation,
       careerLevel: values?.careerLevel,
       experience: values?.experience,
@@ -286,7 +287,7 @@ function AddJob() {
 
   const initialValues = {
     name: "",
-    gender: "",
+    // gender: "",
     expirationDate: "",
     noOfOpenings: "",
     jobType: "",
@@ -363,30 +364,8 @@ function AddJob() {
                     handleExpiryDateChange={handleExpiryDateChange}
                     handleInput={handleInput}
                     values={values}
-                  />
-
-                  {/* <div>
-                  <label>Name:</label>
-                  <Field type="text" name="name" />
-                  <ErrorMessage name="name" component="div" className="error" />
-                </div>
-                <div>
-                  <label>Gender:</label>
-                  <Field as="select" name="gender">
-                    <option value="">Select Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                  </Field>
-                  <ErrorMessage name="gender" component="div" className="error" />
-                </div> */}
-
-                  {/* jobType 
-      expiryDate */}
-
-                  {/* <button type="button" onClick={nextStep}>Next</button> */}
-
-                  <div className="mt-5 flex justify-start items-center gap-x-2">
+                  /> 
+                   <div className="mt-5 flex justify-start items-center gap-x-2">
                     <Core.Button
                       onClick={nextStep}
                       type="narrow"
@@ -442,21 +421,6 @@ function AddJob() {
                     values={values}
                   />
 
-                  {/* <div>
-                    <label>Gender:</label>
-                    <Field as="select" name="gender">
-                      <option value="">Select Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="other">Other</option>
-                    </Field>
-                    <ErrorMessage
-                      name="gender"
-                      component="div"
-                      className="error"
-                    />
-                  </div> */}
-
                   <div className="mt-5 flex justify-start items-center gap-x-2">
                     <Core.Button
                       onClick={prevStep}
@@ -475,7 +439,7 @@ function AddJob() {
                         values?.jobLocation === "" ||
                         values?.minimumEducation === "" ||
                         values?.experience === "" ||
-                        values?.gender === "" ||
+                        // values?.gender === "" ||
                         values?.positionTitle === "" ||
                         values?.jobShift === "" ||
                         values?.careerLevel === ""

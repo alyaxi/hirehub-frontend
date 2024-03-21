@@ -95,7 +95,7 @@ function UserProfile({ data: extractedData, pageType, dropdownOptions, handleNex
                             {/* Candidates Status: */}
                             Candidates Stage:
                         </span>
-                        <span className="absolute right-3 top-8 ">
+                        <span className="absolute right-0 top-8 ">
                             <Core.Dropdown2
                                 selectedState={extractedData?.stage}
                                 setState={setStatus}

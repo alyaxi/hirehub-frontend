@@ -27,7 +27,7 @@ function Form1({
   return (
     <Core.Card className={"p-5"} w840 border>
       <div className="mb-4">
-                <label className={` flex justify-start text-[14px] text-gray-2 tracking-wide  mb-2 font-semibold capitalize`}>
+                <label className={`flex justify-start items-center text-[14px] text-gray-2 tracking-wide mb-2 font-semibold capitalize`}>
                     What type of job is it?<span className='text-[red]'>*</span>
                 </label>
                 {/* <Radio.Group className="w-full" onChange={(e) => handleInput('jobType', e.target.value)} >
@@ -105,7 +105,7 @@ function Form1({
                 name={"noOfOpenings"}
                 label
                 options={noOfPeopleToHireOptions}
-                defaultOption="Choose any one"
+                defaultOption="Please select no of openings"
                 value={values?.noOfOpenings}
                 required
               />

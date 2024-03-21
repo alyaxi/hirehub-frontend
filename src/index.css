@@ -175,7 +175,8 @@ ul.menu-list:before {
 /* Example styles for different elements */
 .responsibilities-container p {
   font-size: 12px;
-  line-height: 24px;
+  /* line-height: 24px; */
+  line-height: 18.5px;
   margin-bottom: 10px;
 }
 
@@ -286,4 +287,8 @@ text-transform: capitalize;
 
 .ant-btn.ant-btn-text.ant-btn-sm.ant-btn-icon-only.ant-upload-list-item-action {
   display: none;
+}
+
+.phone-input input {
+  outline: none;
 }

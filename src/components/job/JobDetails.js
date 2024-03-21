@@ -55,7 +55,7 @@ function JobDetails({
   // console.log("extractedData?.positionTitle", extractedData?.positionTitle)
 
   // const firstLetter = extractedData?.positionTitle ? extractedData?.positionTitle.trim().charAt(0).toUpperCase() : '';
-  // console.log("extractedData", extractedData)
+  console.log("extractedData", extractedData);
 
   const navigate = useNavigate();
   const handleCancel = () => {
@@ -95,7 +95,7 @@ function JobDetails({
               <span className="text-gray-6 text-[16px] leading-[20px] capitalize font-semibold pl-1 py-1">
                 Job Status:
               </span>
-              <span className="absolute right-3 top-8 ">
+              <span className="absolute right-0 top-8 ">
                 <Core.Dropdown2
                   selectedState={extractedData?.jobStatus}
                   setState={setStatus}
@@ -244,7 +244,7 @@ function JobDetails({
         {/* position */}
         <div className="pb-4">
           <h6 className="text-[14px] leading-[24px] font-semibold">
-            The Position
+            Position Details
           </h6>
           <p className="text-gray-6 text-[12px] leading-[18.5px]">
             {extractedData?.aboutPosition || "-"}
@@ -285,30 +285,33 @@ function JobDetails({
           ></div>
         </div>
 
-        {/* Short Summery */}
+        {/* Short Summery / Brief Overview */}
         <div className="pb-4">
           <h6 className="text-[16px] leading-[22px] font-semibold">
-            Short Summery
+            Brief Overview
           </h6>
           <div className="flex justify-between gap-x-6 pt-4">
             <div className="flex justify-start flex-col w-full">
               {extractedData?.shortSummery?.slice(0, 7).map((value, index) => {
-                return (
-                  <div
-                    key={value?.title + value?.value + index}
-                    className="w-full text-black-2"
-                  >
-                    <div className="flex justify-between">
-                      <h6 className="text-[13px] capitalize font-semibold">
-                        {value?.title}:
-                      </h6>
-                      <span className="text-[13px] w-[50%]">
-                        {value?.value || "-"}
-                      </span>
+                if (value?.title !== "gender") {
+                  return (
+                    <div
+                      key={value?.title + value?.value + index}
+                      className="w-full text-black-2"
+                    >
+                      <div className="flex justify-between">
+                        <h6 className="text-[13px] capitalize font-semibold">
+                          {value?.title}:
+                        </h6>
+                        <span className="text-[13px] w-[50%]">
+                          {value?.value || "-"}
+                        </span>
+                      </div>
+                      <span className="block w-full border-gray-7 border-t-[1px] my-2.5"></span>
                     </div>
-                    <span className="block w-full border-gray-7 border-t-[1px] my-2.5"></span>
-                  </div>
-                );
+                  );
+                }
+                return null;
               })}
             </div>
             <div className="flex justify-start flex-col w-full">
