@@ -268,7 +268,7 @@ function Form3({
         <label
           className={` flex justify-start text-[14px] text-gray-2 tracking-wide  mb-2 font-semibold capitalize`}
         >
-          Gender:<span className='text-[red]'>*</span>
+          Gender: <span className='text-[red]'>*</span>
         </label> 
 
         <Field name="gender">

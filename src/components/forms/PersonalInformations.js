@@ -411,7 +411,7 @@ function PersonalInformations({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Date of Birth <span className='text-[red]'>*</span>
+                    Date of Birth: <span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[33%]">
@@ -453,7 +453,7 @@ function PersonalInformations({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Gender <span className='text-[red]'>*</span>
+                    Gender: <span className='text-[red]'>*</span>
                   </label>
                   <Field name="gender">
                     {({ field }) => (
@@ -483,7 +483,7 @@ function PersonalInformations({
               <label
                 className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
               >
-                Country <span className='text-[red]'>*</span>
+                Country: <span className='text-[red]'>*</span>
               </label>
 
               <>
@@ -523,7 +523,7 @@ function PersonalInformations({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    State
+                    State:
                   </label>
                   <>
                     <Field name="selectedState">
@@ -559,7 +559,7 @@ function PersonalInformations({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    City
+                    City:
                   </label>
                   <>
                     <Field name="selectedCity">

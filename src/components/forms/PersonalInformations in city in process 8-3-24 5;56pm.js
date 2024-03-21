@@ -290,7 +290,7 @@ return (
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Date of Birth <span className='text-[red]'>*</span>
+                    Date of Birth: <span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[33%]">
@@ -332,7 +332,7 @@ return (
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Gender <span className='text-[red]'>*</span>
+                    Gender: <span className='text-[red]'>*</span>
                   </label>
                   <Field name="gender">
                     {({ field }) => (
@@ -378,7 +378,7 @@ return (
                     <label
                         className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                     >
-                        Country <span className='text-[red]'>*</span>
+                        Country: <span className='text-[red]'>*</span>
                     </label> 
 
 
@@ -524,7 +524,7 @@ return (
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    State
+                    State:
                   </label>
                   <select
                     name="state"
@@ -546,7 +546,7 @@ return (
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    City
+                    City:
                   </label>
                   <select
                     name="city"

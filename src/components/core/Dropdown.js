@@ -47,7 +47,9 @@ export default function Dropdown() {
                         <img className="inline-block h-[32px] w-[32px] rounded-full" src={avatar} alt="Image Description" />
                         <span className="absolute bottom-0 end-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white bg-green-1"></span>
                     </div> */}
-                    <Badge dot><Avatar src={viewprofile?.logo || profilePicture}>{firstLetter}</Avatar></Badge>
+                    <Badge
+                    //  dot
+                    ><Avatar src={viewprofile?.logo || profilePicture}>{firstLetter}</Avatar></Badge>
                     <div className='flex flex-col items-start'>
                         <span className='text-black-1 text-[14px] leading-[20px] capitalize font-medium'>{user?.name}</span>
                         {user?.Role !== "candidate" &&

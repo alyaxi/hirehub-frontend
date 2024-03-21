@@ -62,7 +62,7 @@ function TextAreaWithLabel({
                     } font-semibold capitalize
                     `}
           >
-            {_label(name)}
+            {_label(name)}:
             {required && <span className='text-[red]'>*</span>}
           </label>
         )}

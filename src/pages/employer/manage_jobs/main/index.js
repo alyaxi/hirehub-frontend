@@ -17,7 +17,7 @@ const columns = [
             return a.positionTitle.localeCompare(b.positionTitle);
         },
     }, {
-        title: 'Applicant Counts',
+        title: 'Applicant Count',
         key: 'applicationCount',
         dataIndex: 'applicationCount',
     }, {
