@@ -26,7 +26,7 @@ function ResumePrivacySetting({ resumePrivacySetting, handlePrivacyChange, card 
                                 </Radio>
                                 <label className="text-gray-1 w-full" htmlFor="private">
                                     <h6 className='text-black-2 text-[16px] leading-[20px] font-semibold'>Private</h6>
-                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will remain confidential and visible only to you. However, you can still attach it</p>
+                                    <p className='text-black-3 text-[12px] leading-[20px]'>Your resume will remain confidential and visible only to you. However, you can still attach it when applying for a job.</p>
                                 </label>
                             </div>
                         </Space>
