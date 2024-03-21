@@ -143,6 +143,36 @@ function PersonalInformations({
     setCountries(allCountries);
   }, []);
 
+
+  // for pre populate state and city start
+  
+  useEffect(() => {
+    const allCountries = Country.getAllCountries();
+    setCountries(allCountries);
+    setSelectedCountry(personalInformationDataSavedOnDb?.country || "");
+  }, []);
+  
+  useEffect(() => {
+    if (selectedCountry) {
+      const countryStates = State.getStatesOfCountry(selectedCountry);
+      setStates(countryStates);
+    } else {
+      setStates([]);
+    }
+  }, [selectedCountry]);
+  
+  useEffect(() => {
+    if (selectedState) {
+      const stateCities = City.getCitiesOfState(selectedCountry, selectedState);
+      setCities(stateCities);
+    } else {
+      setCities([]);
+    }
+  }, [selectedState]);
+
+  // for pre populate state and city end
+  
+
   const handleCountryChange = (event, setFieldValue) => {
     const countryValue = event.target.value;
     setSelectedCountry(countryValue);
@@ -229,14 +259,14 @@ function PersonalInformations({
 
   // const phoneNumber = value && parsePhoneNumber(value)
   // console.log("phoneNumber33", phoneNumber);
-  console.log("value", value);
+  // console.log("value", value);
   // console.log("!profilePicture?.length", !profilePicture?.length);
   // console.log("selectedDay", selectedDay);
   // console.log("selectedMonth", selectedMonth);
   // console.log("selectedYear", selectedYear);
-  // console.log("selectedCountry", selectedCountry);
-  // console.log("selectedState", selectedState);
-  // console.log("selectedCity", selectedCity);
+  console.log("selectedCountry", selectedCountry);
+  console.log("selectedState", selectedState);
+  console.log("selectedCity", selectedCity);
 
   return (
     <Formik
@@ -318,7 +348,7 @@ function PersonalInformations({
                 <label
                   className={`flex justify-start text-[14px] font-medium text-gray-2 tracking-wide mb-1 font-semibold capitalize`}
                 >
-                  Phone Number: <span className="text-[red]">*</span>
+                  Phone Number: <span className='text-[red]'>*</span>
                   <span className="mt-[2px] ml-[3px]">
                     <Icon name={"Lock1"} />
                   </span>
@@ -380,7 +410,7 @@ function PersonalInformations({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Date of Birth <span className="text-[red]">*</span>
+                    Date of Birth <span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[33%]">
@@ -422,7 +452,7 @@ function PersonalInformations({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Gender <span className="text-[red]">*</span>
+                    Gender <span className='text-[red]'>*</span>
                   </label>
                   <Field name="gender">
                     {({ field }) => (
@@ -452,7 +482,7 @@ function PersonalInformations({
               <label
                 className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
               >
-                Country <span className="text-[red]">*</span>
+                Country <span className='text-[red]'>*</span>
               </label>
 
               <>

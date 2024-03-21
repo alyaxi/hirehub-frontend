@@ -102,7 +102,7 @@ function JobPosts() {
     sortedArray = [];
   }
 
-//   console.log("sortedArray", sortedArray);
+  console.log("sortedArray", sortedArray);
 
   const [open, setOpen] = useState(false);
 
@@ -468,7 +468,7 @@ function JobPosts() {
                         {job?.employer?.title}
                       </a>
                       <p className="text-gray-6 text-[12px] leading-[20px]">
-                        <span>{job?.employer?.jobMode}Remote,&nbsp;&nbsp;</span>
+                        <span>{job?.jobType},&nbsp;&nbsp;</span>
                         {job?.employer?.address}
                       </p>
                     </div>

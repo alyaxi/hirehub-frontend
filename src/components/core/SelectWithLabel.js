@@ -99,7 +99,7 @@ function SelectWithLabel({
                 } font-semibold capitalize`}
         >
           {customLabel ? customLabel : _label(name)}:{" "}
-          {required && <span className="text-[red]">*</span>}
+          {required && <span className='text-[red]'>*</span>}
         </label>
       )}
       {helperText && (

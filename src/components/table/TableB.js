@@ -448,7 +448,7 @@ function TableB({
                     return (
                       <Core.InputWithLabel
                         key={resetTrigger2 ? "reset" + value : "normal" + value}
-                        name={"calender"}
+                        name={"calendar"}
                         setValue={setAppliedDate}
                         onChange={onDateChange}
                         sm
@@ -459,7 +459,7 @@ function TableB({
                     return (
                       <Core.InputWithLabel
                         key={resetTrigger3 ? "reset" + value : "normal" + value}
-                        name={"calender"}
+                        name={"calendar"}
                         setValue={setExpirationDate}
                         onChange={onDateChange}
                         sm

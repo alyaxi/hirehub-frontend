@@ -70,7 +70,7 @@ function InputWithLabel({
         return "Full Name";
       case "lastName":
         return "Last Name";
-      case "calender":
+      case "calendar":
         return "DOB";
       case "ssn":
         return "SSN";
@@ -251,7 +251,7 @@ function InputWithLabel({
       case "confirmPassword":
       case "oldPassword":
         return "password";
-      case "calender":
+      case "calendar":
       case "expiryDate":
       case "expirationDate":
       case "scheduledDate":
@@ -283,7 +283,7 @@ function InputWithLabel({
                     } font-semibold capitalize
                     `}
           >
-            {_label(name)}: {required && <span className="text-[red]">*</span>}
+            {_label(name)}: {required && <span className='text-[red]'>*</span>}
             <span className="mt-[2px] ml-[3px]">
               {" "}
               {icon && <Icon name={icon} />}
@@ -337,7 +337,7 @@ function InputWithLabel({
                             ? "bg-gray-3 cursor-not-allowed"
                             : "bg-white"
                         } border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${
-            sm ? (name === "calender" ? "py-[8px]" : "py-[9px]") : "py-[14px]"
+            sm ? (name === "calendar" ? "py-[8px]" : "py-[9px]") : "py-[14px]"
           } ${className} ${
             (name === "SearchProduct" ||
               name === "SearchByEmailProcess" ||

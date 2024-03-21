@@ -264,23 +264,12 @@ function Form3({
                 />
             </div> */}
 
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label
           className={` flex justify-start text-[14px] text-gray-2 tracking-wide  mb-2 font-semibold capitalize`}
         >
-          Gender:<span className="text-[red]">*</span>
-        </label>
-
-        {/* <Radio.Group
-          className="w-full"
-          onChange={(e) => handleInput("gender", e.target.value)}
-        >
-          <div className="flex flex-wrap gap-y-3 w-full max-w-[570px]">
-            <Radio value={"Male"}>Male</Radio>
-            <Radio value={"Female"}>Female</Radio>
-            <Radio value={"No Preference"}>No Preference</Radio>
-          </div>
-        </Radio.Group> */}
+          Gender:<span className='text-[red]'>*</span>
+        </label> 
 
         <Field name="gender">
           {({ field }) => (
@@ -300,7 +289,7 @@ function Form3({
             </>
           )}
         </Field>
-      </div>
+      </div> */}
     </Core.Card>
   );
 }

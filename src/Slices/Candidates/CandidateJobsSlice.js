@@ -85,7 +85,9 @@ const CandidateJobsSlice = createSlice({
     //   _id;
 
       const modifiedJobs = payload?.data?.jobs.map((job) => {
-          console.log(job, "jobssssssssss")
+        //   console.log(job, "jobssssssssss")
+          console.log(  "job.employer",job.employer)
+          console.log(  "job",job)
           return {
               _id: job._id,
 
@@ -95,8 +97,13 @@ const CandidateJobsSlice = createSlice({
                 benefits:job.benefits,
                 careerLevel:job.careerLevel,
                 department:job.department,
-                employer:job.employer,
                 employerId:job.employerId,
+                // employer:job.employer,
+                employer: {
+                    title: job.employer[0].companyName,
+                    address: job.jobLocation,
+                    logo: job?.employer[0]?.logo
+                },
                 experience:job.experience,
                 expirationDate:job.expirationDate,
                 gender:job.gender,

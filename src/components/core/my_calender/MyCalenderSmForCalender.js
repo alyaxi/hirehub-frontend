@@ -46,6 +46,7 @@ function MyCalenderSmForCalender({ selectedDate, setSelectedDate, events }) {
         onChange={handleDateChange}
         value={selectedDate}
         tileContent={tileContent}
+        calendarType="US"
       />
     </div>
   );
