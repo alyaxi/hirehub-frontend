@@ -55,7 +55,7 @@ function JobPreference({
       setFieldValue("desiredJobTitle", selectedItems);
     }
     if (type === "willingToLocations") {
-      console.log("yes willingToLocations");
+      // console.log("yes willingToLocations");
       // console.log("uuu values?.relocation?.onlyNearMe?.locations", values?.relocation?.onlyNearMe?.locations)
       // console.log("uuu length", values?.relocation?.onlyNearMe?.locations?.length)
       // if (values?.relocation?.onlyNearMe?.locations?.length <= 3) {
@@ -243,7 +243,7 @@ function JobPreference({
               htmlFor={"Relocation"}
               className={` block text-[14px] text-gray-2 tracking-wide mb-2 font-semibold capitalize`}
             >
-              Relocation
+              Relocation:
             </label>
 
             <div className="flex justify-between items-center pt-1 mb-2">

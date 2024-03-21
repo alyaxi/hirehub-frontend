@@ -28,7 +28,7 @@ function Form1({
     <Core.Card className={"p-5"} w840 border>
       <div className="mb-4">
                 <label className={`flex justify-start items-center text-[14px] text-gray-2 tracking-wide mb-2 font-semibold capitaliz e`}>
-                    What type of job is it?<span className='text-[red]'>*</span>
+                    What type of job is it? <span className='text-[red]'>*</span>
                 </label>
                 {/* <Radio.Group className="w-full" onChange={(e) => handleInput('jobType', e.target.value)} >
                     <div className="flex flex-wrap gap-y-3 w-full max-w-[570px]">

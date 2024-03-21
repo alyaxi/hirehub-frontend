@@ -338,7 +338,7 @@ function Projects({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    Start Date <span className='text-[red]'>*</span>
+                    Start Date: <span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[50%]">
@@ -384,7 +384,7 @@ function Projects({
                   <label
                     className={`block text-[14px] text-gray-2 tracking-wide mb-2' font-semibold capitalize`}
                   >
-                    End Date<span className='text-[red]'>*</span>
+                    End Date: <span className='text-[red]'>*</span>
                   </label>
                   <div className="flex gap-x-2">
                     <div className="w-[50%]">

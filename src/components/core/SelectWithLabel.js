@@ -29,7 +29,7 @@ function SelectWithLabel({
       case "careerLevel":
         return "Career Level";
       case "industry":
-        return "Industry";
+        return "Desired Industry";
       case "directlyManageTeam":
         return "Did you directly manage a team?";
       case "noOfPeople":
