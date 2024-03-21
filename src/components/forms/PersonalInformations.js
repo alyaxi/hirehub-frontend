@@ -10,7 +10,7 @@ import countryCodesOptions from "../../data/countryCodes.json";
 
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
-import { parsePhoneNumber } from "react-phone-number-input";
+// import { parsePhoneNumber } from "react-phone-number-input";
 
 const {
   expectedSalaryOptions,
@@ -367,6 +367,7 @@ function PersonalInformations({
                     onChange={(value) => form.setFieldValue("phoneNo", value)}
                     className={`phone-input w-full text-[14px] font-regular leading-[20px] text-gray-6  bg-gray-3 bg-white  border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[9px] `}
                   />
+                 
                 )}
               </Field>
             </div>
