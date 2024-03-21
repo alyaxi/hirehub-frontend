@@ -122,7 +122,7 @@ function Education({ data, type, card }) {
                       className="flex justify-between gap-x-3"
                     >
                       <div className="flex justify-center items-center min-w-[58px] h-[58px] bg-gray-7 rounded-[10px] overflow-hidden">
-                        {/* <Avatar shape="square" size={60} src={value?.logo}>!</Avatar> */}
+                      
                         <Icon name="Education" size={150} />
                       </div>
                       <div className="w-full">
