@@ -169,6 +169,7 @@ function AddJob() {
       jobShift: values?.jobShift,
       department: values?.department,
       // gender: values?.gender,
+      gender: '',
       minimumEducation: values?.minimumEducation,
       careerLevel: values?.careerLevel,
       experience: values?.experience,

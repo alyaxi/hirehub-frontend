@@ -55,7 +55,7 @@ function JobDetails({
   // console.log("extractedData?.positionTitle", extractedData?.positionTitle)
 
   // const firstLetter = extractedData?.positionTitle ? extractedData?.positionTitle.trim().charAt(0).toUpperCase() : '';
-  // console.log("extractedData", extractedData)
+  console.log("extractedData", extractedData);
 
   const navigate = useNavigate();
   const handleCancel = () => {
@@ -293,22 +293,25 @@ function JobDetails({
           <div className="flex justify-between gap-x-6 pt-4">
             <div className="flex justify-start flex-col w-full">
               {extractedData?.shortSummery?.slice(0, 7).map((value, index) => {
-                return (
-                  <div
-                    key={value?.title + value?.value + index}
-                    className="w-full text-black-2"
-                  >
-                    <div className="flex justify-between">
-                      <h6 className="text-[13px] capitalize font-semibold">
-                        {value?.title}:
-                      </h6>
-                      <span className="text-[13px] w-[50%]">
-                        {value?.value || "-"}
-                      </span>
+                if (value?.title !== "gender") {
+                  return (
+                    <div
+                      key={value?.title + value?.value + index}
+                      className="w-full text-black-2"
+                    >
+                      <div className="flex justify-between">
+                        <h6 className="text-[13px] capitalize font-semibold">
+                          {value?.title}:
+                        </h6>
+                        <span className="text-[13px] w-[50%]">
+                          {value?.value || "-"}
+                        </span>
+                      </div>
+                      <span className="block w-full border-gray-7 border-t-[1px] my-2.5"></span>
                     </div>
-                    <span className="block w-full border-gray-7 border-t-[1px] my-2.5"></span>
-                  </div>
-                );
+                  );
+                }
+                return null;
               })}
             </div>
             <div className="flex justify-start flex-col w-full">

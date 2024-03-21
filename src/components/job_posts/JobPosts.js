@@ -239,7 +239,7 @@ function JobPosts() {
   console.log(selectedJob, "selectedJobId");
 
   const openJob = (id) => {
-    console.log("====== id", id)
+    // console.log("====== id", id)
     const _selectedJob = sortedArray.find((job) => job._id === id);
     setSelectedJob(_selectedJob);
     setSelectedJobId(id);
@@ -437,9 +437,6 @@ function JobPosts() {
       <div className="flex justify-between gap-x-6 w-full pt-5">
         <div className="flex flex-col gap-y-3 w-full pb-[50px]">
           {sortedArray?.map((job, index) => {
-            console.log("===== selectedJobId", selectedJobId)
-            console.log("===== job", job)
-            console.log("===== job._id", job._id)
             return (
               <Core.Card
                 key={job.positionTitle + index}
