@@ -166,9 +166,9 @@
 
   .calender-sm.for-big-calender .react-calendar__month-view__weekdays div abbr {
       overflow: hidden;
-      /* max-width: 15px;
-      letter-spacing: 10px; */
-      text-transform: lowercase;
+      max-width: 15px;
+      letter-spacing: 10px;
+      text-transform: uppercase;
   }
 
   .calender-sm .react-calendar__month-view__weekdays {

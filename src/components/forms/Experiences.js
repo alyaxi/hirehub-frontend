@@ -434,8 +434,11 @@ function Experiences({
                       label
                       options={salaryOptions}
                       defaultOption="Please select your annual salary range"
+                      // helperText={
+                      //   "Note: All figures in this form are denoted in US dollars and represent annual salary ranges."
+                      // }
                       helperText={
-                        "Note: All figures in this form are denoted in US dollars and represent annual salary ranges."
+                        "Note: Please provide values in US Dollars ($) and signify annual salary ranges"
                       }
                       required
                     />

@@ -213,8 +213,11 @@ function JobPreference({
                     options={desiredSalaryOptions}
                     defaultOption="Please select your preferred annual salary range"
                     value={field.value}
+                    // helperText={
+                    //   "Note: All figures in this form are denoted in US dollars and represent annual salary ranges."
+                    // }
                     helperText={
-                      "Note: All figures in this form are denoted in US dollars and represent annual salary ranges."
+                      "Note: Please be advised that all values provided are in US Dollars ($) and signify annual salary ranges"
                     }
                   />
                 )}

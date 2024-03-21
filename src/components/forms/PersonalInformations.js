@@ -264,9 +264,9 @@ function PersonalInformations({
   // console.log("selectedDay", selectedDay);
   // console.log("selectedMonth", selectedMonth);
   // console.log("selectedYear", selectedYear);
-  console.log("selectedCountry", selectedCountry);
-  console.log("selectedState", selectedState);
-  console.log("selectedCity", selectedCity);
+  // console.log("selectedCountry", selectedCountry);
+  // console.log("selectedState", selectedState);
+  // console.log("selectedCity", selectedCity);
 
   return (
     <Formik
@@ -332,7 +332,7 @@ function PersonalInformations({
                     label
                     bgGray
                     helperText={
-                      "Only provided to employers you apply or respond to"
+                      "Only visible to employers you apply or respond to"
                     }
                     icon="Lock1"
                     edit
@@ -356,7 +356,7 @@ function PersonalInformations({
               </div>
               <div className={`relative w-ful l `}>
                 <p className="text-gray-12 text-[14px] leading-[16px] mb-1.5 ">
-                  Only provided to employers you apply or respond to
+                  Only visible to employers you apply or respond to
                 </p>
               </div>
               <Field name="phoneNo">
@@ -381,7 +381,7 @@ function PersonalInformations({
                     label
                     bgGray
                     helperText={
-                      "Only provided to employers you apply or respond to"
+                      "Only visible to employers you apply or respond to"
                     }
                     icon="Lock1"
                     edit
