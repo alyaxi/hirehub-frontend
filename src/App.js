@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   AdminDashboard,
+  AdminEditManageProfile,
   ChangePassword,
   LoginPage,
   ForgotPasswordPage,
@@ -79,6 +80,7 @@ function App() {
         <Route path="admin/*" element={<PrivateRoute roles={['admin']}><AdminLayout /></PrivateRoute>} >
 
           <Route path="dashboard" element={<PrivateRoute roles={['admin']}><AdminDashboard /></PrivateRoute>} />
+          <Route path="manage-profile" element={<PrivateRoute roles={['admin']}><AdminEditManageProfile /></PrivateRoute>} />
           <Route path="change-password" element={<PrivateRoute roles={['admin']}><ChangePassword /></PrivateRoute>} />
 
           <Route path="manage-employers" element={<PrivateRoute roles={['admin']}><ManageEmployers /></PrivateRoute>} />

@@ -6,6 +6,7 @@ import LoginPage from "./auth/login";
 import RegisterPage from "./auth/register";
 // ------------ Admin ------------
 import AdminDashboard from "./admin/dashboard";
+import AdminEditManageProfile from "./admin/manage_profile/edit";
 import ChangePassword from "./admin/change_password";
 
 import ApprovedEmployers from "./admin/approved_employers/main";
@@ -84,6 +85,7 @@ export {
     LoginPage,
     // ------------ Admin ------------
     AdminDashboard,
+    AdminEditManageProfile,
     ChangePassword,
 
     ManageEmployers,

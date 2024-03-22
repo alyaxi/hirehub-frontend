@@ -21,7 +21,14 @@ function Form2({ handleSalaryChange, job }) {
   };
 
   const handleSalary = (value) => {
-    setSalary(value);
+    const containsAlphabet = /[a-zA-Z]/.test(value); // Check if string contains alphabetic characters
+    const containsSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(
+      value
+    );
+    if (!containsAlphabet && !containsSpecialChar) {
+      // console.log("Value is valid.");
+      setSalary(value);
+    }
   };
 
   useEffect(() => {

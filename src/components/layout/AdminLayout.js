@@ -11,6 +11,11 @@ const menu = [
     },
     {
         icon: <Icon name="User" />,
+        path: "manage-profile",
+        name: "Manage Profile",
+    },
+    {
+        icon: <Icon name="User" />,
         path: "manage-employers",
         name: "Manage Employers",
     },
