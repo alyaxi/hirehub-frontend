@@ -45,7 +45,7 @@ function Button({ children, onClick, submit, type, color, icon, className, sm, x
 
                 ${isDisabled && "opacity-50"}
 
-                ${isDisabled === true ? "opacity-50 cursor-not-allowed" : "opacity-100"}
+                ${isDisabled === true ? "opacity-50 cursor-no-drop" : "opacity-100"}
              `}
             // type={submit === "submit"}
             type={submit ? "submit" : "button"}

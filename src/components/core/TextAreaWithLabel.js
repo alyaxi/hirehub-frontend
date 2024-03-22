@@ -78,7 +78,7 @@ function TextAreaWithLabel({
           disabled={disabled}
           className={`
                     w-full text-[14px] font-regular leading-[20px] text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 px-3 py-[10px]
-                    ${disabled === true && "bg-gray-3 cursor-not-allowed"} 
+                    ${disabled === true && "bg-gray-3 cursor-no-drop"} 
                     `}
           rows={rows ? rows : 7}
           cols={5}

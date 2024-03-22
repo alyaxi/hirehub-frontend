@@ -304,6 +304,7 @@ function PersonalInformations({
                 )}
               </Field>
             </div>
+            
             <div className="mb-4">
               <Field name="lastName">
                 {({ field }) => (

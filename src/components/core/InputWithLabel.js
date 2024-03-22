@@ -51,7 +51,7 @@ function InputWithLabel({
         return "Confirm Password";
       case "oldPassword":
         return "Old Password";
-      case "username":
+      case "userName":
         return "Username";
       case "companyName":
         return "Company Name";
@@ -283,7 +283,7 @@ function InputWithLabel({
                     } font-semibold capitalize
                     `}
           >
-            {_label(name)}: {required && <span className='text-[red]'>*</span>}
+            {_label(name)}: {required && <span className="text-[red]">*</span>}
             <span className="mt-[2px] ml-[3px]">
               {" "}
               {icon && <Icon name={icon} />}
@@ -330,15 +330,20 @@ function InputWithLabel({
               : type(name)
           }
           className={`
-                        w-full text-[14px] font-regular leading-[20px] text-gray-6 ${
-                          bgGray
-                            ? "bg-gray-3"
-                            : disabled === true
-                            ? "bg-gray-3 cursor-not-allowed"
-                            : "bg-white"
-                        } border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${
-            sm ? (name === "calendar" ? "py-[8px]" : "py-[9px]") : "py-[14px]"
-          } ${className} ${
+                        w-full text-[14px] font-regular leading-[20px] text-gray-6 
+                        ${bgGray && "bg-gray-3"}
+                          ${
+                            disabled === true
+                              ? "bg-gray-3 cursor-no-drop"
+                              : "bg-white"
+                          }
+                          border border-gray-11 rounded-lg focus:outline-none focus:border-blue-500 px-3 ${
+                            sm
+                              ? name === "calendar"
+                                ? "py-[8px]"
+                                : "py-[9px]"
+                              : "py-[14px]"
+                          } ${className} ${
             (name === "SearchProduct" ||
               name === "SearchByEmailProcess" ||
               (name === "SearchByJobTitle" && iconic) ||
