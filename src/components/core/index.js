@@ -11,12 +11,13 @@ import Education from "./Education";
 import InputWithLabel from "./InputWithLabel";
 import Languages from "./Languages";
 import MyCalender from "./my_calender/MyCalender";
-import MyCalenderSm from "./my_calender/MyCalenderSm"
-import MyCalenderSmForCalender from "./my_calender/MyCalenderSmForCalender"
+import MyCalenderSm from "./my_calender/MyCalenderSm";
+import MyCalenderSmForCalender from "./my_calender/MyCalenderSmForCalender";
 import MyTimePicker from "./time_picker/MyTimePicker";
 import OptionsDropdown from "./OptionsDropdown";
 import Preferences from "./Preferences";
 import PopupModal from "./PopupModal";
+import PopupModalJob from "./PopupModalJob";
 import PopupModalCalender from "./PopupModalCalender";
 import ProficienciesActions from "./ProficienciesActions";
 import Projects from "./Projects";
@@ -36,39 +37,41 @@ import ViewProfile from "./ViewProfile";
 import VideoPlayer from "./VideoPlayer";
 
 export {
-    Badge,
-    Button,
-    Breadcrumb,
-    Card,
-    CompanyProfile,
-    Dropdown,
-    Dropdown2,
-    DragTag,
-    Experience,
-    Education,
-    InputWithLabel,
-    Languages,
-    MyCalender,
-    MyCalenderSm, MyCalenderSmForCalender,
-    MyTimePicker,
-    OptionsDropdown,
-    Preferences,
-    PopupModal,
-    PopupModalCalender,
-    ProficienciesActions,
-    Projects,
-    PersonalInformation,
-    ProjectCard,
-    ResumePrivacySetting,
-    SelectWithLabel,
-    StatsGroup,
-    SearchInput,
-    Summary,
-    Skills,
-    TextAreaWithLabel,
-    TextEditorWithLabel,
-    UploadFile,
-    UploadAvatar,
-    ViewProfile,
-    VideoPlayer,
-}
+  Badge,
+  Button,
+  Breadcrumb,
+  Card,
+  CompanyProfile,
+  Dropdown,
+  Dropdown2,
+  DragTag,
+  Experience,
+  Education,
+  InputWithLabel,
+  Languages,
+  MyCalender,
+  MyCalenderSm,
+  MyCalenderSmForCalender,
+  MyTimePicker,
+  OptionsDropdown,
+  Preferences,
+  PopupModal,
+  PopupModalJob,
+  PopupModalCalender,
+  ProficienciesActions,
+  Projects,
+  PersonalInformation,
+  ProjectCard,
+  ResumePrivacySetting,
+  SelectWithLabel,
+  StatsGroup,
+  SearchInput,
+  Summary,
+  Skills,
+  TextAreaWithLabel,
+  TextEditorWithLabel,
+  UploadFile,
+  UploadAvatar,
+  ViewProfile,
+  VideoPlayer,
+};

@@ -29,15 +29,16 @@ function JobDetails({
     }
   }, [extractedData]);
 
-  console.log("extractedData", extractedData);
-  console.log("viewprofile", viewprofile);
+  // console.log("extractedData", extractedData);
+  // console.log("viewprofile", viewprofile);
 
   // console.log("starttttt useeffect after", status);
 
   const [eligibilityStatus, setEligibilityStatus] = useState(
     extractedData?.eligibility === "Yes" ? "checked" : "unchecked"
   );
-  console.log("eligibilityStatus", eligibilityStatus);
+  // console.log("eligibilityStatus", eligibilityStatus);
+
   useEffect(() => {
     // Update eligibilityStatus state whenever extractedData changes
     setEligibilityStatus(
@@ -55,7 +56,7 @@ function JobDetails({
   // console.log("extractedData?.positionTitle", extractedData?.positionTitle)
 
   // const firstLetter = extractedData?.positionTitle ? extractedData?.positionTitle.trim().charAt(0).toUpperCase() : '';
-  console.log("extractedData", extractedData);
+  // console.log("extractedData", extractedData);
 
   const navigate = useNavigate();
   const handleCancel = () => {
@@ -171,7 +172,7 @@ function JobDetails({
 
               {pageType === "quickView" && (
                 <div className="flex justify-start gap-x-2 py-2">
-                  <Core.Button xs onClick={onApply}>
+                  <Core.Button xs onClick={() => onApply(extractedData?._id)}>
                     Apply
                   </Core.Button>
                   <Core.Button xs color="white">

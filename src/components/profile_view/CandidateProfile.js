@@ -63,7 +63,7 @@ function CandidateProfile() {
 
         }
 
-    }, [reload])
+    }, [reload,dispatch])
 
     let profileCompletion = 0;
 

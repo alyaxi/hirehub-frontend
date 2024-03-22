@@ -3,7 +3,16 @@ import { Core, JobDetails } from "..";
 import dropdownOptions from "../../data/dropdownOptions.json";
 import Icon from "../icon";
 import { DownOutlined } from "@ant-design/icons";
-import { Dropdown, Space, Divider, Button, theme, Modal } from "antd";
+import {
+  Dropdown,
+  Space,
+  Divider,
+  Button,
+  theme,
+  Modal,
+  Form,
+  Spin,
+} from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
   applyforJob,
@@ -11,6 +20,7 @@ import {
 } from "../../Slices/Candidates/CandidateJobsSlice";
 import notificationService from "../../utilis/notification";
 import { ToastContainer } from "react-toastify";
+import { ErrorMessage, Field, Formik } from "formik";
 
 // const jobPosts = [
 //     {
@@ -87,22 +97,22 @@ function JobPosts() {
   const jobPosts = useSelector((state) => state?.candidateJobs?.allJobs);
   const reload = useSelector((state) => state?.candidateJobs?.reload);
 
-  console.log("jobPosts", jobPosts);
+  // console.log("jobPosts", jobPosts);
 
-  let sortedArray=[]
+  let sortedArray = [];
 
   if (Array.isArray(jobPosts)) {
-  sortedArray = Array.isArray(jobPosts)
-    ? [...jobPosts]?.sort((a, b) =>
-        b?.postedDate?.localeCompare(a?.postedDate)
-      )
-    : [];
+    sortedArray = Array.isArray(jobPosts)
+      ? [...jobPosts]?.sort((a, b) =>
+          b?.postedDate?.localeCompare(a?.postedDate)
+        )
+      : [];
   } else {
     // console.error('jobPosts is not an array.');
     sortedArray = [];
   }
 
-  console.log("sortedArray", sortedArray);
+  // console.log("sortedArray", sortedArray);
 
   const [open, setOpen] = useState(false);
 
@@ -236,7 +246,18 @@ function JobPosts() {
   const [selectedJob, setSelectedJob] = useState("");
   const [selectedJobId, setSelectedJobId] = useState("");
 
-  console.log(selectedJob, "selectedJobId");
+  const [savingForm, setSavingForm] = useState(false);
+
+  const [data] = useState({
+    whyApply: "",
+    availability: "",
+    whyForUs: "",
+    threeQualities: "",
+    notify: false,
+    quickApply: false,
+  });
+
+  console.log('selectedJobId jobpost',selectedJobId);
 
   const openJob = (id) => {
     // console.log("====== id", id)
@@ -252,6 +273,7 @@ function JobPosts() {
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -264,54 +286,222 @@ function JobPosts() {
     setIsModalOpen(false);
   };
 
-  const onApply = () => {
+  const onApply = (id) => {
+    console.log("id", id);
+    setIsModalOpen(true);
+    setSelectedJobId(id);
     // showModal()
-    try {
-      console.log(selectedJobId, "jobIddd");
-      dispatch(
-        applyforJob({
-          employerId: selectedJob?.employer[0]?.userId,
-          jobId: selectedJobId,
-        })
-      )
-        .then(() => {
-          notificationService.success("Application Sent Successfully");
-        })
-        .catch((err) => {
-          notificationService.error("Error Sending");
-        });
-    } catch (error) {
-      notificationService.danger("Error Sending");
-    }
+    // try {
+    //   console.log(selectedJobId, "jobIddd");
+    //   dispatch(
+    //     applyforJob({
+    //       employerId: selectedJob?.employer[0]?.userId,
+    //       jobId: selectedJobId,
+    //     })
+    //   )
+    //     .then(() => {
+    //       notificationService.success("Application Sent Successfully");
+    //     })
+    //     .catch((err) => {
+    //       notificationService.error("Error Sending");
+    //     });
+    // } catch (error) {
+    //   notificationService.danger("Error Sending");
+    // }
   };
 
-  console.log("filterby", {
-    jobTitle: jobTitle,
-    location: location,
-    salary: salary,
-    experience: experience,
-    jobShift: jobShift,
-    skills: skills,
-    industry: industry,
-    funtionalArea: funtionalArea,
-    company: company,
-  });
+  // const handleSubmit = (values) => {
+  //   console.log("handleSubmit called");
+  //   console.log("values", values);
+  // };
 
-  console.log(selectedJob.positionTitle);
-  console.log(selectedJob.positionTitle !== "" ? "ys" : "no");
+  // console.log("filterby", {
+  //   jobTitle: jobTitle,
+  //   location: location,
+  //   salary: salary,
+  //   experience: experience,
+  //   jobShift: jobShift,
+  //   skills: skills,
+  //   industry: industry,
+  //   funtionalArea: funtionalArea,
+  //   company: company,
+  // });
+
+  // console.log(selectedJob.positionTitle);
+  // console.log(selectedJob.positionTitle !== "" ? "ys" : "no");
 
   return (
     <>
       <ToastContainer></ToastContainer>
 
-      <Modal
-        title={"title"}
+      <Core.PopupModalJob isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} type={'type'} action={'action'} id={selectedJobId} selectedJobData={selectedJob} index={'index'} />
+
+      {/* <Modal
+        // title={"title"}
         width={715}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[]}
-      ></Modal>
+      >
+        <Formik
+          initialValues={data}
+          // validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ setFieldValue, values }) => {
+            console.log("formik values", values);
+            return (
+              <Form>
+                <div>
+                  <h6
+                    className={`text-[22px] leading-[22px] capitalize font-semibold `}
+                  >
+                    Product UX Designer(Retail)
+                  </h6>
+                  <span className="text-purple- 4 text-[12px] leading-[22px] underlin e capitalize font-medium mb-2">
+                    companyName
+                  </span>
+                  <p className="text-gray-6 text-[12px] leading-[20px]">
+                    <span>jobType</span>
+                    employer?.address
+                  </p>
+                </div>
+                <br />
+
+                <div className="flex justify-between items-center pt-1 mb-2">
+                  <div className="flex justify-start items-center gap-x-1">
+                    <Field type="checkbox" name="quickApply" />
+                    Quick Apply
+                    <ErrorMessage
+                      name="quickApply"
+                      component="div"
+                      className="text-red-500"
+                    />
+                  </div>
+                </div>
+
+                <br />
+                <p className="text-black-1 text-[14px] font-semibold mb-2">
+                  Quick reply for these questions
+                </p>
+                <div className="mb-4">
+                  <Field name="whyApply">
+                    {({ field }) => (
+                      <Core.InputWithLabel
+                        {...field}
+                        sm
+                        name="whyApply"
+                        label
+                        bgGray
+                        edit
+                      />
+                    )}
+                  </Field>
+                </div>
+                <div className="mb-4">
+                  <Field name="availability">
+                    {({ field }) => (
+                      <Core.InputWithLabel
+                        {...field}
+                        sm
+                        name="availability"
+                        label
+                        bgGray
+                        edit
+                      />
+                    )}
+                  </Field>
+                </div>
+                <div className="mb-4">
+                  <Field name="whyForUs">
+                    {({ field }) => (
+                      <Core.InputWithLabel
+                        {...field}
+                        sm
+                        name="whyForUs"
+                        label
+                        bgGray
+                        edit
+                      />
+                    )}
+                  </Field>
+                </div>
+                <div className="mb-4">
+                  <Field name="threeQualities">
+                    {({ field }) => (
+                      <Core.InputWithLabel
+                        {...field}
+                        sm
+                        name="threeQualities"
+                        label
+                        bgGray
+                        edit
+                      />
+                    )}
+                  </Field>
+                </div>
+                <div className="flex justify-between items-center pt-1 mb-2">
+                  <div className="flex justify-start items-center gap-x-1">
+                    <Field type="checkbox" name="notify" />
+                    Notify me when similar jobs are available
+                    <ErrorMessage
+                      name="notify"
+                      component="div"
+                      className="text-red-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex justify-between pt-6 mt-8 border-t-[1px]">
+                  <div className="flex justify-start gap-x-3 ">
+                    {savingForm ? (
+                      <div className=" flex justify-center items-center w-[77px] bg-white border text-[18px] leading-[20px] rounded-[8px] py-[12px]">
+                        <Spin />
+                      </div>
+                    ) : (
+                      <Core.Button
+                        type="narrow"
+                        submit
+                        onClick={() => handleSubmit(values)}
+                        isDisabled={
+                          values?.whyApply === "" ||
+                          values?.availability === "" ||
+                          values?.whyForUs === "" ||
+                          values?.threeQualities === ""
+                        }
+                      >
+                        Quick Apply
+                      </Core.Button>
+                    )}
+                    <Core.Button
+                      type="narrow"
+                      color="white"
+                      // onClick={() => {
+                      //   handleCancel();
+                      //   resetForm();
+                      //   if (action === "add") {
+                      //     setDescription("");
+                      //     setSelectedStartMonth("");
+                      //     setSelectedEndMonth("");
+                      //     setSelectedStartYear("");
+                      //     setSelectedEndYear("");
+                      //     setStartDate("");
+                      //     setEndDate("");
+                      //     setProjectImage("");
+                      //     setCancelImg(true);
+                      //   }
+                      // }}
+                    >
+                      Back
+                    </Core.Button>
+                  </div>
+                </div>
+              </Form>
+            );
+          }}
+        </Formik>
+      </Modal> */}
 
       <div className="w-full mb-2">
         <div className={`flex justify-start items-center w-full mb-4`}>

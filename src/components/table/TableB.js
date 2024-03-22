@@ -104,7 +104,7 @@ function TableB({
                   <img
                     className="inline-block h-[30px] w-[30px] rounded-full"
                     src={val?.img}
-                    alt="profile image"
+                    alt="Profile"
                   />
                   <Avatar src={val?.img}>{firstLetter}</Avatar>
                   <span className="whitespace-nowrap font-semibold">

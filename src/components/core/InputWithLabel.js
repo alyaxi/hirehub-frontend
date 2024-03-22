@@ -124,6 +124,14 @@ function InputWithLabel({
         return "Attach Document";
       case "customLanguage":
         return "Custom Language";
+      case "whyApply":
+        return "Why did you decide to apply for this position?";
+      case "availability":
+        return "When you are available for interview?";
+      case "whyForUs":
+        return "Why do you want to work for us?";
+      case "threeQualities":
+        return "What are your three best qualities?";
 
       default:
         return "Label";
@@ -333,7 +341,7 @@ function InputWithLabel({
                         w-full text-[14px] font-regular leading-[20px] text-gray-6 
                         ${bgGray && "bg-gray-3"}
                           ${
-                            disabled === true
+                            disabled === true || bgGray
                               ? "bg-gray-3 cursor-no-drop"
                               : "bg-white"
                           }
